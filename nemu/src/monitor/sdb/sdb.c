@@ -125,6 +125,15 @@ static int cmd_x(char *args){
   return 0;
 }
 
+static int cmd_p(char *args){
+  if(args==NULL) Assert(0,"LACK EXPRESSION!");
+  bool flag=true;
+  word_t val=expr(args,&flag);
+  if(!flag) Assert(0, "INVALID EXPRESSION!\n");
+  printf("%lu\n",val);
+  return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -138,6 +147,7 @@ static struct {
   { "si", "single exec", cmd_si },
   { "info", "info registers and watchpoints", cmd_info},
   { "x", "scan memory", cmd_x},
+  { "p", "expression compute", cmd_p},
   /* TODO: Add more commands */
 
 };
