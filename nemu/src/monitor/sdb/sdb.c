@@ -8,8 +8,13 @@ static int is_batch_mode = false;
 
 void init_regex();
 void init_wp_pool();
+void new_wp(char *s,word_t val);
+void free_wp(word_t N,int* success);
+void display_wp();
+
 void isa_reg_display();
 word_t vaddr_read(vaddr_t addr, int len);
+
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() {
   static char *line_read = NULL;
@@ -134,6 +139,49 @@ static int cmd_p(char *args){
   return 0;
 }
 
+static int cmd_w(char *args){
+	if(args==NULL){
+	  printf("LACK EXPRESSION!\n");
+	  return 0;
+	}
+	bool fla=true;
+	word_t NewValu=expr(args,&fla);
+	if(!fla){
+		printf("INVALID EXPRESSION!\n");
+		return 0;
+	}
+	new_wp(args,NewValu);
+	return 0;
+}
+
+static int cmd_d(char *args){
+	if(args==NULL){
+	  printf("LACK NUMBER!\n");
+	  return 0;
+	}
+	word_t N=0;
+	int l=strlen(args);
+	for(int i=0;i<l;i++){
+		if(args[i]<'0'||args[i]>'9'){
+			printf("WRONG NUMBER!\n");
+			return 0;
+		}
+		N=N*10+args[i]-'0';
+	}
+	if(N>=32){
+		printf("OVERFLOW!\n");
+		return 0;
+	}
+	int succ;
+	free_wp(N,&succ);
+	if(succ==0)
+		printf("No watchpoint is used\n");
+	else if(succ==1)
+		printf("This watchpoint is already free\n");
+	return 0;
+}
+
+
 static int cmd_help(char *args);
 
 static struct {
@@ -148,6 +196,8 @@ static struct {
   { "info", "info registers and watchpoints", cmd_info},
   { "x", "scan memory", cmd_x},
   { "p", "expression compute", cmd_p},
+  {"w","Create a new watchpoint",cmd_w},
+  {"d","Delete the watchpoint whose number is N",cmd_d},
   /* TODO: Add more commands */
 
 };
