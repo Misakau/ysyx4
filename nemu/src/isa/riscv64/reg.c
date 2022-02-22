@@ -13,7 +13,7 @@ static int regsn = sizeof(regs)/sizeof(const char*);
 void isa_reg_display() {
   bool b;
   for(int i = 0; i < regsn; i++){
-    printf("%s: \t%16lx\n", regs[i], isa_reg_str2val(regs[i], &b));
+    printf("%s: \t0x%016lx\n", regs[i], isa_reg_str2val(regs[i], &b));
   }
 }
 
