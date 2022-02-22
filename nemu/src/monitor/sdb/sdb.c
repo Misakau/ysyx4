@@ -38,6 +38,26 @@ static int cmd_q(char *args) {
   return -1;
 }
 
+static int cmd_si(char *args){
+  int times = 0;
+  assert(strtok(args," "));
+  char* com = strtok(NULL," ");
+  if(com == NULL) times = 1;
+  else{
+    int len = strlen(com);
+    for(int i = 0; i < len; i++){
+      if(com[i] >= '0' && com[i] <= '9') times = times * 10 + com[i] - '0';
+      else{
+        times = 0;
+        break;
+      }
+    }
+  }
+  if(times == 0) Assert(0,"INVALID STEPS!");
+  else cpu_exec(times);
+  return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -48,7 +68,7 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-
+  { "si", "single exec", cmd_si },
   /* TODO: Add more commands */
 
 };
