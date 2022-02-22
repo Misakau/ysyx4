@@ -116,11 +116,10 @@ static int cmd_x(char *args){
   word_t num2 = s_to_u(com2+2, 16);
   int offs = 0;
   for(int i = 1; i <= num1; i++){
-    if(i == 1){
-      printf("[%s]: 0x%016lx\n", com2, vaddr_read(num2, 4));
-    }
-    else
-      printf("[%s+%d]: 0x%016lx\n", com2, offs, vaddr_read(num2+offs, 4));
+    word_t dat = vaddr_read(num2+offs, 4);
+    if(i == 1) printf("[%s]: \t", com2);
+    else  printf("[%s+%d]: \t", com2, offs);
+    printf("%02lx %02lx %02lx %02lx\n", dat & 0xff, (dat & 0xff00)>>8, (dat & 0xff0000)>>16, (dat & 0xff000000)>>24);
     offs+=4;
   }
   return 0;
