@@ -9,7 +9,7 @@ static int is_batch_mode = false;
 void init_regex();
 void init_wp_pool();
 void isa_reg_display();
-
+word_t vaddr_read(vaddr_t addr, int len);
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 static char* rl_gets() {
   static char *line_read = NULL;
@@ -37,6 +37,42 @@ static int cmd_c(char *args) {
 static int cmd_q(char *args) {
   nemu_state.state = NEMU_QUIT;
   return -1;
+}
+
+int s_to_i(char* s, int r){
+  Assert(s != NULL,"NULL!");
+  int num = 0;
+  int len = strlen(s);
+  for(int i = 0; i < len; i++){
+    if(r == 10 && s[i] >= '0' && s[i] <= '9') num = num * r + s[i] - '0';
+    else if(r == 16 &&( (s[i] >= '0' && s[i] <= '9') || (s[i] >= 'a' && s[i] <= 'f') || (s[i] >= 'A' && s[i] <= 'F') )){
+      if(s[i] >= '0' && s[i] <= '9')
+        num = num * r + s[i] - '0';
+      else if(s[i] >= 'a' && s[i] <= 'f')
+        num = num * r + s[i] - 'a' + 10;
+      else num = num * r + s[i] - 'A' + 10;
+    } 
+    else Assert(0,"INVALID COMMANDS!");
+  }
+  return num;
+}
+
+word_t s_to_u(char* s, int r){
+  Assert(s != NULL,"NULL!");
+  word_t num = 0;
+  int len = strlen(s);
+  for(int i = 0; i < len; i++){
+    if(r == 10 && s[i] >= '0' && s[i] <= '9') num = num * r + s[i] - '0';
+    else if(r == 16 &&( (s[i] >= '0' && s[i] <= '9') || (s[i] >= 'a' && s[i] <= 'f') || (s[i] >= 'A' && s[i] <= 'F') )){
+      if(s[i] >= '0' && s[i] <= '9')
+        num = num * r + s[i] - '0';
+      else if(s[i] >= 'a' && s[i] <= 'f')
+        num = num * r + s[i] - 'a' + 10;
+      else num = num * r + s[i] - 'A' + 10;
+    } 
+    else Assert(0,"INVALID COMMANDS!");
+  }
+  return num;
 }
 
 static int cmd_si(char *args){
@@ -71,6 +107,25 @@ int cmd_info(char* args){
   return 0;
 }
 
+static int cmd_x(char *args){
+  char* com1 = strtok(args," ");
+  char* com2 = strtok(NULL," ");
+  if(com1 == NULL || com2 == NULL) Assert(0,"TOO FEW COMMANDS!");
+  int num1 = s_to_i(com1, 10);
+  if(strlen(com2) <= 2 || com2[0] != '0' || com2[1] != 'x' ) Assert(0,"INVALID COMMANDS!");
+  word_t num2 = s_to_u(com2+2, 16);
+  int offs = 0;
+  for(int i = 1; i <= num1; i++){
+    if(i == 1){
+      printf("[%s]: 0x%016lx", com2, vaddr_read(num2, 4));
+    }
+    else
+      printf("[%s+%d]: 0x%016lx", com2, offs, vaddr_read(num2+offs, 4));
+    offs+=4;
+  }
+  return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -82,7 +137,9 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si", "single exec", cmd_si },
-  { "info", "info registers and watchpoints", cmd_info},/* TODO: Add more commands */
+  { "info", "info registers and watchpoints", cmd_info},
+  { "x", "scan memory", cmd_x},
+  /* TODO: Add more commands */
 
 };
 
