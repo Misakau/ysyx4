@@ -18,7 +18,6 @@ void isa_reg_display() {
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
-  *success = false;
   for(int i = 0; i < regsn; i++){
     if(strcmp(s,regs[i]) == 0){
       if(i < 32){
@@ -28,5 +27,6 @@ word_t isa_reg_str2val(const char *s, bool *success) {
       else Assert(0,"NOT GPRS!");
     }
   }
+  *success = false;
   return 0;
 }
