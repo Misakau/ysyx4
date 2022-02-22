@@ -117,7 +117,7 @@ static int cmd_x(char *args){
   int offs = 0;
   for(int i = 1; i <= num1; i++){
     word_t dat = vaddr_read(num2+offs, 4);
-    if(i == 1) printf("[0x%016lx]: \t", num2);
+    if(i == 1) printf("[0x%016lx]: \t\t", num2);
     else  printf("[0x%016lx+%d]: \t", num2, offs);
     printf("%02lx %02lx %02lx %02lx\n", dat & 0xff, (dat & 0xff00)>>8, (dat & 0xff0000)>>16, (dat & 0xff000000)>>24);
     offs+=4;
