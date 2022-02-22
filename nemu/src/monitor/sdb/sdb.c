@@ -129,7 +129,7 @@ static int cmd_p(char *args){
   if(args==NULL) Assert(0,"LACK EXPRESSION!");
   bool flag=true;
   word_t val=expr(args,&flag);
-  if(!flag) Assert(0, "INVALID EXPRESSION!\n");
+  //if(!flag) Assert(0, "INVALID EXPRESSION!\n");
   printf("%lu\n",val);
   return 0;
 }
