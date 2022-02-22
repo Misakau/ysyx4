@@ -106,9 +106,7 @@ int cmd_info(char* args){
   int is_w = strcmp(com,"w");
   if(is_r != 0 && is_w != 0) Assert(0,"INVALID COMMANDS!");
   if(is_r == 0) isa_reg_display();
-  else{
-    Assert(0,"NOT IMPLEMENTED!");
-  }
+  else display_wp();
   return 0;
 }
 
