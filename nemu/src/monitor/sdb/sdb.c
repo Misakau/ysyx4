@@ -117,10 +117,10 @@ static int cmd_x(char *args){
   int offs = 0;
   for(int i = 1; i <= num1; i++){
     if(i == 1){
-      printf("[%s]: 0x%016lx", com2, vaddr_read(num2, 4));
+      printf("[%s]: 0x%016lx\n", com2, vaddr_read(num2, 4));
     }
     else
-      printf("[%s+%d]: 0x%016lx", com2, offs, vaddr_read(num2+offs, 4));
+      printf("[%s+%d]: 0x%016lx\n", com2, offs, vaddr_read(num2+offs, 4));
     offs+=4;
   }
   return 0;
