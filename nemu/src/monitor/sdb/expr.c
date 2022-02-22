@@ -275,6 +275,7 @@ word_t eval(int p,int q,bool *succ){
 	  word_t val=0;
 	  bool ff=true;
 	  val=isa_reg_str2val(tokens[p].str,&ff);
+	  printf("%lu, %d\n",val,ff);
 	  if(ff) return val;
 	  else{
 		*succ=false;
