@@ -40,8 +40,7 @@ static int cmd_q(char *args) {
 
 static int cmd_si(char *args){
   int times = 0;
-  assert(strtok(args," "));
-  char* com = strtok(NULL," ");
+  char* com = strtok(args," ");
   if(com == NULL) times = 1;
   else{
     int len = strlen(com);
