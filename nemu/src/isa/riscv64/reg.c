@@ -8,9 +8,26 @@ const char *regs[] = {
   "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"
 };
 
+static int regsn = sizeof(regs)/sizeof(const char*); 
+
 void isa_reg_display() {
+  bool b;
+  for(int i = 0; i < regsn; i++){
+    printf("%s: \t%16lx\n", regs[i], isa_reg_str2val(regs[i], &b));
+  }
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
+  for(int i = 0; i < regsn; i++){
+    if(strcmp(s,regs[i]) == 0){
+      if(i < 32){
+        *success = true;
+        return cpu.gpr[i];
+      }
+      else Assert(0,"NOT GPRS!");
+    }
+    else break;
+  }
+  *success = false;
   return 0;
 }
