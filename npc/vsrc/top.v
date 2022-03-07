@@ -28,7 +28,7 @@ module top(
       .clk(clk),
       .rd(rd),
       .rs1(rs1),
-      .rs2(rs2)
+      .rs2(rs2),
       .wen(wen),
       .immI(immI)
     );
