@@ -1,6 +1,7 @@
 module top(
   input clk,
   input rst,
+  input instr_i,
   output [63:0] pc
 );
     our s;
