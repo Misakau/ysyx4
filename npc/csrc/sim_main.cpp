@@ -19,7 +19,8 @@ int main(int argc, char**argv, char**env) {
     contextp->commandArgs(argc, argv);
     
     Vtop*top = new Vtop{contextp};
-    top->clk = 1;
+    top->clk = 0;
+    top->rst = 1;
     top->pc = 0x80000000;
     int cnt = 0;
     MEM[0] = 0x11111111;
