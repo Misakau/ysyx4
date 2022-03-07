@@ -57,6 +57,11 @@ void Vtop___024root___settle__TOP__4(Vtop___024root* vlSelf) {
     } else {
         VL_WRITEF("no\n");
     }
+    VL_WRITEF("busa=%x\n",64,((0U == (0x1fU & (vlSelf->instr_i 
+                                               >> 0xfU)))
+                               ? 0ULL : vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+                              [(0x1fU & (vlSelf->instr_i 
+                                         >> 0xfU))]));
     vlSelf->top__DOT__my_ifu__DOT__dnpc = (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc);
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
     vlSelf->top__DOT__my_exu__DOT__res = (((0U == (0x1fU 

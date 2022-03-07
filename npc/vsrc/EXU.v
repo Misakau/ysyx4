@@ -22,5 +22,6 @@ module ysyx_220053_EXU(
     always @(*) begin
         res = busa + immI; //addi
         $display("busa=%x",busa);
+        $display("res=%x",res);
     end
 endmodule
