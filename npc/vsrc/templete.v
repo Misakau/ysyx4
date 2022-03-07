@@ -119,10 +119,8 @@ module ysyx_220053_RegisterFile #(ADDR_WIDTH = 1, DATA_WIDTH = 1) (
 );
   reg [DATA_WIDTH-1:0] rf [(1 << ADDR_WIDTH)-1:0];
 
-  always @(*) begin
-    radata = (raaddr == 0) ? 0 : rf[raaddr];
-    rbdata = (rbaddr == 0) ? 0 : rf[rbaddr];
-  end
+  assign  radata = (raaddr == 0) ? 0 : rf[raaddr];
+  assign  rbdata = (rbaddr == 0) ? 0 : rf[rbaddr];
   always @(posedge clk) begin
     if (wen) rf[waddr] <= wdata;
   end
