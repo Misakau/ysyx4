@@ -57,54 +57,40 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
             tracep->chgQData(oldp+60,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[30]),64);
             tracep->chgQData(oldp+62,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[31]),64);
         }
-        tracep->chgBit(oldp+64,(vlSelf->clk));
-        tracep->chgBit(oldp+65,(vlSelf->rst));
-        tracep->chgIData(oldp+66,(vlSelf->instr_i),32);
-        tracep->chgQData(oldp+67,(vlSelf->pc),64);
-        tracep->chgCData(oldp+69,((0x7fU & vlSelf->instr_i)),7);
-        tracep->chgCData(oldp+70,((vlSelf->instr_i 
+        if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[2U])) {
+            tracep->chgBit(oldp+64,(vlSelf->top__DOT__wen));
+            tracep->chgQData(oldp+65,(vlSelf->top__DOT__my_exu__DOT__busa),64);
+            tracep->chgQData(oldp+67,(vlSelf->top__DOT__my_exu__DOT__res),64);
+        }
+        tracep->chgBit(oldp+69,(vlSelf->clk));
+        tracep->chgBit(oldp+70,(vlSelf->rst));
+        tracep->chgIData(oldp+71,(vlSelf->instr_i),32);
+        tracep->chgQData(oldp+72,(vlSelf->pc),64);
+        tracep->chgCData(oldp+74,((0x7fU & vlSelf->instr_i)),7);
+        tracep->chgCData(oldp+75,((vlSelf->instr_i 
                                    >> 0x19U)),7);
-        tracep->chgCData(oldp+71,((0x1fU & (vlSelf->instr_i 
+        tracep->chgCData(oldp+76,((0x1fU & (vlSelf->instr_i 
                                             >> 7U))),5);
-        tracep->chgCData(oldp+72,((0x1fU & (vlSelf->instr_i 
+        tracep->chgCData(oldp+77,((0x1fU & (vlSelf->instr_i 
                                             >> 0xfU))),5);
-        tracep->chgCData(oldp+73,((0x1fU & (vlSelf->instr_i 
+        tracep->chgCData(oldp+78,((0x1fU & (vlSelf->instr_i 
                                             >> 0x14U))),5);
-        tracep->chgCData(oldp+74,((7U & (vlSelf->instr_i 
+        tracep->chgCData(oldp+79,((7U & (vlSelf->instr_i 
                                          >> 0xcU))),3);
-        tracep->chgQData(oldp+75,((((- (QData)((IData)(
+        tracep->chgQData(oldp+80,((((- (QData)((IData)(
                                                        (vlSelf->instr_i 
                                                         >> 0x1fU)))) 
                                     << 0xcU) | (QData)((IData)(
                                                                (vlSelf->instr_i 
                                                                 >> 0x14U))))),64);
-        tracep->chgBit(oldp+77,(vlSelf->top__DOT__wen));
-        tracep->chgQData(oldp+78,(vlSelf->top__DOT__my_ifu__DOT__now_pc),64);
-        tracep->chgQData(oldp+80,((4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc)),64);
-        tracep->chgQData(oldp+82,(((0U == (0x1fU & 
-                                           (vlSelf->instr_i 
-                                            >> 0xfU)))
-                                    ? 0ULL : vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
-                                   [(0x1fU & (vlSelf->instr_i 
-                                              >> 0xfU))])),64);
-        tracep->chgQData(oldp+84,(((0U == (0x1fU & 
+        tracep->chgQData(oldp+82,(vlSelf->top__DOT__my_ifu__DOT__now_pc),64);
+        tracep->chgQData(oldp+84,((4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc)),64);
+        tracep->chgQData(oldp+86,(((0U == (0x1fU & 
                                            (vlSelf->instr_i 
                                             >> 0x14U)))
                                     ? 0ULL : vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
                                    [(0x1fU & (vlSelf->instr_i 
                                               >> 0x14U))])),64);
-        tracep->chgQData(oldp+86,((((0U == (0x1fU & 
-                                            (vlSelf->instr_i 
-                                             >> 0xfU)))
-                                     ? 0ULL : vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
-                                    [(0x1fU & (vlSelf->instr_i 
-                                               >> 0xfU))]) 
-                                   + (((- (QData)((IData)(
-                                                          (vlSelf->instr_i 
-                                                           >> 0x1fU)))) 
-                                       << 0xcU) | (QData)((IData)(
-                                                                  (vlSelf->instr_i 
-                                                                   >> 0x14U)))))),64);
         tracep->chgBit(oldp+88,((1U & (~ (IData)(vlSelf->clk)))));
     }
 }
@@ -117,5 +103,6 @@ void Vtop___024root__traceCleanup(void* voidSelf, VerilatedVcd* /*unused*/) {
         vlSymsp->__Vm_activity = false;
         vlSymsp->TOP.__Vm_traceActivity[0U] = 0U;
         vlSymsp->TOP.__Vm_traceActivity[1U] = 0U;
+        vlSymsp->TOP.__Vm_traceActivity[2U] = 0U;
     }
 }

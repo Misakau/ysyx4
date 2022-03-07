@@ -31,12 +31,13 @@ VL_MODULE(Vtop___024root) {
     QData/*63:0*/ top__DOT__my_idu__DOT__immS;
     QData/*63:0*/ top__DOT__my_idu__DOT__immJ;
     QData/*63:0*/ top__DOT__my_idu__DOT__immB;
+    QData/*63:0*/ top__DOT__my_exu__DOT__busa;
     QData/*63:0*/ top__DOT__my_exu__DOT__res;
     VlUnpacked<QData/*63:0*/, 32> top__DOT__my_exu__DOT__regfile__DOT__rf;
 
     // LOCAL VARIABLES
     CData/*0:0*/ __Vclklast__TOP__clk;
-    VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
+    VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
     Vtop__Syms* vlSymsp;  // Symbol table
