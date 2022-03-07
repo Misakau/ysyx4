@@ -26,7 +26,7 @@ int main(int argc, char**argv, char**env) {
     top->clk = 1;
     top->eval();
     top->rst = 0;
-
+    int cnt = 0;
     MEM[0] = 0x11111111;
     MEM[1] = 0x22222222;
     MEM[2] = 0x33333333;
@@ -36,6 +36,7 @@ int main(int argc, char**argv, char**env) {
         //top->rst = rand()&1;
         top->instr_i = pmem_read(top->pc);
         top->eval();
+        cnt ++;
         printf("cnt = %d,clk = %d, rst = %d, pc = %lx\n", cnt, top->clk, top->rst, top->pc);
     }
     delete top;
