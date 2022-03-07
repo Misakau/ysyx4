@@ -7,7 +7,7 @@
 static uint32_t MEM[MEMSIZE];//4字节为单位
 
 uint64_t pmem_read(uint64_t paddr){
-    uint64_t real_addr = (paddr - AD_BASE) >> 2;
+    uint64_t real_addr = (paddr - AD_BASE) >> 1;
     assert(real_addr < 4);
     return (uint64_t)MEM[real_addr];
 }
