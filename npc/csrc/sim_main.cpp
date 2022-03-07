@@ -6,14 +6,14 @@ int main(int argc, char**argv, char**env) {
     contextp->commandArgs(argc, argv);
     
     Vtop*top = new Vtop{contextp};
+    top->clk = 1;
+    int cnt = 0;
     while (!contextp->gotFinish()) { 
         contextp->timeInc(1); 
-        int a = rand() & 1;
-        int b = rand() & 1;
-        top->a = a;
-        top->b = b;
+        top->clk = !top->clk;
+        top->rst = rand()&1;
         top->eval();
-        printf("a = %d, b = %d, f = %d\n", a, b, top->f);
+        printf("cnt = %d,clk = %d, rst = %d, pc = %d\n", cnt, top->clk, top->rst, top->pc);
         assert(top->f == a^b); 
     }
     delete top;

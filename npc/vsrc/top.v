@@ -1,10 +1,14 @@
 module top(
-  input a,
-  input b,
-  output f
+  input clk,
+  input rst,
+  output pc
 );
     our s;
-    example ex(a,b,f);
+    ysyx_220053_IFU my_ifu(
+    .clk(clk),
+    .rst(rst),
+    .pc(pc)
+    );
     initial begin
         $dumpfile("logs/vlt_dump.vcd");
         $dumpvars();
