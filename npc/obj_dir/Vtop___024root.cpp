@@ -17,6 +17,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     QData/*63:0*/ __Vdlyvval__top__DOT__my_exu__DOT__regfile__DOT__rf__v0;
     // Body
     __Vdlyvset__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 = 0U;
+    VL_WRITEF("%x\n",64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+              [0U]);
     vlSelf->top__DOT__my_ifu__DOT__now_pc = ((IData)(vlSelf->rst)
                                               ? 0x80000000ULL
                                               : vlSelf->top__DOT__my_ifu__DOT__dnpc);

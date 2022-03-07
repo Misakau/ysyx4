@@ -123,7 +123,10 @@ module ysyx_220053_RegisterFile #(ADDR_WIDTH = 1, DATA_WIDTH = 1) (
   assign  rbdata = (rbaddr == 0) ? 0 : rf[rbaddr];
   always @(posedge clk) begin
     if (wen) rf[waddr] <= wdata;
-    $display("%x",rf[0]);
+    $display("0#: %x",rf[0]);
+    $display("1#: %x",rf[1]);
+    $display("2#: %x",rf[2]);
+    $display("3#: %x",rf[3]);
   end
   
 endmodule
