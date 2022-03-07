@@ -19,20 +19,22 @@ int main(int argc, char**argv, char**env) {
     contextp->commandArgs(argc, argv);
     
     Vtop*top = new Vtop{contextp};
+    //reset the pc
     top->clk = 0;
     top->rst = 1;
-    top->pc = 0x80000000;
     top->eval();
-    int cnt = 0;
+    top->clk = 1;
+    top->eval();
+    top->rst = 0;
+
     MEM[0] = 0x11111111;
     MEM[1] = 0x22222222;
     MEM[2] = 0x33333333;
     while (!contextp->gotFinish()) { 
         contextp->timeInc(1); 
         top->clk = !top->clk;
-        if(cnt && top->rst) top->rst = 0;
         //top->rst = rand()&1;
-        if(cnt) top->instr_i = pmem_read(top->pc);
+        top->instr_i = pmem_read(top->pc);
         top->eval();
         printf("cnt = %d,clk = %d, rst = %d, pc = %lx\n", cnt, top->clk, top->rst, top->pc);
     }
