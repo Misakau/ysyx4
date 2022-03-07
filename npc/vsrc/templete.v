@@ -104,3 +104,26 @@ module ysyx_220053_mux41(a,s,y);
     2'b11, a[3]
   });
 endmodule
+
+module ysyx_220053_RegisterFile #(ADDR_WIDTH = 1, DATA_WIDTH = 1) (
+  input clk,
+
+  input [ADDR_WIDTH-1:0] raaddr,
+  input [ADDR_WIDTH-1:0] rbaddr,
+  output [DATA_WIDTH-1:0] radata,
+  output [DATA_WIDTH-1:0] rbdata,
+
+  input [DATA_WIDTH-1:0] wdata,
+  input [ADDR_WIDTH-1:0] waddr,
+  input wen
+);
+  reg [DATA_WIDTH-1:0] rf [ADDR_WIDTH-1:0];
+
+  always @(*) begin
+    radata = (raaddr == 0) ? 0 : rf[raaddr];
+    rbdata = (rbaddr == 0) ? 0 : rf[rbaddr];
+  end
+  always @(posedge clk) begin
+    if (wen) rf[waddr] <= wdata;
+  end
+endmodule
