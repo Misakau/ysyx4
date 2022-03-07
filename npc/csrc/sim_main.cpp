@@ -29,11 +29,12 @@ int main(int argc, char**argv, char**env) {
     while (!contextp->gotFinish()) { 
         contextp->timeInc(1); 
         top->clk = !top->clk;
-        
-        //top->rst = rand()&1;
-        if(cnt) top->instr_i = pmem_read(top->pc);
-        if(top->rst) top->rst = 0;
         top->eval();
+        //if(cnt && top->rst) top->rst = 0;
+        //top->rst = rand()&1;
+        //if(cnt)
+         top->instr_i = pmem_read(top->pc);
+        
         printf("cnt = %d,clk = %d, rst = %d, pc = %lx\n", cnt, top->clk, top->rst, top->pc);
     }
     delete top;
