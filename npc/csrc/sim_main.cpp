@@ -14,7 +14,6 @@ int main(int argc, char**argv, char**env) {
         top->rst = rand()&1;
         top->eval();
         printf("cnt = %d,clk = %d, rst = %d, pc = %lx\n", cnt, top->clk, top->rst, top->pc);
-        assert(top->f == a^b); 
     }
     delete top;
     delete contextp;

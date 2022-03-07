@@ -47,8 +47,8 @@ void Vtop___024root___settle__TOP__3(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___settle__TOP__3\n"); );
     // Body
-    vlSelf->pc = (1U & (IData)(vlSelf->top__DOT__my_ifu__DOT__now_pc));
     vlSelf->top__DOT__my_ifu__DOT__dnpc = (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc);
+    vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
 }
 
 void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
@@ -81,7 +81,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     // Body
     vlSelf->clk = VL_RAND_RESET_I(1);
     vlSelf->rst = VL_RAND_RESET_I(1);
-    vlSelf->pc = VL_RAND_RESET_I(1);
+    vlSelf->pc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__now_pc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__dnpc = VL_RAND_RESET_Q(64);
 }
