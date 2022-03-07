@@ -1,13 +1,12 @@
 module top(
-    input a,
-    input b,
-    output f
+  input a,
+  input b,
+  output f
 );
-    assign f = a ^ b;
-     initial begin
-         $display("[%0t] Tracing to logs/vlt_dump.vcd...\n", $time);
-         $dumpfile("logs/vlt_dump.vcd");
-         $dumpvars();
-      $display("[%0t] Model running...\n", $time);
-   end
+    our s;
+    example ex(a,b,f);
+    initial begin
+        $dumpfile("logs/vlt_dump.vcd");
+        $dumpvars();
+    end
 endmodule

@@ -32,8 +32,6 @@ void Vtop___024root___initial__TOP__1(Vtop___024root* vlSelf) {
     // Variables
     VlWide<5>/*159:0*/ __Vtemp1;
     // Body
-    VL_WRITEF("[%0t] Tracing to logs/vlt_dump.vcd...\n\n",
-              64,VL_TIME_UNITED_Q(1),-12);
     __Vtemp1[0U] = 0x2e766364U;
     __Vtemp1[1U] = 0x64756d70U;
     __Vtemp1[2U] = 0x766c745fU;
@@ -41,8 +39,7 @@ void Vtop___024root___initial__TOP__1(Vtop___024root* vlSelf) {
     __Vtemp1[4U] = 0x6cU;
     vlSymsp->_vm_contextp__->dumpfile(VL_CVT_PACK_STR_NW(5, __Vtemp1));
     vlSymsp->_traceDumpOpen();
-    VL_WRITEF("[%0t] Model running...\n\n",64,VL_TIME_UNITED_Q(1),
-              -12);
+    VL_WRITEF("hello world\n");
 }
 
 void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {

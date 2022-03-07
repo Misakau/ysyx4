@@ -1,9 +1,40 @@
+VFILES := $(wildcard vsrc/*.v)
+VERILATOR = verilator
+# Generate C++ in executable form
+VERILATOR_FLAGS += -cc --exe --build --top-module top
+# Generate makefile dependencies (not shown as complicates the Makefile)
+#VERILATOR_FLAGS += -MMD
+# Optimize
+# VERILATOR_FLAGS += -Os -x-assign 0
+# Warn abount lint issues; may not want this on less solid designs
+VERILATOR_FLAGS += -Wall
+# Make waveforms
+VERILATOR_FLAGS += --trace
+# Check SystemVerilog assertions
+# VERILATOR_FLAGS += --assert
+# Generate coverage analysis
+# VERILATOR_FLAGS += --coverage
+# Run Verilator in debug mode
+#VERILATOR_FLAGS += --debug
+# Add this trace to get a backtrace in gdb
+#VERILATOR_FLAGS += --gdbbt
+
+# Input files for Verilator
+VERILATOR_INPUT = $(VFILES) csrc/sim_main.cpp
+
 all:
 	@echo "Write this Makefile by your self."
 
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	@verilator -Wall --cc --exe --build sim_main.cpp $(find *.v)
-	@echo "Write this Makefile by your self."
+	$(VERILATOR) $(VERILATOR_FLAGS) $(VERILATOR_INPUT)
 
+	@rm -rf logs
+	@mkdir -p logs
+	obj_dir/Vtop +trace
+clean:
+	rm -rf obj_dir
+.PHONY: clean run	
 include ../Makefile
+# @echo "Write this Makefile by your self."#simor := V$(x) \
+	#obj_dir/$(simor) \

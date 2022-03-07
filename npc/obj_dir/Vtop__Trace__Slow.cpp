@@ -28,6 +28,9 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBit(c+1,"top a", false,-1);
         tracep->declBit(c+2,"top b", false,-1);
         tracep->declBit(c+3,"top f", false,-1);
+        tracep->declBit(c+1,"top ex a", false,-1);
+        tracep->declBit(c+2,"top ex b", false,-1);
+        tracep->declBit(c+3,"top ex f", false,-1);
     }
 }
 
