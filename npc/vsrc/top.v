@@ -1,3 +1,4 @@
+/* verilator lint_off UNUSED */
 module top(
   input clk,
   input rst,
