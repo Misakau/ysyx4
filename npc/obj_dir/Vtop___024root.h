@@ -24,7 +24,6 @@ VL_MODULE(Vtop___024root) {
     VL_OUT8(pc,0,0);
 
     // LOCAL SIGNALS
-    CData/*0:0*/ top__DOT__my_ifu__DOT__instr;
     QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
     QData/*63:0*/ top__DOT__my_ifu__DOT__dnpc;
 
