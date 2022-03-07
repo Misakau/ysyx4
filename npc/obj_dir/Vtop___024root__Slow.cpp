@@ -74,6 +74,28 @@ void Vtop___024root___settle__TOP__4(Vtop___024root* vlSelf) {
                                              | (QData)((IData)(
                                                                (vlSelf->instr_i 
                                                                 >> 0x14U)))));
+    VL_WRITEF("wen = %1#, wdata= %x, waddr = %x\n0#: %x\n1#: %x\n2#: %x\n3#: %x\n",
+              1,vlSelf->top__DOT__wen,64,(((0U == (0x1fU 
+                                                   & (vlSelf->instr_i 
+                                                      >> 0xfU)))
+                                            ? 0ULL : 
+                                           vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+                                           [(0x1fU 
+                                             & (vlSelf->instr_i 
+                                                >> 0xfU))]) 
+                                          + (((- (QData)((IData)(
+                                                                 (vlSelf->instr_i 
+                                                                  >> 0x1fU)))) 
+                                              << 0xcU) 
+                                             | (QData)((IData)(
+                                                               (vlSelf->instr_i 
+                                                                >> 0x14U))))),
+              5,(0x1fU & (vlSelf->instr_i >> 7U)),64,
+              vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+              [0U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+              [1U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+              [2U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+              [3U]);
 }
 
 void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
