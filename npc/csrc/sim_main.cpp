@@ -26,9 +26,11 @@ int main(int argc, char**argv, char**env) {
     top->eval();
     top->rst = 0;
     int cnt = 0;
-    IMEM[0] = 0x11111111;
-    IMEM[1] = 0x22222222;
-    IMEM[2] = 0x33333333;
+    IMEM[0] = 0x00100093;// addi x0,x1,1
+    IMEM[1] = 0x00108093;// addi x1,x1,1
+    IMEM[2] = 0x80108013;
+    IMEM[3] = 0x80108113;
+    IMEM[4] = 0x80008113;
     while (!contextp->gotFinish()) { 
         contextp->timeInc(1); 
         top->clk = !top->clk;
@@ -37,7 +39,7 @@ int main(int argc, char**argv, char**env) {
         printf("cnt = %d,clk = %d, rst = %d, pc = %016lx, instr = %08x\n", cnt, top->clk, top->rst, top->pc, top->instr_i);
         top->eval();
         cnt ++;
-        
+        if(cnt > 4) break;
     }
     delete top;
     delete contextp;

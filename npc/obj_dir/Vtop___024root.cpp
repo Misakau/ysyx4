@@ -40,10 +40,15 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__4(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___combo__TOP__4\n"); );
     // Body
-    if ((0x13U == (0x7fU & vlSelf->instr_i))) {
-        if ((0U == (7U & (vlSelf->instr_i >> 0xcU)))) {
+    if (VL_LIKELY((0x13U == (0x7fU & vlSelf->instr_i)))) {
+        if (VL_LIKELY((0U == (7U & (vlSelf->instr_i 
+                                    >> 0xcU))))) {
             vlSelf->top__DOT__wen = 1U;
+        } else {
+            VL_WRITEF("no\n");
         }
+    } else {
+        VL_WRITEF("no\n");
     }
     vlSelf->top__DOT__my_exu__DOT__res = (((0U == (0x1fU 
                                                    & (vlSelf->instr_i 
