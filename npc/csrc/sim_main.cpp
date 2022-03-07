@@ -22,6 +22,7 @@ int main(int argc, char**argv, char**env) {
     top->clk = 0;
     top->rst = 1;
     top->pc = 0x80000000;
+    top->eval();
     int cnt = 0;
     MEM[0] = 0x11111111;
     MEM[1] = 0x22222222;
@@ -34,7 +35,6 @@ int main(int argc, char**argv, char**env) {
         if(cnt) top->instr_i = pmem_read(top->pc);
         top->eval();
         printf("cnt = %d,clk = %d, rst = %d, pc = %lx\n", cnt, top->clk, top->rst, top->pc);
-        cnt++;
     }
     delete top;
     delete contextp;
