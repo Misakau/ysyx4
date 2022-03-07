@@ -35,9 +35,10 @@ int main(int argc, char**argv, char**env) {
         top->clk = !top->clk;
         //top->rst = rand()&1;
         top->instr_i = pmem_read(top->pc);
+        printf("cnt = %d,clk = %d, rst = %d, pc = %lx, instr = %x\n", cnt, top->clk, top->rst, top->pc, top->instr_i);
         top->eval();
         cnt ++;
-        printf("cnt = %d,clk = %d, rst = %d, pc = %lx, instr = %x\n", cnt, top->clk, top->rst, top->pc, top->instr_i);
+        
     }
     delete top;
     delete contextp;
