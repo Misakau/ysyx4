@@ -8,8 +8,7 @@ static uint32_t MEM[MEMSIZE];//4字节为单位
 
 uint64_t pmem_read(uint64_t paddr){
     uint64_t real_addr = (paddr - AD_BASE) >> 2;
-    printf("%lx\n", paddr);
-    assert(real_addr < MEMSIZE);
+    assert(real_addr < 4);
     return MEM[real_addr];
 }
 
@@ -37,7 +36,7 @@ int main(int argc, char**argv, char**env) {
         top->instr_i = pmem_read(top->pc);
         top->eval();
         cnt ++;
-        printf("cnt = %d,clk = %d, rst = %d, pc = %lx\n", cnt, top->clk, top->rst, top->pc);
+        printf("cnt = %d,clk = %d, rst = %d, pc = %lx, instr = %x\n", cnt, top->clk, top->rst, top->pc, top->instr_i);
     }
     delete top;
     delete contextp;
