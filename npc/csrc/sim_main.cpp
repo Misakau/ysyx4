@@ -13,7 +13,7 @@ int main(int argc, char**argv, char**env) {
         top->clk = !top->clk;
         top->rst = rand()&1;
         top->eval();
-        printf("cnt = %d,clk = %d, rst = %d, pc = %d\n", cnt, top->clk, top->rst, top->pc);
+        printf("cnt = %d,clk = %d, rst = %d, pc = %lx\n", cnt, top->clk, top->rst, top->pc);
         assert(top->f == a^b); 
     }
     delete top;

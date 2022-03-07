@@ -1,7 +1,7 @@
 module top(
   input clk,
   input rst,
-  output pc
+  output [63:0] pc
 );
     our s;
     ysyx_220053_IFU my_ifu(
