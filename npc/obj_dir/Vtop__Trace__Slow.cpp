@@ -24,22 +24,24 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
     {
         tracep->declBit(c+1,"clk", false,-1);
         tracep->declBit(c+2,"rst", false,-1);
-        tracep->declQuad(c+3,"pc", false,-1, 63,0);
+        tracep->declBit(c+3,"instr_i", false,-1);
+        tracep->declQuad(c+4,"pc", false,-1, 63,0);
         tracep->declBit(c+1,"top clk", false,-1);
         tracep->declBit(c+2,"top rst", false,-1);
-        tracep->declQuad(c+3,"top pc", false,-1, 63,0);
+        tracep->declBit(c+3,"top instr_i", false,-1);
+        tracep->declQuad(c+4,"top pc", false,-1, 63,0);
         tracep->declBit(c+1,"top my_ifu clk", false,-1);
         tracep->declBit(c+2,"top my_ifu rst", false,-1);
-        tracep->declQuad(c+3,"top my_ifu pc", false,-1, 63,0);
-        tracep->declQuad(c+5,"top my_ifu now_pc", false,-1, 63,0);
-        tracep->declQuad(c+7,"top my_ifu dnpc", false,-1, 63,0);
-        tracep->declBus(c+9,"top my_ifu PC WIDTH", false,-1, 31,0);
-        tracep->declQuad(c+10,"top my_ifu PC RESET_VAL", false,-1, 63,0);
+        tracep->declQuad(c+4,"top my_ifu pc", false,-1, 63,0);
+        tracep->declQuad(c+6,"top my_ifu now_pc", false,-1, 63,0);
+        tracep->declQuad(c+8,"top my_ifu dnpc", false,-1, 63,0);
+        tracep->declBus(c+10,"top my_ifu PC WIDTH", false,-1, 31,0);
+        tracep->declQuad(c+11,"top my_ifu PC RESET_VAL", false,-1, 63,0);
         tracep->declBit(c+1,"top my_ifu PC clk", false,-1);
         tracep->declBit(c+2,"top my_ifu PC rst", false,-1);
-        tracep->declQuad(c+7,"top my_ifu PC din", false,-1, 63,0);
-        tracep->declQuad(c+5,"top my_ifu PC dout", false,-1, 63,0);
-        tracep->declBit(c+12,"top my_ifu PC wen", false,-1);
+        tracep->declQuad(c+8,"top my_ifu PC din", false,-1, 63,0);
+        tracep->declQuad(c+6,"top my_ifu PC dout", false,-1, 63,0);
+        tracep->declBit(c+13,"top my_ifu PC wen", false,-1);
     }
 }
 
@@ -78,11 +80,12 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
     {
         tracep->fullBit(oldp+1,(vlSelf->clk));
         tracep->fullBit(oldp+2,(vlSelf->rst));
-        tracep->fullQData(oldp+3,(vlSelf->pc),64);
-        tracep->fullQData(oldp+5,(vlSelf->top__DOT__my_ifu__DOT__now_pc),64);
-        tracep->fullQData(oldp+7,((4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc)),64);
-        tracep->fullIData(oldp+9,(0x40U),32);
-        tracep->fullQData(oldp+10,(0x80000000ULL),64);
-        tracep->fullBit(oldp+12,(1U));
+        tracep->fullBit(oldp+3,(vlSelf->instr_i));
+        tracep->fullQData(oldp+4,(vlSelf->pc),64);
+        tracep->fullQData(oldp+6,(vlSelf->top__DOT__my_ifu__DOT__now_pc),64);
+        tracep->fullQData(oldp+8,((4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc)),64);
+        tracep->fullIData(oldp+10,(0x40U),32);
+        tracep->fullQData(oldp+11,(0x80000000ULL),64);
+        tracep->fullBit(oldp+13,(1U));
     }
 }
