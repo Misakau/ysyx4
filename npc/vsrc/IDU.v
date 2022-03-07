@@ -30,10 +30,10 @@ module ysyx_220053_IDU(
                     //wen = 1;
                     case(func3)
                         3'b000: begin wen = 1; end
-                        default: $finish;
+                        //default: $finish;
                     endcase
                 end
-            default: $finish;
+            //default: $finish;
         endcase
     end
 

@@ -52,10 +52,10 @@ void Vtop___024root___settle__TOP__3(Vtop___024root* vlSelf) {
                                     >> 0xcU))))) {
             vlSelf->top__DOT__wen = 1U;
         } else {
-            VL_FINISH_MT("vsrc/IDU.v", 32, "");
+            VL_FINISH_MT("vsrc/IDU.v", 33, "");
         }
     } else {
-        VL_FINISH_MT("vsrc/IDU.v", 35, "");
+        VL_FINISH_MT("vsrc/IDU.v", 36, "");
     }
     vlSelf->top__DOT__my_ifu__DOT__dnpc = (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc);
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
