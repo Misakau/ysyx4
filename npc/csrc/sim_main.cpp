@@ -27,7 +27,7 @@ int main(int argc, char**argv, char**env) {
     MEM[1] = 0x22222222;
     MEM[2] = 0x33333333;
     while (!contextp->gotFinish()) { 
-        contextp->timeInc(1); 
+        //contextp->timeInc(1); 
         top->clk = !top->clk;
         //top->rst = rand()&1;
         top->instr_i = pmem_read(top->pc);
