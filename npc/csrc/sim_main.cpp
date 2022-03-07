@@ -19,7 +19,7 @@ int main(int argc, char**argv, char**env) {
     contextp->commandArgs(argc, argv);
     
     Vtop*top = new Vtop{contextp};
-    top->clk = 1;
+    top->clk = 0;
     top->rst = 1;
     top->pc = 0x80000000;
     int cnt = 0;
@@ -30,7 +30,7 @@ int main(int argc, char**argv, char**env) {
         contextp->timeInc(1); 
         top->clk = !top->clk;
         //top->rst = rand()&1;
-        top->instr_i = pmem_read(top->pc);
+        if(cnt) top->instr_i = pmem_read(top->pc);
         top->eval();
         printf("cnt = %d,clk = %d, rst = %d, pc = %lx\n", cnt, top->clk, top->rst, top->pc);
     }
