@@ -63,15 +63,14 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__5(Vtop___024root* vlSelf) {
     } else {
         VL_WRITEF("no\n");
     }
-    vlSelf->top__DOT__my_exu__DOT__busa = ((0U == (0x1fU 
+    vlSelf->top__DOT__my_exu__DOT__res = (((0U == (0x1fU 
                                                    & (vlSelf->instr_i 
                                                       >> 0xfU)))
                                             ? 0ULL : 
                                            vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
                                            [(0x1fU 
                                              & (vlSelf->instr_i 
-                                                >> 0xfU))]);
-    vlSelf->top__DOT__my_exu__DOT__res = (vlSelf->top__DOT__my_exu__DOT__busa 
+                                                >> 0xfU))]) 
                                           + (((- (QData)((IData)(
                                                                  (vlSelf->instr_i 
                                                                   >> 0x1fU)))) 
@@ -79,7 +78,8 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__5(Vtop___024root* vlSelf) {
                                              | (QData)((IData)(
                                                                (vlSelf->instr_i 
                                                                 >> 0x14U)))));
-    VL_WRITEF("busa=%x\nres=%x\n",64,vlSelf->top__DOT__my_exu__DOT__busa,
+    VL_WRITEF("rd=%x\nres=%x\n",5,(0x1fU & (vlSelf->instr_i 
+                                            >> 7U)),
               64,vlSelf->top__DOT__my_exu__DOT__res);
 }
 
@@ -96,7 +96,6 @@ void Vtop___024root___eval(Vtop___024root* vlSelf) {
         vlSelf->__Vm_traceActivity[1U] = 1U;
     }
     Vtop___024root___combo__TOP__5(vlSelf);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     // Final
     vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
 }

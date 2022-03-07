@@ -59,15 +59,14 @@ void Vtop___024root___settle__TOP__4(Vtop___024root* vlSelf) {
     }
     vlSelf->top__DOT__my_ifu__DOT__dnpc = (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc);
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
-    vlSelf->top__DOT__my_exu__DOT__busa = ((0U == (0x1fU 
+    vlSelf->top__DOT__my_exu__DOT__res = (((0U == (0x1fU 
                                                    & (vlSelf->instr_i 
                                                       >> 0xfU)))
                                             ? 0ULL : 
                                            vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
                                            [(0x1fU 
                                              & (vlSelf->instr_i 
-                                                >> 0xfU))]);
-    vlSelf->top__DOT__my_exu__DOT__res = (vlSelf->top__DOT__my_exu__DOT__busa 
+                                                >> 0xfU))]) 
                                           + (((- (QData)((IData)(
                                                                  (vlSelf->instr_i 
                                                                   >> 0x1fU)))) 
@@ -75,7 +74,8 @@ void Vtop___024root___settle__TOP__4(Vtop___024root* vlSelf) {
                                              | (QData)((IData)(
                                                                (vlSelf->instr_i 
                                                                 >> 0x14U)))));
-    VL_WRITEF("busa=%x\nres=%x\n",64,vlSelf->top__DOT__my_exu__DOT__busa,
+    VL_WRITEF("rd=%x\nres=%x\n",5,(0x1fU & (vlSelf->instr_i 
+                                            >> 7U)),
               64,vlSelf->top__DOT__my_exu__DOT__res);
 }
 
@@ -94,9 +94,6 @@ void Vtop___024root___eval_settle(Vtop___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___eval_settle\n"); );
     // Body
     Vtop___024root___settle__TOP__4(vlSelf);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
-    vlSelf->__Vm_traceActivity[1U] = 1U;
-    vlSelf->__Vm_traceActivity[0U] = 1U;
 }
 
 void Vtop___024root___final(Vtop___024root* vlSelf) {
@@ -120,12 +117,11 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_idu__DOT__immS = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_idu__DOT__immJ = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_idu__DOT__immB = VL_RAND_RESET_Q(64);
-    vlSelf->top__DOT__my_exu__DOT__busa = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_exu__DOT__res = VL_RAND_RESET_Q(64);
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[__Vi0] = VL_RAND_RESET_Q(64);
     }
-    for (int __Vi0=0; __Vi0<3; ++__Vi0) {
+    for (int __Vi0=0; __Vi0<2; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
     }
 }
