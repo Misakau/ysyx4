@@ -34,7 +34,7 @@ int main(int argc, char**argv, char**env) {
         top->clk = !top->clk;
         //top->rst = rand()&1;
         top->instr_i = pimem_read(top->pc);
-        printf("cnt = %d,clk = %d, rst = %d, pc = %llx, instr = %x\n", cnt, top->clk, top->rst, top->pc, top->instr_i);
+        printf("cnt = %d,clk = %d, rst = %d, pc = 016U64, instr = %x\n", cnt, top->clk, top->rst, top->pc, top->instr_i);
         top->eval();
         cnt ++;
         
