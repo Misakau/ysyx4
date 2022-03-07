@@ -1,3 +1,4 @@
+/* verilator lint_off DECLFILENAME */
 module ysyx_220053_IFU(
     input clk,
     input rst,

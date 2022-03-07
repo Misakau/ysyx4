@@ -1,3 +1,4 @@
+/* verilator lint_off DECLFILENAME */
 module ysyx_220053_Reg #(WIDTH = 1, RESET_VAL = 0) (
   input clk,
   input rst,

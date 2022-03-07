@@ -15,8 +15,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_ifu__DOT__now_pc = ((IData)(vlSelf->rst)
                                               ? 0x80000000ULL
                                               : vlSelf->top__DOT__my_ifu__DOT__dnpc);
-    vlSelf->top__DOT__my_ifu__DOT__dnpc = (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc);
     vlSelf->pc = (1U & (IData)(vlSelf->top__DOT__my_ifu__DOT__now_pc));
+    vlSelf->top__DOT__my_ifu__DOT__dnpc = (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc);
 }
 
 void Vtop___024root___eval(Vtop___024root* vlSelf) {

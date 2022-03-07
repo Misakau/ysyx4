@@ -30,7 +30,7 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBit(c+3,"top pc", false,-1);
         tracep->declBit(c+1,"top my_ifu clk", false,-1);
         tracep->declBit(c+2,"top my_ifu rst", false,-1);
-        tracep->declBit(c+3,"top my_ifu pc", false,-1);
+        tracep->declQuad(c+4,"top my_ifu pc", false,-1, 63,0);
         tracep->declQuad(c+4,"top my_ifu now_pc", false,-1, 63,0);
         tracep->declQuad(c+6,"top my_ifu dnpc", false,-1, 63,0);
         tracep->declBus(c+8,"top my_ifu PC WIDTH", false,-1, 31,0);
