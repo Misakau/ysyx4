@@ -27,7 +27,7 @@ int main(int argc, char**argv, char**env) {
     top->rst = 0;
     int cnt = 0;
     MEM[0] = 0x11111111;
-    printf("%x\n",MEM[0]);
+    printf("%x\n",pmem_read(0));
     MEM[1] = 0x22222222;
     MEM[2] = 0x33333333;
     while (!contextp->gotFinish()) { 
