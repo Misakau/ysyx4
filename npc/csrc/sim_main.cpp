@@ -30,6 +30,7 @@ int main(int argc, char**argv, char**env) {
         contextp->timeInc(1); 
         top->clk = !top->clk;
         if(cnt && top->rst) top->rst = 0;
+        cnt++;
         //top->rst = rand()&1;
         if(cnt) top->instr_i = pmem_read(top->pc);
         top->eval();
