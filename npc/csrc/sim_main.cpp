@@ -10,7 +10,7 @@ uint64_t pmem_read(uint64_t paddr){
     uint64_t real_addr = (paddr - AD_BASE) >> 1;
     assert(real_addr < 4);
     uint64_t data_o = 0 | MEM[real_addr];
-    return data_o;
+    return MEM[0];
 }
 
 int main(int argc, char**argv, char**env) {
