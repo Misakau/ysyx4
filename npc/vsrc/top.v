@@ -16,7 +16,7 @@ module top(
     wire [6:0] op, func7;
     wire [4:0] rd, rs1, rs2;
     wire [2:0] func3;
-    wire [31:0] immI;
+    wire [63:0] immI;
     wire wen;
     ysyx_220053_IDU my_idu(
       .instr_i(instr_i),
