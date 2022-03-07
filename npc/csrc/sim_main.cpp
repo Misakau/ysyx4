@@ -20,6 +20,7 @@ int main(int argc, char**argv, char**env) {
     
     Vtop*top = new Vtop{contextp};
     top->clk = 0;
+    top->rst = 1;
     top->pc = 0x80000000;
     int cnt = 0;
     MEM[0] = 0x11111111;
@@ -28,6 +29,7 @@ int main(int argc, char**argv, char**env) {
     while (!contextp->gotFinish()) { 
         contextp->timeInc(1); 
         top->clk = !top->clk;
+        if(top->rst) top->rst = 0;
         //top->rst = rand()&1;
         if(cnt) top->instr_i = pmem_read(top->pc);
         top->eval();
