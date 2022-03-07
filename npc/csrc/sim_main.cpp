@@ -26,9 +26,9 @@ int main(int argc, char**argv, char**env) {
     top->eval();
     top->rst = 0;
     int cnt = 0;
-    MEM[0] = 0x11111111;
-    MEM[1] = 0x22222222;
-    MEM[2] = 0x33333333;
+    IMEM[0] = 0x11111111;
+    IMEM[1] = 0x22222222;
+    IMEM[2] = 0x33333333;
     while (!contextp->gotFinish()) { 
         contextp->timeInc(1); 
         top->clk = !top->clk;
