@@ -124,7 +124,7 @@ module ysyx_220053_RegisterFile #(ADDR_WIDTH = 1, DATA_WIDTH = 1) (
   always @(posedge clk) begin
     if (wen) rf[waddr] <= wdata;
   end
-  always @(negedge clk)begin
+  always @(*)begin
     $display("wen = %d, wdata= %x, waddr = %x", wen, wdata, waddr);
     $display("0#: %x",rf[0]);
     $display("1#: %x",rf[1]);

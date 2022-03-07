@@ -93,7 +93,18 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                     ? 0ULL : vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
                                    [(0x1fU & (vlSelf->instr_i 
                                               >> 0x14U))])),64);
-        tracep->chgQData(oldp+86,(vlSelf->top__DOT__my_exu__DOT__res),64);
+        tracep->chgQData(oldp+86,((((0U == (0x1fU & 
+                                            (vlSelf->instr_i 
+                                             >> 0xfU)))
+                                     ? 0ULL : vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+                                    [(0x1fU & (vlSelf->instr_i 
+                                               >> 0xfU))]) 
+                                   + (((- (QData)((IData)(
+                                                          (vlSelf->instr_i 
+                                                           >> 0x1fU)))) 
+                                       << 0xcU) | (QData)((IData)(
+                                                                  (vlSelf->instr_i 
+                                                                   >> 0x14U)))))),64);
         tracep->chgBit(oldp+88,((1U & (~ (IData)(vlSelf->clk)))));
     }
 }

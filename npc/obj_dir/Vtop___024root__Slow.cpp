@@ -74,9 +74,6 @@ void Vtop___024root___settle__TOP__4(Vtop___024root* vlSelf) {
                                              | (QData)((IData)(
                                                                (vlSelf->instr_i 
                                                                 >> 0x14U)))));
-    VL_WRITEF("rd=%x\nres=%x\n",5,(0x1fU & (vlSelf->instr_i 
-                                            >> 7U)),
-              64,vlSelf->top__DOT__my_exu__DOT__res);
 }
 
 void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {

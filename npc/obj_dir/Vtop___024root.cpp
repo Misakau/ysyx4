@@ -12,6 +12,28 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___sequent__TOP__2\n"); );
     // Body
+    VL_WRITEF("wen = %1#, wdata= %x, waddr = %x\n0#: %x\n1#: %x\n2#: %x\n3#: %x\n",
+              1,vlSelf->top__DOT__wen,64,(((0U == (0x1fU 
+                                                   & (vlSelf->instr_i 
+                                                      >> 0xfU)))
+                                            ? 0ULL : 
+                                           vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+                                           [(0x1fU 
+                                             & (vlSelf->instr_i 
+                                                >> 0xfU))]) 
+                                          + (((- (QData)((IData)(
+                                                                 (vlSelf->instr_i 
+                                                                  >> 0x1fU)))) 
+                                              << 0xcU) 
+                                             | (QData)((IData)(
+                                                               (vlSelf->instr_i 
+                                                                >> 0x14U))))),
+              5,(0x1fU & (vlSelf->instr_i >> 7U)),64,
+              vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+              [0U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+              [1U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+              [2U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+              [3U]);
     vlSelf->top__DOT__my_ifu__DOT__now_pc = ((IData)(vlSelf->rst)
                                               ? 0x80000000ULL
                                               : vlSelf->top__DOT__my_ifu__DOT__dnpc);
@@ -28,12 +50,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
     CData/*0:0*/ __Vdlyvset__top__DOT__my_exu__DOT__regfile__DOT__rf__v0;
     QData/*63:0*/ __Vdlyvval__top__DOT__my_exu__DOT__regfile__DOT__rf__v0;
     // Body
-    VL_WRITEF("0#: %x\n1#: %x\n2#: %x\n3#: %x\n",64,
-              vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
-              [0U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
-              [1U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
-              [2U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
-              [3U]);
     __Vdlyvset__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 = 0U;
     if (vlSelf->top__DOT__wen) {
         __Vdlyvval__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 
@@ -78,9 +94,6 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__5(Vtop___024root* vlSelf) {
                                              | (QData)((IData)(
                                                                (vlSelf->instr_i 
                                                                 >> 0x14U)))));
-    VL_WRITEF("rd=%x\nres=%x\n",5,(0x1fU & (vlSelf->instr_i 
-                                            >> 7U)),
-              64,vlSelf->top__DOT__my_exu__DOT__res);
 }
 
 void Vtop___024root___eval(Vtop___024root* vlSelf) {
