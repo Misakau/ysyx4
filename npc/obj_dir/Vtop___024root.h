@@ -25,11 +25,18 @@ VL_MODULE(Vtop___024root) {
     VL_OUT64(pc,63,0);
 
     // LOCAL SIGNALS
+    CData/*0:0*/ top__DOT__wen;
     QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
     QData/*63:0*/ top__DOT__my_ifu__DOT__dnpc;
+    QData/*63:0*/ top__DOT__my_idu__DOT__immS;
+    QData/*63:0*/ top__DOT__my_idu__DOT__immJ;
+    QData/*63:0*/ top__DOT__my_idu__DOT__immB;
+    QData/*63:0*/ top__DOT__my_exu__DOT__res;
+    VlUnpacked<QData/*63:0*/, 32> top__DOT__my_exu__DOT__regfile__DOT__rf;
 
     // LOCAL VARIABLES
     CData/*0:0*/ __Vclklast__TOP__clk;
+    VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
     Vtop__Syms* vlSymsp;  // Symbol table

@@ -1,5 +1,6 @@
 /* verilator lint_off DECLFILENAME */
 /* verilator lint_off UNUSED */
+/* verilator lint_off UNDRIVEN */
 module ysyx_220053_IDU(
     input  [31:0] instr_i,
     output [6:0]  op,
