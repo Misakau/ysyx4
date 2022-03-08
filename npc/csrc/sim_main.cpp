@@ -11,7 +11,7 @@ uint32_t pimem_read(uint64_t paddr){
     assert(real_addr < MEMSIZE);
     return IMEM[real_addr];
 }
-static bool is_done = false;
+bool is_done = false;
 void c_trap(const svBit done){
     is_done = done;
 }
