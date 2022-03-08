@@ -1,7 +1,7 @@
 #include "Vtop.h"
 #include "verilated.h"
 #include <cstdint>
-
+#include "svdpi.h"
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
 static uint32_t IMEM[MEMSIZE];//4字节为单位
