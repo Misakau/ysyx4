@@ -11,7 +11,9 @@ uint32_t pimem_read(uint64_t paddr){
     assert(real_addr < MEMSIZE);
     return IMEM[real_addr];
 }
-
+bool c_trap(bool done){
+    return done;
+}
 int main(int argc, char**argv, char**env) {
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
@@ -31,7 +33,7 @@ int main(int argc, char**argv, char**env) {
     IMEM[2] = 0x80108013;
     IMEM[3] = 0x80108113;
     IMEM[4] = 0x80008113;
-    while (!contextp->gotFinish()) { 
+    while (!c_trap || !contextp->gotFinish()) { 
         contextp->timeInc(1); 
         top->clk = !top->clk;
         //top->rst = rand()&1;
@@ -39,7 +41,6 @@ int main(int argc, char**argv, char**env) {
         printf("cnt = %d,clk = %d, rst = %d, pc = %016lx, instr = %08x\n", cnt, top->clk, top->rst, top->pc, top->instr_i);
         top->eval();
         cnt ++;
-        if(cnt > 8) break;
     }
     delete top;
     delete contextp;

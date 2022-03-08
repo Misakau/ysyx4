@@ -2,7 +2,7 @@
 /* verilator lint_off UNUSED */
 /* verilator lint_off UNDRIVEN */
 
-import "DPI-C" function int c_trap (output bool done);
+import "DPI-C" function bool c_trap (output bool done);
 
 module ysyx_220053_IDU(
     input  [31:0] instr_i,
