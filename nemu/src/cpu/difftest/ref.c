@@ -14,7 +14,13 @@ void difftest_memcpy(paddr_t addr, void *buf, size_t n, bool direction) {
 }
 
 void difftest_regcpy(void *dut, bool direction) {
-  assert(0);
+  if(direction == DIFFTEST_TO_DUT){
+    memcpy(dut, &cpu, DIFFTEST_REG_SIZE);
+  } 
+  else if(direction == DIFFTEST_TO_REF){
+    memcpy(&cpu, dut, DIFFTEST_REG_SIZE);
+  }
+  else assert(0);
 }
 
 void difftest_exec(uint64_t n) {
