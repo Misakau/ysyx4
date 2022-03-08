@@ -1,6 +1,9 @@
 /* verilator lint_off DECLFILENAME */
 /* verilator lint_off UNUSED */
 /* verilator lint_off UNDRIVEN */
+
+import "DPI-C" function int c_trap (output bool done);
+
 module ysyx_220053_IDU(
     input  [31:0] instr_i,
     output [6:0]  op,
@@ -33,6 +36,13 @@ module ysyx_220053_IDU(
                         default: $display("no");
                     endcase
                 end
+             7'b1110011:
+             	begin
+             		case(immI)
+             			1: begin c_trap(1); end
+             			default: $display("no");
+             		endcase
+             	end
             default: $display("no");
         endcase
     end

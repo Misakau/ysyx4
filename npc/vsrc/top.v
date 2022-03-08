@@ -1,5 +1,6 @@
 /* verilator lint_off UNUSED */
 /* verilator lint_off PINMISSING */
+
 module top(
   input clk,
   input rst,
