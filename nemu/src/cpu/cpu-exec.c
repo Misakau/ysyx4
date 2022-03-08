@@ -24,9 +24,10 @@ static Decode * iringbuf[IBUF_SIZE];
 static int iringtmp = -1;
 
 static void iring_display(){
+  Log("printf");
   for(int i = 0; i < IBUF_SIZE; i++){
     if(i == iringtmp){
-      printf("--->%s\n",iringbuf[i]->logbuf);
+      printf("--->\t%s\n",iringbuf[i]->logbuf);
     }
     else{
       printf("\t%s\n",iringbuf[i]->logbuf);
