@@ -2,6 +2,11 @@
 /* verilator lint_off UNUSED */
 /* verilator lint_off UNDRIVEN */
 
+export "DPI-C" task c_trap;
+task c_trap;
+    output bit done;
+    done = 1;
+endtask 
 
 module ysyx_220053_IDU(
     input  [31:0] instr_i,
@@ -23,7 +28,7 @@ module ysyx_220053_IDU(
     assign rs1 = instr_i[19:15];
     assign rs2 = instr_i[24:20];
     assign func7 = instr_i[31:25];
-	import "DPI-C" function bool c_trap (output bool done);    
+    
     //controler
     always @(*) begin
         case(op)
@@ -38,7 +43,7 @@ module ysyx_220053_IDU(
              7'b1110011:
              	begin
              		case(immI)
-             			1: begin c_trap(1); end
+             			1: begin c_trap(); end
              			default: $display("no");
              		endcase
              	end
