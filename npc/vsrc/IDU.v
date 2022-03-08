@@ -2,7 +2,6 @@
 /* verilator lint_off UNUSED */
 /* verilator lint_off UNDRIVEN */
 
-import "DPI-C" function bool c_trap (output bool done);
 
 module ysyx_220053_IDU(
     input  [31:0] instr_i,
@@ -24,7 +23,7 @@ module ysyx_220053_IDU(
     assign rs1 = instr_i[19:15];
     assign rs2 = instr_i[24:20];
     assign func7 = instr_i[31:25];
-    
+	import "DPI-C" function bool c_trap (output bool done);    
     //controler
     always @(*) begin
         case(op)
