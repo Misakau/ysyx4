@@ -3,8 +3,8 @@
 #include "../local-include/reg.h"
 
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
-  Log("pc=%lx\nnemu_pc=%lx\n",pc,cpu.pc - 4);
-  if(pc == cpu.pc){
+  Log("pc=%lx\nnemu_pc=%lx\n",pc,cpu.pc );
+  if(pc == cpu.pc - 4){
     for(int i = 0; i < 32; i++){
       Log("gpr[%d]=%lx\n",i,cpu.gpr[i]);
       if(ref_r->gpr[i] != cpu.gpr[i])
