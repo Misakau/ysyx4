@@ -20,17 +20,17 @@ void scan_wp();
 
 #ifdef CONFIG_ITRACE
 #define IBUF_SIZE 16
-static Decode * iringbuf[IBUF_SIZE];
+static char iringbuf[IBUF_SIZE][128];
 static int iringtmp = -1;
 
 static void iring_display(){
   Log("IRINGBUF");
   for(int i = 0; i < IBUF_SIZE; i++){
     if(i == iringtmp){
-      printf("--->\t%s\n",iringbuf[i]->logbuf);
+      printf("--->\t%s\n",iringbuf[i]);
     }
     else{
-      printf("\t%s\n",iringbuf[i]->logbuf);
+      printf("\t%s\n",iringbuf[i]);
     }
   }
 }
@@ -74,7 +74,7 @@ static void exec_once(Decode *s, vaddr_t pc) {
       MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.inst.val, ilen);
   
   iringtmp = (iringtmp + 1) % IBUF_SIZE;
-  iringbuf[iringtmp] = s;
+  strcpy(iringbuf[iringtmp], s->logbuf);
 
 #endif
 }
