@@ -18,6 +18,24 @@ static bool g_print_step = false;
 void device_update();
 void scan_wp();
 
+#ifdef CONFIG_ITRACE
+#define IBUF_SIZE 16
+static Decode * iringbuf[IBUF_SIZE];
+static int iringtmp = -1;
+
+static void iring_display(){
+  for(int i = 0; i < IBUF_SIZE; i++){
+    if(i == iringtmp){
+      printf("--->%s\n",iringbuf[i]->logbuf);
+    }
+    else{
+      printf("\t%s\n",iringbuf[i]->logbuf);
+    }
+  }
+}
+
+#endif
+
 static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
 #ifdef CONFIG_WATCHPOINT
   scan_wp();
@@ -53,6 +71,10 @@ static void exec_once(Decode *s, vaddr_t pc) {
   void disassemble(char *str, int size, uint64_t pc, uint8_t *code, int nbyte);
   disassemble(p, s->logbuf + sizeof(s->logbuf) - p,
       MUXDEF(CONFIG_ISA_x86, s->snpc, s->pc), (uint8_t *)&s->isa.inst.val, ilen);
+  
+  iringtmp = (iringtmp + 1) % IBUF_SIZE;
+  iringbuf[iringtmp] = s;
+
 #endif
 }
 
@@ -78,6 +100,7 @@ static void statistic() {
 
 void assert_fail_msg() {
   isa_reg_display();
+  iring_display();
   statistic();
 }
 
