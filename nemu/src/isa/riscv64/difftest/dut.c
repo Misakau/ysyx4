@@ -5,7 +5,7 @@
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
   for(int i = 0; i < 32; i++){
     Log("ref_gpr[%d]=%lx",i, ref_r->gpr[i]);
-    Log("ref_gpr[%d]=%lx",i, cpu.gpr[i]);
+    Log("cpu_gpr[%d]=%lx",i, cpu.gpr[i]);
   }
   if(pc == cpu.pc){
     for(int i = 0; i < 32; i++){
