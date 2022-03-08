@@ -24,7 +24,8 @@ void difftest_regcpy(void *dut, bool direction) {
 }
 
 void difftest_exec(uint64_t n) {
-  assert(0);
+  cpu_exec(n);
+  //assert(0);
 }
 
 void difftest_raise_intr(word_t NO) {
