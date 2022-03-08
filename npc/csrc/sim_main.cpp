@@ -41,6 +41,7 @@ int main(int argc, char**argv, char**env) {
         top->instr_i = pimem_read(top->pc);
         printf("cnt = %d,clk = %d, rst = %d, pc = %016lx, instr = %08x\n", cnt, top->clk, top->rst, top->pc, top->instr_i);
         top->eval();
+        printf("done=%d\n",is_done);
         cnt ++;
     }
     delete top;

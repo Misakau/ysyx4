@@ -66,8 +66,9 @@ void Vtop___024root___settle__TOP__3(Vtop___024root* vlSelf) {
             VL_WRITEF("no\n");
         }
     } else if (VL_LIKELY((0x73U == (0x7fU & vlSelf->instr_i)))) {
-        if (VL_LIKELY((1ULL == vlSelf->top__DOT__immI))) {
+        if ((1ULL == vlSelf->top__DOT__immI)) {
             Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
+            VL_FINISH_MT("vsrc/IDU.v", 42, "");
         } else {
             VL_WRITEF("no\n");
         }
