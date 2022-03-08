@@ -45,6 +45,6 @@ int main(int argc, char**argv, char**env) {
     }
     delete top;
     delete contextp;
-    printf("~~~Sim finished!~~~\n")
+    printf("~~~Sim finished!~~~\n");
     return 0;
 }
