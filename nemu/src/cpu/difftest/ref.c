@@ -4,7 +4,11 @@
 #include <memory/paddr.h>
 
 void difftest_memcpy(paddr_t addr, void *buf, size_t n, bool direction) {
-  assert(0);
+  /*if(direction == DIFFTEST_TO_DUT){
+    memcpy((paddr_t *)buf, (paddr_t *)addr, n);
+  } 
+  else if(direction == DIFFTEST_TO_REF) memcpy( (paddr_t *)addr, (paddr_t *)buf, n);
+  else */assert(0);
 }
 
 void difftest_regcpy(void *dut, bool direction) {
