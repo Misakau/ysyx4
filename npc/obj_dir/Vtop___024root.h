@@ -11,12 +11,15 @@
 
 class Vtop__Syms;
 class Vtop_VerilatedVcd;
+class Vtop___024unit;
 
 
 //----------
 
 VL_MODULE(Vtop___024root) {
   public:
+    // CELLS
+    Vtop___024unit* __PVT____024unit;
 
     // PORTS
     VL_IN8(clk,0,0);
@@ -26,6 +29,7 @@ VL_MODULE(Vtop___024root) {
 
     // LOCAL SIGNALS
     CData/*0:0*/ top__DOT__wen;
+    QData/*63:0*/ top__DOT__immI;
     QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
     QData/*63:0*/ top__DOT__my_ifu__DOT__dnpc;
     QData/*63:0*/ top__DOT__my_idu__DOT__immS;

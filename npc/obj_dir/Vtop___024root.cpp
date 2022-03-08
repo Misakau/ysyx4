@@ -5,12 +5,26 @@
 #include "Vtop___024root.h"
 #include "Vtop__Syms.h"
 
+#include "verilated_dpi.h"
+
 //==========
 
-VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
+VL_INLINE_OPT void Vtop___024root___combo__TOP__2(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___sequent__TOP__2\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___combo__TOP__2\n"); );
+    // Body
+    vlSelf->top__DOT__immI = (((- (QData)((IData)((vlSelf->instr_i 
+                                                   >> 0x1fU)))) 
+                               << 0xcU) | (QData)((IData)(
+                                                          (vlSelf->instr_i 
+                                                           >> 0x14U))));
+}
+
+VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___sequent__TOP__4\n"); );
     // Body
     vlSelf->top__DOT__my_ifu__DOT__now_pc = ((IData)(vlSelf->rst)
                                               ? 0x80000000ULL
@@ -19,10 +33,10 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
 }
 
-VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
+VL_INLINE_OPT void Vtop___024root___sequent__TOP__5(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___sequent__TOP__3\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___sequent__TOP__5\n"); );
     // Variables
     CData/*4:0*/ __Vdlyvdim0__top__DOT__my_exu__DOT__regfile__DOT__rf__v0;
     CData/*0:0*/ __Vdlyvset__top__DOT__my_exu__DOT__regfile__DOT__rf__v0;
@@ -42,15 +56,23 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
     }
 }
 
-VL_INLINE_OPT void Vtop___024root___combo__TOP__5(Vtop___024root* vlSelf) {
+void Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(CData/*0:0*/ done);
+
+VL_INLINE_OPT void Vtop___024root___combo__TOP__6(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___combo__TOP__5\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___combo__TOP__6\n"); );
     // Body
-    if (VL_LIKELY((0x13U == (0x7fU & vlSelf->instr_i)))) {
+    if ((0x13U == (0x7fU & vlSelf->instr_i))) {
         if (VL_LIKELY((0U == (7U & (vlSelf->instr_i 
                                     >> 0xcU))))) {
             vlSelf->top__DOT__wen = 1U;
+        } else {
+            VL_WRITEF("no\n");
+        }
+    } else if (VL_LIKELY((0x73U == (0x7fU & vlSelf->instr_i)))) {
+        if (VL_LIKELY((1ULL == vlSelf->top__DOT__immI))) {
+            Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
         } else {
             VL_WRITEF("no\n");
         }
@@ -65,35 +87,7 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__5(Vtop___024root* vlSelf) {
                                            [(0x1fU 
                                              & (vlSelf->instr_i 
                                                 >> 0xfU))]) 
-                                          + (((- (QData)((IData)(
-                                                                 (vlSelf->instr_i 
-                                                                  >> 0x1fU)))) 
-                                              << 0xcU) 
-                                             | (QData)((IData)(
-                                                               (vlSelf->instr_i 
-                                                                >> 0x14U)))));
-    VL_WRITEF("wen = %1#, wdata= %x, waddr = %x\n0#: %x\n1#: %x\n2#: %x\n3#: %x\n",
-              1,vlSelf->top__DOT__wen,64,(((0U == (0x1fU 
-                                                   & (vlSelf->instr_i 
-                                                      >> 0xfU)))
-                                            ? 0ULL : 
-                                           vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
-                                           [(0x1fU 
-                                             & (vlSelf->instr_i 
-                                                >> 0xfU))]) 
-                                          + (((- (QData)((IData)(
-                                                                 (vlSelf->instr_i 
-                                                                  >> 0x1fU)))) 
-                                              << 0xcU) 
-                                             | (QData)((IData)(
-                                                               (vlSelf->instr_i 
-                                                                >> 0x14U))))),
-              5,(0x1fU & (vlSelf->instr_i >> 7U)),64,
-              vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
-              [0U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
-              [1U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
-              [2U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
-              [3U]);
+                                          + vlSelf->top__DOT__immI);
 }
 
 void Vtop___024root___eval(Vtop___024root* vlSelf) {
@@ -101,14 +95,15 @@ void Vtop___024root___eval(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___eval\n"); );
     // Body
+    Vtop___024root___combo__TOP__2(vlSelf);
     if (((IData)(vlSelf->clk) & (~ (IData)(vlSelf->__Vclklast__TOP__clk)))) {
-        Vtop___024root___sequent__TOP__2(vlSelf);
+        Vtop___024root___sequent__TOP__4(vlSelf);
     }
     if (((~ (IData)(vlSelf->clk)) & (IData)(vlSelf->__Vclklast__TOP__clk))) {
-        Vtop___024root___sequent__TOP__3(vlSelf);
+        Vtop___024root___sequent__TOP__5(vlSelf);
         vlSelf->__Vm_traceActivity[1U] = 1U;
     }
-    Vtop___024root___combo__TOP__5(vlSelf);
+    Vtop___024root___combo__TOP__6(vlSelf);
     // Final
     vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
 }

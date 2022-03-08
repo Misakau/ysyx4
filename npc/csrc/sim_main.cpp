@@ -34,7 +34,7 @@ int main(int argc, char**argv, char**env) {
     IMEM[2] = 0x80108013;
     IMEM[3] = 0x80108113;
     IMEM[4] = 0x80008113;
-    while (!c_trap || !contextp->gotFinish()) { 
+    while (!is_done || !contextp->gotFinish()) { 
         contextp->timeInc(1); 
         top->clk = !top->clk;
         //top->rst = rand()&1;
