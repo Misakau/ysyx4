@@ -34,14 +34,13 @@ int main(int argc, char**argv, char**env) {
     IMEM[2] = 0x80108013;
     IMEM[3] = 0x80108113;
     IMEM[4] = 0x80008113;
-    while (!is_done || !contextp->gotFinish()) { 
+    while (!is_done && !contextp->gotFinish()) { 
         contextp->timeInc(1); 
         top->clk = !top->clk;
         //top->rst = rand()&1;
         top->instr_i = pimem_read(top->pc);
         printf("cnt = %d,clk = %d, rst = %d, pc = %016lx, instr = %08x\n", cnt, top->clk, top->rst, top->pc, top->instr_i);
         top->eval();
-        printf("done=%d\n",is_done);
         cnt ++;
     }
     delete top;
