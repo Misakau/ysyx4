@@ -11,8 +11,9 @@ uint32_t pimem_read(uint64_t paddr){
     assert(real_addr < MEMSIZE);
     return IMEM[real_addr];
 }
-bool c_trap(bool done){
-    return done;
+static bool is_done = false;
+void c_trap(const svBit done){
+    is_done = done;
 }
 int main(int argc, char**argv, char**env) {
     VerilatedContext*contextp = new VerilatedContext;

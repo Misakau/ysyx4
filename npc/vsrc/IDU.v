@@ -2,11 +2,7 @@
 /* verilator lint_off UNUSED */
 /* verilator lint_off UNDRIVEN */
 
-export "DPI-C" task c_trap;
-task c_trap;
-    output bit done;
-    done = 1;
-endtask 
+export "DPI-C" function void c_trap(input bit done);
 
 module ysyx_220053_IDU(
     input  [31:0] instr_i,
