@@ -43,7 +43,7 @@ module ysyx_220053_IDU(
              7'b1110011:
              	begin
              		case(immI)
-             			1: begin c_trap(); end
+             			1: begin c_trap(1); end
              			default: $display("no");
              		endcase
              	end
