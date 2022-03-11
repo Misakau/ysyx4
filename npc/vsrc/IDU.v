@@ -16,13 +16,15 @@ module ysyx_220053_IDU(
     output ALUSrcB,
     output reg wen
 );
+    wire [2:0] ExtOp;
+    
     assign op = instr_i[6:0];
     assign rd = instr_i[11:7];
     assign func3 = instr_i[14:12];
-    assign rs1 = instr_i[19:15];
+    assign rs1 = (ExtOp == 1) ? rd : instr_i[19:15];
     assign rs2 = instr_i[24:20];
     assign func7 = instr_i[31:25];
-    wire [2:0] ExtOp;
+    
     ysyx_220053_InstrToImm insttoimm(instr_i, ExtOp, imm);
     //controler
     ysyx_220053_controler control(instr_i, op, func3, ALUSrcB, ExtOp, wen);
