@@ -9,12 +9,12 @@ module ysyx_220053_controler(
     output reg wen
 );
 
-parameter ysyx_220053_I = 0
-parameter ysyx_220053_U = 1
-parameter ysyx_220053_S = 2
-parameter ysyx_220053_B = 3
-parameter ysyx_220053_J = 4
-parameter ysyx_220053_R = 5
+parameter ysyx_220053_I = 0;
+parameter ysyx_220053_U = 1;
+parameter ysyx_220053_S = 2;
+parameter ysyx_220053_B = 3;
+parameter ysyx_220053_J = 4;
+parameter ysyx_220053_R = 5;
 
     always @(*) begin
         case(op)
