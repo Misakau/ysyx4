@@ -1,12 +1,5 @@
 /* verilator lint_off DECLFILENAME */
 /* verilator lint_off UNUSED */
-`define ysyx_220053_I 0
-`define ysyx_220053_U 1
-`define ysyx_220053_S 2
-`define ysyx_220053_B 3
-`define ysyx_220053_J 4
-`define ysyx_220053_R 5
-
 module ysyx_220053_controler(
     input [31:0] instr_i,
     input [6:0] op,
@@ -15,6 +8,13 @@ module ysyx_220053_controler(
     output reg [2:0] ExtOp,
     output reg wen
 );
+`define ysyx_220053_I 0
+`define ysyx_220053_U 1
+`define ysyx_220053_S 2
+`define ysyx_220053_B 3
+`define ysyx_220053_J 4
+`define ysyx_220053_R 5
+
     always @(*) begin
         case(op)
             7'b0110111://lui
