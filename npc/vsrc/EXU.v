@@ -1,5 +1,6 @@
 /* verilator lint_off DECLFILENAME */
 /* verilator lint_off UNUSED */
+/* verilator lint_off PINMISSING */
 module ysyx_220053_EXU(
     input clk,
     input [4:0] rd,
