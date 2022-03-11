@@ -17,14 +17,14 @@ module top(
     wire [6:0] op, func7;
     wire [4:0] rd, rs1, rs2;
     wire [2:0] func3;
-    wire [63:0] immI;
+    wire [63:0] imm;
     wire wen;
     ysyx_220053_IDU my_idu(
       .instr_i(instr_i),
       .op(op),
       .rd(rd),.rs1(rs1),.rs2(rs2),
       .func3(func3),.func7(func7),
-      .immI(immI),//immS,immJ,immB,
+      .imm(imm),
       .wen(wen));
     ysyx_220053_EXU my_exu(
       .clk(clk),
@@ -32,7 +32,7 @@ module top(
       .rs1(rs1),
       .rs2(rs2),
       .wen(wen),
-      .immI(immI)
+      .imm(imm)
     );
 
     initial begin
