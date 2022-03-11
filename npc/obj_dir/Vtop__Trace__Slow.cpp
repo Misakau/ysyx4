@@ -61,14 +61,14 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBit(c+71,"top my_idu wen", false,-1);
         tracep->declBus(c+72,"top my_idu ExtOp", false,-1, 2,0);
         tracep->declQuad(c+679,"top my_idu my_imm", false,-1, 63,0);
-        tracep->declBus(c+664,"top my_idu insttoimm instr", false,-1, 31,0);
-        tracep->declBus(c+72,"top my_idu insttoimm ExtOp", false,-1, 2,0);
-        tracep->declQuad(c+69,"top my_idu insttoimm imm", false,-1, 63,0);
         tracep->declQuad(c+69,"top my_idu control imm", false,-1, 63,0);
         tracep->declBus(c+667,"top my_idu control op", false,-1, 6,0);
         tracep->declBus(c+672,"top my_idu control func3", false,-1, 2,0);
         tracep->declBus(c+72,"top my_idu control ExtOp", false,-1, 2,0);
         tracep->declBit(c+71,"top my_idu control wen", false,-1);
+        tracep->declBus(c+664,"top my_idu insttoimm instr", false,-1, 31,0);
+        tracep->declBus(c+72,"top my_idu insttoimm ExtOp", false,-1, 2,0);
+        tracep->declQuad(c+69,"top my_idu insttoimm imm", false,-1, 63,0);
         tracep->declBit(c+662,"top my_exu clk", false,-1);
         tracep->declBus(c+669,"top my_exu rd", false,-1, 4,0);
         tracep->declBus(c+670,"top my_exu rs1", false,-1, 4,0);

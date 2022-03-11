@@ -42,7 +42,7 @@ VL_MODULE(Vtop___024root) {
 
     // LOCAL VARIABLES
     CData/*0:0*/ __Vclklast__TOP__clk;
-    CData/*2:0*/ __Vchglast__TOP__top__DOT__my_idu__DOT__ExtOp;
+    QData/*63:0*/ __Vchglast__TOP__top__DOT__imm;
     VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
 
     // INTERNAL VARIABLES

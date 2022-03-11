@@ -23,17 +23,16 @@ module ysyx_220053_IDU(
     assign func7 = instr_i[31:25];
     wire [2:0] ExtOp;
     wire [63:0] my_imm;
-    
-    //controler
-    ysyx_220053_controler control(imm, op, func3, ExtOp, wen);
-    
     ysyx_220053_InstrToImm insttoimm(instr_i, ExtOp, imm);
+    //controler
+    ysyx_220053_controler control(instr_i, op, func3, ExtOp, wen);
+
     
 
 endmodule
 
 module ysyx_220053_controler(
-    input [63:0] imm,
+    input [63:0] instr_i,
     input [6:0] op,
     input [2:0] func3,
     output reg [2:0] ExtOp,
@@ -51,7 +50,7 @@ module ysyx_220053_controler(
                 end
              7'b1110011:
              	begin
-             		case(imm)
+             		case(instr_i[31:20])
              			1: begin ExtOp = 0; wen = 0; c_trap(1); end
              			default: $display("no");
              		endcase
