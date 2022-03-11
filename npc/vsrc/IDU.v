@@ -38,7 +38,7 @@ module ysyx_220053_IDU(
                 end
              7'b1110011:
              	begin
-             		case(my_imm)
+             		case(imm)
              			1: begin ExtOp = 0; wen = 0; c_trap(1); end
              			default: $display("no");
              		endcase
