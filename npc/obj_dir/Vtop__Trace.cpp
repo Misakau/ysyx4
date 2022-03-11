@@ -62,7 +62,7 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
         if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[2U])) {
             tracep->chgQData(oldp+68,(vlSelf->top__DOT__imm),64);
             tracep->chgBit(oldp+70,(vlSelf->top__DOT__wen));
-            tracep->chgBit(oldp+71,(vlSelf->top__DOT__my_idu__DOT__ALUSrcB));
+            tracep->chgBit(oldp+71,(vlSelf->top__DOT__ALUSrcB));
             tracep->chgCData(oldp+72,(vlSelf->top__DOT__my_idu__DOT__ExtOp),3);
             tracep->chgQData(oldp+73,(vlSelf->top__DOT__my_exu__DOT__busa),64);
             tracep->chgQData(oldp+75,((((QData)((IData)(
