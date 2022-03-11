@@ -8,7 +8,7 @@ module ysyx_220053_Adder32(
     input sub
 );
 
-    parameter t=32;
+    //parameter t=32;
     wire [3:0] Gg,Pg;
     wire [7:0] p[3:0],g[3:0];
     wire [4:0] c;
