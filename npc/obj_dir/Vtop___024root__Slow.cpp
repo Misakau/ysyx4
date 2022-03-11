@@ -78,14 +78,6 @@ void Vtop___024root___settle__TOP__3(Vtop___024root* vlSelf) {
     }
     vlSelf->top__DOT__my_ifu__DOT__dnpc = (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc);
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
-    vlSelf->top__DOT__my_exu__DOT__busa = ((0U == (0x1fU 
-                                                   & (vlSelf->instr_i 
-                                                      >> 0xfU)))
-                                            ? 0ULL : 
-                                           vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
-                                           [(0x1fU 
-                                             & (vlSelf->instr_i 
-                                                >> 0xfU))]);
     if ((0U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = (((- (QData)((IData)(
                                                      (vlSelf->instr_i 
@@ -141,6 +133,11 @@ void Vtop___024root___settle__TOP__3(Vtop___024root* vlSelf) {
     } else if ((5U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = 0ULL;
     }
+    vlSelf->top__DOT__rs1 = (0x1fU & ((1U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))
+                                       ? (vlSelf->instr_i 
+                                          >> 7U) : 
+                                      (vlSelf->instr_i 
+                                       >> 0xfU)));
     vlSelf->top__DOT__my_exu__DOT__alu_inB = ((IData)(vlSelf->top__DOT__ALUSrcB)
                                                ? vlSelf->top__DOT__imm
                                                : ((0U 
@@ -155,6 +152,10 @@ void Vtop___024root___settle__TOP__3(Vtop___024root* vlSelf) {
                                                   (0x1fU 
                                                    & (vlSelf->instr_i 
                                                       >> 0x14U))]));
+    vlSelf->top__DOT__my_exu__DOT__busa = ((0U == (IData)(vlSelf->top__DOT__rs1))
+                                            ? 0ULL : 
+                                           vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+                                           [vlSelf->top__DOT__rs1]);
 }
 
 void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
@@ -199,6 +200,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->rst = VL_RAND_RESET_I(1);
     vlSelf->instr_i = VL_RAND_RESET_I(32);
     vlSelf->pc = VL_RAND_RESET_Q(64);
+    vlSelf->top__DOT__rs1 = VL_RAND_RESET_I(5);
     vlSelf->top__DOT__imm = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__wen = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__ALUSrcB = VL_RAND_RESET_I(1);

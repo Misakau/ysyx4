@@ -20,7 +20,7 @@ parameter ysyx_220053_R = 5;
         case(op)
             7'b0110111://lui
                 begin
-                    ALUSrcB = 0; ExtOp = ysyx_220053_U; wen = 1;
+                    ALUSrcB = 1; ExtOp = ysyx_220053_U; wen = 1;
                 end
             7'b0010011://addi
                 begin

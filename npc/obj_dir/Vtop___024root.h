@@ -31,6 +31,7 @@ VL_MODULE(Vtop___024root) {
     VL_OUT64(pc,63,0);
 
     // LOCAL SIGNALS
+    CData/*4:0*/ top__DOT__rs1;
     CData/*0:0*/ top__DOT__wen;
     CData/*0:0*/ top__DOT__ALUSrcB;
     CData/*2:0*/ top__DOT__my_idu__DOT__ExtOp;
