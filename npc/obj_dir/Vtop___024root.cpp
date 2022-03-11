@@ -108,8 +108,7 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__5(Vtop___024root* vlSelf) {
             VL_WRITEF("no\n");
         }
     } else if (VL_LIKELY((0x73U == (0x7fU & vlSelf->instr_i)))) {
-        if (VL_LIKELY((1U == (0xfffU & (IData)(((QData)((IData)(vlSelf->instr_i)) 
-                                                >> 0x14U)))))) {
+        if (VL_LIKELY((1U == (vlSelf->instr_i >> 0x14U)))) {
             vlSelf->top__DOT__my_idu__DOT__ExtOp = 0U;
             vlSelf->top__DOT__wen = 0U;
             Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
