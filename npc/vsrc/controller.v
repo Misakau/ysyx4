@@ -9,12 +9,12 @@ module ysyx_220053_controler(
     output reg wen
 );
 
-`define `ysyx_220053_I 0
-`define `ysyx_220053_U 1
-`define `ysyx_220053_S 2
-`define `ysyx_220053_B 3
-`define `ysyx_220053_J 4
-`define `ysyx_220053_R 5
+`def ysyx_220053_I 0
+`def ysyx_220053_U 1
+`def ysyx_220053_S 2
+`def ysyx_220053_B 3
+`def ysyx_220053_J 4
+`def ysyx_220053_R 5
 
     always @(*) begin
         case(op)
