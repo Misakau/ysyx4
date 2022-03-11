@@ -141,6 +141,20 @@ void Vtop___024root___settle__TOP__3(Vtop___024root* vlSelf) {
     } else if ((5U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = 0ULL;
     }
+    vlSelf->top__DOT__my_exu__DOT__alu_inB = ((IData)(vlSelf->top__DOT__my_exu__DOT__ALUSrcB)
+                                               ? ((0U 
+                                                   == 
+                                                   (0x1fU 
+                                                    & (vlSelf->instr_i 
+                                                       >> 0x14U)))
+                                                   ? 0ULL
+                                                   : 
+                                                  vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+                                                  [
+                                                  (0x1fU 
+                                                   & (vlSelf->instr_i 
+                                                      >> 0x14U))])
+                                               : vlSelf->top__DOT__imm);
 }
 
 void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
@@ -193,6 +207,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_idu__DOT__ExtOp = VL_RAND_RESET_I(3);
     vlSelf->top__DOT__my_exu__DOT__ALUSrcB = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_exu__DOT__busa = VL_RAND_RESET_Q(64);
+    vlSelf->top__DOT__my_exu__DOT__alu_inB = VL_RAND_RESET_Q(64);
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[__Vi0] = VL_RAND_RESET_Q(64);
     }

@@ -26,7 +26,7 @@ parameter ysyx_220053_R = 5;
                 begin
                     //wen = 1;
                     case(func3)
-                        3'b000: begin ALUSrcB = 1; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b000: begin ALUSrcB = 1; ExtOp = ysyx_220053_I; wen = 1; $display("ALUSrcB=%d",ALUSrcB);end
                         default: $display("no");
                     endcase
                 end

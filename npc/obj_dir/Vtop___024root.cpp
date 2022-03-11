@@ -187,6 +187,20 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__5(Vtop___024root* vlSelf) {
     } else if ((5U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = 0ULL;
     }
+    vlSelf->top__DOT__my_exu__DOT__alu_inB = ((IData)(vlSelf->top__DOT__my_exu__DOT__ALUSrcB)
+                                               ? ((0U 
+                                                   == 
+                                                   (0x1fU 
+                                                    & (vlSelf->instr_i 
+                                                       >> 0x14U)))
+                                                   ? 0ULL
+                                                   : 
+                                                  vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+                                                  [
+                                                  (0x1fU 
+                                                   & (vlSelf->instr_i 
+                                                      >> 0x14U))])
+                                               : vlSelf->top__DOT__imm);
 }
 
 void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low__1(Vtop_ysyx_220053_Adder32* vlSelf);
