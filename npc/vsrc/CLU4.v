@@ -1,3 +1,4 @@
+/* verilator lint_off DECLFILENAME */
 module ysyx_220053_CLU4(
     output [4:1] c,
     input [4:1] p,g,

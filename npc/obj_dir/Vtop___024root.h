@@ -12,6 +12,7 @@
 class Vtop__Syms;
 class Vtop_VerilatedVcd;
 class Vtop___024unit;
+class Vtop_ysyx_220053_Adder32;
 
 
 //----------
@@ -20,6 +21,8 @@ VL_MODULE(Vtop___024root) {
   public:
     // CELLS
     Vtop___024unit* __PVT____024unit;
+    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__adder__DOT__adder_low;
+    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__adder__DOT__adder_high;
 
     // PORTS
     VL_IN8(clk,0,0);
@@ -35,12 +38,30 @@ VL_MODULE(Vtop___024root) {
     QData/*63:0*/ top__DOT__my_idu__DOT__immS;
     QData/*63:0*/ top__DOT__my_idu__DOT__immJ;
     QData/*63:0*/ top__DOT__my_idu__DOT__immB;
-    QData/*63:0*/ top__DOT__my_exu__DOT__res;
+    QData/*63:0*/ top__DOT__my_exu__DOT__busa;
     VlUnpacked<QData/*63:0*/, 32> top__DOT__my_exu__DOT__regfile__DOT__rf;
 
     // LOCAL VARIABLES
     CData/*0:0*/ __Vclklast__TOP__clk;
-    VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low____Vcellout__gen__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high____Vcellout__gen__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__c;
+    CData/*3:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__c;
+    VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
     Vtop__Syms* vlSymsp;  // Symbol table

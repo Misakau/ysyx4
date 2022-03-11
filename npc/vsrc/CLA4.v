@@ -1,4 +1,5 @@
 /* verilator lint_off PINMISSING */
+/* verilator lint_off DECLFILENAME */
 module ysyx_220053_CLA4(
     output [3:0] f,
     output cout,

@@ -28,11 +28,13 @@ VM_CLASSES_FAST += \
 	Vtop \
 	Vtop___024root \
 	Vtop___024unit \
+	Vtop_ysyx_220053_Adder32 \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
 	Vtop___024root__Slow \
 	Vtop___024unit__Slow \
+	Vtop_ysyx_220053_Adder32__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \

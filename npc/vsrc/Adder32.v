@@ -1,3 +1,4 @@
+/* verilator lint_off DECLFILENAME */
 module ysyx_220053_Adder32(
     output [31:0] result,
     output cout,
