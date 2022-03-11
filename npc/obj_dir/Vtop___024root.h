@@ -21,8 +21,8 @@ VL_MODULE(Vtop___024root) {
   public:
     // CELLS
     Vtop___024unit* __PVT____024unit;
-    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__adder__DOT__adder_low;
-    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__adder__DOT__adder_high;
+    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low;
+    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high;
 
     // PORTS
     VL_IN8(clk,0,0);
@@ -31,9 +31,9 @@ VL_MODULE(Vtop___024root) {
     VL_OUT64(pc,63,0);
 
     // LOCAL SIGNALS
-    CData/*4:0*/ top__DOT__rs1;
     CData/*0:0*/ top__DOT__wen;
     CData/*0:0*/ top__DOT__ALUSrcB;
+    CData/*3:0*/ top__DOT__ALUOp;
     CData/*2:0*/ top__DOT__my_idu__DOT__ExtOp;
     QData/*63:0*/ top__DOT__imm;
     QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;

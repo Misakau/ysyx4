@@ -22,21 +22,21 @@ Vtop__Syms::Vtop__Syms(VerilatedContext* contextp, const char* namep,Vtop* model
     // Setup module instances
     , TOP(namep)
     , TOP____024unit(Verilated::catName(namep, "$unit"))
-    , TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high(Verilated::catName(namep, "top.my_exu.adder.adder_high"))
-    , TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low(Verilated::catName(namep, "top.my_exu.adder.adder_low"))
+    , TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high(Verilated::catName(namep, "top.my_exu.alu64.adder.adder_high"))
+    , TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low(Verilated::catName(namep, "top.my_exu.alu64.adder.adder_low"))
 {
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-12);
     _vm_contextp__->timeprecision(-12);
     // Setup each module's pointers to their submodules
     TOP.__PVT____024unit = &TOP____024unit;
-    TOP.__PVT__top__DOT__my_exu__DOT__adder__DOT__adder_high = &TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high;
-    TOP.__PVT__top__DOT__my_exu__DOT__adder__DOT__adder_low = &TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low;
+    TOP.__PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high = &TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high;
+    TOP.__PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low = &TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low;
     // Setup each module's pointer back to symbol table (for public functions)
     TOP.__Vconfigure(this, true);
     TOP____024unit.__Vconfigure(this, true);
-    TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high.__Vconfigure(this, true);
-    TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low.__Vconfigure(this, false);
+    TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high.__Vconfigure(this, true);
+    TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low.__Vconfigure(this, false);
     // Setup export functions
     for (int __Vfinal=0; __Vfinal<2; __Vfinal++) {
     }

@@ -90,7 +90,6 @@ VL_MODULE(Vtop_ysyx_220053_Adder32) {
     VlUnpacked<CData/*7:0*/, 4> __PVT__ff;
 
     // LOCAL VARIABLES
-    CData/*3:0*/ __Vcellout__gen__c;
     CData/*7:0*/ __Vcellout__genblk2__BRA__0__KET____DOT__adder8__f;
     CData/*7:0*/ __Vcellout__genblk2__BRA__1__KET____DOT__adder8__f;
     CData/*7:0*/ __Vcellout__genblk2__BRA__2__KET____DOT__adder8__f;

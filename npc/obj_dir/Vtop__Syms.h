@@ -36,8 +36,8 @@ class Vtop__Syms final : public VerilatedSyms {
     // MODULE INSTANCE STATE
     Vtop___024root                 TOP;
     Vtop___024unit                 TOP____024unit;
-    Vtop_ysyx_220053_Adder32       TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high;
-    Vtop_ysyx_220053_Adder32       TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low;
+    Vtop_ysyx_220053_Adder32       TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high;
+    Vtop_ysyx_220053_Adder32       TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low;
 
     // CONSTRUCTORS
     Vtop__Syms(VerilatedContext* contextp, const char* namep, Vtop* modelp);
