@@ -10,6 +10,7 @@ module ysyx_220053_controler(
 );
 
 `define ysyx_220053_I 0
+`define ysyx_220053_I 1
 `define ysyx_220053_U 1
 `define ysyx_220053_S 2
 `define ysyx_220053_B 3
