@@ -35,7 +35,7 @@ endmodule
 module ysyx_220053_controler(
     input [63:0] imm,
     input [6:0] op,
-    input [2:0] func3.
+    input [2:0] func3,
     output [2:0] ExtOp,
     output wen
 );
