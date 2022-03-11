@@ -12,10 +12,7 @@ module ysyx_220053_IDU(
     output [4:0]  rs2,
     output [2:0]  func3,
     output [6:0]  func7,
-    output [63:0] immI,
-    output [63:0] immS,
-    output [63:0] immJ,
-    output [63:0] immB,
+    output [63:0] imm,
     output reg wen
 );
     assign op = instr_i[6:0];
@@ -38,7 +35,7 @@ module ysyx_220053_IDU(
                 end
              7'b1110011:
              	begin
-             		case(immI)
+             		case(imm)
              			1: begin wen = 0; c_trap(1); end
              			default: $display("no");
              		endcase
@@ -47,15 +44,6 @@ module ysyx_220053_IDU(
         endcase
     end
 
-    //I
-    assign immI = { {52{instr_i[31]}}, instr_i[31:20] };
-
-    //R
-
-    //S
-    
-    //J
-    
-    //B
+    ysyx_220053_InstrToImm insttoimm(instr, ExtOp, imm);
 
 endmodule

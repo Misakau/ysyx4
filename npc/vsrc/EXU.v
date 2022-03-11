@@ -7,7 +7,7 @@ module ysyx_220053_EXU(
     input [4:0] rs1,
     input [4:0] rs2,
     input wen,
-    input [63:0] immI
+    input [63:0] imm
 );
     wire [63:0] busa, busb;
     wire [63:0] res;
@@ -20,6 +20,6 @@ module ysyx_220053_EXU(
                                               .waddr(rd),
                                               .wen(wen)
                                             );
-    ysyx_220053_Adder64 adder(.result(res),.x(busa),.y(immI),.sub(0));
+    ysyx_220053_Adder64 adder(.result(res),.x(busa),.y(imm),.sub(0));
         //busa + immI; //addi
 endmodule

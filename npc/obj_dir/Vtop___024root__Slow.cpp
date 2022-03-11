@@ -75,6 +75,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
         }
     } else if (VL_LIKELY((0x73U == (0x7fU & vlSelf->instr_i)))) {
         if (VL_LIKELY((1ULL == vlSelf->top__DOT__immI))) {
+            vlSelf->top__DOT__wen = 0U;
             Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
         } else {
             VL_WRITEF("no\n");
