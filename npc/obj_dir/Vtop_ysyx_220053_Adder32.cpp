@@ -14,13 +14,13 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+            Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low__1\n"); );
     // Body
-    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p 
-        = (0xfU & ((IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__busa) 
-                   | (IData)(vlSymsp->TOP.top__DOT__immI)));
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (1U & ((IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__busa) 
                     ^ (IData)(vlSymsp->TOP.top__DOT__immI))));
+    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p 
+        = (0xfU & ((IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__busa) 
+                   | (IData)(vlSymsp->TOP.top__DOT__immI)));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g 
         = (0xfU & ((IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__busa) 
                    & (IData)(vlSymsp->TOP.top__DOT__immI)));
@@ -138,9 +138,10 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                               >> 0x18U)) 
                                      | (IData)((vlSymsp->TOP.top__DOT__immI 
                                                 >> 0x18U))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (1U & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g)));
+    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__cin2 
         = (1U & (((((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__g) 
                     >> 3U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__p) 
@@ -570,24 +571,41 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                    & (vlSelf->__PVT__g
                                                       [3U] 
                                                       << 3U))))));
+    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2))));
+    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
+        = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
+           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
+                              >> 4U)) ^ (IData)((vlSymsp->TOP.top__DOT__immI 
+                                                 >> 4U))) 
+                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                    & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->__PVT__gen__DOT__c2 = (1U & (((IData)(vlSelf->__PVT__Gg) 
+                                          >> 1U) | 
+                                         (((IData)(vlSelf->__PVT__Pg) 
+                                           >> 1U) & (IData)(vlSelf->__PVT__Gg))));
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (1U 
+                                                   & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g)))));
+    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__gen__DOT__c3 = (1U & (((IData)(vlSelf->__PVT__Gg) 
+                                          >> 2U) | 
+                                         (((IData)(vlSelf->__PVT__Pg) 
+                                           >> 2U) & (IData)(vlSelf->__PVT__gen__DOT__c2))));
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
@@ -609,76 +627,27 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                   >> 3U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
-           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
-                              >> 4U)) ^ (IData)((vlSymsp->TOP.top__DOT__immI 
-                                                 >> 4U))) 
-                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2))));
+    vlSelf->__Vcellout__gen__c = ((8U & ((IData)(vlSelf->__PVT__Gg) 
+                                         | ((IData)(vlSelf->__PVT__Pg) 
+                                            & ((IData)(vlSelf->__PVT__gen__DOT__c3) 
+                                               << 3U)))) 
+                                  | (((IData)(vlSelf->__PVT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (1U 
+                                                   & (IData)(vlSelf->__PVT__Gg)))));
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__cin2)))));
-    vlSelf->__Vcellout__gen__c = ((0xeU & (IData)(vlSelf->__Vcellout__gen__c)) 
-                                  | (1U & (IData)(vlSelf->__PVT__Gg)));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
-           | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
-                               >> 5U)) ^ (IData)((vlSymsp->TOP.top__DOT__immI 
-                                                  >> 5U))) 
-                     ^ (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-                    << 1U)));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
-           | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
-                               >> 6U)) ^ (IData)((vlSymsp->TOP.top__DOT__immI 
-                                                  >> 6U))) 
-                     << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                                              << 1U)))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
-           | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
-                               >> 7U)) ^ (IData)((vlSymsp->TOP.top__DOT__immI 
-                                                  >> 7U))) 
-                     << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                                              << 1U)))));
-    vlSelf->__PVT__cout_temp = ((0xeU & (IData)(vlSelf->__PVT__cout_temp)) 
-                                | (1U & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                                         >> 3U)));
-    vlSelf->__Vcellout__gen__c = ((0xdU & (IData)(vlSelf->__Vcellout__gen__c)) 
-                                  | (2U & ((IData)(vlSelf->__PVT__Gg) 
-                                           | ((IData)(vlSelf->__PVT__Pg) 
-                                              & ((IData)(vlSelf->__Vcellout__gen__c) 
-                                                 << 1U)))));
-    vlSelf->__Vcellout__gen__c = ((0xbU & (IData)(vlSelf->__Vcellout__gen__c)) 
-                                  | (4U & ((IData)(vlSelf->__PVT__Gg) 
-                                           | ((IData)(vlSelf->__PVT__Pg) 
-                                              & ((IData)(vlSelf->__Vcellout__gen__c) 
-                                                 << 1U)))));
-    vlSelf->__Vcellout__gen__c = ((7U & (IData)(vlSelf->__Vcellout__gen__c)) 
-                                  | (8U & ((IData)(vlSelf->__PVT__Gg) 
-                                           | ((IData)(vlSelf->__PVT__Pg) 
-                                              & ((IData)(vlSelf->__Vcellout__gen__c) 
-                                                 << 1U)))));
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
     vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
@@ -701,23 +670,20 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                     >> 0x18U))) 
                     ^ ((IData)(vlSelf->__Vcellout__gen__c) 
                        >> 2U))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & (IData)(vlSelf->__Vcellout__gen__c)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->__Vcellout__gen__c) 
-                          >> 1U)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->__Vcellout__gen__c) 
-                          >> 2U)))));
+    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                    & (IData)(vlSelf->__Vcellout__gen__c))));
+    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                    & ((IData)(vlSelf->__Vcellout__gen__c) 
+                       >> 1U))));
+    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                    & ((IData)(vlSelf->__Vcellout__gen__c) 
+                       >> 2U))));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__cin2 
         = (1U & ((((((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__g) 
                      >> 3U) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__p) 
@@ -759,27 +725,138 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                  | ((IData)((0xfU == (0xfU & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__p)))) 
                     & ((IData)(vlSelf->__Vcellout__gen__c) 
                        >> 2U))));
+    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
+        = ((0xdU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
+           | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
+                               >> 5U)) ^ (IData)((vlSymsp->TOP.top__DOT__immI 
+                                                  >> 5U))) 
+                     ^ (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
+                    << 1U)));
+    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
+        = ((0xbU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
+           | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
+                               >> 6U)) ^ (IData)((vlSymsp->TOP.top__DOT__immI 
+                                                  >> 6U))) 
+                     << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
+                                              << 1U)))));
+    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
+        = ((7U & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
+           | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
+                               >> 7U)) ^ (IData)((vlSymsp->TOP.top__DOT__immI 
+                                                  >> 7U))) 
+                     << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
+                                              << 1U)))));
+    vlSelf->__PVT__cout_temp = ((0xeU & (IData)(vlSelf->__PVT__cout_temp)) 
+                                | (1U & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
+                                         >> 3U)));
+    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
+        = ((0xeU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
+           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
+                              >> 0xcU)) ^ (IData)((vlSymsp->TOP.top__DOT__immI 
+                                                   >> 0xcU))) 
+                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                    & (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
+        = ((0xeU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
+           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
+                              >> 0x14U)) ^ (IData)(
+                                                   (vlSymsp->TOP.top__DOT__immI 
+                                                    >> 0x14U))) 
+                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                    & (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
+        = ((0xeU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
+           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
+                              >> 0x1cU)) ^ (IData)(
+                                                   (vlSymsp->TOP.top__DOT__immI 
+                                                    >> 0x1cU))) 
+                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                    & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__cin2))));
     vlSelf->__Vcellout__genblk2__BRA__0__KET____DOT__adder8__f 
         = (((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f) 
             << 4U) | (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f));
+    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2))));
+    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2))));
+    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2))));
+    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__ff[0U] = vlSelf->__Vcellout__genblk2__BRA__0__KET____DOT__adder8__f;
     vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2))));
+    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2))));
+    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2))));
     vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
@@ -803,24 +880,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                     >> 0xbU))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
     vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
@@ -845,24 +904,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                      >> 0x13U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
     vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
@@ -887,60 +928,30 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                      >> 0x1bU))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
-           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
-                              >> 0xcU)) ^ (IData)((vlSymsp->TOP.top__DOT__immI 
-                                                   >> 0xcU))) 
-                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__cin2))));
     vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__cin2)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
-           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
-                              >> 0x14U)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__immI 
-                                                    >> 0x14U))) 
-                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__cin2))));
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
     vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__cin2)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
-           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
-                              >> 0x1cU)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__immI 
-                                                    >> 0x1cU))) 
-                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__cin2))));
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
     vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__cin2)))));
-    vlSelf->__PVT__ff[0U] = vlSelf->__Vcellout__genblk2__BRA__0__KET____DOT__adder8__f;
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
     vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
@@ -968,24 +979,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     vlSelf->__PVT__cout_temp = ((0xdU & (IData)(vlSelf->__PVT__cout_temp)) 
                                 | (2U & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                          >> 2U)));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
     vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
@@ -1013,24 +1006,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     vlSelf->__PVT__cout_temp = ((0xbU & (IData)(vlSelf->__PVT__cout_temp)) 
                                 | (4U & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                          >> 1U)));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
     vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
@@ -1623,29 +1598,30 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                    & (vlSelf->__PVT__g
                                                       [3U] 
                                                       << 3U))))));
-    vlSelf->__Vcellout__gen__c = ((0xeU & (IData)(vlSelf->__Vcellout__gen__c)) 
-                                  | (1U & ((IData)(vlSelf->__PVT__Gg) 
-                                           | ((IData)(vlSelf->__PVT__Pg) 
-                                              & ((IData)(vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low.__PVT__cout_temp) 
-                                                 >> 3U)))));
-    vlSelf->__Vcellout__gen__c = ((0xdU & (IData)(vlSelf->__Vcellout__gen__c)) 
-                                  | (2U & ((IData)(vlSelf->__PVT__Gg) 
-                                           | ((IData)(vlSelf->__PVT__Pg) 
-                                              & ((IData)(vlSelf->__Vcellout__gen__c) 
-                                                 << 1U)))));
-    vlSelf->__Vcellout__gen__c = ((0xbU & (IData)(vlSelf->__Vcellout__gen__c)) 
-                                  | (4U & ((IData)(vlSelf->__PVT__Gg) 
-                                           | ((IData)(vlSelf->__PVT__Pg) 
-                                              & ((IData)(vlSelf->__Vcellout__gen__c) 
-                                                 << 1U)))));
-    vlSelf->__Vcellout__gen__c = ((7U & (IData)(vlSelf->__Vcellout__gen__c)) 
-                                  | (8U & ((IData)(vlSelf->__PVT__Gg) 
-                                           | ((IData)(vlSelf->__PVT__Pg) 
-                                              & ((IData)(vlSelf->__Vcellout__gen__c) 
-                                                 << 1U)))));
-    vlSelf->__PVT__c = (((IData)(vlSelf->__Vcellout__gen__c) 
-                         << 1U) | (1U & ((IData)(vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low.__PVT__cout_temp) 
-                                         >> 3U)));
+    vlSelf->__PVT__gen__DOT__c1 = (1U & ((IData)(vlSelf->__PVT__Gg) 
+                                         | ((IData)(vlSelf->__PVT__Pg) 
+                                            & ((IData)(vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low.__PVT__cout_temp) 
+                                               >> 3U))));
+    vlSelf->__PVT__gen__DOT__c2 = (1U & (((IData)(vlSelf->__PVT__Gg) 
+                                          >> 1U) | 
+                                         (((IData)(vlSelf->__PVT__Pg) 
+                                           >> 1U) & (IData)(vlSelf->__PVT__gen__DOT__c1))));
+    vlSelf->__PVT__gen__DOT__c3 = (1U & (((IData)(vlSelf->__PVT__Gg) 
+                                          >> 2U) | 
+                                         (((IData)(vlSelf->__PVT__Pg) 
+                                           >> 2U) & (IData)(vlSelf->__PVT__gen__DOT__c2))));
+    vlSelf->__PVT__c = ((0x10U & (((IData)(vlSelf->__PVT__Gg) 
+                                   << 1U) | (((IData)(vlSelf->__PVT__Pg) 
+                                              << 1U) 
+                                             & ((IData)(vlSelf->__PVT__gen__DOT__c3) 
+                                                << 4U)))) 
+                        | (((IData)(vlSelf->__PVT__gen__DOT__c3) 
+                            << 3U) | (((IData)(vlSelf->__PVT__gen__DOT__c2) 
+                                       << 2U) | (((IData)(vlSelf->__PVT__gen__DOT__c1) 
+                                                  << 1U) 
+                                                 | (1U 
+                                                    & ((IData)(vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low.__PVT__cout_temp) 
+                                                       >> 3U))))));
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
@@ -1674,29 +1650,22 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                    (vlSymsp->TOP.top__DOT__immI 
                                                     >> 0x38U))) 
                     ^ ((IData)(vlSelf->__PVT__c) >> 3U))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & (IData)(vlSelf->__PVT__c)))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->__PVT__c) 
-                          >> 1U)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->__PVT__c) 
-                          >> 2U)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->__PVT__c) 
-                          >> 3U)))));
+    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                    & (IData)(vlSelf->__PVT__c))));
+    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                    & ((IData)(vlSelf->__PVT__c) >> 1U))));
+    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                    & ((IData)(vlSelf->__PVT__c) >> 2U))));
+    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                    & ((IData)(vlSelf->__PVT__c) >> 3U))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__cin2 
         = (1U & ((((((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__g) 
                      >> 3U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__p) 
@@ -1749,24 +1718,146 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                      & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__g))) 
                  | ((IData)((0xfU == (0xfU & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__p)))) 
                     & ((IData)(vlSelf->__PVT__c) >> 3U))));
+    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
+        = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
+           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
+                              >> 0x24U)) ^ (IData)(
+                                                   (vlSymsp->TOP.top__DOT__immI 
+                                                    >> 0x24U))) 
+                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                    & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
+        = ((0xeU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
+           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
+                              >> 0x2cU)) ^ (IData)(
+                                                   (vlSymsp->TOP.top__DOT__immI 
+                                                    >> 0x2cU))) 
+                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                    & (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
+        = ((0xeU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
+           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
+                              >> 0x34U)) ^ (IData)(
+                                                   (vlSymsp->TOP.top__DOT__immI 
+                                                    >> 0x34U))) 
+                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                    & (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
+        = ((0xeU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
+           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
+                              >> 0x3cU)) ^ (IData)(
+                                                   (vlSymsp->TOP.top__DOT__immI 
+                                                    >> 0x3cU))) 
+                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
+        = (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                 | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                    & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__cin2))));
+    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2))));
+    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2))));
+    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2))));
+    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2))));
+    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 1U) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 1U) & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1))));
+    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2))));
+    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2))));
+    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2))));
+    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3 
+        = (1U & (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  >> 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                             >> 2U) & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2))));
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
@@ -1791,24 +1882,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                      >> 0x23U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
     vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
@@ -1833,24 +1906,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                      >> 0x2bU))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
     vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
@@ -1875,24 +1930,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                      >> 0x33U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                          << 1U)))));
     vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
@@ -1917,72 +1954,38 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                      >> 0x3bU))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
-           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
-                              >> 0x24U)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__immI 
-                                                    >> 0x24U))) 
-                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__cin2))));
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__cin2)))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
-           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
-                              >> 0x2cU)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__immI 
-                                                    >> 0x2cU))) 
-                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__cin2))));
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
     vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__cin2)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
-           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
-                              >> 0x34U)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__immI 
-                                                    >> 0x34U))) 
-                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__cin2))));
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
     vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__cin2)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
-           | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__busa 
-                              >> 0x3cU)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__immI 
-                                                    >> 0x3cU))) 
-                    ^ (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__cin2))));
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
     vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xeU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (1U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__cin2)))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
+        = ((8U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
+                  | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
+                     & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                        << 3U)))) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c3) 
+                                      << 2U) | (((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c2) 
+                                                 << 1U) 
+                                                | (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1))));
     vlSelf->__PVT__cout_temp = ((0xeU & (IData)(vlSelf->__PVT__cout_temp)) 
                                 | (1U & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                          >> 3U)));
@@ -2010,24 +2013,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                      >> 0x27U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
     vlSelf->__PVT__cout_temp = ((0xdU & (IData)(vlSelf->__PVT__cout_temp)) 
                                 | (2U & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                          >> 2U)));
@@ -2055,24 +2040,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                      >> 0x2fU))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
     vlSelf->__PVT__cout_temp = ((0xbU & (IData)(vlSelf->__PVT__cout_temp)) 
                                 | (4U & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                          >> 1U)));
@@ -2100,24 +2067,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                      >> 0x37U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xdU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (2U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((0xbU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (4U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
-    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c 
-        = ((7U & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
-           | (8U & ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g) 
-                    | ((IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p) 
-                       & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
-                          << 1U)))));
     vlSelf->__PVT__cout_temp = ((7U & (IData)(vlSelf->__PVT__cout_temp)) 
                                 | (8U & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)));
     vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
