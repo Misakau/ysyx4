@@ -62,10 +62,10 @@ void Vtop_ysyx_220053_Adder32___ctor_var_reset(Vtop_ysyx_220053_Adder32* vlSelf)
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g = VL_RAND_RESET_I(4);
-    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__c = VL_RAND_RESET_I(4);
+    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g = VL_RAND_RESET_I(4);
-    vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__c = VL_RAND_RESET_I(4);
+    vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__cin2 = VL_RAND_RESET_I(1);
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__p = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__g = VL_RAND_RESET_I(4);
@@ -73,10 +73,10 @@ void Vtop_ysyx_220053_Adder32___ctor_var_reset(Vtop_ysyx_220053_Adder32* vlSelf)
     vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g = VL_RAND_RESET_I(4);
-    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__c = VL_RAND_RESET_I(4);
+    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g = VL_RAND_RESET_I(4);
-    vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__c = VL_RAND_RESET_I(4);
+    vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__cin2 = VL_RAND_RESET_I(1);
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__p = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__g = VL_RAND_RESET_I(4);
@@ -84,10 +84,10 @@ void Vtop_ysyx_220053_Adder32___ctor_var_reset(Vtop_ysyx_220053_Adder32* vlSelf)
     vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g = VL_RAND_RESET_I(4);
-    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__c = VL_RAND_RESET_I(4);
+    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g = VL_RAND_RESET_I(4);
-    vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__c = VL_RAND_RESET_I(4);
+    vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__cin2 = VL_RAND_RESET_I(1);
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__p = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__g = VL_RAND_RESET_I(4);
@@ -95,8 +95,8 @@ void Vtop_ysyx_220053_Adder32___ctor_var_reset(Vtop_ysyx_220053_Adder32* vlSelf)
     vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g = VL_RAND_RESET_I(4);
-    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__c = VL_RAND_RESET_I(4);
+    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p = VL_RAND_RESET_I(4);
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g = VL_RAND_RESET_I(4);
-    vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__c = VL_RAND_RESET_I(4);
+    vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c = VL_RAND_RESET_I(4);
 }
