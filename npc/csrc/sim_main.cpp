@@ -31,7 +31,7 @@ int main(int argc, char**argv, char**env) {
     int cnt = 0;
     IMEM[0] = 0x7ff00093;// addi x0,x1,1
     IMEM[1] = 0xfffff097;// auipc x1,0xfffff
-    IMEM[2] = 0xfffff0b7;//lui x1,0xfffff
+    IMEM[2] = 0xff0ff0b7;//lui x1,0xff0ff
     IMEM[3] = 0x00100073;
     IMEM[4] = 0x80008113;
     IMEM[5] = 0x00100073;
