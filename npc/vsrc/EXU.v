@@ -12,7 +12,7 @@ module ysyx_220053_EXU(
     wire [63:0] busa, busb;
     wire [63:0] res;
     wire [63:0] alu_inB;
-    assign alu_inB = (ALUSrcB == 1'b0) ? imm : busb;
+    assign alu_inB = (ALUSrcB == 1'b1) ? imm : busb;
     ysyx_220053_RegisterFile #(5, 64) regfile(.clk(clk),
                                               .raaddr(rs1),
                                               .rbaddr(rs2),

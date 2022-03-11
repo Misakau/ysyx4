@@ -56,20 +56,20 @@ void Vtop___024root___settle__TOP__3(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__my_idu__DOT__ExtOp = 1U;
         vlSelf->top__DOT__wen = 1U;
     } else if ((0x13U == (0x7fU & vlSelf->instr_i))) {
-        if (VL_LIKELY((0U == (7U & (vlSelf->instr_i 
-                                    >> 0xcU))))) {
+        if ((0U == (7U & (vlSelf->instr_i >> 0xcU)))) {
             vlSelf->top__DOT__my_idu__DOT__ALUSrcB = 1U;
             vlSelf->top__DOT__my_idu__DOT__ExtOp = 0U;
             vlSelf->top__DOT__wen = 1U;
+            VL_WRITEF("ALUSrcB=1\n");
         } else {
             VL_WRITEF("no\n");
         }
     } else if (VL_LIKELY((0x73U == (0x7fU & vlSelf->instr_i)))) {
         if (VL_LIKELY((1U == (vlSelf->instr_i >> 0x14U)))) {
+            Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
             vlSelf->top__DOT__my_idu__DOT__ALUSrcB = 1U;
             vlSelf->top__DOT__my_idu__DOT__ExtOp = 0U;
             vlSelf->top__DOT__wen = 0U;
-            Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
         } else {
             VL_WRITEF("no\n");
         }
