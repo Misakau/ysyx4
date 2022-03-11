@@ -24,9 +24,8 @@ module ysyx_220053_IDU(
     wire [2:0] ExtOp;
     wire [63:0] my_imm;
     ysyx_220053_InstrToImm insttoimm(instr_i, ExtOp, imm);
-    assign my_imm = imm;
     //controler
-    ysyx_220053_controler control(my_imm, op, func3, ExtOp, wen);
+    ysyx_220053_controler control(imm, op, func3, ExtOp, wen);
 
     
 
@@ -59,5 +58,5 @@ module ysyx_220053_controler(
             default: $display("no");
         endcase
     end
-    
+
 endmodule
