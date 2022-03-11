@@ -29,7 +29,7 @@ int main(int argc, char**argv, char**env) {
     top->eval();
     top->rst = 0;
     int cnt = 0;
-    IMEM[0] = 0x00200093;// addi x0,x1,1
+    IMEM[0] = 0x0ff00093;// addi x0,x1,1
     IMEM[1] = 0x80108113;// addi x1,x1,1
     IMEM[2] = 0x00100073;
     IMEM[3] = 0x80108113;
