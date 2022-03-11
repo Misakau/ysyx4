@@ -128,55 +128,55 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__5(Vtop___024root* vlSelf) {
                                                 >> 0xfU))]);
     if ((0U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = (((- (QData)((IData)(
-                                                     ((IData)(vlSelf->top__DOT__my_idu__DOT__instr) 
+                                                     (vlSelf->instr_i 
                                                       >> 0x1fU)))) 
                                   << 0xcU) | (QData)((IData)(
-                                                             ((IData)(vlSelf->top__DOT__my_idu__DOT__instr) 
+                                                             (vlSelf->instr_i 
                                                               >> 0x14U))));
     } else if ((1U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = (((QData)((IData)((- (IData)(
-                                                             ((IData)(vlSelf->top__DOT__my_idu__DOT__instr) 
+                                                             (vlSelf->instr_i 
                                                               >> 0x1fU))))) 
                                   << 0x20U) | (QData)((IData)(
                                                               (0xfffff000U 
-                                                               & (IData)(vlSelf->top__DOT__my_idu__DOT__instr)))));
+                                                               & vlSelf->instr_i))));
     } else if ((2U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = (((- (QData)((IData)(
-                                                     ((IData)(vlSelf->top__DOT__my_idu__DOT__instr) 
+                                                     (vlSelf->instr_i 
                                                       >> 0x1fU)))) 
                                   << 0xcU) | (QData)((IData)(
                                                              ((0xfe0U 
-                                                               & ((IData)(vlSelf->top__DOT__my_idu__DOT__instr) 
+                                                               & (vlSelf->instr_i 
                                                                   >> 0x14U)) 
                                                               | (0x1fU 
-                                                                 & ((IData)(vlSelf->top__DOT__my_idu__DOT__instr) 
+                                                                 & (vlSelf->instr_i 
                                                                     >> 7U))))));
     } else if ((3U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = (((- (QData)((IData)(
-                                                     ((IData)(vlSelf->top__DOT__my_idu__DOT__instr) 
+                                                     (vlSelf->instr_i 
                                                       >> 0x1fU)))) 
                                   << 0xcU) | (QData)((IData)(
                                                              ((0x800U 
-                                                               & ((IData)(vlSelf->top__DOT__my_idu__DOT__instr) 
+                                                               & (vlSelf->instr_i 
                                                                   << 4U)) 
                                                               | ((0x7e0U 
-                                                                  & ((IData)(vlSelf->top__DOT__my_idu__DOT__instr) 
+                                                                  & (vlSelf->instr_i 
                                                                      >> 0x14U)) 
                                                                  | (0x1eU 
-                                                                    & ((IData)(vlSelf->top__DOT__my_idu__DOT__instr) 
+                                                                    & (vlSelf->instr_i 
                                                                        >> 7U)))))));
     } else if ((4U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = (((- (QData)((IData)(
-                                                     ((IData)(vlSelf->top__DOT__my_idu__DOT__instr) 
+                                                     (vlSelf->instr_i 
                                                       >> 0x1fU)))) 
                                   << 0x14U) | (QData)((IData)(
                                                               ((0xff000U 
-                                                                & (IData)(vlSelf->top__DOT__my_idu__DOT__instr)) 
+                                                                & vlSelf->instr_i) 
                                                                | ((0x800U 
-                                                                   & ((IData)(vlSelf->top__DOT__my_idu__DOT__instr) 
+                                                                   & (vlSelf->instr_i 
                                                                       >> 9U)) 
                                                                   | (0x7feU 
-                                                                     & ((IData)(vlSelf->top__DOT__my_idu__DOT__instr) 
+                                                                     & (vlSelf->instr_i 
                                                                         >> 0x14U)))))));
     } else if ((5U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = 0ULL;
