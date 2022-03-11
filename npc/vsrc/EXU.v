@@ -22,6 +22,6 @@ module ysyx_220053_EXU(
                                               .waddr(rd),
                                               .wen(wen)
                                             );
-    ysyx_220053_Adder64 adder(.result(res),.x(busa),.y(alu_inB),.sub(0));
+    ysyx_220053_Adder64 adder(.result(res),.x(busa),.y(imm),.sub(0));
         //busa + immI; //addi
 endmodule
