@@ -96,7 +96,6 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+12,"top my_exu adder adder_low x", false,-1, 31,0);
         tracep->declBus(c+13,"top my_exu adder adder_low y", false,-1, 31,0);
         tracep->declBit(c+615,"top my_exu adder adder_low sub", false,-1);
-        tracep->declBus(c+616,"top my_exu adder adder_low t", false,-1, 31,0);
         tracep->declBus(c+14,"top my_exu adder adder_low Gg", false,-1, 3,0);
         tracep->declBus(c+15,"top my_exu adder adder_low Pg", false,-1, 3,0);
         {int i; for (i=0; i<4; i++) {
@@ -404,7 +403,6 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+267,"top my_exu adder adder_high x", false,-1, 31,0);
         tracep->declBus(c+268,"top my_exu adder adder_high y", false,-1, 31,0);
         tracep->declBit(c+11,"top my_exu adder adder_high sub", false,-1);
-        tracep->declBus(c+616,"top my_exu adder adder_high t", false,-1, 31,0);
         tracep->declBus(c+269,"top my_exu adder adder_high Gg", false,-1, 3,0);
         tracep->declBus(c+270,"top my_exu adder adder_high Pg", false,-1, 3,0);
         {int i; for (i=0; i<4; i++) {
@@ -2636,6 +2634,5 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullQData(oldp+612,(vlSelf->top__DOT__my_idu__DOT__immB),64);
         tracep->fullIData(oldp+614,(5U),32);
         tracep->fullBit(oldp+615,(0U));
-        tracep->fullIData(oldp+616,(0x20U),32);
     }
 }
