@@ -32,13 +32,14 @@ VL_MODULE(Vtop___024root) {
 
     // LOCAL SIGNALS
     CData/*0:0*/ top__DOT__wen;
+    CData/*0:0*/ top__DOT__ALUSrcA;
     CData/*0:0*/ top__DOT__ALUSrcB;
     CData/*3:0*/ top__DOT__ALUOp;
     CData/*2:0*/ top__DOT__my_idu__DOT__ExtOp;
     QData/*63:0*/ top__DOT__imm;
     QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
     QData/*63:0*/ top__DOT__my_ifu__DOT__dnpc;
-    QData/*63:0*/ top__DOT__my_exu__DOT__busa;
+    QData/*63:0*/ top__DOT__my_exu__DOT__alu_inA;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inB;
     VlUnpacked<QData/*63:0*/, 32> top__DOT__my_exu__DOT__regfile__DOT__rf;
 
