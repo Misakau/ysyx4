@@ -21,7 +21,7 @@ module ysyx_220053_IDU(
     assign rs1 = instr_i[19:15];
     assign rs2 = instr_i[24:20];
     assign func7 = instr_i[31:25];
-    
+    reg [2:0] ExtOp;
     //controler
     always @(*) begin
         case(op)
@@ -29,14 +29,14 @@ module ysyx_220053_IDU(
                 begin
                     //wen = 1;
                     case(func3)
-                        3'b000: begin wen = 1; end
+                        3'b000: begin ExtOp=0; wen = 1; end
                         default: $display("no");
                     endcase
                 end
              7'b1110011:
              	begin
              		case(imm)
-             			1: begin wen = 0; c_trap(1); end
+             			1: begin ExtOp=0; wen = 0; c_trap(1); end
              			default: $display("no");
              		endcase
              	end
