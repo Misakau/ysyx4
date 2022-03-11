@@ -44,6 +44,6 @@ module ysyx_220053_IDU(
         endcase
     end
 
-    ysyx_220053_InstrToImm insttoimm(instr, ExtOp, imm);
+    ysyx_220053_InstrToImm insttoimm(instr_i, ExtOp, imm);
 
 endmodule
