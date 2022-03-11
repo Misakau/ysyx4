@@ -13,7 +13,7 @@ module ysyx_220053_IDU(
     output [2:0]  func3,
     output [6:0]  func7,
     output [63:0] imm,
-    output ALUSrcB,
+    output ALUSrcA, ALUSrcB,
     output [3:0] ALUOp,
     output reg wen
 );
@@ -28,7 +28,7 @@ module ysyx_220053_IDU(
     
     ysyx_220053_InstrToImm insttoimm(instr_i, ExtOp, imm);
     //controler
-    ysyx_220053_controler control(instr_i, op, func3, ALUSrcB, ExtOp, ALUOp, wen);
+    ysyx_220053_controler control(instr_i, op, func3, ALUSrcA, ALUSrcB, ExtOp, ALUOp, wen);
 
     
 
