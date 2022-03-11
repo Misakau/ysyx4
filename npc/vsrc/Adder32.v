@@ -1,7 +1,8 @@
 module ysyx_220053_Adder32(
     output [31:0] result,
     output cout,
-    input [31:0] x,y,
+    input [31:0] x,
+    input [32:0] y,
     input sub
 );
     parameter t=32;
