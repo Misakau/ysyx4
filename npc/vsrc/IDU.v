@@ -24,7 +24,7 @@ module ysyx_220053_IDU(
     reg [2:0] ExtOp;
     wire [63:0] my_imm;
     ysyx_220053_InstrToImm insttoimm(instr_i, ExtOp, my_imm);
-
+    assign imm = my_imm;
     //controler
     always @(*) begin
         case(op)
