@@ -28,12 +28,9 @@ module ysyx_220053_CLU4(
     input c0
 );
     assign c[0]=g[0] | (p[0] & c0);
-    genvar i;
-    generate
-        for (i=1;i<=3;i=i+1) begin
-            assign c[i]=g[i] | (p[i] & c[i-1]);
-        end
-    endgenerate
+    assign c[1]=g[1] | (p[1] & c[0]);
+    assign c[2]=g[2] | (p[2] & c[1]);
+    assign c[3]=g[3] | (p[3] & c[2]);
 endmodule
 
 module ysyx_220053_CLA4(
