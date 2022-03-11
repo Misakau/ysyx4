@@ -51,9 +51,14 @@ void Vtop___024root___settle__TOP__3(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___settle__TOP__3\n"); );
     // Body
-    if ((0x13U == (0x7fU & vlSelf->instr_i))) {
+    if ((0x37U == (0x7fU & vlSelf->instr_i))) {
+        vlSelf->top__DOT__my_idu__DOT__ALUSrcB = 0U;
+        vlSelf->top__DOT__my_idu__DOT__ExtOp = 1U;
+        vlSelf->top__DOT__wen = 1U;
+    } else if ((0x13U == (0x7fU & vlSelf->instr_i))) {
         if (VL_LIKELY((0U == (7U & (vlSelf->instr_i 
                                     >> 0xcU))))) {
+            vlSelf->top__DOT__my_idu__DOT__ALUSrcB = 1U;
             vlSelf->top__DOT__my_idu__DOT__ExtOp = 0U;
             vlSelf->top__DOT__wen = 1U;
         } else {
@@ -61,6 +66,7 @@ void Vtop___024root___settle__TOP__3(Vtop___024root* vlSelf) {
         }
     } else if (VL_LIKELY((0x73U == (0x7fU & vlSelf->instr_i)))) {
         if (VL_LIKELY((1U == (vlSelf->instr_i >> 0x14U)))) {
+            vlSelf->top__DOT__my_idu__DOT__ALUSrcB = 1U;
             vlSelf->top__DOT__my_idu__DOT__ExtOp = 0U;
             vlSelf->top__DOT__wen = 0U;
             Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
@@ -135,6 +141,20 @@ void Vtop___024root___settle__TOP__3(Vtop___024root* vlSelf) {
     } else if ((5U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = 0ULL;
     }
+    vlSelf->top__DOT__my_exu__DOT__alu_inB = ((IData)(vlSelf->top__DOT__my_exu__DOT__ALUSrcB)
+                                               ? vlSelf->top__DOT__imm
+                                               : ((0U 
+                                                   == 
+                                                   (0x1fU 
+                                                    & (vlSelf->instr_i 
+                                                       >> 0x14U)))
+                                                   ? 0ULL
+                                                   : 
+                                                  vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+                                                  [
+                                                  (0x1fU 
+                                                   & (vlSelf->instr_i 
+                                                      >> 0x14U))]));
 }
 
 void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
@@ -183,8 +203,11 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__wen = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_ifu__DOT__now_pc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__dnpc = VL_RAND_RESET_Q(64);
+    vlSelf->top__DOT__my_idu__DOT__ALUSrcB = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_idu__DOT__ExtOp = VL_RAND_RESET_I(3);
+    vlSelf->top__DOT__my_exu__DOT__ALUSrcB = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_exu__DOT__busa = VL_RAND_RESET_Q(64);
+    vlSelf->top__DOT__my_exu__DOT__alu_inB = VL_RAND_RESET_Q(64);
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[__Vi0] = VL_RAND_RESET_Q(64);
     }
