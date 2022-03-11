@@ -27,10 +27,12 @@ module ysyx_220053_CLU4(
     input c0,
     output [3:0] c
 );
-    assign c[0]=g[0] | (p[0] & c0);
-    assign c[1]=g[1] | (p[1] & c[0]);
-    assign c[2]=g[2] | (p[2] & c[1]);
-    assign c[3]=g[3] | (p[3] & c[2]);
+    wire c1,c2,c3,c4;
+    assign c1=g[0] | (p[0] & c0);
+    assign c2=g[1] | (p[1] & c1);
+    assign c3=g[2] | (p[2] & c2);
+    assign c4=g[3] | (p[3] & c3);
+    assign c = {c4,c3,c2,c1};
 endmodule
 
 module ysyx_220053_CLA4(

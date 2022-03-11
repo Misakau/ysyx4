@@ -106,10 +106,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+25,"top my_exu adder adder_low cout_temp", false,-1, 3,0);
         {int i; for (i=0; i<4; i++) {
                 tracep->declBus(c+26+i*1,"top my_exu adder adder_low ff", true,(i+0), 7,0);}}
-        tracep->declBus(c+30,"top my_exu adder adder_low gen c", false,-1, 3,0);
         tracep->declBus(c+15,"top my_exu adder adder_low gen p", false,-1, 3,0);
         tracep->declBus(c+14,"top my_exu adder adder_low gen g", false,-1, 3,0);
         tracep->declBit(c+614,"top my_exu adder adder_low gen c0", false,-1);
+        tracep->declBus(c+30,"top my_exu adder adder_low gen c", false,-1, 3,0);
         tracep->declBus(c+31,"top my_exu adder adder_low genblk2[0] adder8 f", false,-1, 7,0);
         tracep->declBit(c+32,"top my_exu adder adder_low genblk2[0] adder8 cout", false,-1);
         tracep->declBus(c+33,"top my_exu adder adder_low genblk2[0] adder8 x", false,-1, 7,0);
@@ -126,10 +126,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+42,"top my_exu adder adder_low genblk2[0] adder8 adder_low p", false,-1, 4,1);
         tracep->declBus(c+43,"top my_exu adder adder_low genblk2[0] adder8 adder_low g", false,-1, 4,1);
         tracep->declBus(c+44,"top my_exu adder adder_low genblk2[0] adder8 adder_low c", false,-1, 4,1);
-        tracep->declBus(c+44,"top my_exu adder adder_low genblk2[0] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBus(c+42,"top my_exu adder adder_low genblk2[0] adder8 adder_low gen p", false,-1, 3,0);
         tracep->declBus(c+43,"top my_exu adder adder_low genblk2[0] adder8 adder_low gen g", false,-1, 3,0);
         tracep->declBit(c+614,"top my_exu adder adder_low genblk2[0] adder8 adder_low gen c0", false,-1);
+        tracep->declBus(c+44,"top my_exu adder adder_low genblk2[0] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBit(c+45,"top my_exu adder adder_low genblk2[0] adder8 adder_low adder f", false,-1);
         tracep->declBit(c+46,"top my_exu adder adder_low genblk2[0] adder8 adder_low adder cout", false,-1);
         tracep->declBit(c+47,"top my_exu adder adder_low genblk2[0] adder8 adder_low adder x", false,-1);
@@ -158,10 +158,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+67,"top my_exu adder adder_low genblk2[0] adder8 adder_high p", false,-1, 4,1);
         tracep->declBus(c+68,"top my_exu adder adder_low genblk2[0] adder8 adder_high g", false,-1, 4,1);
         tracep->declBus(c+69,"top my_exu adder adder_low genblk2[0] adder8 adder_high c", false,-1, 4,1);
-        tracep->declBus(c+69,"top my_exu adder adder_low genblk2[0] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBus(c+67,"top my_exu adder adder_low genblk2[0] adder8 adder_high gen p", false,-1, 3,0);
         tracep->declBus(c+68,"top my_exu adder adder_low genblk2[0] adder8 adder_high gen g", false,-1, 3,0);
         tracep->declBit(c+35,"top my_exu adder adder_low genblk2[0] adder8 adder_high gen c0", false,-1);
+        tracep->declBus(c+69,"top my_exu adder adder_low genblk2[0] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBit(c+70,"top my_exu adder adder_low genblk2[0] adder8 adder_high adder f", false,-1);
         tracep->declBit(c+71,"top my_exu adder adder_low genblk2[0] adder8 adder_high adder cout", false,-1);
         tracep->declBit(c+72,"top my_exu adder adder_low genblk2[0] adder8 adder_high adder x", false,-1);
@@ -198,10 +198,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+101,"top my_exu adder adder_low genblk2[1] adder8 adder_low p", false,-1, 4,1);
         tracep->declBus(c+102,"top my_exu adder adder_low genblk2[1] adder8 adder_low g", false,-1, 4,1);
         tracep->declBus(c+103,"top my_exu adder adder_low genblk2[1] adder8 adder_low c", false,-1, 4,1);
-        tracep->declBus(c+103,"top my_exu adder adder_low genblk2[1] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBus(c+101,"top my_exu adder adder_low genblk2[1] adder8 adder_low gen p", false,-1, 3,0);
         tracep->declBus(c+102,"top my_exu adder adder_low genblk2[1] adder8 adder_low gen g", false,-1, 3,0);
         tracep->declBit(c+93,"top my_exu adder adder_low genblk2[1] adder8 adder_low gen c0", false,-1);
+        tracep->declBus(c+103,"top my_exu adder adder_low genblk2[1] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBit(c+104,"top my_exu adder adder_low genblk2[1] adder8 adder_low adder f", false,-1);
         tracep->declBit(c+105,"top my_exu adder adder_low genblk2[1] adder8 adder_low adder cout", false,-1);
         tracep->declBit(c+106,"top my_exu adder adder_low genblk2[1] adder8 adder_low adder x", false,-1);
@@ -230,10 +230,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+126,"top my_exu adder adder_low genblk2[1] adder8 adder_high p", false,-1, 4,1);
         tracep->declBus(c+127,"top my_exu adder adder_low genblk2[1] adder8 adder_high g", false,-1, 4,1);
         tracep->declBus(c+128,"top my_exu adder adder_low genblk2[1] adder8 adder_high c", false,-1, 4,1);
-        tracep->declBus(c+128,"top my_exu adder adder_low genblk2[1] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBus(c+126,"top my_exu adder adder_low genblk2[1] adder8 adder_high gen p", false,-1, 3,0);
         tracep->declBus(c+127,"top my_exu adder adder_low genblk2[1] adder8 adder_high gen g", false,-1, 3,0);
         tracep->declBit(c+94,"top my_exu adder adder_low genblk2[1] adder8 adder_high gen c0", false,-1);
+        tracep->declBus(c+128,"top my_exu adder adder_low genblk2[1] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBit(c+129,"top my_exu adder adder_low genblk2[1] adder8 adder_high adder f", false,-1);
         tracep->declBit(c+130,"top my_exu adder adder_low genblk2[1] adder8 adder_high adder cout", false,-1);
         tracep->declBit(c+131,"top my_exu adder adder_low genblk2[1] adder8 adder_high adder x", false,-1);
@@ -270,10 +270,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+160,"top my_exu adder adder_low genblk2[2] adder8 adder_low p", false,-1, 4,1);
         tracep->declBus(c+161,"top my_exu adder adder_low genblk2[2] adder8 adder_low g", false,-1, 4,1);
         tracep->declBus(c+162,"top my_exu adder adder_low genblk2[2] adder8 adder_low c", false,-1, 4,1);
-        tracep->declBus(c+162,"top my_exu adder adder_low genblk2[2] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBus(c+160,"top my_exu adder adder_low genblk2[2] adder8 adder_low gen p", false,-1, 3,0);
         tracep->declBus(c+161,"top my_exu adder adder_low genblk2[2] adder8 adder_low gen g", false,-1, 3,0);
         tracep->declBit(c+152,"top my_exu adder adder_low genblk2[2] adder8 adder_low gen c0", false,-1);
+        tracep->declBus(c+162,"top my_exu adder adder_low genblk2[2] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBit(c+163,"top my_exu adder adder_low genblk2[2] adder8 adder_low adder f", false,-1);
         tracep->declBit(c+164,"top my_exu adder adder_low genblk2[2] adder8 adder_low adder cout", false,-1);
         tracep->declBit(c+165,"top my_exu adder adder_low genblk2[2] adder8 adder_low adder x", false,-1);
@@ -302,10 +302,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+185,"top my_exu adder adder_low genblk2[2] adder8 adder_high p", false,-1, 4,1);
         tracep->declBus(c+186,"top my_exu adder adder_low genblk2[2] adder8 adder_high g", false,-1, 4,1);
         tracep->declBus(c+187,"top my_exu adder adder_low genblk2[2] adder8 adder_high c", false,-1, 4,1);
-        tracep->declBus(c+187,"top my_exu adder adder_low genblk2[2] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBus(c+185,"top my_exu adder adder_low genblk2[2] adder8 adder_high gen p", false,-1, 3,0);
         tracep->declBus(c+186,"top my_exu adder adder_low genblk2[2] adder8 adder_high gen g", false,-1, 3,0);
         tracep->declBit(c+153,"top my_exu adder adder_low genblk2[2] adder8 adder_high gen c0", false,-1);
+        tracep->declBus(c+187,"top my_exu adder adder_low genblk2[2] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBit(c+188,"top my_exu adder adder_low genblk2[2] adder8 adder_high adder f", false,-1);
         tracep->declBit(c+189,"top my_exu adder adder_low genblk2[2] adder8 adder_high adder cout", false,-1);
         tracep->declBit(c+190,"top my_exu adder adder_low genblk2[2] adder8 adder_high adder x", false,-1);
@@ -342,10 +342,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+219,"top my_exu adder adder_low genblk2[3] adder8 adder_low p", false,-1, 4,1);
         tracep->declBus(c+220,"top my_exu adder adder_low genblk2[3] adder8 adder_low g", false,-1, 4,1);
         tracep->declBus(c+221,"top my_exu adder adder_low genblk2[3] adder8 adder_low c", false,-1, 4,1);
-        tracep->declBus(c+221,"top my_exu adder adder_low genblk2[3] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBus(c+219,"top my_exu adder adder_low genblk2[3] adder8 adder_low gen p", false,-1, 3,0);
         tracep->declBus(c+220,"top my_exu adder adder_low genblk2[3] adder8 adder_low gen g", false,-1, 3,0);
         tracep->declBit(c+211,"top my_exu adder adder_low genblk2[3] adder8 adder_low gen c0", false,-1);
+        tracep->declBus(c+221,"top my_exu adder adder_low genblk2[3] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBit(c+222,"top my_exu adder adder_low genblk2[3] adder8 adder_low adder f", false,-1);
         tracep->declBit(c+223,"top my_exu adder adder_low genblk2[3] adder8 adder_low adder cout", false,-1);
         tracep->declBit(c+224,"top my_exu adder adder_low genblk2[3] adder8 adder_low adder x", false,-1);
@@ -374,10 +374,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+244,"top my_exu adder adder_low genblk2[3] adder8 adder_high p", false,-1, 4,1);
         tracep->declBus(c+245,"top my_exu adder adder_low genblk2[3] adder8 adder_high g", false,-1, 4,1);
         tracep->declBus(c+246,"top my_exu adder adder_low genblk2[3] adder8 adder_high c", false,-1, 4,1);
-        tracep->declBus(c+246,"top my_exu adder adder_low genblk2[3] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBus(c+244,"top my_exu adder adder_low genblk2[3] adder8 adder_high gen p", false,-1, 3,0);
         tracep->declBus(c+245,"top my_exu adder adder_low genblk2[3] adder8 adder_high gen g", false,-1, 3,0);
         tracep->declBit(c+212,"top my_exu adder adder_low genblk2[3] adder8 adder_high gen c0", false,-1);
+        tracep->declBus(c+246,"top my_exu adder adder_low genblk2[3] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBit(c+247,"top my_exu adder adder_low genblk2[3] adder8 adder_high adder f", false,-1);
         tracep->declBit(c+248,"top my_exu adder adder_low genblk2[3] adder8 adder_high adder cout", false,-1);
         tracep->declBit(c+249,"top my_exu adder adder_low genblk2[3] adder8 adder_high adder x", false,-1);
@@ -413,10 +413,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+279,"top my_exu adder adder_high cout_temp", false,-1, 3,0);
         {int i; for (i=0; i<4; i++) {
                 tracep->declBus(c+280+i*1,"top my_exu adder adder_high ff", true,(i+0), 7,0);}}
-        tracep->declBus(c+284,"top my_exu adder adder_high gen c", false,-1, 3,0);
         tracep->declBus(c+269,"top my_exu adder adder_high gen p", false,-1, 3,0);
         tracep->declBus(c+268,"top my_exu adder adder_high gen g", false,-1, 3,0);
         tracep->declBit(c+11,"top my_exu adder adder_high gen c0", false,-1);
+        tracep->declBus(c+284,"top my_exu adder adder_high gen c", false,-1, 3,0);
         tracep->declBus(c+285,"top my_exu adder adder_high genblk2[0] adder8 f", false,-1, 7,0);
         tracep->declBit(c+286,"top my_exu adder adder_high genblk2[0] adder8 cout", false,-1);
         tracep->declBus(c+287,"top my_exu adder adder_high genblk2[0] adder8 x", false,-1, 7,0);
@@ -433,10 +433,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+297,"top my_exu adder adder_high genblk2[0] adder8 adder_low p", false,-1, 4,1);
         tracep->declBus(c+298,"top my_exu adder adder_high genblk2[0] adder8 adder_low g", false,-1, 4,1);
         tracep->declBus(c+299,"top my_exu adder adder_high genblk2[0] adder8 adder_low c", false,-1, 4,1);
-        tracep->declBus(c+299,"top my_exu adder adder_high genblk2[0] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBus(c+297,"top my_exu adder adder_high genblk2[0] adder8 adder_low gen p", false,-1, 3,0);
         tracep->declBus(c+298,"top my_exu adder adder_high genblk2[0] adder8 adder_low gen g", false,-1, 3,0);
         tracep->declBit(c+289,"top my_exu adder adder_high genblk2[0] adder8 adder_low gen c0", false,-1);
+        tracep->declBus(c+299,"top my_exu adder adder_high genblk2[0] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBit(c+300,"top my_exu adder adder_high genblk2[0] adder8 adder_low adder f", false,-1);
         tracep->declBit(c+301,"top my_exu adder adder_high genblk2[0] adder8 adder_low adder cout", false,-1);
         tracep->declBit(c+302,"top my_exu adder adder_high genblk2[0] adder8 adder_low adder x", false,-1);
@@ -465,10 +465,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+322,"top my_exu adder adder_high genblk2[0] adder8 adder_high p", false,-1, 4,1);
         tracep->declBus(c+323,"top my_exu adder adder_high genblk2[0] adder8 adder_high g", false,-1, 4,1);
         tracep->declBus(c+324,"top my_exu adder adder_high genblk2[0] adder8 adder_high c", false,-1, 4,1);
-        tracep->declBus(c+324,"top my_exu adder adder_high genblk2[0] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBus(c+322,"top my_exu adder adder_high genblk2[0] adder8 adder_high gen p", false,-1, 3,0);
         tracep->declBus(c+323,"top my_exu adder adder_high genblk2[0] adder8 adder_high gen g", false,-1, 3,0);
         tracep->declBit(c+290,"top my_exu adder adder_high genblk2[0] adder8 adder_high gen c0", false,-1);
+        tracep->declBus(c+324,"top my_exu adder adder_high genblk2[0] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBit(c+325,"top my_exu adder adder_high genblk2[0] adder8 adder_high adder f", false,-1);
         tracep->declBit(c+326,"top my_exu adder adder_high genblk2[0] adder8 adder_high adder cout", false,-1);
         tracep->declBit(c+327,"top my_exu adder adder_high genblk2[0] adder8 adder_high adder x", false,-1);
@@ -505,10 +505,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+356,"top my_exu adder adder_high genblk2[1] adder8 adder_low p", false,-1, 4,1);
         tracep->declBus(c+357,"top my_exu adder adder_high genblk2[1] adder8 adder_low g", false,-1, 4,1);
         tracep->declBus(c+358,"top my_exu adder adder_high genblk2[1] adder8 adder_low c", false,-1, 4,1);
-        tracep->declBus(c+358,"top my_exu adder adder_high genblk2[1] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBus(c+356,"top my_exu adder adder_high genblk2[1] adder8 adder_low gen p", false,-1, 3,0);
         tracep->declBus(c+357,"top my_exu adder adder_high genblk2[1] adder8 adder_low gen g", false,-1, 3,0);
         tracep->declBit(c+348,"top my_exu adder adder_high genblk2[1] adder8 adder_low gen c0", false,-1);
+        tracep->declBus(c+358,"top my_exu adder adder_high genblk2[1] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBit(c+359,"top my_exu adder adder_high genblk2[1] adder8 adder_low adder f", false,-1);
         tracep->declBit(c+360,"top my_exu adder adder_high genblk2[1] adder8 adder_low adder cout", false,-1);
         tracep->declBit(c+361,"top my_exu adder adder_high genblk2[1] adder8 adder_low adder x", false,-1);
@@ -537,10 +537,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+381,"top my_exu adder adder_high genblk2[1] adder8 adder_high p", false,-1, 4,1);
         tracep->declBus(c+382,"top my_exu adder adder_high genblk2[1] adder8 adder_high g", false,-1, 4,1);
         tracep->declBus(c+383,"top my_exu adder adder_high genblk2[1] adder8 adder_high c", false,-1, 4,1);
-        tracep->declBus(c+383,"top my_exu adder adder_high genblk2[1] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBus(c+381,"top my_exu adder adder_high genblk2[1] adder8 adder_high gen p", false,-1, 3,0);
         tracep->declBus(c+382,"top my_exu adder adder_high genblk2[1] adder8 adder_high gen g", false,-1, 3,0);
         tracep->declBit(c+349,"top my_exu adder adder_high genblk2[1] adder8 adder_high gen c0", false,-1);
+        tracep->declBus(c+383,"top my_exu adder adder_high genblk2[1] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBit(c+384,"top my_exu adder adder_high genblk2[1] adder8 adder_high adder f", false,-1);
         tracep->declBit(c+385,"top my_exu adder adder_high genblk2[1] adder8 adder_high adder cout", false,-1);
         tracep->declBit(c+386,"top my_exu adder adder_high genblk2[1] adder8 adder_high adder x", false,-1);
@@ -577,10 +577,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+415,"top my_exu adder adder_high genblk2[2] adder8 adder_low p", false,-1, 4,1);
         tracep->declBus(c+416,"top my_exu adder adder_high genblk2[2] adder8 adder_low g", false,-1, 4,1);
         tracep->declBus(c+417,"top my_exu adder adder_high genblk2[2] adder8 adder_low c", false,-1, 4,1);
-        tracep->declBus(c+417,"top my_exu adder adder_high genblk2[2] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBus(c+415,"top my_exu adder adder_high genblk2[2] adder8 adder_low gen p", false,-1, 3,0);
         tracep->declBus(c+416,"top my_exu adder adder_high genblk2[2] adder8 adder_low gen g", false,-1, 3,0);
         tracep->declBit(c+407,"top my_exu adder adder_high genblk2[2] adder8 adder_low gen c0", false,-1);
+        tracep->declBus(c+417,"top my_exu adder adder_high genblk2[2] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBit(c+418,"top my_exu adder adder_high genblk2[2] adder8 adder_low adder f", false,-1);
         tracep->declBit(c+419,"top my_exu adder adder_high genblk2[2] adder8 adder_low adder cout", false,-1);
         tracep->declBit(c+420,"top my_exu adder adder_high genblk2[2] adder8 adder_low adder x", false,-1);
@@ -609,10 +609,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+440,"top my_exu adder adder_high genblk2[2] adder8 adder_high p", false,-1, 4,1);
         tracep->declBus(c+441,"top my_exu adder adder_high genblk2[2] adder8 adder_high g", false,-1, 4,1);
         tracep->declBus(c+442,"top my_exu adder adder_high genblk2[2] adder8 adder_high c", false,-1, 4,1);
-        tracep->declBus(c+442,"top my_exu adder adder_high genblk2[2] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBus(c+440,"top my_exu adder adder_high genblk2[2] adder8 adder_high gen p", false,-1, 3,0);
         tracep->declBus(c+441,"top my_exu adder adder_high genblk2[2] adder8 adder_high gen g", false,-1, 3,0);
         tracep->declBit(c+408,"top my_exu adder adder_high genblk2[2] adder8 adder_high gen c0", false,-1);
+        tracep->declBus(c+442,"top my_exu adder adder_high genblk2[2] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBit(c+443,"top my_exu adder adder_high genblk2[2] adder8 adder_high adder f", false,-1);
         tracep->declBit(c+444,"top my_exu adder adder_high genblk2[2] adder8 adder_high adder cout", false,-1);
         tracep->declBit(c+445,"top my_exu adder adder_high genblk2[2] adder8 adder_high adder x", false,-1);
@@ -649,10 +649,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+474,"top my_exu adder adder_high genblk2[3] adder8 adder_low p", false,-1, 4,1);
         tracep->declBus(c+475,"top my_exu adder adder_high genblk2[3] adder8 adder_low g", false,-1, 4,1);
         tracep->declBus(c+476,"top my_exu adder adder_high genblk2[3] adder8 adder_low c", false,-1, 4,1);
-        tracep->declBus(c+476,"top my_exu adder adder_high genblk2[3] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBus(c+474,"top my_exu adder adder_high genblk2[3] adder8 adder_low gen p", false,-1, 3,0);
         tracep->declBus(c+475,"top my_exu adder adder_high genblk2[3] adder8 adder_low gen g", false,-1, 3,0);
         tracep->declBit(c+466,"top my_exu adder adder_high genblk2[3] adder8 adder_low gen c0", false,-1);
+        tracep->declBus(c+476,"top my_exu adder adder_high genblk2[3] adder8 adder_low gen c", false,-1, 3,0);
         tracep->declBit(c+477,"top my_exu adder adder_high genblk2[3] adder8 adder_low adder f", false,-1);
         tracep->declBit(c+478,"top my_exu adder adder_high genblk2[3] adder8 adder_low adder cout", false,-1);
         tracep->declBit(c+479,"top my_exu adder adder_high genblk2[3] adder8 adder_low adder x", false,-1);
@@ -681,10 +681,10 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+499,"top my_exu adder adder_high genblk2[3] adder8 adder_high p", false,-1, 4,1);
         tracep->declBus(c+500,"top my_exu adder adder_high genblk2[3] adder8 adder_high g", false,-1, 4,1);
         tracep->declBus(c+501,"top my_exu adder adder_high genblk2[3] adder8 adder_high c", false,-1, 4,1);
-        tracep->declBus(c+501,"top my_exu adder adder_high genblk2[3] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBus(c+499,"top my_exu adder adder_high genblk2[3] adder8 adder_high gen p", false,-1, 3,0);
         tracep->declBus(c+500,"top my_exu adder adder_high genblk2[3] adder8 adder_high gen g", false,-1, 3,0);
         tracep->declBit(c+467,"top my_exu adder adder_high genblk2[3] adder8 adder_high gen c0", false,-1);
+        tracep->declBus(c+501,"top my_exu adder adder_high genblk2[3] adder8 adder_high gen c", false,-1, 3,0);
         tracep->declBit(c+502,"top my_exu adder adder_high genblk2[3] adder8 adder_high adder f", false,-1);
         tracep->declBit(c+503,"top my_exu adder adder_high genblk2[3] adder8 adder_high adder cout", false,-1);
         tracep->declBit(c+504,"top my_exu adder adder_high genblk2[3] adder8 adder_high adder x", false,-1);
