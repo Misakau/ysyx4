@@ -125,7 +125,7 @@ module ysyx_220053_RegisterFile #(ADDR_WIDTH = 1, DATA_WIDTH = 1) (
     if (wen) rf[waddr] <= wdata;
   end
   always @(*)begin
-    $display("wen = %d, wdata= %x, waddr = %x", wen, wdata, waddr);
+    $display("wen = %d,raaddr=%d, radata=%x, rbddr=%d, rbdata=%x, wdata= %x, waddr = %x", wen,raaddr, radata,rbaddr, rbdata, wdata, waddr);
     $display("0#: %x",rf[0]);
     $display("1#: %x",rf[1]);
     $display("2#: %x",rf[2]);
