@@ -23,9 +23,9 @@ module ysyx_220053_FA(
 endmodule
 
 module ysyx_220053_CLU4(
-    output [3:0] c,
     input [3:0] p,g,
-    input c0
+    input c0,
+    output [3:0] c
 );
     assign c[0]=g[0] | (p[0] & c0);
     assign c[1]=g[1] | (p[1] & c[0]);
