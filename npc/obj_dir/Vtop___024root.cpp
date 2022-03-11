@@ -38,32 +38,34 @@ VL_INLINE_OPT void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___settle__TOP__5\n"); );
     // Body
-    VL_WRITEF("wen = %1#, wdata= %x, waddr = %x\n0#: %x\n1#: %x\n2#: %x\n3#: %x\n",
-              1,vlSelf->top__DOT__wen,64,(((QData)((IData)(
-                                                           ((vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high.__PVT__ff
-                                                             [3U] 
-                                                             << 0x18U) 
-                                                            | ((vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high.__PVT__ff
-                                                                [2U] 
-                                                                << 0x10U) 
-                                                               | ((vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high.__PVT__ff
-                                                                   [1U] 
-                                                                   << 8U) 
-                                                                  | vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high.__PVT__ff
-                                                                  [0U]))))) 
-                                           << 0x20U) 
-                                          | (QData)((IData)(
-                                                            ((vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low.__PVT__ff
-                                                              [3U] 
-                                                              << 0x18U) 
-                                                             | ((vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low.__PVT__ff
-                                                                 [2U] 
-                                                                 << 0x10U) 
-                                                                | ((vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low.__PVT__ff
-                                                                    [1U] 
-                                                                    << 8U) 
-                                                                   | vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low.__PVT__ff
-                                                                   [0U])))))),
+    VL_WRITEF("wen = %1#,raaddr=%2#, radata=%x, rbddr=%2#, rbdata=%x, wdata= %x, waddr = %x\n0#: %x\n1#: %x\n2#: %x\n3#: %x\n",
+              1,vlSelf->top__DOT__wen,5,(0x1fU & (vlSelf->instr_i 
+                                                  >> 0xfU)),
+              64,vlSelf->top__DOT__my_exu__DOT__busa,
+              5,(0x1fU & (vlSelf->instr_i >> 0x14U)),
+              64,((0U == (0x1fU & (vlSelf->instr_i 
+                                   >> 0x14U))) ? 0ULL
+                   : vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+                  [(0x1fU & (vlSelf->instr_i >> 0x14U))]),
+              64,(((QData)((IData)(((vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high.__PVT__ff
+                                     [3U] << 0x18U) 
+                                    | ((vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high.__PVT__ff
+                                        [2U] << 0x10U) 
+                                       | ((vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high.__PVT__ff
+                                           [1U] << 8U) 
+                                          | vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_high.__PVT__ff
+                                          [0U]))))) 
+                   << 0x20U) | (QData)((IData)(((vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low.__PVT__ff
+                                                 [3U] 
+                                                 << 0x18U) 
+                                                | ((vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low.__PVT__ff
+                                                    [2U] 
+                                                    << 0x10U) 
+                                                   | ((vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low.__PVT__ff
+                                                       [1U] 
+                                                       << 8U) 
+                                                      | vlSymsp->TOP__top__DOT__my_exu__DOT__adder__DOT__adder_low.__PVT__ff
+                                                      [0U])))))),
               5,(0x1fU & (vlSelf->instr_i >> 7U)),64,
               vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
               [0U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf

@@ -11,7 +11,7 @@ module ysyx_220053_EXU(
 );
     wire [63:0] busa, busb;
     wire [63:0] res;
-    ysyx_220053_RegisterFile #(5, 64) regfile(.clk(~clk),
+    ysyx_220053_RegisterFile #(5, 64) regfile(.clk(clk),
                                               .raaddr(rs1),
                                               .rbaddr(rs2),
                                               .radata(busa),
