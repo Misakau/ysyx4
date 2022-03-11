@@ -3,7 +3,7 @@
 module ysyx_220053_InstrToImm(
 	input [31:0] instr,
     input [2:0] ExtOp,
-    output reg [63:0] imm,
+    output reg [63:0] imm
 );
 	always @(*) begin
 		case(ExtOp)
