@@ -21,7 +21,7 @@ module ysyx_220053_IDU(
     assign rs1 = instr_i[19:15];
     assign rs2 = instr_i[24:20];
     assign func7 = instr_i[31:25];
-    reg [2:0] ExtOp;
+    wire [2:0] ExtOp;
     wire [63:0] my_imm;
     ysyx_220053_InstrToImm insttoimm(instr_i, ExtOp, imm);
     assign my_imm = imm;
