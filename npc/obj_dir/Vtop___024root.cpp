@@ -25,9 +25,26 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     if (vlSelf->top__DOT__wen) {
         __Vdlyvval__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 
             = ((0xfU == (IData)(vlSelf->top__DOT__ALUOp))
-                ? (QData)((IData)((1U & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB))))
-                : (QData)((IData)((1U & vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low.__PVT__ff
-                                   [0U]))));
+                ? vlSelf->top__DOT__my_exu__DOT__alu_inB
+                : (((QData)((IData)(((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high.__PVT__ff
+                                      [3U] << 0x18U) 
+                                     | ((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high.__PVT__ff
+                                         [2U] << 0x10U) 
+                                        | ((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high.__PVT__ff
+                                            [1U] << 8U) 
+                                           | vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high.__PVT__ff
+                                           [0U]))))) 
+                    << 0x20U) | (QData)((IData)(((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low.__PVT__ff
+                                                  [3U] 
+                                                  << 0x18U) 
+                                                 | ((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low.__PVT__ff
+                                                     [2U] 
+                                                     << 0x10U) 
+                                                    | ((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low.__PVT__ff
+                                                        [1U] 
+                                                        << 8U) 
+                                                       | vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low.__PVT__ff
+                                                       [0U])))))));
         __Vdlyvset__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 = 1U;
         __Vdlyvdim0__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 
             = (0x1fU & (vlSelf->instr_i >> 7U));
@@ -55,12 +72,30 @@ VL_INLINE_OPT void Vtop___024root___settle__TOP__4(Vtop___024root* vlSelf) {
                    : vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
                   [(0x1fU & (vlSelf->instr_i >> 0x14U))]),
               64,((0xfU == (IData)(vlSelf->top__DOT__ALUOp))
-                   ? (QData)((IData)((1U & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB))))
-                   : (QData)((IData)((1U & vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low.__PVT__ff
-                                      [0U])))),5,(0x1fU 
-                                                  & (vlSelf->instr_i 
-                                                     >> 7U)),
-              64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
+                   ? vlSelf->top__DOT__my_exu__DOT__alu_inB
+                   : (((QData)((IData)(((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high.__PVT__ff
+                                         [3U] << 0x18U) 
+                                        | ((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high.__PVT__ff
+                                            [2U] << 0x10U) 
+                                           | ((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high.__PVT__ff
+                                               [1U] 
+                                               << 8U) 
+                                              | vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high.__PVT__ff
+                                              [0U]))))) 
+                       << 0x20U) | (QData)((IData)(
+                                                   ((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low.__PVT__ff
+                                                     [3U] 
+                                                     << 0x18U) 
+                                                    | ((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low.__PVT__ff
+                                                        [2U] 
+                                                        << 0x10U) 
+                                                       | ((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low.__PVT__ff
+                                                           [1U] 
+                                                           << 8U) 
+                                                          | vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low.__PVT__ff
+                                                          [0U]))))))),
+              5,(0x1fU & (vlSelf->instr_i >> 7U)),64,
+              vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
               [0U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
               [1U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
               [2U],64,vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
@@ -181,9 +216,8 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__5(Vtop___024root* vlSelf) {
                                                       >> 0x14U))]));
 }
 
-void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high__1(Vtop_ysyx_220053_Adder32* vlSelf);
-void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low__2(Vtop_ysyx_220053_Adder32* vlSelf);
-void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high__3(Vtop_ysyx_220053_Adder32* vlSelf);
+void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low__1(Vtop_ysyx_220053_Adder32* vlSelf);
+void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high__2(Vtop_ysyx_220053_Adder32* vlSelf);
 
 void Vtop___024root___eval(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -196,9 +230,8 @@ void Vtop___024root___eval(Vtop___024root* vlSelf) {
     }
     Vtop___024root___combo__TOP__5(vlSelf);
     vlSelf->__Vm_traceActivity[2U] = 1U;
-    Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high__1((&vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high));
-    Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low__2((&vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low));
-    Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high__3((&vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high));
+    Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low__1((&vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low));
+    Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high__2((&vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high));
     Vtop___024root___settle__TOP__4(vlSelf);
     // Final
     vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
