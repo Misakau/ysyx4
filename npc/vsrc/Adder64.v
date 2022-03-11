@@ -1,4 +1,5 @@
 /* verilator lint_off DECLFILENAME */
+/* verilator lint_off PINMISSING */
 module ysyx_220053_Adder64(
     output [63:0] result,
     output cout,

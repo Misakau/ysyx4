@@ -1,4 +1,5 @@
 /* verilator lint_off DECLFILENAME */
+/* verilator lint_off PINMISSING */
 module ysyx_220053_CLU4(
     output [4:1] c,
     input [4:1] p,g,

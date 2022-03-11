@@ -35,7 +35,7 @@ void Vtop_ysyx_220053_Adder32___ctor_var_reset(Vtop_ysyx_220053_Adder32* vlSelf)
     vlSelf->result = VL_RAND_RESET_I(32);
     vlSelf->cout = VL_RAND_RESET_I(1);
     vlSelf->x = VL_RAND_RESET_I(32);
-    vlSelf->y = VL_RAND_RESET_Q(33);
+    vlSelf->y = VL_RAND_RESET_I(32);
     vlSelf->sub = VL_RAND_RESET_I(1);
     vlSelf->__PVT__Gg = VL_RAND_RESET_I(4);
     vlSelf->__PVT__Pg = VL_RAND_RESET_I(4);

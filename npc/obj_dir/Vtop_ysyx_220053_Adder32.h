@@ -23,7 +23,7 @@ VL_MODULE(Vtop_ysyx_220053_Adder32) {
     VL_IN8(sub,0,0);
     VL_OUT(result,31,0);
     VL_IN(x,31,0);
-    VL_IN64(y,32,0);
+    VL_IN(y,31,0);
 
     // LOCAL SIGNALS
     CData/*3:0*/ __PVT__Gg;
