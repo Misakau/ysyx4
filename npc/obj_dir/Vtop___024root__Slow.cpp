@@ -184,6 +184,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_ifu__DOT__now_pc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__dnpc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_idu__DOT__ExtOp = VL_RAND_RESET_I(3);
+    vlSelf->top__DOT__my_idu__DOT__my_imm = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_exu__DOT__busa = VL_RAND_RESET_Q(64);
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[__Vi0] = VL_RAND_RESET_Q(64);

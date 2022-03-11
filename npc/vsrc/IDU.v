@@ -23,10 +23,11 @@ module ysyx_220053_IDU(
     assign func7 = instr_i[31:25];
     wire [2:0] ExtOp;
     wire [63:0] my_imm;
-    ysyx_220053_InstrToImm insttoimm(instr_i, ExtOp, imm);
+    
     //controler
     ysyx_220053_controler control(imm, op, func3, ExtOp, wen);
-
+    
+    ysyx_220053_InstrToImm insttoimm(instr_i, ExtOp, imm);
     
 
 endmodule
