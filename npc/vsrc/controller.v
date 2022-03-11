@@ -8,6 +8,7 @@ module ysyx_220053_controler(
     output reg [2:0] ExtOp,
     output reg wen
 );
+
 `define ysyx_220053_I 0
 `define ysyx_220053_U 1
 `define ysyx_220053_S 2
