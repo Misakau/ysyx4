@@ -9,19 +9,17 @@ module ysyx_220053_controler(
     output reg wen
 );
 
-
+define ysyx_220053_I 0
+define ysyx_220053_U 1
+define ysyx_220053_S 2
+define ysyx_220053_B 3
+define ysyx_220053_J 4
+define ysyx_220053_R 5
 
     always @(*) begin
-    
         case(op)
             7'b0110111://lui
                 begin
-                `define ysyx_220053_I 0
-`define ysyx_220053_U 1
-`define ysyx_220053_S 2
-`define ysyx_220053_B 3
-`define ysyx_220053_J 4
-`define ysyx_220053_R 5
                     ALUSrcB = 0; ExtOp = ysyx_220053_U; wen = 1;
                 end
             7'b0010011://addi
