@@ -2304,7 +2304,8 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                              >> 0x14U))),5);
         tracep->chgCData(oldp+671,((7U & (vlSelf->instr_i 
                                           >> 0xcU))),3);
-        tracep->chgQData(oldp+672,(((0U == (0x1fU & 
+        tracep->chgQData(oldp+672,((QData)((IData)(vlSelf->instr_i))),64);
+        tracep->chgQData(oldp+674,(((0U == (0x1fU & 
                                             (vlSelf->instr_i 
                                              >> 0x14U)))
                                      ? 0ULL : vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf

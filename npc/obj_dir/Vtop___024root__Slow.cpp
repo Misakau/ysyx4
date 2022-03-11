@@ -60,7 +60,8 @@ void Vtop___024root___settle__TOP__3(Vtop___024root* vlSelf) {
             VL_WRITEF("no\n");
         }
     } else if (VL_LIKELY((0x73U == (0x7fU & vlSelf->instr_i)))) {
-        if (VL_LIKELY((1ULL == vlSelf->top__DOT__imm))) {
+        if (VL_LIKELY((1U == (0xfffU & (IData)(((QData)((IData)(vlSelf->instr_i)) 
+                                                >> 0x14U)))))) {
             vlSelf->top__DOT__my_idu__DOT__ExtOp = 0U;
             vlSelf->top__DOT__wen = 0U;
             Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
@@ -189,7 +190,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[__Vi0] = VL_RAND_RESET_Q(64);
     }
-    vlSelf->__Vchglast__TOP__top__DOT__imm = VL_RAND_RESET_Q(64);
     for (int __Vi0=0; __Vi0<3; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
     }

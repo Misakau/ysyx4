@@ -108,7 +108,8 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__5(Vtop___024root* vlSelf) {
             VL_WRITEF("no\n");
         }
     } else if (VL_LIKELY((0x73U == (0x7fU & vlSelf->instr_i)))) {
-        if (VL_LIKELY((1ULL == vlSelf->top__DOT__imm))) {
+        if (VL_LIKELY((1U == (0xfffU & (IData)(((QData)((IData)(vlSelf->instr_i)) 
+                                                >> 0x14U)))))) {
             vlSelf->top__DOT__my_idu__DOT__ExtOp = 0U;
             vlSelf->top__DOT__wen = 0U;
             Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
@@ -221,10 +222,6 @@ VL_INLINE_OPT QData Vtop___024root___change_request_1(Vtop___024root* vlSelf) {
     // Body
     // Change detection
     QData __req = false;  // Logically a bool
-    __req |= ((vlSelf->top__DOT__imm ^ vlSelf->__Vchglast__TOP__top__DOT__imm));
-    VL_DEBUG_IF( if(__req && ((vlSelf->top__DOT__imm ^ vlSelf->__Vchglast__TOP__top__DOT__imm))) VL_DBG_MSGF("        CHANGE: vsrc/top.v:20: top.imm\n"); );
-    // Final
-    vlSelf->__Vchglast__TOP__top__DOT__imm = vlSelf->top__DOT__imm;
     return __req;
 }
 

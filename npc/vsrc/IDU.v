@@ -32,7 +32,7 @@ module ysyx_220053_IDU(
 endmodule
 
 module ysyx_220053_controler(
-    input [63:0] instr_i,
+    input [31:0] instr_i,
     input [6:0] op,
     input [2:0] func3,
     output reg [2:0] ExtOp,
