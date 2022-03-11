@@ -9,7 +9,7 @@ module ysyx_220053_EXU(
     input [63:0] immI
 );
     wire [63:0] busa, busb;
-    reg [63:0] res;
+    wire [63:0] res;
     ysyx_220053_RegisterFile #(5, 64) regfile(.clk(~clk),
                                               .raaddr(rs1),
                                               .rbaddr(rs2),
@@ -19,7 +19,6 @@ module ysyx_220053_EXU(
                                               .waddr(rd),
                                               .wen(wen)
                                             );
-    always @(*) begin
-        res = busa + immI; //addi
-    end
+    ysyx_220053_Adder64(.result(res),.x(busa),.y(immI),.sub(0));
+        //busa + immI; //addi
 endmodule
