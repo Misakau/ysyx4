@@ -19,6 +19,7 @@ module top(
     wire [2:0] func3;
     wire [63:0] imm;
     wire wen, ALUSrcB;
+    wire [3:0] ALUOp;
     ysyx_220053_IDU my_idu(
       .instr_i(instr_i),
       .op(op),
@@ -26,6 +27,7 @@ module top(
       .func3(func3),.func7(func7),
       .imm(imm),
       .ALUSrcB(ALUSrcB),
+      .ALUOp(ALUOp),
       .wen(wen)
       );
 
@@ -36,6 +38,7 @@ module top(
       .rs2(rs2),
       .wen(wen),
       .ALUSrcB(ALUSrcB),
+      .ALUOp(ALUOp),
       .imm(imm)
     );
 

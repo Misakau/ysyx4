@@ -7,11 +7,13 @@ module ysyx_220053_EXU(
     input [4:0] rs1,
     input [4:0] rs2,
     input wen, ALUSrcB,
+    input [3:0] ALUOp,
     input [63:0] imm
 );
     wire [63:0] busa, busb;
     wire [63:0] res;
-    wire [63:0] alu_inB;
+    wire [63:0] alu_inA, alu_inB;
+    assign alu_inA = busa;
     assign alu_inB = (ALUSrcB == 1'b1) ? imm : busb;
     ysyx_220053_RegisterFile #(5, 64) regfile(.clk(clk),
                                               .raaddr(rs1),
@@ -22,6 +24,6 @@ module ysyx_220053_EXU(
                                               .waddr(rd),
                                               .wen(wen)
                                             );
-    ysyx_220053_Adder64 adder(.result(res),.x(busa),.y(alu_inB),.sub(0));
+    ysyx_220053_ALU alu64(alu_inA, alu_inB, ALUOp, res);
         //busa + immI; //addi
 endmodule

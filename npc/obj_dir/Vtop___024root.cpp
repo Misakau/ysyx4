@@ -99,7 +99,7 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__5(Vtop___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___combo__TOP__5\n"); );
     // Body
     if ((0x37U == (0x7fU & vlSelf->instr_i))) {
-        vlSelf->top__DOT__ALUSrcB = 0U;
+        vlSelf->top__DOT__ALUSrcB = 1U;
         vlSelf->top__DOT__my_idu__DOT__ExtOp = 1U;
         vlSelf->top__DOT__wen = 1U;
     } else if ((0x13U == (0x7fU & vlSelf->instr_i))) {
