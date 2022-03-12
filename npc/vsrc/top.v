@@ -37,6 +37,7 @@ module top(
 
     ysyx_220053_EXU my_exu(
       .clk(clk),
+      .rst(rst),
       .rd(rd),
       .rs1(rs1),
       .rs2(rs2),

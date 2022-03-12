@@ -2,7 +2,7 @@
 /* verilator lint_off UNUSED */
 /* verilator lint_off PINMISSING */
 module ysyx_220053_EXU(
-    input clk,
+    input clk, rst,
     input [4:0] rd,
     input [4:0] rs1,
     input [4:0] rs2,
@@ -17,16 +17,18 @@ module ysyx_220053_EXU(
     wire [63:0] busa, busb;
     wire [63:0] res;
     wire [63:0] alu_inA, alu_inB;
+    wire is_wen;
+    assign is_wen = wen & (~rst);
     assign alu_inA = (ALUSrcA == 1'b1) ? busa : pc;
     assign alu_inB = (ALUSrcB == 2'b01) ? imm : ((ALUSrcB == 2'b00) ? busb : 4);
-    ysyx_220053_RegisterFile #(5, 64) regfile(.clk(clk),
+    ysyx_220053_RegisterFile #(5, 64) regfile(.clk(~clk),
                                               .raaddr(rs1),
                                               .rbaddr(rs2),
                                               .radata(busa),
                                               .rbdata(busb),
                                               .wdata(res),
                                               .waddr(rd),
-                                              .wen(wen)
+                                              .wen(is_wen)
                                             );
     ysyx_220053_ALU alu64(alu_inA, alu_inB, ALUOp, res);
         //busa + immI; //addi
