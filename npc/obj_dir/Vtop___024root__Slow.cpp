@@ -268,7 +268,6 @@ void Vtop___024root___initial__TOP__5(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___initial__TOP__5\n"); );
     // Body
-    VL_FINISH_MT("vsrc/EXU.v", 52, "");
     VL_WRITEF("dnpc=%x\n",64,(((QData)((IData)(((vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high.__PVT__ff
                                                  [3U] 
                                                  << 0x18U) 
@@ -292,6 +291,7 @@ void Vtop___024root___initial__TOP__5(Vtop___024root* vlSelf) {
                                                                    << 8U) 
                                                                   | vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.__PVT__ff
                                                                   [0U])))))));
+    VL_FINISH_MT("vsrc/EXU.v", 52, "");
 }
 
 void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
