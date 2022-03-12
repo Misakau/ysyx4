@@ -45,7 +45,6 @@ int main(int argc, char**argv, char**env) {
         top->instr_i = pimem_read(top->pc);
         printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
         top->eval();
-        printf("Now_pc = %016lx\n",top->pc);
         cnt ++;
     }
     delete top;
