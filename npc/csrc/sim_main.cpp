@@ -9,7 +9,7 @@ static bool EXIT = 0;
 uint32_t pimem_read(uint64_t paddr){
     uint64_t real_addr = (paddr - AD_BASE) >> 2;
     //assert(real_addr < MEMSIZE);
-    if(real_addr < MEMSIZE){EXIT = 1;return 0;}
+    if(real_addr < MEMSIZE){EXIT = 1;printf("addrs=%lx\n",paddr);return 0;}
     return IMEM[real_addr];
 }
 static bool is_done = false;
