@@ -33,6 +33,10 @@ parameter ysyx_220053_R = 5;
                 begin
                     Branch = 3'b001; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 4'b0000; ExtOp = ysyx_220053_J; wen = 1;
                 end
+            7'b1100111://jal
+                begin
+                    Branch = 3'b010; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 4'b0000; ExtOp = ysyx_220053_I; wen = 1;
+                end
             7'b0010011://addi
                 begin
                     Branch = 0; //wen = 1;
