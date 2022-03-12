@@ -35,9 +35,9 @@ parameter ysyx_220053_R = 5;
                 end
             7'b0010011://addi
                 begin
-                     //wen = 1;
+                    Branch = 0; //wen = 1;
                     case(func3)
-                        3'b000: begin Branch = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; ExtOp = ysyx_220053_I; wen = 1; end
                         default: $display("no");
                     endcase
                 end
