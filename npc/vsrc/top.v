@@ -11,6 +11,7 @@ module top(
     ysyx_220053_IFU my_ifu(
     .clk(clk),
     .rst(rst),
+    .dnpc(dnpc),
     .pc(pc)
     );
     wire [63:0] dnpc;
