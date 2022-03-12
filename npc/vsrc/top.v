@@ -13,13 +13,15 @@ module top(
     .rst(rst),
     .pc(pc)
     );
-
+    wire [63:0] dnpc;
     wire [6:0] op, func7;
     wire [4:0] rd, rs1, rs2;
     wire [2:0] func3;
     wire [63:0] imm;
-    wire wen, ALUSrcA, ALUSrcB;
+    wire wen, ALUSrcA;
+    wire [1:0] ALUSrcB;
     wire [3:0] ALUOp;
+    wire [2:0] Branch;
     ysyx_220053_IDU my_idu(
       .instr_i(instr_i),
       .op(op),
@@ -29,6 +31,7 @@ module top(
       .ALUSrcA(ALUSrcA),
       .ALUSrcB(ALUSrcB),
       .ALUOp(ALUOp),
+      .Branch(Branch),
       .wen(wen)
       );
 
@@ -42,7 +45,8 @@ module top(
       .ALUSrcB(ALUSrcB),
       .ALUOp(ALUOp),
       .pc(pc),
-      .imm(imm)
+      .imm(imm),
+      .dnpc(dnpc)
     );
 
     initial begin
