@@ -52,8 +52,11 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___settle__TOP__2\n"); );
     // Body
     vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__NexB 
-        = (1U == (IData)(vlSelf->top__DOT__my_exu__DOT__Branch));
-    vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__NexA = 0U;
+        = ((1U == (IData)(vlSelf->top__DOT__my_exu__DOT__Branch)) 
+           | (2U == (IData)(vlSelf->top__DOT__my_exu__DOT__Branch)));
+    vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__NexA 
+        = ((1U != (IData)(vlSelf->top__DOT__my_exu__DOT__Branch)) 
+           & (2U == (IData)(vlSelf->top__DOT__my_exu__DOT__Branch)));
     if ((0x40U & vlSelf->instr_i)) {
         if (VL_LIKELY((0x20U & vlSelf->instr_i))) {
             if ((0x10U & vlSelf->instr_i)) {
@@ -85,7 +88,7 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
                     VL_WRITEF("no, op=%x\n",7,(0x7fU 
                                                & vlSelf->instr_i));
                 }
-            } else if (VL_LIKELY((8U & vlSelf->instr_i))) {
+            } else if ((8U & vlSelf->instr_i)) {
                 if (VL_LIKELY((4U & vlSelf->instr_i))) {
                     if (VL_LIKELY((2U & vlSelf->instr_i))) {
                         if (VL_LIKELY((1U & vlSelf->instr_i))) {
@@ -99,6 +102,23 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
                             VL_WRITEF("no, op=%x\n",
                                       7,(0x7fU & vlSelf->instr_i));
                         }
+                    } else {
+                        VL_WRITEF("no, op=%x\n",7,(0x7fU 
+                                                   & vlSelf->instr_i));
+                    }
+                } else {
+                    VL_WRITEF("no, op=%x\n",7,(0x7fU 
+                                               & vlSelf->instr_i));
+                }
+            } else if (VL_LIKELY((4U & vlSelf->instr_i))) {
+                if (VL_LIKELY((2U & vlSelf->instr_i))) {
+                    if (VL_LIKELY((1U & vlSelf->instr_i))) {
+                        vlSelf->top__DOT__Branch = 2U;
+                        vlSelf->top__DOT__ALUSrcA = 0U;
+                        vlSelf->top__DOT__ALUSrcB = 2U;
+                        vlSelf->top__DOT__ALUOp = 0U;
+                        vlSelf->top__DOT__my_idu__DOT__ExtOp = 0U;
+                        vlSelf->top__DOT__wen = 1U;
                     } else {
                         VL_WRITEF("no, op=%x\n",7,(0x7fU 
                                                    & vlSelf->instr_i));
@@ -246,7 +266,8 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__imm = 0ULL;
     }
     vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__SrcA 
-        = vlSelf->pc;
+        = ((IData)(vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__NexA)
+            ? vlSelf->top__DOT__my_exu__DOT__busa : vlSelf->pc);
     vlSelf->top__DOT__my_exu__DOT__alu_inA = ((IData)(vlSelf->top__DOT__ALUSrcA)
                                                ? vlSelf->top__DOT__my_exu__DOT__busa
                                                : vlSelf->pc);
