@@ -171,9 +171,9 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__5(Vtop___024root* vlSelf) {
             }
         } else if (VL_LIKELY((2U & vlSelf->instr_i))) {
             if (VL_LIKELY((1U & vlSelf->instr_i))) {
+                vlSelf->top__DOT__Branch = 0U;
                 if (VL_LIKELY((0U == (7U & (vlSelf->instr_i 
                                             >> 0xcU))))) {
-                    vlSelf->top__DOT__Branch = 0U;
                     vlSelf->top__DOT__ALUSrcA = 1U;
                     vlSelf->top__DOT__ALUSrcB = 1U;
                     vlSelf->top__DOT__ALUOp = 0U;
