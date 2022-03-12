@@ -38,17 +38,17 @@ parameter ysyx_220053_R = 5;
                     Branch = 0; //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; ExtOp = ysyx_220053_I; wen = 1; end
-                        default: $display("no");
+                        default: $display("no1");
                     endcase
                 end
             7'b1110011://ebreak
              	begin
              		case(instr_i[31:20])
              			1: begin Branch = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; ExtOp = ysyx_220053_I; wen = 0; c_trap(1); end
-             			default: $display("no");
+             			default: $display("no2");
              		endcase
              	end
-            default: $display("no");
+            default: $display("no3");
         endcase
     end
 

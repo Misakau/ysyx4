@@ -62,7 +62,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[__Vdlyvdim0__top__DOT__my_exu__DOT__regfile__DOT__rf__v0] 
             = __Vdlyvval__top__DOT__my_exu__DOT__regfile__DOT__rf__v0;
     }
-    VL_WRITEF("now_pc=%x\n",64,vlSelf->top__DOT__my_ifu__DOT__now_pc);
+    VL_WRITEF("IN.V: now_pc=%x, dnpc=%x\n",64,vlSelf->top__DOT__my_ifu__DOT__now_pc,
+              64,vlSelf->top__DOT__my_ifu__DOT__dnpc);
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
 }
 
