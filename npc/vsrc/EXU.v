@@ -43,7 +43,7 @@ module ysyx_220053_NexAddr(
     always@(*) begin
         case(Branch)
             3'b001: begin NexA = 0; SrcB = 1; end
-            default: 
+            default: begin NexA = 0; SrcB = 0; end
         endcase
     end
     assign SrcA = (NexA == 0) ? pc : busa;
