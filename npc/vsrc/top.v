@@ -46,6 +46,7 @@ module top(
       .ALUSrcA(ALUSrcA),
       .ALUSrcB(ALUSrcB),
       .ALUOp(ALUOp),
+      .Branch(Branch),
       .pc(pc),
       .imm(imm),
       .dnpc(dnpc)
