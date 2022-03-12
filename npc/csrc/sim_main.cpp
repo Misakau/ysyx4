@@ -40,7 +40,7 @@ int main(int argc, char**argv, char**env) {
         top->clk = !top->clk;
         //top->rst = rand()&1;
         if(top->clk == 0) top->instr_i = pimem_read(top->pc);
-        printf("clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
+        printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
         top->eval();
         cnt ++;
     }
