@@ -174,6 +174,7 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
         VL_WRITEF("no\n");
     }
     VL_WRITEF("now_pc=%x\n",64,vlSelf->top__DOT__my_ifu__DOT__now_pc);
+    vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
     vlSelf->top__DOT__my_exu__DOT__busa = ((0U == (0x1fU 
                                                    & (vlSelf->instr_i 
                                                       >> 0xfU)))
@@ -182,7 +183,6 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
                                            [(0x1fU 
                                              & (vlSelf->instr_i 
                                                 >> 0xfU))]);
-    vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
     if ((0U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = (((- (QData)((IData)(
                                                      (vlSelf->instr_i 
@@ -280,7 +280,6 @@ void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__nextaddr__DO
 void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high__2(Vtop_ysyx_220053_Adder32* vlSelf);
 void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low__3(Vtop_ysyx_220053_Adder32* vlSelf);
 void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high__4(Vtop_ysyx_220053_Adder32* vlSelf);
-void Vtop___024root___settle__TOP__3(Vtop___024root* vlSelf);
 
 void Vtop___024root___eval_settle(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -295,7 +294,6 @@ void Vtop___024root___eval_settle(Vtop___024root* vlSelf) {
     Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high__2((&vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high));
     Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low__3((&vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low));
     Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high__4((&vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high));
-    Vtop___024root___settle__TOP__3(vlSelf);
 }
 
 void Vtop___024root___final(Vtop___024root* vlSelf) {

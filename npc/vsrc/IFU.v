@@ -10,7 +10,7 @@ module ysyx_220053_IFU(
     //assign snpc = now_pc + 4;
     assign pc = now_pc;
     always@(*)begin
-        $display("now_pc=%x",now_pc);
+        $display("IN.V: now_pc=%x, dnpc=%x",now_pc, dnpc);
     end
     ysyx_220053_Reg #(64, 64'h80000000) PC(.clk(~clk), .rst(rst), dnpc, now_pc, 1'b1);
 
