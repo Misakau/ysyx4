@@ -171,7 +171,6 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
     } else {
         VL_WRITEF("no\n");
     }
-    vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
     vlSelf->top__DOT__my_exu__DOT__busa = ((0U == (0x1fU 
                                                    & (vlSelf->instr_i 
                                                       >> 0xfU)))
@@ -180,6 +179,7 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
                                            [(0x1fU 
                                              & (vlSelf->instr_i 
                                                 >> 0xfU))]);
+    vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
     if ((0U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = (((- (QData)((IData)(
                                                      (vlSelf->instr_i 
