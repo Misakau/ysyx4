@@ -6,7 +6,7 @@ module ysyx_220053_IFU(
     input [63:0] dnpc,
     output [63:0] pc
 );
-    wire [63:0] now_pc, dnpc;
+    wire [63:0] now_pc;
     //assign snpc = now_pc + 4;
     assign pc = now_pc;
     ysyx_220053_Reg #(64, 64'h80000000) PC(.clk(clk), .rst(rst), dnpc, now_pc, 1'b1);
