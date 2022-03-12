@@ -27,8 +27,6 @@ int main(int argc, char**argv, char**env) {
     top->eval();
     top->clk = 1;
     top->eval();
-    top->clk = 0;
-    top->eval();
     top->rst = 0;
     int cnt = 0;
     IMEM[0] = 0x7ff00093;// addi x0,x1,1
