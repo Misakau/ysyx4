@@ -48,7 +48,7 @@ parameter ysyx_220053_R = 5;
              			default: $display("no");
              		endcase
              	end
-            default: $display("no");
+            default: $display("no, op=%x",op);
         endcase
     end
 
