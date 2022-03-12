@@ -24,11 +24,11 @@ int main(int argc, char**argv, char**env) {
     //reset the pc
     top->clk = 1;
     top->eval();
-    printf("Now_pc = %016lx\n",top->pc);
+    //printf("Now_pc = %016lx\n",top->pc);
     top->clk = 0;
     top->rst = 1;
     top->eval();
-    printf("Now_pc = %016lx\n",top->pc);
+    //printf("Now_pc = %016lx\n",top->pc);
     top->rst = 0;
     int cnt = 0;
     IMEM[0] = 0x7ff00093;// addi x0,x1,1
