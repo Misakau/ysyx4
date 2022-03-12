@@ -171,6 +171,7 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
     } else {
         VL_WRITEF("no\n");
     }
+    VL_WRITEF("now_pc=%x\n",64,vlSelf->top__DOT__my_ifu__DOT__now_pc);
     vlSelf->top__DOT__my_exu__DOT__busa = ((0U == (0x1fU 
                                                    & (vlSelf->instr_i 
                                                       >> 0xfU)))
