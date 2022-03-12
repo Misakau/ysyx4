@@ -54,8 +54,6 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__NexB 
         = (1U == (IData)(vlSelf->top__DOT__my_exu__DOT__Branch));
     vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__NexA = 0U;
-    vlSelf->top__DOT__my_ifu__DOT____Vcellinp__PC__clk 
-        = (1U & (~ (IData)(vlSelf->clk)));
     if ((0x40U & vlSelf->instr_i)) {
         if (VL_LIKELY((0x20U & vlSelf->instr_i))) {
             if ((0x10U & vlSelf->instr_i)) {
@@ -284,8 +282,7 @@ void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___eval_initial\n"); );
     // Body
     Vtop___024root___initial__TOP__1(vlSelf);
-    vlSelf->__Vclklast__TOP__top__DOT__my_ifu__DOT____Vcellinp__PC__clk 
-        = vlSelf->top__DOT__my_ifu__DOT____Vcellinp__PC__clk;
+    vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
 }
 
 void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low__1(Vtop_ysyx_220053_Adder32* vlSelf);
@@ -334,7 +331,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_ifu__DOT__dnpc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__now_pc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__snpc = VL_RAND_RESET_Q(64);
-    vlSelf->top__DOT__my_ifu__DOT____Vcellinp__PC__clk = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_idu__DOT__ExtOp = VL_RAND_RESET_I(3);
     vlSelf->top__DOT__my_exu__DOT__Branch = VL_RAND_RESET_I(3);
     vlSelf->top__DOT__my_exu__DOT__busa = VL_RAND_RESET_Q(64);
