@@ -60,9 +60,11 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
         if (VL_LIKELY((0x20U & vlSelf->instr_i))) {
             if ((0x10U & vlSelf->instr_i)) {
                 if (VL_UNLIKELY((8U & vlSelf->instr_i))) {
-                    VL_WRITEF("no\n");
+                    VL_WRITEF("no, op=%x\n",7,(0x7fU 
+                                               & vlSelf->instr_i));
                 } else if (VL_UNLIKELY((4U & vlSelf->instr_i))) {
-                    VL_WRITEF("no\n");
+                    VL_WRITEF("no, op=%x\n",7,(0x7fU 
+                                               & vlSelf->instr_i));
                 } else if (VL_LIKELY((2U & vlSelf->instr_i))) {
                     if (VL_LIKELY((1U & vlSelf->instr_i))) {
                         if (VL_LIKELY((1U == (vlSelf->instr_i 
@@ -78,10 +80,12 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
                             VL_WRITEF("no\n");
                         }
                     } else {
-                        VL_WRITEF("no\n");
+                        VL_WRITEF("no, op=%x\n",7,(0x7fU 
+                                                   & vlSelf->instr_i));
                     }
                 } else {
-                    VL_WRITEF("no\n");
+                    VL_WRITEF("no, op=%x\n",7,(0x7fU 
+                                               & vlSelf->instr_i));
                 }
             } else if (VL_LIKELY((8U & vlSelf->instr_i))) {
                 if (VL_LIKELY((4U & vlSelf->instr_i))) {
@@ -94,24 +98,27 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
                             vlSelf->top__DOT__my_idu__DOT__ExtOp = 4U;
                             vlSelf->top__DOT__wen = 1U;
                         } else {
-                            VL_WRITEF("no\n");
+                            VL_WRITEF("no, op=%x\n",
+                                      7,(0x7fU & vlSelf->instr_i));
                         }
                     } else {
-                        VL_WRITEF("no\n");
+                        VL_WRITEF("no, op=%x\n",7,(0x7fU 
+                                                   & vlSelf->instr_i));
                     }
                 } else {
-                    VL_WRITEF("no\n");
+                    VL_WRITEF("no, op=%x\n",7,(0x7fU 
+                                               & vlSelf->instr_i));
                 }
             } else {
-                VL_WRITEF("no\n");
+                VL_WRITEF("no, op=%x\n",7,(0x7fU & vlSelf->instr_i));
             }
         } else {
-            VL_WRITEF("no\n");
+            VL_WRITEF("no, op=%x\n",7,(0x7fU & vlSelf->instr_i));
         }
     } else if ((0x20U & vlSelf->instr_i)) {
         if (VL_LIKELY((0x10U & vlSelf->instr_i))) {
             if (VL_UNLIKELY((8U & vlSelf->instr_i))) {
-                VL_WRITEF("no\n");
+                VL_WRITEF("no, op=%x\n",7,(0x7fU & vlSelf->instr_i));
             } else if (VL_LIKELY((4U & vlSelf->instr_i))) {
                 if (VL_LIKELY((2U & vlSelf->instr_i))) {
                     if (VL_LIKELY((1U & vlSelf->instr_i))) {
@@ -122,20 +129,22 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
                         vlSelf->top__DOT__my_idu__DOT__ExtOp = 1U;
                         vlSelf->top__DOT__wen = 1U;
                     } else {
-                        VL_WRITEF("no\n");
+                        VL_WRITEF("no, op=%x\n",7,(0x7fU 
+                                                   & vlSelf->instr_i));
                     }
                 } else {
-                    VL_WRITEF("no\n");
+                    VL_WRITEF("no, op=%x\n",7,(0x7fU 
+                                               & vlSelf->instr_i));
                 }
             } else {
-                VL_WRITEF("no\n");
+                VL_WRITEF("no, op=%x\n",7,(0x7fU & vlSelf->instr_i));
             }
         } else {
-            VL_WRITEF("no\n");
+            VL_WRITEF("no, op=%x\n",7,(0x7fU & vlSelf->instr_i));
         }
     } else if (VL_LIKELY((0x10U & vlSelf->instr_i))) {
         if (VL_UNLIKELY((8U & vlSelf->instr_i))) {
-            VL_WRITEF("no\n");
+            VL_WRITEF("no, op=%x\n",7,(0x7fU & vlSelf->instr_i));
         } else if ((4U & vlSelf->instr_i)) {
             if (VL_LIKELY((2U & vlSelf->instr_i))) {
                 if (VL_LIKELY((1U & vlSelf->instr_i))) {
@@ -146,10 +155,11 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
                     vlSelf->top__DOT__my_idu__DOT__ExtOp = 1U;
                     vlSelf->top__DOT__wen = 1U;
                 } else {
-                    VL_WRITEF("no\n");
+                    VL_WRITEF("no, op=%x\n",7,(0x7fU 
+                                               & vlSelf->instr_i));
                 }
             } else {
-                VL_WRITEF("no\n");
+                VL_WRITEF("no, op=%x\n",7,(0x7fU & vlSelf->instr_i));
             }
         } else if (VL_LIKELY((2U & vlSelf->instr_i))) {
             if (VL_LIKELY((1U & vlSelf->instr_i))) {
@@ -165,13 +175,13 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
                     VL_WRITEF("no\n");
                 }
             } else {
-                VL_WRITEF("no\n");
+                VL_WRITEF("no, op=%x\n",7,(0x7fU & vlSelf->instr_i));
             }
         } else {
-            VL_WRITEF("no\n");
+            VL_WRITEF("no, op=%x\n",7,(0x7fU & vlSelf->instr_i));
         }
     } else {
-        VL_WRITEF("no\n");
+        VL_WRITEF("no, op=%x\n",7,(0x7fU & vlSelf->instr_i));
     }
     VL_WRITEF("IN.V: now_pc=%x, dnpc=%x\n",64,vlSelf->top__DOT__my_ifu__DOT__now_pc,
               64,vlSelf->top__DOT__my_ifu__DOT__dnpc);
