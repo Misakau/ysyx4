@@ -3,7 +3,7 @@
 module ysyx_220053_IFU(
     input clk,
     input rst,
-    input dnpc,
+    input [63:0] dnpc,
     output [63:0] pc
 );
     wire [63:0] now_pc, dnpc;
