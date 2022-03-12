@@ -19,7 +19,7 @@ parameter ysyx_220053_B = 3;
 parameter ysyx_220053_J = 4;
 parameter ysyx_220053_R = 5;
 
-    always @(*) begin
+    always @(op) begin
         case(op)
             7'b0110111://lui
                 begin
