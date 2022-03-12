@@ -41,6 +41,8 @@ class Vtop VL_NOT_FINAL {
     Vtop___024unit* const __PVT____024unit;
     Vtop_ysyx_220053_Adder32* const __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low;
     Vtop_ysyx_220053_Adder32* const __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high;
+    Vtop_ysyx_220053_Adder32* const __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low;
+    Vtop_ysyx_220053_Adder32* const __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high;
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.

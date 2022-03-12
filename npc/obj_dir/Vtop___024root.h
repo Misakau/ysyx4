@@ -23,6 +23,8 @@ VL_MODULE(Vtop___024root) {
     Vtop___024unit* __PVT____024unit;
     Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low;
     Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high;
+    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low;
+    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high;
 
     // PORTS
     VL_IN8(clk,0,0);
@@ -33,14 +35,21 @@ VL_MODULE(Vtop___024root) {
     // LOCAL SIGNALS
     CData/*0:0*/ top__DOT__wen;
     CData/*0:0*/ top__DOT__ALUSrcA;
-    CData/*0:0*/ top__DOT__ALUSrcB;
+    CData/*1:0*/ top__DOT__ALUSrcB;
     CData/*3:0*/ top__DOT__ALUOp;
+    CData/*2:0*/ top__DOT__Branch;
     CData/*2:0*/ top__DOT__my_idu__DOT__ExtOp;
+    CData/*2:0*/ top__DOT__my_exu__DOT__Branch;
+    CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexA;
+    CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexB;
     QData/*63:0*/ top__DOT__imm;
-    QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
     QData/*63:0*/ top__DOT__my_ifu__DOT__dnpc;
+    QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
+    QData/*63:0*/ top__DOT__my_exu__DOT__busa;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inA;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inB;
+    QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcA;
+    QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcB;
     VlUnpacked<QData/*63:0*/, 32> top__DOT__my_exu__DOT__regfile__DOT__rf;
 
     // LOCAL VARIABLES

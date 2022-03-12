@@ -49,4 +49,5 @@ module ysyx_220053_NexAddr(
     assign SrcA = (NexA == 0) ? pc : busa;
     assign SrcB = (NexB == 0) ? 4 : imm;
     ysyx_220053_Adder64 pcadder(.result(dnpc), .x(SrcA), .y(SrcB), .sub(0));
+    initial $display("dnpc=%x",dnpc);
 endmodule
