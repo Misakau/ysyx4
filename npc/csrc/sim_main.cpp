@@ -32,8 +32,8 @@ int main(int argc, char**argv, char**env) {
     contextp->timeInc(1); 
     top->eval();
     //printf("Now_pc = %016lx\n",top->pc);
+    top->clk = 0;
     top->rst = 0;
-    top->instr_i = pimem_read(top->pc);
     int cnt = 0;
     IMEM[0] = 0x7ff00093;// addi x0,x1,1
     IMEM[1] = 0x0ffff097;// auipc x1,0x0ffff
@@ -44,11 +44,10 @@ int main(int argc, char**argv, char**env) {
     while (!is_done && !contextp->gotFinish()) { 
         contextp->timeInc(1); 
         top->clk = !top->clk;
-        
+        top->instr_i = pimem_read(top->pc);
         if(EXIT){printf("ASSERT!\n"); break;}
         printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
         top->eval();
-        top->instr_i = pimem_read(top->pc);
         cnt ++;
     }
     delete top;
