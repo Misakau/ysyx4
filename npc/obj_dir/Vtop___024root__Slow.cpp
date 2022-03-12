@@ -325,7 +325,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__ALUSrcB = VL_RAND_RESET_I(2);
     vlSelf->top__DOT__ALUOp = VL_RAND_RESET_I(4);
     vlSelf->top__DOT__Branch = VL_RAND_RESET_I(3);
-    vlSelf->top__DOT__my_ifu__DOT__dnpc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__now_pc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_idu__DOT__ExtOp = VL_RAND_RESET_I(3);
     vlSelf->top__DOT__my_exu__DOT__Branch = VL_RAND_RESET_I(3);

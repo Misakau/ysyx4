@@ -43,7 +43,7 @@ int main(int argc, char**argv, char**env) {
     while (!is_done && !contextp->gotFinish()) { 
         contextp->timeInc(1); 
         top->clk = !top->clk;
-        if(top->clk == 0) top->instr_i = pimem_read(top->pc);
+        if(top->clk == 1) top->instr_i = pimem_read(top->pc);
         if(EXIT){printf("ASSERT!\n"); top->eval();break;}
         printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
         top->eval();

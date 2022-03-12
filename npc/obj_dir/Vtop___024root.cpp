@@ -66,7 +66,31 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
     __Vdlyvset__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 = 0U;
     vlSelf->top__DOT__my_ifu__DOT__now_pc = ((IData)(vlSelf->rst)
                                               ? 0x80000000ULL
-                                              : vlSelf->top__DOT__my_ifu__DOT__dnpc);
+                                              : (((QData)((IData)(
+                                                                  ((vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high.__PVT__ff
+                                                                    [3U] 
+                                                                    << 0x18U) 
+                                                                   | ((vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high.__PVT__ff
+                                                                       [2U] 
+                                                                       << 0x10U) 
+                                                                      | ((vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high.__PVT__ff
+                                                                          [1U] 
+                                                                          << 8U) 
+                                                                         | vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high.__PVT__ff
+                                                                         [0U]))))) 
+                                                  << 0x20U) 
+                                                 | (QData)((IData)(
+                                                                   ((vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.__PVT__ff
+                                                                     [3U] 
+                                                                     << 0x18U) 
+                                                                    | ((vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.__PVT__ff
+                                                                        [2U] 
+                                                                        << 0x10U) 
+                                                                       | ((vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.__PVT__ff
+                                                                           [1U] 
+                                                                           << 8U) 
+                                                                          | vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.__PVT__ff
+                                                                          [0U])))))));
     if (((IData)(vlSelf->top__DOT__wen) & (~ (IData)(vlSelf->rst)))) {
         __Vdlyvval__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 
             = ((0xfU == (IData)(vlSelf->top__DOT__ALUOp))
