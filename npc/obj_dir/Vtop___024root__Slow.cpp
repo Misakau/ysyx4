@@ -181,7 +181,6 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
     } else {
         VL_WRITEF("no, op=%x\n",7,(0x7fU & vlSelf->instr_i));
     }
-    vlSelf->top__DOT__my_ifu__DOT__snpc = (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc);
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
     vlSelf->top__DOT__my_exu__DOT__busa = ((0U == (0x1fU 
                                                    & (vlSelf->instr_i 
@@ -328,7 +327,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__Branch = VL_RAND_RESET_I(3);
     vlSelf->top__DOT__my_ifu__DOT__dnpc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__now_pc = VL_RAND_RESET_Q(64);
-    vlSelf->top__DOT__my_ifu__DOT__snpc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_idu__DOT__ExtOp = VL_RAND_RESET_I(3);
     vlSelf->top__DOT__my_exu__DOT__Branch = VL_RAND_RESET_I(3);
     vlSelf->top__DOT__my_exu__DOT__busa = VL_RAND_RESET_Q(64);

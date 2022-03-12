@@ -53,7 +53,7 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declQuad(c+1284,"top my_ifu PC RESET_VAL", false,-1, 63,0);
         tracep->declBit(c+1267,"top my_ifu PC clk", false,-1);
         tracep->declBit(c+1268,"top my_ifu PC rst", false,-1);
-        tracep->declQuad(c+5,"top my_ifu PC din", false,-1, 63,0);
+        tracep->declQuad(c+1281,"top my_ifu PC din", false,-1, 63,0);
         tracep->declQuad(c+3,"top my_ifu PC dout", false,-1, 63,0);
         tracep->declBit(c+1286,"top my_ifu PC wen", false,-1);
         tracep->declBus(c+1269,"top my_idu instr_i", false,-1, 31,0);
