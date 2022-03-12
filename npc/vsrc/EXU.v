@@ -50,6 +50,6 @@ module ysyx_220053_NexAddr(
     assign SrcB = (NexB == 0) ? 4 : imm;
     ysyx_220053_Adder64 pcadder(.result(dnpc), .x(SrcA), .y(SrcB), .sub(0));
     always@(*) begin
-        $display("dnpc=%x",dnpc);
+        $display("pc = %x, dnpc=%x",pc,dnpc);
     end
 endmodule
