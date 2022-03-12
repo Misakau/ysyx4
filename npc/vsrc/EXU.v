@@ -38,7 +38,7 @@ module ysyx_220053_NexAddr(
     input [63:0] pc, imm, busa,
     output [63:0] dnpc
 );
-    wire NexA, NexB;//A:0:pc,1:busa //B: 0:4, 1:imm
+    reg NexA, NexB;//A:0:pc,1:busa //B: 0:4, 1:imm
     wire [63:0] SrcA, SrcB;
     always@(*) begin
         case(Branch)
