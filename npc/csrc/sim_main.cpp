@@ -22,11 +22,13 @@ int main(int argc, char**argv, char**env) {
     
     Vtop*top = new Vtop{contextp};
     //reset the pc
-    top->clk = 1;
-    top->eval();
-    //printf("Now_pc = %016lx\n",top->pc);
     top->clk = 0;
     top->rst = 1;
+    top->eval();
+    //printf("Now_pc = %016lx\n",top->pc);
+    top->clk = 1;
+    
+    top->eval();
     //printf("Now_pc = %016lx\n",top->pc);
     top->rst = 0;
     int cnt = 0;

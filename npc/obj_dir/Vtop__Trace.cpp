@@ -4531,61 +4531,62 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
         }
         if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[2U])) {
             tracep->chgQData(oldp+1199,(vlSelf->top__DOT__my_ifu__DOT__now_pc),64);
-            tracep->chgQData(oldp+1201,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[0]),64);
-            tracep->chgQData(oldp+1203,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[1]),64);
-            tracep->chgQData(oldp+1205,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[2]),64);
-            tracep->chgQData(oldp+1207,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[3]),64);
-            tracep->chgQData(oldp+1209,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[4]),64);
-            tracep->chgQData(oldp+1211,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[5]),64);
-            tracep->chgQData(oldp+1213,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[6]),64);
-            tracep->chgQData(oldp+1215,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[7]),64);
-            tracep->chgQData(oldp+1217,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[8]),64);
-            tracep->chgQData(oldp+1219,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[9]),64);
-            tracep->chgQData(oldp+1221,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[10]),64);
-            tracep->chgQData(oldp+1223,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[11]),64);
-            tracep->chgQData(oldp+1225,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[12]),64);
-            tracep->chgQData(oldp+1227,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[13]),64);
-            tracep->chgQData(oldp+1229,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[14]),64);
-            tracep->chgQData(oldp+1231,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[15]),64);
-            tracep->chgQData(oldp+1233,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[16]),64);
-            tracep->chgQData(oldp+1235,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[17]),64);
-            tracep->chgQData(oldp+1237,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[18]),64);
-            tracep->chgQData(oldp+1239,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[19]),64);
-            tracep->chgQData(oldp+1241,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[20]),64);
-            tracep->chgQData(oldp+1243,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[21]),64);
-            tracep->chgQData(oldp+1245,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[22]),64);
-            tracep->chgQData(oldp+1247,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[23]),64);
-            tracep->chgQData(oldp+1249,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[24]),64);
-            tracep->chgQData(oldp+1251,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[25]),64);
-            tracep->chgQData(oldp+1253,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[26]),64);
-            tracep->chgQData(oldp+1255,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[27]),64);
-            tracep->chgQData(oldp+1257,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[28]),64);
-            tracep->chgQData(oldp+1259,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[29]),64);
-            tracep->chgQData(oldp+1261,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[30]),64);
-            tracep->chgQData(oldp+1263,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[31]),64);
+            tracep->chgQData(oldp+1201,((4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc)),64);
+            tracep->chgQData(oldp+1203,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[0]),64);
+            tracep->chgQData(oldp+1205,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[1]),64);
+            tracep->chgQData(oldp+1207,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[2]),64);
+            tracep->chgQData(oldp+1209,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[3]),64);
+            tracep->chgQData(oldp+1211,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[4]),64);
+            tracep->chgQData(oldp+1213,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[5]),64);
+            tracep->chgQData(oldp+1215,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[6]),64);
+            tracep->chgQData(oldp+1217,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[7]),64);
+            tracep->chgQData(oldp+1219,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[8]),64);
+            tracep->chgQData(oldp+1221,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[9]),64);
+            tracep->chgQData(oldp+1223,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[10]),64);
+            tracep->chgQData(oldp+1225,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[11]),64);
+            tracep->chgQData(oldp+1227,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[12]),64);
+            tracep->chgQData(oldp+1229,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[13]),64);
+            tracep->chgQData(oldp+1231,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[14]),64);
+            tracep->chgQData(oldp+1233,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[15]),64);
+            tracep->chgQData(oldp+1235,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[16]),64);
+            tracep->chgQData(oldp+1237,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[17]),64);
+            tracep->chgQData(oldp+1239,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[18]),64);
+            tracep->chgQData(oldp+1241,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[19]),64);
+            tracep->chgQData(oldp+1243,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[20]),64);
+            tracep->chgQData(oldp+1245,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[21]),64);
+            tracep->chgQData(oldp+1247,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[22]),64);
+            tracep->chgQData(oldp+1249,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[23]),64);
+            tracep->chgQData(oldp+1251,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[24]),64);
+            tracep->chgQData(oldp+1253,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[25]),64);
+            tracep->chgQData(oldp+1255,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[26]),64);
+            tracep->chgQData(oldp+1257,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[27]),64);
+            tracep->chgQData(oldp+1259,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[28]),64);
+            tracep->chgQData(oldp+1261,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[29]),64);
+            tracep->chgQData(oldp+1263,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[30]),64);
+            tracep->chgQData(oldp+1265,(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[31]),64);
         }
-        tracep->chgBit(oldp+1265,(vlSelf->clk));
-        tracep->chgBit(oldp+1266,(vlSelf->rst));
-        tracep->chgIData(oldp+1267,(vlSelf->instr_i),32);
-        tracep->chgQData(oldp+1268,(vlSelf->pc),64);
-        tracep->chgCData(oldp+1270,((0x7fU & vlSelf->instr_i)),7);
-        tracep->chgCData(oldp+1271,((vlSelf->instr_i 
+        tracep->chgBit(oldp+1267,(vlSelf->clk));
+        tracep->chgBit(oldp+1268,(vlSelf->rst));
+        tracep->chgIData(oldp+1269,(vlSelf->instr_i),32);
+        tracep->chgQData(oldp+1270,(vlSelf->pc),64);
+        tracep->chgCData(oldp+1272,((0x7fU & vlSelf->instr_i)),7);
+        tracep->chgCData(oldp+1273,((vlSelf->instr_i 
                                      >> 0x19U)),7);
-        tracep->chgCData(oldp+1272,((0x1fU & (vlSelf->instr_i 
-                                              >> 7U))),5);
-        tracep->chgCData(oldp+1273,((0x1fU & (vlSelf->instr_i 
-                                              >> 0xfU))),5);
         tracep->chgCData(oldp+1274,((0x1fU & (vlSelf->instr_i 
+                                              >> 7U))),5);
+        tracep->chgCData(oldp+1275,((0x1fU & (vlSelf->instr_i 
+                                              >> 0xfU))),5);
+        tracep->chgCData(oldp+1276,((0x1fU & (vlSelf->instr_i 
                                               >> 0x14U))),5);
-        tracep->chgCData(oldp+1275,((7U & (vlSelf->instr_i 
+        tracep->chgCData(oldp+1277,((7U & (vlSelf->instr_i 
                                            >> 0xcU))),3);
-        tracep->chgQData(oldp+1276,(((0U == (0x1fU 
+        tracep->chgQData(oldp+1278,(((0U == (0x1fU 
                                              & (vlSelf->instr_i 
                                                 >> 0x14U)))
                                       ? 0ULL : vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
                                      [(0x1fU & (vlSelf->instr_i 
                                                 >> 0x14U))])),64);
-        tracep->chgBit(oldp+1278,(((IData)(vlSelf->top__DOT__wen) 
+        tracep->chgBit(oldp+1280,(((IData)(vlSelf->top__DOT__wen) 
                                    & (~ (IData)(vlSelf->rst)))));
     }
 }
