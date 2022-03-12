@@ -5,10 +5,11 @@
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
 static uint32_t IMEM[MEMSIZE];//4字节为单位
-
+static bool EXIT = 0;
 uint32_t pimem_read(uint64_t paddr){
     uint64_t real_addr = (paddr - AD_BASE) >> 2;
-    assert(real_addr < MEMSIZE);
+    //assert(real_addr < MEMSIZE);
+    if(real_addr < MEMSIZE){EXIT = 1;return;}
     return IMEM[real_addr];
 }
 static bool is_done = false;
@@ -43,6 +44,7 @@ int main(int argc, char**argv, char**env) {
         contextp->timeInc(1); 
         top->clk = !top->clk;
         top->instr_i = pimem_read(top->pc);
+        if(EXIT){printf("ASSERT!\n") break;}
         printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
         top->eval();
         cnt ++;
