@@ -24,9 +24,11 @@ int main(int argc, char**argv, char**env) {
     //reset the pc
     top->clk = 1;
     top->eval();
+    printf("Now_pc = %016lx\n",top->pc);
     top->clk = 0;
     top->rst = 1;
     top->eval();
+    printf("Now_pc = %016lx\n",top->pc);
     top->rst = 0;
     int cnt = 0;
     IMEM[0] = 0x7ff00093;// addi x0,x1,1
@@ -42,6 +44,7 @@ int main(int argc, char**argv, char**env) {
         if(top->clk == 0) top->instr_i = pimem_read(top->pc);
         printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
         top->eval();
+        printf("Now_pc = %016lx\n",top->pc);
         cnt ++;
     }
     delete top;
