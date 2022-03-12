@@ -37,8 +37,8 @@ int main(int argc, char**argv, char**env) {
     IMEM[0] = 0x7ff00093;// addi x0,x1,1
     IMEM[1] = 0x0ffff097;// auipc x1,0x0ffff
     IMEM[2] = 0xff0ff0b7;//lui x1,0xff0ff
-    IMEM[3] = 0x00100073;
-    IMEM[4] = 0x80008113;
+    IMEM[3] = 0x00108093;//addi x1,x1,1
+    IMEM[4] = 0x00100073;
     IMEM[5] = 0x00100073;
     while (!is_done && !contextp->gotFinish()) { 
         contextp->timeInc(1); 
