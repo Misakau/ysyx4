@@ -54,7 +54,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__5(Vtop___024root* vlSelf) {
     QData/*63:0*/ __Vdlyvval__top__DOT__my_exu__DOT__regfile__DOT__rf__v0;
     // Body
     __Vdlyvset__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 = 0U;
-    if (vlSelf->top__DOT__wen) {
+    if (((IData)(vlSelf->top__DOT__wen) & (~ (IData)(vlSelf->rst)))) {
         __Vdlyvval__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 
             = ((0xfU == (IData)(vlSelf->top__DOT__ALUOp))
                 ? vlSelf->top__DOT__my_exu__DOT__alu_inB
@@ -313,10 +313,10 @@ void Vtop___024root___eval(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___eval\n"); );
     // Body
-    if (((~ (IData)(vlSelf->clk)) & (IData)(vlSelf->__Vclklast__TOP__clk))) {
+    if (((IData)(vlSelf->clk) & (~ (IData)(vlSelf->__Vclklast__TOP__clk)))) {
         Vtop___024root___sequent__TOP__4(vlSelf);
     }
-    if (((IData)(vlSelf->clk) & (~ (IData)(vlSelf->__Vclklast__TOP__clk)))) {
+    if (((~ (IData)(vlSelf->clk)) & (IData)(vlSelf->__Vclklast__TOP__clk))) {
         Vtop___024root___sequent__TOP__5(vlSelf);
         vlSelf->__Vm_traceActivity[1U] = 1U;
     }
