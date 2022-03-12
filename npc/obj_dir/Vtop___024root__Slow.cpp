@@ -263,6 +263,36 @@ void Vtop___024root___settle__TOP__2(Vtop___024root* vlSelf) {
                                                    : 4ULL));
 }
 
+void Vtop___024root___initial__TOP__5(Vtop___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___initial__TOP__5\n"); );
+    // Body
+    VL_WRITEF("dnpc=%x\n",64,(((QData)((IData)(((vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high.__PVT__ff
+                                                 [3U] 
+                                                 << 0x18U) 
+                                                | ((vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high.__PVT__ff
+                                                    [2U] 
+                                                    << 0x10U) 
+                                                   | ((vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high.__PVT__ff
+                                                       [1U] 
+                                                       << 8U) 
+                                                      | vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high.__PVT__ff
+                                                      [0U]))))) 
+                               << 0x20U) | (QData)((IData)(
+                                                           ((vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.__PVT__ff
+                                                             [3U] 
+                                                             << 0x18U) 
+                                                            | ((vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.__PVT__ff
+                                                                [2U] 
+                                                                << 0x10U) 
+                                                               | ((vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.__PVT__ff
+                                                                   [1U] 
+                                                                   << 8U) 
+                                                                  | vlSymsp->TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.__PVT__ff
+                                                                  [0U])))))));
+}
+
 void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
@@ -270,6 +300,7 @@ void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
     // Body
     Vtop___024root___initial__TOP__1(vlSelf);
     vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
+    Vtop___024root___initial__TOP__5(vlSelf);
 }
 
 void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low__1(Vtop_ysyx_220053_Adder32* vlSelf);
