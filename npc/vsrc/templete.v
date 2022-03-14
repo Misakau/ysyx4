@@ -120,7 +120,6 @@ module ysyx_220053_RegisterFile #(ADDR_WIDTH = 1, DATA_WIDTH = 1) (
   input wen
 );
   reg [DATA_WIDTH-1:0] rf [(1 << ADDR_WIDTH)-1:0];
-  wire [63:0] a0_now = rf[10];
   assign  radata = (raaddr == 0) ? 0 : rf[raaddr];
   assign  rbdata = (rbaddr == 0) ? 0 : rf[rbaddr];
   always @(posedge clk) begin
