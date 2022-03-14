@@ -105,8 +105,6 @@ module ysyx_220053_mux41(a,s,y);
   });
 endmodule
 
-
-
 module ysyx_220053_RegisterFile #(ADDR_WIDTH = 1, DATA_WIDTH = 1) (
   input clk,
 
@@ -125,7 +123,8 @@ module ysyx_220053_RegisterFile #(ADDR_WIDTH = 1, DATA_WIDTH = 1) (
   always @(posedge clk) begin
     if (wen) rf[waddr] <= wdata;
   end
-
+  import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
+  initial set_gpr_ptr(rf);  // rf为通用寄存器的二维数组变量
 /*  always @(*)begin
     $display("wen = %d,raaddr=%d, radata=%x, rbddr=%d, rbdata=%x, wdata= %x, waddr = %x", wen,raaddr, radata,rbaddr, rbdata, wdata, waddr);
     $display("0#: %x",rf[0]);

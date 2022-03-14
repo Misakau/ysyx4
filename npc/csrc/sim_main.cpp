@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include "svdpi.h"
+#include "verilated_dpi.h"
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
 static uint32_t IMEM[MEMSIZE];//4字节为单位
@@ -15,10 +16,25 @@ uint32_t pimem_read(uint64_t paddr){
     return IMEM[real_addr];
 }
 static bool is_done = false;
-static uint64_t status = 0;
+
 extern "C" void c_trap(const svBit done){
     is_done = done;
 }
+
+uint64_t *cpu_gpr = NULL;
+extern "C" void set_gpr_ptr(const svOpenArrayHandle r) {
+  cpu_gpr = (uint64_t *)(((VerilatedDpiOpenVar*)r)->datap());
+}
+
+// 一个输出RTL中通用寄存器的值的示例
+void dump_gpr() {
+  int i;
+  for (i = 0; i < 32; i++) {
+    printf("gpr[%d] = 0x%lx\n", i, cpu_gpr[i]);
+  }
+}
+
+
 int main(int argc, char**argv, char**env) {
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
@@ -71,6 +87,7 @@ int main(int argc, char**argv, char**env) {
     if(status == 0)
         printf("GOOD TRAP!\n");
     else printf("BAD TRAP!\n");
+    dump_gpr();
     printf("~~~Sim finished!~~~\n");
     return 0;
 }
