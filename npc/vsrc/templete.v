@@ -105,7 +105,7 @@ module ysyx_220053_mux41(a,s,y);
   });
 endmodule
 
-import "DPI-C" function void get_a0(input bit[63:0] a0);
+import "DPI-C" function void get_a0(input bit[63:0] a0[]);
 
 module ysyx_220053_RegisterFile #(ADDR_WIDTH = 1, DATA_WIDTH = 1) (
   input clk,
