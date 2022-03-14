@@ -87,7 +87,7 @@ int main(int argc, char**argv, char**env) {
     if(cpu_gpr[10] == 0)
         printf("GOOD TRAP!\n");
     else printf("BAD TRAP!\n");
-    dump_gpr();
+    
     printf("~~~Sim finished!~~~\n");
     return 0;
 }
