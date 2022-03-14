@@ -88,7 +88,7 @@ int main(int argc, char**argv, char**env) {
     if(cpu_gpr[10] == 0)
         printf(ASNI_FG_GREEN "GOOD TRAP!" ASNI_NONE);
     else printf(ASNI_FG_RED "BAD TRAP!" ASNI_NONE);
-    printf(" at PC = %lx\n",top->pc);
+    printf(ASNI_FG_BLUE " at PC = %lx\n" ASNI_NONE,top->pc);
     printf("~~~Sim finished!~~~\n");
     return 0;
 }
