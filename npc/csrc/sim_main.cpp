@@ -69,8 +69,8 @@ int main(int argc, char**argv, char**env) {
     delete top;
     delete contextp;
     if(status == 0)
-        printf("GOOD TRAP!");
-    else printf("BAD TRAP!");
+        printf("GOOD TRAP!\n");
+    else printf("BAD TRAP!\n");
     printf("~~~Sim finished!~~~\n");
     return 0;
 }
