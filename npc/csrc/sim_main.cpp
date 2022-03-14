@@ -20,7 +20,9 @@ int main(int argc, char**argv, char**env) {
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
     contextp->commandArgs(argc, argv);
-    
+    printf("argv:\n");
+    for(int i = 0; i < argc; i++)
+        printf("%s\n",argv[i]);
     Vtop*top = new Vtop{contextp};
     //reset the pc
     contextp->timeInc(1); 
