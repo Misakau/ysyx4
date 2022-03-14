@@ -5,6 +5,7 @@
 #include <cstdio>
 #include "svdpi.h"
 #include "verilated_dpi.h"
+#include "color.h"
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
 static uint32_t IMEM[MEMSIZE];//4字节为单位
@@ -85,8 +86,8 @@ int main(int argc, char**argv, char**env) {
     delete top;
     delete contextp;
     if(cpu_gpr[10] == 0)
-        printf("GOOD TRAP!");
-    else printf("BAD TRAP!");
+        printf(ASNI_FG_GREEN"GOOD TRAP!");
+    else printf(ASNI_FG_RED"BAD TRAP!");
     printf(" at PC = %lx\n",top->pc);
     printf("~~~Sim finished!~~~\n");
     return 0;
