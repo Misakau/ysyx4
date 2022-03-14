@@ -120,13 +120,13 @@ module ysyx_220053_RegisterFile #(ADDR_WIDTH = 1, DATA_WIDTH = 1) (
   input wen
 );
   reg [DATA_WIDTH-1:0] rf [(1 << ADDR_WIDTH)-1:0];
-  wire a0_now = rf[10];
+  wire [63:0] a0_now = rf[10];
   assign  radata = (raaddr == 0) ? 0 : rf[raaddr];
   assign  rbdata = (rbaddr == 0) ? 0 : rf[rbaddr];
   always @(posedge clk) begin
     if (wen) rf[waddr] <= wdata;
   end
-  get_a0(input a0_now);
+  get_a0(a0_now);
 /*  always @(*)begin
     $display("wen = %d,raaddr=%d, radata=%x, rbddr=%d, rbdata=%x, wdata= %x, waddr = %x", wen,raaddr, radata,rbaddr, rbdata, wdata, waddr);
     $display("0#: %x",rf[0]);
