@@ -85,9 +85,9 @@ int main(int argc, char**argv, char**env) {
     delete top;
     delete contextp;
     if(cpu_gpr[10] == 0)
-        printf("GOOD TRAP!\n");
-    else printf("BAD TRAP!\n");
-    
+        printf("GOOD TRAP!");
+    else printf("BAD TRAP!");
+    printf(" at PC = %lx\n",top->pc);
     printf("~~~Sim finished!~~~\n");
     return 0;
 }
