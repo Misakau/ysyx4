@@ -15,12 +15,12 @@ uint32_t pimem_read(uint64_t paddr){
     return IMEM[real_addr];
 }
 static bool is_done = false;
-static long long int status = 0;
+static uint64_t status = 0;
 extern "C" void c_trap(const svBit done){
     is_done = done;
 }
-extern "C" void get_a0(const long long int a0){
-    status = a0;
+extern "C" void get_a0(const svBitVecVal* a0){
+    status = a0[0] + (a0[1] << 32);
 }
 int main(int argc, char**argv, char**env) {
     VerilatedContext*contextp = new VerilatedContext;
