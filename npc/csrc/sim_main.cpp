@@ -15,8 +15,12 @@ uint32_t pimem_read(uint64_t paddr){
     return IMEM[real_addr];
 }
 static bool is_done = false;
+static uint64_t status = 0;
 extern "C" void c_trap(const svBit done){
     is_done = done;
+}
+extern "C" void get_a0(const svBitVecVal* a0){
+    status = a0[0] + (a0[1] << 32);
 }
 int main(int argc, char**argv, char**env) {
     VerilatedContext*contextp = new VerilatedContext;
@@ -61,12 +65,15 @@ int main(int argc, char**argv, char**env) {
         top->clk = !top->clk;
         if(top->clk == 0)top->instr_i = pimem_read(top->pc);
         if(EXIT){printf("ASSERT!\n"); top->eval();break;}
-        printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
+        //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
         top->eval();
         cnt ++;
     }
     delete top;
     delete contextp;
+    if(status == 0)
+        printf("GOOD TRAP!");
+    else printf("BAD TRAP!");
     printf("~~~Sim finished!~~~\n");
     return 0;
 }

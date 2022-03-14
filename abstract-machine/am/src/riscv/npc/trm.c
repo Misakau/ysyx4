@@ -18,6 +18,7 @@ void putch(char ch) {
 }
 
 void halt(int code) {
+  asm volatile("mv a0, %0; .dword 0x00100073" : :"r"(code));
   while (1);
 }
 
