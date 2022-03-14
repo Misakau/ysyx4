@@ -32,7 +32,7 @@ int main(int argc, char**argv, char**env) {
         int fsize = ftell(fp);
         fseek(fp, 0, SEEK_SET);
         assert(fread(IMEM, fsize, 1, fp));
-        printf("%x\n",MEM[0]);
+        printf("%x\n",IMEM[0]);
         fclose(fp);
     }
     else{//build in code
