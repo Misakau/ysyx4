@@ -32,6 +32,8 @@ sim:
 	@rm -rf logs
 	@mkdir -p logs
 	obj_dir/Vtop +trace
+npcrun:
+	obj_dir/Vtop +trace $(FILEPATH)
 clean:
 	rm -rf obj_dir
 .PHONY: clean run	
