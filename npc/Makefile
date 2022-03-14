@@ -21,7 +21,8 @@ VERILATOR_FLAGS += --trace
 
 # Input files for Verilator
 VERILATOR_INPUT = $(VFILES) csrc/sim_main.cpp
-FILEPATH ?= ./csrc/a.in
+#FILEPATH ?= ./csrc/a.in
+#TEST_PATH ?= ../am-kernels/tests/cpu-tests/build/$(IMAGE).bin
 all:
 	@echo "Write this Makefile by your self."
 
@@ -32,8 +33,8 @@ sim:
 	@rm -rf logs
 	@mkdir -p logs
 	obj_dir/Vtop +trace
-npcrun:
-	obj_dir/Vtop +trace $(FILEPATH)
+#npcrun:
+#	obj_dir/Vtop +trace $(TEST_PATH)$(IMAGE)
 clean:
 	rm -rf obj_dir
 .PHONY: clean run	
