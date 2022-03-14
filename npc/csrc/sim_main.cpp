@@ -34,6 +34,14 @@ int main(int argc, char**argv, char**env) {
         assert(fread(IMEM, fsize, 1, fp));
         fclose(fp);
     }
+    else{//build in code
+        IMEM[0] = 0x00c000ef;// addi x0,x1,1
+        IMEM[1] = 0x0ffff097;// auipc x1,0x0ffff
+        IMEM[2] = 0xff0ff0b7;//lui x1,0xff0ff
+        IMEM[3] = 0x00108093;//addi x1,x1,1
+        IMEM[4] = 0x00100073;
+        IMEM[5] = 0x00100073;
+    }
     Vtop*top = new Vtop{contextp};
     //reset the pc
     contextp->timeInc(1); 
@@ -47,12 +55,7 @@ int main(int argc, char**argv, char**env) {
     //printf("Now_pc = %016lx\n",top->pc);
     top->rst = 0;
     int cnt = 0;
-    IMEM[0] = 0x00c000ef;// addi x0,x1,1
-    IMEM[1] = 0x0ffff097;// auipc x1,0x0ffff
-    IMEM[2] = 0xff0ff0b7;//lui x1,0xff0ff
-    IMEM[3] = 0x00108093;//addi x1,x1,1
-    IMEM[4] = 0x00100073;
-    IMEM[5] = 0x00100073;
+    
     while (!is_done && !contextp->gotFinish()) { 
         contextp->timeInc(1); 
         top->clk = !top->clk;

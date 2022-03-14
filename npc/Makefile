@@ -21,7 +21,7 @@ VERILATOR_FLAGS += --trace
 
 # Input files for Verilator
 VERILATOR_INPUT = $(VFILES) csrc/sim_main.cpp
-
+FILEPATH ?= ./csrc/a.in
 all:
 	@echo "Write this Makefile by your self."
 
