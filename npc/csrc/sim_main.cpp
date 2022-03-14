@@ -1,6 +1,8 @@
 #include "Vtop.h"
 #include "verilated.h"
 #include <cstdint>
+#include <cstdlib>
+#include <cstdio>
 #include "svdpi.h"
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
@@ -23,6 +25,15 @@ int main(int argc, char**argv, char**env) {
     printf("argv:\n");
     for(int i = 0; i < argc; i++)
         printf("%s\n",argv[i]);
+    if(argc > 1){//has image
+        FILE* fp = fopen(argv[2], "r");
+        assert(fp);
+        fseek(fp, 0, SEEK_END);
+        int fsize = ftell(fp);
+        fseek(fp, 0, SEEK_SET);
+        assert(fread(IMEM, fsize, 1, fp));
+        fclose(fp);
+    }
     Vtop*top = new Vtop{contextp};
     //reset the pc
     contextp->timeInc(1); 
