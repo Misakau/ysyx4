@@ -19,9 +19,6 @@ static uint64_t status = 0;
 extern "C" void c_trap(const svBit done){
     is_done = done;
 }
-extern "C" void get_a0(const svBitVecVal* a0){
-    status = a0[0] + (a0[1] << 32);
-}
 int main(int argc, char**argv, char**env) {
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
