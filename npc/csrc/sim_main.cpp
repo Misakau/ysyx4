@@ -25,7 +25,7 @@ int main(int argc, char**argv, char**env) {
     printf("argv:\n");
     for(int i = 0; i < argc; i++)
         printf("%s\n",argv[i]);
-    if(argc > 1){//has image
+    if(argc > 2){//has image
         FILE* fp = fopen(argv[2], "r");
         assert(fp);
         fseek(fp, 0, SEEK_END);
