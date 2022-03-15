@@ -135,7 +135,7 @@ int main(int argc, char**argv, char**env) {
     }
     delete top;
     delete contextp;
-    if(EXIT == false){
+    if(is_done){
       if(cpu_gpr[10] == 0)
         printf(ASNI_FG_GREEN "HIT GOOD TRAP!" ASNI_NONE);
       else printf(ASNI_FG_RED "HIT BAD TRAP!" ASNI_NONE);
@@ -145,7 +145,12 @@ int main(int argc, char**argv, char**env) {
     return 0;
 }
 
+//////////////////////////////////////////////////////////////////////////////
 static void npc_exec(VerilatedContext* contextp, Vtop* top, uint64_t n){
+  if(is_done || contextp->gotFinish()){
+    printf("The program is done! Please quit the npc_sdb.\n");
+    return 0;
+  }
   for (uint64_t i = 1; i <= n && !is_done && !contextp->gotFinish(); i++) { 
             contextp->timeInc(1); 
             top->clk = !top->clk;
@@ -333,6 +338,6 @@ void sdb_mainloop(VerilatedContext* contextp, Vtop* top) {
     }
 
     if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
-    if (EXIT || is_done) break;
+    if (EXIT) break;
   }
 }
