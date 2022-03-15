@@ -33,7 +33,6 @@ VL_MODULE(Vtop___024root) {
     VL_OUT64(pc,63,0);
 
     // LOCAL SIGNALS
-    CData/*0:0*/ top__DOT__my_ifu__DOT__fclk;
     CData/*0:0*/ top__DOT__wen;
     CData/*0:0*/ top__DOT__ALUSrcA;
     CData/*1:0*/ top__DOT__ALUSrcB;
@@ -62,7 +61,6 @@ VL_MODULE(Vtop___024root) {
     VlUnpacked<QData/*63:0*/, 32> top__DOT__my_exu__DOT__regfile__DOT__rf;
 
     // LOCAL VARIABLES
-    CData/*0:0*/ __Vclklast__TOP__top__DOT__my_ifu__DOT__fclk;
     CData/*0:0*/ __Vclklast__TOP__clk;
     QData/*63:0*/ __Vtask_pmem_read__0__rdata;
     VlUnpacked<CData/*0:0*/, 4> __Vm_traceActivity;
