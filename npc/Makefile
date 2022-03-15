@@ -1,4 +1,5 @@
 VFILES := $(wildcard vsrc/*.v)
+CFILES := $(wildcard csrc/*.v)
 VERILATOR = verilator
 # Generate C++ in executable form
 VERILATOR_FLAGS += -cc --exe --build --top-module top
@@ -20,7 +21,7 @@ VERILATOR_FLAGS += --trace
 #VERILATOR_FLAGS += --gdbbt
 
 # Input files for Verilator
-VERILATOR_INPUT = $(VFILES) csrc/sim_main.cpp
+VERILATOR_INPUT = $(VFILES) $(CFILES)
 #FILEPATH ?= ./csrc/a.in
 #TEST_PATH ?= ../am-kernels/tests/cpu-tests/build/$(IMAGE).bin
 all:
