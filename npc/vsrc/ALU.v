@@ -22,7 +22,7 @@ module ysyx_220053_ALU(
     assign res3 = inputa ^ inputb;
     assign res4 = 0;//inputa << (inputb & 6'b111111);//shift,not finish
     assign res5 = inputb;
-    assign res6 = {63{1'b0},(SIGctr == 1'b1) ? OF ^ SF : CF}; //cmp,not finish
+    assign res6 = {{63{1'b0}},{(SIGctr == 1'b1) ? OF ^ SF : CF}}; //cmp,not finish
     assign res7 = 0;
     always@(*) begin
         case(OPctr)
