@@ -4,7 +4,8 @@ module ysyx_220053_IFU(
     input clk,
     input rst,
     input [63:0] dnpc,
-    output [63:0] pc, instr_o
+    output [63:0] pc,
+    output [31:0] instr_o
 );
     wire [63:0] now_pc, snpc, rdata;
     assign snpc = now_pc + 4;
