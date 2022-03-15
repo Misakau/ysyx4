@@ -44,10 +44,8 @@ VL_MODULE(Vtop___024root) {
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__ALctr;
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SFTctr;
     CData/*2:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
-    CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__shifter__DOT__sgn;
     CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexA;
     CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexB;
-    IData/*31:0*/ top__DOT__my_exu__DOT__alu64__DOT__shifter__DOT__i;
     QData/*63:0*/ top__DOT__imm;
     QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
     QData/*63:0*/ top__DOT__my_exu__DOT__busa;
@@ -55,7 +53,6 @@ VL_MODULE(Vtop___024root) {
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inB;
     QData/*63:0*/ top__DOT__my_exu__DOT__addr_res;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__res0;
-    QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__res4;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderb;
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcA;
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcB;

@@ -4,6 +4,7 @@ module ysyx_220053_controler(
     input [31:0] instr_i,
     input [6:0] op,
     input [2:0] func3,
+    input [6:0] func7,
     output reg ALUSrcA, //0:pc,1:busa
     output reg [1:0] ALUSrcB,//0:busb,1:imm,2:4
     output reg [2:0] ExtOp,
@@ -52,18 +53,70 @@ parameter ysyx_220053_R = 5;
                         default: $display("no");
                     endcase
                 end
+            7'b0110011://add
+                begin
+                    Branch = 0; //wen = 1;
+                    case(func3)
+                        3'b000: begin//add sub mul div  乘除法还没做
+                                ALUSrcA = 1; ALUSrcB = 0; ExtOp = ysyx_220053_R; wen = 1; 
+                                case(func7) 
+                                    7'b0100000: ALUOp = 4'b1000;
+                                    7'b0000001: ALUOp = 4'b1001;//1001 mul
+                                    default: ALUOp = 4'b0000;
+                                endcase 
+                            end
+                        3'b010: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0010; ExtOp = ysyx_220053_R; wen = 1; end
+                        3'b011: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0011; ExtOp = ysyx_220053_R; wen = 1; end
+                        3'b100: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0100; ExtOp = ysyx_220053_R; wen = 1; end
+                        3'b110: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0110; ExtOp = ysyx_220053_R; wen = 1; end
+                        3'b111: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0111; ExtOp = ysyx_220053_R; wen = 1; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0001; ExtOp = ysyx_220053_R; wen = 1; end
+                        3'b101: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = (instr_i[30] == 1'b0) ? 4'b0101 : 4'b1101; ExtOp = ysyx_220053_R; wen = 1; end
+                        default: $display("no");
+                    endcase
+                end
 /*
-  INSTPAT("??????? ????? ????? 000 ????? 00100 11", addi   , I, R(dest) = src1 + src2);
-  INSTPAT("??????? ????? ????? 010 ????? 00100 11", slti   , I, R(dest) = ( (int64_t)src1 < (int64_t)src2 ));
-  INSTPAT("??????? ????? ????? 011 ????? 00100 11", sltiu  , I, R(dest) = ( (uint64_t)src1 < (uint64_t)src2 ));
-  INSTPAT("??????? ????? ????? 100 ????? 00100 11", xori   , I, R(dest) = (src1 ^ src2));
-  INSTPAT("??????? ????? ????? 110 ????? 00100 11", ori    , I, R(dest) = (src1 | src2));
-  INSTPAT("??????? ????? ????? 111 ????? 00100 11", andi   , I, R(dest) = (src1 & src2));  
-  INSTPAT("000000? ????? ????? 001 ????? 00100 11", slli   , I, R(dest) = (src1 << (src2 & 0x3f)));
-  INSTPAT("000000? ????? ????? 101 ????? 00100 11", srli   , I, R(dest) = (src1 >> (src2 & 0x3f)));
-  INSTPAT("010000? ????? ????? 101 ????? 00100 11", srai   , I, R(dest) = (word_t)((int64_t)src1 >> (src2 & 0x3f)));
+  INSTPAT("0000000 ????? ????? 000 ????? 01100 11", add    , R, R(dest) = src1 + src2);
+  INSTPAT("0100000 ????? ????? 000 ????? 01100 11", sub    , R, R(dest) = src1 - src2);
+  INSTPAT("0000000 ????? ????? 001 ????? 01100 11", sll    , R, R(dest) = src1 << (src2 & 0x3f));
+  INSTPAT("0000000 ????? ????? 010 ????? 01100 11", slt    , R, R(dest) = ( (int64_t)src1 < (int64_t)src2 ));
+  INSTPAT("0000000 ????? ????? 011 ????? 01100 11", sltu   , R, R(dest) = ( (uint64_t)src1 < (uint64_t)src2 ));
+  INSTPAT("0000000 ????? ????? 100 ????? 01100 11", xor    , R, R(dest) = src1 ^ src2);
+  INSTPAT("0000000 ????? ????? 101 ????? 01100 11", srl    , R, R(dest) = (src1 << (src2 & 0x3f)));
+  INSTPAT("0100000 ????? ????? 101 ????? 01100 11", sra    , R, R(dest) = (word_t)((int64_t)src1 >> (src2 & 0x3f)));
+  INSTPAT("0000000 ????? ????? 110 ????? 01100 11", or     , R, R(dest) = src1 | src2);
+  INSTPAT("0000000 ????? ????? 111 ????? 01100 11", and    , R, R(dest) = src1 & src2);
+  
+  INSTPAT("0000001 ????? ????? 000 ????? 01100 11", mul    , R, R(dest) = (word_t)(src1 * src2));
+  INSTPAT("0000001 ????? ????? 001 ????? 01100 11", mulh   , R, R(dest) = (word_t)(((__int128_t)((__int128_t)src1 * (__int128_t)src2)) >> 64));
+  INSTPAT("0000001 ????? ????? 010 ????? 01100 11", mulhsu , R, R(dest) = (word_t)(((__int128_t)((__uint128_t)((src1 >= 0) ? src1 : -src1) * (__uint128_t)src2) * ((src1 >= 0) ? 1 : -1) ) >> 64));
+  INSTPAT("0000001 ????? ????? 011 ????? 01100 11", mulhu  , R, R(dest) = (word_t)(((__int128_t)((__uint128_t)src1 * (__uint128_t)src2)) >> 64));
+  INSTPAT("0000001 ????? ????? 100 ????? 01100 11", div    , R, R(dest) = (word_t)((int64_t)src1 / (int64_t)src2));
+  INSTPAT("0000001 ????? ????? 101 ????? 01100 11", divu   , R, R(dest) = src1 / src2);
+  INSTPAT("0000001 ????? ????? 101 ????? 01100 11", rem    , R, R(dest) = (word_t)((int64_t)src1 % (int64_t)src2));
+  INSTPAT("0000001 ????? ????? 110 ????? 01100 11", remu   , R, R(dest) = src1 % src2);
 */
-
+                7'b1100011://beq
+                begin
+                     //wen = 1;
+                    case(func3)
+                        3'b000: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0010; ExtOp = ysyx_220053_B; Branch = 3'b100; wen = 0; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0010; ExtOp = ysyx_220053_B; Branch = 3'b101; wen = 0; end
+                        3'b100: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0010; ExtOp = ysyx_220053_B; Branch = 3'b110; wen = 0; end
+                        3'b101: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0010; ExtOp = ysyx_220053_B; Branch = 3'b111; wen = 0; end
+                        3'b110: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0011; ExtOp = ysyx_220053_B; Branch = 3'b110; wen = 0; end
+                        3'b111: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0011; ExtOp = ysyx_220053_B; Branch = 3'b111; wen = 0; end
+                        default: $display("no");
+                    endcase
+                end
+/*
+  INSTPAT("??????? ????? ????? 000 ????? 11000 11", beq    , B, s->dnpc = (src1 == src2) ? (dest + s->pc) : s->snpc);
+  INSTPAT("??????? ????? ????? 001 ????? 11000 11", bne    , B, s->dnpc = (src1 != src2) ? (dest + s->pc) : s->snpc);
+  INSTPAT("??????? ????? ????? 100 ????? 11000 11", blt    , B, s->dnpc = ((int64_t)src1 < (int64_t)src2) ? (dest + s->pc) : s->snpc);
+  INSTPAT("??????? ????? ????? 101 ????? 11000 11", bge    , B, s->dnpc = ((int64_t)src1 >= (int64_t)src2) ? (dest + s->pc) : s->snpc);
+  INSTPAT("??????? ????? ????? 110 ????? 11000 11", bltu   , B, s->dnpc = ((uint64_t)src1 < (uint64_t)src2) ? (dest + s->pc) : s->snpc);
+  INSTPAT("??????? ????? ????? 111 ????? 11000 11", bgeu   , B, s->dnpc = ((uint64_t)src1 >= (uint64_t)src2) ? (dest + s->pc) : s->snpc);
+*/
             7'b1110011://ebreak
              	begin
              		case(instr_i[31:20])

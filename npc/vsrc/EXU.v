@@ -14,6 +14,7 @@ module ysyx_220053_EXU(
     input [63:0] imm,
     output [63:0] dnpc
 );
+    wire zero;
     wire [63:0] busa, busb;
     wire [63:0] res;
     wire [63:0] alu_inA, alu_inB;
@@ -30,14 +31,15 @@ module ysyx_220053_EXU(
                                               .waddr(rd),
                                               .wen(is_wen)
                                             );
-    ysyx_220053_ALU alu64(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .result(res));
+    ysyx_220053_ALU alu64(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .result(res), .zero(zero));
         //busa + immI; //addi
     wire [63:0] addr_res;
-    ysyx_220053_NexAddr nextaddr(.Branch(Branch), .pc(pc), .imm(imm), .busa(busa), .dnpc(addr_res));
+    ysyx_220053_NexAddr nextaddr(.Zero(zero), .res0(res[0]), .Branch(Branch), .pc(pc), .imm(imm), .busa(busa), .dnpc(addr_res));
     assign dnpc = {addr_res[63:1], 1'b0};
 endmodule
 
 module ysyx_220053_NexAddr(
+    input Zero, res0,
     input [2:0] Branch,
     input [63:0] pc, imm, busa,
     output [63:0] dnpc
@@ -48,6 +50,10 @@ module ysyx_220053_NexAddr(
         case(Branch)
             3'b001: begin NexA = 0; NexB = 1; end
             3'b010: begin NexA = 1; NexB = 1; end
+            3'b100: begin NexA = 0; NexB = Zero; end
+            3'b101: begin NexA = 0; NexB = ~Zero; end
+            3'b110: begin NexA = 0; NexB = res0; end
+            3'b111: begin NexA = 0; NexB = Zero | (~res0); end
             default: begin NexA = 0; NexB = 0; end
         endcase
     end
