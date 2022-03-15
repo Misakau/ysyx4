@@ -10,7 +10,7 @@ module ysyx_220053_IFU(
     wire [63:0] now_pc, snpc, rdata;
     assign snpc = now_pc + 4;
     assign pc = now_pc;
-    initial pmem_read(pc, rdata);
+    always@(posedge ~clk) pmem_read(pc, rdata);
     assign instr_o = rdata[31:0];
     ysyx_220053_Reg #(64, 64'h80000000) PC(.clk(clk), .rst(rst), dnpc, now_pc, 1'b1);
 

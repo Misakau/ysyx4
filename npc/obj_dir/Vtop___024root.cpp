@@ -36,7 +36,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         __Vdlyvset__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 = 1U;
         __Vdlyvdim0__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 
             = (0x1fU & (IData)((vlSelf->top__DOT__my_ifu__DOT__rdata 
-                                >> 0x27U)));
+                                >> 7U)));
     }
     vlSelf->top__DOT__my_ifu__DOT__now_pc = ((IData)(vlSelf->rst)
                                               ? 0x80000000ULL
@@ -49,13 +49,13 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__busa = ((0U == (0x1fU 
                                                    & (IData)(
                                                              (vlSelf->top__DOT__my_ifu__DOT__rdata 
-                                                              >> 0x2fU))))
+                                                              >> 0xfU))))
                                             ? 0ULL : 
                                            vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
                                            [(0x1fU 
                                              & (IData)(
                                                        (vlSelf->top__DOT__my_ifu__DOT__rdata 
-                                                        >> 0x2fU)))]);
+                                                        >> 0xfU)))]);
     vlSelf->top__DOT__my_exu__DOT__alu_inB = ((1U == (IData)(vlSelf->top__DOT__ALUSrcB))
                                                ? vlSelf->top__DOT__imm
                                                : ((0U 
@@ -66,7 +66,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                                     (0x1fU 
                                                      & (IData)(
                                                                (vlSelf->top__DOT__my_ifu__DOT__rdata 
-                                                                >> 0x34U))))
+                                                                >> 0x14U))))
                                                     ? 0ULL
                                                     : 
                                                    vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf
@@ -74,7 +74,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                                    (0x1fU 
                                                     & (IData)(
                                                               (vlSelf->top__DOT__my_ifu__DOT__rdata 
-                                                               >> 0x34U)))])
+                                                               >> 0x14U)))])
                                                    : 4ULL));
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__adderb 
