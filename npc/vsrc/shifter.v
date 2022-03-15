@@ -13,12 +13,12 @@ module ysyx_220053_Shifter(
     always @(*) begin
         if (LR == 0) begin // left shift
             for (i = 0; i <= 63; i = i + 1) begin
-                if (i >= shamt) dout[i] = din[i - {58'b0, shamt}]; else dout[i] = 0;
+                if (i >= shamt) dout[i] = din[i - {26'b0, shamt}]; else dout[i] = 0;
             end
         end
         else begin // right shift 
             for (i = 0; i <= 63; i= i + 1) begin
-                if (i >= 64 - {58'b0, shamt}) dout[i] = sgn; else dout[i] = din[i + {58'b0, shamt}];
+                if (i >= 64 - {26'b0, shamt}) dout[i] = sgn; else dout[i] = din[i + {26'b0, shamt}];
             end
         end
     end
