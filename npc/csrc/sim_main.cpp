@@ -165,17 +165,17 @@ static void npc_exec(uint64_t n){
   }
   for (uint64_t i = 1; i <= n && !is_done && !sdb_contextp->gotFinish(); i++) { 
             sdb_contextp->timeInc(1); 
-            top->clk = !top->clk;
-            if(top->clk == 0)top->instr_i = pimem_read(top->pc);
-            if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); top->eval();break;}
+            sdb_top->clk = !sdb_top->clk;
+            if(top->clk == 0)sdb_top->instr_i = pimem_read(sdb_top->pc);
+            if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); sdb_top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
-            top->eval();
+            sdb_top->eval();
         }
   if(is_done){
     if(cpu_gpr[10] == 0)
         printf(ASNI_FG_GREEN "HIT GOOD TRAP!" ASNI_NONE);
     else printf(ASNI_FG_RED "HIT BAD TRAP!" ASNI_NONE);
-    printf(ASNI_FG_BLUE " at PC = %lx\n" ASNI_NONE,top->pc);
+    printf(ASNI_FG_BLUE " at PC = %lx\n" ASNI_NONE,sdb_top->pc);
   }
 }
 
