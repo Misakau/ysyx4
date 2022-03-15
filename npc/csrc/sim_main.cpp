@@ -163,7 +163,7 @@ int main(int argc, char**argv, char**env) {
             top->clk = !top->clk;
             //if(top->clk == 0)top->instr_i = pimem_read(top->pc);
             if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); top->eval();break;}
-            printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr);
+            //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr);
             top->eval();
         }
     else{
@@ -193,8 +193,9 @@ static void npc_exec(uint64_t n){
             sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
             //if(sdb_top->clk == 0)sdb_top->instr_i = pimem_read(sdb_top->pc);
-            if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); sdb_top->eval();break;}
             printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", sdb_top->clk, sdb_top->rst, sdb_top->pc, sdb_top->instr);
+            if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); sdb_top->eval();break;}
+            //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", sdb_top->clk, sdb_top->rst, sdb_top->pc, sdb_top->instr);
             sdb_top->eval();
         }
   if(is_done){

@@ -55,7 +55,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
             = __Vdlyvval__top__DOT__my_exu__DOT__regfile__DOT__rf__v0;
     }
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
-    VL_WRITEF("hh\n");
     Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->pc, vlSelf->__Vtask_pmem_read__0__rdata);
     vlSelf->top__DOT__my_ifu__DOT__rdata = vlSelf->__Vtask_pmem_read__0__rdata;
     vlSelf->top__DOT__instr_i = ((1U & (IData)((vlSelf->pc 

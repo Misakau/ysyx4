@@ -63,7 +63,6 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     CData/*3:0*/ __Vtableidx1;
     // Body
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
-    VL_WRITEF("hh\n");
     Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->pc, vlSelf->__Vtask_pmem_read__0__rdata);
     vlSelf->top__DOT__my_ifu__DOT__rdata = vlSelf->__Vtask_pmem_read__0__rdata;
     vlSelf->top__DOT__instr_i = ((1U & (IData)((vlSelf->pc 
