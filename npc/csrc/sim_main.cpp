@@ -1,14 +1,16 @@
 #include "Vtop.h"
 #include "verilated.h"
+#include "svdpi.h"
+#include "verilated_dpi.h"
+
 #include <cstdint>
 #include <cstdlib>
 #include <cstdio>
-#include "svdpi.h"
-#include "verilated_dpi.h"
 #include "color.h"
 #include <getopt.h>
 #include <cstring>
 #include <readline/readline.h>
+
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
 
@@ -41,12 +43,15 @@ void dump_gpr() {
 /////////////////////////////////////////////////////////
 /*                        sdb                          */
 /////////////////////////////////////////////////////////
+static VerilatedContext* sdb_contextp = NULL;
+static Vtop* sdb_top = NULL;
+
 static bool is_batch = false;
 void set_batch_mode(){
     is_batch = true;
 }
 
-static void sdb_mainloop(VerilatedContext* contextp, Vtop* top);
+static void sdb_mainloop();
 
 static char* image_file = NULL;
 
@@ -84,10 +89,17 @@ int main(int argc, char**argv, char**env) {
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
     contextp->commandArgs(argc, argv);
+    Vtop*top = new Vtop{contextp};
+    
     npc_parse_args(argc, argv);
+    
+    //sdb_init
+    sdb_contextp = contextp;
+    sdb_top = top;
+
 
     //print_args(argc, argv);
-    
+
     if(image_file != NULL){//has image
         FILE* fp = fopen(image_file, "r");
         assert(fp);
@@ -107,7 +119,7 @@ int main(int argc, char**argv, char**env) {
         IMEM[4] = 0x00100073;
         IMEM[5] = 0x00100073;
     }
-    Vtop*top = new Vtop{contextp};
+    
     //reset the pc
     contextp->timeInc(1); 
     top->clk = 0;
@@ -131,7 +143,7 @@ int main(int argc, char**argv, char**env) {
         }
     else{
         printf(ASNI_FG_RED "Not in batch mode!\n" ASNI_NONE);
-        sdb_mainloop(contextp, top);
+        sdb_mainloop();
     }
     delete top;
     delete contextp;
@@ -146,13 +158,13 @@ int main(int argc, char**argv, char**env) {
 }
 
 //////////////////////////////////////////////////////////////////////////////
-static void npc_exec(VerilatedContext* contextp, Vtop* top, uint64_t n){
-  if(is_done || contextp->gotFinish()){
+static void npc_exec(uint64_t n){
+  if(is_done || sdb_contextp->gotFinish()){
     printf("The program is done! Please quit the npc_sdb.\n");
     return;
   }
-  for (uint64_t i = 1; i <= n && !is_done && !contextp->gotFinish(); i++) { 
-            contextp->timeInc(1); 
+  for (uint64_t i = 1; i <= n && !is_done && !sdb_contextp->gotFinish(); i++) { 
+            sdb_contextp->timeInc(1); 
             top->clk = !top->clk;
             if(top->clk == 0)top->instr_i = pimem_read(top->pc);
             if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); top->eval();break;}
@@ -181,12 +193,12 @@ static char* rl_gets() {
   return line_read;
 }
 
-static int cmd_c(VerilatedContext* contextp, Vtop* top, char *args) {
-  npc_exec(contextp, top, -1);
+static int cmd_c(char *args) {
+  npc_exec(-1);
   return 0;
 }
 
-static int cmd_q(VerilatedContext* contextp, Vtop* top, char *args) {
+static int cmd_q(char *args) {
   EXIT = true;
   return 0;
 }
@@ -227,7 +239,7 @@ uint64_t s_to_u(char* s, int r){
   return num;
 }
 
-static int cmd_si(VerilatedContext* contextp, Vtop* top, char *args){
+static int cmd_si(char *args){
   int times = 0;
   char* com = strtok(args," ");
   if(com == NULL) times = 1;
@@ -242,11 +254,11 @@ static int cmd_si(VerilatedContext* contextp, Vtop* top, char *args){
     }
   }
   if(times == 0) assert(0);
-  else npc_exec(contextp, top, times);
+  else npc_exec(times);
   return 0;
 }
 
-int cmd_info(VerilatedContext* contextp, Vtop* top, char* args){
+int cmd_info(char* args){
   char* com = strtok(args," ");
   if(com == NULL) assert(0);
   int is_r = strcmp(com,"r");
@@ -256,7 +268,7 @@ int cmd_info(VerilatedContext* contextp, Vtop* top, char* args){
   return 0;
 }
 /*
-static int cmd_x(VerilatedContext* contextp, Vtop* top, char *args){
+static int cmd_x(char *args){
   char* com1 = strtok(args," ");
   char* com2 = strtok(NULL," ");
   if(com1 == NULL || com2 == NULL) Assert(0,"TOO FEW COMMANDS!");
@@ -274,12 +286,12 @@ static int cmd_x(VerilatedContext* contextp, Vtop* top, char *args){
   return 0;
 }
 */
-static int cmd_help(VerilatedContext* contextp, Vtop* top, char *args);
+static int cmd_help(char *args);
 
 static struct {
   const char *name;
   const char *description;
-  int (*handler) (VerilatedContext* , Vtop* , char *);
+  int (*handler) (char *);
 } cmd_table [] = {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
@@ -294,7 +306,7 @@ static struct {
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
 #define NR_CMD ARRLEN(cmd_table)
 
-static int cmd_help(VerilatedContext* contextp, Vtop* top, char *args) {
+static int cmd_help(char *args) {
   /* extract the first argument */
   char *arg = strtok(NULL, " ");
   int i;
@@ -317,7 +329,7 @@ static int cmd_help(VerilatedContext* contextp, Vtop* top, char *args) {
   return 0;
 }
 
-void sdb_mainloop(VerilatedContext* contextp, Vtop* top) {
+void sdb_mainloop() {
 
 
   for (char *str; (str = rl_gets()) != NULL; ) {
@@ -338,7 +350,7 @@ void sdb_mainloop(VerilatedContext* contextp, Vtop* top) {
     int i;
     for (i = 0; i < NR_CMD; i ++) {
       if (strcmp(cmd, cmd_table[i].name) == 0) {
-        if (cmd_table[i].handler(contextp, top, args) < 0) { return; }
+        if (cmd_table[i].handler(args) < 0) { return; }
         break;
       }
     }
