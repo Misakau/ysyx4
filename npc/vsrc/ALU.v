@@ -20,7 +20,7 @@ module ysyx_220053_ALU(
     assign res3 = inputa ^ inputb;
     assign res4 = inputa << (inputb & 6'b111111);//shift,not finish
     assign res5 = inputb;
-    assign res6 = 0 //cmp,not finish
+    assign res6 = 0; //cmp,not finish
 
     always@(*) begin
         case(OPctr)
