@@ -11,6 +11,8 @@
 #include <cstring>
 #include <readline/readline.h>
 
+#include <npc_sdb.h>
+
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
 
@@ -158,6 +160,7 @@ int main(int argc, char**argv, char**env) {
 }
 
 //////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 static void npc_exec(uint64_t n){
   if(is_done || sdb_contextp->gotFinish()){
     printf("The program is done! Please quit the npc_sdb.\n");
@@ -179,20 +182,6 @@ static void npc_exec(uint64_t n){
   }
 }
 
-/* We use the `readline' library to provide more flexibility to read from stdin. */
-static char* rl_gets() {
-  static char *line_read = NULL;
-
-  if (line_read) {
-    free(line_read);
-    line_read = NULL;
-  }
-
-  line_read = readline("(npc) ");
-
-  return line_read;
-}
-
 static int cmd_c(char *args) {
   npc_exec(-1);
   return 0;
@@ -201,42 +190,6 @@ static int cmd_c(char *args) {
 static int cmd_q(char *args) {
   EXIT = true;
   return 0;
-}
-
-int s_to_i(char* s, int r){
-  assert(s != NULL);
-  int num = 0;
-  int len = strlen(s);
-  for(int i = 0; i < len; i++){
-    if(r == 10 && s[i] >= '0' && s[i] <= '9') num = num * r + s[i] - '0';
-    else if(r == 16 &&( (s[i] >= '0' && s[i] <= '9') || (s[i] >= 'a' && s[i] <= 'f') || (s[i] >= 'A' && s[i] <= 'F') )){
-      if(s[i] >= '0' && s[i] <= '9')
-        num = num * r + s[i] - '0';
-      else if(s[i] >= 'a' && s[i] <= 'f')
-        num = num * r + s[i] - 'a' + 10;
-      else num = num * r + s[i] - 'A' + 10;
-    } 
-    else assert(0);
-  }
-  return num;
-}
-
-uint64_t s_to_u(char* s, int r){
-  assert(s != NULL);
-  uint64_t num = 0;
-  int len = strlen(s);
-  for(int i = 0; i < len; i++){
-    if(r == 10 && s[i] >= '0' && s[i] <= '9') num = num * r + s[i] - '0';
-    else if(r == 16 &&( (s[i] >= '0' && s[i] <= '9') || (s[i] >= 'a' && s[i] <= 'f') || (s[i] >= 'A' && s[i] <= 'F') )){
-      if(s[i] >= '0' && s[i] <= '9')
-        num = num * r + s[i] - '0';
-      else if(s[i] >= 'a' && s[i] <= 'f')
-        num = num * r + s[i] - 'a' + 10;
-      else num = num * r + s[i] - 'A' + 10;
-    } 
-    else assert(0);
-  }
-  return num;
 }
 
 static int cmd_si(char *args){
@@ -272,9 +225,9 @@ static int cmd_x(char *args){
   char* com1 = strtok(args," ");
   char* com2 = strtok(NULL," ");
   if(com1 == NULL || com2 == NULL) Assert(0,"TOO FEW COMMANDS!");
-  int num1 = s_to_i(com1, 10);
+  int num1 = npc_s_to_i(com1, 10);
   if(strlen(com2) <= 2 || com2[0] != '0' || com2[1] != 'x' ) Assert(0,"INVALID COMMANDS!");
-  word_t num2 = s_to_u(com2+2, 16);
+  word_t num2 = npc_s_to_u(com2+2, 16);
   int offs = 0;
   for(int i = 1; i <= num1; i++){
     word_t dat = vaddr_read(num2+offs, 4);
@@ -332,7 +285,7 @@ static int cmd_help(char *args) {
 void sdb_mainloop() {
 
 
-  for (char *str; (str = rl_gets()) != NULL; ) {
+  for (char *str; (str = npc_rl_gets()) != NULL; ) {
     char *str_end = str + strlen(str);
 
     /* extract the first token as the command */

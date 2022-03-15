@@ -7,9 +7,9 @@
 #include <cassert>
 #include <readline/readline.h>
 
-void npc_exec(uint64_t n);
 
-static char* rl_gets() {
+/* We use the `readline' library to provide more flexibility to read from stdin. */
+static char* npc_rl_gets() {
   static char *line_read = NULL;
 
   if (line_read) {
@@ -22,17 +22,9 @@ static char* rl_gets() {
   return line_read;
 }
 
-static int cmd_c(char *args) {
-  npc_exec(-1);
-  return 0;
-}
 
-static int cmd_q(char *args) {
-  EXIT = true;
-  return 0;
-}
 
-int s_to_i(char* s, int r){
+int npc_s_to_i(char* s, int r){
   assert(s != NULL);
   int num = 0;
   int len = strlen(s);
@@ -50,7 +42,7 @@ int s_to_i(char* s, int r){
   return num;
 }
 
-uint64_t s_to_u(char* s, int r){
+uint64_t npc_s_to_u(char* s, int r){
   assert(s != NULL);
   uint64_t num = 0;
   int len = strlen(s);
@@ -68,34 +60,6 @@ uint64_t s_to_u(char* s, int r){
   return num;
 }
 
-static int cmd_si(char *args){
-  int times = 0;
-  char* com = strtok(args," ");
-  if(com == NULL) times = 1;
-  else{
-    int len = strlen(com);
-    for(int i = 0; i < len; i++){
-      if(com[i] >= '0' && com[i] <= '9') times = times * 10 + com[i] - '0';
-      else{
-        times = 0;
-        break;
-      }
-    }
-  }
-  if(times == 0) assert(0);
-  else npc_exec(times);
-  return 0;
-}
-
-int cmd_info(char* args){
-  char* com = strtok(args," ");
-  if(com == NULL) assert(0);
-  int is_r = strcmp(com,"r");
-  int is_w = strcmp(com,"w");
-  if(is_r != 0 && is_w != 0) assert(0);
-  if(is_r == 0) dump_gpr();
-  return 0;
-}
 /*
 static int cmd_x(char *args){
   char* com1 = strtok(args," ");
@@ -115,75 +79,3 @@ static int cmd_x(char *args){
   return 0;
 }
 */
-
-static int cmd_help(char *args) {
-  /* extract the first argument */
-  char *arg = strtok(NULL, " ");
-  int i;
-
-  if (arg == NULL) {
-    /* no argument given */
-    for (i = 0; i < NR_CMD; i ++) {
-      printf("%s - %s\n", cmd_table[i].name, cmd_table[i].description);
-    }
-  }
-  else {
-    for (i = 0; i < NR_CMD; i ++) {
-      if (strcmp(arg, cmd_table[i].name) == 0) {
-        printf("%s - %s\n", cmd_table[i].name, cmd_table[i].description);
-        return 0;
-      }
-    }
-    printf("Unknown command '%s'\n", arg);
-  }
-  return 0;
-}
-
-static struct {
-  const char *name;
-  const char *description;
-  int (*handler) (char *);
-} cmd_table [] = {
-  { "help", "Display informations about all supported commands", cmd_help },
-  { "c", "Continue the execution of the program", cmd_c },
-  { "q", "Exit NPC", cmd_q },
-  { "si", "single exec", cmd_si },
-  { "info", "info registers", cmd_info},
-//  { "x", "scan memory", cmd_x},
-  /* TODO: Add more commands */
-
-};
-
-#define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
-#define NR_CMD ARRLEN(cmd_table)
-
-void sdb_mainloop() {
-
-
-  for (char *str; (str = rl_gets()) != NULL; ) {
-    char *str_end = str + strlen(str);
-
-    /* extract the first token as the command */
-    char *cmd = strtok(str, " ");
-    if (cmd == NULL) { continue; }
-
-    /* treat the remaining string as the arguments,
-     * which may need further parsing
-     */
-    char *args = cmd + strlen(cmd) + 1;
-    if (args >= str_end) {
-      args = NULL;
-    }
-
-    int i;
-    for (i = 0; i < NR_CMD; i ++) {
-      if (strcmp(cmd, cmd_table[i].name) == 0) {
-        if (cmd_table[i].handler(args) < 0) { return; }
-        break;
-      }
-    }
-
-    if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
-    if (EXIT) break;
-  }
-}

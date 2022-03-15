@@ -21,6 +21,7 @@ VERILATOR_FLAGS += --trace
 
 # Input files for Verilator
 VERILATOR_INPUT = $(VFILES) csrc/sim_main.cpp
+LDFLAGS = -lreadline -lnpc_sdb
 #FILEPATH ?= ./csrc/a.in
 #TEST_PATH ?= ../am-kernels/tests/cpu-tests/build/$(IMAGE).bin
 all:
