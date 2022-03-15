@@ -17,10 +17,11 @@ module ysyx_220053_ALU(
     wire CF, SF, OF, ZF;
     ysyx_220053_ALUSig alusig(.ALUOp(ALUOp), .SUBctr(SUBctr), .SIGctr(SIGctr), .ALctr(ALctr), .SFTctr(SFTctr), .OPctr(OPctr));
     ysyx_220053_Adder64 adder1(.result(res0),.x(inputa),.y(adderb),.sub(SUBctr),.CF(CF),.OF(OF),.SF(SF),.ZF(ZF));
+    
     assign res1 = inputa & inputb;
     assign res2 = inputa | inputb;
     assign res3 = inputa ^ inputb;
-    assign res4 = 0;//inputa << (inputb & 6'b111111);//shift,not finish
+    ysyx_220053_Shifter shifter(.dout(res4),.din(inputa),.shamt(inputb),.AL(ALctr),.LR(SFTctr));
     assign res5 = inputb;
     assign res6 = {{63{1'b0}},{(SIGctr == 1'b1) ? OF ^ SF : CF}}; //cmp,not finish
     assign res7 = 0;
