@@ -29,7 +29,7 @@ all:
 
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	$(VERILATOR) $(VERILATOR_FLAGS) -LDFLAGS -L./csrc -LDFLAGS .lnpc_sdb $(VERILATOR_INPUT)
+	$(VERILATOR) $(VERILATOR_FLAGS) -LDFLAGS -L./csrc -LDFLAGS -lnpc_sdb $(VERILATOR_INPUT)
 
 	@rm -rf logs
 	@mkdir -p logs

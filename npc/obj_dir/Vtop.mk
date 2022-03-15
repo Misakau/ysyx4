@@ -35,11 +35,11 @@ VM_PREFIX = Vtop
 VM_MODPREFIX = Vtop
 # User CFLAGS (from -CFLAGS on Verilator command line)
 VM_USER_CFLAGS = \
-	./csrc/npc_sdb.o \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
-	-lreadline \
+	-L./csrc \
+	.lnpc_sdb \
 
 # User .cpp files (from .cpp's on Verilator command line)
 VM_USER_CLASSES = \
