@@ -4,15 +4,28 @@
 #include <memory/paddr.h>
 
 void difftest_memcpy(paddr_t addr, void *buf, size_t n, bool direction) {
-  assert(0);
+  if (direction == DIFFTEST_TO_REF) {
+  	int paddr = addr;
+  	uint8_t* buff = (uint8_t*) buf;//riscv64
+  	for(int i = 0; i < n; i++){
+  		word_t data = buff[i];
+  		paddr_write(paddr, 1, data);
+  	}
+  } else {
+    assert(0);
+  }
 }
 
 void difftest_regcpy(void *dut, bool direction) {
-  assert(0);
+  if (direction == DIFFTEST_TO_REF) {
+    memcpy((CPU_state*)dut, &cpu, DIFFTEST_REG_SIZE);
+  } else {
+    assert(0);
+  }
 }
 
 void difftest_exec(uint64_t n) {
-  assert(0);
+  cpu_exec(n);
 }
 
 void difftest_raise_intr(word_t NO) {
