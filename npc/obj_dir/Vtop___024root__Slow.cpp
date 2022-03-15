@@ -65,7 +65,7 @@ void Vtop___024root___initial__TOP__6(Vtop___024root* vlSelf) {
     // Variables
     QData/*63:0*/ __Vtask_pmem_read__0__rdata;
     // Body
-    if ((1U & (~ (IData)(vlSelf->clk)))) {
+    if ((1U & ((~ (IData)(vlSelf->clk)) | (IData)(vlSelf->rst)))) {
         Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->pc, __Vtask_pmem_read__0__rdata);
         vlSelf->top__DOT__my_ifu__DOT__rdata = __Vtask_pmem_read__0__rdata;
     }
