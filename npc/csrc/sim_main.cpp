@@ -139,7 +139,7 @@ int main(int argc, char**argv, char**env) {
     }
     else{//build in code
         printf(ASNI_FG_BLUE "Load build-in image\n" ASNI_NONE);
-        MEM[0] = 0x0ffff09700c000efLL;// addi x0,x1,1
+        MEM[0] = 0x0ffff0970ffff097LL;// addi x0,x1,1
         MEM[1] = 0x00108093ff0ff0b7LL;//lui x1,0xff0ff
         MEM[2] = 0x0010007300100073LL;
     }
