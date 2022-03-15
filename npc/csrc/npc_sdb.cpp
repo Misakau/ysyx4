@@ -22,8 +22,6 @@ char* npc_rl_gets() {
   return line_read;
 }
 
-
-
 int npc_s_to_i(char* s, int r){
   assert(s != NULL);
   int num = 0;
