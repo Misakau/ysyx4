@@ -20,7 +20,7 @@ VERILATOR_FLAGS += --trace
 #VERILATOR_FLAGS += --gdbbt
 
 # Input files for Verilator
-VERILATOR_INPUT = $(VFILES) csrc/sim_main.cpp $(NPC_HOME)/csrc/libnpc_sdb.a
+VERILATOR_INPUT = $(VFILES) $(NPC_HOME)/csrc/libnpc_sdb.a csrc/sim_main.cpp
 LDFLAGS = -lreadline
 #FILEPATH ?= ./csrc/a.in
 #TEST_PATH ?= ../am-kernels/tests/cpu-tests/build/$(IMAGE).bin
