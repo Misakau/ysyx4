@@ -52,6 +52,7 @@ VL_MODULE(Vtop___024root) {
     QData/*63:0*/ top__DOT__my_exu__DOT__busa;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inA;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inB;
+    QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__res4;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__res7;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderb;
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcA;

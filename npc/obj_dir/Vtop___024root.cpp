@@ -90,9 +90,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                             ? (vlSelf->top__DOT__my_exu__DOT__alu_inA 
                                ^ vlSelf->top__DOT__my_exu__DOT__alu_inB)
                             : ((4U == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))
-                                ? VL_SHIFTL_QQQ(64,64,64, vlSelf->top__DOT__my_exu__DOT__alu_inA, 
-                                                (0x3fULL 
-                                                 & vlSelf->top__DOT__my_exu__DOT__alu_inB))
+                                ? vlSelf->top__DOT__my_exu__DOT__alu64__DOT__res4
                                 : ((5U == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))
                                     ? vlSelf->top__DOT__my_exu__DOT__alu_inB
                                     : ((6U == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))
