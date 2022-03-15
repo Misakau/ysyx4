@@ -201,9 +201,10 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                                & (~ (IData)(
                                                             (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__res0 
                                                              >> 0x3fU))))))));
-            tracep->chgBit(oldp+112,((1U & ((IData)(vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high.__PVT__cout_temp) 
+            tracep->chgCData(oldp+112,((0x3fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB))),6);
+            tracep->chgBit(oldp+113,((1U & ((IData)(vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high.__PVT__cout_temp) 
                                             >> 3U))));
-            tracep->chgIData(oldp+113,(((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low.__PVT__ff
+            tracep->chgIData(oldp+114,(((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low.__PVT__ff
                                          [3U] << 0x18U) 
                                         | ((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low.__PVT__ff
                                             [2U] << 0x10U) 
@@ -212,7 +213,7 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                                << 8U) 
                                               | vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low.__PVT__ff
                                               [0U])))),32);
-            tracep->chgIData(oldp+114,(((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high.__PVT__ff
+            tracep->chgIData(oldp+115,(((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high.__PVT__ff
                                          [3U] << 0x18U) 
                                         | ((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high.__PVT__ff
                                             [2U] << 0x10U) 
@@ -221,9 +222,8 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                                << 8U) 
                                               | vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high.__PVT__ff
                                               [0U])))),32);
-            tracep->chgBit(oldp+115,((1U & ((IData)(vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low.__PVT__cout_temp) 
+            tracep->chgBit(oldp+116,((1U & ((IData)(vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low.__PVT__cout_temp) 
                                             >> 3U))));
-            tracep->chgCData(oldp+116,((0x3fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB))),6);
             tracep->chgBit(oldp+117,(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__shifter__DOT__sgn));
             tracep->chgBit(oldp+118,(vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__NexA));
             tracep->chgBit(oldp+119,(vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__NexB));
