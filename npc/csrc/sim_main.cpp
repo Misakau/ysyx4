@@ -18,6 +18,7 @@
 
 static long long MEM[MEMSIZE];//8字节为单位
 static bool EXIT = 0;
+static bool START = 0;
 /*
 uint32_t pimem_read(uint64_t paddr){
     uint64_t real_addr = (paddr - AD_BASE) >> 2;
@@ -49,7 +50,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
   long long real_addr = (raddr - AD_BASE) >> 2;
   //assert(real_addr < MEMSIZE);
   if(raddr < AD_BASE || ((raddr - AD_BASE) >> 2) >= MEMSIZE){
-    EXIT = 1;//printf("addrs=%lx\n",raddr); 
+    if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
     *rdata = 0;
     return;
   }
@@ -156,6 +157,7 @@ int main(int argc, char**argv, char**env) {
     top->eval();
     //printf("Now_pc = %016lx\n",top->pc);
     top->rst = 0;
+    START = 1;
     int cnt = 0;
     if(is_batch)
         while (!is_done && !contextp->gotFinish()) { 
