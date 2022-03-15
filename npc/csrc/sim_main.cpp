@@ -159,6 +159,12 @@ static void npc_exec(VerilatedContext* contextp, Vtop* top, uint64_t n){
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
             top->eval();
         }
+  if(is_done){
+    if(cpu_gpr[10] == 0)
+        printf(ASNI_FG_GREEN "HIT GOOD TRAP!" ASNI_NONE);
+    else printf(ASNI_FG_RED "HIT BAD TRAP!" ASNI_NONE);
+    printf(ASNI_FG_BLUE " at PC = %lx\n" ASNI_NONE,top->pc);
+  }
 }
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
