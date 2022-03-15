@@ -16,7 +16,7 @@
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
 
-static long MEM[MEMSIZE];//4字节为单位
+static long long MEM[MEMSIZE];//8字节为单位
 static bool EXIT = 0;
 static bool START = 0;
 /*
