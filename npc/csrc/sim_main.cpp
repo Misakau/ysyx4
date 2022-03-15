@@ -191,7 +191,7 @@ static void npc_exec(uint64_t n){
   for (uint64_t i = 1; i <= n && !is_done && !sdb_contextp->gotFinish(); i++) { 
             sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
-            if(sdb_top->clk == 0)sdb_top->instr_i = pimem_read(sdb_top->pc);
+            //if(sdb_top->clk == 0)sdb_top->instr_i = pimem_read(sdb_top->pc);
             if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); sdb_top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
             sdb_top->eval();
