@@ -49,7 +49,6 @@ void dump_gpr() {
 extern "C" void pmem_read(long long raddr, long long *rdata) {
   long long real_addr = (raddr - AD_BASE) >> 2;
   //assert(real_addr < MEMSIZE);
-  printf("rdata=%lld\n",*rdata);
   if(raddr < AD_BASE || ((raddr - AD_BASE) >> 2) >= MEMSIZE){
     if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
     *rdata = 0;
