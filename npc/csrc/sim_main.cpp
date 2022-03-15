@@ -157,7 +157,6 @@ int main(int argc, char**argv, char**env) {
     contextp->timeInc(1); 
     top->eval();
     printf("Now_pc = %016lx\n",top->pc);
-    top->clk = 1;
     top->rst = 0;
     START = 1;
     int cnt = 0;

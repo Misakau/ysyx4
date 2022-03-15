@@ -38,6 +38,7 @@ VL_MODULE(Vtop___024root) {
     CData/*1:0*/ top__DOT__ALUSrcB;
     CData/*3:0*/ top__DOT__ALUOp;
     CData/*2:0*/ top__DOT__Branch;
+    CData/*0:0*/ top__DOT__my_ifu__DOT__fclk;
     CData/*2:0*/ top__DOT__my_idu__DOT__ExtOp;
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SUBctr;
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SIGctr;
@@ -62,7 +63,7 @@ VL_MODULE(Vtop___024root) {
 
     // LOCAL VARIABLES
     CData/*0:0*/ __Vclklast__TOP__clk;
-    VlUnpacked<CData/*0:0*/, 4> __Vm_traceActivity;
+    VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
     Vtop__Syms* vlSymsp;  // Symbol table
