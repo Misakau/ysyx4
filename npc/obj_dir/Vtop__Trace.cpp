@@ -4618,8 +4618,9 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
         }
         tracep->chgBit(oldp+1304,(vlSelf->clk));
         tracep->chgBit(oldp+1305,(vlSelf->rst));
-        tracep->chgQData(oldp+1306,(vlSelf->pc),64);
-        tracep->chgBit(oldp+1308,(((IData)(vlSelf->top__DOT__wen) 
+        tracep->chgIData(oldp+1306,(vlSelf->instr),32);
+        tracep->chgQData(oldp+1307,(vlSelf->pc),64);
+        tracep->chgBit(oldp+1309,(((IData)(vlSelf->top__DOT__wen) 
                                    & (~ (IData)(vlSelf->rst)))));
     }
 }

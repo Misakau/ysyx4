@@ -13,6 +13,7 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     : vlSymsp{new Vtop__Syms(_vcontextp__, _vcname__, this)}
     , clk{vlSymsp->TOP.clk}
     , rst{vlSymsp->TOP.rst}
+    , instr{vlSymsp->TOP.instr}
     , pc{vlSymsp->TOP.pc}
     , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
     , __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low}

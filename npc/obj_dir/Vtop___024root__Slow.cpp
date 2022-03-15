@@ -67,6 +67,7 @@ void Vtop___024root___initial__TOP__6(Vtop___024root* vlSelf) {
     // Body
     Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->pc, __Vtask_pmem_read__0__rdata);
     vlSelf->top__DOT__my_ifu__DOT__rdata = __Vtask_pmem_read__0__rdata;
+    vlSelf->instr = (IData)(vlSelf->top__DOT__my_ifu__DOT__rdata);
     if ((1U & (IData)((vlSelf->top__DOT__my_ifu__DOT__rdata 
                        >> 6U)))) {
         if (VL_LIKELY((1U & (IData)((vlSelf->top__DOT__my_ifu__DOT__rdata 
@@ -461,6 +462,7 @@ void Vtop___024root___settle__TOP__7(Vtop___024root* vlSelf) {
     // Variables
     CData/*3:0*/ __Vtableidx1;
     // Body
+    vlSelf->instr = (IData)(vlSelf->top__DOT__my_ifu__DOT__rdata);
     vlSelf->top__DOT__my_exu__DOT__busa = ((0U == (0x1fU 
                                                    & (IData)(
                                                              (vlSelf->top__DOT__my_ifu__DOT__rdata 
@@ -1124,6 +1126,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     // Body
     vlSelf->clk = VL_RAND_RESET_I(1);
     vlSelf->rst = VL_RAND_RESET_I(1);
+    vlSelf->instr = VL_RAND_RESET_I(32);
     vlSelf->pc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__imm = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__wen = VL_RAND_RESET_I(1);
