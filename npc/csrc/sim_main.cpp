@@ -8,6 +8,7 @@
 #include "color.h"
 #include <getopt.h>
 #include <cstring>
+#include <readline/readline.h>
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
 
