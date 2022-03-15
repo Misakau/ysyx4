@@ -149,7 +149,7 @@ int main(int argc, char**argv, char**env) {
 static void npc_exec(VerilatedContext* contextp, Vtop* top, uint64_t n){
   if(is_done || contextp->gotFinish()){
     printf("The program is done! Please quit the npc_sdb.\n");
-    return 0;
+    return;
   }
   for (uint64_t i = 1; i <= n && !is_done && !contextp->gotFinish(); i++) { 
             contextp->timeInc(1); 
