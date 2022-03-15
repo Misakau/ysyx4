@@ -45,19 +45,22 @@ void set_batch_mode(){
     is_batch = true;
 }
 
+static char* image_file = NULL;
+
 static int npc_parse_args(int argc, char *argv[]) {
   const struct option table[] = {
     {"batch"    , no_argument      , NULL, 'b'},
+    {"image"    , required_argument, NULL, 'i'},
 //    {"diff"     , no_argument, NULL, 'd'},
     {"help"     , no_argument      , NULL, 'h'},
     {0          , 0                , NULL,  0 },
   };
   int o;
-  while ( (o = getopt_long(argc, argv, "-bh", table, NULL)) != -1) {
+  while ( (o = getopt_long(argc, argv, "-bhi:", table, NULL)) != -1) {
     switch (o) {
       case 'b': set_batch_mode(); break;
       //case 'd': diff_so_file = optarg; break;
-      case 1: printf("val = 1\n");
+      case 'i': image_file = optarg; break;
       default:
         printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
         printf("\t-b,--batch              run with batch mode\n");
@@ -77,16 +80,18 @@ int main(int argc, char**argv, char**env) {
     printf("argv:\n");
     for(int i = 0; i < argc; i++)
         printf("%s\n",argv[i]);
-    if(argc > 2){//has image
-        FILE* fp = fopen(argv[2], "r");
+    if(image_file != NULL){//has image
+        FILE* fp = fopen(image_file, "r");
         assert(fp);
         fseek(fp, 0, SEEK_END);
         int fsize = ftell(fp);
         fseek(fp, 0, SEEK_SET);
         assert(fread(IMEM, fsize, 1, fp));
         fclose(fp);
+        printf(ASNI_FG_BLUE "Load image in %s\n" ASNI_NONE ,image_file);
     }
     else{//build in code
+        printf(ASNI_FG_BLUE "Load build-in image\n" ASNI_NONE);
         IMEM[0] = 0x00c000ef;// addi x0,x1,1
         IMEM[1] = 0x0ffff097;// auipc x1,0x0ffff
         IMEM[2] = 0xff0ff0b7;//lui x1,0xff0ff
