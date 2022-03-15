@@ -21,8 +21,8 @@ VL_MODULE(Vtop___024root) {
   public:
     // CELLS
     Vtop___024unit* __PVT____024unit;
-    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low;
-    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high;
+    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low;
+    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high;
     Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low;
     Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high;
 
@@ -51,6 +51,8 @@ VL_MODULE(Vtop___024root) {
     QData/*63:0*/ top__DOT__my_exu__DOT__busa;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inA;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inB;
+    QData/*63:0*/ top__DOT__my_exu__DOT__addr_res;
+    QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__res0;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderb;
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcA;
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcB;

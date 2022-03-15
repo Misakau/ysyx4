@@ -4,6 +4,7 @@
 module ysyx_220053_ALU(
     input [63:0] inputa, inputb,
     input [3:0] ALUOp,
+    output zero,
     output reg [63:0] result
 );
 
@@ -13,14 +14,15 @@ module ysyx_220053_ALU(
     ///adder,and,or,xor,shift,inputb,cmp
     wire [63:0] adderb;
     assign adderb = inputb ^ {64{SUBctr}};
+    wire CF, SF, OF, ZF;
     ysyx_220053_ALUSig alusig(.ALUOp(ALUOp), .SUBctr(SUBctr), .SIGctr(SIGctr), .ALctr(ALctr), .SFTctr(SFTctr), .OPctr(OPctr));
-    ysyx_220053_Adder64 adder1(.result(res0),.x(inputa),.y(adderb),.sub(SUBctr));
+    ysyx_220053_Adder64 adder1(.result(res0),.x(inputa),.y(adderb),.sub(SUBctr),.CF(CF),.OF(OF),.SF(SF),.ZF(ZF));
     assign res1 = inputa & inputb;
     assign res2 = inputa | inputb;
     assign res3 = inputa ^ inputb;
     assign res4 = 0;//inputa << (inputb & 6'b111111);//shift,not finish
     assign res5 = inputb;
-    assign res6 = 0; //cmp,not finish
+    assign res6 = {63{1'b0},{(SIGctr == 1'b1) ? OF ^ SF : CF}}; //cmp,not finish
     assign res7 = 0;
     always@(*) begin
         case(OPctr)
@@ -34,6 +36,7 @@ module ysyx_220053_ALU(
          default: result = res7;
         endcase
     end
+    assign zero = ZF;
 endmodule
 module ysyx_220053_ALUSig(
     input [3:0] ALUOp,
