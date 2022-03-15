@@ -14,7 +14,7 @@ module ysyx_220053_ALU(
     wire [63:0] adderb;
     assign adderb = inputb ^ {64{SUBctr}};
     ysyx_220053_ALUSig alusig(.ALUOp(ALUOp), .SUBctr(SUBctr), .SIGctr(SIGctr), .ALctr(ALctr), .SFTctr(SFTctr), .OPctr(OPctr));
-    ysyx_220053_Adder64 adder(.result(res0),.x(inputa),.y(adderb),.sub(SUBctr));
+    ysyx_220053_Adder64 adder1(.result(res0),.x(inputa),.y(adderb),.sub(SUBctr));
     assign res1 = inputa & inputb;
     assign res2 = inputa | inputb;
     assign res3 = inputa ^ inputb;

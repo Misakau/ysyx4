@@ -334,7 +334,7 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__4(Vtop___024root* vlSelf) {
         = Vtop__ConstPool__TABLE_ed197e2d_0[__Vtableidx1];
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SFTctr 
         = Vtop__ConstPool__TABLE_870583e7_0[__Vtableidx1];
-    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__alusig__DOT__OPctr 
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr 
         = Vtop__ConstPool__TABLE_7734b881_0[__Vtableidx1];
     if ((0U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = (((- (QData)((IData)(

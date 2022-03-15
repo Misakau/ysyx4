@@ -1,9 +1,9 @@
 /* verilator lint_off DECLFILENAME */
 /* verilator lint_off PINMISSING */
 /* verilator lint_off UNUSED */
-module ysyx_220053_Adder64(
+module ysyx_220053_Adder64(//y turn into ~y outside when to sub
     output [63:0] result,
-    output cout,
+    output cout,OF,SF,ZF,CF
     input [63:0] x,y,
     input sub
 );
@@ -12,6 +12,10 @@ module ysyx_220053_Adder64(
     ysyx_220053_Adder32 adder_low(res_l, c_l, x[31:0], y[31:0], sub);
     ysyx_220053_Adder32 adder_high(res_h, cout, x[63:32], y[63:32], c_l);
     assign result = {res_h, res_l};
+    assign OF = (!x[63] & !y[63] & result[63]) | (x[63] & y[63] & !result[63]);
+    assign SF = result[63];
+    assign ZF = (result == 64'h0000000000000000 ? 1 : 0);
+    assign CF = cout ^ sub;
 endmodule
 
 module ysyx_220053_FA(
