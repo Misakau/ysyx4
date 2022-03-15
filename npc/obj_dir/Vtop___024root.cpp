@@ -65,7 +65,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
     CData/*3:0*/ __Vtableidx1;
     QData/*63:0*/ __Vtask_pmem_read__0__rdata;
     // Body
-    Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->pc, __Vtask_pmem_read__0__rdata);
+    Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(
+                                                          (0xfffffffffffffffeULL 
+                                                           & vlSelf->top__DOT__my_exu__DOT__addr_res), __Vtask_pmem_read__0__rdata);
     vlSelf->top__DOT__my_ifu__DOT__rdata = __Vtask_pmem_read__0__rdata;
     vlSelf->instr = (IData)(vlSelf->top__DOT__my_ifu__DOT__rdata);
     if ((1U & (IData)((vlSelf->top__DOT__my_ifu__DOT__rdata 
