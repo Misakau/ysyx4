@@ -16,123 +16,123 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     // Body
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p 
         = (0xfU & ((IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA) 
-                   | (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB)));
+                   | (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb)));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g 
         = (0xfU & ((IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA) 
-                   & (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB)));
+                   & (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb)));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 8U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 8U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                >> 8U))));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 8U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 8U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                >> 8U))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x10U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x10U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x10U))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x10U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x10U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x10U))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x18U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x18U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x18U))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x18U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x18U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x18U))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 4U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 4U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                >> 4U))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 4U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 4U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                >> 4U))));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0xcU)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0xcU)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                  >> 0xcU))));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0xcU)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0xcU)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                  >> 0xcU))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x14U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x14U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x14U))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x14U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x14U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x14U))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x1cU)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x1cU)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x1cU))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x1cU)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x1cU)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x1cU))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__p 
         = (0xfU & ((IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA) 
-                   | (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB)));
+                   | (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb)));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__g 
         = (0xfU & ((IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA) 
-                   & (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB)));
+                   & (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb)));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 8U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 8U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                >> 8U))));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 8U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 8U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                >> 8U))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x10U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x10U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x10U))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x10U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x10U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x10U))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x18U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x18U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x18U))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x18U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x18U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x18U))));
     vlSelf->__PVT__g[0U] = (0xffU & ((IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA) 
-                                     & (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB)));
+                                     & (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb)));
     vlSelf->__PVT__g[1U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 8U)) 
-                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 8U))));
     vlSelf->__PVT__g[2U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 0x10U)) 
-                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 0x10U))));
     vlSelf->__PVT__g[3U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 0x18U)) 
-                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 0x18U))));
     vlSelf->__PVT__p[0U] = (0xffU & ((IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA) 
-                                     | (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB)));
+                                     | (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb)));
     vlSelf->__PVT__p[1U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 8U)) 
-                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 8U))));
     vlSelf->__PVT__p[2U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 0x10U)) 
-                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 0x10U))));
     vlSelf->__PVT__p[3U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 0x18U)) 
-                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 0x18U))));
     vlSelf->__PVT__Pg = ((0xeU & (IData)(vlSelf->__PVT__Pg)) 
                          | ((0xffU == vlSelf->__PVT__p
@@ -555,8 +555,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                       << 3U))))));
     vlSelf->__PVT__gen__DOT__c1 = (1U & ((IData)(vlSelf->__PVT__Gg) 
                                          | ((IData)(vlSelf->__PVT__Pg) 
-                                            & ((IData)(vlSymsp->TOP.top__DOT__ALUOp) 
-                                               >> 3U))));
+                                            & (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__SUBctr))));
     vlSelf->__PVT__gen__DOT__c2 = (1U & (((IData)(vlSelf->__PVT__Gg) 
                                           >> 1U) | 
                                          (((IData)(vlSelf->__PVT__Pg) 
@@ -574,32 +573,30 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                             << 3U) | (((IData)(vlSelf->__PVT__gen__DOT__c2) 
                                        << 2U) | (((IData)(vlSelf->__PVT__gen__DOT__c1) 
                                                   << 1U) 
-                                                 | (1U 
-                                                    & ((IData)(vlSymsp->TOP.top__DOT__ALUOp) 
-                                                       >> 3U))))));
+                                                 | (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__SUBctr)))));
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (1U & (((IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA) 
-                     ^ (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB)) 
+                     ^ (IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb)) 
                     ^ (IData)(vlSelf->__PVT__c))));
     vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                              >> 8U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                              >> 8U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                  >> 8U))) 
                     ^ ((IData)(vlSelf->__PVT__c) >> 1U))));
     vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                               >> 0x10U)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0x10U))) 
                     ^ ((IData)(vlSelf->__PVT__c) >> 2U))));
     vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                               >> 0x18U)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0x18U))) 
                     ^ ((IData)(vlSelf->__PVT__c) >> 3U))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1 
@@ -689,7 +686,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                              >> 4U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                              >> 4U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                  >> 4U))) 
                     ^ (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__cin2))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
@@ -699,7 +696,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                              >> 0xcU)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                              >> 0xcU)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                    >> 0xcU))) 
                     ^ (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__cin2))));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
@@ -710,7 +707,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                               >> 0x14U)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0x14U))) 
                     ^ (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__cin2))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
@@ -721,7 +718,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                               >> 0x1cU)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0x1cU))) 
                     ^ (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__cin2))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
@@ -811,28 +808,28 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                               >> 1U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                               >> 1U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 1U))) 
                      ^ (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
                     << 1U)));
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                               >> 2U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                               >> 2U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 2U))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((7U & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                               >> 3U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                               >> 3U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 3U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
     vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                               >> 9U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                               >> 9U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 9U))) 
                      ^ (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -840,7 +837,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0xaU)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0xaU))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -848,7 +845,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0xbU)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0xbU))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -856,7 +853,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x11U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x11U))) 
                      ^ (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -864,7 +861,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x12U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x12U))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -872,7 +869,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x13U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x13U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -880,7 +877,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x19U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x19U))) 
                      ^ (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -888,7 +885,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x1aU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x1aU))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -896,7 +893,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x1bU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x1bU))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -935,21 +932,21 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                               >> 5U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                               >> 5U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 5U))) 
                      ^ (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
                     << 1U)));
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                               >> 6U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                               >> 6U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 6U))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f 
         = ((7U & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                               >> 7U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                               >> 7U)) ^ (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 7U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -960,7 +957,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0xdU)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0xdU))) 
                      ^ (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -968,7 +965,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0xeU)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0xeU))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -976,7 +973,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0xfU)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0xfU))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -987,7 +984,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x15U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x15U))) 
                      ^ (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -995,7 +992,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x16U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x16U))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -1003,7 +1000,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x17U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x17U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -1014,7 +1011,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x1dU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x1dU))) 
                      ^ (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -1022,7 +1019,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x1eU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x1eU))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -1030,7 +1027,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x1fU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x1fU))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -1061,131 +1058,131 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     // Body
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x20U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x20U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x20U))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x20U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x20U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x20U))));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x28U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x28U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x28U))));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x28U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x28U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x28U))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x30U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x30U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x30U))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x30U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x30U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x30U))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x38U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x38U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x38U))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x38U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x38U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x38U))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x24U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x24U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x24U))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x24U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x24U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x24U))));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x2cU)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x2cU)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x2cU))));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x2cU)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x2cU)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x2cU))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x34U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x34U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x34U))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x34U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x34U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x34U))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x3cU)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x3cU)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x3cU))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x3cU)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x3cU)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x3cU))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x20U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x20U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x20U))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x20U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x20U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x20U))));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x28U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x28U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x28U))));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x28U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x28U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x28U))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x30U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x30U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x30U))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x30U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x30U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x30U))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x38U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x38U)) | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x38U))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__g 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
-                            >> 0x38U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                            >> 0x38U)) & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                   >> 0x38U))));
     vlSelf->__PVT__g[0U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 0x20U)) 
-                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 0x20U))));
     vlSelf->__PVT__g[1U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 0x28U)) 
-                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 0x28U))));
     vlSelf->__PVT__g[2U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 0x30U)) 
-                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 0x30U))));
     vlSelf->__PVT__g[3U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 0x38U)) 
-                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     & (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 0x38U))));
     vlSelf->__PVT__p[0U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 0x20U)) 
-                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 0x20U))));
     vlSelf->__PVT__p[1U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 0x28U)) 
-                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 0x28U))));
     vlSelf->__PVT__p[2U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 0x30U)) 
-                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 0x30U))));
     vlSelf->__PVT__p[3U] = (0xffU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                               >> 0x38U)) 
-                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                     | (IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                 >> 0x38U))));
     vlSelf->__PVT__Pg = ((0xeU & (IData)(vlSelf->__PVT__Pg)) 
                          | ((0xffU == vlSelf->__PVT__p
@@ -1634,28 +1631,28 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                               >> 0x20U)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0x20U))) 
                     ^ (IData)(vlSelf->__PVT__c))));
     vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                               >> 0x28U)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0x28U))) 
                     ^ ((IData)(vlSelf->__PVT__c) >> 1U))));
     vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                               >> 0x30U)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0x30U))) 
                     ^ ((IData)(vlSelf->__PVT__c) >> 2U))));
     vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                               >> 0x38U)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0x38U))) 
                     ^ ((IData)(vlSelf->__PVT__c) >> 3U))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__gen__DOT__c1 
@@ -1746,7 +1743,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                               >> 0x24U)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0x24U))) 
                     ^ (IData)(vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__cin2))));
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
@@ -1757,7 +1754,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                               >> 0x2cU)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0x2cU))) 
                     ^ (IData)(vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__cin2))));
     vlSelf->__PVT__genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
@@ -1768,7 +1765,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                               >> 0x34U)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0x34U))) 
                     ^ (IData)(vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__cin2))));
     vlSelf->__PVT__genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
@@ -1779,7 +1776,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (1U & (((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                               >> 0x3cU)) ^ (IData)(
-                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                   (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                     >> 0x3cU))) 
                     ^ (IData)(vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__cin2))));
     vlSelf->__PVT__genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT__gen__DOT__c1 
@@ -1870,7 +1867,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x21U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x21U))) 
                      ^ (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -1878,7 +1875,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x22U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x22U))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -1886,7 +1883,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x23U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x23U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -1894,7 +1891,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x29U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x29U))) 
                      ^ (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -1902,7 +1899,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x2aU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x2aU))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -1910,7 +1907,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x2bU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x2bU))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -1918,7 +1915,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x31U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x31U))) 
                      ^ (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -1926,7 +1923,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x32U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x32U))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -1934,7 +1931,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x33U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x33U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -1942,7 +1939,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x39U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x39U))) 
                      ^ (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -1950,7 +1947,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x3aU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x3aU))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -1958,7 +1955,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x3bU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x3bU))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -2001,7 +1998,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x25U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x25U))) 
                      ^ (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -2009,7 +2006,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x26U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x26U))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -2017,7 +2014,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x27U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x27U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -2028,7 +2025,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x2dU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x2dU))) 
                      ^ (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -2036,7 +2033,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x2eU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x2eU))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -2044,7 +2041,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x2fU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x2fU))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__1__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -2055,7 +2052,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x35U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x35U))) 
                      ^ (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -2063,7 +2060,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x36U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x36U))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -2071,7 +2068,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x37U)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x37U))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -2081,7 +2078,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xdU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (2U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x3dU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x3dU))) 
                      ^ (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c)) 
                     << 1U)));
@@ -2089,7 +2086,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((0xbU & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (4U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x3eU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x3eU))) 
                      << 2U) ^ (0xfffffffcU & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));
@@ -2097,7 +2094,7 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
         = ((7U & (IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT____Vcellout__adder_high__f)) 
            | (8U & ((((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
                                >> 0x3fU)) ^ (IData)(
-                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inB 
+                                                    (vlSymsp->TOP.top__DOT__my_exu__DOT__alu64__DOT__adderb 
                                                      >> 0x3fU))) 
                      << 3U) ^ (0xfffffff8U & ((IData)(vlSelf->genblk2__BRA__3__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 
                                               << 1U)))));

@@ -39,6 +39,12 @@ VL_MODULE(Vtop___024root) {
     CData/*3:0*/ top__DOT__ALUOp;
     CData/*2:0*/ top__DOT__Branch;
     CData/*2:0*/ top__DOT__my_idu__DOT__ExtOp;
+    CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SUBctr;
+    CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SIGctr;
+    CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__ALctr;
+    CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SFTctr;
+    CData/*2:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
+    CData/*2:0*/ top__DOT__my_exu__DOT__alu64__DOT__alusig__DOT__OPctr;
     CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexA;
     CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexB;
     QData/*63:0*/ top__DOT__imm;
@@ -46,6 +52,8 @@ VL_MODULE(Vtop___024root) {
     QData/*63:0*/ top__DOT__my_exu__DOT__busa;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inA;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inB;
+    QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__res7;
+    QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderb;
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcA;
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcB;
     VlUnpacked<QData/*63:0*/, 32> top__DOT__my_exu__DOT__regfile__DOT__rf;

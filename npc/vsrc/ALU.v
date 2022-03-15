@@ -53,6 +53,7 @@ module ysyx_220053_ALUSig(
             4'b1000: begin SUBctr = 1; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b000; end
             4'b1101: begin SUBctr = 0; SIGctr = 0; ALctr = 1; SFTctr = 1; OPctr = 3'b100; end
             4'b1111: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b101; end
+            default: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b000; end
         endcase
     end
 endmodule
