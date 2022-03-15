@@ -40,17 +40,6 @@ void set_batch_mode(){
     is_batch = true;
 }
 
-void exec_one_step(Vtop* top, unsigned int n){
-    for(unsigned int i = 1; i <= n && !is_done && !contextp->gotFinish(); i++) { 
-        contextp->timeInc(1); 
-        top->clk = !top->clk;
-        if(top->clk == 0)top->instr_i = pimem_read(top->pc);
-        if(EXIT){printf("ASSERT!\n"); top->eval();break;}
-        //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
-        top->eval();
-    }
-}
-
 int npc_parse_args(int argc, char *argv[]);
 
 int main(int argc, char**argv, char**env) {
