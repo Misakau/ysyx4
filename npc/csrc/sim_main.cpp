@@ -198,9 +198,9 @@ int s_to_i(char* s, int r){
   return num;
 }
 
-word_t s_to_u(char* s, int r){
+uint64_t s_to_u(char* s, int r){
   assert(s != NULL);
-  word_t num = 0;
+  uint64_t num = 0;
   int len = strlen(s);
   for(int i = 0; i < len; i++){
     if(r == 10 && s[i] >= '0' && s[i] <= '9') num = num * r + s[i] - '0';
