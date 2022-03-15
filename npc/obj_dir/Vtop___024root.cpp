@@ -109,7 +109,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
 }
 
 void Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(CData/*0:0*/ done);
-extern const VlUnpacked<CData/*4:0*/, 16> Vtop__ConstPool__TABLE_87dcadd2_0;
 extern const VlUnpacked<CData/*0:0*/, 16> Vtop__ConstPool__TABLE_0e4c9530_0;
 extern const VlUnpacked<CData/*0:0*/, 16> Vtop__ConstPool__TABLE_53d48880_0;
 extern const VlUnpacked<CData/*0:0*/, 16> Vtop__ConstPool__TABLE_ed197e2d_0;
@@ -331,26 +330,16 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__4(Vtop___024root* vlSelf) {
         = ((1U != (IData)(vlSelf->top__DOT__Branch)) 
            & (2U == (IData)(vlSelf->top__DOT__Branch)));
     __Vtableidx1 = vlSelf->top__DOT__ALUOp;
-    if ((1U & Vtop__ConstPool__TABLE_87dcadd2_0[__Vtableidx1])) {
-        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SUBctr 
-            = Vtop__ConstPool__TABLE_0e4c9530_0[__Vtableidx1];
-    }
-    if ((2U & Vtop__ConstPool__TABLE_87dcadd2_0[__Vtableidx1])) {
-        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SIGctr 
-            = Vtop__ConstPool__TABLE_53d48880_0[__Vtableidx1];
-    }
-    if ((4U & Vtop__ConstPool__TABLE_87dcadd2_0[__Vtableidx1])) {
-        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__ALctr 
-            = Vtop__ConstPool__TABLE_ed197e2d_0[__Vtableidx1];
-    }
-    if ((8U & Vtop__ConstPool__TABLE_87dcadd2_0[__Vtableidx1])) {
-        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SFTctr 
-            = Vtop__ConstPool__TABLE_870583e7_0[__Vtableidx1];
-    }
-    if ((0x10U & Vtop__ConstPool__TABLE_87dcadd2_0[__Vtableidx1])) {
-        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__alusig__DOT__OPctr 
-            = Vtop__ConstPool__TABLE_7734b881_0[__Vtableidx1];
-    }
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SUBctr 
+        = Vtop__ConstPool__TABLE_0e4c9530_0[__Vtableidx1];
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SIGctr 
+        = Vtop__ConstPool__TABLE_53d48880_0[__Vtableidx1];
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__ALctr 
+        = Vtop__ConstPool__TABLE_ed197e2d_0[__Vtableidx1];
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SFTctr 
+        = Vtop__ConstPool__TABLE_870583e7_0[__Vtableidx1];
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__alusig__DOT__OPctr 
+        = Vtop__ConstPool__TABLE_7734b881_0[__Vtableidx1];
     if ((0U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))) {
         vlSelf->top__DOT__imm = (((- (QData)((IData)(
                                                      (vlSelf->instr_i 

@@ -18,7 +18,7 @@ module ysyx_220053_ALU(
     assign res1 = inputa & inputb;
     assign res2 = inputa | inputb;
     assign res3 = inputa ^ inputb;
-    assign res4 = inputa << (inputb & 6'b111111);//shift,not finish
+   // assign res4 = inputa << (inputb & 6'b111111);//shift,not finish
     assign res5 = inputb;
     assign res6 = 0; //cmp,not finish
 
