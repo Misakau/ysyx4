@@ -130,7 +130,7 @@ int main(int argc, char**argv, char**env) {
         fseek(fp, 0, SEEK_END);
         int fsize = ftell(fp);
         fseek(fp, 0, SEEK_SET);
-        assert(fread(IMEM, fsize, 1, fp));
+        assert(fread(MEM, fsize, 1, fp));
         fclose(fp);
         printf(ASNI_FG_BLUE "Load image in %s\n" ASNI_NONE ,image_file);
     }
