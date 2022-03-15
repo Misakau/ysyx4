@@ -35,11 +35,30 @@ void dump_gpr() {
   }
 }
 
+static bool is_batch = false;
+void set_batch_mode(){
+    is_batch = true;
+}
+
+void exec_one_step(Vtop* top, unsigned int n){
+    for(unsigned int i = 1; i <= n && !is_done && !contextp->gotFinish(); i++) { 
+        contextp->timeInc(1); 
+        top->clk = !top->clk;
+        if(top->clk == 0)top->instr_i = pimem_read(top->pc);
+        if(EXIT){printf("ASSERT!\n"); top->eval();break;}
+        //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
+        top->eval();
+    }
+}
+
+int npc_parse_args(int argc, char *argv[]);
 
 int main(int argc, char**argv, char**env) {
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
     contextp->commandArgs(argc, argv);
+    npc_parse_args(argc, argv);
+
     printf("argv:\n");
     for(int i = 0; i < argc; i++)
         printf("%s\n",argv[i]);
@@ -73,15 +92,19 @@ int main(int argc, char**argv, char**env) {
     //printf("Now_pc = %016lx\n",top->pc);
     top->rst = 0;
     int cnt = 0;
-    
-    while (!is_done && !contextp->gotFinish()) { 
-        contextp->timeInc(1); 
-        top->clk = !top->clk;
-        if(top->clk == 0)top->instr_i = pimem_read(top->pc);
-        if(EXIT){printf("ASSERT!\n"); top->eval();break;}
-        //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
-        top->eval();
-        cnt ++;
+    if(is_batch)
+        while (!is_done && !contextp->gotFinish()) { 
+            contextp->timeInc(1); 
+            top->clk = !top->clk;
+            if(top->clk == 0)top->instr_i = pimem_read(top->pc);
+            if(EXIT){printf("ASSERT!\n"); top->eval();break;}
+            //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
+            top->eval();
+            cnt ++;
+        }
+    else{
+        printf(ASNI_BG_RED "Not in batch mode!\n" ASNI_NONE);
+        assert(0);
     }
     delete top;
     delete contextp;
