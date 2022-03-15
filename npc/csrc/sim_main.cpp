@@ -6,8 +6,11 @@
 #include "svdpi.h"
 #include "verilated_dpi.h"
 #include "color.h"
+#include <getopt.h>
+
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
+
 static uint32_t IMEM[MEMSIZE];//4字节为单位
 static bool EXIT = 0;
 uint32_t pimem_read(uint64_t paddr){
@@ -34,13 +37,36 @@ void dump_gpr() {
     printf("gpr[%d] = 0x%lx\n", i, cpu_gpr[i]);
   }
 }
-
+/////////////////////////////////////////////////////////
+/*                        sdb                          */
+/////////////////////////////////////////////////////////
 static bool is_batch = false;
 void set_batch_mode(){
     is_batch = true;
 }
 
-int npc_parse_args(int argc, char *argv[]);
+static int npc_parse_args(int argc, char *argv[]) {
+  const struct option table[] = {
+    {"batch"    , no_argument      , NULL, 'b'},
+//    {"diff"     , no_argument, NULL, 'd'},
+    {"help"     , no_argument      , NULL, 'h'},
+    {0          , 0                , NULL,  0 },
+  };
+  int o;
+  while ( (o = getopt_long(argc, argv, "-bh", table, NULL)) != -1) {
+    switch (o) {
+      case 'b': set_batch_mode(); break;
+      //case 'd': diff_so_file = optarg; break;
+      case 1: printf("val = 1\n");
+      default:
+        printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
+        printf("\t-b,--batch              run with batch mode\n");
+        //printf("\t-d,--diff=REF_SO        run DiffTest with reference REF_SO\n");
+        printf("\n");
+    }
+  }
+  return 0;
+}
 
 int main(int argc, char**argv, char**env) {
     VerilatedContext*contextp = new VerilatedContext;
