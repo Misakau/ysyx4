@@ -16,7 +16,7 @@
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
 
-static long long MEM[MEMSIZE];//8字节为单位
+static long MEM[MEMSIZE];//4字节为单位
 static bool EXIT = 0;
 static bool START = 0;
 /*
@@ -47,9 +47,9 @@ void dump_gpr() {
 }
 
 extern "C" void pmem_read(long long raddr, long long *rdata) {
-  long long real_addr = (raddr - AD_BASE) >> 2;
+  long long real_addr = (raddr - AD_BASE) >> 3;
   //assert(real_addr < MEMSIZE);
-  if(raddr < AD_BASE || ((raddr - AD_BASE) >> 2) >= MEMSIZE){
+  if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
     if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
     *rdata = 0;
     return;
