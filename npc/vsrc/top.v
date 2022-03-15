@@ -12,6 +12,7 @@ import "DPI-C" function int get_instr(input int instr);
 module top(
   input clk,
   input rst,
+  output [31:0] instr,
   output [63:0] pc
 );
     our s;
@@ -23,6 +24,7 @@ module top(
     .pc(pc),
     .instr_o(instr_i)
     );
+    assign instr = instr_i;
     wire [63:0] dnpc;
     wire [6:0] op, func7;
     wire [4:0] rd, rs1, rs2;
