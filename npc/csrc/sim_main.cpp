@@ -54,7 +54,8 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
     *rdata = 0;
     return;
   }
-  else *rdata = MEM[real_addr];// 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
+  else *rdata = MEM[real_addr];
+  printf("rdata=%lld\n",*rdata);// 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
 }
 extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   // 总是往地址为`waddr & ~0x7ull`的8字节按写掩码`wmask`写入`wdata`
