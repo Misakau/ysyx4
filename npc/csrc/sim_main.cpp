@@ -118,7 +118,7 @@ int main(int argc, char**argv, char**env) {
             cnt ++;
         }
     else{
-        printf(ASNI_BG_RED "Not in batch mode!\n" ASNI_NONE);
+        printf(ASNI_FG_RED "Not in batch mode!\n" ASNI_NONE);
         assert(0);
     }
     delete top;
