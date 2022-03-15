@@ -135,7 +135,7 @@ int main(int argc, char**argv, char**env) {
     }
     delete top;
     delete contextp;
-    if(is_done){
+    if(EXIT == false){
       if(cpu_gpr[10] == 0)
         printf(ASNI_FG_GREEN "HIT GOOD TRAP!" ASNI_NONE);
       else printf(ASNI_FG_RED "HIT BAD TRAP!" ASNI_NONE);
