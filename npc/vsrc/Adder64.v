@@ -3,7 +3,7 @@
 /* verilator lint_off UNUSED */
 module ysyx_220053_Adder64(//y turn into ~y outside when to sub
     output [63:0] result,
-    output cout,OF,SF,ZF,CF
+    output cout,OF,SF,ZF,CF,
     input [63:0] x,y,
     input sub
 );
