@@ -333,5 +333,6 @@ void sdb_mainloop(VerilatedContext* contextp, Vtop* top) {
     }
 
     if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
+    if (EXIT || is_done) break;
   }
 }
