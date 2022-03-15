@@ -11,7 +11,7 @@
 #include <cstring>
 #include <readline/readline.h>
 
-#include <npc_sdb.h>
+#include "npc_sdb.h"
 
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
