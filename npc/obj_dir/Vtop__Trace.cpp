@@ -135,16 +135,12 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                                     : 
                                                    ((4U 
                                                      == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))
-                                                     ? vlSelf->top__DOT__my_exu__DOT__alu64__DOT__res4
+                                                     ? 0ULL
                                                      : 
                                                     ((5U 
                                                       == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))
                                                       ? vlSelf->top__DOT__my_exu__DOT__alu_inB
-                                                      : 
-                                                     ((6U 
-                                                       == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))
-                                                       ? 0ULL
-                                                       : vlSelf->top__DOT__my_exu__DOT__alu64__DOT__res7)))))))),64);
+                                                      : 0ULL))))))),64);
             tracep->chgQData(oldp+82,(vlSelf->top__DOT__my_exu__DOT__alu_inA),64);
             tracep->chgQData(oldp+84,(vlSelf->top__DOT__my_exu__DOT__alu_inB),64);
             tracep->chgQData(oldp+86,((((QData)((IData)(
