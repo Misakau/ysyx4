@@ -1,5 +1,5 @@
 VFILES := $(wildcard vsrc/*.v)
-CFILES := $(wildcard vsrc/*.cpp)
+CFILES := $(wildcard csrc/*.cpp)
 VERILATOR = verilator
 # Generate C++ in executable form
 VERILATOR_FLAGS += -cc --exe --build --top-module top
