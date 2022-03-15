@@ -20,7 +20,7 @@ VERILATOR_FLAGS += --trace
 #VERILATOR_FLAGS += --gdbbt
 
 # Input files for Verilator
-VERILATOR_INPUT = $(VFILES) csrc/sim_main.cpp
+VERILATOR_INPUT = $(VFILES) csrc/sim_main.cpp csrc/npc_sdb.cpp
 LDFLAGS = -lreadline
 #FILEPATH ?= ./csrc/a.in
 #TEST_PATH ?= ../am-kernels/tests/cpu-tests/build/$(IMAGE).bin
@@ -29,7 +29,7 @@ all:
 
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	$(VERILATOR) $(VERILATOR_FLAGS) -LDFLAGS -L./csrc -LDFLAGS -lnpc_sdb $(VERILATOR_INPUT)
+	$(VERILATOR) $(VERILATOR_FLAGS) -LDFLAGS $(LDFLAGS) $(VERILATOR_INPUT)
 
 	@rm -rf logs
 	@mkdir -p logs
