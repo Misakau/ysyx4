@@ -30,7 +30,7 @@ module ysyx_220053_EXU(
                                               .waddr(rd),
                                               .wen(is_wen)
                                             );
-    ysyx_220053_ALU alu64(alu_inA, alu_inB, ALUOp, res);
+    ysyx_220053_ALU alu64(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .result(res));
         //busa + immI; //addi
     wire [63:0] addr_res;
     ysyx_220053_NexAddr nextaddr(.Branch(Branch), .pc(pc), .imm(imm), .busa(busa), .dnpc(addr_res));

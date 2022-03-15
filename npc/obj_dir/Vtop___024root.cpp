@@ -36,21 +36,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                                  & vlSelf->top__DOT__my_exu__DOT__addr_res));
     if (((IData)(vlSelf->top__DOT__wen) & (~ (IData)(vlSelf->rst)))) {
         __Vdlyvval__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 
-            = ((0U == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))
-                ? vlSelf->top__DOT__my_exu__DOT__alu64__DOT__res0
-                : ((1U == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))
-                    ? (vlSelf->top__DOT__my_exu__DOT__alu_inA 
-                       & vlSelf->top__DOT__my_exu__DOT__alu_inB)
-                    : ((2U == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))
-                        ? (vlSelf->top__DOT__my_exu__DOT__alu_inA 
-                           | vlSelf->top__DOT__my_exu__DOT__alu_inB)
-                        : ((3U == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))
-                            ? (vlSelf->top__DOT__my_exu__DOT__alu_inA 
-                               ^ vlSelf->top__DOT__my_exu__DOT__alu_inB)
-                            : ((4U == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))
-                                ? 0ULL : ((5U == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))
-                                           ? vlSelf->top__DOT__my_exu__DOT__alu_inB
-                                           : 0ULL))))));
+            = (QData)((IData)(((0ULL == vlSelf->top__DOT__my_exu__DOT__alu64__DOT__res0)
+                                ? 1U : 0U)));
         __Vdlyvset__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 = 1U;
         __Vdlyvdim0__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 
             = (0x1fU & (vlSelf->instr_i >> 7U));
