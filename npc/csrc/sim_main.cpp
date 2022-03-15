@@ -16,14 +16,16 @@
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
 
-static uint32_t IMEM[MEMSIZE];//4字节为单位
+static long long MEM[MEMSIZE];//8字节为单位
 static bool EXIT = 0;
+/*
 uint32_t pimem_read(uint64_t paddr){
     uint64_t real_addr = (paddr - AD_BASE) >> 2;
     //assert(real_addr < MEMSIZE);
     if(real_addr >= MEMSIZE){EXIT = 1;printf("addrs=%lx\n",paddr);return 0;}
     return IMEM[real_addr];
 }
+*/
 static bool is_done = false;
 
 extern "C" void c_trap(const svBit done){
@@ -42,6 +44,26 @@ void dump_gpr() {
     printf("gpr[%d] = 0x%lx\n", i, cpu_gpr[i]);
   }
 }
+
+extern "C" void pmem_read(long long raddr, long long *rdata) {
+  long long real_addr = (raddr - AD_BASE) >> 2;
+  //assert(real_addr < MEMSIZE);
+  if(raddr < AD_BASE || ((raddr - AD_BASE) >> 2) >= MEMSIZE){
+    EXIT = 1;printf("addrs=%lx\n",raddr); *rdata = 0;
+    return;
+  }
+  else *rdata = MEM[real_addr];// 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
+}
+extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
+  // 总是往地址为`waddr & ~0x7ull`的8字节按写掩码`wmask`写入`wdata`
+  // `wmask`中每比特表示`wdata`中1个字节的掩码,
+  // 如`wmask = 0x3`代表只写入最低2个字节, 内存中的其它字节保持不变
+}
+
+extern "C" int get_instr(int instr) {
+  return instr;
+}
+
 /////////////////////////////////////////////////////////
 /*                        sdb                          */
 /////////////////////////////////////////////////////////
@@ -138,7 +160,7 @@ int main(int argc, char**argv, char**env) {
         while (!is_done && !contextp->gotFinish()) { 
             contextp->timeInc(1); 
             top->clk = !top->clk;
-            if(top->clk == 0)top->instr_i = pimem_read(top->pc);
+            //if(top->clk == 0)top->instr_i = pimem_read(top->pc);
             if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr_i);
             top->eval();

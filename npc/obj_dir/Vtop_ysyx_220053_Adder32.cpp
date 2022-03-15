@@ -9,10 +9,10 @@
 
 //==========
 
-VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low__3(Vtop_ysyx_220053_Adder32* vlSelf) {
+VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low__1(Vtop_ysyx_220053_Adder32* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+              Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low__3\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+              Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low__1\n"); );
     // Body
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p 
         = (0xfU & ((IData)(vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA) 
@@ -137,15 +137,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     vlSelf->__PVT__Pg = ((0xeU & (IData)(vlSelf->__PVT__Pg)) 
                          | ((0xffU == vlSelf->__PVT__p
                              [0U]) ? 1U : 0U));
-    vlSelf->__PVT__Pg = ((0xdU & (IData)(vlSelf->__PVT__Pg)) 
-                         | (((0xffU == vlSelf->__PVT__p
-                              [1U]) ? 1U : 0U) << 1U));
-    vlSelf->__PVT__Pg = ((0xbU & (IData)(vlSelf->__PVT__Pg)) 
-                         | (((0xffU == vlSelf->__PVT__p
-                              [2U]) ? 1U : 0U) << 2U));
-    vlSelf->__PVT__Pg = ((7U & (IData)(vlSelf->__PVT__Pg)) 
-                         | (((0xffU == vlSelf->__PVT__p
-                              [3U]) ? 1U : 0U) << 3U));
     vlSelf->__PVT__Gg = ((0xeU & (IData)(vlSelf->__PVT__Gg)) 
                          | (1U & ((((((((vlSelf->__PVT__g
                                          [0U] >> 7U) 
@@ -228,6 +219,9 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                       & vlSelf->__PVT__p
                                       [0U]) & vlSelf->__PVT__g
                                      [0U]))));
+    vlSelf->__PVT__Pg = ((0xdU & (IData)(vlSelf->__PVT__Pg)) 
+                         | (((0xffU == vlSelf->__PVT__p
+                              [1U]) ? 1U : 0U) << 1U));
     vlSelf->__PVT__Gg = ((0xdU & (IData)(vlSelf->__PVT__Gg)) 
                          | (2U & (((((((0x3fffffeU 
                                         & ((vlSelf->__PVT__g
@@ -335,6 +329,9 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                      & (vlSelf->__PVT__g
                                                         [1U] 
                                                         << 1U))))));
+    vlSelf->__PVT__Pg = ((0xbU & (IData)(vlSelf->__PVT__Pg)) 
+                         | (((0xffU == vlSelf->__PVT__p
+                              [2U]) ? 1U : 0U) << 2U));
     vlSelf->__PVT__Gg = ((0xbU & (IData)(vlSelf->__PVT__Gg)) 
                          | (4U & (((((((0x7fffffcU 
                                         & ((vlSelf->__PVT__g
@@ -446,6 +443,9 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                    & (vlSelf->__PVT__g
                                                       [2U] 
                                                       << 2U))))));
+    vlSelf->__PVT__Pg = ((7U & (IData)(vlSelf->__PVT__Pg)) 
+                         | (((0xffU == vlSelf->__PVT__p
+                              [3U]) ? 1U : 0U) << 3U));
     vlSelf->__PVT__Gg = ((7U & (IData)(vlSelf->__PVT__Gg)) 
                          | (8U & (((((((0xffffff8U 
                                         & ((vlSelf->__PVT__g
@@ -1051,10 +1051,10 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     vlSelf->__PVT__ff[3U] = vlSelf->__Vcellout__genblk2__BRA__3__KET____DOT__adder8__f;
 }
 
-VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high__4(Vtop_ysyx_220053_Adder32* vlSelf) {
+VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high__2(Vtop_ysyx_220053_Adder32* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+              Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high__4\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+              Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high__2\n"); );
     // Body
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__alu_inA 
@@ -1187,15 +1187,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     vlSelf->__PVT__Pg = ((0xeU & (IData)(vlSelf->__PVT__Pg)) 
                          | ((0xffU == vlSelf->__PVT__p
                              [0U]) ? 1U : 0U));
-    vlSelf->__PVT__Pg = ((0xdU & (IData)(vlSelf->__PVT__Pg)) 
-                         | (((0xffU == vlSelf->__PVT__p
-                              [1U]) ? 1U : 0U) << 1U));
-    vlSelf->__PVT__Pg = ((0xbU & (IData)(vlSelf->__PVT__Pg)) 
-                         | (((0xffU == vlSelf->__PVT__p
-                              [2U]) ? 1U : 0U) << 2U));
-    vlSelf->__PVT__Pg = ((7U & (IData)(vlSelf->__PVT__Pg)) 
-                         | (((0xffU == vlSelf->__PVT__p
-                              [3U]) ? 1U : 0U) << 3U));
     vlSelf->__PVT__Gg = ((0xeU & (IData)(vlSelf->__PVT__Gg)) 
                          | (1U & ((((((((vlSelf->__PVT__g
                                          [0U] >> 7U) 
@@ -1278,6 +1269,9 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                       & vlSelf->__PVT__p
                                       [0U]) & vlSelf->__PVT__g
                                      [0U]))));
+    vlSelf->__PVT__Pg = ((0xdU & (IData)(vlSelf->__PVT__Pg)) 
+                         | (((0xffU == vlSelf->__PVT__p
+                              [1U]) ? 1U : 0U) << 1U));
     vlSelf->__PVT__Gg = ((0xdU & (IData)(vlSelf->__PVT__Gg)) 
                          | (2U & (((((((0x3fffffeU 
                                         & ((vlSelf->__PVT__g
@@ -1385,6 +1379,9 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                      & (vlSelf->__PVT__g
                                                         [1U] 
                                                         << 1U))))));
+    vlSelf->__PVT__Pg = ((0xbU & (IData)(vlSelf->__PVT__Pg)) 
+                         | (((0xffU == vlSelf->__PVT__p
+                              [2U]) ? 1U : 0U) << 2U));
     vlSelf->__PVT__Gg = ((0xbU & (IData)(vlSelf->__PVT__Gg)) 
                          | (4U & (((((((0x7fffffcU 
                                         & ((vlSelf->__PVT__g
@@ -1496,6 +1493,9 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
                                                    & (vlSelf->__PVT__g
                                                       [2U] 
                                                       << 2U))))));
+    vlSelf->__PVT__Pg = ((7U & (IData)(vlSelf->__PVT__Pg)) 
+                         | (((0xffU == vlSelf->__PVT__p
+                              [3U]) ? 1U : 0U) << 3U));
     vlSelf->__PVT__Gg = ((7U & (IData)(vlSelf->__PVT__Gg)) 
                          | (8U & (((((((0xffffff8U 
                                         & ((vlSelf->__PVT__g
@@ -2116,10 +2116,10 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     vlSelf->__PVT__ff[3U] = vlSelf->__Vcellout__genblk2__BRA__3__KET____DOT__adder8__f;
 }
 
-VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low__1(Vtop_ysyx_220053_Adder32* vlSelf) {
+VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low__3(Vtop_ysyx_220053_Adder32* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+              Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low__1\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+              Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low__3\n"); );
     // Body
     vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f 
         = ((0xeU & (IData)(vlSelf->genblk2__BRA__0__KET____DOT__adder8__DOT____Vcellout__adder_low__f)) 
@@ -3153,10 +3153,10 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT
     vlSelf->__PVT__ff[3U] = vlSelf->__Vcellout__genblk2__BRA__3__KET____DOT__adder8__f;
 }
 
-VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high__2(Vtop_ysyx_220053_Adder32* vlSelf) {
+VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high__4(Vtop_ysyx_220053_Adder32* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+              Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high__2\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+              Vtop_ysyx_220053_Adder32___settle__TOP__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high__4\n"); );
     // Body
     vlSelf->__PVT__genblk2__BRA__0__KET____DOT__adder8__DOT__adder_low__DOT__p 
         = (0xfU & ((IData)((vlSymsp->TOP.top__DOT__my_exu__DOT__nextaddr__DOT__SrcA 

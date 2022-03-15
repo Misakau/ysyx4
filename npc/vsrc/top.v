@@ -1,18 +1,27 @@
 /* verilator lint_off UNUSED */
 /* verilator lint_off PINMISSING */
 
+import "DPI-C" function void pmem_read(
+  input longint raddr, output longint rdata);
+
+import "DPI-C" function void pmem_write(
+  input longint waddr, input longint wdata, input byte wmask);
+
+import "DPI-C" function int get_instr(input int instr);
+
 module top(
   input clk,
   input rst,
-  input [31:0]instr_i,
   output [63:0] pc
 );
     our s;
+    wire [31:0] instr_i;
     ysyx_220053_IFU my_ifu(
     .clk(clk),
     .rst(rst),
     .dnpc(dnpc),
-    .pc(pc)
+    .pc(pc),
+    .instr_o(instr_i)
     );
     wire [63:0] dnpc;
     wire [6:0] op, func7;
