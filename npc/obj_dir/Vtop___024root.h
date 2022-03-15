@@ -47,7 +47,6 @@ VL_MODULE(Vtop___024root) {
     CData/*2:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
     CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexA;
     CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexB;
-    IData/*31:0*/ top__DOT__instr_i;
     QData/*63:0*/ top__DOT__imm;
     QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
     QData/*63:0*/ top__DOT__my_ifu__DOT__rdata;

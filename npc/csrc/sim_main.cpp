@@ -139,12 +139,9 @@ int main(int argc, char**argv, char**env) {
     }
     else{//build in code
         printf(ASNI_FG_BLUE "Load build-in image\n" ASNI_NONE);
-        MEM[0] = 0x00c000ef;// addi x0,x1,1
-        MEM[1] = 0x0ffff097;// auipc x1,0x0ffff
-        MEM[2] = 0xff0ff0b7;//lui x1,0xff0ff
-        MEM[3] = 0x00108093;//addi x1,x1,1
-        MEM[4] = 0x00100073;
-        MEM[5] = 0x00100073;
+        MEM[0] = 0x0ffff09700c000ef;// addi x0,x1,1
+        MEM[1] = 0x00108093ff0ff0b7;//lui x1,0xff0ff
+        MEM[2] = 0x0010007300100073;
     }
     
     //reset the pc
