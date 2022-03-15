@@ -184,7 +184,7 @@ static int cmd_q(VerilatedContext* contextp, Vtop* top, char *args) {
 }
 
 int s_to_i(char* s, int r){
-  Assert(s != NULL,"NULL!");
+  assert(s != NULL);
   int num = 0;
   int len = strlen(s);
   for(int i = 0; i < len; i++){
@@ -196,13 +196,13 @@ int s_to_i(char* s, int r){
         num = num * r + s[i] - 'a' + 10;
       else num = num * r + s[i] - 'A' + 10;
     } 
-    else Assert(0,"INVALID COMMANDS!");
+    else assert(0);
   }
   return num;
 }
 
 word_t s_to_u(char* s, int r){
-  Assert(s != NULL,"NULL!");
+  assert(s != NULL);
   word_t num = 0;
   int len = strlen(s);
   for(int i = 0; i < len; i++){
@@ -214,7 +214,7 @@ word_t s_to_u(char* s, int r){
         num = num * r + s[i] - 'a' + 10;
       else num = num * r + s[i] - 'A' + 10;
     } 
-    else Assert(0,"INVALID COMMANDS!");
+    else assert(0);
   }
   return num;
 }
@@ -233,17 +233,17 @@ static int cmd_si(VerilatedContext* contextp, Vtop* top, char *args){
       }
     }
   }
-  if(times == 0) Assert(0,"INVALID COMMANDS!");
+  if(times == 0) assert(0);
   else npc_exec(contextp, top, times);
   return 0;
 }
 
 int cmd_info(VerilatedContext* contextp, Vtop* top, char* args){
   char* com = strtok(args," ");
-  if(com == NULL) Assert(0,"TOO FEW COMMANDS!");
+  if(com == NULL) assert(0);
   int is_r = strcmp(com,"r");
   int is_w = strcmp(com,"w");
-  if(is_r != 0 && is_w != 0) Assert(0,"INVALID COMMANDS!");
+  if(is_r != 0 && is_w != 0) assert(0);
   if(is_r == 0) dump_gpr();
   return 0;
 }
@@ -309,10 +309,7 @@ static int cmd_help(char *args) {
 }
 
 void sdb_mainloop(VerilatedContext* contextp, Vtop* top) {
-  if (is_batch_mode) {
-    cmd_c(contextp, top, NULL);
-    return;
-  }
+
 
   for (char *str; (str = rl_gets()) != NULL; ) {
     char *str_end = str + strlen(str);
