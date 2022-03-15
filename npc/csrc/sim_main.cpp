@@ -49,13 +49,14 @@ void dump_gpr() {
 extern "C" void pmem_read(long long raddr, long long *rdata) {
   long long real_addr = (raddr - AD_BASE) >> 2;
   //assert(real_addr < MEMSIZE);
+  printf("rdata=%lld\n",*rdata);
   if(raddr < AD_BASE || ((raddr - AD_BASE) >> 2) >= MEMSIZE){
     if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
     *rdata = 0;
     return;
   }
   else *rdata = MEM[real_addr];
-  printf("rdata=%lld\n",*rdata);// 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
+  // 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
 }
 extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   // 总是往地址为`waddr & ~0x7ull`的8字节按写掩码`wmask`写入`wdata`
