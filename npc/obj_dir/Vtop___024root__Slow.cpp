@@ -66,7 +66,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->pc, vlSelf->__Vtask_pmem_read__0__rdata);
     vlSelf->top__DOT__my_ifu__DOT__rdata = vlSelf->__Vtask_pmem_read__0__rdata;
     vlSelf->top__DOT__instr_i = ((1U & (IData)((vlSelf->pc 
-                                                >> 3U)))
+                                                >> 2U)))
                                   ? (IData)((vlSelf->top__DOT__my_ifu__DOT__rdata 
                                              >> 0x20U))
                                   : (IData)(vlSelf->top__DOT__my_ifu__DOT__rdata));
