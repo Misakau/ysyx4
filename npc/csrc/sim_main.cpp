@@ -46,7 +46,7 @@ void set_batch_mode(){
     is_batch = true;
 }
 
-static void sdb_mainloop();
+static void sdb_mainloop(VerilatedContext* contextp, Vtop* top);
 
 static char* image_file = NULL;
 
@@ -131,7 +131,7 @@ int main(int argc, char**argv, char**env) {
         }
     else{
         printf(ASNI_FG_RED "Not in batch mode!\n" ASNI_NONE);
-        sdb_mainloop();
+        sdb_mainloop(contextp, top);
     }
     delete top;
     delete contextp;
@@ -283,7 +283,7 @@ static struct {
 #define ARRLEN(arr) (int)(sizeof(arr) / sizeof(arr[0]))
 #define NR_CMD ARRLEN(cmd_table)
 
-static int cmd_help(char *args) {
+static int cmd_help(VerilatedContext* contextp, Vtop* top, char *args) {
   /* extract the first argument */
   char *arg = strtok(NULL, " ");
   int i;
