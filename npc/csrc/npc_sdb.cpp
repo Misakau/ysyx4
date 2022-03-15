@@ -9,7 +9,7 @@
 
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
-static char* npc_rl_gets() {
+char* npc_rl_gets() {
   static char *line_read = NULL;
 
   if (line_read) {
