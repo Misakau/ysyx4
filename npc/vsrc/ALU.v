@@ -30,7 +30,7 @@ module ysyx_220053_ALU(
     
     assign sllWres = lower32 << shamtW;
     assign srWres = (ALctr == 1'b0) ? lower32 >> shamtW : $signed(lower32) >>> shamtW;
-    assign shiftL = (Wctr == 1'b0) ? (inputa << shamt) : {{32{sllres[31]}}, sllWres[31:0]};
+    assign shiftL = (Wctr == 1'b0) ? (inputa << shamt) : {{32{sllWres[31]}}, sllWres[31:0]};
     assign srres = (ALctr == 1'b0) ? inputa >> shamt : $signed(inputa) >>> shamt;
     assign shiftR = (Wctr == 1'b0) ? srres : {{32{srWres[31]}}, srWres[31:0]};
     
