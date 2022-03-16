@@ -54,7 +54,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   long long real_addr = (waddr - AD_BASE) >> 3;
   //assert(real_addr < MEMSIZE);
   if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
-    if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
+    //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
     return;
   }
   else{
