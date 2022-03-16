@@ -22,14 +22,14 @@ module ysyx_220053_Mem(
         pmem_read(raddr, dataout);
         if(MemWen == 1'b1) pmem_write(raddr, wdata, wmask);
     end
-    wire [5:0] tmp;
     reg [63:0] datad;
     reg [31:0] dataw;
     reg [15:0] datah;
     reg [7:0]  datab;
-    integer i;
-    assign tmp = {2'b00,raddr[2:0]};
+    integer i,tmp;
+    
     always @(*) begin
+        tmp = {{29{1'b0}},raddr[2:0]};
         case(MemOp[1:0])
             2'b00: begin
                     for (i = 0; i <= 31; i = i + 1) begin
