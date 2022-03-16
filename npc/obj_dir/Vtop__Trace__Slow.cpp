@@ -1622,12 +1622,6 @@ void Vtop___024root__traceFullTop0(void* voidSelf, VerilatedVcd* tracep) {
 void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VlWide<49>/*1567:0*/ __Vtemp2;
-    VlWide<57>/*1823:0*/ __Vtemp3;
-    VlWide<33>/*1055:0*/ __Vtemp4;
-    VlWide<49>/*1567:0*/ __Vtemp5;
-    VlWide<57>/*1823:0*/ __Vtemp6;
-    VlWide<33>/*1055:0*/ __Vtemp7;
     vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode);
     if (false && oldp) {}  // Prevent unused
     // Body
@@ -1663,35 +1657,17 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
                                    ? 1U : 0U)));
         tracep->fullQData(oldp+28,(vlSelf->top__DOT__my_exu__DOT__busa),64);
         tracep->fullQData(oldp+30,(vlSelf->top__DOT__my_exu__DOT__busb),64);
-        VL_EXTEND_WI(1552,16, __Vtemp2, (IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datah));
-        VL_EXTEND_WI(1800,8, __Vtemp3, (IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datab));
-        VL_EXTEND_WI(1056,32, __Vtemp4, vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataw);
         tracep->fullQData(oldp+32,(((IData)(vlSelf->top__DOT__MemToReg)
                                      ? ((4U & (IData)(vlSelf->top__DOT__MemOp))
                                          ? ((2U & (IData)(vlSelf->top__DOT__MemOp))
                                              ? ((1U 
                                                  & (IData)(vlSelf->top__DOT__MemOp))
                                                  ? 0ULL
-                                                 : 
-                                                (((QData)((IData)(
-                                                                  __Vtemp2[1U])) 
-                                                  << 0x20U) 
-                                                 | (QData)((IData)(
-                                                                   __Vtemp2[0U]))))
+                                                 : (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datah)))
                                              : ((1U 
                                                  & (IData)(vlSelf->top__DOT__MemOp))
-                                                 ? 
-                                                (((QData)((IData)(
-                                                                  __Vtemp3[1U])) 
-                                                  << 0x20U) 
-                                                 | (QData)((IData)(
-                                                                   __Vtemp3[0U])))
-                                                 : 
-                                                (((QData)((IData)(
-                                                                  __Vtemp4[1U])) 
-                                                  << 0x20U) 
-                                                 | (QData)((IData)(
-                                                                   __Vtemp4[0U])))))
+                                                 ? (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datab))
+                                                 : (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataw))))
                                          : ((2U & (IData)(vlSelf->top__DOT__MemOp))
                                              ? ((1U 
                                                  & (IData)(vlSelf->top__DOT__MemOp))
@@ -1724,29 +1700,14 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
                                                   << 0x20U) 
                                                  | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataw))))))
                                      : vlSelf->top__DOT__my_exu__DOT__res)),64);
-        VL_EXTEND_WI(1552,16, __Vtemp5, (IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datah));
-        VL_EXTEND_WI(1800,8, __Vtemp6, (IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datab));
-        VL_EXTEND_WI(1056,32, __Vtemp7, vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataw);
         tracep->fullQData(oldp+34,(((4U & (IData)(vlSelf->top__DOT__MemOp))
                                      ? ((2U & (IData)(vlSelf->top__DOT__MemOp))
                                          ? ((1U & (IData)(vlSelf->top__DOT__MemOp))
                                              ? 0ULL
-                                             : (((QData)((IData)(
-                                                                 __Vtemp5[1U])) 
-                                                 << 0x20U) 
-                                                | (QData)((IData)(
-                                                                  __Vtemp5[0U]))))
+                                             : (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datah)))
                                          : ((1U & (IData)(vlSelf->top__DOT__MemOp))
-                                             ? (((QData)((IData)(
-                                                                 __Vtemp6[1U])) 
-                                                 << 0x20U) 
-                                                | (QData)((IData)(
-                                                                  __Vtemp6[0U])))
-                                             : (((QData)((IData)(
-                                                                 __Vtemp7[1U])) 
-                                                 << 0x20U) 
-                                                | (QData)((IData)(
-                                                                  __Vtemp7[0U])))))
+                                             ? (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datab))
+                                             : (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataw))))
                                      : ((2U & (IData)(vlSelf->top__DOT__MemOp))
                                          ? ((1U & (IData)(vlSelf->top__DOT__MemOp))
                                              ? vlSelf->top__DOT__my_exu__DOT__mem__DOT__datad
