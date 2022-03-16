@@ -4,12 +4,11 @@
 module ysyx_220053_Mem(
     input [2:0] MemOp,
     input [63:0] raddr, wdata,
-    input MemWen,
     output reg [63:0] rdata
 );
     wire [63:0] dataout;
     reg [7:0] wmask;
-    
+
     always@(*) begin
         case(MemOp[1:0])
             2'b00: wmask = 8'b00001111;
@@ -21,7 +20,7 @@ module ysyx_220053_Mem(
 
     always @(*) begin
         pmem_read(raddr, dataout);
-        if(MemWen == 1'b1) pmem_write(raddr, wdata, wmask);
+        pmem_write(raddr, wdata, wmask);
     end
     reg [63:0] datad;
     reg [31:0] dataw;

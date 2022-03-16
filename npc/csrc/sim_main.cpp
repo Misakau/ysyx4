@@ -58,10 +58,11 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     return;
   }
   else{
-    uint64_t real_mask = 0;
-    for(int i = 0; i < 8; i++)
-      if(wmask & (1 << i))
-        real_mask & ((0xffull) << (i << 3));
+    uint64_t real_mask = -1;
+    if(wmask == 0x1) real_mask = 0xffull;
+    else if(wmask == 0x3) real_mask = 0xffffull;
+    else if(wmask == 0xf) real_mask = 0xffffffffull;
+    else real_mask = -1;
     MEM[real_addr] = (MEM[real_addr] & (~real_mask)) | (wdata & real_mask);
     return;
   }

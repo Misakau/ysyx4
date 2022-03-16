@@ -49,6 +49,7 @@ void Vtop___024root___initial__TOP__1(Vtop___024root* vlSelf) {
 
 void Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(QData/*63:0*/ raddr, QData/*63:0*/ &rdata);
 void Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(CData/*0:0*/ done);
+extern const VlUnpacked<CData/*7:0*/, 8> Vtop__ConstPool__TABLE_6ec5454f_0;
 extern const VlUnpacked<CData/*0:0*/, 16> Vtop__ConstPool__TABLE_0e4c9530_0;
 extern const VlUnpacked<CData/*0:0*/, 16> Vtop__ConstPool__TABLE_53d48880_0;
 extern const VlUnpacked<CData/*0:0*/, 16> Vtop__ConstPool__TABLE_ed197e2d_0;
@@ -61,6 +62,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___settle__TOP__5\n"); );
     // Variables
     CData/*3:0*/ __Vtableidx1;
+    CData/*2:0*/ __Vtableidx2;
     // Body
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
     Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->pc, vlSelf->__Vtask_pmem_read__0__rdata);
@@ -555,6 +557,9 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     } else if ((2U == (3U & (IData)(vlSelf->top__DOT__MemOp)))) {
         vlSelf->top__DOT__my_exu__DOT__mem__DOT__i = 0x11U;
     }
+    __Vtableidx2 = vlSelf->top__DOT__MemOp;
+    vlSelf->top__DOT__my_exu__DOT__mem__DOT__wmask 
+        = Vtop__ConstPool__TABLE_6ec5454f_0[__Vtableidx2];
     vlSelf->top__DOT__my_exu__DOT__alu_inA = ((IData)(vlSelf->top__DOT__ALUSrcA)
                                                ? vlSelf->top__DOT__my_exu__DOT__busa
                                                : vlSelf->pc);

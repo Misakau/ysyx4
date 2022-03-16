@@ -11,7 +11,7 @@ module ysyx_220053_controler(
     output reg [3:0] ALUOp,
     output reg [2:0] Branch,
     output reg [2:0] MemOp,
-    output reg MemToReg, wen, MemWen
+    output reg MemToReg, wen,
 );
 
 parameter ysyx_220053_I = 0;
@@ -25,23 +25,23 @@ parameter ysyx_220053_R = 5;
         case(op)
             7'b0110111://lui
                 begin
-                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b1111; ExtOp = ysyx_220053_U; wen = 1;
+                    MemOp = 3'b011; MemToReg = 0; Branch = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b1111; ExtOp = ysyx_220053_U; wen = 1;
                 end
             7'b0010111://auipc
                 begin
-                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 0; ALUSrcB = 1; ALUOp = 4'b0000; ExtOp = ysyx_220053_U; wen = 1;
+                    MemOp = 3'b011; MemToReg = 0; Branch = 0; ALUSrcA = 0; ALUSrcB = 1; ALUOp = 4'b0000; ExtOp = ysyx_220053_U; wen = 1;
                 end
             7'b1101111://jal
                 begin
-                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 3'b001; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 4'b0000; ExtOp = ysyx_220053_J; wen = 1;
+                    MemOp = 3'b011; MemToReg = 0; Branch = 3'b001; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 4'b0000; ExtOp = ysyx_220053_J; wen = 1;
                 end
             7'b1100111://jalr
                 begin
-                    MemWen = 0; MemOp = 0; MemOp = 0; MemToReg = 0; Branch = 3'b010; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 4'b0000; ExtOp = ysyx_220053_I; wen = 1;
+                    MemOp = 3'b011; MemToReg = 0; Branch = 3'b010; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 4'b0000; ExtOp = ysyx_220053_I; wen = 1;
                 end
             7'b0010011://addi
                 begin
-                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
+                    MemOp = 3'b011; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; ExtOp = ysyx_220053_I; wen = 1; end
                         3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0010; ExtOp = ysyx_220053_I; wen = 1; end
@@ -55,7 +55,7 @@ parameter ysyx_220053_R = 5;
                 end
             7'b0110011://add
                 begin
-                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
+                    MemOp = 3'b011; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
                         3'b000: begin//add sub mul div  乘除法还没做
                                 ALUSrcA = 1; ALUSrcB = 0; ExtOp = ysyx_220053_R; wen = 1; 
@@ -97,7 +97,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b1100011://beq
                 begin
-                    MemWen = 0; MemOp = 0; MemToReg = 0;  //wen = 1;
+                    MemOp = 3'b011; MemToReg = 0;  //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0010; ExtOp = ysyx_220053_B; Branch = 3'b100; wen = 0; end
                         3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0010; ExtOp = ysyx_220053_B; Branch = 3'b101; wen = 0; end
@@ -118,7 +118,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b0000011://ld
                 begin
-                    MemWen = 0; MemToReg = 1; Branch = 0; //wen = 1;
+                    MemToReg = 1; Branch = 0; //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b001; ExtOp = ysyx_220053_I; wen = 1; end
                         3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b010; ExtOp = ysyx_220053_I; wen = 1; end
