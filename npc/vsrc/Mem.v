@@ -23,16 +23,41 @@ module ysyx_220053_Mem(
         if(MemWen == 1'b1) pmem_write(raddr, wdata, wmask);
     end
     wire [2:0] tmp;
+    reg [63:0] datad;
+    reg [31:0] dataw;
+    reg [15:0] datah;
+    reg [7:0]  datab;
+    integer i;
     assign tmp = raddr[2:0];
+    always @(*) begin
+        case(MemOp[1:0])
+            2'b00: begin
+                    for (i = 0; i <= 31; i = i + 1) begin
+                        dataw[i] = dataout[tmp + i];
+                    end
+                end
+            2'b01: begin
+                    for (i = 0; i <= 7; i = i + 1) begin
+                        datab[i] = dataout[tmp + i];
+                    end
+                end
+            2'b10: begin
+                    for (i = 0; i <= 16; i = i + 1) begin
+                        datah[i] = dataout[tmp + i];
+                    end
+                end
+            default: datad = dataout;
+        endcase
+    end
     always@(*) begin
         case(MemOp)
-            3'b000: rdata = {{32{dataout[63]}},dataout[tmp+31:tmp]};
-            3'b001: rdata = {{56{dataout[63]}},dataout[tmp+7:tmp]};
-            3'b010: rdata = {{48{dataout[63]}},dataout[tmp+15:tmp]};
-            3'b011: rdata = dataout;
-            3'b100: rdata = {{32{0}},dataout[tmp+31:tmp]};
-            3'b101: rdata = {{56{0}},dataout[tmp+7:tmp]};
-            3'b110: rdata = {{48{0}},dataout[tmp+15:tmp]};
+            3'b000: rdata = {{32{dataout[63]}},dataw};
+            3'b001: rdata = {{56{dataout[63]}},datab};
+            3'b010: rdata = {{48{dataout[63]}},datah};
+            3'b011: rdata = datad;
+            3'b100: rdata = {{32{0}},dataw};
+            3'b101: rdata = {{56{0}},datab};
+            3'b110: rdata = {{48{0}},datah};
             default: rdata = 0;
         endcase
     end
