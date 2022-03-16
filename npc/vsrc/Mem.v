@@ -22,7 +22,7 @@ module ysyx_220053_Mem(
         pmem_read(raddr, dataout);
         if(MemWen == 1'b1) pmem_write(raddr, wdata, wmask);
     end
-    wire tmp;
+    wire [2:0] tmp;
     assign tmp = raddr[2:0];
     always@(*) begin
         case(MemOp)
