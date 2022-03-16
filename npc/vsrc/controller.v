@@ -157,7 +157,46 @@ parameter ysyx_220053_R = 5;
   INSTPAT("??????? ????? ????? 010 ????? 01000 11", sw     , S, Mw(src1 + dest, 4, src2));
   INSTPAT("??????? ????? ????? 011 ????? 01000 11", sd     , S, Mw(src1 + dest, 8, src2));
 */
+            7'b0011011://addiw
+                begin
+                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
+                    case(func3)
+                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b10000; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b10001; ExtOp = ysyx_220053_I; wen = 1; end
+                        default: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = (instr_i[30] == 1'b0) ? 5'b10101 : 5'b11101; ExtOp = ysyx_220053_I; wen = 1; end
+                    endcase
+                end
+/*
 
+  INSTPAT("??????? ????? ????? 000 ????? 00110 11", addiw  , I, R(dest) = SEXT((src1 + src2) & 0xffffffff, 32));
+  INSTPAT("0000000 ????? ????? 001 ????? 00110 11", slliw  , I, R(dest) = SEXT((src1 << (src2 & 0x1f)) & 0xffffffff, 32));
+  INSTPAT("0000000 ????? ????? 101 ????? 00110 11", srliw  , I, R(dest) = SEXT(((src1 & 0xffffffff) >> (src2 & 0x1f)), 32));
+  INSTPAT("0100000 ????? ????? 101 ????? 00110 11", sraiw  , I, R(dest) = SEXT((int64_t)(((int32_t)(src1 & 0xffffffff)) >> ((uint32_t)(src2 & 0x1f))), 32));
+*/
+            7'b0111011://add
+                begin
+                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
+                    case(func3)
+                        3'b000: begin//addw subw mulw divw  乘除法还没做
+                                ALUSrcA = 1; ALUSrcB = 0; ExtOp = ysyx_220053_R; wen = 1; 
+                                case(func7) 
+                                    7'b0100000: ALUOp = 5'b11000;
+                                    7'b0000001: ALUOp = 5'b11001;//1001 mul
+                                    default: ALUOp = 5'b10000;
+                                endcase 
+                            end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b10001; ExtOp = ysyx_220053_R; wen = 1; end
+                        default: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = (instr_i[30] == 1'b0) ? 5'b10101 : 5'b11101; ExtOp = ysyx_220053_R; wen = 1; end
+                        //srl/sra
+                    endcase
+                end
+/*
+  INSTPAT("0000000 ????? ????? 000 ????? 01110 11", addw   , R, R(dest) = SEXT((src1 + src2) & 0xffffffff, 32));
+  INSTPAT("0100000 ????? ????? 000 ????? 01110 11", subw   , R, R(dest) = SEXT((src1 - src2) & 0xffffffff, 32));
+  INSTPAT("0000000 ????? ????? 001 ????? 01110 11", sllw   , R, R(dest) = SEXT((src1 << (src2 & 0x1f)) & 0xffffffff, 32));
+  INSTPAT("0000000 ????? ????? 101 ????? 01110 11", srlw   , R, R(dest) = SEXT(((src1 & 0xffffffff) >> (src2 & 0x1f)), 32));
+  INSTPAT("0100000 ????? ????? 101 ????? 01110 11", sraw   , R, R(dest) = SEXT((int64_t)(((int32_t)(src1 & 0xffffffff)) >> ((uint32_t)(src2 & 0x1f))), 32));
+*/
             7'b1110011://ebreak
              	begin
              		case(instr_i[31:20])
