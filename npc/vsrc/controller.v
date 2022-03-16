@@ -11,7 +11,7 @@ module ysyx_220053_controler(
     output reg [3:0] ALUOp,
     output reg [2:0] Branch,
     output reg [2:0] MemOp,
-    output reg MemToReg, wen,
+    output reg MemToReg, wen
 );
 
 parameter ysyx_220053_I = 0;
