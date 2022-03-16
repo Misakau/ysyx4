@@ -22,7 +22,7 @@ module ysyx_220053_InstrToImm(
 			4: begin // J-type
 				imm = {{44{instr[31]}}, instr[19:12], instr[20], instr[30:21],1'b0}; 
 			end
-			5: begin // R-type
+			default: begin // R-type
 				imm = 0;
 			end
 		endcase

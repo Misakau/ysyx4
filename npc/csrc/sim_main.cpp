@@ -19,14 +19,7 @@
 static long long MEM[MEMSIZE];//8字节为单位
 static bool EXIT = 0;
 static bool START = 0;
-/*
-uint32_t pimem_read(uint64_t paddr){
-    uint64_t real_addr = (paddr - AD_BASE) >> 2;
-    //assert(real_addr < MEMSIZE);
-    if(real_addr >= MEMSIZE){EXIT = 1;printf("addrs=%lx\n",paddr);return 0;}
-    return IMEM[real_addr];
-}
-*/
+
 static bool is_done = false;
 
 extern "C" void c_trap(const svBit done){
@@ -50,7 +43,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
   long long real_addr = (raddr - AD_BASE) >> 3;
   //assert(real_addr < MEMSIZE);
   if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
-    if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
+    //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
     *rdata = 0;
     return;
   }
@@ -58,6 +51,20 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
   // 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
 }
 extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
+  long long real_addr = (waddr - AD_BASE) >> 3;
+  //assert(real_addr < MEMSIZE);
+  if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
+    if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
+    return;
+  }
+  else{
+    uint64_t real_mask = 0;
+    for(int i = 0; i < 8; i++)
+      if(wmask & (1 << i))
+        real_mask & ((0xffull) << (i << 3));
+    MEM[real_addr] = (MEM[real_addr] & (~real_mask)) | (wdata & real_mask);
+    return;
+  }
   // 总是往地址为`waddr & ~0x7ull`的8字节按写掩码`wmask`写入`wdata`
   // `wmask`中每比特表示`wdata`中1个字节的掩码,
   // 如`wmask = 0x3`代表只写入最低2个字节, 内存中的其它字节保持不变

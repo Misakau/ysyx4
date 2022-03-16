@@ -6,22 +6,24 @@ module ysyx_220053_EXU(
     input [4:0] rd,
     input [4:0] rs1,
     input [4:0] rs2,
-    input wen, ALUSrcA, 
+    input wen, ALUSrcA, MemToReg, MemWen,
     input [1:0] ALUSrcB,
     input [3:0] ALUOp,
     input [2:0] Branch,
+    input [2:0] MemOp,
     input [63:0] pc,
     input [63:0] imm,
     output [63:0] dnpc
 );
     wire zero;
-    wire [63:0] busa, busb;
+    wire [63:0] busa, busb, regsin, mdata;
     wire [63:0] res;
     wire [63:0] alu_inA, alu_inB;
     wire is_wen;
     assign is_wen = wen & (~rst);
     assign alu_inA = (ALUSrcA == 1'b1) ? busa : pc;
     assign alu_inB = (ALUSrcB == 2'b01) ? imm : ((ALUSrcB == 2'b00) ? busb : 4);
+    assign regsin = (MemToReg == 1'b0) ? res : mdata;
     ysyx_220053_RegisterFile #(5, 64) regfile(.clk(clk),
                                               .raaddr(rs1),
                                               .rbaddr(rs2),
@@ -33,6 +35,7 @@ module ysyx_220053_EXU(
                                             );
     ysyx_220053_ALU alu64(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .result(res), .zero(zero));
         //busa + immI; //addi
+    ysyx_220053_Mem mem(.MemOp(MemOp), .raddr(res), .MemWen(MemWen), .wdata(busb), .rdata(mdata));
     wire [63:0] addr_res;
     ysyx_220053_NexAddr nextaddr(.Zero(zero), .res0(res[0]), .Branch(Branch), .pc(pc), .imm(imm), .busa(busa), .dnpc(addr_res));
     assign dnpc = {addr_res[63:1], 1'b0};
