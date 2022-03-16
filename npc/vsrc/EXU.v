@@ -8,7 +8,7 @@ module ysyx_220053_EXU(
     input [4:0] rs2,
     input wen, ALUSrcA, MemToReg, MemWen,
     input [1:0] ALUSrcB,
-    input [3:0] ALUOp,
+    input [4:0] ALUOp,
     input [2:0] Branch,
     input [2:0] MemOp,
     input [63:0] pc,
