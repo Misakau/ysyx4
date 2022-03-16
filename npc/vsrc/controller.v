@@ -141,7 +141,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b0100011:
                 begin
-                    MemWen = 1; MemToReg = 0; Branch = 0; //wen = 1;
+                    MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b001; ExtOp = ysyx_220053_I; wen = 0; end
                         3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b010; ExtOp = ysyx_220053_I; wen = 0; end

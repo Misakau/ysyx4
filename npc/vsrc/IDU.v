@@ -34,7 +34,7 @@ module ysyx_220053_IDU(
     ysyx_220053_controler control(.instr_i(instr_i), .op(op), .func3(func3), .func7(func7),
                                  .ALUSrcA(ALUSrcA),.ALUSrcB(ALUSrcB), 
                                  .Branch(Branch), .MemOp(MemOp), .MemToReg(MemToReg),
-                                 .ExtOp(ExtOp), .ALUOp(ALUOp), .wen(wen),
+                                 .ExtOp(ExtOp), .ALUOp(ALUOp), .wen(wen)
                                  );
 
 endmodule
