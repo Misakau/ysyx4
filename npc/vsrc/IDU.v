@@ -13,7 +13,7 @@ module ysyx_220053_IDU(
     output [2:0]  func3,
     output [6:0]  func7,
     output [63:0] imm,
-    output ALUSrcA, MemToReg,
+    output ALUSrcA, MemToReg, MemWen,
     output [1:0] ALUSrcB,
     output [2:0] Branch,
     output [2:0] MemOp,
@@ -34,7 +34,7 @@ module ysyx_220053_IDU(
     ysyx_220053_controler control(.instr_i(instr_i), .op(op), .func3(func3), .func7(func7),
                                  .ALUSrcA(ALUSrcA),.ALUSrcB(ALUSrcB), 
                                  .Branch(Branch), .MemOp(MemOp), .MemToReg(MemToReg),
-                                 .ExtOp(ExtOp), .ALUOp(ALUOp), .wen(wen)
+                                 .ExtOp(ExtOp), .ALUOp(ALUOp), .wen(wen), .MemWen(MemWen)
                                  );
 
 endmodule

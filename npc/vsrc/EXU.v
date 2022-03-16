@@ -6,7 +6,7 @@ module ysyx_220053_EXU(
     input [4:0] rd,
     input [4:0] rs1,
     input [4:0] rs2,
-    input wen, ALUSrcA, MemToReg,
+    input wen, ALUSrcA, MemToReg, MemWen,
     input [1:0] ALUSrcB,
     input [3:0] ALUOp,
     input [2:0] Branch,
@@ -35,7 +35,7 @@ module ysyx_220053_EXU(
                                             );
     ysyx_220053_ALU alu64(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .result(res), .zero(zero));
         //busa + immI; //addi
-    ysyx_220053_Mem mem(.MemOp(MemOp), .raddr(res), .wdata(busb), .rdata(mdata));
+    ysyx_220053_Mem mem(.MemOp(MemOp), .raddr(res), .MemWen(MemWen), .wdata(busb), .rdata(mdata));
     wire [63:0] addr_res;
     ysyx_220053_NexAddr nextaddr(.Zero(zero), .res0(res[0]), .Branch(Branch), .pc(pc), .imm(imm), .busa(busa), .dnpc(addr_res));
     assign dnpc = {addr_res[63:1], 1'b0};
