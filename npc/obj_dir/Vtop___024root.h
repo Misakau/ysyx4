@@ -35,9 +35,12 @@ VL_MODULE(Vtop___024root) {
     // LOCAL SIGNALS
     CData/*0:0*/ top__DOT__wen;
     CData/*0:0*/ top__DOT__ALUSrcA;
+    CData/*0:0*/ top__DOT__MemWen;
+    CData/*0:0*/ top__DOT__MemToReg;
     CData/*1:0*/ top__DOT__ALUSrcB;
     CData/*3:0*/ top__DOT__ALUOp;
     CData/*2:0*/ top__DOT__Branch;
+    CData/*2:0*/ top__DOT__MemOp;
     CData/*0:0*/ top__DOT__my_ifu__DOT__fclk;
     CData/*2:0*/ top__DOT__my_idu__DOT__ExtOp;
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SUBctr;
@@ -45,19 +48,27 @@ VL_MODULE(Vtop___024root) {
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__ALctr;
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SFTctr;
     CData/*2:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
+    CData/*7:0*/ top__DOT__my_exu__DOT__mem__DOT__wmask;
+    CData/*7:0*/ top__DOT__my_exu__DOT__mem__DOT__datab;
     CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexA;
     CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexB;
+    SData/*15:0*/ top__DOT__my_exu__DOT__mem__DOT__datah;
     IData/*31:0*/ top__DOT__instr_i;
+    IData/*31:0*/ top__DOT__my_exu__DOT__mem__DOT__dataw;
+    IData/*31:0*/ top__DOT__my_exu__DOT__mem__DOT__i;
     QData/*63:0*/ top__DOT__imm;
     QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
     QData/*63:0*/ top__DOT__my_ifu__DOT__rdata;
     QData/*63:0*/ top__DOT__my_exu__DOT__busa;
+    QData/*63:0*/ top__DOT__my_exu__DOT__busb;
     QData/*63:0*/ top__DOT__my_exu__DOT__res;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inA;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inB;
     QData/*63:0*/ top__DOT__my_exu__DOT__addr_res;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__res0;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderb;
+    QData/*63:0*/ top__DOT__my_exu__DOT__mem__DOT__dataout;
+    QData/*63:0*/ top__DOT__my_exu__DOT__mem__DOT__datad;
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcA;
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcB;
     VlUnpacked<QData/*63:0*/, 32> top__DOT__my_exu__DOT__regfile__DOT__rf;
@@ -65,6 +76,7 @@ VL_MODULE(Vtop___024root) {
     // LOCAL VARIABLES
     CData/*0:0*/ __Vclklast__TOP__clk;
     QData/*63:0*/ __Vtask_pmem_read__0__rdata;
+    QData/*63:0*/ __Vtask_pmem_read__3__rdata;
     VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
 
     // INTERNAL VARIABLES

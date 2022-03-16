@@ -55,9 +55,9 @@ module ysyx_220053_Mem(
             3'b001: rdata = {{56{dataout[63]}},datab};
             3'b010: rdata = {{48{dataout[63]}},datah};
             3'b011: rdata = datad;
-            3'b100: rdata = {{32{0}},dataw};
-            3'b101: rdata = {{56{0}},datab};
-            3'b110: rdata = {{48{0}},datah};
+            3'b100: rdata = {{32{1'b0}},dataw};
+            3'b101: rdata = {{56{1'b0}},datab};
+            3'b110: rdata = {{48{1'b0}},datah};
             default: rdata = 0;
         endcase
     end

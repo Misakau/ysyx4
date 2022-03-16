@@ -22,7 +22,7 @@ module ysyx_220053_ALU(
     assign res2 = inputa | inputb;
     assign res3 = inputa ^ inputb;
     wire [5:0] shamt = inputb[5:0];
-    assign res4 = inputa << shamt;//ysyx_220053_Shifter shifter(.dout(res4),.din(inputa),.shamt(shamt),.AL(ALctr),.LR(SFTctr));
+    assign res4 = inputa << shamt;//not finish ysyx_220053_Shifter shifter(.dout(res4),.din(inputa),.shamt(shamt),.AL(ALctr),.LR(SFTctr));
     assign res5 = inputb;
     assign res6 = {{63{1'b0}},{(SIGctr == 1'b1) ? OF ^ SF : CF}}; //cmp,not finish
     assign res7 = 0;
