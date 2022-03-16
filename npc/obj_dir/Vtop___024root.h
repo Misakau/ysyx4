@@ -35,6 +35,7 @@ VL_MODULE(Vtop___024root) {
     // LOCAL SIGNALS
     CData/*0:0*/ top__DOT__wen;
     CData/*0:0*/ top__DOT__ALUSrcA;
+    CData/*0:0*/ top__DOT__MemWen;
     CData/*0:0*/ top__DOT__MemToReg;
     CData/*1:0*/ top__DOT__ALUSrcB;
     CData/*3:0*/ top__DOT__ALUOp;

@@ -8,7 +8,7 @@ module ysyx_220053_controler(
     output reg ALUSrcA, //0:pc,1:busa
     output reg [1:0] ALUSrcB,//0:busb,1:imm,2:4
     output reg [2:0] ExtOp,
-    output reg [3:0] ALUOp,
+    output reg [4:0] ALUOp,
     output reg [2:0] Branch,
     output reg [2:0] MemOp,
     output reg MemToReg, wen, MemWen
@@ -25,31 +25,31 @@ parameter ysyx_220053_R = 5;
         case(op)
             7'b0110111://lui
                 begin
-                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b1111; ExtOp = ysyx_220053_U; wen = 1;
+                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b01111; ExtOp = ysyx_220053_U; wen = 1;
                 end
             7'b0010111://auipc
                 begin
-                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 0; ALUSrcB = 1; ALUOp = 4'b0000; ExtOp = ysyx_220053_U; wen = 1;
+                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 0; ALUSrcB = 1; ALUOp = 5'b00000; ExtOp = ysyx_220053_U; wen = 1;
                 end
             7'b1101111://jal
                 begin
-                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 3'b001; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 4'b0000; ExtOp = ysyx_220053_J; wen = 1;
+                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 3'b001; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 5'b00000; ExtOp = ysyx_220053_J; wen = 1;
                 end
             7'b1100111://jalr
                 begin
-                    MemWen = 0; MemOp = 0; MemOp = 0; MemToReg = 0; Branch = 3'b010; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 4'b0000; ExtOp = ysyx_220053_I; wen = 1;
+                    MemWen = 0; MemOp = 0; MemOp = 0; MemToReg = 0; Branch = 3'b010; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 5'b00000; ExtOp = ysyx_220053_I; wen = 1;
                 end
             7'b0010011://addi
                 begin
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
-                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0010; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0011; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b100: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0100; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b110: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0110; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b111: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0111; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0001; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00010; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00011; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b100: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00100; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b110: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00110; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b111: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00111; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00001; ExtOp = ysyx_220053_I; wen = 1; end
                         default: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = (instr_i[30] == 1'b0) ? 4'b0101 : 4'b1101; ExtOp = ysyx_220053_I; wen = 1; end
                     endcase
                 end
@@ -60,17 +60,17 @@ parameter ysyx_220053_R = 5;
                         3'b000: begin//add sub mul div  乘除法还没做
                                 ALUSrcA = 1; ALUSrcB = 0; ExtOp = ysyx_220053_R; wen = 1; 
                                 case(func7) 
-                                    7'b0100000: ALUOp = 4'b1000;
-                                    7'b0000001: ALUOp = 4'b1001;//1001 mul
-                                    default: ALUOp = 4'b0000;
+                                    7'b0100000: ALUOp = 5'b01000;
+                                    7'b0000001: ALUOp = 5'b01001;//1001 mul
+                                    default: ALUOp = 5'b00000;
                                 endcase 
                             end
-                        3'b010: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0010; ExtOp = ysyx_220053_R; wen = 1; end
-                        3'b011: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0011; ExtOp = ysyx_220053_R; wen = 1; end
-                        3'b100: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0100; ExtOp = ysyx_220053_R; wen = 1; end
-                        3'b110: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0110; ExtOp = ysyx_220053_R; wen = 1; end
-                        3'b111: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0111; ExtOp = ysyx_220053_R; wen = 1; end
-                        3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0001; ExtOp = ysyx_220053_R; wen = 1; end
+                        3'b010: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_220053_R; wen = 1; end
+                        3'b011: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00011; ExtOp = ysyx_220053_R; wen = 1; end
+                        3'b100: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00100; ExtOp = ysyx_220053_R; wen = 1; end
+                        3'b110: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00110; ExtOp = ysyx_220053_R; wen = 1; end
+                        3'b111: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00111; ExtOp = ysyx_220053_R; wen = 1; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00001; ExtOp = ysyx_220053_R; wen = 1; end
                         default: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = (instr_i[30] == 1'b0) ? 4'b0101 : 4'b1101; ExtOp = ysyx_220053_R; wen = 1; end
                     endcase
                 end
@@ -99,12 +99,12 @@ parameter ysyx_220053_R = 5;
                 begin
                     MemWen = 0; MemOp = 0; MemToReg = 0;  //wen = 1;
                     case(func3)
-                        3'b000: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0010; ExtOp = ysyx_220053_B; Branch = 3'b100; wen = 0; end
-                        3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0010; ExtOp = ysyx_220053_B; Branch = 3'b101; wen = 0; end
-                        3'b100: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0010; ExtOp = ysyx_220053_B; Branch = 3'b110; wen = 0; end
-                        3'b101: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0010; ExtOp = ysyx_220053_B; Branch = 3'b111; wen = 0; end
-                        3'b110: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0011; ExtOp = ysyx_220053_B; Branch = 3'b110; wen = 0; end
-                        3'b111: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 4'b0011; ExtOp = ysyx_220053_B; Branch = 3'b111; wen = 0; end
+                        3'b000: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_220053_B; Branch = 3'b100; wen = 0; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_220053_B; Branch = 3'b101; wen = 0; end
+                        3'b100: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_220053_B; Branch = 3'b110; wen = 0; end
+                        3'b101: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_220053_B; Branch = 3'b111; wen = 0; end
+                        3'b110: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00011; ExtOp = ysyx_220053_B; Branch = 3'b110; wen = 0; end
+                        3'b111: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00011; ExtOp = ysyx_220053_B; Branch = 3'b111; wen = 0; end
                         default: $display("no");
                     endcase
                 end
@@ -120,13 +120,13 @@ parameter ysyx_220053_R = 5;
                 begin
                     MemWen = 0; MemToReg = 1; Branch = 0; //wen = 1;
                     case(func3)
-                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b001; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b010; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b000; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b011; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b100: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b101; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b101: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b110; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b110: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b100; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b001; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b010; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b000; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b011; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b100: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b101; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b101: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b110; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b110: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b100; ExtOp = ysyx_220053_I; wen = 1; end
                         default: $display("no");
                     endcase
                 end
@@ -143,10 +143,10 @@ parameter ysyx_220053_R = 5;
                 begin
                     MemWen = 1; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
-                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b001; ExtOp = ysyx_220053_I; wen = 0; end
-                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b010; ExtOp = ysyx_220053_I; wen = 0; end
-                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b000; ExtOp = ysyx_220053_I; wen = 0; end
-                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; MemOp = 3'b011; ExtOp = ysyx_220053_I; wen = 0; end
+                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b001; ExtOp = ysyx_220053_I; wen = 0; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b010; ExtOp = ysyx_220053_I; wen = 0; end
+                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b000; ExtOp = ysyx_220053_I; wen = 0; end
+                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b011; ExtOp = ysyx_220053_I; wen = 0; end
                         default: $display("no");
                     endcase
                 end
@@ -160,7 +160,7 @@ parameter ysyx_220053_R = 5;
             7'b1110011://ebreak
              	begin
              		case(instr_i[31:20])
-             			1: begin Branch = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 4'b0000; ExtOp = ysyx_220053_I; wen = 0; c_trap(1); end
+             			1: begin Branch = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; ExtOp = ysyx_220053_I; wen = 0; c_trap(1); end
              			default: $display("no");
              		endcase
              	end

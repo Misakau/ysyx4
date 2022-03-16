@@ -17,7 +17,7 @@ module ysyx_220053_IDU(
     output [1:0] ALUSrcB,
     output [2:0] Branch,
     output [2:0] MemOp,
-    output [3:0] ALUOp,
+    output [4:0] ALUOp,
     output wen
 );
     wire [2:0] ExtOp;

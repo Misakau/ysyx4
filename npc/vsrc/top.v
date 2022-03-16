@@ -32,7 +32,7 @@ module top(
     wire [63:0] imm;
     wire wen, ALUSrcA, MemWen, MemToReg;
     wire [1:0] ALUSrcB;
-    wire [3:0] ALUOp;
+    wire [4:0] ALUOp;
     wire [2:0] Branch;
     wire [2:0] MemOp;
     ysyx_220053_IDU my_idu(

@@ -3,7 +3,7 @@
 /* verilator lint_off UNUSED */
 module ysyx_220053_ALU(
     input [63:0] inputa, inputb,
-    input [3:0] ALUOp,
+    input [4:0] ALUOp,
     output zero,
     output reg [63:0] result
 );
@@ -41,23 +41,23 @@ module ysyx_220053_ALU(
     assign zero = ZF;
 endmodule
 module ysyx_220053_ALUSig(
-    input [3:0] ALUOp,
+    input [4:0] ALUOp,
     output reg SUBctr,SIGctr,ALctr,SFTctr,
     output reg [2:0] OPctr
 );
     always@(*) begin
         case(ALUOp)
-            4'b0000: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b000; end
-            4'b0001: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b100; end
-            4'b0010: begin SUBctr = 1; SIGctr = 1; ALctr = 0; SFTctr = 0; OPctr = 3'b110; end
-            4'b0011: begin SUBctr = 1; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b110; end
-            4'b0100: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b011; end
-            4'b0101: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 1; OPctr = 3'b100; end
-            4'b0110: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b010; end
-            4'b0111: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b001; end
-            4'b1000: begin SUBctr = 1; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b000; end
-            4'b1101: begin SUBctr = 0; SIGctr = 0; ALctr = 1; SFTctr = 1; OPctr = 3'b100; end
-            4'b1111: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b101; end
+            5'b00000: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b000; end
+            5'b00001: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b100; end
+            5'b00010: begin SUBctr = 1; SIGctr = 1; ALctr = 0; SFTctr = 0; OPctr = 3'b110; end
+            5'b00011: begin SUBctr = 1; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b110; end
+            5'b00100: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b011; end
+            5'b00101: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 1; OPctr = 3'b100; end
+            5'b00110: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b010; end
+            5'b00111: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b001; end
+            5'b01000: begin SUBctr = 1; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b000; end
+            5'b01101: begin SUBctr = 0; SIGctr = 0; ALctr = 1; SFTctr = 1; OPctr = 3'b100; end
+            5'b01111: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b101; end
             default: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; OPctr = 3'b000; end
         endcase
     end
