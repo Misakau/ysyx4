@@ -189,12 +189,12 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declQuad(c+34,"top my_exu mem rdata", false,-1, 63,0);
         tracep->declQuad(c+135,"top my_exu mem dataout", false,-1, 63,0);
         tracep->declBus(c+1340,"top my_exu mem wmask", false,-1, 7,0);
-        tracep->declBus(c+137,"top my_exu mem tmp", false,-1, 5,0);
-        tracep->declQuad(c+138,"top my_exu mem datad", false,-1, 63,0);
-        tracep->declBus(c+140,"top my_exu mem dataw", false,-1, 31,0);
-        tracep->declBus(c+141,"top my_exu mem datah", false,-1, 15,0);
-        tracep->declBus(c+142,"top my_exu mem datab", false,-1, 7,0);
-        tracep->declBus(c+143,"top my_exu mem i", false,-1, 31,0);
+        tracep->declQuad(c+137,"top my_exu mem datad", false,-1, 63,0);
+        tracep->declBus(c+139,"top my_exu mem dataw", false,-1, 31,0);
+        tracep->declBus(c+140,"top my_exu mem datah", false,-1, 15,0);
+        tracep->declBus(c+141,"top my_exu mem datab", false,-1, 7,0);
+        tracep->declBus(c+142,"top my_exu mem i", false,-1, 31,0);
+        tracep->declBus(c+143,"top my_exu mem tmp", false,-1, 31,0);
         tracep->declBit(c+27,"top my_exu nextaddr Zero", false,-1);
         tracep->declBit(c+144,"top my_exu nextaddr res0", false,-1);
         tracep->declBus(c+18,"top my_exu nextaddr Branch", false,-1, 2,0);
@@ -1858,12 +1858,12 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullBit(oldp+134,((1U & ((IData)(vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low.__PVT__cout_temp) 
                                          >> 3U))));
         tracep->fullQData(oldp+135,(vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataout),64);
-        tracep->fullCData(oldp+137,((7U & (IData)(vlSelf->top__DOT__my_exu__DOT__res))),6);
-        tracep->fullQData(oldp+138,(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datad),64);
-        tracep->fullIData(oldp+140,(vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataw),32);
-        tracep->fullSData(oldp+141,(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datah),16);
-        tracep->fullCData(oldp+142,(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datab),8);
-        tracep->fullIData(oldp+143,(vlSelf->top__DOT__my_exu__DOT__mem__DOT__i),32);
+        tracep->fullQData(oldp+137,(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datad),64);
+        tracep->fullIData(oldp+139,(vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataw),32);
+        tracep->fullSData(oldp+140,(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datah),16);
+        tracep->fullCData(oldp+141,(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datab),8);
+        tracep->fullIData(oldp+142,(vlSelf->top__DOT__my_exu__DOT__mem__DOT__i),32);
+        tracep->fullIData(oldp+143,(vlSelf->top__DOT__my_exu__DOT__mem__DOT__tmp),32);
         tracep->fullBit(oldp+144,((1U & (IData)(vlSelf->top__DOT__my_exu__DOT__res))));
         tracep->fullBit(oldp+145,(vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__NexA));
         tracep->fullBit(oldp+146,(vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__NexB));

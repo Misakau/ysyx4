@@ -9,7 +9,8 @@ module ysyx_220053_Mem(
 );
     wire [63:0] dataout;
     reg [7:0] wmask;
-/*    always@(*) begin
+    
+    always@(*) begin
         case(MemOp[1:0])
             2'b00: wmask = 8'b00001111;
             2'b01: wmask = 8'b00000001;
@@ -17,7 +18,7 @@ module ysyx_220053_Mem(
             default: wmask = 8'b11111111;
         endcase
     end
-*/
+
     always @(*) begin
         pmem_read(raddr, dataout);
         if(MemWen == 1'b1) pmem_write(raddr, wdata, wmask);
