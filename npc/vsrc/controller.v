@@ -50,7 +50,7 @@ parameter ysyx_220053_R = 5;
                         3'b110: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00110; ExtOp = ysyx_220053_I; wen = 1; end
                         3'b111: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00111; ExtOp = ysyx_220053_I; wen = 1; end
                         3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00001; ExtOp = ysyx_220053_I; wen = 1; end
-                        default: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = (instr_i[30] == 1'b0) ? 4'b0101 : 4'b1101; ExtOp = ysyx_220053_I; wen = 1; end
+                        default: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = (instr_i[30] == 1'b0) ? 5'b00101 : 5'b01101; ExtOp = ysyx_220053_I; wen = 1; end
                     endcase
                 end
             7'b0110011://add
@@ -71,7 +71,8 @@ parameter ysyx_220053_R = 5;
                         3'b110: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00110; ExtOp = ysyx_220053_R; wen = 1; end
                         3'b111: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00111; ExtOp = ysyx_220053_R; wen = 1; end
                         3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00001; ExtOp = ysyx_220053_R; wen = 1; end
-                        default: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = (instr_i[30] == 1'b0) ? 4'b0101 : 4'b1101; ExtOp = ysyx_220053_R; wen = 1; end
+                        default: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = (instr_i[30] == 1'b0) ? 5'b00101 : 5'b01101; ExtOp = ysyx_220053_R; wen = 1; end
+                        //srl/sra
                     endcase
                 end
 /*

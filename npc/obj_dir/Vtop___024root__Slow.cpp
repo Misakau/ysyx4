@@ -50,18 +50,18 @@ void Vtop___024root___initial__TOP__1(Vtop___024root* vlSelf) {
 void Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(QData/*63:0*/ raddr, QData/*63:0*/ &rdata);
 void Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(CData/*0:0*/ done);
 extern const VlUnpacked<CData/*7:0*/, 8> Vtop__ConstPool__TABLE_6ec5454f_0;
-extern const VlUnpacked<CData/*0:0*/, 16> Vtop__ConstPool__TABLE_0e4c9530_0;
-extern const VlUnpacked<CData/*0:0*/, 16> Vtop__ConstPool__TABLE_53d48880_0;
-extern const VlUnpacked<CData/*0:0*/, 16> Vtop__ConstPool__TABLE_ed197e2d_0;
-extern const VlUnpacked<CData/*0:0*/, 16> Vtop__ConstPool__TABLE_870583e7_0;
-extern const VlUnpacked<CData/*2:0*/, 16> Vtop__ConstPool__TABLE_7734b881_0;
+extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_1747fed4_0;
+extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_3bb6ad21_0;
+extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_239dd0ed_0;
+extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_c2dcb82a_0;
+extern const VlUnpacked<CData/*2:0*/, 32> Vtop__ConstPool__TABLE_4ba6daf4_0;
 
 void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___settle__TOP__5\n"); );
     // Variables
-    CData/*3:0*/ __Vtableidx1;
+    CData/*4:0*/ __Vtableidx1;
     CData/*2:0*/ __Vtableidx2;
     // Body
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
@@ -563,17 +563,17 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__alu_inA = ((IData)(vlSelf->top__DOT__ALUSrcA)
                                                ? vlSelf->top__DOT__my_exu__DOT__busa
                                                : vlSelf->pc);
-    __Vtableidx1 = vlSelf->top__DOT__ALUOp;
+    __Vtableidx1 = (0xfU & (IData)(vlSelf->top__DOT__ALUOp));
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SUBctr 
-        = Vtop__ConstPool__TABLE_0e4c9530_0[__Vtableidx1];
+        = Vtop__ConstPool__TABLE_1747fed4_0[__Vtableidx1];
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SIGctr 
-        = Vtop__ConstPool__TABLE_53d48880_0[__Vtableidx1];
+        = Vtop__ConstPool__TABLE_3bb6ad21_0[__Vtableidx1];
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__ALctr 
-        = Vtop__ConstPool__TABLE_ed197e2d_0[__Vtableidx1];
+        = Vtop__ConstPool__TABLE_239dd0ed_0[__Vtableidx1];
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SFTctr 
-        = Vtop__ConstPool__TABLE_870583e7_0[__Vtableidx1];
+        = Vtop__ConstPool__TABLE_c2dcb82a_0[__Vtableidx1];
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr 
-        = Vtop__ConstPool__TABLE_7734b881_0[__Vtableidx1];
+        = Vtop__ConstPool__TABLE_4ba6daf4_0[__Vtableidx1];
     vlSelf->top__DOT__imm = ((0U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))
                               ? (((- (QData)((IData)(
                                                      (vlSelf->top__DOT__instr_i 
@@ -696,7 +696,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__MemWen = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__MemToReg = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__ALUSrcB = VL_RAND_RESET_I(2);
-    vlSelf->top__DOT__ALUOp = VL_RAND_RESET_I(4);
+    vlSelf->top__DOT__ALUOp = VL_RAND_RESET_I(5);
     vlSelf->top__DOT__Branch = VL_RAND_RESET_I(3);
     vlSelf->top__DOT__MemOp = VL_RAND_RESET_I(3);
     vlSelf->top__DOT__my_ifu__DOT__fclk = VL_RAND_RESET_I(1);

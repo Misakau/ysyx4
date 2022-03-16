@@ -38,7 +38,7 @@ VL_MODULE(Vtop___024root) {
     CData/*0:0*/ top__DOT__MemWen;
     CData/*0:0*/ top__DOT__MemToReg;
     CData/*1:0*/ top__DOT__ALUSrcB;
-    CData/*3:0*/ top__DOT__ALUOp;
+    CData/*4:0*/ top__DOT__ALUOp;
     CData/*2:0*/ top__DOT__Branch;
     CData/*2:0*/ top__DOT__MemOp;
     CData/*0:0*/ top__DOT__my_ifu__DOT__fclk;
