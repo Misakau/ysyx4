@@ -131,25 +131,27 @@ static void print_args(int argc, char**argv){
         printf("%s\n",argv[i]);
 }
 
+void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
+void (*difftest_regcpy)(void *, bool);
+void (*difftest_exec)(uint64_t);
+void (*difftest_init)();
+
 int main(int argc, char**argv, char**env) {
     void *handle = dlopen("/home/wang/ysyx-workbench/nemu/build/riscv64-nemu-interpreter-so",RTLD_LAZY);
     if(!handle){
       fprintf(stderr, "%s\n", dlerror());
       exit(1);
     }
-    void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
+    
     difftest_memcpy = (void(*)(uint64_t, void *, size_t, bool))dlsym(handle, "difftest_memcpy");
     assert(difftest_memcpy);
     
-    void (*difftest_regcpy)(void *, bool);
     difftest_regcpy = (void(*)(void *, bool))dlsym(handle, "difftest_regcpy");
     assert(difftest_regcpy);
     
-    void (*difftest_exec)(uint64_t);
     difftest_exec = (void(*)(uint64_t))dlsym(handle, "difftest_exec");
     assert(difftest_exec);
 
-    void (*difftest_init)();
     difftest_init = (void(*)())dlsym(handle, "difftest_init");
     assert(difftest_init);
 
@@ -249,7 +251,7 @@ static void npc_exec(uint64_t n){
     printf("The program is done! Please quit the npc_sdb.\n");
     return;
   }
-  for (uint64_t i = 1; i <= n && !is_done && !sdb_contextp->gotFinish(); i++) { 
+  for (uint64_t i = 1; i <= 2*n && !is_done && !sdb_contextp->gotFinish(); i++) { 
             sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
             //if(sdb_top->clk == 0)sdb_top->instr_i = pimem_read(sdb_top->pc);
@@ -257,6 +259,19 @@ static void npc_exec(uint64_t n){
             if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); sdb_top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", sdb_top->clk, sdb_top->rst, sdb_top->pc, sdb_top->instr);
             sdb_top->eval();
+            if(top->clk == 1) difftest_exec(1);
+            difftest_regcpy(&nemu, 1);
+            if(top->pc != nemu.pc){
+              printf(ASNI_FG_BLUE "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, top->pc);
+              EXIT = 1;break;
+            }
+            for(int i = 1; i < 32; i++){
+              if(cpu_gpr[i] != nemu.gpr[i]){
+                printf(ASNI_FG_BLUE "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],nemu.pc);
+                EXIT = 1; break;
+              }
+            }
+            if(EXIT == 1) {top->eval();break;}
         }
   if(is_done){
     if(cpu_gpr[10] == 0)
