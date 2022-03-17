@@ -208,7 +208,7 @@ int main(int argc, char**argv, char**env) {
             if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr);
             top->eval();
-            if(top->clk == 0) difftest_exec(1);
+            if(top->clk == 1) difftest_exec(1);
             difftest_regcpy(&nemu, 1);
             if(top->pc != nemu.pc){
               printf(ASNI_FG_BLUE "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, top->pc);
