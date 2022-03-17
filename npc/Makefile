@@ -31,7 +31,7 @@ all:
 
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	$(VERILATOR) $(VERILATOR_FLAGS) $(addprefix -LDFLAGS , $(LDFLAGS)) $(VERILATOR_INPUT)
+	$(VERILATOR) $(VERILATOR_FLAGS) $(VERILATOR_INPUT) $(addprefix -LDFLAGS , $(LDFLAGS))
 
 	@rm -rf logs
 	@mkdir -p logs
