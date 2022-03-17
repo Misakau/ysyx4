@@ -30,7 +30,7 @@ module ysyx_220053_Mem(
     integer i,tmp;
     
     always @(*) begin
-        tmp = {{29{1'b0}},raddr[2:0]};
+        tmp = {{26{1'b0}},raddr[2:0],{3{1'b0}}};
         case(MemOp[1:0])
             2'b00: begin
                     for (i = 0; i <= 31; i = i + 1) begin
