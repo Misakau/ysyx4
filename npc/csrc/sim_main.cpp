@@ -159,12 +159,12 @@ int main(int argc, char**argv, char**env) {
 
 
     //print_args(argc, argv);
-
+    int fsize = 24;
     if(image_file != NULL){//has image
         FILE* fp = fopen(image_file, "r");
         assert(fp);
         fseek(fp, 0, SEEK_END);
-        int fsize = ftell(fp);
+        fsize = ftell(fp);
         fseek(fp, 0, SEEK_SET);
         assert(fread(MEM, fsize, 1, fp));
         fclose(fp);
@@ -176,7 +176,7 @@ int main(int argc, char**argv, char**env) {
         MEM[1] = 0x00108093ff0ff0b7LL;//lui x1,0xff0ff
         MEM[2] = 0x0010007300100073LL;
     }
-    difftest_memcpy(AD_BASE, MEM, 1);
+    difftest_memcpy(AD_BASE, MEM, fsize, 1);
     //reset the pc
     contextp->timeInc(1); 
     top->clk = 0;
