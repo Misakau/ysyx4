@@ -193,6 +193,7 @@ int main(int argc, char**argv, char**env) {
         MEM[2] = 0x0010007300100073LL;
     }
     difftest_memcpy(AD_BASE, MEM, fsize, 1);
+    return 0;
     //reset the pc
     contextp->timeInc(1); 
     top->clk = 0;
