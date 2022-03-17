@@ -36,8 +36,7 @@ sim:
 
 	@rm -rf logs
 	@mkdir -p logs
-	obj_dir/Vtop +trace -i /home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv64-npc.bin
-#add-riscv64-npc.bin
+	obj_dir/Vtop +trace -i /home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/add-riscv64-npc.bin
 #npcrun:
 #	obj_dir/Vtop +trace $(TEST_PATH)$(IMAGE)
 clean:
