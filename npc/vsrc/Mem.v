@@ -52,9 +52,9 @@ module ysyx_220053_Mem(
     end
     always@(*) begin
         case(MemOp)
-            3'b000: rdata = {{32{dataout[63]}},dataw};
-            3'b001: rdata = {{56{dataout[63]}},datab};
-            3'b010: rdata = {{48{dataout[63]}},datah};
+            3'b000: rdata = {{32{dataw[31]}},dataw};
+            3'b001: rdata = {{56{datab[7]}},datab};
+            3'b010: rdata = {{48{datah[15]}},datah};
             3'b011: rdata = datad;
             3'b100: rdata = {{32{1'b0}},dataw};
             3'b101: rdata = {{56{1'b0}},datab};

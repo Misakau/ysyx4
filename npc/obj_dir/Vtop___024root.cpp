@@ -915,7 +915,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
         }
     }
     vlSelf->top__DOT__my_exu__DOT__mem__DOT__tmp = 
-        (7U & (IData)(vlSelf->top__DOT__my_exu__DOT__res));
+        (0x38U & ((IData)(vlSelf->top__DOT__my_exu__DOT__res) 
+                  << 3U));
     if ((0U == (3U & (IData)(vlSelf->top__DOT__MemOp)))) {
         vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataw 
             = ((0xfffffffeU & vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataw) 
