@@ -185,7 +185,6 @@ int main(int argc, char**argv, char**env) {
     }
     difftest_init();
     difftest_memcpy(AD_BASE, MEM, fsize, 1);
-    difftest_exec(1);
 
     //reset the pc
     contextp->timeInc(1); 
