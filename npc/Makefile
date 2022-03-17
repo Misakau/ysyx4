@@ -22,7 +22,7 @@ VERILATOR_FLAGS += --trace
 
 # Input files for Verilator
 VERILATOR_INPUT = $(VFILES) $(CFILES)
-LDFLAGS = -lreadline
+LDFLAGS = -lreadline -ldl
 #FILEPATH ?= ./csrc/a.in
 #TEST_PATH ?= ../am-kernels/tests/cpu-tests/build/$(IMAGE).bin
 all:
