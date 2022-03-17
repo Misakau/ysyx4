@@ -139,11 +139,13 @@ int main(int argc, char**argv, char**env) {
     }
     void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
     difftest_memcpy = (void(*)(uint64_t, void *, size_t, bool))dlsym(handle, "difftest_memcpy");
+    
     char *error;
     if((error = dlerror()) != NULL){
       fprintf(stderr, "%s\n", error);
       exit(1);
     }
+    
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
     contextp->commandArgs(argc, argv);
@@ -174,7 +176,7 @@ int main(int argc, char**argv, char**env) {
         MEM[1] = 0x00108093ff0ff0b7LL;//lui x1,0xff0ff
         MEM[2] = 0x0010007300100073LL;
     }
-    
+    difftest_memcpy(AD_BASE, MEM, 1);
     //reset the pc
     contextp->timeInc(1); 
     top->clk = 0;
