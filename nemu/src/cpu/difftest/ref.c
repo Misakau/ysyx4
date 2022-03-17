@@ -10,6 +10,7 @@ void difftest_memcpy(paddr_t addr, void *buf, size_t n, bool direction) {
   	for(int i = 0; i < n; i++){
   		word_t data = buff[i];
   		paddr_write(paddr, 1, data);
+  		paddr++;
   	}
   } else {
     assert(0);

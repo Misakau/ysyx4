@@ -184,7 +184,7 @@ int main(int argc, char**argv, char**env) {
         MEM[2] = 0x0010007300100073LL;
     }
     difftest_init();
-    //difftest_memcpy(AD_BASE, MEM, fsize, 1);
+    difftest_memcpy(AD_BASE, MEM, fsize, 1);
     difftest_exec(1);
 
     //reset the pc
