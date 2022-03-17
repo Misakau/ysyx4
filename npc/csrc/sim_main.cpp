@@ -139,28 +139,19 @@ int main(int argc, char**argv, char**env) {
     }
     void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
     difftest_memcpy = (void(*)(uint64_t, void *, size_t, bool))dlsym(handle, "difftest_memcpy");
-    
-    char *error;
-    if((error = dlerror()) != NULL){
-      fprintf(stderr, "%s\n", error);
-      exit(1);
-    }
+    assert(difftest_memcpy);
     
     void (*difftest_regcpy)(void *, bool);
     difftest_regcpy = (void(*)(void *, bool))dlsym(handle, "difftest_regcpy");
-    
-    if((error = dlerror()) != NULL){
-      fprintf(stderr, "%s\n", error);
-      exit(1);
-    }
+    assert(difftest_regcpy);
     
     void (*difftest_exec)(uint64_t);
     difftest_exec = (void(*)(uint64_t))dlsym(handle, "difftest_exec");
-    
-    if((error = dlerror()) != NULL){
-      fprintf(stderr, "%s\n", error);
-      exit(1);
-    }
+    assert(difftest_exec);
+
+    void (*difftest_init)();
+    difftest_init = (void(*)())dlsym(handle, "difftest_init");
+    assert(difftest_init);
 
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
@@ -192,10 +183,10 @@ int main(int argc, char**argv, char**env) {
         MEM[1] = 0x00108093ff0ff0b7LL;//lui x1,0xff0ff
         MEM[2] = 0x0010007300100073LL;
     }
-    
+    difftest_init();
     difftest_memcpy(AD_BASE, MEM, fsize, 1);
     difftest_exec(1);
-    
+
     //reset the pc
     contextp->timeInc(1); 
     top->clk = 0;
