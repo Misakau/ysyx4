@@ -144,10 +144,10 @@ parameter ysyx_220053_R = 5;
                 begin
                     MemWen = 1; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
-                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b001; ExtOp = ysyx_220053_I; wen = 0; end
-                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b010; ExtOp = ysyx_220053_I; wen = 0; end
-                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b000; ExtOp = ysyx_220053_I; wen = 0; end
-                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b011; ExtOp = ysyx_220053_I; wen = 0; end
+                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b001; ExtOp = ysyx_220053_S; wen = 0; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b010; ExtOp = ysyx_220053_S; wen = 0; end
+                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b000; ExtOp = ysyx_220053_S; wen = 0; end
+                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b011; ExtOp = ysyx_220053_S; wen = 0; end
                         default: $display("no");
                     endcase
                 end
