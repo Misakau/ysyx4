@@ -220,7 +220,7 @@ int main(int argc, char**argv, char**env) {
                 EXIT = 1; break;
               }
             }
-            if(EXIT == 1) break;
+            if(EXIT == 1) {top->eval();break;}
         }
     else{
         printf(ASNI_FG_RED "Not in batch mode!\n" ASNI_NONE);
