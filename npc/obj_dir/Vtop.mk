@@ -38,8 +38,8 @@ VM_USER_CFLAGS = \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
-	-L/home/wang/ysyx-workbench/nemu/build \
 	-lreadline \
+	-L/home/wang/ysyx-workbench/nemu/build \
 	-lriscv64-nemu-interpreter-so \
 
 # User .cpp files (from .cpp's on Verilator command line)
