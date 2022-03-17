@@ -129,9 +129,8 @@ static void print_args(int argc, char**argv){
     for(int i = 0; i < argc; i++)
         printf("%s\n",argv[i]);
 }
-void difftest_exec();
+
 int main(int argc, char**argv, char**env) {
-    difftest_exec();
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
     contextp->commandArgs(argc, argv);
@@ -168,11 +167,9 @@ int main(int argc, char**argv, char**env) {
     top->clk = 0;
     top->rst = 1;
     top->eval();
-    printf("Now_pc = %016lx\n",top->pc);
     top->clk = 1;
     contextp->timeInc(1); 
     top->eval();
-    printf("Now_pc = %016lx\n",top->pc);
     top->rst = 0;
     START = 1;
     int cnt = 0;
