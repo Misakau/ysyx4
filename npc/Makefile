@@ -30,7 +30,7 @@ all:
 
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	$(VERILATOR) $(VERILATOR_FLAGS) -CFLAGS -L$(NEMU_HOME)/build $(addprefix -LDFLAGS , $(LDFLAGS)) $(VERILATOR_INPUT)
+	$(VERILATOR) $(VERILATOR_FLAGS) -LDFLAGS -L$(NEMU_HOME)/build $(addprefix -LDFLAGS , $(LDFLAGS)) $(VERILATOR_INPUT)
 
 	@rm -rf logs
 	@mkdir -p logs
