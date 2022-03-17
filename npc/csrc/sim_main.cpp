@@ -214,7 +214,7 @@ int main(int argc, char**argv, char**env) {
               printf(ASNI_FG_BLUE "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, top->pc);
               EXIT = 1;break;
             }
-            for(int i = 0; i < 32; i++){
+            for(int i = 1; i < 32; i++){
               if(cpu_gpr[i] != nemu.gpr[i]){
                 printf(ASNI_FG_BLUE "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],nemu.pc);
                 EXIT = 1; break;
