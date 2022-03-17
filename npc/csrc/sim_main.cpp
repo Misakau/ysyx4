@@ -149,7 +149,6 @@ int main(int argc, char**argv, char**env) {
     void (*difftest_regcpy)(void *, bool);
     difftest_regcpy = (void(*)(void *, bool))dlsym(handle, "difftest_regcpy");
     
-    char *error;
     if((error = dlerror()) != NULL){
       fprintf(stderr, "%s\n", error);
       exit(1);
@@ -158,7 +157,6 @@ int main(int argc, char**argv, char**env) {
     void (*difftest_exec)(uint64_t);
     difftest_exec = (void(*)(uint64_t))dlsym(handle, "difftest_exec");
     
-    char *error;
     if((error = dlerror()) != NULL){
       fprintf(stderr, "%s\n", error);
       exit(1);
