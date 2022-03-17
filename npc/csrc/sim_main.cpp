@@ -132,7 +132,7 @@ static void print_args(int argc, char**argv){
 }
 
 int main(int argc, char**argv, char**env) {
-    void *handle = dlopen("../../nemu/build/riscv64-nemu-interpreter-so",RTLD_LAZY);
+    void *handle = dlopen("/home/wang/ysyx-workbench/nemu/build/riscv64-nemu-interpreter-so",RTLD_LAZY);
     if(!handle){
       fprintf(stderr, "%s\n", dlerror());
       exit(1);
