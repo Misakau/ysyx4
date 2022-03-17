@@ -21,7 +21,7 @@ VERILATOR_FLAGS += --trace
 #VERILATOR_FLAGS += --gdbbt
 
 # Input files for Verilator
-VERILATOR_INPUT = $(VFILES) $(CFILES)
+VERILATOR_INPUT = $(VFILES) $(CFILES) $(NEMU_HOME)/build/riscv64-nemu-interpreter-so
 LDFLAGS = -lreadline
 #FILEPATH ?= ./csrc/a.in
 #TEST_PATH ?= ../am-kernels/tests/cpu-tests/build/$(IMAGE).bin

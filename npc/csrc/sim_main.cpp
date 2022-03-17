@@ -11,6 +11,7 @@
 #include <cstring>
 #include <readline/readline.h>
 
+
 #include "npc_sdb.h"
 
 #define MEMSIZE 65536
