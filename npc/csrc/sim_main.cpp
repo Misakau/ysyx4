@@ -137,6 +137,13 @@ int main(int argc, char**argv, char**env) {
       fprintf(stderr, "%s\n", dlerror());
       exit(1);
     }
+    void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
+    difftest_memcpy = dlsym(handle, "difftest_memcpy");
+    char *error;
+    if((error = dlerror()) != NULL){
+      fprintf(stderr, "%d\n", error);
+      exit(1);
+    }
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
     contextp->commandArgs(argc, argv);
