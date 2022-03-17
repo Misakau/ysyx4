@@ -192,8 +192,8 @@ int main(int argc, char**argv, char**env) {
         MEM[1] = 0x00108093ff0ff0b7LL;//lui x1,0xff0ff
         MEM[2] = 0x0010007300100073LL;
     }
+    difftest_regcpy(&nemu, 1);
     difftest_memcpy(AD_BASE, MEM, fsize, 1);
-    return 0;
     //reset the pc
     contextp->timeInc(1); 
     top->clk = 0;
