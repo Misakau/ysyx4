@@ -201,8 +201,9 @@ int main(int argc, char**argv, char**env) {
     top->rst = 0;
     START = 1;
     int cnt = 0;
-    NEMU_CPU nemu;
-    if(is_batch)
+    
+    if(is_batch){
+        NEMU_CPU nemu;
         while (!is_done && !contextp->gotFinish()) { 
             contextp->timeInc(1); 
             top->clk = !top->clk;
@@ -224,6 +225,7 @@ int main(int argc, char**argv, char**env) {
             }
             if(EXIT == 1) {top->eval();break;}
         }
+    }
     else{
         printf(ASNI_FG_RED "Not in batch mode!\n" ASNI_NONE);
         sdb_mainloop();
@@ -251,6 +253,7 @@ static void npc_exec(uint64_t n){
     printf("The program is done! Please quit the npc_sdb.\n");
     return;
   }
+  NEMU_CPU nemu;
   for (uint64_t i = 1; i <= 2*n && !is_done && !sdb_contextp->gotFinish(); i++) { 
             sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
