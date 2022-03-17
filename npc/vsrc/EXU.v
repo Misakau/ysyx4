@@ -29,7 +29,7 @@ module ysyx_220053_EXU(
                                               .rbaddr(rs2),
                                               .radata(busa),
                                               .rbdata(busb),
-                                              .wdata(res),
+                                              .wdata(regsin),
                                               .waddr(rd),
                                               .wen(is_wen)
                                             );
