@@ -21,8 +21,8 @@ VL_MODULE(Vtop___024root) {
   public:
     // CELLS
     Vtop___024unit* __PVT____024unit;
-    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low;
-    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high;
+    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low;
+    Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high;
     Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low;
     Vtop_ysyx_220053_Adder32* __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high;
 
@@ -47,6 +47,7 @@ VL_MODULE(Vtop___024root) {
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SIGctr;
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__ALctr;
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SFTctr;
+    CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__Wctr;
     CData/*2:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
     CData/*7:0*/ top__DOT__my_exu__DOT__mem__DOT__wmask;
     CData/*7:0*/ top__DOT__my_exu__DOT__mem__DOT__datab;
@@ -54,6 +55,8 @@ VL_MODULE(Vtop___024root) {
     CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexB;
     SData/*15:0*/ top__DOT__my_exu__DOT__mem__DOT__datah;
     IData/*31:0*/ top__DOT__instr_i;
+    IData/*31:0*/ top__DOT__my_exu__DOT__alu64__DOT__sllWres;
+    IData/*31:0*/ top__DOT__my_exu__DOT__alu64__DOT__srWres;
     IData/*31:0*/ top__DOT__my_exu__DOT__mem__DOT__dataw;
     IData/*31:0*/ top__DOT__my_exu__DOT__mem__DOT__i;
     IData/*31:0*/ top__DOT__my_exu__DOT__mem__DOT__tmp;
@@ -66,7 +69,7 @@ VL_MODULE(Vtop___024root) {
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inA;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inB;
     QData/*63:0*/ top__DOT__my_exu__DOT__addr_res;
-    QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__res0;
+    QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderres;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderb;
     QData/*63:0*/ top__DOT__my_exu__DOT__mem__DOT__dataout;
     QData/*63:0*/ top__DOT__my_exu__DOT__mem__DOT__datad;

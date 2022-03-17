@@ -181,7 +181,7 @@ parameter ysyx_220053_R = 5;
                                 ALUSrcA = 1; ALUSrcB = 0; ExtOp = ysyx_220053_R; wen = 1; 
                                 case(func7) 
                                     7'b0100000: ALUOp = 5'b11000;
-                                    7'b0000001: ALUOp = 5'b11001;//1001 mul
+                                    7'b0000001: ALUOp = 5'b11001;//1001 mul not finish
                                     default: ALUOp = 5'b10000;
                                 endcase 
                             end

@@ -16,8 +16,8 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     , instr{vlSymsp->TOP.instr}
     , pc{vlSymsp->TOP.pc}
     , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
-    , __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_low}
-    , __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__my_exu__DOT__alu64__DOT__adder1__DOT__adder_high}
+    , __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low}
+    , __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high}
     , __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low}
     , __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high}
     , rootp{&(vlSymsp->TOP)}
