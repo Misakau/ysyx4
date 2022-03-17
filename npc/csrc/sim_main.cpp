@@ -129,7 +129,7 @@ static void print_args(int argc, char**argv){
     for(int i = 0; i < argc; i++)
         printf("%s\n",argv[i]);
 }
-void difftest_exec();
+#include <difftest.h>
 int main(int argc, char**argv, char**env) {
     difftest_exec();
     VerilatedContext*contextp = new VerilatedContext;
