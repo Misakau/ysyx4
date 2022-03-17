@@ -78,9 +78,8 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                                     : 
                                                    (((- (QData)((IData)(
                                                                         (1U 
-                                                                         & (IData)(
-                                                                                (vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataout 
-                                                                                >> 0x3fU)))))) 
+                                                                         & ((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datah) 
+                                                                            >> 0xfU))))) 
                                                      << 0x10U) 
                                                     | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datah))))
                                                 : (
@@ -89,18 +88,15 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                                     ? 
                                                    (((- (QData)((IData)(
                                                                         (1U 
-                                                                         & (IData)(
-                                                                                (vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataout 
-                                                                                >> 0x3fU)))))) 
+                                                                         & ((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datab) 
+                                                                            >> 7U))))) 
                                                      << 8U) 
                                                     | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datab)))
                                                     : 
                                                    (((QData)((IData)(
                                                                      (- (IData)(
-                                                                                (1U 
-                                                                                & (IData)(
-                                                                                (vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataout 
-                                                                                >> 0x3fU))))))) 
+                                                                                (vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataw 
+                                                                                >> 0x1fU))))) 
                                                      << 0x20U) 
                                                     | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataw))))))
                                         : vlSelf->top__DOT__my_exu__DOT__res)),64);
@@ -121,9 +117,8 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                                 : (
                                                    ((- (QData)((IData)(
                                                                        (1U 
-                                                                        & (IData)(
-                                                                                (vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataout 
-                                                                                >> 0x3fU)))))) 
+                                                                        & ((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datah) 
+                                                                           >> 0xfU))))) 
                                                     << 0x10U) 
                                                    | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datah))))
                                             : ((1U 
@@ -131,18 +126,15 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                                 ? (
                                                    ((- (QData)((IData)(
                                                                        (1U 
-                                                                        & (IData)(
-                                                                                (vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataout 
-                                                                                >> 0x3fU)))))) 
+                                                                        & ((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datab) 
+                                                                           >> 7U))))) 
                                                     << 8U) 
                                                    | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datab)))
                                                 : (
                                                    ((QData)((IData)(
                                                                     (- (IData)(
-                                                                               (1U 
-                                                                                & (IData)(
-                                                                                (vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataout 
-                                                                                >> 0x3fU))))))) 
+                                                                               (vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataw 
+                                                                                >> 0x1fU))))) 
                                                     << 0x20U) 
                                                    | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataw))))))),64);
             tracep->chgQData(oldp+35,(vlSelf->top__DOT__my_exu__DOT__res),64);
