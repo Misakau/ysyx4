@@ -11,6 +11,7 @@
 #include <cstring>
 #include <readline/readline.h>
 
+#include <dlfcn.h>
 
 #include "npc_sdb.h"
 
@@ -131,7 +132,17 @@ static void print_args(int argc, char**argv){
 }
 
 int main(int argc, char**argv, char**env) {
-  
+    void *handle = dlopen("/home/wang/ysyx-workbench/nemu/build/riscv64-nemu-interpreter-so",RTLD_LAZY);
+    if(!handle){
+      fprintf(stderr, "%s\n", dlerror());
+      exit(1);
+    }
+    void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
+    difftest_memcpy = (void(*))dlsym(handle, "difftest_memcpy");
+    char *error;
+    if((error = dlerror()) != NULL){
+      fprintf(stde)
+    }
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
     contextp->commandArgs(argc, argv);
