@@ -141,7 +141,7 @@ int main(int argc, char**argv, char**env) {
     difftest_memcpy = dlsym(handle, "difftest_memcpy");
     char *error;
     if((error = dlerror()) != NULL){
-      fprintf(stderr, "%d\n", error);
+      fprintf(stderr, "%s\n", error);
       exit(1);
     }
     VerilatedContext*contextp = new VerilatedContext;
