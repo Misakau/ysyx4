@@ -173,7 +173,7 @@ parameter ysyx_220053_R = 5;
   INSTPAT("0000000 ????? ????? 101 ????? 00110 11", srliw  , I, R(dest) = SEXT(((src1 & 0xffffffff) >> (src2 & 0x1f)), 32));
   INSTPAT("0100000 ????? ????? 101 ????? 00110 11", sraiw  , I, R(dest) = SEXT((int64_t)(((int32_t)(src1 & 0xffffffff)) >> ((uint32_t)(src2 & 0x1f))), 32));
 */
-            7'b0111011://add
+            7'b0111011://addw
                 begin
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
