@@ -169,7 +169,6 @@ int main(int argc, char**argv, char**env) {
     int fsize = 24;
     if(image_file != NULL){//has image
         FILE* fp = fopen(image_file, "r");
-        printf("%s\n",image_file);
         assert(fp);
         fseek(fp, 0, SEEK_END);
         fsize = ftell(fp);
