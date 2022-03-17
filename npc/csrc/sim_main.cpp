@@ -80,10 +80,9 @@ extern "C" int get_instr(int instr) {
 /////////////////////////////////////////////////////////
 
 typedef struct {
-  word_t gpr[32];
-  vaddr_t pc;
+  uint64_t gpr[32];
+  uint64_t pc;
 } NEMU_CPU;
-
 
 /////////////////////////////////////////////////////////
 /*                        sdb                          */
