@@ -206,6 +206,7 @@ int main(int argc, char**argv, char**env) {
     top->rst = 0;
     START = 1;
     int cnt = 0;
+    NEMU_CPU nemu;
     if(is_batch)
         while (!is_done && !contextp->gotFinish()) { 
             contextp->timeInc(1); 
@@ -214,6 +215,19 @@ int main(int argc, char**argv, char**env) {
             if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr);
             top->eval();
+            difftest_exec(1);
+            difftest_regcpy(&nemu, 1);
+            if(top->pc != nemu.pc){
+              printf(ASNI_FG_BLUE "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, top->pc);
+              EXIT = 1;break;
+            }
+            for(int i = 0; i < 32; i++){
+              if(cpu_gpr[i] != nemu.gpr[i]){
+                printf(ASNI_FG_BLUE "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %d\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],nemu.pc);
+                EXIT = 1; break;
+              }
+            }
+            if(EXIT == 1) break;
         }
     else{
         printf(ASNI_FG_RED "Not in batch mode!\n" ASNI_NONE);
