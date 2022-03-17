@@ -259,10 +259,10 @@ static void npc_exec(uint64_t n){
             if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); sdb_top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", sdb_top->clk, sdb_top->rst, sdb_top->pc, sdb_top->instr);
             sdb_top->eval();
-            if(top->clk == 1) difftest_exec(1);
+            if(sdb_top->clk == 1) difftest_exec(1);
             difftest_regcpy(&nemu, 1);
-            if(top->pc != nemu.pc){
-              printf(ASNI_FG_BLUE "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, top->pc);
+            if(sdb_top->pc != nemu.pc){
+              printf(ASNI_FG_BLUE "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, sdb_top->pc);
               EXIT = 1;break;
             }
             for(int i = 1; i < 32; i++){
@@ -271,7 +271,7 @@ static void npc_exec(uint64_t n){
                 EXIT = 1; break;
               }
             }
-            if(EXIT == 1) {top->eval();break;}
+            if(EXIT == 1) {sdb_top->eval();break;}
         }
   if(is_done){
     if(cpu_gpr[10] == 0)
