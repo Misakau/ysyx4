@@ -138,10 +138,11 @@ int main(int argc, char**argv, char**env) {
       exit(1);
     }
     void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
-    difftest_memcpy = (void(*))dlsym(handle, "difftest_memcpy");
+    difftest_memcpy = (void(*)(uint64_t, void *, size_t, bool))dlsym(handle, "difftest_memcpy");
     char *error;
     if((error = dlerror()) != NULL){
-      fprintf(stde)
+      fprintf(stderr, "%s\n", error);
+      exit(1);
     }
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
@@ -209,6 +210,10 @@ int main(int argc, char**argv, char**env) {
       printf(ASNI_FG_BLUE " at PC = %lx\n" ASNI_NONE,top->pc);
     }
     printf("~~~Sim finished!~~~\n");
+    if(dlclose(handle) < 0){
+      fprintf(stderr, "%s\n", dlerror());
+      exit(1);
+    }
     return 0;
 }
 
