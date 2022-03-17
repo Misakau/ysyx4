@@ -24,7 +24,7 @@ module ysyx_220053_EXU(
     assign alu_inA = (ALUSrcA == 1'b1) ? busa : pc;
     assign alu_inB = (ALUSrcB == 2'b01) ? imm : ((ALUSrcB == 2'b00) ? busb : 4);
     assign regsin = (MemToReg == 1'b0) ? res : mdata;
-    ysyx_220053_RegisterFile #(5, 64) regfile(.clk(~clk),
+    ysyx_220053_RegisterFile #(5, 64) regfile(.clk(clk),
                                               .raaddr(rs1),
                                               .rbaddr(rs2),
                                               .radata(busa),

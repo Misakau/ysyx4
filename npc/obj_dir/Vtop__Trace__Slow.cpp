@@ -135,7 +135,7 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+70,"top my_exu regfile rbaddr", false,-1, 4,0);
         tracep->declQuad(c+117,"top my_exu regfile radata", false,-1, 63,0);
         tracep->declQuad(c+119,"top my_exu regfile rbdata", false,-1, 63,0);
-        tracep->declQuad(c+121,"top my_exu regfile wdata", false,-1, 63,0);
+        tracep->declQuad(c+97,"top my_exu regfile wdata", false,-1, 63,0);
         tracep->declBus(c+68,"top my_exu regfile waddr", false,-1, 4,0);
         tracep->declBit(c+1339,"top my_exu regfile wen", false,-1);
         {int i; for (i=0; i<32; i++) {
