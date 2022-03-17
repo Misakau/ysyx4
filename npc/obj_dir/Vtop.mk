@@ -35,10 +35,10 @@ VM_PREFIX = Vtop
 VM_MODPREFIX = Vtop
 # User CFLAGS (from -CFLAGS on Verilator command line)
 VM_USER_CFLAGS = \
-	-L/home/wang/ysyx-workbench/nemu/build \
 
 # User LDLIBS (from -LDFLAGS on Verilator command line)
 VM_USER_LDLIBS = \
+	-L/home/wang/ysyx-workbench/nemu/build \
 	-lreadline \
 	-lriscv64-nemu-interpreter-so \
 
