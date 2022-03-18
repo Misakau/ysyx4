@@ -35,6 +35,7 @@ module top(
     wire [4:0] ALUOp;
     wire [2:0] Branch;
     wire [2:0] MemOp;
+    wire [1:0] MulOp;
     ysyx_220053_IDU my_idu(
       .instr_i(instr_i),
       .op(op),
@@ -48,6 +49,7 @@ module top(
       .MemOp(MemOp),
       .MemToReg(MemToReg),
       .MemWen(MemWen),
+      .MulOp(MulOp),
       .wen(wen)
       );
 
@@ -65,6 +67,7 @@ module top(
       .MemOp(MemOp),
       .MemToReg(MemToReg),
       .MemWen(MemWen),
+      .MulOp(MulOp),
       .pc(pc),
       .imm(imm),
       .dnpc(dnpc)

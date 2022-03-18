@@ -11,6 +11,7 @@ module ysyx_220053_EXU(
     input [4:0] ALUOp,
     input [2:0] Branch,
     input [2:0] MemOp,
+    input [1:0] MulOp,
     input [63:0] pc,
     input [63:0] imm,
     output [63:0] dnpc
@@ -33,7 +34,7 @@ module ysyx_220053_EXU(
                                               .waddr(rd),
                                               .wen(is_wen)
                                             );
-    ysyx_220053_ALU alu64(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .result(res), .zero(zero));
+    ysyx_220053_ALU alu64(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .MulOp(MulOp), .result(res), .zero(zero));
         //busa + immI; //addi
     ysyx_220053_Mem mem(.MemOp(MemOp), .raddr(res), .MemWen(MemWen), .wdata(busb), .rdata(mdata));
     wire [63:0] addr_res;
