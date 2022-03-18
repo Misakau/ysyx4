@@ -29,9 +29,9 @@ module ysyx_220053_ALU(
     wire [63:0] srres, shiftL, shiftR;
     
     assign sllWres = lower32 << shamtW;
-    assign srWres = (ALctr == 1'b0) ? lower32 >> shamtW : $signed(lower32) >>> shamtW;
+    assign srWres = (ALctr == 1'b0) ? lower32 >> shamtW : $signed(lower32 >>> shamtW);
     assign shiftL = (Wctr == 1'b0) ? (inputa << shamt) : {{32{sllWres[31]}}, sllWres[31:0]};
-    assign srres = (ALctr == 1'b0) ? inputa >> shamt : $signed(inputa) >>> shamt;
+    assign srres = (ALctr == 1'b0) ? inputa >> shamt : $signed(inputa >>> shamt);
     assign shiftR = (Wctr == 1'b0) ? srres : {{32{srWres[31]}}, srWres[31:0]};
     
     assign res4 = (SFTctr == 1'b0) ? shiftL : shiftR;//not finish ysyx_220053_Shifter shifter(.dout(res4),.din(inputa),.shamt(shamt),.AL(ALctr),.LR(SFTctr));
