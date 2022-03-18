@@ -41,13 +41,15 @@ module ysyx_220053_ALU(
 //mul
     reg [127:0] mulres;
     wire [63:0] mulresW;
+    ;
+
     assign mulresW = inputa[31:0] * inputb[31:0];
     always@(*) begin
         case(MulOp)
-            2'b00: mulres = inputa * inputb;
-            2'b01: mulres = inputa * inputb;
-            2'b10: mulres = $signed($signed(inputa) * inputb);
-            default: mulres = $signed($signed(inputa) * $signed(inputb));
+            2'b00: mulres = {{64{1'b0}},inputa} * {{64{1'b0}},inputb};
+            2'b01: mulres = {{64{1'b0}},inputa} * {{64{1'b0}},inputb};
+            2'b10: mulres = $signed($signed({{64{inputa[63]}},inputa}) * {{64{1'b0}},inputb});
+            default: mulres = $signed($signed({{64{inputa[63]}},inputa}) * $signed({{64{inputb[63]}},inputb}));
         endcase
     end
 
