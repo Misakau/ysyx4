@@ -43,7 +43,7 @@ module ysyx_220053_Mem(
                     end
                 end
             2'b10: begin
-                    for (i = 0; i <= 16; i = i + 1) begin
+                    for (i = 0; i <= 15; i = i + 1) begin
                         datah[i] = dataout[tmp + i];
                     end
                 end
