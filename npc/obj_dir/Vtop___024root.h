@@ -41,6 +41,7 @@ VL_MODULE(Vtop___024root) {
     CData/*4:0*/ top__DOT__ALUOp;
     CData/*2:0*/ top__DOT__Branch;
     CData/*2:0*/ top__DOT__MemOp;
+    CData/*1:0*/ top__DOT__MulOp;
     CData/*0:0*/ top__DOT__my_ifu__DOT__fclk;
     CData/*2:0*/ top__DOT__my_idu__DOT__ExtOp;
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SUBctr;
@@ -48,7 +49,7 @@ VL_MODULE(Vtop___024root) {
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__ALctr;
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SFTctr;
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__Wctr;
-    CData/*2:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
+    CData/*3:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
     CData/*7:0*/ top__DOT__my_exu__DOT__mem__DOT__wmask;
     CData/*7:0*/ top__DOT__my_exu__DOT__mem__DOT__datab;
     CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexA;
@@ -57,6 +58,9 @@ VL_MODULE(Vtop___024root) {
     IData/*31:0*/ top__DOT__instr_i;
     IData/*31:0*/ top__DOT__my_exu__DOT__alu64__DOT__sllWres;
     IData/*31:0*/ top__DOT__my_exu__DOT__alu64__DOT__srWres;
+    VlWide<4>/*127:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulres;
+    IData/*31:0*/ top__DOT__my_exu__DOT__alu64__DOT__divresW;
+    IData/*31:0*/ top__DOT__my_exu__DOT__alu64__DOT__remresW;
     IData/*31:0*/ top__DOT__my_exu__DOT__mem__DOT__dataw;
     IData/*31:0*/ top__DOT__my_exu__DOT__mem__DOT__i;
     IData/*31:0*/ top__DOT__my_exu__DOT__mem__DOT__tmp;
@@ -71,6 +75,7 @@ VL_MODULE(Vtop___024root) {
     QData/*63:0*/ top__DOT__my_exu__DOT__addr_res;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderres;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderb;
+    QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulresW;
     QData/*63:0*/ top__DOT__my_exu__DOT__mem__DOT__dataout;
     QData/*63:0*/ top__DOT__my_exu__DOT__mem__DOT__datad;
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcA;
