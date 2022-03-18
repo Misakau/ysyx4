@@ -65,8 +65,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     else if(wmask == 0x3) real_mask = 0xffffull;
     else if(wmask == 0xf) real_mask = 0xffffffffull;
     else real_mask = -1;
-    real_mask <<= ((waddr & 0x7)<<3);
-    MEM[real_addr] = (MEM[real_addr] & (~real_mask)) | (wdata & real_mask);
+    MEM[real_addr] = (MEM[real_addr] & (~(real_mask << ((waddr & 0x7)<<3)))) | (wdata & real_mask);
     return;
   }
   // 总是往地址为`waddr & ~0x7ull`的8字节按写掩码`wmask`写入`wdata`
