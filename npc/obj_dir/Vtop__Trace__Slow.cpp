@@ -1804,10 +1804,9 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
                                               << 0x20U) 
                                              | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__srWres)))
                                           : ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__ALctr)
-                                              ? (vlSelf->top__DOT__my_exu__DOT__alu_inA 
-                                                 >> 
-                                                 (0x3fU 
-                                                  & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))
+                                              ? VL_SHIFTRS_QQI(64,64,6, vlSelf->top__DOT__my_exu__DOT__alu_inA, 
+                                                               (0x3fU 
+                                                                & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))
                                               : (vlSelf->top__DOT__my_exu__DOT__alu_inA 
                                                  >> 
                                                  (0x3fU 
@@ -1880,9 +1879,9 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullCData(oldp+136,((0x3fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB))),6);
         tracep->fullCData(oldp+137,((0x1fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB))),5);
         tracep->fullQData(oldp+138,(((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__ALctr)
-                                      ? (vlSelf->top__DOT__my_exu__DOT__alu_inA 
-                                         >> (0x3fU 
-                                             & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))
+                                      ? VL_SHIFTRS_QQI(64,64,6, vlSelf->top__DOT__my_exu__DOT__alu_inA, 
+                                                       (0x3fU 
+                                                        & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))
                                       : (vlSelf->top__DOT__my_exu__DOT__alu_inA 
                                          >> (0x3fU 
                                              & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB))))),64);
@@ -1904,9 +1903,9 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
                                           << 0x20U) 
                                          | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__srWres)))
                                       : ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__ALctr)
-                                          ? (vlSelf->top__DOT__my_exu__DOT__alu_inA 
-                                             >> (0x3fU 
-                                                 & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))
+                                          ? VL_SHIFTRS_QQI(64,64,6, vlSelf->top__DOT__my_exu__DOT__alu_inA, 
+                                                           (0x3fU 
+                                                            & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))
                                           : (vlSelf->top__DOT__my_exu__DOT__alu_inA 
                                              >> (0x3fU 
                                                  & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))))),64);
