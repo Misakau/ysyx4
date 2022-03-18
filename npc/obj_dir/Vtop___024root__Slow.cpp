@@ -54,8 +54,8 @@ extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_8db4e481_0;
 extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_3bb6ad21_0;
 extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_a9c47812_0;
 extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_aa2192ff_0;
-extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_75c68e7d_0;
-extern const VlUnpacked<CData/*2:0*/, 32> Vtop__ConstPool__TABLE_b668f0ff_0;
+extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_93c54758_0;
+extern const VlUnpacked<CData/*2:0*/, 32> Vtop__ConstPool__TABLE_8d2a2f29_0;
 
 void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -660,9 +660,9 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SFTctr 
         = Vtop__ConstPool__TABLE_aa2192ff_0[__Vtableidx1];
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__Wctr 
-        = Vtop__ConstPool__TABLE_75c68e7d_0[__Vtableidx1];
+        = Vtop__ConstPool__TABLE_93c54758_0[__Vtableidx1];
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr 
-        = Vtop__ConstPool__TABLE_b668f0ff_0[__Vtableidx1];
+        = Vtop__ConstPool__TABLE_8d2a2f29_0[__Vtableidx1];
     vlSelf->top__DOT__imm = ((0U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))
                               ? (((- (QData)((IData)(
                                                      (vlSelf->top__DOT__instr_i 

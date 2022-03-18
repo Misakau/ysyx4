@@ -36,7 +36,7 @@ sim:
 
 	@rm -rf logs
 	@mkdir -p logs
-	obj_dir/Vtop +trace -i /home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/load-store-riscv64-npc.bin
+	obj_dir/Vtop +trace -i /home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/shift-riscv64-npc.bin
 #npcrun:
 #	obj_dir/Vtop +trace $(TEST_PATH)$(IMAGE)
 clean:
