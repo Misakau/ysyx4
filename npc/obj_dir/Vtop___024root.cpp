@@ -747,8 +747,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
            << (0x1fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)));
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__srWres 
         = ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__ALctr)
-            ? ((IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA) 
-               >> (0x1fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))
+            ? VL_SHIFTRS_III(32,32,5, (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA), 
+                             (0x1fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))
             : ((IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA) 
                >> (0x1fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB))));
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__adderb 
