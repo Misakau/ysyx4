@@ -658,7 +658,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     } else if ((1U == (3U & (IData)(vlSelf->top__DOT__MemOp)))) {
         vlSelf->top__DOT__my_exu__DOT__mem__DOT__i = 8U;
     } else if ((2U == (3U & (IData)(vlSelf->top__DOT__MemOp)))) {
-        vlSelf->top__DOT__my_exu__DOT__mem__DOT__i = 0x11U;
+        vlSelf->top__DOT__my_exu__DOT__mem__DOT__i = 0x10U;
     }
     __Vtableidx2 = vlSelf->top__DOT__MemOp;
     vlSelf->top__DOT__my_exu__DOT__mem__DOT__wmask 
@@ -1261,11 +1261,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
                                       >> (0x3fU & ((IData)(0xfU) 
                                                    + vlSelf->top__DOT__my_exu__DOT__mem__DOT__tmp)))) 
                              << 0xfU)));
-        vlSelf->top__DOT__my_exu__DOT__mem__DOT__datah 
-            = ((0xfffeU & (IData)(vlSelf->top__DOT__my_exu__DOT__mem__DOT__datah)) 
-               | (1U & (IData)((vlSelf->top__DOT__my_exu__DOT__mem__DOT__dataout 
-                                >> (0x3fU & ((IData)(0x10U) 
-                                             + vlSelf->top__DOT__my_exu__DOT__mem__DOT__tmp))))));
     }
     vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__SrcB 
         = ((IData)(vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__NexB)

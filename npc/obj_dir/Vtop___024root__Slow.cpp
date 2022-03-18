@@ -642,7 +642,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     } else if ((1U == (3U & (IData)(vlSelf->top__DOT__MemOp)))) {
         vlSelf->top__DOT__my_exu__DOT__mem__DOT__i = 8U;
     } else if ((2U == (3U & (IData)(vlSelf->top__DOT__MemOp)))) {
-        vlSelf->top__DOT__my_exu__DOT__mem__DOT__i = 0x11U;
+        vlSelf->top__DOT__my_exu__DOT__mem__DOT__i = 0x10U;
     }
     __Vtableidx2 = vlSelf->top__DOT__MemOp;
     vlSelf->top__DOT__my_exu__DOT__mem__DOT__wmask 

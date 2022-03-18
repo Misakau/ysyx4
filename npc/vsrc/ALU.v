@@ -52,6 +52,7 @@ module ysyx_220053_ALU(
     end
     assign zero = ZF;
 endmodule
+
 module ysyx_220053_ALUSig(
     input [4:0] ALUOp,
     output reg SUBctr,SIGctr,ALctr,SFTctr,Wctr,
@@ -63,6 +64,8 @@ module ysyx_220053_ALUSig(
             5'b10000: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; Wctr = 1; OPctr = 3'b000; end
 
             5'b00001: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; Wctr = 0; OPctr = 3'b100; end
+            5'b10001: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; Wctr = 1; OPctr = 3'b100; end
+
             5'b00010: begin SUBctr = 1; SIGctr = 1; ALctr = 0; SFTctr = 0; Wctr = 0; OPctr = 3'b110; end
             5'b00011: begin SUBctr = 1; SIGctr = 0; ALctr = 0; SFTctr = 0; Wctr = 0; OPctr = 3'b110; end
             5'b00100: begin SUBctr = 0; SIGctr = 0; ALctr = 0; SFTctr = 0; Wctr = 0; OPctr = 3'b011; end
