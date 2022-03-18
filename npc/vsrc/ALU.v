@@ -12,7 +12,8 @@ module ysyx_220053_ALU(
     wire SUBctr, SIGctr, ALctr, SFTctr, Wctr;
     wire [3:0] OPctr;
     wire [63:0] adderres;
-    wire [63:0] res0, res1, res2, res3, res4, res5, res6, res7, res8, res9;
+    wire [63:0] res0, res1, res2, res3, res4, res5, res6;
+    reg  [63:0] res7, res8, res9;
     ///adder,and,or,xor,shift,inputb,cmp
     wire [63:0] adderb;
     assign adderb = inputb ^ {64{SUBctr}};
@@ -41,7 +42,6 @@ module ysyx_220053_ALU(
 //mul
     reg [127:0] mulres;
     wire [63:0] mulresW;
-    ;
 
     assign mulresW = inputa[31:0] * inputb[31:0];
     always@(*) begin
