@@ -15,8 +15,8 @@ extern "C" {
     // DPI IMPORTS
     // DPI import at vsrc/IDU.v:5:30
     extern void c_trap(svBit done);
-    // DPI import at vsrc/top.v:10:29
-    extern int get_instr(int instr);
+    // DPI import at vsrc/top.v:10:30
+    extern void get_instr(int instr);
     // DPI import at vsrc/top.v:4:30
     extern void pmem_read(long long raddr, long long* rdata);
     // DPI import at vsrc/top.v:7:30

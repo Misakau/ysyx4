@@ -24,6 +24,7 @@ VERILATOR_FLAGS += --trace
 VERILATOR_INPUT = $(VFILES) $(CFILES)
 LDFLAGS = -lreadline
 LDFLAGS += -ldl
+CFLAGS = -DITRACE
 #LDFLAGS += -L$(NEMU_HOME)/build -lriscv64-nemu-interpreter-so
 #FILEPATH ?= ./csrc/a.in
 #TEST_PATH ?= ../am-kernels/tests/cpu-tests/build/$(IMAGE).bin
@@ -32,7 +33,7 @@ all:
 
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	$(VERILATOR) $(VERILATOR_FLAGS) $(addprefix -LDFLAGS , $(LDFLAGS)) $(VERILATOR_INPUT)
+	$(VERILATOR) $(VERILATOR_FLAGS) $(addprefix -CFLAGS , $(CFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) $(VERILATOR_INPUT)
 
 	@rm -rf logs
 	@mkdir -p logs

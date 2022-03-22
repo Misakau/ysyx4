@@ -45,14 +45,12 @@ VL_INLINE_OPT void Vtop___024unit____Vdpiimwrap_pmem_write_TOP____024unit(QData/
     pmem_write(waddr__Vcvt, wdata__Vcvt, wmask__Vcvt);
 }
 
-extern "C" int get_instr(int instr);
+extern "C" void get_instr(int instr);
 
-VL_INLINE_OPT void Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit(IData/*31:0*/ instr, IData/*31:0*/ &get_instr__Vfuncrtn) {
+VL_INLINE_OPT void Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit(IData/*31:0*/ instr) {
     VL_DEBUG_IF(VL_DBG_MSGF("+        Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit\n"); );
     // Body
     int instr__Vcvt;
     for (size_t instr__Vidx = 0; instr__Vidx < 1; ++instr__Vidx) instr__Vcvt = instr;
-    int get_instr__Vfuncrtn__Vcvt;
-    get_instr__Vfuncrtn__Vcvt = get_instr(instr__Vcvt);
-    get_instr__Vfuncrtn = get_instr__Vfuncrtn__Vcvt;
+    get_instr(instr__Vcvt);
 }
