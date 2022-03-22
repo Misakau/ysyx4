@@ -31,7 +31,8 @@ CFLAGS = -DITRACE
 CXXSRC = csrc/disasm.cc
 CFLAGS += -I/usr/lib/llvm-11/include -std=c++14   -fno-exceptions -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_LIMIT_MACROS -fPIE
 LDFLAGS += $(shell llvm-config-11 --libs)
-
+IMG ?= /home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/bit-riscv64-npc.bin
+LOGS ?= $(NPC_HOME)/logs/npc-logs.txt
 all:
 	@echo "Write this Makefile by your self."
 
@@ -40,7 +41,8 @@ sim:
 	$(VERILATOR) $(VERILATOR_FLAGS) $(addprefix -CFLAGS , $(CFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) $(VERILATOR_INPUT) $(CXXSRC)
 	@rm -rf logs
 	@mkdir -p logs
-	obj_dir/Vtop +trace -i /home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/bit-riscv64-npc.bin
+	@cd logs && touch npc-logs.txt && cd ../
+	obj_dir/Vtop +trace -i $(IMG) -l $(LOGS)
 #npcrun:
 #	obj_dir/Vtop +trace $(TEST_PATH)$(IMAGE)
 clean:
