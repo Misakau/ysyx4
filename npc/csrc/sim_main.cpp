@@ -113,7 +113,7 @@ static int npc_parse_args(int argc, char *argv[]) {
     {0          , 0                , NULL,  0 },
   };
   int o;
-  while ( (o = getopt_long(argc, argv, "-bhi:", table, NULL)) != -1) {
+  while ( (o = getopt_long(argc, argv, "-bhi:l:", table, NULL)) != -1) {
     switch (o) {
       case 'b': set_batch_mode(); break;
       //case 'd': diff_so_file = optarg; break;
@@ -192,11 +192,10 @@ int main(int argc, char**argv, char**env) {
         MEM[2] = 0x0010007300100073LL;
     }
     if(log_file != NULL){
-      printf("%s\n",log_file);
       log_ptr = fopen(log_file, "w");
       assert(log_ptr);
     }
-
+    printf(ASNI_FG_BLUE "Log is written to %s\n" ASNI_NONE ,(log_file) ? log_file : "stdout");
     difftest_init();
     difftest_memcpy(AD_BASE, MEM, fsize, 1);
 
