@@ -263,7 +263,7 @@ static void npc_exec(uint64_t n){
             if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); sdb_top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", sdb_top->clk, sdb_top->rst, sdb_top->pc, sdb_top->instr);
             #ifdef ITRACE
-              if(sdb_top->clk == 0) printf("%08x\n", instr_now);
+              if(sdb_top->clk == 0) printf("pc = %016lx, instr = %08x\n", sdb_top->pc, instr_now);
             #endif
             sdb_top->eval();
             if(sdb_top->clk == 1) difftest_exec(1);
