@@ -267,7 +267,7 @@ static void npc_exec(uint64_t n){
             #ifdef ITRACE
               char str[128];
               if(sdb_top->clk == 0) printf("pc = 0x%016lx, instr = %08x\n", sdb_top->pc, instr_now);
-              disassemble(str, 127, sdb_top->pc, *instr_now, 4);
+              disassemble(str, 127, sdb_top->pc, &instr_now, 4);
             #endif
             sdb_top->eval();
             if(sdb_top->clk == 1) difftest_exec(1);
