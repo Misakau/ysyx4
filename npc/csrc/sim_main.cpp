@@ -101,11 +101,13 @@ void set_batch_mode(){
 static void sdb_mainloop();
 
 static char* image_file = NULL;
-
+static char* log_file = NULL;
+static FILE* log_ptr = NULL;
 static int npc_parse_args(int argc, char *argv[]) {
   const struct option table[] = {
     {"batch"    , no_argument      , NULL, 'b'},
     {"image"    , required_argument, NULL, 'i'},
+    {"log"      , required_argument, NULL, 'l'},
 //    {"diff"     , no_argument, NULL, 'd'},
     {"help"     , no_argument      , NULL, 'h'},
     {0          , 0                , NULL,  0 },
@@ -116,6 +118,7 @@ static int npc_parse_args(int argc, char *argv[]) {
       case 'b': set_batch_mode(); break;
       //case 'd': diff_so_file = optarg; break;
       case 'i': image_file = optarg; break;
+      case 'l': log_file = optarg; break;
       default:
         printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
         printf("\t-b,--batch              run with batch mode\n");
@@ -188,6 +191,11 @@ int main(int argc, char**argv, char**env) {
         MEM[1] = 0x00108093ff0ff0b7LL;//lui x1,0xff0ff
         MEM[2] = 0x0010007300100073LL;
     }
+    if(log_file != NULL){
+      log_ptr = fopen(log_file, "w");
+      assert(log_ptr);
+    }
+
     difftest_init();
     difftest_memcpy(AD_BASE, MEM, fsize, 1);
 
@@ -215,6 +223,13 @@ int main(int argc, char**argv, char**env) {
             if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr);
             top->eval();
+            #ifdef ITRACE
+              char str[128];disassemble(str, 127, sdb_top->pc, (uint8_t*)&instr_now, 4);
+              if(sdb_top->clk == 0){
+                if(log_ptr == NULL) printf("pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+                else fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+              } 
+            #endif
             if(top->clk == 1) difftest_exec(1);
             difftest_regcpy(&nemu, 1);
             if(top->pc != nemu.pc){
@@ -247,6 +262,7 @@ int main(int argc, char**argv, char**env) {
       fprintf(stderr, "%s\n", dlerror());
       exit(1);
     }
+    fclose(log_ptr);
     return 0;
 }
 
@@ -267,7 +283,10 @@ static void npc_exec(uint64_t n){
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", sdb_top->clk, sdb_top->rst, sdb_top->pc, sdb_top->instr);
             #ifdef ITRACE
               char str[128];disassemble(str, 127, sdb_top->pc, (uint8_t*)&instr_now, 4);
-              if(sdb_top->clk == 0) printf("pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+              if(sdb_top->clk == 0){
+                printf("pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+                if(log_ptr) fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+              } 
             #endif
             sdb_top->eval();
             if(sdb_top->clk == 1) difftest_exec(1);

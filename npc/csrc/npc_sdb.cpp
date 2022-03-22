@@ -7,8 +7,8 @@
 #include <cassert>
 #include <readline/readline.h>
 
-
 /* We use the `readline' library to provide more flexibility to read from stdin. */
+
 char* npc_rl_gets() {
   static char *line_read = NULL;
 
