@@ -23,12 +23,12 @@ static bool EXIT = 0;
 static bool START = 0;
 
 static bool is_done = false;
-static int instr_now = 0;
+static unsigned int instr_now = 0;
 extern "C" void c_trap(const svBit done){
     is_done = done;
 }
 
-extern "C" void get_instr(int instr) {
+extern "C" void get_instr(unsigned int instr) {
   instr_now = instr;
 }
 
@@ -208,7 +208,7 @@ int main(int argc, char**argv, char**env) {
             contextp->timeInc(1); 
             top->clk = !top->clk;
             #ifdef ITRACE
-              printf("%d\n", instr_now);
+              printf("%x\n", instr_now);
             #endif
             
             //if(top->clk == 0)top->instr_i = pimem_read(top->pc);
@@ -266,7 +266,7 @@ static void npc_exec(uint64_t n){
             if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); sdb_top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", sdb_top->clk, sdb_top->rst, sdb_top->pc, sdb_top->instr);
             #ifdef ITRACE
-              printf("%d\n", instr_now);
+              printf("%x\n", instr_now);
             #endif
             sdb_top->eval();
             if(sdb_top->clk == 1) difftest_exec(1);
