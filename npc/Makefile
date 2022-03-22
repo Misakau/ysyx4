@@ -35,10 +35,11 @@ LIBS += $(shell llvm-config-11 --libs)
 all:
 	@echo "Write this Makefile by your self."
 
+tst:
+	g++ $(CXXSRC) $(LIBS) $(CXXFLAGS)
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	$(VERILATOR) $(VERILATOR_FLAGS) $(addprefix -CFLAGS , $(CFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) $(VERILATOR_INPUT)
-	g++ $(CXXSRC) $(LIBS) $(CXXFLAGS)
 	@rm -rf logs
 	@mkdir -p logs
 	obj_dir/Vtop +trace -i /home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/bit-riscv64-npc.bin
