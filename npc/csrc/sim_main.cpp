@@ -23,9 +23,13 @@ static bool EXIT = 0;
 static bool START = 0;
 
 static bool is_done = false;
-
+static uint32_t instr_now = 0;
 extern "C" void c_trap(const svBit done){
     is_done = done;
+}
+
+extern "C" void get_pc(const svBitVecVal *instr){
+  instr_now = *instr;
 }
 
 uint64_t *cpu_gpr = NULL;
