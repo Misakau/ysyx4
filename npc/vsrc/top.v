@@ -36,7 +36,6 @@ module top(
     wire [2:0] Branch;
     wire [2:0] MemOp;
     wire [1:0] MulOp;
-    initial get_instr(instr);
     ysyx_220053_IDU my_idu(
       .instr_i(instr_i),
       .op(op),
