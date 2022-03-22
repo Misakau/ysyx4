@@ -29,7 +29,7 @@ CFLAGS = -DITRACE
 #FILEPATH ?= ./csrc/a.in
 #TEST_PATH ?= ../am-kernels/tests/cpu-tests/build/$(IMAGE).bin
 CXXSRC = csrc/disasm.cc
-CFLAGS += $(shell llvm-config-11 --cxxflags) -fPIE
+CFLAGS += -I/usr/lib/llvm-11/include -std=c++14   -fno-exceptions -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_LIMIT_MACROS -fPIE
 LDFLAGS += $(shell llvm-config-11 --libs)
 
 all:
