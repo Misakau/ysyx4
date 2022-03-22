@@ -262,7 +262,7 @@ int main(int argc, char**argv, char**env) {
       fprintf(stderr, "%s\n", dlerror());
       exit(1);
     }
-    fclose(log_ptr);
+    if(log_ptr) fclose(log_ptr);
     return 0;
 }
 
