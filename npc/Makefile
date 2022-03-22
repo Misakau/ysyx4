@@ -23,18 +23,22 @@ VERILATOR_FLAGS += --trace
 # Input files for Verilator
 VERILATOR_INPUT = $(VFILES) $(CFILES)
 LDFLAGS = -lreadline
-LDFLAGS += -ldl
+LDFLAGS += -ldl 
 CFLAGS = -DITRACE
 #LDFLAGS += -L$(NEMU_HOME)/build -lriscv64-nemu-interpreter-so
 #FILEPATH ?= ./csrc/a.in
 #TEST_PATH ?= ../am-kernels/tests/cpu-tests/build/$(IMAGE).bin
+CXXSRC = csrc/disasm.cc
+CXXFLAGS += $(shell llvm-config-11 --cxxflags) -fPIE
+LIBS += $(shell llvm-config-11 --libs)
+
 all:
 	@echo "Write this Makefile by your self."
 
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	$(VERILATOR) $(VERILATOR_FLAGS) $(addprefix -CFLAGS , $(CFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) $(VERILATOR_INPUT)
-
+	g++ $(CXXSRC) $(LIBS) $(CXXFLAGS)
 	@rm -rf logs
 	@mkdir -p logs
 	obj_dir/Vtop +trace -i /home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/bit-riscv64-npc.bin
