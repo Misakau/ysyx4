@@ -192,6 +192,7 @@ int main(int argc, char**argv, char**env) {
         MEM[2] = 0x0010007300100073LL;
     }
     if(log_file != NULL){
+      printf("%s\n",log_file);
       log_ptr = fopen(log_file, "w");
       assert(log_ptr);
     }
@@ -285,7 +286,7 @@ static void npc_exec(uint64_t n){
               char str[128];disassemble(str, 127, sdb_top->pc, (uint8_t*)&instr_now, 4);
               if(sdb_top->clk == 0){
                 if(n != -1) printf("pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
-                if(log_ptr){printf("hh\n"); fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);}
+                if(log_ptr){fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);}
               } 
             #endif
             sdb_top->eval();
