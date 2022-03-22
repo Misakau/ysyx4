@@ -143,6 +143,8 @@ int main(int argc, char**argv, char**env) {
       exit(1);
     }
     #ifdef ITRACE
+      void (*init_disasm)(const char *triple) = (void (*)(const char *triple))dlsym(handle, "init_disasm");
+      assert(init_disasm);
       init_disasm("riscv64-pc-linux-gnu");
     #endif
     difftest_memcpy = (void(*)(uint64_t, void *, size_t, bool))dlsym(handle, "difftest_memcpy");
