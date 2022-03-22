@@ -7,7 +7,7 @@ import "DPI-C" function void pmem_read(
 import "DPI-C" function void pmem_write(
   input longint waddr, input longint wdata, input byte wmask);
 
-import "DPI-C" function int get_instr(input int instr);
+import "DPI-C" function void get_instr(input int instr);
 
 module top(
   input clk,
@@ -36,6 +36,7 @@ module top(
     wire [2:0] Branch;
     wire [2:0] MemOp;
     wire [1:0] MulOp;
+    initial get_instr(instr);
     ysyx_220053_IDU my_idu(
       .instr_i(instr_i),
       .op(op),

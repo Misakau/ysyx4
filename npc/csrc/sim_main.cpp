@@ -23,13 +23,9 @@ static bool EXIT = 0;
 static bool START = 0;
 
 static bool is_done = false;
-static uint32_t instr_now = 0;
+static int instr_now = 0;
 extern "C" void c_trap(const svBit done){
     is_done = done;
-}
-
-extern "C" void get_pc(const svBitVecVal *instr){
-  instr_now = *instr;
 }
 
 uint64_t *cpu_gpr = NULL;
@@ -77,8 +73,8 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   // 如`wmask = 0x3`代表只写入最低2个字节, 内存中的其它字节保持不变
 }
 
-extern "C" int get_instr(int instr) {
-  return instr;
+extern "C" void get_instr(int instr) {
+  instr_now = instr;
 }
 
 /////////////////////////////////////////////////////////
