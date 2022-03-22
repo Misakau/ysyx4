@@ -84,9 +84,10 @@ VL_MODULE(Vtop___024root) {
 
     // LOCAL VARIABLES
     CData/*0:0*/ __Vclklast__TOP__clk;
-    QData/*63:0*/ __Vtask_pmem_read__1__rdata;
+    QData/*63:0*/ __Vtask_pmem_read__0__rdata;
     QData/*63:0*/ __Vtask_pmem_read__4__rdata;
-    VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
+    QData/*63:0*/ __Vchglast__TOP__top__DOT__my_ifu__DOT__rdata;
+    VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
     Vtop__Syms* vlSymsp;  // Symbol table
