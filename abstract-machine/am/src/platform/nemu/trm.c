@@ -6,7 +6,7 @@ int main(const char *args);
 
 Area heap = RANGE(&_heap_start, PMEM_END);
 #ifndef MAINARGS
-#define MAINARGS ""
+#define MAINARGS "h"
 #endif
 static const char mainargs[] = MAINARGS;
 
