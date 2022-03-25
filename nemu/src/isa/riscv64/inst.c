@@ -123,7 +123,7 @@ static int decode_exec(Decode *s) {
   INSTPAT("0000001 ????? ????? 100 ????? 01110 11", divw   , R, R(dest) = SEXT((int32_t)(((int32_t)(src1 & 0xffffffff) / (int32_t)(src2 & 0xffffffff)) & 0xffffffff), 32));
   INSTPAT("0000001 ????? ????? 101 ????? 01110 11", divuw  , R, R(dest) = SEXT((int32_t)(((uint32_t)(src1 & 0xffffffff) / (uint32_t)(src2 & 0xffffffff)) & 0xffffffff), 32));
   INSTPAT("0000001 ????? ????? 101 ????? 01110 11", remw   , R, R(dest) = SEXT((int32_t)(((int32_t)(src1 & 0xffffffff) % (int32_t)(src2 & 0xffffffff)) & 0xffffffff), 32));
-  INSTPAT("0000001 ????? ????? 110 ????? 01110 11", remuw  , R, R(dest) = SEXT((int32_t)(((uint32_t)(src1 & 0xffffffff) % (uint32_t)(src2 & 0xffffffff)) & 0xffffffff), 32));
+  INSTPAT("0000001 ????? ????? 110 ????? 01110 11", remuw  , R,assert(0), R(dest) = SEXT((int32_t)(((uint32_t)(src1 & 0xffffffff) % (uint32_t)(src2 & 0xffffffff)) & 0xffffffff), 32));
 
   INSTPAT("0000000 00001 00000 000 00000 11100 11", ebreak , N, NEMUTRAP(s->pc, R(10))); // R(10) is $a0
   INSTPAT("??????? ????? ????? ??? ????? ????? ??", inv    , N, INV(s->pc));
