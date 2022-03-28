@@ -7,8 +7,8 @@
 
 void __am_gpu_init() {
   int i;
-  int w = io_read(AM_GPU_CONFIG).width;  // TODO: get the correct width
-  int h = io_read(AM_GPU_CONFIG).height;  // TODO: get the correct height
+  int w = io_read(AM_GPU_CONFIG).width / N;  // TODO: get the correct width
+  int h = io_read(AM_GPU_CONFIG).height / N;  // TODO: get the correct height
   uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
   for (i = 0; i < w * h; i ++) fb[i] = i;
   outl(SYNC_ADDR, 1);
@@ -23,11 +23,12 @@ void __am_gpu_config(AM_GPU_CONFIG_T *cfg) {
 }
 
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
+  int width = io_read(AM_GPU_CONFIG).width;
   int h = ctl->h, w = ctl->w, x = ctl->x, y = ctl->y;
   uint32_t *pixels = (uint32_t *)ctl->pixels;
   for(int i = 0; i < h; i++){
     for(int j = 0; j < w; j++){
-      outl(FB_ADDR + ((i + y) * w + j + x) * 4, pixels[i * w + j]);
+      outl(FB_ADDR + ((i + y) * width + j + x) * 4, pixels[i * w + j]);
     }
   }
   if (ctl->sync) {
