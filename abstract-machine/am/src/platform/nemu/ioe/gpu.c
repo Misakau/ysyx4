@@ -28,7 +28,6 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
   int width = io_read(AM_GPU_CONFIG).width;
   int h = ctl->h, w = ctl->w, x = ctl->x, y = ctl->y;
   uint32_t *pixels = (uint32_t *)ctl->pixels;
-  outl(SYNC_ADDR, 0);
   for(int i = 0; i < h; i++){
     for(int j = 0; j < w; j++){
       outl(FB_ADDR + ((i + y) * width + j + x) * 4, pixels[i * w + j]);
