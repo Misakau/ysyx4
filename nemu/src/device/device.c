@@ -25,7 +25,6 @@ void device_update() {
     return;
   }
   last = now;
-  //IFDEF(CONFIG_HAS_TIMER, paddr_write(0xa0000048,8,now));
   IFDEF(CONFIG_HAS_VGA, vga_update_screen());
 
 #ifndef CONFIG_TARGET_AM
