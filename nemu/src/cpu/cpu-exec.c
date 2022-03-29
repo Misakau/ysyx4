@@ -88,7 +88,6 @@ static void execute(uint64_t n) {
     trace_and_difftest(&s, cpu.pc);
     if (nemu_state.state != NEMU_RUNNING) break;
     IFDEF(CONFIG_DEVICE, device_update());
-    IFDEF(CONFIG_DEVICE, paddr_write(0xa0000048,8,get_time()));
   }
 }
 
