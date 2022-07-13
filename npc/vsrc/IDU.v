@@ -38,7 +38,7 @@ module ysyx_220053_IDU(
                                  .ALUSrcA(ALUSrcA),.ALUSrcB(ALUSrcB), 
                                  .Branch(Branch), .MemOp(MemOp), .MemToReg(MemToReg),
                                  .ExtOp(ExtOp), .ALUOp(ALUOp), .wen(wen), .MemWen(MemWen),
-                                 .MulOp(MulOp)
+                                 .MulOp(MulOp),
                                  .Epc(Epc), .Ecall(Ecall), .Mret(Mret), .Csrwen(Csrwen), .CsrToReg(CsrToReg), .CsrOp(CsrOp)
                                  );
 
