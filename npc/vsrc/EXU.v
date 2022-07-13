@@ -101,13 +101,13 @@ module ysyx_220053_CSR(
             default: csrin = 0;
         endcase
     end
-    
+
     ysyx_220053_CSRFile csrfile(.clk(clk),
                                 .raaddr(CsrId),
                                 .rbaddr(12'h341),//mepc
                                 .radata(csrres),
                                 .rbdata(mepc),
-                                .wdata(wdata),
+                                .wdata(csrin),
                                 .waddr(CsrId),
                                 .wen(Csrwen)
                                 );
