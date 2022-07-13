@@ -101,8 +101,7 @@ module ysyx_220053_CSR(
             default: csrin = 0;
         endcase
     end
-    wire [63:0] wdata;
-    assign wdata = csrin;
+/*
     ysyx_220053_CSRFile csrfile(.clk(clk),
                                 .raaddr(CsrId),
                                 .rbaddr(12'h341),//mepc
@@ -111,5 +110,5 @@ module ysyx_220053_CSR(
                                 .wdata(wdata),
                                 .waddr(CsrId),
                                 .wen(Csrwen)
-                                );
+                                );*/
 endmodule
