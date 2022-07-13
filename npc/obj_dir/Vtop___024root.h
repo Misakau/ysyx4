@@ -78,8 +78,6 @@ VL_MODULE(Vtop___024root) {
     QData/*63:0*/ top__DOT__my_exu__DOT__res;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inA;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inB;
-    QData/*63:0*/ top__DOT__my_exu__DOT__mepc;
-    QData/*63:0*/ top__DOT__my_exu__DOT__csrres;
     QData/*63:0*/ top__DOT__my_exu__DOT__datain;
     QData/*63:0*/ top__DOT__my_exu__DOT__csrfile__DOT__csrin;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderres;
@@ -91,11 +89,12 @@ VL_MODULE(Vtop___024root) {
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcB;
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__respc;
     VlUnpacked<QData/*63:0*/, 32> top__DOT__my_exu__DOT__regfile__DOT__rf;
+    VlUnpacked<QData/*63:0*/, 4096> top__DOT__my_exu__DOT__csrfile__DOT__csrfile__DOT__rf;
 
     // LOCAL VARIABLES
     CData/*0:0*/ __Vclklast__TOP__clk;
     QData/*63:0*/ __Vtask_pmem_read__0__rdata;
-    QData/*63:0*/ __Vtask_pmem_read__4__rdata;
+    QData/*63:0*/ __Vtask_pmem_read__5__rdata;
     QData/*63:0*/ __Vchglast__TOP__top__DOT__my_exu__DOT__csrfile__DOT__csrin;
     VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
 
