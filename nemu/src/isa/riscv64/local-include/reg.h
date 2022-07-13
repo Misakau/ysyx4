@@ -9,7 +9,7 @@ static inline int check_reg_idx(int idx) {
   return idx;
 }
 static inline int check_csr_idx(int idx) {
-  printf("csr idx=%x\n",idx);
+  //printf("csr idx=%x\n",idx);
   IFDEF(CONFIG_RT_CHECK, assert(idx >= 0 && idx < 4096));
   return idx;
 }

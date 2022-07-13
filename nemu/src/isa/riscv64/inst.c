@@ -129,7 +129,8 @@ static int decode_exec(Decode *s) {
   INSTPAT("??????? ????? ????? 001 ????? 11100 11", csrrw   , I, {int t = CSR(src2); CSR(src2) = src1; R(dest) = t;});
   INSTPAT("??????? ????? ????? 010 ????? 11100 11", csrrs   , I, {R(dest) = CSR(src2); CSR(src2) |= src1;});
   INSTPAT("??????? ????? ????? 011 ????? 11100 11", csrrc   , I, {R(dest) = CSR(src2); CSR(src2) &= (~src1);});
-
+  
+  INSTPAT("0000000 00000 00000 000 00000 11100 11", ecall  , N, s->dnpc = isa_raise_intr(R(17), s->pc);); // R(10) is $a0
   INSTPAT("0000000 00001 00000 000 00000 11100 11", ebreak , N, NEMUTRAP(s->pc, R(10))); // R(10) is $a0
   INSTPAT("??????? ????? ????? ??? ????? ????? ??", inv    , N, INV(s->pc));
   INSTPAT_END();
@@ -142,4 +143,16 @@ static int decode_exec(Decode *s) {
 int isa_exec_once(Decode *s) {
   s->isa.inst.val = inst_fetch(&s->snpc, 4);
   return decode_exec(s);
+}
+
+#define MSTATUS   0x300
+#define MTVEC     0x305
+#define MSCRATCH  0x340
+#define MEPC      0x341
+#define MCAUSE    0x342
+
+vaddr_t isa_raise_intr(word_t NO, vaddr_t epc){
+  CSR(MEPC) = epc;
+  CSR(MCAUSE) = NO;
+  return CSR(MTVEC);
 }
