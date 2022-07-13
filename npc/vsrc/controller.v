@@ -246,7 +246,7 @@ parameter ysyx_220053_R = 5;
                                 case(instr_i[31:20])//ebreak
                                     //0://ecall Epc = 1; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0;
                                     1: begin Csrwen = 0; Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000;  wen = 0; c_trap(1); end
-                                    3'h302://mret
+                                    12'h302://mret
                                         begin
                                             Csrwen = 0; Epc = 0; Ecall = 0; Mret = 1; CsrOp = 0; CsrToReg = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 0;
                                         end

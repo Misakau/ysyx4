@@ -103,7 +103,7 @@ module ysyx_220053_CSR(
     end
     ysyx_220053_CSRFile csrfile(.clk(clk),
                                 .raaddr(CsrId),
-                                .rbaddr(3'h341),//mepc
+                                .rbaddr(12'h341),//mepc
                                 .radata(csrres),
                                 .rbdata(mepc),
                                 .wdata(datain),
