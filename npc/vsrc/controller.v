@@ -12,7 +12,9 @@ module ysyx_220053_controler(
     output reg [2:0] Branch,
     output reg [2:0] MemOp,
     output reg [1:0] MulOp,
-    output reg MemToReg, wen, MemWen
+    output reg MemToReg, wen, MemWen,
+    output reg Epc, Ecall, Mret, Csrwen, CsrToReg,
+    output reg [2:0]CsrOp
 );
 
 parameter ysyx_220053_I = 0;
@@ -26,22 +28,27 @@ parameter ysyx_220053_R = 5;
         case(op)
             7'b0110111://lui
                 begin
+                    Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b01111; ExtOp = ysyx_220053_U; wen = 1;
                 end
             7'b0010111://auipc
                 begin
+                    Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 0; ALUSrcB = 1; ALUOp = 5'b00000; ExtOp = ysyx_220053_U; wen = 1;
                 end
             7'b1101111://jal
                 begin
+                    Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 3'b001; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 5'b00000; ExtOp = ysyx_220053_J; wen = 1;
                 end
             7'b1100111://jalr
                 begin
+                    Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemOp = 0; MemToReg = 0; Branch = 3'b010; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 5'b00000; ExtOp = ysyx_220053_I; wen = 1;
                 end
             7'b0010011://addi
                 begin
+                    Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; ExtOp = ysyx_220053_I; wen = 1; end
@@ -56,6 +63,7 @@ parameter ysyx_220053_R = 5;
                 end
             7'b0110011://add MulOp = 0; 
                 begin
+                    Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0;
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     if(func7 == 7'b0000001) begin//mul div rem
                         case(func3)
@@ -113,6 +121,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b1100011://beq
                 begin
+                    Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0;  //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_220053_B; Branch = 3'b100; wen = 0; end
@@ -134,6 +143,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b0000011://ld
                 begin
+                    Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0;
                     MulOp = 0; MemWen = 0; MemToReg = 1; Branch = 0; //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b001; ExtOp = ysyx_220053_I; wen = 1; end
@@ -157,6 +167,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b0100011://sd
                 begin
+                    Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0;
                     MulOp = 0; MemWen = 1; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b001; ExtOp = ysyx_220053_S; wen = 0; end
@@ -174,6 +185,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b0011011://addiw
                 begin
+                    Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0;
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b10000; ExtOp = ysyx_220053_I; wen = 1; end
@@ -190,6 +202,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b0111011://addw MulOp = 0; 
                 begin
+                    Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0;
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     if(func7 == 7'b0000001) begin//mulw divw remw
                             case(func3)
@@ -223,15 +236,45 @@ parameter ysyx_220053_R = 5;
   INSTPAT("0000000 ????? ????? 101 ????? 01110 11", srlw   , R, R(dest) = SEXT(((src1 & 0xffffffff) >> (src2 & 0x1f)), 32));
   INSTPAT("0100000 ????? ????? 101 ????? 01110 11", sraw   , R, R(dest) = SEXT((int64_t)(((int32_t)(src1 & 0xffffffff)) >> ((uint32_t)(src2 & 0x1f))), 32));
 */
-            7'b1110011://ebreak
+            7'b1110011://ebreak, mret, ecall, csrrw, csrrc, csrrs
              	begin
-             		case(instr_i[31:20])
-             			1: begin MulOp = 0; Branch = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; ExtOp = ysyx_220053_I; wen = 0; c_trap(1); end
-             			default: $display("no");
-             		endcase
+                    ExtOp = ysyx_220053_I; MulOp = 0;
+                    MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0;
+                    case(func3)
+                        3'b000: 
+                            begin
+                                case(instr_i[31:20])//ebreak
+                                    0://ecall Epc = 1; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0;
+                                    1: begin Csrwen = 0; Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000;  wen = 0; c_trap(1); end
+                                    3'h302://mret
+                                    default: $display("no");
+                                endcase
+                            end
+                        3'b001://csrrw
+                            begin
+                                Csrwen = 1; Epc = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 1; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 1;
+                            end
+                        3'b010://csrrs
+                            begin
+                                Csrwen = 1; Epc = 0; Ecall = 0; Mret = 0; CsrOp = 1; CsrToReg = 1; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 1;
+                            end
+                        3'b011://csrrc
+                            begin
+                                Csrwen = 1; Epc = 0; Ecall = 0; Mret = 0; CsrOp = 2; CsrToReg = 1; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 1;
+                            end
+                        default: $display("no");
+                    endcase
              	end
             default: $display("no, op=%x",op);
         endcase
     end
-
+/*
+  INSTPAT("??????? ????? ????? 001 ????? 11100 11", csrrw   , I, {int t = CSR(src2); CSR(src2) = src1; R(dest) = t;});
+  INSTPAT("??????? ????? ????? 010 ????? 11100 11", csrrs   , I, {R(dest) = CSR(src2); CSR(src2) |= src1;});
+  INSTPAT("??????? ????? ????? 011 ????? 11100 11", csrrc   , I, {R(dest) = CSR(src2); CSR(src2) &= (~src1);});
+  
+  INSTPAT("0000000 00000 00000 000 00000 11100 11", ecall  , N, s->dnpc = isa_raise_intr(R(17), s->pc);); // R(10) is $a0
+  INSTPAT("0000000 00001 00000 000 00000 11100 11", ebreak , N, NEMUTRAP(s->pc, R(10))); // R(10) is $a0
+  INSTPAT("0011000 00010 00000 000 00000 11100 11", mret  , N, s->dnpc = CSR(0x341);); //MEPC
+*/
 endmodule

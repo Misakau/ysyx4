@@ -19,7 +19,9 @@ module ysyx_220053_IDU(
     output [2:0] MemOp,
     output [4:0] ALUOp,
     output [1:0] MulOp,
-    output wen
+    output wen,
+    output Epc, Ecall, Mret, Csrwen, CsrToReg,
+    output [2:0]CsrOp
 );
     wire [2:0] ExtOp;
     
@@ -37,6 +39,7 @@ module ysyx_220053_IDU(
                                  .Branch(Branch), .MemOp(MemOp), .MemToReg(MemToReg),
                                  .ExtOp(ExtOp), .ALUOp(ALUOp), .wen(wen), .MemWen(MemWen),
                                  .MulOp(MulOp)
+                                 .Epc(Epc), .Ecall(Ecall), .Mret(Mret), .Csrwen(Csrwen), .CsrToReg(CsrToReg), .CsrOp(CsrOp)
                                  );
 
 endmodule

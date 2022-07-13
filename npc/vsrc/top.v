@@ -36,6 +36,8 @@ module top(
     wire [2:0] Branch;
     wire [2:0] MemOp;
     wire [1:0] MulOp;
+    wire Epc, Ecall, Mret, Csrwen, CsrToReg;
+    wire [2:0] CsrOp;
     ysyx_220053_IDU my_idu(
       .instr_i(instr_i),
       .op(op),
@@ -50,7 +52,13 @@ module top(
       .MemToReg(MemToReg),
       .MemWen(MemWen),
       .MulOp(MulOp),
-      .wen(wen)
+      .wen(wen),
+      .Ecall(Ecall),
+      .CsrToReg(CsrToReg),
+      .Mret(Mret),
+      .Epc(Epc),
+      .Csrwen(Csrwen),
+      .CsrOp(CsrOp)
       );
 
     ysyx_220053_EXU my_exu(
@@ -70,7 +78,12 @@ module top(
       .MulOp(MulOp),
       .pc(pc),
       .imm(imm),
-      .dnpc(dnpc)
+      .dnpc(dnpc),
+      .Mret(Mret),
+      .Epc(Epc),
+      .Csrwen(Csrwen),
+      .CsrToReg(CsrToReg),
+      .CsrOp(CsrOp)
     );
 
     initial begin

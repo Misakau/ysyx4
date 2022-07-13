@@ -134,3 +134,33 @@ module ysyx_220053_RegisterFile #(ADDR_WIDTH = 1, DATA_WIDTH = 1) (
   end
 */
 endmodule
+
+module ysyx_220053_CSRFile (
+  input clk,
+
+  input [11:0] raaddr,
+  input [11:0] rbaddr,
+  output[63:0] radata,
+  output[63:0] rbdata,
+
+  input [63:0] wdata,
+  input [11:0] waddr,
+  input wen
+);
+  reg [63:0] rf [4095:0];
+  assign  radata = (raaddr == 0) ? 0 : rf[raaddr];
+  assign  rbdata = (rbaddr == 0) ? 0 : rf[rbaddr];
+  always @(posedge clk) begin
+    if (wen) rf[waddr] <= wdata;
+  end
+  import "DPI-C" function void set_csr_ptr(input logic [63:0] a []);
+  initial set_csr_ptr(rf);  // rf为通用寄存器的二维数组变量
+/*  always @(*)begin
+    $display("wen = %d,raaddr=%d, radata=%x, rbddr=%d, rbdata=%x, wdata= %x, waddr = %x", wen,raaddr, radata,rbaddr, rbdata, wdata, waddr);
+    $display("0#: %x",rf[0]);
+    $display("1#: %x",rf[1]);
+    $display("2#: %x",rf[2]);
+    $display("3#: %x",rf[3]);
+  end
+*/
+endmodule
