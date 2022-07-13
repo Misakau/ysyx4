@@ -57,7 +57,7 @@ endmodule
 module ysyx_220053_NexAddr(
     input Zero, res0,
     input [2:0] Branch,
-    input [63:0] pc, imm, busa, mepc
+    input [63:0] pc, imm, busa, mepc,
     input Mret,
     output [63:0] dnpc
 );
