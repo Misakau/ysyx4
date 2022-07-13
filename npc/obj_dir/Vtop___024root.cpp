@@ -72,7 +72,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     __Vdlyvset__top__DOT__my_exu__DOT__regfile__DOT__rf__v0 = 0U;
     if (vlSelf->top__DOT__Csrwen) {
         __Vdlyvval__top__DOT__my_exu__DOT__csrfile__DOT__csrfile__DOT__rf__v0 
-            = vlSelf->top__DOT__my_exu__DOT__datain;
+            = vlSelf->top__DOT__my_exu__DOT__csrfile__DOT__csrin;
         __Vdlyvset__top__DOT__my_exu__DOT__csrfile__DOT__csrfile__DOT__rf__v0 = 1U;
         __Vdlyvdim0__top__DOT__my_exu__DOT__csrfile__DOT__csrfile__DOT__rf__v0 
             = (0xfffU & (IData)(vlSelf->top__DOT__imm));

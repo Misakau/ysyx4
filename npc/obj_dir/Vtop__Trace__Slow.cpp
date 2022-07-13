@@ -185,7 +185,7 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+1389,"top my_exu csrfile csrfile rbaddr", false,-1, 11,0);
         tracep->declQuad(c+53,"top my_exu csrfile csrfile radata", false,-1, 63,0);
         tracep->declQuad(c+51,"top my_exu csrfile csrfile rbdata", false,-1, 63,0);
-        tracep->declQuad(c+56,"top my_exu csrfile csrfile wdata", false,-1, 63,0);
+        tracep->declQuad(c+1376,"top my_exu csrfile csrfile wdata", false,-1, 63,0);
         tracep->declBus(c+55,"top my_exu csrfile csrfile waddr", false,-1, 11,0);
         tracep->declBit(c+24,"top my_exu csrfile csrfile wen", false,-1);
         tracep->declQuad(c+47,"top my_exu alu64 inputa", false,-1, 63,0);
