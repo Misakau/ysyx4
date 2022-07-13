@@ -106,7 +106,7 @@ module ysyx_220053_CSR(
                                 .rbaddr(12'h341),//mepc
                                 .radata(csrres),
                                 .rbdata(mepc),
-                                .wdata(datain),
+                                .wdata(csrin),
                                 .waddr(CsrId),
                                 .wen(Csrwen)
                                 );
