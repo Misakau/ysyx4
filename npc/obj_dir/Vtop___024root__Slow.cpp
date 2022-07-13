@@ -28,7 +28,6 @@ Vtop___024root::~Vtop___024root() {
 }
 
 void Vtop___024root____Vdpiimwrap_top__DOT__my_exu__DOT__regfile__DOT__set_gpr_ptr__Vdpioc2_TOP(const VlUnpacked<QData/*63:0*/, 32> &a);
-void Vtop___024root____Vdpiimwrap_top__DOT__my_exu__DOT__csrfile__DOT__csrfile__DOT__set_csr_ptr__Vdpioc2_TOP(const VlUnpacked<QData/*63:0*/, 4096> &a);
 
 void Vtop___024root___initial__TOP__1(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -46,7 +45,6 @@ void Vtop___024root___initial__TOP__1(Vtop___024root* vlSelf) {
     vlSymsp->_traceDumpOpen();
     VL_WRITEF("hello world\n");
     Vtop___024root____Vdpiimwrap_top__DOT__my_exu__DOT__regfile__DOT__set_gpr_ptr__Vdpioc2_TOP(vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf);
-    Vtop___024root____Vdpiimwrap_top__DOT__my_exu__DOT__csrfile__DOT__csrfile__DOT__set_csr_ptr__Vdpioc2_TOP(vlSelf->top__DOT__my_exu__DOT__csrfile__DOT__csrfile__DOT__rf);
 }
 
 void Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(QData/*63:0*/ raddr, QData/*63:0*/ &rdata);
@@ -1170,14 +1168,13 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__res = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_exu__DOT__alu_inA = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_exu__DOT__alu_inB = VL_RAND_RESET_Q(64);
+    vlSelf->top__DOT__my_exu__DOT__mepc = VL_RAND_RESET_Q(64);
+    vlSelf->top__DOT__my_exu__DOT__csrres = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_exu__DOT__datain = VL_RAND_RESET_Q(64);
     for (int __Vi0=0; __Vi0<32; ++__Vi0) {
         vlSelf->top__DOT__my_exu__DOT__regfile__DOT__rf[__Vi0] = VL_RAND_RESET_Q(64);
     }
     vlSelf->top__DOT__my_exu__DOT__csrfile__DOT__csrin = VL_RAND_RESET_Q(64);
-    for (int __Vi0=0; __Vi0<4096; ++__Vi0) {
-        vlSelf->top__DOT__my_exu__DOT__csrfile__DOT__csrfile__DOT__rf[__Vi0] = VL_RAND_RESET_Q(64);
-    }
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SUBctr = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SIGctr = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__ALctr = VL_RAND_RESET_I(1);
@@ -1206,7 +1203,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__SrcB = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_exu__DOT__nextaddr__DOT__respc = VL_RAND_RESET_Q(64);
     vlSelf->__Vtask_pmem_read__0__rdata = 0;
-    vlSelf->__Vtask_pmem_read__5__rdata = 0;
+    vlSelf->__Vtask_pmem_read__4__rdata = 0;
     vlSelf->__Vchglast__TOP__top__DOT__my_exu__DOT__csrfile__DOT__csrin = VL_RAND_RESET_Q(64);
     for (int __Vi0=0; __Vi0<2; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
