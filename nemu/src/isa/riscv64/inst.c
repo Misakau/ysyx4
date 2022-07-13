@@ -144,15 +144,3 @@ int isa_exec_once(Decode *s) {
   s->isa.inst.val = inst_fetch(&s->snpc, 4);
   return decode_exec(s);
 }
-
-#define MSTATUS   0x300
-#define MTVEC     0x305
-#define MSCRATCH  0x340
-#define MEPC      0x341
-#define MCAUSE    0x342
-
-vaddr_t isa_raise_intr(word_t NO, vaddr_t epc){
-  CSR(MEPC) = epc;
-  CSR(MCAUSE) = NO;
-  return CSR(MTVEC);
-}
