@@ -96,13 +96,12 @@ module ysyx_220053_CSR(
     always@(*) begin
         case(CsrOp)
             3'b000:  csrin = datain;
-            3'b001:  csrin = csrin | datain;
-            3'b010:  csrin = csrin & (~datain);
+            3'b001:  csrin = csrres | datain;
+            3'b010:  csrin = csrres & (~datain);
             default: csrin = 0;
         endcase
     end
-    wire [63:0] wdata;
-    assign wdata = csrin;
+    
     ysyx_220053_CSRFile csrfile(.clk(clk),
                                 .raaddr(CsrId),
                                 .rbaddr(12'h341),//mepc
