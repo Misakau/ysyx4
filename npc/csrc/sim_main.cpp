@@ -126,7 +126,7 @@ void set_batch_mode(){
 }
 
 static void sdb_mainloop();
-
+static bool is_diff = false;
 static char* image_file = NULL;
 static char* log_file = NULL;
 static FILE* log_ptr = NULL;
@@ -140,16 +140,16 @@ static int npc_parse_args(int argc, char *argv[]) {
     {0          , 0                , NULL,  0 },
   };
   int o;
-  while ( (o = getopt_long(argc, argv, "-bhi:l:", table, NULL)) != -1) {
+  while ( (o = getopt_long(argc, argv, "-bhi:l:d", table, NULL)) != -1) {
     switch (o) {
       case 'b': set_batch_mode(); break;
-      //case 'd': diff_so_file = optarg; break;
+      case 'd': is_diff = true; break;
       case 'i': image_file = optarg; break;
       case 'l': log_file = optarg; break;
       default:
         printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
         printf("\t-b,--batch              run with batch mode\n");
-        //printf("\t-d,--diff=REF_SO        run DiffTest with reference REF_SO\n");
+        printf("\t-d,--diff=REF_SO        run DiffTest with reference REF_SO\n");
         printf("\n");
     }
   }
@@ -176,6 +176,7 @@ int main(int argc, char**argv, char**env) {
     #ifdef ITRACE
       init_disasm("riscv64-pc-linux-gnu");
     #endif
+    
     difftest_memcpy = (void(*)(uint64_t, void *, size_t, bool))dlsym(handle, "difftest_memcpy");
     assert(difftest_memcpy);
     
@@ -187,7 +188,7 @@ int main(int argc, char**argv, char**env) {
 
     difftest_init = (void(*)())dlsym(handle, "difftest_init");
     assert(difftest_init);
-
+    
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
     contextp->commandArgs(argc, argv);
@@ -223,8 +224,12 @@ int main(int argc, char**argv, char**env) {
       assert(log_ptr);
     }
     printf(ASNI_FG_BLUE "Log is written to %s\n" ASNI_NONE ,(log_file) ? log_file : "stdout");
-    difftest_init();
-    difftest_memcpy(AD_BASE, MEM, fsize, 1);
+    
+    if(is_diff){
+      difftest_init();
+      difftest_memcpy(AD_BASE, MEM, fsize, 1);
+    }
+    
 
     //reset the pc
     contextp->timeInc(1); 
@@ -257,16 +262,18 @@ int main(int argc, char**argv, char**env) {
                 else fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
               } 
             #endif
-            if(top->clk == 1) difftest_exec(1);
-            difftest_regcpy(&nemu, 1);
-            if(top->pc != nemu.pc){
-              printf(ASNI_FG_RED "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, top->pc);
-              EXIT = 1;break;
-            }
-            for(int i = 1; i < 32; i++){
-              if(cpu_gpr[i] != nemu.gpr[i]){
-                printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],nemu.pc);
-                EXIT = 1; break;
+            if(is_diff){
+              if(top->clk == 1) difftest_exec(1);
+              difftest_regcpy(&nemu, 1);
+              if(top->pc != nemu.pc){
+                printf(ASNI_FG_RED "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, top->pc);
+                EXIT = 1;break;
+              }
+              for(int i = 1; i < 32; i++){
+                if(cpu_gpr[i] != nemu.gpr[i]){
+                  printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],nemu.pc);
+                  EXIT = 1; break;
+                }
               }
             }
             if(EXIT == 1) {top->eval();break;}
@@ -316,16 +323,18 @@ static void npc_exec(uint64_t n){
               } 
             #endif
             sdb_top->eval();
-            if(sdb_top->clk == 1) difftest_exec(1);
-            difftest_regcpy(&nemu, 1);
-            if(sdb_top->pc != nemu.pc){
-              printf(ASNI_FG_RED "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, sdb_top->pc);
-              EXIT = 1;break;
-            }
-            for(int i = 1; i < 32; i++){
-              if(cpu_gpr[i] != nemu.gpr[i]){
-                printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],nemu.pc);
-                EXIT = 1; break;
+            if(is_diff){
+              if(sdb_top->clk == 1) difftest_exec(1);
+              difftest_regcpy(&nemu, 1);
+              if(sdb_top->pc != nemu.pc){
+                printf(ASNI_FG_RED "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, sdb_top->pc);
+                EXIT = 1;break;
+              }
+              for(int i = 1; i < 32; i++){
+                if(cpu_gpr[i] != nemu.gpr[i]){
+                  printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],nemu.pc);
+                  EXIT = 1; break;
+                }
               }
             }
             if(EXIT == 1) {sdb_top->eval();break;}
