@@ -8,7 +8,8 @@ module ysyx_220053_CSR(
     input [11:0] CsrId,
     input [63:0] datain,
     input [63:0] epc_in,
-    output [63:0] mepc_o, mtvec_o, csrres
+    output [63:0] mepc_o, mtvec_o,
+    output reg [63:0] csrres
 );
 /*
 #define MSTATUS   0x300
