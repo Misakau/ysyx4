@@ -258,8 +258,9 @@ int main(int argc, char**argv, char**env) {
             #ifdef ITRACE
               char str[128];disassemble(str, 127, sdb_top->pc, (uint8_t*)&instr_now, 4);
               if(sdb_top->clk == 0){
-                if(log_ptr == NULL) printf("pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
-                else fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+                //if(log_ptr == NULL) printf("pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+                //else fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+                if(log_ptr) fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
               } 
             #endif
             if(is_diff){
@@ -318,8 +319,9 @@ static void npc_exec(uint64_t n){
             #ifdef ITRACE
               char str[128];disassemble(str, 127, sdb_top->pc, (uint8_t*)&instr_now, 4);
               if(sdb_top->clk == 0){
-                if(n != -1) printf("pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
-                if(log_ptr){fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);}
+                //if(n != -1) printf("pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+                //if(log_ptr){fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);}
+                if(log_ptr) fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
               } 
             #endif
             sdb_top->eval();
