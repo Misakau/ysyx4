@@ -20,17 +20,10 @@ module ysyx_220053_IDU(
     output [4:0] ALUOp,
     output [1:0] MulOp,
     output wen,
-    output Epc, Ecall, Mret, Csrwen, CsrToReg,
+    output Ecall, Mret, Csrwen, CsrToReg,
     output [2:0]CsrOp
 );
     wire [2:0] ExtOp;
-    
-    assign op = instr_i[6:0];
-    assign rd = instr_i[11:7];
-    assign func3 = instr_i[14:12];
-    assign rs1 = instr_i[19:15];
-    assign rs2 = instr_i[24:20];
-    assign func7 = instr_i[31:25];
     
     ysyx_220053_InstrToImm insttoimm(instr_i, ExtOp, imm);
     //controler
@@ -39,7 +32,15 @@ module ysyx_220053_IDU(
                                  .Branch(Branch), .MemOp(MemOp), .MemToReg(MemToReg),
                                  .ExtOp(ExtOp), .ALUOp(ALUOp), .wen(wen), .MemWen(MemWen),
                                  .MulOp(MulOp),
-                                 .Epc(Epc), .Ecall(Ecall), .Mret(Mret), .Csrwen(Csrwen), .CsrToReg(CsrToReg), .CsrOp(CsrOp)
+                                 .Ecall(Ecall), .Mret(Mret), .Csrwen(Csrwen), .CsrToReg(CsrToReg), .CsrOp(CsrOp)
                                  );
+    wire ecall = Ecall;
+
+    assign op = instr_i[6:0];
+    assign rd = instr_i[11:7];
+    assign func3 = instr_i[14:12];
+    assign rs1 = (ecall == 0) ? instr_i[19:15] : 5'd17;//ecall a7
+    assign rs2 = instr_i[24:20];
+    assign func7 = instr_i[31:25];
 
 endmodule
