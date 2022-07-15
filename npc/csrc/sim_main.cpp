@@ -56,7 +56,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
   long long lstime = 0;
   if(raddr == RTC_ADDR + 4){
     assert(lstime == 0);
-    lstime = time();
+    lstime = time(NULL);
     *rdata = lstime;
   }
   else if(raddr == RTC_ADDR){
