@@ -86,7 +86,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   else real_mask = -1;
   //assert(real_addr < MEMSIZE);
   if(waddr == SERIAL_PORT){
-    assert(real_mask == 0x1);
+    assert(real_mask == 0xff);
     printf("%c",(char)(wdata & real_mask));
   }
   else{
