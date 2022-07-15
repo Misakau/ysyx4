@@ -15,6 +15,7 @@
 
 #include "npc_sdb.h"
 #include "itrace.h"
+#include "dev.h"
 
 #define MEMSIZE 65536
 #define AD_BASE 0x80000000
@@ -52,32 +53,53 @@ void dump_gpr() {
 }
 
 extern "C" void pmem_read(long long raddr, long long *rdata) {
-  long long real_addr = (raddr - AD_BASE) >> 3;
-  //assert(real_addr < MEMSIZE);
-  if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
-    //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
-    *rdata = 0;
-    return;
+  long long lstime = 0;
+  if(raddr == RTC_ADDR + 4){
+    assert(lstime == 0);
+    lstime = time();
+    *rdata = lstime;
   }
-  else *rdata = MEM[real_addr];
+  else if(raddr == RTC_ADDR){
+    assert(lstime);
+    *rdata = lstime;
+    lstime = 0;
+  }
+  else{
+    long long real_addr = (raddr - AD_BASE) >> 3;
+    //assert(real_addr < MEMSIZE);
+    if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
+      //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
+      *rdata = 0;
+      return;
+    }
+    else *rdata = MEM[real_addr];
+  }
+  
   // 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
 }
 extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   long long real_addr = (waddr - AD_BASE) >> 3;
+  uint64_t real_mask = -1;
+  if(wmask == 0x1) real_mask = 0xffull;
+  else if(wmask == 0x3) real_mask = 0xffffull;
+  else if(wmask == 0xf) real_mask = 0xffffffffull;
+  else real_mask = -1;
   //assert(real_addr < MEMSIZE);
-  if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
-    //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
-    return;
+  if(waddr == SERIAL_PORT){
+    assert(real_mask == 0x1);
+    printf("%c",(char)(wdata & real_mask));
   }
-  else{//has bug
-    uint64_t real_mask = -1;
-    if(wmask == 0x1) real_mask = 0xffull;
-    else if(wmask == 0x3) real_mask = 0xffffull;
-    else if(wmask == 0xf) real_mask = 0xffffffffull;
-    else real_mask = -1;
-    MEM[real_addr] = (MEM[real_addr] & (~(real_mask << ((waddr & 0x7)<<3)))) | ((wdata & real_mask)<< ((waddr & 0x7)<<3));
-    return;
+  else{
+    if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
+      //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
+      return;
+    }
+    else{//has bug
+      MEM[real_addr] = (MEM[real_addr] & (~(real_mask << ((waddr & 0x7)<<3)))) | ((wdata & real_mask)<< ((waddr & 0x7)<<3));
+      return;
+    }
   }
+  
   // 总是往地址为`waddr & ~0x7ull`的8字节按写掩码`wmask`写入`wdata`
   // `wmask`中每比特表示`wdata`中1个字节的掩码,
   // 如`wmask = 0x3`代表只写入最低2个字节, 内存中的其它字节保持不变

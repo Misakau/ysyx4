@@ -50,7 +50,6 @@ VL_MODULE(Vtop___024root) {
     CData/*2:0*/ top__DOT__CsrOp;
     CData/*0:0*/ top__DOT__my_ifu__DOT__fclk;
     CData/*2:0*/ top__DOT__my_idu__DOT__ExtOp;
-    CData/*0:0*/ top__DOT__my_exu__DOT__csrfile__DOT__wdata;
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SUBctr;
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SIGctr;
     CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__ALctr;
