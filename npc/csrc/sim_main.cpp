@@ -17,7 +17,7 @@
 #include "itrace.h"
 #include "dev.h"
 
-#define MEMSIZE 65536
+#define MEMSIZE 655360
 #define AD_BASE 0x80000000
 
 static long long MEM[MEMSIZE];//8字节为单位
