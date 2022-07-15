@@ -33,6 +33,7 @@ VL_MODULE(Vtop___024root) {
     VL_OUT64(pc,63,0);
 
     // LOCAL SIGNALS
+    CData/*4:0*/ top__DOT__rs1;
     CData/*0:0*/ top__DOT__wen;
     CData/*0:0*/ top__DOT__ALUSrcA;
     CData/*0:0*/ top__DOT__MemWen;
@@ -42,7 +43,6 @@ VL_MODULE(Vtop___024root) {
     CData/*2:0*/ top__DOT__Branch;
     CData/*2:0*/ top__DOT__MemOp;
     CData/*1:0*/ top__DOT__MulOp;
-    CData/*0:0*/ top__DOT__Epc;
     CData/*0:0*/ top__DOT__Ecall;
     CData/*0:0*/ top__DOT__Mret;
     CData/*0:0*/ top__DOT__Csrwen;
@@ -60,6 +60,7 @@ VL_MODULE(Vtop___024root) {
     CData/*7:0*/ top__DOT__my_exu__DOT__mem__DOT__datab;
     CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexA;
     CData/*0:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__NexB;
+    SData/*11:0*/ top__DOT__my_exu__DOT__CsrId;
     SData/*15:0*/ top__DOT__my_exu__DOT__mem__DOT__datah;
     IData/*31:0*/ top__DOT__instr_i;
     IData/*31:0*/ top__DOT__my_exu__DOT__alu64__DOT__sllWres;
@@ -80,6 +81,11 @@ VL_MODULE(Vtop___024root) {
     QData/*63:0*/ top__DOT__my_exu__DOT__alu_inB;
     QData/*63:0*/ top__DOT__my_exu__DOT__csrres;
     QData/*63:0*/ top__DOT__my_exu__DOT__datain;
+    QData/*63:0*/ top__DOT__my_exu__DOT__csrfile__DOT__csrin;
+    QData/*63:0*/ top__DOT__my_exu__DOT__csrfile__DOT__mtvec;
+    QData/*63:0*/ top__DOT__my_exu__DOT__csrfile__DOT__mepc;
+    QData/*63:0*/ top__DOT__my_exu__DOT__csrfile__DOT__mcause;
+    QData/*63:0*/ top__DOT__my_exu__DOT__csrfile__DOT__mscratch;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderres;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderb;
     QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulresW;
@@ -89,12 +95,11 @@ VL_MODULE(Vtop___024root) {
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__SrcB;
     QData/*63:0*/ top__DOT__my_exu__DOT__nextaddr__DOT__respc;
     VlUnpacked<QData/*63:0*/, 32> top__DOT__my_exu__DOT__regfile__DOT__rf;
-    VlUnpacked<QData/*63:0*/, 4096> top__DOT__my_exu__DOT__csrfile__DOT__csrfile__DOT__rf;
 
     // LOCAL VARIABLES
     CData/*0:0*/ __Vclklast__TOP__clk;
     QData/*63:0*/ __Vtask_pmem_read__0__rdata;
-    QData/*63:0*/ __Vtask_pmem_read__5__rdata;
+    QData/*63:0*/ __Vtask_pmem_read__4__rdata;
     VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
