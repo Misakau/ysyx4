@@ -51,7 +51,7 @@ module ysyx_220053_EXU(
         //busa + immI; //addi
     ysyx_220053_Mem mem(.MemOp(MemOp), .raddr(res), .MemWen(MemWen), .wdata(busb), .rdata(mdata));
     wire [63:0] addr_res;
-    ysyx_220053_NexAddr nextaddr(.mtvec(mtvec), .Ecall(Ecall), .mepc(mepc), .Mret(Mret), .Zero(zero), .res0(res[0]), .Branch(Branch), .pc(pc), .imm(imm), .busa(busa), .dnpc(addr_res));
+    ysyx_220053_NexAddr nextaddr(.mtvec_o(mtvec), .Ecall(Ecall), .mepc_o(mepc), .Mret(Mret), .Zero(zero), .res0(res[0]), .Branch(Branch), .pc(pc), .imm(imm), .busa(busa), .dnpc(addr_res));
     assign dnpc = {addr_res[63:1], 1'b0};
 endmodule
 

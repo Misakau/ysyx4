@@ -8,7 +8,7 @@ module ysyx_220053_CSR(
     input [11:0] CsrId,
     input [63:0] datain,
     input [63:0] epc_in,
-    output [63:0] mepc, mtvec, csrres
+    output [63:0] mepc_o, mtvec_o, csrres
 );
 /*
 #define MSTATUS   0x300
@@ -75,5 +75,6 @@ module ysyx_220053_CSR(
             default: csrin = 0;
         endcase
     end
-
+    assign mtvec_o = mtvec;
+    assign mepc_o = mepc;
 endmodule
