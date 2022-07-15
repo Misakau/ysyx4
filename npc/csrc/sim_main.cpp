@@ -58,9 +58,9 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
   if(raddr == RTC_ADDR){
     struct timeval tv;
     gettimeofday(&tv, NULL);
-    *rdata = tv.tv_usec - st_time;
-    printf("now time = %lld\n",(long long)*rdata);
-    printf("%llx\n",*rdata - st_time);
+    *rdata = tv.tv_sec * 1000000 + tv.tv_usec - st_time;
+   // printf("now time = %lld\n",(long long)*rdata);
+   // printf("%llx\n",*rdata - st_time);
   }
   else{
     long long real_addr = (raddr - AD_BASE) >> 3;
@@ -229,8 +229,8 @@ int main(int argc, char**argv, char**env) {
     }
     struct timeval stv;
     gettimeofday(&stv, NULL);
-    st_time = stv.tv_usec;
-    printf("start time = %lld\n",(long long)st_time);
+    st_time = stv.tv_sec * 1000000 +stv.tv_usec;
+    printf(ASNI_FG_BLUE "start time = %lld\n" ASNI_NONE,(long long)st_time);
     //reset the pc
     contextp->timeInc(1); 
     top->clk = 0;
