@@ -51,10 +51,12 @@ void dump_gpr() {
     printf("gpr[%d] = 0x%lx\n", i, cpu_gpr[i]);
   }
 }
-
+#include <sys/time.h>
 extern "C" void pmem_read(long long raddr, long long *rdata) {
   if(raddr == RTC_ADDR){
-    *rdata = time(NULL);
+    struct timeval tv;
+    gettimeofday(&tv, NULL);
+    *rdata = tv.tv_usec;
     printf("%llx\n",*rdata);
   }
   else{
