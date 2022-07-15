@@ -229,7 +229,7 @@ int main(int argc, char**argv, char**env) {
     struct timeval stv;
     gettimeofday(&stv, NULL);
     st_time = stv.tv_usec;
-    printf("start time = %lld",st_time);
+    printf("start time = %lld",(long long)st_time);
     //reset the pc
     contextp->timeInc(1); 
     top->clk = 0;
