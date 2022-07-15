@@ -55,6 +55,7 @@ void dump_gpr() {
 extern "C" void pmem_read(long long raddr, long long *rdata) {
   if(raddr == RTC_ADDR){
     *rdata = time(NULL);
+    printf("%lx\n",*rdata);
   }
   else{
     long long real_addr = (raddr - AD_BASE) >> 3;
