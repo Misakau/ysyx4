@@ -45,7 +45,7 @@ module ysyx_220053_EXU(
     assign CsrId = (Ecall == 0) ? imm[11:0] : 12'h342;//ecall mcause
     wire [63:0] datain, mtvec;
     ysyx_220053_CSR csrfile( .clk(clk), .Csrwen(Csrwen), .CsrOp(CsrOp), .CsrId(CsrId), .datain(busa),
-                             .mepc_o(mepc), .csrres(csrres), .mtvec_o(mtvec), .Ecall(Ecall), .mepc_in(pc));
+                             .mepc_o(mepc), .csrres(csrres), .mtvec_o(mtvec), .Ecall(Ecall), .epc_in(pc));
     
     ysyx_220053_ALU alu64(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .MulOp(MulOp), .result(res), .zero(zero));
         //busa + immI; //addi
