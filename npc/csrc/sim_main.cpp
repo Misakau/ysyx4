@@ -57,7 +57,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
     struct timeval tv;
     gettimeofday(&tv, NULL);
     *rdata = tv.tv_usec;
-    printf("%llx\n",*rdata);
+    //printf("%llx\n",*rdata);
   }
   else{
     long long real_addr = (raddr - AD_BASE) >> 3;
