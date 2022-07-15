@@ -59,6 +59,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
     struct timeval tv;
     gettimeofday(&tv, NULL);
     *rdata = tv.tv_usec - st_time;
+    printf("now time = %lld\n",(long long)*rdata);
     printf("%llx\n",*rdata - st_time);
   }
   else{
