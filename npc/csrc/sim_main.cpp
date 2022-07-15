@@ -24,6 +24,8 @@ static long long MEM[MEMSIZE];//8字节为单位
 static bool EXIT = 0;
 static bool START = 0;
 
+static uint64_t st_time = 0;//start time
+
 static bool is_done = false;
 static unsigned int instr_now = 0;
 extern "C" void c_trap(const svBit done){
@@ -56,7 +58,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
   if(raddr == RTC_ADDR){
     struct timeval tv;
     gettimeofday(&tv, NULL);
-    *rdata = tv.tv_usec;
+    *rdata = tv.tv_usec - st_time;
     //printf("%llx\n",*rdata);
   }
   else{
@@ -224,18 +226,19 @@ int main(int argc, char**argv, char**env) {
       difftest_init();
       difftest_memcpy(AD_BASE, MEM, fsize, 1);
     }
-    
-
+    struct timeval stv;
+    gettimeofday(&stv, NULL);
+    st_time = stv.tv_usec;
     //reset the pc
     contextp->timeInc(1); 
     top->clk = 0;
     top->rst = 1;
     top->eval();
-    printf("Now_pc = %016lx\n",top->pc);
+    //printf("Now_pc = %016lx\n",top->pc);
     top->clk = 1;
     contextp->timeInc(1); 
     top->eval();
-    printf("Now_pc = %016lx\n",top->pc);
+   // printf("Now_pc = %016lx\n",top->pc);
     top->rst = 0;
     START = 1;
     int cnt = 0;
