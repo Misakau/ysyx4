@@ -8,9 +8,7 @@ module ysyx_220053_IFU(
     output [63:0] pc,
     output [31:0] instr_o
 );
-    wire fclk;
-    wire [63:0] now_pc, snpc, rdata;
-    assign snpc = now_pc + 4;
+    wire [63:0] now_pc, rdata;
     assign pc = now_pc;
     always@(*) begin  pmem_read(pc, rdata); end
     always@(*) begin get_instr(instr_o); end

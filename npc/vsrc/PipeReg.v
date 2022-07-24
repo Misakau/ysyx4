@@ -51,7 +51,7 @@ module ysyx_220053_EX_Reg(
     output [63:0] pc_o,
     output [31:0] instr_o,
 
-    input [4:0]  rd_i,
+    input [4:0]  rd_i, busa_i, busb_i,
     input [63:0] imm_i,
     input ALUSrcA_i, MemToReg_i, MemWen_i,
     input [1:0] ALUSrcB_i,
@@ -61,8 +61,10 @@ module ysyx_220053_EX_Reg(
     input [1:0] MulOp_i,
     input wen_i,
     input CsrToReg_i,
-    
-    output [4:0] rd_o,
+    input [63:0] Csrres_i,
+
+    output [63:0] Csrres_o,
+    output [4:0] rd_o, busa_o, busb_o,
     output wen_o, ALUSrcA_o, MemToReg_o, MemWen_o, CsrToReg_o,
     output [1:0] ALUSrcB_o,
     output [4:0] ALUOp_o,
@@ -75,6 +77,7 @@ module ysyx_220053_EX_Reg(
     reg [31:0] instr_r;
     reg [63:0] pc_r;
     reg [4:0]  rd_r;
+    reg [63:0] busa_r, busb_r;
     reg [63:0] imm_r;
     reg ALUSrcA_r;
     reg MemToReg_r;
@@ -86,6 +89,7 @@ module ysyx_220053_EX_Reg(
     reg [2:0] MemOp_r;
     reg [4:0] ALUOp_r;
     reg [1:0] MulOp_r;
+    reg [63:0] Csrres_r;
 
     //control_r
     always@(posedge clk) begin
@@ -99,6 +103,8 @@ module ysyx_220053_EX_Reg(
             instr_r    <= 32'b0;
             pc_r       <= 64'b0;
             rd_r       <= 5'b0;
+            busa_r       <= 5'b0;
+            busb_r       <= 5'b0;
             imm_r      <= 64'b0;
             ALUSrcA_r  <= 1'b0;
             MemToReg_r <= 1'b0;
@@ -110,11 +116,14 @@ module ysyx_220053_EX_Reg(
             MemOp_r    <= 3'b0;
             ALUOp_r    <= 5'b0;
             MulOp_r    <= 2'b0;
+            Csrres_r   <= 64'b0;
         }
         else if(enable){
             instr_r    <= instr_i;
             pc_r       <= pc_i;
             rd_r       <= rd_i;
+            busa_r      <= busa_i;
+            busb_r      <= busb_i;
             imm_r      <= imm_i;
             ALUSrcA_r  <= ALUSrcA_i;
             MemToReg_r <= MemToReg_i;
@@ -126,11 +135,14 @@ module ysyx_220053_EX_Reg(
             MemOp_r    <= MemOp_i;
             ALUOp_r    <= ALUOp_i;
             MulOp_r    <= MulOp_i;
+            Csrres_r   <= Csrres_i;
         }
     end
     assign instr_o = instr_r;
     assign pc_o    = pc_r;
     assign rd_o    = rd_r;
+    assign busa_o    = busa_r;
+    assign busb_o    = busb_r;
     assign wen_o = wen_r;
     assign ALUSrcA_o = ALUSrcA_r;
     assign MemToReg_o = MemToReg_r;
@@ -142,6 +154,7 @@ module ysyx_220053_EX_Reg(
     assign MemOp_o = MemOp_r;
     assign MulOp_o = MulOp_r;
     assign imm_o = imm_r;
+    assign Csrres_o = Csrres_r;
 endmodule
 
 module ysyx_220053_M_Reg(

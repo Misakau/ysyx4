@@ -89,6 +89,37 @@ module ysyx_220053_ALU(
     assign zero = ZF;
 endmodule
 
+module ysyx_220053_ALU_lite(
+    input [63:0] inputa, inputb,
+    input [4:0] ALUOp,
+    output zero,
+    output reg [63:0] result
+);
+
+    wire SUBctr, SIGctr, ALctr, SFTctr, Wctr;
+    wire [3:0] OPctr;
+    wire [63:0] adderres;
+    wire [63:0] res0, res6;
+    ///adder,and,or,xor,shift,inputb,cmp
+    wire [63:0] adderb;
+    assign adderb = inputb ^ {64{SUBctr}};
+    wire CF, SF, OF, ZF;
+    ysyx_220053_ALUSig alusig(.ALUOp(ALUOp), .SUBctr(SUBctr), .SIGctr(SIGctr), .ALctr(ALctr), .SFTctr(SFTctr), .OPctr(OPctr), .Wctr(Wctr));
+    ysyx_220053_Adder64 adder(.result(adderres),.x(inputa),.y(adderb),.sub(SUBctr),.CF(CF),.OF(OF),.SF(SF),.ZF(ZF));
+    assign res0 = (Wctr == 1'b0) ? adderres : {{32{adderres[31]}}, adderres[31:0]};
+
+    assign res6 = {{63{1'b0}},{(SIGctr == 1'b1) ? OF ^ SF : CF}}; //cmp,not finish
+
+    always@(*) begin
+        case(OPctr)
+         0: result = res0;
+         default: result = res6;
+        endcase
+    end
+    assign zero = ZF;
+endmodule
+
+
 module ysyx_220053_ALUSig(
     input [4:0] ALUOp,
     output reg SUBctr,SIGctr,ALctr,SFTctr,Wctr,

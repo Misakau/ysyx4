@@ -6,6 +6,11 @@ import "DPI-C" function void c_trap(input bit done);
 
 module ysyx_220053_IDU(
     input  [31:0] instr_i,
+    input  [63:0] pc,
+    input  [63:0] busa, busb,
+    input  [63:0] mtvec, mepc,
+
+    output [63:0] dnpc
     output [6:0]  op,
     output [4:0]  rd,
     output [4:0]  rs1,
@@ -21,7 +26,8 @@ module ysyx_220053_IDU(
     output [1:0] MulOp,
     output wen,
     output Ecall, Mret, Csrwen, CsrToReg,
-    output [2:0]CsrOp
+    output [2:0]CsrOp,
+    output [11:0] CsrId
 );
     wire [2:0] ExtOp;
     
@@ -35,6 +41,21 @@ module ysyx_220053_IDU(
                                  .Ecall(Ecall), .Mret(Mret), .Csrwen(Csrwen), .CsrToReg(CsrToReg), .CsrOp(CsrOp)
                                  );
     wire ecall = Ecall;
+    wire [11:0] CsrId;
+    assign CsrId = (ecall == 0) ? imm[11:0] : 12'h342;//ecall mcause
+    wire [63:0] addr_res;
+    wire [63:0] alu_inA, alu_inB;
+    wire [63:0] res;
+    wire zero;
+    assign alu_inA = (ALUSrcA == 1'b1) ? busa : pc;
+    assign alu_inB = (ALUSrcB == 2'b01) ? imm : ((ALUSrcB == 2'b00) ? busb : 4);
+
+    ysyx_220053_ALU_lite na_alu(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .result(res), .zero(zero));
+    ysyx_220053_NexAddr nextaddr(.mtvec(mtvec), .Ecall(Ecall), .mepc(mepc), .Mret(Mret),
+                                 .Zero(zero), .res0(res[0]), .Branch(Branch), .pc(pc),
+                                 .imm(imm), .busa(busa), .dnpc(addr_res));
+    
+    assign dnpc = {addr_res[63:1], 1'b0};
 
     assign op = instr_i[6:0];
     assign rd = instr_i[11:7];
