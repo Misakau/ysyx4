@@ -62,14 +62,14 @@ module ysyx_220053_ALU(
 //div
     wire [63:0] divres;
     wire [31:0] divresW;
-    assign divres =(OPctr == 8) ? ( (SIGctr == 1'b0) ? inputa / inputb : $signed($signed(inputa) / $signed(inputb))) : 0; 
-    assign divresW =(OPctr == 8) ? ( (SIGctr == 1'b0) ? inputa[31:0] / inputb[31:0] : $signed($signed(inputa[31:0]) / $signed(inputb[31:0]))) : 0; 
+    assign divres =(OPctr == 4'd8) ? ( (SIGctr == 1'b0) ? inputa / inputb : $signed($signed(inputa) / $signed(inputb))) : 0; 
+    assign divresW =(OPctr == 4'd8) ? ( (SIGctr == 1'b0) ? inputa[31:0] / inputb[31:0] : $signed($signed(inputa[31:0]) / $signed(inputb[31:0]))) : 0; 
     assign res8 = (Wctr == 1'b0) ? divres : {{32{divresW[31]}}, divresW[31:0]};
 //rem
     wire [63:0] remres;
     wire [31:0] remresW;
-    assign remres =(OPctr == 9) ? ( (SIGctr == 1'b0) ? inputa % inputb : $signed($signed(inputa) % $signed(inputb))) : 0; 
-    assign remresW =(OPctr == 9) ? ( (SIGctr == 1'b0) ? inputa[31:0] % inputb[31:0] : $signed($signed(inputa[31:0]) % $signed(inputb[31:0]))) : 0; 
+    assign remres =(OPctr == 4'd9) ? ( (SIGctr == 1'b0) ? inputa % inputb : $signed($signed(inputa) % $signed(inputb))) : 0; 
+    assign remresW =(OPctr == 4'd9) ? ( (SIGctr == 1'b0) ? inputa[31:0] % inputb[31:0] : $signed($signed(inputa[31:0]) % $signed(inputb[31:0]))) : 0; 
     assign res9 = (Wctr == 1'b0) ? remres : {{32{remresW[31]}}, remresW[31:0]};
     
     always@(*) begin

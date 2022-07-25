@@ -20,7 +20,6 @@ module ysyx_220053_IDU(
     output [63:0] imm,
     output ALUSrcA, MemToReg, MemWen,
     output [1:0] ALUSrcB,
-    output [2:0] Branch,
     output [2:0] MemOp,
     output [4:0] ALUOp,
     output [1:0] MulOp,
@@ -30,7 +29,7 @@ module ysyx_220053_IDU(
     output [11:0] CsrId
 );
     wire [2:0] ExtOp;
-    
+    wire [2:0] Branch;
     ysyx_220053_InstrToImm insttoimm(instr_i, ExtOp, imm);
     //controler
     ysyx_220053_controler control(.instr_i(instr_i), .op(op), .func3(func3), .func7(func7),
