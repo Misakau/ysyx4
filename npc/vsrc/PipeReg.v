@@ -62,7 +62,9 @@ module ysyx_220053_EX_Reg(
     input wen_i,
     input CsrToReg_i,
     input [63:0] Csrres_i,
+    input Ebreak_i,
 
+    output Ebreak_o,
     output [63:0] Csrres_o,
     output [4:0] rd_o, busa_o, busb_o,
     output wen_o, ALUSrcA_o, MemToReg_o, MemWen_o, CsrToReg_o,
@@ -88,7 +90,7 @@ module ysyx_220053_EX_Reg(
     reg [4:0] ALUOp_r;
     reg [1:0] MulOp_r;
     reg [63:0] Csrres_r;
-
+    reg Ebreak_r;
     //control_r
     always@(posedge clk) begin
         if(flush){
@@ -102,8 +104,8 @@ module ysyx_220053_EX_Reg(
             instr_r    <= 32'b0;
             pc_r       <= 64'b0;
             rd_r       <= 5'b0;
-            busa_r       <= 5'b0;
-            busb_r       <= 5'b0;
+            busa_r     <= 5'b0;
+            busb_r     <= 5'b0;
             imm_r      <= 64'b0;
             ALUSrcA_r  <= 1'b0;
             MemToReg_r <= 1'b0;
@@ -115,6 +117,7 @@ module ysyx_220053_EX_Reg(
             ALUOp_r    <= 5'b0;
             MulOp_r    <= 2'b0;
             Csrres_r   <= 64'b0;
+            Ebreak_r   <= 1'b0;
         }
         else if(enable){
             instr_r    <= instr_i;
@@ -133,6 +136,7 @@ module ysyx_220053_EX_Reg(
             ALUOp_r    <= ALUOp_i;
             MulOp_r    <= MulOp_i;
             Csrres_r   <= Csrres_i;
+            Ebreak_r   <= Ebreak_i;
         }
     end
     assign instr_o = instr_r;
@@ -151,6 +155,7 @@ module ysyx_220053_EX_Reg(
     assign MulOp_o = MulOp_r;
     assign imm_o = imm_r;
     assign Csrres_o = Csrres_r;
+    assign Ebreak_o = Ebreak_r;
 endmodule
 
 module ysyx_220053_M_Reg(
@@ -173,7 +178,9 @@ module ysyx_220053_M_Reg(
     input [63:0] Csrres_i,
     input [4:0]  rd_i,
     input wen_i, MemToReg_i, CsrToReg_i,
-    
+    input Ebreak_i,
+
+    output Ebreak_o,
     output [4:0] rd_o,
     output wen_o, MemToReg_o, CsrToReg_o,
     output [2:0]  MemOp_o,
@@ -194,6 +201,7 @@ module ysyx_220053_M_Reg(
     reg wen_r;
     reg MemToReg_r;
     reg CsrToReg_r;
+    reg Ebreak_r;
     //control_r
     always@(posedge clk) begin
         if(flush){
@@ -215,6 +223,7 @@ module ysyx_220053_M_Reg(
             wen_r    <= 1'b0;
             MemToReg_r <= 1'b0;
             CsrToReg_r <= 1'b0;
+            Ebreak_r  <= 1'b0;
         }
         else if(enable){
             instr_r  <= instr_i;
@@ -228,6 +237,7 @@ module ysyx_220053_M_Reg(
             wen_r    <= wen_i;
             MemToReg_r <= MemToReg_i;
             CsrToReg_r <= CsrToReg_i;
+            Ebreak_r <= Ebreak_i;
         }
     end
     assign instr_o = instr_r;
@@ -241,6 +251,7 @@ module ysyx_220053_M_Reg(
     assign wen_o = wen_r;
     assign MemToReg_o = MemToReg_r;
     assign CsrToReg_o = CsrToReg_r;
+    assign Ebreak_o = Ebreak_r;
 endmodule
 
 module ysyx_220053_WB_Reg(
@@ -259,7 +270,9 @@ module ysyx_220053_WB_Reg(
     input  wen_i,
     input  [63:0] wdata_i,
     input  [4:0] waddr_i,
+    input Ebreak_i,
 
+    output Ebreak_o,
     output wen_o,
     output [63:0] wdata_o,
     output [4:0] waddr_o
@@ -286,6 +299,7 @@ module ysyx_220053_WB_Reg(
             wen_r   <= 1'b0;
             wdata_r <= 64'b0;
             waddr_r <= 5'b0;
+            Ebreak_r <= 1'b0;
         }
         else if(enable){
             instr_r <= instr_i;
@@ -293,6 +307,7 @@ module ysyx_220053_WB_Reg(
             wen_r   <= wen_i;
             wdata_r <= wdata_i;
             waddr_r <= waddr_i;
+            Ebreak_r <= Ebreak_i;
         }
     end
     assign instr_o = instr_r;
@@ -300,4 +315,5 @@ module ysyx_220053_WB_Reg(
     assign wen_o   = wen_r;
     assign wdata_o = wdata_r;
     assign waddr_o = waddr_r;
+    assign Ebreak_o = Ebreak_r;
 endmodule

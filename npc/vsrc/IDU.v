@@ -26,7 +26,8 @@ module ysyx_220053_IDU(
     output wen,
     output Ecall, Mret, Csrwen, CsrToReg,
     output [2:0]CsrOp,
-    output [11:0] CsrId
+    output [11:0] CsrId,
+    output Ebreak
 );
     wire [2:0] ExtOp;
     wire [2:0] Branch;
@@ -37,7 +38,7 @@ module ysyx_220053_IDU(
                                  .Branch(Branch), .MemOp(MemOp), .MemToReg(MemToReg),
                                  .ExtOp(ExtOp), .ALUOp(ALUOp), .wen(wen), .MemWen(MemWen),
                                  .MulOp(MulOp),
-                                 .Ecall(Ecall), .Mret(Mret), .Csrwen(Csrwen), .CsrToReg(CsrToReg), .CsrOp(CsrOp)
+                                 .Ecall(Ecall), .Mret(Mret), .Csrwen(Csrwen), .CsrToReg(CsrToReg), .CsrOp(CsrOp), .Ebreak(Ebreak)
                                  );
     wire ecall = Ecall;
     wire [11:0] CsrId;

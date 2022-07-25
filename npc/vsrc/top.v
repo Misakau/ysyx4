@@ -13,7 +13,8 @@ module top(
   input clk,
   input rst,
   output [31:0] instr,
-  output [63:0] pc
+  output [63:0] pc,
+  output wb_commit
 );
     our s;
     /////////////wires///////////////
@@ -36,6 +37,7 @@ module top(
     wire id_MemWen_o;
     wire id_wen_o;
     wire id_CsrToReg_o;
+    wire id_Ebreak_o;
     wire [1:0] id_ALUSrcB_o;
     wire [2:0] id_MemOp_o;
     wire [4:0] id_ALUOp_o;
@@ -56,6 +58,7 @@ module top(
     wire ex_MemWen_i;
     wire ex_wen_i;
     wire ex_CsrToReg_i;
+    wire ex_Ebreak_i;
     wire [1:0] ex_ALUSrcB_i;
     wire [2:0] ex_MemOp_i;
     wire [4:0] ex_ALUOp_i;
@@ -71,25 +74,45 @@ module top(
     wire [63:0] m_Csrres_i;
     wire [4:0]  m_rd_i;
     wire m_wen_i, m_MemToReg_i, m_CsrToReg_i;
+    wire m_Ebreak_i;
     
     wire [63:0] m_rfdata_o;//m 段输出
     //////////////WB///////////////////////////
     wire wb_wen_i;
     wire [63:0] wb_wdata_i;
     wire [4:0] wb_waddr_i;//wb 段输入
+    wire wb_Ebreak_i;
     //wb 段输出
+    ////////////////others//////////////////////
+    reg running_r;
+    wire ebreak_commit;
+    wire running;
     /////////////IF/////////////////
     ysyx_220053_IFU my_ifu(
       .clk(clk),
       .rst(rst),
       .dnpc(id_dnpc),
       .pc(if_pc_o),
-      .instr_o(if_instr_o)
+      .instr_o(if_instr_o),
+      .running(running)
     );
+    always@(posedge clk) begin
+      if(rst) begin
+        running_r <= 1'b0;
+      end
+      else if(running_r == 1'b0)begin
+        running_r <= 1'b1;
+      end
+      else if(ebreak_commit) begin
+        running_r <= 1'b0;
+      end
+    end
+    assign running = running_r;
     assign pc = if_pc_o;
     assign instr = if_instr_o;
+    assign if_block = id_Ebreak_o;
     assign id_en = ~(id_block | ex_block | m_block | wb_block);
-    assign id_valid_i = rst;
+    assign id_valid_i = ~(rst | if_block);
     /////////////////////////////////
     ysyx_220053_ID_Reg ID_Reg(
       .clk(clk),
@@ -129,12 +152,22 @@ module top(
       .busb(id_busb),
       .mtvec(id_mtvec),
       .mepc(id_mepc),
-      .CsrId(id_CsrId)
+      .CsrId(id_CsrId),
+      .Ebreak(id_Ebreak_o)
       );
+      reg load_use;
+      always@(*) begin
+        if(id_valid_o && ex_valid_o && id_rs1 != 5'b0 && id_rs2 != 5'b0 && (id_rs1 == ex_rd_i || id_rs2 == ex_rd_i)) begin
+          load_use = 1'b1;
+        end
+        else load_use = 1'b0;
+      end
+      
+      assign id_block = load_use;//id_Ebreak_o;   //load_use
       assign id_busa_o = id_busa;
       assign id_busb_o = id_busb;
       assign ex_en = ~(ex_block | m_block | wb_block);//还未处理阻塞
-      assign ex_valid_i = rst;//还未处理冒险
+      assign ex_valid_i = id_valid_o & (~id_block);//还未处理冒险
     /////////////////////////////
     ysyx_220053_EX_Reg EX_Reg(
       //control
@@ -163,6 +196,7 @@ module top(
       .wen_i(id_wen_o),
       .CsrToReg_i(id_CsrToReg_o),
       .Csrres_i(id_csrres_o),
+      .Ebreak_i(id_Ebreak_o),
 
       .rd_o(ex_rd_i),
       .busa_o(ex_busa_i),
@@ -177,7 +211,8 @@ module top(
       .MulOp_o(ex_MulOp_i),
       .wen_o(ex_wen_i),
       .CsrToReg_o(ex_CsrToReg_i),
-      .Csrres_o(ex_csrres_i)
+      .Csrres_o(ex_csrres_i),
+      .Ebreak_o(ex_Ebreak_i)
     );
     ///////////EX////////////////
     ysyx_220053_EXU my_exu(
@@ -219,7 +254,8 @@ module top(
     .wen_i(ex_wen_i),
     .MemToReg_i(ex_MemToReg_i),
     .CsrToReg_i(ex_CsrToReg_i),
-    
+    .Ebreak_i(ex_Ebreak_i),
+
     .rd_o(m_rd_i),
     .wen_o(m_wen_i),
     .MemOp_o(m_MemOp_i),
@@ -228,7 +264,8 @@ module top(
     .wdata_o(m_wdata_i),
     .Csrres_o(m_Csrres_i),
     .MemToReg_o(MemToReg_i),
-    .CsrToReg_o(m_CsrToReg_i)
+    .CsrToReg_o(m_CsrToReg_i),
+    .Ebreak_o(m_Ebreak_i)
   );
     ///////////M/////////////////
     ysyx_220053_MU my_mu(
@@ -262,14 +299,15 @@ module top(
     .wen_i(m_wen_i),
     .wdata_i(m_rfdata_o),
     .waddr_i(m_rd_i),
+    .Ebreak_i(m_Ebreak_o),
 
     .wen_o(wb_wen_i),
     .wdata_o(wb_wdata_i),
-    .waddr_o(wb_waddr_i)
+    .waddr_o(wb_waddr_i),
+    .Ebreak_o(wb_Ebreak_i),
     );
     ///////////WB////////////////
     wire is_wen = (~m_flush) & wb_wen_i;
-    
     ///commit a finish instr
     reg wb_valid_r;
     always@(posedge clk) begin
@@ -279,6 +317,10 @@ module top(
         else wb_valid_r <= wb_valid_o;
     end
     wire wb_commit = wb_valid_r;
+    assign ebreak_commit = wb_Ebreak_i;
+    always@(*) begin
+      if(ebreak_commit) c_trap(1);
+    end
     ///////////Regfile///////////
     ysyx_220053_RegisterFile #(5, 64) regfile(.clk(clk),
                                               .raaddr(id_rs1),
