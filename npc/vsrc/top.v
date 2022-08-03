@@ -369,7 +369,7 @@ module top(
     reg [31:0] wb_instr_r;
     always@(posedge clk) begin
         if(wb_flush)begin 
-            wb_valid_r <= 1'b0;
+            wb_commit_r <= 1'b0;
             wb_pc_r    <= 64'b0;
             wb_instr_r <= 32'b0;
         end
