@@ -164,7 +164,7 @@ module top(
         end
         else load_use = 1'b0;
       end
-      
+      wire is_Csrwen = (~id_flush) & id_Csrwen;
       assign id_block = load_use;//id_Ebreak_o;   //load_use
       assign id_busa_o = id_busa;
       assign id_busb_o = id_busb;
@@ -309,7 +309,7 @@ module top(
     .Ebreak_o(wb_Ebreak_i)
     );
     ///////////WB////////////////
-    wire is_wen = (~m_flush) & wb_wen_i;
+    wire is_wen = (~wb_flush) & wb_wen_i;
     ///commit a finish instr
     reg wb_valid_r;
     always@(posedge clk) begin
@@ -337,7 +337,7 @@ module top(
                                             );
     //////////Csr////////////////
     //Csrwen:阻塞时不能写,还没完成这里的逻辑，阻塞和冒险判断放在top里
-    ysyx_220053_CSR csrfile( .clk(clk), .Csrwen(id_Csrwen), .CsrOp(id_CsrOp), .CsrId(id_CsrId), .datain(id_busa),
+    ysyx_220053_CSR csrfile( .clk(clk), .Csrwen(is_Csrwen), .CsrOp(id_CsrOp), .CsrId(id_CsrId), .datain(id_busa),
                              .mepc_o(id_mepc), .csrres(id_csrres_o), .mtvec_o(id_mtvec), .Ecall(id_Ecall), .epc_in(id_pc_o));
     initial begin
         $dumpfile("logs/vlt_dump.vcd");

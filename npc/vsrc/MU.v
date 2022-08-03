@@ -16,7 +16,6 @@ module ysyx_220053_MU(
     ysyx_220053_Mem mem(.MemOp(MemOp), .raddr(raddr), .MemWen(MemWen), .wdata(wdata), .rdata(mdata));//M
     wire is_wen;
     //WB Mret, Ecall, Csrwen, CsrToReg,
-    assign is_wen = wen & (~rst);//WB
     assign regsin = (MemToReg == 1'b0) ? raddr : mdata;//WB
     assign rfdata = (CsrToReg == 1'b0) ? regsin : csrres;//WB
 endmodule
