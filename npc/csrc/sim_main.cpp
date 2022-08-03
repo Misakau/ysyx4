@@ -235,10 +235,13 @@ int main(int argc, char**argv, char**env) {
     printf(ASNI_FG_BLUE "start time = %lld\n" ASNI_NONE,(long long)st_time);
     //reset the pc
     contextp->timeInc(1); 
-    top->clk = 1;
+    top->clk = 0;
     top->rst = 1;
     top->eval();
     //printf("Now_pc = %016lx\n",top->pc);
+    top->clk = 1;
+    contextp->timeInc(1); 
+    top->eval();
     top->clk = 0;
     contextp->timeInc(1); 
     top->eval();
