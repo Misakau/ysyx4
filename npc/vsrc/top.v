@@ -362,10 +362,9 @@ module top(
     wire is_wen = (~wb_flush) & wb_wen_i;
     ///commit a finish instr
     reg wb_valid_r;
-    wire cclk = ~clk;
     reg [63:0] wb_pc_r;
     reg [31:0] wb_instr_r;
-    always@(posedge cclk) begin
+    always@(posedge clk) begin
         if(wb_flush)begin 
             wb_valid_r <= 1'b0;
             wb_pc_r    <= 64'b0;
