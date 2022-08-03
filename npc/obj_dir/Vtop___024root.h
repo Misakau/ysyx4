@@ -64,7 +64,7 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__id_wb_hazard;
         CData/*0:0*/ top__DOT__load_use;
         CData/*0:0*/ top__DOT__is_Csrwen;
-        CData/*0:0*/ top__DOT__wb_valid_r;
+        CData/*0:0*/ top__DOT__wb_commit_r;
         CData/*0:0*/ top__DOT__ID_Reg__DOT__valid_r;
         CData/*2:0*/ top__DOT__my_idu__DOT__ExtOp;
         CData/*2:0*/ top__DOT__my_idu__DOT__Branch;

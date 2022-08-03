@@ -145,10 +145,10 @@ module top(
       .dnpc(id_dnpc),
       .pc(if_pc_o),
       .instr_o(if_instr_o),
-      .running(running),
       .dnpc_valid(id_valid_o),
       .block(if_block)
     );
+    /*
     always@(posedge clk) begin
       if(rst) begin
         running_r <= 1'b0;
@@ -160,11 +160,11 @@ module top(
       else if(running_r == 1'b0)begin
         running_r <= 1'b1;
       end
-    end
-    assign running = running_r & ~ebreak_commit;
+    end*/
+    //assign running = running_r & ~ebreak_commit;
     assign pc = if_pc_o;
     assign instr = if_instr_o;
-    assign if_block = id_Ebreak_o | ~running;
+    assign if_block = id_Ebreak_o | ~rst;//| ~running;
     assign id_en = ~(id_block | ex_block | m_block | wb_block);
     assign id_valid_i = ~(rst | if_block);
     /////////////////////////////////
