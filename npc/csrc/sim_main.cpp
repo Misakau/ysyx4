@@ -164,7 +164,6 @@ void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
 void (*difftest_regcpy)(void *, bool);
 void (*difftest_exec)(uint64_t);
 void (*difftest_init)();
-#define ITRACE
 int main(int argc, char**argv, char**env) {
     void *handle = dlopen("/home/wang/ysyx-workbench/nemu/build/riscv64-nemu-interpreter-so",RTLD_LAZY);
     if(!handle){
@@ -261,7 +260,7 @@ int main(int argc, char**argv, char**env) {
             #ifdef ITRACE
               char str[128];disassemble(str, 127, sdb_top->pc, (uint8_t*)&instr_now, 4);
               if(sdb_top->clk == 0){
-                //if(log_ptr == NULL) printf("pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+                if(log_ptr == NULL) printf("pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
                 //else fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
                 if(log_ptr) fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
               } 
