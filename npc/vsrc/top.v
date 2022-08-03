@@ -371,7 +371,11 @@ module top(
             wb_pc_r    <= 64'b0;
             wb_instr_r <= 32'b0;
         end
-        else wb_valid_r <= wb_valid_o;
+        else begin
+          wb_valid_r <= wb_valid_o;
+          wb_pc_r    <= wb_pc_o;
+          wb_instr_r <= wb_instr_o;
+        end
     end
     assign wb_commit = wb_valid_r;
     assign wb_pc = wb_pc_r;

@@ -81,8 +81,8 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     VlWide<4>/*127:0*/ __Vtemp31;
     // Body
     vlSelf->wb_commit = vlSelf->top__DOT__wb_valid_r;
-    vlSelf->wb_pc = vlSelf->top__DOT__WB_Reg__DOT__pc_r;
-    vlSelf->wb_instr = vlSelf->top__DOT__WB_Reg__DOT__instr_r;
+    vlSelf->wb_pc = vlSelf->top__DOT__wb_pc_r;
+    vlSelf->wb_instr = vlSelf->top__DOT__wb_instr_r;
     if ((0U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__i = 0x20U;
     } else if ((1U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
@@ -2033,6 +2033,8 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__forward_data = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__is_Csrwen = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__wb_valid_r = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__wb_pc_r = VL_RAND_RESET_Q(64);
+    vlSelf->top__DOT__wb_instr_r = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__my_ifu__DOT__now_pc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__rdata = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__valid_dnpc = VL_RAND_RESET_Q(64);

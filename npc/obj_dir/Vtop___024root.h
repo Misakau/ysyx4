@@ -113,6 +113,7 @@ VL_MODULE(Vtop___024root) {
         SData/*11:0*/ top__DOT__id_CsrId;
         SData/*15:0*/ top__DOT__my_mu__DOT__mem__DOT__datah;
         IData/*31:0*/ top__DOT__if_instr_o;
+        IData/*31:0*/ top__DOT__wb_instr_r;
         IData/*31:0*/ top__DOT__ID_Reg__DOT__instr_r;
         IData/*31:0*/ top__DOT__EX_Reg__DOT__instr_r;
         IData/*31:0*/ top__DOT__my_exu__DOT__alu64__DOT__sllWres;
@@ -133,6 +134,7 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__m_ALURes_i;
         QData/*63:0*/ top__DOT__m_rfdata_o;
         QData/*63:0*/ top__DOT__forward_data;
+        QData/*63:0*/ top__DOT__wb_pc_r;
         QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
         QData/*63:0*/ top__DOT__my_ifu__DOT__rdata;
         QData/*63:0*/ top__DOT__my_ifu__DOT__valid_dnpc;
