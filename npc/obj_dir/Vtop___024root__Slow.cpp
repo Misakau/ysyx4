@@ -1761,7 +1761,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__wb_valid_r = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_ifu__DOT__now_pc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__rdata = VL_RAND_RESET_Q(64);
-    vlSelf->top__DOT__my_ifu__DOT__valid_dnpc = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__my_ifu__DOT__valid_dnpc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__ID_Reg__DOT__valid_r = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__ID_Reg__DOT__instr_r = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__ID_Reg__DOT__pc_r = VL_RAND_RESET_Q(64);

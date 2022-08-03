@@ -870,7 +870,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
             : 0U);
     vlSelf->top__DOT__my_ifu__DOT__now_pc = ((IData)(vlSelf->rst)
                                               ? 0x80000000ULL
-                                              : (QData)((IData)(vlSelf->top__DOT__my_ifu__DOT__valid_dnpc)));
+                                              : vlSelf->top__DOT__my_ifu__DOT__valid_dnpc);
     if (vlSelf->top__DOT__ex_flush) {
         vlSelf->top__DOT__EX_Reg__DOT__rd_r = 0U;
     } else if (vlSelf->top__DOT__ex_en) {
@@ -2220,20 +2220,18 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
                                                 << 8U) 
                                                | vlSymsp->TOP__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.__PVT__ff
                                                [0U]))))));
-    vlSelf->top__DOT__my_ifu__DOT__valid_dnpc = (1U 
-                                                 & (IData)(
-                                                           ((IData)(vlSelf->top__DOT__running_r)
-                                                             ? 
-                                                            (4ULL 
-                                                             + vlSelf->top__DOT__my_ifu__DOT__now_pc)
-                                                             : 
-                                                            (0xfffffffffffffffeULL 
-                                                             & ((IData)(vlSelf->top__DOT__id_Ecall)
-                                                                 ? vlSelf->top__DOT__csrfile__DOT__mtvec
-                                                                 : 
-                                                                ((IData)(vlSelf->top__DOT__id_Mret)
-                                                                  ? vlSelf->top__DOT__csrfile__DOT__mepc
-                                                                  : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc))))));
+    vlSelf->top__DOT__my_ifu__DOT__valid_dnpc = ((IData)(vlSelf->top__DOT__running_r)
+                                                  ? 
+                                                 (4ULL 
+                                                  + vlSelf->top__DOT__my_ifu__DOT__now_pc)
+                                                  : 
+                                                 (0xfffffffffffffffeULL 
+                                                  & ((IData)(vlSelf->top__DOT__id_Ecall)
+                                                      ? vlSelf->top__DOT__csrfile__DOT__mtvec
+                                                      : 
+                                                     ((IData)(vlSelf->top__DOT__id_Mret)
+                                                       ? vlSelf->top__DOT__csrfile__DOT__mepc
+                                                       : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc))));
 }
 
 void Vtop_ysyx_220053_Adder32___sequent__TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low__1(Vtop_ysyx_220053_Adder32* vlSelf);

@@ -77,7 +77,6 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__load_use;
         CData/*0:0*/ top__DOT__is_Csrwen;
         CData/*0:0*/ top__DOT__wb_valid_r;
-        CData/*0:0*/ top__DOT__my_ifu__DOT__valid_dnpc;
         CData/*0:0*/ top__DOT__ID_Reg__DOT__valid_r;
         CData/*2:0*/ top__DOT__my_idu__DOT__ExtOp;
         CData/*2:0*/ top__DOT__my_idu__DOT__Branch;
@@ -104,9 +103,9 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SUBctr;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SIGctr;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__ALctr;
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SFTctr;
     };
     struct {
-        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SFTctr;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__Wctr;
         CData/*3:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
         CData/*0:0*/ top__DOT__M_Reg__DOT__valid_r;
@@ -149,6 +148,7 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__forward_data;
         QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
         QData/*63:0*/ top__DOT__my_ifu__DOT__rdata;
+        QData/*63:0*/ top__DOT__my_ifu__DOT__valid_dnpc;
         QData/*63:0*/ top__DOT__ID_Reg__DOT__pc_r;
         QData/*63:0*/ top__DOT__my_idu__DOT__alu_inA;
         QData/*63:0*/ top__DOT__my_idu__DOT__na_alu__DOT__adderres;

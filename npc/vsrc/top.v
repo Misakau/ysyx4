@@ -206,6 +206,7 @@ module top(
       .CsrId(id_CsrId),
       .Ebreak(id_Ebreak_o)
       );
+      id_flush = rst;
       wire is_Csrwen = (~id_flush) & id_Csrwen;
       assign id_block = load_use;//id_Ebreak_o;   //load_use
       assign id_busa_o = (rs1_need == 1'b0) ? id_busa : forward_data;
@@ -273,6 +274,7 @@ module top(
       .imm(ex_imm_i),
       .ALURes(ex_ALURes_o)
     );
+    assign ex_flush = rst;
     assign m_en = ~(m_block | wb_block);//还未处理阻塞
     assign m_valid_i = rst;//还未处理冒险
     /////////////////////////////
@@ -324,6 +326,7 @@ module top(
       .csrres(m_Csrres_i),
       .rfdata(m_rfdata_o)
     );
+    assign m_flush = rst;
     assign wb_en = ~wb_block;//还未处理阻塞
     assign wb_valid_i = rst;//还未处理冒险
     /////////////////////////////
@@ -351,6 +354,7 @@ module top(
     .Ebreak_o(wb_Ebreak_i)
     );
     ///////////WB////////////////
+    assign wb_flush = rst;
     wire is_wen = (~wb_flush) & wb_wen_i;
     ///commit a finish instr
     reg wb_valid_r;
