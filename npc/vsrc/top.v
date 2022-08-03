@@ -277,7 +277,7 @@ module top(
     assign ex_flush = rst;
     assign ex_block = 1'b0;
     assign m_en = ~(m_block | wb_block);//还未处理阻塞
-    assign m_valid_i = rst;//还未处理冒险
+    assign m_valid_i = ex_valid_o & (~ex_block);//还未处理冒险
     /////////////////////////////
     ysyx_220053_M_Reg M_Reg(
 //control
@@ -330,7 +330,7 @@ module top(
     assign m_flush = rst;
     assign m_block = 1'b0;
     assign wb_en = ~wb_block;//还未处理阻塞
-    assign wb_valid_i = rst;//还未处理冒险
+    assign wb_valid_i = m_valid_o & (~m_block);//还未处理冒险
     /////////////////////////////
     ysyx_220053_WB_Reg WB_Reg(
 //control
