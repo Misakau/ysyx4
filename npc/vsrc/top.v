@@ -90,7 +90,7 @@ module top(
     wire ebreak_commit;
     wire running;
     /////////////////hazard and block/////////////
-    wire id_use_rd, rs1_need, rs2_need;
+    wire id_use_rd, ex_has_rd, m_has_rd, wb_has_rd, rs1_need, rs2_need;
     wire [6:0] id_op = id_instr_o[6:0];
     wire [6:0] ex_op = ex_instr_o[6:0];
     wire [6:0] m_op = m_instr_o[6:0];
