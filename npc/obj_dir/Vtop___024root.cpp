@@ -2132,16 +2132,16 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
                                                [0U]))))));
     vlSelf->top__DOT__my_ifu__DOT__valid_dnpc = ((IData)(vlSelf->top__DOT__running_r)
                                                   ? 
-                                                 (4ULL 
-                                                  + vlSelf->top__DOT__my_ifu__DOT__now_pc)
-                                                  : 
                                                  (0xfffffffffffffffeULL 
                                                   & ((IData)(vlSelf->top__DOT__id_Ecall)
                                                       ? vlSelf->top__DOT__csrfile__DOT__mtvec
                                                       : 
                                                      ((IData)(vlSelf->top__DOT__id_Mret)
                                                        ? vlSelf->top__DOT__csrfile__DOT__mepc
-                                                       : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc))));
+                                                       : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc)))
+                                                  : 
+                                                 (4ULL 
+                                                  + vlSelf->top__DOT__my_ifu__DOT__now_pc));
 }
 
 VL_INLINE_OPT void Vtop___024root___combo__TOP__8(Vtop___024root* vlSelf) {

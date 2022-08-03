@@ -2831,13 +2831,13 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullQData(oldp+119,(vlSelf->top__DOT__my_ifu__DOT__rdata),64);
         tracep->fullQData(oldp+121,((4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc)),64);
         tracep->fullQData(oldp+123,(((IData)(vlSelf->top__DOT__running_r)
-                                      ? (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc)
-                                      : (0xfffffffffffffffeULL 
+                                      ? (0xfffffffffffffffeULL 
                                          & ((IData)(vlSelf->top__DOT__id_Ecall)
                                              ? vlSelf->top__DOT__csrfile__DOT__mtvec
                                              : ((IData)(vlSelf->top__DOT__id_Mret)
                                                  ? vlSelf->top__DOT__csrfile__DOT__mepc
-                                                 : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc))))),64);
+                                                 : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc)))
+                                      : (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc))),64);
         tracep->fullCData(oldp+125,(vlSelf->top__DOT__my_idu__DOT__ExtOp),3);
         tracep->fullCData(oldp+126,(vlSelf->top__DOT__my_idu__DOT__Branch),3);
         tracep->fullQData(oldp+127,(((IData)(vlSelf->top__DOT__id_Ecall)

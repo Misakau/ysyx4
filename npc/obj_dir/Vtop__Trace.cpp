@@ -204,13 +204,13 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
             tracep->chgQData(oldp+118,(vlSelf->top__DOT__my_ifu__DOT__rdata),64);
             tracep->chgQData(oldp+120,((4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc)),64);
             tracep->chgQData(oldp+122,(((IData)(vlSelf->top__DOT__running_r)
-                                         ? (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc)
-                                         : (0xfffffffffffffffeULL 
+                                         ? (0xfffffffffffffffeULL 
                                             & ((IData)(vlSelf->top__DOT__id_Ecall)
                                                 ? vlSelf->top__DOT__csrfile__DOT__mtvec
                                                 : ((IData)(vlSelf->top__DOT__id_Mret)
                                                     ? vlSelf->top__DOT__csrfile__DOT__mepc
-                                                    : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc))))),64);
+                                                    : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc)))
+                                         : (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc))),64);
             tracep->chgCData(oldp+124,(vlSelf->top__DOT__my_idu__DOT__ExtOp),3);
             tracep->chgCData(oldp+125,(vlSelf->top__DOT__my_idu__DOT__Branch),3);
             tracep->chgQData(oldp+126,(((IData)(vlSelf->top__DOT__id_Ecall)
