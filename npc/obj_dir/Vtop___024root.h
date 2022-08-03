@@ -40,6 +40,7 @@ VL_MODULE(Vtop___024root) {
     // LOCAL SIGNALS
     // Anonymous structures to workaround compiler member-count bugs
     struct {
+        CData/*0:0*/ top__DOT__if_block;
         CData/*4:0*/ top__DOT__id_rs1;
         CData/*0:0*/ top__DOT__id_ALUSrcA_o;
         CData/*0:0*/ top__DOT__id_MemToReg_o;
@@ -56,7 +57,6 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__id_Mret;
         CData/*0:0*/ top__DOT__id_Csrwen;
         CData/*0:0*/ top__DOT__running_r;
-        CData/*0:0*/ top__DOT__running;
         CData/*0:0*/ top__DOT__id_use_rd;
         CData/*0:0*/ top__DOT__id_ex_hazard;
         CData/*0:0*/ top__DOT__id_m_hazard;
@@ -176,7 +176,7 @@ VL_MODULE(Vtop___024root) {
     CData/*0:0*/ __Vclklast__TOP__clk;
     QData/*63:0*/ __Vtask_pmem_read__1__rdata;
     QData/*63:0*/ __Vtask_pmem_read__3__rdata;
-    VlUnpacked<CData/*0:0*/, 4> __Vm_traceActivity;
+    VlUnpacked<CData/*0:0*/, 5> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
     Vtop__Syms* vlSymsp;  // Symbol table
