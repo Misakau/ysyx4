@@ -363,15 +363,19 @@ module top(
     ///commit a finish instr
     reg wb_valid_r;
     wire cclk = ~clk;
+    reg [63:0] wb_pc_r;
+    reg [31:0] wb_instr_r;
     always@(posedge cclk) begin
         if(wb_flush)begin 
             wb_valid_r <= 1'b0;
+            wb_pc_r    <= 64'b0;
+            wb_instr_r <= 32'b0;
         end
         else wb_valid_r <= wb_valid_o;
     end
     assign wb_commit = wb_valid_r;
-    assign wb_pc = wb_pc_o;
-    assign wb_instr = wb_instr_o;
+    assign wb_pc = wb_pc_r;
+    assign wb_instr = wb_instr_r;
     assign ebreak_commit = wb_Ebreak_i;
     always@(*) begin
       if(ebreak_commit) c_trap(1);
