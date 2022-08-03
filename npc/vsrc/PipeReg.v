@@ -283,7 +283,7 @@ module ysyx_220053_WB_Reg(
     reg wen_r;
     reg [63:0] wdata_r;
     reg [4:0] waddr_r;
-
+    reg Ebreak_r;
     //control_r
     always@(posedge clk) begin
         if(flush)begin
