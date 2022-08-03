@@ -10,7 +10,7 @@ module ysyx_220053_IDU(
     input  [63:0] busa, busb,
     input  [63:0] mtvec, mepc,
 
-    output [63:0] dnpc
+    output [63:0] dnpc,
     output [6:0]  op,
     output [4:0]  rd,
     output [4:0]  rs1,
@@ -41,7 +41,6 @@ module ysyx_220053_IDU(
                                  .Ecall(Ecall), .Mret(Mret), .Csrwen(Csrwen), .CsrToReg(CsrToReg), .CsrOp(CsrOp), .Ebreak(Ebreak)
                                  );
     wire ecall = Ecall;
-    wire [11:0] CsrId;
     assign CsrId = (ecall == 0) ? imm[11:0] : 12'h342;//ecall mcause
     wire [63:0] addr_res;
     wire [63:0] alu_inA, alu_inB;

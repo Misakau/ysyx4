@@ -14,7 +14,9 @@ module top(
   input rst,
   output [31:0] instr,
   output [63:0] pc,
-  output wb_commit
+  output wb_commit,
+  output [63:0] wb_pc,
+  output [31:0] wb_instr
 );
     our s;
     /////////////wires///////////////
@@ -29,7 +31,7 @@ module top(
     wire if_block, id_block, ex_block, m_block, wb_block;
     /////////////////ID////////////////////////////////
     wire [63:0] id_csrres_o;
-    wire [4:0]  id_rd_o;//id 段输出
+    wire [4:0]  id_rd_o, id_rs1, id_rs2;//id 段输出
     wire [63:0] id_busa_o, id_busb_o;
     wire [63:0] id_imm_o;
     wire id_ALUSrcA_o;
@@ -204,6 +206,7 @@ module top(
       .CsrId(id_CsrId),
       .Ebreak(id_Ebreak_o)
       );
+      wire is_Csrwen = (~id_flush) & id_Csrwen;
       assign id_block = load_use;//id_Ebreak_o;   //load_use
       assign id_busa_o = (rs1_need == 1'b0) ? id_busa : forward_data;
       assign id_busb_o = (rs2_need == 1'b0) ? id_busb : forward_data;
@@ -348,7 +351,7 @@ module top(
     .Ebreak_o(wb_Ebreak_i),
     );
     ///////////WB////////////////
-    wire is_wen = (~m_flush) & wb_wen_i;
+    wire is_wen = (~wb_flush) & wb_wen_i;
     ///commit a finish instr
     reg wb_valid_r;
     always@(posedge clk) begin
@@ -357,7 +360,9 @@ module top(
         }
         else wb_valid_r <= wb_valid_o;
     end
-    wire wb_commit = wb_valid_r;
+    assign wb_commit = wb_valid_r;
+    assign wb_pc = wb_pc_o;
+    assign wb_instr = wb_instr_o;
     assign ebreak_commit = wb_Ebreak_i;
     always@(*) begin
       if(ebreak_commit) c_trap(1);
@@ -374,7 +379,7 @@ module top(
                                             );
     //////////Csr////////////////
     //Csrwen:阻塞时不能写,还没完成这里的逻辑，阻塞和冒险判断放在top里
-    ysyx_220053_CSR csrfile( .clk(clk), .Csrwen(id_Csrwen), .CsrOp(id_CsrOp), .CsrId(id_CsrId), .datain(id_busa),
+    ysyx_220053_CSR csrfile( .clk(clk), .Csrwen(is_Csrwen), .CsrOp(id_CsrOp), .CsrId(id_CsrId), .datain(id_busa),
                              .mepc_o(id_mepc), .csrres(id_csrres_o), .mtvec_o(id_mtvec), .Ecall(id_Ecall), .epc_in(id_pc_o));
     initial begin
         $dumpfile("logs/vlt_dump.vcd");
