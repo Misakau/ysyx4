@@ -87,6 +87,55 @@ module top(
     reg running_r;
     wire ebreak_commit;
     wire running;
+    /////////////////hazard and block/////////////
+    wire id_use_rd, rs1_need, rs2_need;
+    wire [6:0] id_op = id_instr_o[6:0];
+    wire [6:0] ex_op = ex_instr_o[6:0];
+    wire [6:0] m_op = m_instr_o[6:0];
+    wire [6:0] wb_op = wb_instr_o[6:0];
+    wire [2:0] id_func3 = id_instr_o[14:12];
+    wire [6:0] id_func7 = id_instr_o[31:25];
+    assign id_use_rd = id_valid_o & (~(id_op == 7'b0110111 || id_op == 7'b0010111 || id_op == 7'b1101111 || id_op == 7'b1110011));
+    assign ex_has_rd = ex_valid_o & (ex_op == 7'b1100011 || ex_op == 7'b0100011 || ex_op == 7'b1110011);
+    assign m_has_rd = m_valid_o & (m_op == 7'b1100011 || m_op == 7'b0100011 || m_op == 7'b1110011);
+    assign wb_has_rd = wb_valid_o & (wb_op == 7'b1100011 || wb_op == 7'b0100011 || wb_op == 7'b1110011);
+    
+    reg id_ex_hazard, id_m_hazard, id_wb_hazard;
+    always@(*) begin
+      if( id_use_rd && ex_has_rd && id_rs1 != 5'b0 && id_rs2 != 5'b0 && (id_rs1 == ex_rd_i || id_rs2 == ex_rd_i)) begin
+        id_ex_hazard = 1'b1;
+      end
+      else id_ex_hazard = 1'b0;
+    end
+    always@(*) begin
+      if(id_use_rd && m_has_rd && id_rs1 != 5'b0 && id_rs2 != 5'b0 && (id_rs1 == m_rd_i || id_rs2 == m_rd_i)) begin
+        id_m_hazard = 1'b1;
+      end
+      else id_m_hazard = 1'b0;
+    end
+    always@(*) begin
+      if(id_use_rd && wb_has_rd && id_rs1 != 5'b0 && id_rs2 != 5'b0 && (id_rs1 == wb_rd_i || id_rs2 == wb_rd_i)) begin
+        id_wb_hazard = 1'b1;
+      end
+      else id_wb_hazard = 1'b0;
+    end
+    reg load_use;
+    always@(*) begin//load-use
+      if(id_ex_hazard && ex_op == 7'b0000011) begin
+        load_use = 1'b1;
+      end
+      else load_use = 1'b0;
+    end
+    wire hazard = id_ex_hazard | id_m_hazard | id_wb_hazard;
+    wire rs1_need = (id_ex_hazard && id_rs1 == ex_rd_i) || (id_m_hazard && id_rs1 == m_rd_i) || (id_wb_hazard && id_rs1 == wb_rd_i);
+    wire rs2_need = (id_ex_hazard && id_rs2 == ex_rd_i) || (id_m_hazard && id_rs2 == m_rd_i) || (id_wb_hazard && id_rs2 == wb_rd_i);
+    reg [63:0] forward_data;
+    always@(*) begin
+      if(id_ex_hazard) forward_data = (ex_CsrToReg_i == 1'b0) ? ex_ALURes_o : ex_csrres_i;
+      else if(id_m_hazard) forward_data = m_rfdata_o;
+      else if(id_wb_hazard) forward_data = wb_wdata_i;
+      else forward_data = 64'b0;
+    end
     /////////////IF/////////////////
     ysyx_220053_IFU my_ifu(
       .clk(clk),
@@ -155,17 +204,9 @@ module top(
       .CsrId(id_CsrId),
       .Ebreak(id_Ebreak_o)
       );
-      reg load_use;
-      always@(*) begin
-        if(id_valid_o && ex_valid_o && id_rs1 != 5'b0 && id_rs2 != 5'b0 && (id_rs1 == ex_rd_i || id_rs2 == ex_rd_i)) begin
-          load_use = 1'b1;
-        end
-        else load_use = 1'b0;
-      end
-      
       assign id_block = load_use;//id_Ebreak_o;   //load_use
-      assign id_busa_o = id_busa;
-      assign id_busb_o = id_busb;
+      assign id_busa_o = (rs1_need == 1'b0) ? id_busa : forward_data;
+      assign id_busb_o = (rs2_need == 1'b0) ? id_busb : forward_data;
       assign ex_en = ~(ex_block | m_block | wb_block);//还未处理阻塞
       assign ex_valid_i = id_valid_o & (~id_block);//还未处理冒险
     /////////////////////////////
