@@ -116,7 +116,7 @@ module top(
       else id_m_hazard = 1'b0;
     end
     always@(*) begin
-      if(id_use_rd && wb_has_rd && id_rs1 != 5'b0 && id_rs2 != 5'b0 && (id_rs1 == wb_rd_i || id_rs2 == wb_rd_i)) begin
+      if(id_use_rd && wb_has_rd && id_rs1 != 5'b0 && id_rs2 != 5'b0 && (id_rs1 == wb_waddr_i || id_rs2 == wb_waddr_i)) begin
         id_wb_hazard = 1'b1;
       end
       else id_wb_hazard = 1'b0;
@@ -129,8 +129,8 @@ module top(
       else load_use = 1'b0;
     end
     wire hazard = id_ex_hazard | id_m_hazard | id_wb_hazard;
-    wire rs1_need = (id_ex_hazard && id_rs1 == ex_rd_i) || (id_m_hazard && id_rs1 == m_rd_i) || (id_wb_hazard && id_rs1 == wb_rd_i);
-    wire rs2_need = (id_ex_hazard && id_rs2 == ex_rd_i) || (id_m_hazard && id_rs2 == m_rd_i) || (id_wb_hazard && id_rs2 == wb_rd_i);
+    wire rs1_need = (id_ex_hazard && id_rs1 == ex_rd_i) || (id_m_hazard && id_rs1 == m_rd_i) || (id_wb_hazard && id_rs1 == wb_waddr_i);
+    wire rs2_need = (id_ex_hazard && id_rs2 == ex_rd_i) || (id_m_hazard && id_rs2 == m_rd_i) || (id_wb_hazard && id_rs2 == wb_waddr_i);
     reg [63:0] forward_data;
     always@(*) begin
       if(id_ex_hazard) forward_data = (ex_CsrToReg_i == 1'b0) ? ex_ALURes_o : ex_csrres_i;
