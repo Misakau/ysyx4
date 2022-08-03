@@ -264,9 +264,9 @@ int main(int argc, char**argv, char**env) {
               } 
             #endif
             if(is_diff){
-              if(top->clk == 1) difftest_exec(1);
+              if(top->clk == 1 && top->wb_commit == 1) difftest_exec(1);
               difftest_regcpy(&nemu, 1);
-              if(top->pc != nemu.pc){
+              if(top->wb_pc != nemu.pc){
                 printf(ASNI_FG_RED "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, top->pc);
                 EXIT = 1;break;
               }
@@ -326,9 +326,9 @@ static void npc_exec(uint64_t n){
             #endif
             sdb_top->eval();
             if(is_diff){
-              if(sdb_top->clk == 1) difftest_exec(1);
+              if(sdb_top->clk == 1  && sdb_top->wb_commit == 1) difftest_exec(1);
               difftest_regcpy(&nemu, 1);
-              if(sdb_top->pc != nemu.pc){
+              if(sdb_top->wb_pc != nemu.pc){
                 printf(ASNI_FG_RED "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, sdb_top->pc);
                 EXIT = 1;break;
               }

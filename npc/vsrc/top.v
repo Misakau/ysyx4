@@ -14,7 +14,9 @@ module top(
   input rst,
   output [31:0] instr,
   output [63:0] pc,
-  output wb_commit
+  output wb_commit,
+  output [63:0] wb_pc,
+  output [31:0] wb_instr
 );
     our s;
     /////////////wires///////////////
@@ -317,6 +319,8 @@ module top(
         else wb_valid_r <= wb_valid_o;
     end
     wire wb_commit = wb_valid_r;
+    wire wb_pc = wb_pc_o;
+    wire wb_instr = wb_instr_o;
     assign ebreak_commit = wb_Ebreak_i;
     always@(*) begin
       if(ebreak_commit) c_trap(1);
