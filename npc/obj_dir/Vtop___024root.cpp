@@ -1621,9 +1621,7 @@ VL_INLINE_OPT void Vtop___024root___settle__TOP__7(Vtop___024root* vlSelf) {
                                                      ((IData)(vlSelf->top__DOT__id_Mret)
                                                        ? vlSelf->top__DOT__csrfile__DOT__mepc
                                                        : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc)))
-                                                  : 
-                                                 (4ULL 
-                                                  + vlSelf->top__DOT__my_ifu__DOT__now_pc));
+                                                  : vlSelf->top__DOT__my_ifu__DOT__now_pc);
 }
 
 void Vtop___024unit____Vdpiimwrap_pmem_write_TOP____024unit(QData/*63:0*/ waddr, QData/*63:0*/ wdata, CData/*7:0*/ wmask);
