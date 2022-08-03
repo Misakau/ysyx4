@@ -193,9 +193,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     if (vlSelf->top__DOT__m_flush) {
         vlSelf->top__DOT__M_Reg__DOT__wdata_r = 0ULL;
     } else if (vlSelf->top__DOT__m_en) {
-        vlSelf->top__DOT__M_Reg__DOT__wdata_r = (QData)((IData)(
-                                                                (0x1fU 
-                                                                 & (IData)(vlSelf->top__DOT__EX_Reg__DOT__busb_r))));
+        vlSelf->top__DOT__M_Reg__DOT__wdata_r = vlSelf->top__DOT__EX_Reg__DOT__busb_r;
     }
     vlSelf->top__DOT__running_r = __Vdly__top__DOT__running_r;
     if (__Vdlyvset__top__DOT__regfile__DOT__rf__v0) {
@@ -695,9 +693,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                                ? vlSelf->top__DOT__EX_Reg__DOT__imm_r
                                                : ((0U 
                                                    == (IData)(vlSelf->top__DOT__EX_Reg__DOT__ALUSrcB_r))
-                                                   ? (QData)((IData)(
-                                                                     (0x1fU 
-                                                                      & (IData)(vlSelf->top__DOT__EX_Reg__DOT__busb_r))))
+                                                   ? vlSelf->top__DOT__EX_Reg__DOT__busb_r
                                                    : 4ULL));
     if (vlSelf->top__DOT__wb_flush) {
         vlSelf->top__DOT__WB_Reg__DOT__waddr_r = 0U;
@@ -755,9 +751,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         = (vlSelf->top__DOT__my_exu__DOT__alu_inB ^ 
            (- (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SUBctr))));
     vlSelf->top__DOT__my_exu__DOT__alu_inA = ((IData)(vlSelf->top__DOT__EX_Reg__DOT__ALUSrcA_r)
-                                               ? (QData)((IData)(
-                                                                 (0x1fU 
-                                                                  & (IData)(vlSelf->top__DOT__EX_Reg__DOT__busa_r))))
+                                               ? vlSelf->top__DOT__EX_Reg__DOT__busa_r
                                                : vlSelf->top__DOT__EX_Reg__DOT__pc_r);
     if (vlSelf->rst) {
         vlSelf->top__DOT__ID_Reg__DOT__pc_r = 0ULL;

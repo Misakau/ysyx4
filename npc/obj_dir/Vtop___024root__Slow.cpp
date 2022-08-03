@@ -113,14 +113,10 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                ? vlSelf->top__DOT__EX_Reg__DOT__imm_r
                                                : ((0U 
                                                    == (IData)(vlSelf->top__DOT__EX_Reg__DOT__ALUSrcB_r))
-                                                   ? (QData)((IData)(
-                                                                     (0x1fU 
-                                                                      & (IData)(vlSelf->top__DOT__EX_Reg__DOT__busb_r))))
+                                                   ? vlSelf->top__DOT__EX_Reg__DOT__busb_r
                                                    : 4ULL));
     vlSelf->top__DOT__my_exu__DOT__alu_inA = ((IData)(vlSelf->top__DOT__EX_Reg__DOT__ALUSrcA_r)
-                                               ? (QData)((IData)(
-                                                                 (0x1fU 
-                                                                  & (IData)(vlSelf->top__DOT__EX_Reg__DOT__busa_r))))
+                                               ? vlSelf->top__DOT__EX_Reg__DOT__busa_r
                                                : vlSelf->top__DOT__EX_Reg__DOT__pc_r);
     vlSelf->top__DOT__m_en = (1U & (~ ((IData)(vlSelf->top__DOT__m_block) 
                                        | (IData)(vlSelf->top__DOT__wb_block))));

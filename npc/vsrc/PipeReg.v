@@ -52,7 +52,8 @@ module ysyx_220053_EX_Reg(
     output [63:0] pc_o,
     output [31:0] instr_o,
 
-    input [4:0]  rd_i, busa_i, busb_i,
+    input [4:0]  rd_i,
+    input [63:0] busa_i, busb_i,
     input [63:0] imm_i,
     input ALUSrcA_i, MemToReg_i, MemWen_i,
     input [1:0] ALUSrcB_i,
