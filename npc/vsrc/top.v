@@ -161,7 +161,7 @@ module top(
     assign running = running_r;
     assign pc = if_pc_o;
     assign instr = if_instr_o;
-    assign if_block = id_Ebreak_o;
+    assign if_block = id_Ebreak_o & ~running;
     assign id_en = ~(id_block | ex_block | m_block | wb_block);
     assign id_valid_i = ~(rst | if_block);
     /////////////////////////////////
