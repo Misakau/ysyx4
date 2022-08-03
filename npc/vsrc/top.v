@@ -146,7 +146,8 @@ module top(
       .pc(if_pc_o),
       .instr_o(if_instr_o),
       .running(running),
-      .dnpc_valid(id_valid_o)
+      .dnpc_valid(id_valid_o),
+      .block(if_block)
     );
     always@(posedge clk) begin
       if(rst) begin
@@ -208,7 +209,7 @@ module top(
       .Ebreak(id_Ebreak_o)
       );
       assign id_flush = rst;
-      wire is_Csrwen = (~id_flush) & id_Csrwen;
+      wire is_Csrwen = (~id_flush) & id_Csrwen & id_valid_o;
       assign id_block = load_use;//id_Ebreak_o;   //load_use
       assign id_busa_o = (rs1_need == 1'b0) ? id_busa : forward_data;
       assign id_busb_o = (rs2_need == 1'b0) ? id_busb : forward_data;
@@ -321,13 +322,14 @@ module top(
       .rst(rst),
       .MemOp(m_MemOp_i),
       .MemToReg(m_MemToReg_i),
-      .MemWen(m_MemWen_i),
+      .MemWen(is_men),
       .CsrToReg(m_CsrToReg_i),
       .raddr(m_raddr_i),//load指令的读取地址，save指令的waddr，其他指令的ALURes
       .wdata(m_wdata_i),
       .csrres(m_Csrres_i),
       .rfdata(m_rfdata_o)
     );
+    wire is_men = m_MemWen_i & (~m_flush) & m_valid_o;
     assign m_flush = rst;
     assign m_block = 1'b0;
     assign wb_en = ~wb_block;//还未处理阻塞
@@ -359,7 +361,7 @@ module top(
     ///////////WB////////////////
     assign wb_block = 1'b0;
     assign wb_flush = rst;
-    wire is_wen = (~wb_flush) & wb_wen_i;
+    wire is_wen = (~wb_flush) & wb_wen_i & wb_valid_o;
     ///commit a finish instr
     reg wb_valid_r;
     reg [63:0] wb_pc_r;
