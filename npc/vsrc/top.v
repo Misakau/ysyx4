@@ -307,7 +307,7 @@ module top(
     .MemWen_o(m_MemWen_i),
     .wdata_o(m_wdata_i),
     .Csrres_o(m_Csrres_i),
-    .MemToReg_o(MemToReg_i),
+    .MemToReg_o(m_MemToReg_i),
     .CsrToReg_o(m_CsrToReg_i),
     .Ebreak_o(m_Ebreak_i)
   );
@@ -343,7 +343,7 @@ module top(
     .wen_i(m_wen_i),
     .wdata_i(m_rfdata_o),
     .waddr_i(m_rd_i),
-    .Ebreak_i(m_Ebreak_o),
+    .Ebreak_i(m_Ebreak_i),
 
     .wen_o(wb_wen_i),
     .wdata_o(wb_wdata_i),
