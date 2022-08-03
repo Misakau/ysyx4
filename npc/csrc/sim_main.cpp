@@ -326,7 +326,7 @@ static void npc_exec(uint64_t n){
                 if(log_ptr) fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
               }
               if(sdb_top->clk == 1 && sdb_top->wb_commit == 1){
-                print("clk = %x\n",sdb_top->clk);
+                printf("clk = %x\n",sdb_top->clk);
                 if(n != -1) printf("wb_commit: pc = 0x%016lx, instr = %08x\n", sdb_top->wb_pc, sdb_top->wb_instr);
                 //if(log_ptr){fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);}
                 if(log_ptr) fprintf(log_ptr, "wb_commit: pc = 0x%016lx, instr = %08x\n", sdb_top->wb_pc, sdb_top->wb_instr);
