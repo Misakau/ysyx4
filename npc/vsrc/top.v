@@ -143,7 +143,7 @@ module top(
       .clk(clk),
       .rst(rst),
       .dnpc(id_dnpc),
-      .pc(if_pc_o),
+      .now_pc(if_pc_o),
       .instr_o(if_instr_o),
       .running(running),
       .dnpc_valid(id_valid_o),
