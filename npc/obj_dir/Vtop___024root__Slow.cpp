@@ -1581,7 +1581,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                  [vlSelf->top__DOT__id_rs1]);
     vlSelf->top__DOT__m_rfdata_o = ((IData)(vlSelf->top__DOT__M_Reg__DOT__CsrToReg_r)
                                      ? vlSelf->top__DOT__M_Reg__DOT__Csrres_r
-                                     : ((IData)(vlSelf->top__DOT__m_MemToReg_i)
+                                     : ((IData)(vlSelf->top__DOT__M_Reg__DOT__MemToReg_r)
                                          ? ((4U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r))
                                              ? ((2U 
                                                  & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r))
@@ -1753,7 +1753,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__id_busb = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__id_CsrId = VL_RAND_RESET_I(12);
     vlSelf->top__DOT__m_ALURes_i = VL_RAND_RESET_Q(64);
-    vlSelf->top__DOT__m_MemToReg_i = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__m_rfdata_o = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__running_r = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__id_use_rd = VL_RAND_RESET_I(1);
@@ -1764,7 +1763,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__forward_data = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__is_Csrwen = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__wb_valid_r = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__m_Ebreak_o = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_ifu__DOT__now_pc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__rdata = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__valid_dnpc = VL_RAND_RESET_I(1);

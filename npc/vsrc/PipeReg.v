@@ -104,8 +104,8 @@ module ysyx_220053_EX_Reg(
             instr_r    <= 32'b0;
             pc_r       <= 64'b0;
             rd_r       <= 5'b0;
-            busa_r     <= 5'b0;
-            busb_r     <= 5'b0;
+            busa_r     <= 64'b0;
+            busb_r     <= 64'b0;
             imm_r      <= 64'b0;
             ALUSrcA_r  <= 1'b0;
             MemToReg_r <= 1'b0;

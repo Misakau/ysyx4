@@ -69,7 +69,6 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__id_Ecall;
         CData/*0:0*/ top__DOT__id_Mret;
         CData/*0:0*/ top__DOT__id_Csrwen;
-        CData/*0:0*/ top__DOT__m_MemToReg_i;
         CData/*0:0*/ top__DOT__running_r;
         CData/*0:0*/ top__DOT__id_use_rd;
         CData/*0:0*/ top__DOT__id_ex_hazard;
@@ -78,7 +77,6 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__load_use;
         CData/*0:0*/ top__DOT__is_Csrwen;
         CData/*0:0*/ top__DOT__wb_valid_r;
-        CData/*0:0*/ top__DOT__m_Ebreak_o;
         CData/*0:0*/ top__DOT__my_ifu__DOT__valid_dnpc;
         CData/*0:0*/ top__DOT__ID_Reg__DOT__valid_r;
         CData/*2:0*/ top__DOT__my_idu__DOT__ExtOp;
@@ -104,10 +102,10 @@ VL_MODULE(Vtop___024root) {
         CData/*1:0*/ top__DOT__EX_Reg__DOT__MulOp_r;
         CData/*0:0*/ top__DOT__EX_Reg__DOT__Ebreak_r;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SUBctr;
-    };
-    struct {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SIGctr;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__ALctr;
+    };
+    struct {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SFTctr;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__Wctr;
         CData/*3:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
@@ -170,10 +168,10 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderb;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulresW;
         QData/*63:0*/ top__DOT__M_Reg__DOT__pc_r;
-    };
-    struct {
         QData/*63:0*/ top__DOT__M_Reg__DOT__raddr_r;
         QData/*63:0*/ top__DOT__M_Reg__DOT__wdata_r;
+    };
+    struct {
         QData/*63:0*/ top__DOT__M_Reg__DOT__Csrres_r;
         QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__dataout;
         QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__datad;
