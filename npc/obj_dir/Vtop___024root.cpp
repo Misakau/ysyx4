@@ -99,11 +99,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                     & (IData)(vlSelf->top__DOT__WB_Reg__DOT__valid_r));
     if (vlSelf->rst) {
         __Vdly__top__DOT__running_r = 0U;
-    } else if (vlSelf->top__DOT__running_r) {
-        if (vlSelf->top__DOT__WB_Reg__DOT__Ebreak_r) {
-            __Vdly__top__DOT__running_r = 0U;
-        }
-    } else {
+    } else if (vlSelf->top__DOT__WB_Reg__DOT__Ebreak_r) {
+        __Vdly__top__DOT__running_r = 0U;
+    } else if ((1U & (~ (IData)(vlSelf->top__DOT__running_r)))) {
         __Vdly__top__DOT__running_r = 1U;
     }
     vlSelf->top__DOT__EX_Reg__DOT__ALUSrcA_r = ((~ (IData)(vlSelf->rst)) 
@@ -2132,18 +2130,20 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
                                                 << 8U) 
                                                | vlSymsp->TOP__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.__PVT__ff
                                                [0U]))))));
-    vlSelf->top__DOT__my_ifu__DOT__valid_dnpc = ((IData)(vlSelf->top__DOT__running_r)
+    vlSelf->top__DOT__my_ifu__DOT__valid_dnpc = ((1U 
+                                                  & ((~ (IData)(vlSelf->top__DOT__running_r)) 
+                                                     | (~ (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r))))
                                                   ? 
+                                                 (4ULL 
+                                                  + vlSelf->top__DOT__my_ifu__DOT__now_pc)
+                                                  : 
                                                  (0xfffffffffffffffeULL 
                                                   & ((IData)(vlSelf->top__DOT__id_Ecall)
                                                       ? vlSelf->top__DOT__csrfile__DOT__mtvec
                                                       : 
                                                      ((IData)(vlSelf->top__DOT__id_Mret)
                                                        ? vlSelf->top__DOT__csrfile__DOT__mepc
-                                                       : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc)))
-                                                  : 
-                                                 (4ULL 
-                                                  + vlSelf->top__DOT__my_ifu__DOT__now_pc));
+                                                       : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc))));
 }
 
 VL_INLINE_OPT void Vtop___024root___combo__TOP__8(Vtop___024root* vlSelf) {

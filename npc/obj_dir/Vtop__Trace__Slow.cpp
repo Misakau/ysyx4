@@ -154,6 +154,7 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBit(c+2066,"top my_ifu clk", false,-1);
         tracep->declBit(c+2067,"top my_ifu rst", false,-1);
         tracep->declBit(c+101,"top my_ifu running", false,-1);
+        tracep->declBit(c+20,"top my_ifu dnpc_valid", false,-1);
         tracep->declQuad(c+49,"top my_ifu dnpc", false,-1, 63,0);
         tracep->declQuad(c+6,"top my_ifu pc", false,-1, 63,0);
         tracep->declBus(c+1,"top my_ifu instr_o", false,-1, 31,0);
@@ -2833,14 +2834,15 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullBit(oldp+120,(vlSelf->top__DOT__wb_valid_r));
         tracep->fullQData(oldp+121,(vlSelf->top__DOT__my_ifu__DOT__rdata),64);
         tracep->fullQData(oldp+123,((4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc)),64);
-        tracep->fullQData(oldp+125,(((IData)(vlSelf->top__DOT__running_r)
-                                      ? (0xfffffffffffffffeULL 
+        tracep->fullQData(oldp+125,(((1U & ((~ (IData)(vlSelf->top__DOT__running_r)) 
+                                            | (~ (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r))))
+                                      ? (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc)
+                                      : (0xfffffffffffffffeULL 
                                          & ((IData)(vlSelf->top__DOT__id_Ecall)
                                              ? vlSelf->top__DOT__csrfile__DOT__mtvec
                                              : ((IData)(vlSelf->top__DOT__id_Mret)
                                                  ? vlSelf->top__DOT__csrfile__DOT__mepc
-                                                 : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc)))
-                                      : (4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc))),64);
+                                                 : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc))))),64);
         tracep->fullCData(oldp+127,(vlSelf->top__DOT__my_idu__DOT__ExtOp),3);
         tracep->fullCData(oldp+128,(vlSelf->top__DOT__my_idu__DOT__Branch),3);
         tracep->fullQData(oldp+129,(((IData)(vlSelf->top__DOT__id_Ecall)

@@ -159,7 +159,7 @@ module top(
         running_r <= 1'b1;
       end
     end
-    assign running = running_r;
+    assign running = running_r & ~ebreak_commit;
     assign pc = if_pc_o;
     assign instr = if_instr_o;
     assign if_block = id_Ebreak_o | ~running;
