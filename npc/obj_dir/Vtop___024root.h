@@ -128,7 +128,6 @@ VL_MODULE(Vtop___024root) {
         IData/*31:0*/ top__DOT__my_mu__DOT__mem__DOT__tmp;
         IData/*31:0*/ top__DOT__WB_Reg__DOT__instr_r;
         QData/*63:0*/ top__DOT__dnpc;
-        QData/*63:0*/ top__DOT__if_pc_o;
         QData/*63:0*/ top__DOT__id_csrres_o;
         QData/*63:0*/ top__DOT__id_imm_o;
         QData/*63:0*/ top__DOT__id_busa;
@@ -137,8 +136,9 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__m_rfdata_o;
         QData/*63:0*/ top__DOT__forward_data;
         QData/*63:0*/ top__DOT__wb_pc_r;
-        QData/*63:0*/ top__DOT__my_ifu__DOT__pc;
+        QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
         QData/*63:0*/ top__DOT__my_ifu__DOT__rdata;
+        QData/*63:0*/ top__DOT__my_ifu__DOT__valid_dnpc;
         QData/*63:0*/ top__DOT__ID_Reg__DOT__pc_r;
         QData/*63:0*/ top__DOT__my_idu__DOT__alu_inA;
         QData/*63:0*/ top__DOT__my_idu__DOT__na_alu__DOT__adderres;
@@ -179,7 +179,6 @@ VL_MODULE(Vtop___024root) {
     CData/*0:0*/ __Vclklast__TOP__clk;
     QData/*63:0*/ __Vtask_pmem_read__1__rdata;
     QData/*63:0*/ __Vtask_pmem_read__3__rdata;
-    QData/*63:0*/ __Vchglast__TOP__top__DOT__if_pc_o;
     VlUnpacked<CData/*0:0*/, 5> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
