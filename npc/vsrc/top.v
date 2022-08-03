@@ -167,7 +167,7 @@ module top(
     assign id_valid_i = ~(rst | if_block);
     /////////////////////////////////
     ysyx_220053_ID_Reg ID_Reg(
-      .clk(clk),
+      .clk(~clk),
       .flush(rst),
       .valid_i(id_valid_i),
       .enable(id_en),
@@ -217,7 +217,7 @@ module top(
     /////////////////////////////
     ysyx_220053_EX_Reg EX_Reg(
       //control
-      .clk(clk),
+      .clk(~clk),
       .flush(ex_flush),
       .valid_i(ex_valid_i),
       .enable(ex_en),
@@ -282,7 +282,7 @@ module top(
     /////////////////////////////
     ysyx_220053_M_Reg M_Reg(
 //control
-    .clk(clk),
+    .clk(~clk),
     .flush(m_flush),
     .valid_i(m_valid_i),
     .enable(m_en),
@@ -335,7 +335,7 @@ module top(
     /////////////////////////////
     ysyx_220053_WB_Reg WB_Reg(
 //control
-    .clk(clk),
+    .clk(~clk),
     .flush(wb_flush),
     .valid_i(wb_valid_i),
     .enable(wb_en),
@@ -362,7 +362,8 @@ module top(
     wire is_wen = (~wb_flush) & wb_wen_i;
     ///commit a finish instr
     reg wb_valid_r;
-    always@(posedge clk) begin
+    wire cclk = ~clk;
+    always@(posedge cclk) begin
         if(wb_flush)begin 
             wb_valid_r <= 1'b0;
         end

@@ -147,6 +147,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                                   : vlSelf->top__DOT__id_busa);
         vlSelf->top__DOT__M_Reg__DOT__wdata_r = vlSelf->top__DOT__EX_Reg__DOT__busb_r;
     }
+    vlSelf->top__DOT__running_r = __Vdly__top__DOT__running_r;
     if (__Vdlyvset__top__DOT__regfile__DOT__rf__v0) {
         vlSelf->top__DOT__regfile__DOT__rf[__Vdlyvdim0__top__DOT__regfile__DOT__rf__v0] 
             = __Vdlyvval__top__DOT__regfile__DOT__rf__v0;
@@ -787,13 +788,14 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                                & (~ 
                                                   ((IData)(vlSelf->rst) 
                                                    | ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
-                                                      | (~ (IData)(vlSelf->top__DOT__running_r)))))));
+                                                      | (~ (IData)(vlSelf->top__DOT__running)))))));
     vlSelf->top__DOT__EX_Reg__DOT__rd_r = ((IData)(vlSelf->rst)
                                             ? 0U : 
                                            (0x1fU & 
                                             (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
                                              >> 7U)));
-    vlSelf->top__DOT__running_r = __Vdly__top__DOT__running_r;
+    vlSelf->top__DOT__running = ((IData)(vlSelf->top__DOT__running_r) 
+                                 & (~ (IData)(vlSelf->top__DOT__WB_Reg__DOT__Ebreak_r)));
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
     Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->top__DOT__my_ifu__DOT__now_pc, vlSelf->__Vtask_pmem_read__1__rdata);
     vlSelf->top__DOT__my_ifu__DOT__rdata = vlSelf->__Vtask_pmem_read__1__rdata;
@@ -2131,7 +2133,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
                                                | vlSymsp->TOP__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.__PVT__ff
                                                [0U]))))));
     vlSelf->top__DOT__my_ifu__DOT__valid_dnpc = ((1U 
-                                                  & ((~ (IData)(vlSelf->top__DOT__running_r)) 
+                                                  & ((~ (IData)(vlSelf->top__DOT__running)) 
                                                      | (~ (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r))))
                                                   ? 
                                                  (4ULL 
