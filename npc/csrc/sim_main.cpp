@@ -242,9 +242,6 @@ int main(int argc, char**argv, char**env) {
     top->clk = 1;
     contextp->timeInc(1); 
     top->eval();
-    top->clk = 0;
-    contextp->timeInc(1); 
-    top->eval();
    // printf("Now_pc = %016lx\n",top->pc);
     top->rst = 0;
     START = 1;
