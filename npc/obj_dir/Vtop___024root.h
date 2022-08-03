@@ -174,7 +174,7 @@ VL_MODULE(Vtop___024root) {
     CData/*0:0*/ __Vclklast__TOP__clk;
     QData/*63:0*/ __Vtask_pmem_read__1__rdata;
     QData/*63:0*/ __Vtask_pmem_read__3__rdata;
-    VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
+    VlUnpacked<CData/*0:0*/, 4> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
     Vtop__Syms* vlSymsp;  // Symbol table
