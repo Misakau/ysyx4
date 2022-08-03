@@ -367,7 +367,8 @@ module top(
     reg wb_commit_r;
     reg [63:0] wb_pc_r;
     reg [31:0] wb_instr_r;
-    always@(posedge clk) begin
+    wire nclk = ~clk;
+    always@(posedge nclk) begin
         if(wb_flush)begin 
             wb_commit_r <= 1'b0;
             wb_pc_r    <= 64'b0;
