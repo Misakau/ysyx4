@@ -41,7 +41,6 @@ module ysyx_220053_IDU(
                                  .Ecall(Ecall), .Mret(Mret), .Csrwen(Csrwen), .CsrToReg(CsrToReg), .CsrOp(CsrOp), .Ebreak(Ebreak)
                                  );
     wire ecall = Ecall;
-    wire [11:0] CsrId;
     assign CsrId = (ecall == 0) ? imm[11:0] : 12'h342;//ecall mcause
     wire [63:0] addr_res;
     wire [63:0] alu_inA, alu_inB;
