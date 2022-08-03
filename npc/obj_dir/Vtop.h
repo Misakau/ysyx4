@@ -34,15 +34,20 @@ class Vtop VL_NOT_FINAL {
     VL_IN8(&rst,0,0);
     VL_OUT(&instr,31,0);
     VL_OUT64(&pc,63,0);
+    VL_OUT8(&wb_commit,0,0);
+    VL_OUT64(&wb_pc,63,0);
+    VL_OUT(&wb_instr,31,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.
     // Otherwise the application code can consider these internals.
     Vtop___024unit* const __PVT____024unit;
+    Vtop_ysyx_220053_Adder32* const __PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low;
+    Vtop_ysyx_220053_Adder32* const __PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high;
+    Vtop_ysyx_220053_Adder32* const __PVT__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low;
+    Vtop_ysyx_220053_Adder32* const __PVT__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_high;
     Vtop_ysyx_220053_Adder32* const __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low;
     Vtop_ysyx_220053_Adder32* const __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high;
-    Vtop_ysyx_220053_Adder32* const __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low;
-    Vtop_ysyx_220053_Adder32* const __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high;
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.

@@ -15,11 +15,16 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     , rst{vlSymsp->TOP.rst}
     , instr{vlSymsp->TOP.instr}
     , pc{vlSymsp->TOP.pc}
+    , wb_commit{vlSymsp->TOP.wb_commit}
+    , wb_pc{vlSymsp->TOP.wb_pc}
+    , wb_instr{vlSymsp->TOP.wb_instr}
     , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
+    , __PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low}
+    , __PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high}
+    , __PVT__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low}
+    , __PVT__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_high}
     , __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low}
     , __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high}
-    , __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_low}
-    , __PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__my_exu__DOT__nextaddr__DOT__pcadder__DOT__adder_high}
     , rootp{&(vlSymsp->TOP)}
 {
 }
