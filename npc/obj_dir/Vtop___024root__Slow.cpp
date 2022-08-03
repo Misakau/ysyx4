@@ -121,7 +121,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
     Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->top__DOT__my_ifu__DOT__now_pc, vlSelf->__Vtask_pmem_read__1__rdata);
     vlSelf->top__DOT__my_ifu__DOT__rdata = vlSelf->__Vtask_pmem_read__1__rdata;
-    vlSelf->top__DOT__id_use_rd = ((IData)(vlSelf->top__DOT__id_valid_o) 
+    vlSelf->top__DOT__id_use_rd = ((IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r) 
                                    & (~ ((((0x37U == 
                                             (0x7fU 
                                              & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) 
@@ -1496,7 +1496,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                               : 4ULL)) 
            ^ (- (QData)((IData)(vlSelf->top__DOT__my_idu__DOT__na_alu__DOT__SUBctr))));
     vlSelf->top__DOT__id_m_hazard = (((((IData)(vlSelf->top__DOT__id_use_rd) 
-                                        & ((IData)(vlSelf->top__DOT__m_valid_o) 
+                                        & ((IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r) 
                                            & (((0x63U 
                                                 == 
                                                 (0x7fU 
@@ -1520,7 +1520,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                              >> 0x14U)) 
                                            == (IData)(vlSelf->top__DOT__M_Reg__DOT__rd_r))));
     vlSelf->top__DOT__id_wb_hazard = (((((IData)(vlSelf->top__DOT__id_use_rd) 
-                                         & ((IData)(vlSelf->top__DOT__wb_valid_o) 
+                                         & ((IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r) 
                                             & (((0x63U 
                                                  == 
                                                  (0x7fU 
@@ -1544,7 +1544,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                 >> 0x14U)) 
                                             == (IData)(vlSelf->top__DOT__WB_Reg__DOT__waddr_r))));
     vlSelf->top__DOT__id_ex_hazard = (((((IData)(vlSelf->top__DOT__id_use_rd) 
-                                         & ((IData)(vlSelf->top__DOT__ex_valid_o) 
+                                         & ((IData)(vlSelf->top__DOT__EX_Reg__DOT__valid_r) 
                                             & (((0x63U 
                                                  == 
                                                  (0x7fU 
@@ -1705,10 +1705,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->wb_instr = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__if_instr_o = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__dnpc = VL_RAND_RESET_Q(64);
-    vlSelf->top__DOT__id_valid_o = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__ex_valid_o = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__m_valid_o = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__wb_valid_o = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__id_csrres_o = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__id_rs1 = VL_RAND_RESET_I(5);
     vlSelf->top__DOT__id_imm_o = VL_RAND_RESET_Q(64);
@@ -1819,7 +1815,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab = VL_RAND_RESET_I(8);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__i = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__tmp = VL_RAND_RESET_I(32);
-    vlSelf->top__DOT__WB_Reg__DOT__valid_r = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__WB_Reg__DOT__instr_r = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__WB_Reg__DOT__pc_r = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__WB_Reg__DOT__wen_r = VL_RAND_RESET_I(1);
