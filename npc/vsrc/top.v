@@ -156,6 +156,7 @@ module top(
       else if(ebreak_commit) begin
         running_r <= 1'b0;
       end
+
       else if(running_r == 1'b0)begin
         running_r <= 1'b1;
       end
@@ -168,7 +169,7 @@ module top(
     assign id_valid_i = ~(rst | if_block);
     /////////////////////////////////
     ysyx_220053_ID_Reg ID_Reg(
-      .clk(~clk),
+      .clk(clk),
       .flush(rst),
       .valid_i(id_valid_i),
       .enable(id_en),
@@ -218,7 +219,7 @@ module top(
     /////////////////////////////
     ysyx_220053_EX_Reg EX_Reg(
       //control
-      .clk(~clk),
+      .clk(clk),
       .flush(ex_flush),
       .valid_i(ex_valid_i),
       .enable(ex_en),
@@ -283,7 +284,7 @@ module top(
     /////////////////////////////
     ysyx_220053_M_Reg M_Reg(
 //control
-    .clk(~clk),
+    .clk(clk),
     .flush(m_flush),
     .valid_i(m_valid_i),
     .enable(m_en),
@@ -337,7 +338,7 @@ module top(
     /////////////////////////////
     ysyx_220053_WB_Reg WB_Reg(
 //control
-    .clk(~clk),
+    .clk(clk),
     .flush(wb_flush),
     .valid_i(wb_valid_i),
     .enable(wb_en),
@@ -363,7 +364,7 @@ module top(
     assign wb_flush = rst;
     wire is_wen = (~wb_flush) & wb_wen_i & wb_valid_o;
     ///commit a finish instr
-    reg wb_valid_r;
+    reg wb_commit_r;
     reg [63:0] wb_pc_r;
     reg [31:0] wb_instr_r;
     always@(posedge clk) begin
@@ -372,13 +373,13 @@ module top(
             wb_pc_r    <= 64'b0;
             wb_instr_r <= 32'b0;
         end
-        else begin
-          wb_valid_r <= wb_valid_o;
+        else if(wb_valid_o)begin
+          wb_commit_r <= wb_valid_o;
           wb_pc_r    <= wb_pc_o;
           wb_instr_r <= wb_instr_o;
         end
     end
-    assign wb_commit = wb_valid_r;
+    assign wb_commit = wb_commit_r;
     assign wb_pc = wb_pc_r;
     assign wb_instr = wb_instr_r;
     assign ebreak_commit = wb_Ebreak_i;
@@ -386,7 +387,7 @@ module top(
       if(ebreak_commit) c_trap(1);
     end
     ///////////Regfile///////////
-    ysyx_220053_RegisterFile #(5, 64) regfile(.clk(clk),
+    ysyx_220053_RegisterFile #(5, 64) regfile(.clk(~clk),
                                               .raaddr(id_rs1),
                                               .rbaddr(id_rs2),
                                               .radata(id_busa),

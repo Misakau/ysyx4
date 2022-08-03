@@ -1519,7 +1519,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
     }
     if (vlSelf->rst) {
         vlSelf->top__DOT__my_ifu__DOT__now_pc = 0x80000000ULL;
-    } else if (vlSelf->top__DOT__if_block) {
+    } else if ((1U & (~ (IData)(vlSelf->top__DOT__if_block)))) {
         vlSelf->top__DOT__my_ifu__DOT__now_pc = vlSelf->top__DOT__my_ifu__DOT__valid_dnpc;
     }
     vlSelf->top__DOT__wb_valid_r = ((~ (IData)(vlSelf->rst)) 
