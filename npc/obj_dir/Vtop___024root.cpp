@@ -175,20 +175,18 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     if (vlSelf->top__DOT__ex_flush) {
         vlSelf->top__DOT__EX_Reg__DOT__busa_r = 0ULL;
     } else if (vlSelf->top__DOT__ex_en) {
-        vlSelf->top__DOT__EX_Reg__DOT__busa_r = (QData)((IData)(
-                                                                (0x1fU 
-                                                                 & (IData)(
-                                                                           (((((IData)(vlSelf->top__DOT__id_ex_hazard) 
-                                                                               & ((IData)(vlSelf->top__DOT__id_rs1) 
-                                                                                == (IData)(vlSelf->top__DOT__EX_Reg__DOT__rd_r))) 
-                                                                              | ((IData)(vlSelf->top__DOT__id_m_hazard) 
-                                                                                & ((IData)(vlSelf->top__DOT__id_rs1) 
-                                                                                == (IData)(vlSelf->top__DOT__M_Reg__DOT__rd_r)))) 
-                                                                             | ((IData)(vlSelf->top__DOT__id_wb_hazard) 
-                                                                                & ((IData)(vlSelf->top__DOT__id_rs1) 
-                                                                                == (IData)(vlSelf->top__DOT__WB_Reg__DOT__waddr_r))))
-                                                                             ? vlSelf->top__DOT__forward_data
-                                                                             : vlSelf->top__DOT__id_busa)))));
+        vlSelf->top__DOT__EX_Reg__DOT__busa_r = (((
+                                                   ((IData)(vlSelf->top__DOT__id_ex_hazard) 
+                                                    & ((IData)(vlSelf->top__DOT__id_rs1) 
+                                                       == (IData)(vlSelf->top__DOT__EX_Reg__DOT__rd_r))) 
+                                                   | ((IData)(vlSelf->top__DOT__id_m_hazard) 
+                                                      & ((IData)(vlSelf->top__DOT__id_rs1) 
+                                                         == (IData)(vlSelf->top__DOT__M_Reg__DOT__rd_r)))) 
+                                                  | ((IData)(vlSelf->top__DOT__id_wb_hazard) 
+                                                     & ((IData)(vlSelf->top__DOT__id_rs1) 
+                                                        == (IData)(vlSelf->top__DOT__WB_Reg__DOT__waddr_r))))
+                                                  ? vlSelf->top__DOT__forward_data
+                                                  : vlSelf->top__DOT__id_busa);
     }
     if (vlSelf->top__DOT__m_flush) {
         vlSelf->top__DOT__M_Reg__DOT__wdata_r = 0ULL;
@@ -279,26 +277,24 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     if (vlSelf->top__DOT__ex_flush) {
         vlSelf->top__DOT__EX_Reg__DOT__busb_r = 0ULL;
     } else if (vlSelf->top__DOT__ex_en) {
-        vlSelf->top__DOT__EX_Reg__DOT__busb_r = (QData)((IData)(
-                                                                (0x1fU 
-                                                                 & (IData)(
-                                                                           (((((IData)(vlSelf->top__DOT__id_ex_hazard) 
-                                                                               & ((0x1fU 
-                                                                                & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
-                                                                                >> 0x14U)) 
-                                                                                == (IData)(vlSelf->top__DOT__EX_Reg__DOT__rd_r))) 
-                                                                              | ((IData)(vlSelf->top__DOT__id_m_hazard) 
-                                                                                & ((0x1fU 
-                                                                                & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
-                                                                                >> 0x14U)) 
-                                                                                == (IData)(vlSelf->top__DOT__M_Reg__DOT__rd_r)))) 
-                                                                             | ((IData)(vlSelf->top__DOT__id_wb_hazard) 
-                                                                                & ((0x1fU 
-                                                                                & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
-                                                                                >> 0x14U)) 
-                                                                                == (IData)(vlSelf->top__DOT__WB_Reg__DOT__waddr_r))))
-                                                                             ? vlSelf->top__DOT__forward_data
-                                                                             : vlSelf->top__DOT__id_busb)))));
+        vlSelf->top__DOT__EX_Reg__DOT__busb_r = (((
+                                                   ((IData)(vlSelf->top__DOT__id_ex_hazard) 
+                                                    & ((0x1fU 
+                                                        & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
+                                                           >> 0x14U)) 
+                                                       == (IData)(vlSelf->top__DOT__EX_Reg__DOT__rd_r))) 
+                                                   | ((IData)(vlSelf->top__DOT__id_m_hazard) 
+                                                      & ((0x1fU 
+                                                          & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
+                                                             >> 0x14U)) 
+                                                         == (IData)(vlSelf->top__DOT__M_Reg__DOT__rd_r)))) 
+                                                  | ((IData)(vlSelf->top__DOT__id_wb_hazard) 
+                                                     & ((0x1fU 
+                                                         & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
+                                                            >> 0x14U)) 
+                                                        == (IData)(vlSelf->top__DOT__WB_Reg__DOT__waddr_r))))
+                                                  ? vlSelf->top__DOT__forward_data
+                                                  : vlSelf->top__DOT__id_busb);
     }
     Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->top__DOT__M_Reg__DOT__raddr_r, vlSelf->__Vtask_pmem_read__3__rdata);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
