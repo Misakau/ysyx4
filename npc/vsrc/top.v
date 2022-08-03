@@ -318,9 +318,9 @@ module top(
         end
         else wb_valid_r <= wb_valid_o;
     end
-    wire wb_commit = wb_valid_r;
-    wire wb_pc = wb_pc_o;
-    wire wb_instr = wb_instr_o;
+    assign wb_commit = wb_valid_r;
+    assign wb_pc = wb_pc_o;
+    assign wb_instr = wb_instr_o;
     assign ebreak_commit = wb_Ebreak_i;
     always@(*) begin
       if(ebreak_commit) c_trap(1);
