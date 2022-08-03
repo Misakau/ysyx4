@@ -103,9 +103,10 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__my_mu__DOT__is_wen;
         CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__wmask;
         CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__datab;
-        CData/*0:0*/ top__DOT__WB_Reg__DOT__wen_r;
+        CData/*0:0*/ top__DOT__WB_Reg__DOT__valid_r;
     };
     struct {
+        CData/*0:0*/ top__DOT__WB_Reg__DOT__wen_r;
         CData/*4:0*/ top__DOT__WB_Reg__DOT__waddr_r;
         CData/*0:0*/ top__DOT__WB_Reg__DOT__Ebreak_r;
         SData/*11:0*/ top__DOT__id_CsrId;
