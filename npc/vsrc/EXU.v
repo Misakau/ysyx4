@@ -15,6 +15,7 @@ module ysyx_220053_EXU(
     output [63:0] ALURes
 );
     wire zero;
+    wire [63:0] busa, busb, regsin, mdata, wdata;
     wire [63:0] res;
     wire [63:0] alu_inA, alu_inB;
     

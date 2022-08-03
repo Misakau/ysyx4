@@ -19,21 +19,21 @@ module ysyx_220053_ID_Reg(
     reg [63:0] pc_r;
     //control_r
     always@(posedge clk) begin
-        if(flush) begin
+        if(flush){
             valid_r <= 1'b0;
-        end
+        }
         else valid_r <= valid_i;
     end
     //data_r
     always@(posedge clk) begin
-        if(flush) begin
+        if(flush){
             instr_r <= 32'b0;
             pc_r    <= 64'b0;
-        end
-        else if(enable) begin
+        }
+        else if(enable){
             instr_r <= instr_i;
             pc_r    <= pc_i;
-        end
+        }
     end
     assign instr_o = instr_r;
     assign pc_o    = pc_r;
@@ -93,14 +93,14 @@ module ysyx_220053_EX_Reg(
     reg Ebreak_r;
     //control_r
     always@(posedge clk) begin
-        if(flush)begin
+        if(flush){
             valid_r <= 1'b0;
-        end
+        }
         else valid_r <= valid_i;
     end
     //data_r
     always@(posedge clk) begin
-        if(flush)begin
+        if(flush){
             instr_r    <= 32'b0;
             pc_r       <= 64'b0;
             rd_r       <= 5'b0;
@@ -118,8 +118,8 @@ module ysyx_220053_EX_Reg(
             MulOp_r    <= 2'b0;
             Csrres_r   <= 64'b0;
             Ebreak_r   <= 1'b0;
-        end
-        else if(enable)begin
+        }
+        else if(enable){
             instr_r    <= instr_i;
             pc_r       <= pc_i;
             rd_r       <= rd_i;
@@ -137,7 +137,7 @@ module ysyx_220053_EX_Reg(
             MulOp_r    <= MulOp_i;
             Csrres_r   <= Csrres_i;
             Ebreak_r   <= Ebreak_i;
-        end
+        }
     end
     assign instr_o = instr_r;
     assign pc_o    = pc_r;
@@ -204,14 +204,14 @@ module ysyx_220053_M_Reg(
     reg Ebreak_r;
     //control_r
     always@(posedge clk) begin
-        if(flush)begin
+        if(flush){
             valid_r <= 1'b0;
-        end
+        }
         else valid_r <= valid_i;
     end
     //data_r
     always@(posedge clk) begin
-        if(flush)begin
+        if(flush){
             instr_r  <= 32'b0;
             pc_r     <= 64'b0;
             MemOp_r  <= 3'b0;
@@ -224,8 +224,8 @@ module ysyx_220053_M_Reg(
             MemToReg_r <= 1'b0;
             CsrToReg_r <= 1'b0;
             Ebreak_r  <= 1'b0;
-        end
-        else if(enable)begin
+        }
+        else if(enable){
             instr_r  <= instr_i;
             pc_r     <= pc_i;
             MemOp_r  <= MemOp_i;
@@ -238,7 +238,7 @@ module ysyx_220053_M_Reg(
             MemToReg_r <= MemToReg_i;
             CsrToReg_r <= CsrToReg_i;
             Ebreak_r <= Ebreak_i;
-        end
+        }
     end
     assign instr_o = instr_r;
     assign pc_o    = pc_r;
@@ -283,32 +283,32 @@ module ysyx_220053_WB_Reg(
     reg wen_r;
     reg [63:0] wdata_r;
     reg [4:0] waddr_r;
-    reg Ebreak_r;
+
     //control_r
     always@(posedge clk) begin
-        if(flush)begin
+        if(flush){
             valid_r <= 1'b0;
-        end
+        }
         else valid_r <= valid_i;
     end
     //data_r
     always@(posedge clk) begin
-        if(flush)begin
+        if(flush){
             instr_r <= 32'b0;
             pc_r    <= 64'b0;
             wen_r   <= 1'b0;
             wdata_r <= 64'b0;
             waddr_r <= 5'b0;
             Ebreak_r <= 1'b0;
-        end
-        else if(enable)begin
+        }
+        else if(enable){
             instr_r <= instr_i;
             pc_r    <= pc_i;
             wen_r   <= wen_i;
             wdata_r <= wdata_i;
             waddr_r <= waddr_i;
             Ebreak_r <= Ebreak_i;
-        end
+        }
     end
     assign instr_o = instr_r;
     assign pc_o    = pc_r;

@@ -15,7 +15,7 @@ module ysyx_220053_IFU(
     always@(*) begin  pmem_read(pc, rdata); end
     always@(*) begin get_instr(instr_o); end
     assign instr_o = (pc[2] == 0) ? rdata[31:0] : rdata[63:32];
-    wire valid_dnpc = (running == 1'b0) ? dnpc : snpc;
+    assign valid_dnpc = (running == 1'b0) ? dnpc : snpc;
     ysyx_220053_Reg #(64, 64'h80000000) PC(.clk(clk), .rst(rst), valid_dnpc, now_pc, 1'b1);
 
 endmodule
