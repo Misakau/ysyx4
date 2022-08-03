@@ -10,7 +10,7 @@ module ysyx_220053_IDU(
     input  [63:0] busa, busb,
     input  [63:0] mtvec, mepc,
 
-    output [63:0] dnpc
+    output [63:0] dnpc,
     output [6:0]  op,
     output [4:0]  rd,
     output [4:0]  rs1,
