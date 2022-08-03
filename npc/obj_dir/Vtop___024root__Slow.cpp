@@ -1045,8 +1045,8 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                      ? (IData)((vlSelf->top__DOT__my_ifu__DOT__rdata 
                                                 >> 0x20U))
                                      : (IData)(vlSelf->top__DOT__my_ifu__DOT__rdata));
-    vlSelf->top__DOT__if_block = (1U & ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
-                                        | (~ (IData)(vlSelf->rst))));
+    vlSelf->top__DOT__if_block = ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
+                                  | (IData)(vlSelf->rst));
     vlSelf->top__DOT__is_Csrwen = (((~ (IData)(vlSelf->rst)) 
                                     & (IData)(vlSelf->top__DOT__id_Csrwen)) 
                                    & (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r));
