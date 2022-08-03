@@ -145,17 +145,18 @@ module top(
       .dnpc(id_dnpc),
       .pc(if_pc_o),
       .instr_o(if_instr_o),
-      .running(running)
+      .running(running),
+      .dnpc_valid(id_valid_o)
     );
     always@(posedge clk) begin
       if(rst) begin
         running_r <= 1'b0;
       end
-      else if(running_r == 1'b0)begin
-        running_r <= 1'b1;
-      end
       else if(ebreak_commit) begin
         running_r <= 1'b0;
+      end
+      else if(running_r == 1'b0)begin
+        running_r <= 1'b1;
       end
     end
     assign running = running_r;

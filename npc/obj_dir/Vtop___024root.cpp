@@ -789,7 +789,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                                & (~ 
                                                   ((IData)(vlSelf->rst) 
                                                    | ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
-                                                      & (~ (IData)(vlSelf->top__DOT__running_r)))))));
+                                                      | (~ (IData)(vlSelf->top__DOT__running_r)))))));
     vlSelf->top__DOT__EX_Reg__DOT__rd_r = ((IData)(vlSelf->rst)
                                             ? 0U : 
                                            (0x1fU & 
