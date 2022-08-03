@@ -1049,7 +1049,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                      ? (IData)((vlSelf->top__DOT__my_ifu__DOT__rdata 
                                                 >> 0x20U))
                                      : (IData)(vlSelf->top__DOT__my_ifu__DOT__rdata));
-    vlSelf->top__DOT__is_Csrwen = ((~ (IData)(vlSelf->top__DOT__id_flush)) 
+    vlSelf->top__DOT__is_Csrwen = ((~ (IData)(vlSelf->rst)) 
                                    & (IData)(vlSelf->top__DOT__id_Csrwen));
     vlSelf->top__DOT__id_imm_o = ((0U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))
                                    ? (((- (QData)((IData)(
@@ -1717,10 +1717,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__id_en = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__ex_en = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__m_en = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__id_flush = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__ex_flush = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__m_flush = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__wb_flush = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__id_valid_o = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__ex_valid_o = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__m_valid_o = VL_RAND_RESET_I(1);

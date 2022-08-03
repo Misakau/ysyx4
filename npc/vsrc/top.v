@@ -275,6 +275,7 @@ module top(
       .ALURes(ex_ALURes_o)
     );
     assign ex_flush = rst;
+    assign ex_block = 1'b0;
     assign m_en = ~(m_block | wb_block);//还未处理阻塞
     assign m_valid_i = rst;//还未处理冒险
     /////////////////////////////
@@ -327,6 +328,7 @@ module top(
       .rfdata(m_rfdata_o)
     );
     assign m_flush = rst;
+    assign m_block = 1'b0;
     assign wb_en = ~wb_block;//还未处理阻塞
     assign wb_valid_i = rst;//还未处理冒险
     /////////////////////////////
@@ -354,6 +356,7 @@ module top(
     .Ebreak_o(wb_Ebreak_i)
     );
     ///////////WB////////////////
+    assign wb_block = 1'b0;
     assign wb_flush = rst;
     wire is_wen = (~wb_flush) & wb_wen_i;
     ///commit a finish instr
