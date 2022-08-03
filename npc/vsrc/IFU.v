@@ -4,7 +4,7 @@
 module ysyx_220053_IFU(
     input clk,
     input rst,
-    input running, dnpc_valid, block
+    input running, dnpc_valid, block,
     input [63:0] dnpc,
     output [63:0] pc,
     output [31:0] instr_o
