@@ -306,7 +306,7 @@ module top(
     .wen_o(wb_wen_i),
     .wdata_o(wb_wdata_i),
     .waddr_o(wb_waddr_i),
-    .Ebreak_o(wb_Ebreak_i),
+    .Ebreak_o(wb_Ebreak_i)
     );
     ///////////WB////////////////
     wire is_wen = (~m_flush) & wb_wen_i;
