@@ -37,6 +37,7 @@ module ysyx_220053_ID_Reg(
     end
     assign instr_o = instr_r;
     assign pc_o    = pc_r;
+    assign valid_o = valid_r;
 endmodule
 
 module ysyx_220053_EX_Reg(
@@ -143,6 +144,7 @@ module ysyx_220053_EX_Reg(
     end
     assign instr_o = instr_r;
     assign pc_o    = pc_r;
+    assign valid_o = valid_r;
     assign rd_o    = rd_r;
     assign busa_o    = busa_r;
     assign busb_o    = busb_r;
@@ -244,6 +246,7 @@ module ysyx_220053_M_Reg(
     end
     assign instr_o = instr_r;
     assign pc_o    = pc_r;
+    assign valid_o = valid_r;
     assign MemOp_o = MemOp_r;
     assign raddr_o = raddr_r;
     assign MemWen_o = MemWen_r;
@@ -314,6 +317,7 @@ module ysyx_220053_WB_Reg(
     end
     assign instr_o = instr_r;
     assign pc_o    = pc_r;
+    assign valid_o = valid_r;
     assign wen_o   = wen_r;
     assign wdata_o = wdata_r;
     assign waddr_o = waddr_r;

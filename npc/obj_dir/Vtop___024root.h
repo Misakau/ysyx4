@@ -40,16 +40,10 @@ VL_MODULE(Vtop___024root) {
     // LOCAL SIGNALS
     // Anonymous structures to workaround compiler member-count bugs
     struct {
-        CData/*0:0*/ top__DOT__id_en;
-        CData/*0:0*/ top__DOT__ex_en;
-        CData/*0:0*/ top__DOT__m_en;
         CData/*0:0*/ top__DOT__id_valid_o;
         CData/*0:0*/ top__DOT__ex_valid_o;
         CData/*0:0*/ top__DOT__m_valid_o;
         CData/*0:0*/ top__DOT__wb_valid_o;
-        CData/*0:0*/ top__DOT__ex_block;
-        CData/*0:0*/ top__DOT__m_block;
-        CData/*0:0*/ top__DOT__wb_block;
         CData/*4:0*/ top__DOT__id_rs1;
         CData/*0:0*/ top__DOT__id_ALUSrcA_o;
         CData/*0:0*/ top__DOT__id_MemToReg_o;
@@ -104,14 +98,14 @@ VL_MODULE(Vtop___024root) {
         CData/*3:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
         CData/*0:0*/ top__DOT__M_Reg__DOT__valid_r;
         CData/*2:0*/ top__DOT__M_Reg__DOT__MemOp_r;
-    };
-    struct {
         CData/*0:0*/ top__DOT__M_Reg__DOT__MemWen_r;
         CData/*4:0*/ top__DOT__M_Reg__DOT__rd_r;
         CData/*0:0*/ top__DOT__M_Reg__DOT__wen_r;
         CData/*0:0*/ top__DOT__M_Reg__DOT__MemToReg_r;
         CData/*0:0*/ top__DOT__M_Reg__DOT__CsrToReg_r;
         CData/*0:0*/ top__DOT__M_Reg__DOT__Ebreak_r;
+    };
+    struct {
         CData/*0:0*/ top__DOT__my_mu__DOT__is_wen;
         CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__wmask;
         CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__datab;
@@ -170,14 +164,14 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__dataout;
         QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__datad;
         QData/*63:0*/ top__DOT__WB_Reg__DOT__pc_r;
-    };
-    struct {
         QData/*63:0*/ top__DOT__WB_Reg__DOT__wdata_r;
         QData/*63:0*/ top__DOT__csrfile__DOT__csrin;
         QData/*63:0*/ top__DOT__csrfile__DOT__mtvec;
         QData/*63:0*/ top__DOT__csrfile__DOT__mepc;
         QData/*63:0*/ top__DOT__csrfile__DOT__mcause;
         QData/*63:0*/ top__DOT__csrfile__DOT__mscratch;
+    };
+    struct {
         VlUnpacked<QData/*63:0*/, 32> top__DOT__regfile__DOT__rf;
     };
 

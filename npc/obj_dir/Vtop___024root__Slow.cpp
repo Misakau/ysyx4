@@ -118,11 +118,6 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__alu_inA = ((IData)(vlSelf->top__DOT__EX_Reg__DOT__ALUSrcA_r)
                                                ? vlSelf->top__DOT__EX_Reg__DOT__busa_r
                                                : vlSelf->top__DOT__EX_Reg__DOT__pc_r);
-    vlSelf->top__DOT__m_en = (1U & (~ ((IData)(vlSelf->top__DOT__m_block) 
-                                       | (IData)(vlSelf->top__DOT__wb_block))));
-    vlSelf->top__DOT__ex_en = (1U & (~ (((IData)(vlSelf->top__DOT__ex_block) 
-                                         | (IData)(vlSelf->top__DOT__m_block)) 
-                                        | (IData)(vlSelf->top__DOT__wb_block))));
     vlSelf->pc = vlSelf->top__DOT__my_ifu__DOT__now_pc;
     Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->top__DOT__my_ifu__DOT__now_pc, vlSelf->__Vtask_pmem_read__1__rdata);
     vlSelf->top__DOT__my_ifu__DOT__rdata = vlSelf->__Vtask_pmem_read__1__rdata;
@@ -1652,10 +1647,6 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                   (vlSelf->top__DOT__id_csrres_o 
                                                    & (~ vlSelf->top__DOT__id_busa))
                                                    : 0ULL)));
-    vlSelf->top__DOT__id_en = (1U & (~ ((((IData)(vlSelf->top__DOT__load_use) 
-                                          | (IData)(vlSelf->top__DOT__ex_block)) 
-                                         | (IData)(vlSelf->top__DOT__m_block)) 
-                                        | (IData)(vlSelf->top__DOT__wb_block))));
 }
 
 void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
@@ -1714,16 +1705,10 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->wb_instr = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__if_instr_o = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__dnpc = VL_RAND_RESET_Q(64);
-    vlSelf->top__DOT__id_en = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__ex_en = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__m_en = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__id_valid_o = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__ex_valid_o = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__m_valid_o = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__wb_valid_o = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__ex_block = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__m_block = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__wb_block = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__id_csrres_o = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__id_rs1 = VL_RAND_RESET_I(5);
     vlSelf->top__DOT__id_imm_o = VL_RAND_RESET_Q(64);
