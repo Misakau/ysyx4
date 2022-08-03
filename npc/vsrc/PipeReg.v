@@ -66,7 +66,8 @@ module ysyx_220053_EX_Reg(
 
     output Ebreak_o,
     output [63:0] Csrres_o,
-    output [4:0] rd_o, busa_o, busb_o,
+    output [4:0] rd_o;
+    output [63:0] busa_o, busb_o,
     output wen_o, ALUSrcA_o, MemToReg_o, MemWen_o, CsrToReg_o,
     output [1:0] ALUSrcB_o,
     output [4:0] ALUOp_o,
