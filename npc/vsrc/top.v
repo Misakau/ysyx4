@@ -206,7 +206,7 @@ module top(
       .CsrId(id_CsrId),
       .Ebreak(id_Ebreak_o)
       );
-      id_flush = rst;
+      assign id_flush = rst;
       wire is_Csrwen = (~id_flush) & id_Csrwen;
       assign id_block = load_use;//id_Ebreak_o;   //load_use
       assign id_busa_o = (rs1_need == 1'b0) ? id_busa : forward_data;
