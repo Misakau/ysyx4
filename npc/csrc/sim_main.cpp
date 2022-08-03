@@ -164,7 +164,7 @@ void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
 void (*difftest_regcpy)(void *, bool);
 void (*difftest_exec)(uint64_t);
 void (*difftest_init)();
-
+#define ITRACE
 int main(int argc, char**argv, char**env) {
     void *handle = dlopen("/home/wang/ysyx-workbench/nemu/build/riscv64-nemu-interpreter-so",RTLD_LAZY);
     if(!handle){
@@ -213,9 +213,12 @@ int main(int argc, char**argv, char**env) {
     }
     else{//build in code
         printf(ASNI_FG_BLUE "Load build-in image\n" ASNI_NONE);
-        MEM[0] = 0x0ffff0970ffff097LL;// addi x0,x1,1
-        MEM[1] = 0x00108093ff0ff0b7LL;//lui x1,0xff0ff
-        MEM[2] = 0x0010007300100073LL;
+        MEM[0] = 0x0003282300000297LL;// auipc t0,0
+                                      // sd  zero,16(t1)
+        MEM[1] = 0x0010009301032503LL;// ld  a0,16(t1)
+                                      // ld  a0,16(t1)
+        MEM[2] = 0xdeadbeef00100073LL;// ebreak (used as nemu_trap)
+                                      // some data
     }
     if(log_file != NULL){
       log_ptr = fopen(log_file, "w");
