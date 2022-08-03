@@ -355,9 +355,9 @@ module top(
     ///commit a finish instr
     reg wb_valid_r;
     always@(posedge clk) begin
-        if(wb_flush){
+        if(wb_flush)begin 
             wb_valid_r <= 1'b0;
-        }
+        end
         else wb_valid_r <= wb_valid_o;
     end
     assign wb_commit = wb_valid_r;
