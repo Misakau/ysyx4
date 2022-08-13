@@ -60,6 +60,8 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__running_r;
         CData/*0:0*/ top__DOT__running;
         CData/*0:0*/ top__DOT__id_use_rd;
+        CData/*0:0*/ top__DOT__rs1_need;
+        CData/*0:0*/ top__DOT__rs2_need;
         CData/*0:0*/ top__DOT__id_ex_hazard;
         CData/*0:0*/ top__DOT__id_m_hazard;
         CData/*0:0*/ top__DOT__id_wb_hazard;
@@ -103,10 +105,10 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__M_Reg__DOT__MemToReg_r;
         CData/*0:0*/ top__DOT__M_Reg__DOT__CsrToReg_r;
         CData/*0:0*/ top__DOT__M_Reg__DOT__Ebreak_r;
-        CData/*0:0*/ top__DOT__my_mu__DOT__is_wen;
-        CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__wmask;
     };
     struct {
+        CData/*0:0*/ top__DOT__my_mu__DOT__is_wen;
+        CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__wmask;
         CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__datab;
         CData/*0:0*/ top__DOT__WB_Reg__DOT__valid_r;
         CData/*0:0*/ top__DOT__WB_Reg__DOT__wen_r;
@@ -137,7 +139,6 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__id_busa;
         QData/*63:0*/ top__DOT__m_ALURes_i;
         QData/*63:0*/ top__DOT__m_rfdata_o;
-        QData/*63:0*/ top__DOT__forward_data;
         QData/*63:0*/ top__DOT__wb_pc_r;
         QData/*63:0*/ top__DOT__next_pc_r;
         QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
@@ -170,9 +171,9 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__WB_Reg__DOT__pc_r;
         QData/*63:0*/ top__DOT__WB_Reg__DOT__wdata_r;
         QData/*63:0*/ top__DOT__csrfile__DOT__csrin;
-        QData/*63:0*/ top__DOT__csrfile__DOT__mtvec;
     };
     struct {
+        QData/*63:0*/ top__DOT__csrfile__DOT__mtvec;
         QData/*63:0*/ top__DOT__csrfile__DOT__mepc;
         QData/*63:0*/ top__DOT__csrfile__DOT__mcause;
         QData/*63:0*/ top__DOT__csrfile__DOT__mscratch;
