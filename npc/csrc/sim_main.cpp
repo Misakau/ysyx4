@@ -258,6 +258,7 @@ int main(int argc, char**argv, char**env) {
             if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr);
             top->eval();
+            /*
             #ifdef ITRACE
               char str[128];disassemble(str, 127, sdb_top->pc, (uint8_t*)&instr_now, 4);
               if(sdb_top->clk == 0){
@@ -271,6 +272,7 @@ int main(int argc, char**argv, char**env) {
                 if(log_ptr) fprintf(log_ptr, "wb_commit: pc = 0x%016lx, instr = %08x\n", sdb_top->wb_pc, sdb_top->wb_instr);
               } 
             #endif
+            */
             if(is_diff){
               if(top->clk == 0 && top->wb_commit == 1){
                 difftest_exec(1);

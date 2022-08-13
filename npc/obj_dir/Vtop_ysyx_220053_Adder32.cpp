@@ -4346,15 +4346,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___sequent__TOP__top__DOT__my_exu__DO
     vlSelf->__PVT__Pg = ((0xeU & (IData)(vlSelf->__PVT__Pg)) 
                          | ((0xffU == vlSelf->__PVT__p
                              [0U]) ? 1U : 0U));
-    vlSelf->__PVT__Pg = ((0xdU & (IData)(vlSelf->__PVT__Pg)) 
-                         | (((0xffU == vlSelf->__PVT__p
-                              [1U]) ? 1U : 0U) << 1U));
-    vlSelf->__PVT__Pg = ((0xbU & (IData)(vlSelf->__PVT__Pg)) 
-                         | (((0xffU == vlSelf->__PVT__p
-                              [2U]) ? 1U : 0U) << 2U));
-    vlSelf->__PVT__Pg = ((7U & (IData)(vlSelf->__PVT__Pg)) 
-                         | (((0xffU == vlSelf->__PVT__p
-                              [3U]) ? 1U : 0U) << 3U));
     vlSelf->__PVT__Gg = ((0xeU & (IData)(vlSelf->__PVT__Gg)) 
                          | (1U & ((((((((vlSelf->__PVT__g
                                          [0U] >> 7U) 
@@ -4437,6 +4428,9 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___sequent__TOP__top__DOT__my_exu__DO
                                       & vlSelf->__PVT__p
                                       [0U]) & vlSelf->__PVT__g
                                      [0U]))));
+    vlSelf->__PVT__Pg = ((0xdU & (IData)(vlSelf->__PVT__Pg)) 
+                         | (((0xffU == vlSelf->__PVT__p
+                              [1U]) ? 1U : 0U) << 1U));
     vlSelf->__PVT__Gg = ((0xdU & (IData)(vlSelf->__PVT__Gg)) 
                          | (2U & (((((((0x3fffffeU 
                                         & ((vlSelf->__PVT__g
@@ -4544,6 +4538,9 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___sequent__TOP__top__DOT__my_exu__DO
                                                      & (vlSelf->__PVT__g
                                                         [1U] 
                                                         << 1U))))));
+    vlSelf->__PVT__Pg = ((0xbU & (IData)(vlSelf->__PVT__Pg)) 
+                         | (((0xffU == vlSelf->__PVT__p
+                              [2U]) ? 1U : 0U) << 2U));
     vlSelf->__PVT__Gg = ((0xbU & (IData)(vlSelf->__PVT__Gg)) 
                          | (4U & (((((((0x7fffffcU 
                                         & ((vlSelf->__PVT__g
@@ -4655,6 +4652,9 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___sequent__TOP__top__DOT__my_exu__DO
                                                    & (vlSelf->__PVT__g
                                                       [2U] 
                                                       << 2U))))));
+    vlSelf->__PVT__Pg = ((7U & (IData)(vlSelf->__PVT__Pg)) 
+                         | (((0xffU == vlSelf->__PVT__p
+                              [3U]) ? 1U : 0U) << 3U));
     vlSelf->__PVT__Gg = ((7U & (IData)(vlSelf->__PVT__Gg)) 
                          | (8U & (((((((0xffffff8U 
                                         & ((vlSelf->__PVT__g
@@ -5396,15 +5396,6 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___sequent__TOP__top__DOT__my_exu__DO
     vlSelf->__PVT__Pg = ((0xeU & (IData)(vlSelf->__PVT__Pg)) 
                          | ((0xffU == vlSelf->__PVT__p
                              [0U]) ? 1U : 0U));
-    vlSelf->__PVT__Pg = ((0xdU & (IData)(vlSelf->__PVT__Pg)) 
-                         | (((0xffU == vlSelf->__PVT__p
-                              [1U]) ? 1U : 0U) << 1U));
-    vlSelf->__PVT__Pg = ((0xbU & (IData)(vlSelf->__PVT__Pg)) 
-                         | (((0xffU == vlSelf->__PVT__p
-                              [2U]) ? 1U : 0U) << 2U));
-    vlSelf->__PVT__Pg = ((7U & (IData)(vlSelf->__PVT__Pg)) 
-                         | (((0xffU == vlSelf->__PVT__p
-                              [3U]) ? 1U : 0U) << 3U));
     vlSelf->__PVT__Gg = ((0xeU & (IData)(vlSelf->__PVT__Gg)) 
                          | (1U & ((((((((vlSelf->__PVT__g
                                          [0U] >> 7U) 
@@ -5487,6 +5478,9 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___sequent__TOP__top__DOT__my_exu__DO
                                       & vlSelf->__PVT__p
                                       [0U]) & vlSelf->__PVT__g
                                      [0U]))));
+    vlSelf->__PVT__Pg = ((0xdU & (IData)(vlSelf->__PVT__Pg)) 
+                         | (((0xffU == vlSelf->__PVT__p
+                              [1U]) ? 1U : 0U) << 1U));
     vlSelf->__PVT__Gg = ((0xdU & (IData)(vlSelf->__PVT__Gg)) 
                          | (2U & (((((((0x3fffffeU 
                                         & ((vlSelf->__PVT__g
@@ -5594,6 +5588,9 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___sequent__TOP__top__DOT__my_exu__DO
                                                      & (vlSelf->__PVT__g
                                                         [1U] 
                                                         << 1U))))));
+    vlSelf->__PVT__Pg = ((0xbU & (IData)(vlSelf->__PVT__Pg)) 
+                         | (((0xffU == vlSelf->__PVT__p
+                              [2U]) ? 1U : 0U) << 2U));
     vlSelf->__PVT__Gg = ((0xbU & (IData)(vlSelf->__PVT__Gg)) 
                          | (4U & (((((((0x7fffffcU 
                                         & ((vlSelf->__PVT__g
@@ -5705,6 +5702,9 @@ VL_INLINE_OPT void Vtop_ysyx_220053_Adder32___sequent__TOP__top__DOT__my_exu__DO
                                                    & (vlSelf->__PVT__g
                                                       [2U] 
                                                       << 2U))))));
+    vlSelf->__PVT__Pg = ((7U & (IData)(vlSelf->__PVT__Pg)) 
+                         | (((0xffU == vlSelf->__PVT__p
+                              [3U]) ? 1U : 0U) << 3U));
     vlSelf->__PVT__Gg = ((7U & (IData)(vlSelf->__PVT__Gg)) 
                          | (8U & (((((((0xffffff8U 
                                         & ((vlSelf->__PVT__g
