@@ -276,7 +276,7 @@ int main(int argc, char**argv, char**env) {
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(top->next_pc != nemu.pc){
-                  printf(ASNI_FG_RED "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, top->wb_pc);
+                  printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, sdb_top->next_pc, sdb_top->pc);
                   EXIT = 1; PASS = 1;break;
                 }
                 for(int i = 1; i < 32; i++){
