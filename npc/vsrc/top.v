@@ -136,14 +136,14 @@ module top(
     always@(*) begin
       if(id_ex_hazard && id_rs1 == ex_rd_i) forward_data1 = (ex_CsrToReg_i == 1'b0) ? ex_ALURes_o : ex_csrres_i;
       else if(id_m_hazard && id_rs1 == m_rd_i) forward_data1 = m_rfdata_o;
-      else if(id_wb_hazard && id_rs1 == wb_rd_i) forward_data1 = wb_wdata_i;
+      else if(id_wb_hazard && id_rs1 == wb_waddr_i) forward_data1 = wb_wdata_i;
       else forward_data1 = 64'b0;
     end
 
     always@(*) begin
       if(id_ex_hazard && id_rs2 == ex_rd_i) forward_data2 = (ex_CsrToReg_i == 1'b0) ? ex_ALURes_o : ex_csrres_i;
       else if(id_m_hazard && id_rs2 == m_rd_i) forward_data2 = m_rfdata_o;
-      else if(id_wb_hazard && id_rs2 == wb_rd_i) forward_data2 = wb_wdata_i;
+      else if(id_wb_hazard && id_rs2 == wb_waddr_i) forward_data2 = wb_wdata_i;
       else forward_data2 = 64'b0;
     end
     /////////////IF/////////////////
