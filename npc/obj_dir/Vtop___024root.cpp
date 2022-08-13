@@ -356,15 +356,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__ID_Reg__DOT__instr_r = vlSelf->top__DOT__if_instr_o;
     }
     vlSelf->top__DOT__id_use_rd = ((IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r) 
-                                   & (~ ((((0x37U == 
-                                            (0x7fU 
-                                             & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) 
-                                           | (0x17U 
-                                              == (0x7fU 
-                                                  & vlSelf->top__DOT__ID_Reg__DOT__instr_r))) 
-                                          | (0x6fU 
-                                             == (0x7fU 
-                                                 & vlSelf->top__DOT__ID_Reg__DOT__instr_r))) 
+                                   & (~ ((0x6fU == 
+                                          (0x7fU & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) 
                                          | (0x73U == 
                                             (0x7fU 
                                              & vlSelf->top__DOT__ID_Reg__DOT__instr_r)))));
