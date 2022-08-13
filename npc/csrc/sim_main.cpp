@@ -269,13 +269,13 @@ int main(int argc, char**argv, char**env) {
               if(top->clk == 0 && top->wb_commit == 1) difftest_exec(1);
               difftest_regcpy(&nemu, 1);
               if(top->wb_pc != nemu.pc){
-                printf(ASNI_FG_RED "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, top->pc);
-                EXIT = 1;break;
+                printf(ASNI_FG_RED "PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, top->wb_pc);
+                EXIT = 1; PASS = 1;break;
               }
               for(int i = 1; i < 32; i++){
                 if(cpu_gpr[i] != nemu.gpr[i]){
                   printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],nemu.pc);
-                  EXIT = 1; break;
+                  EXIT = 1; PASS = 1;break;
                 }
               }
             }
