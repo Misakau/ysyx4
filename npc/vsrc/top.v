@@ -132,12 +132,25 @@ module top(
     wire hazard = id_ex_hazard | id_m_hazard | id_wb_hazard;
     wire rs1_need = (id_ex_hazard && id_rs1 == ex_rd_i) || (id_m_hazard && id_rs1 == m_rd_i) || (id_wb_hazard && id_rs1 == wb_waddr_i);
     wire rs2_need = (id_ex_hazard && id_rs2 == ex_rd_i) || (id_m_hazard && id_rs2 == m_rd_i) || (id_wb_hazard && id_rs2 == wb_waddr_i);
-    reg [63:0] forward_data;
+    reg [63:0] forward_data1, forward_data2;
     always@(*) begin
-      if(id_ex_hazard) forward_data = (ex_CsrToReg_i == 1'b0) ? ex_ALURes_o : ex_csrres_i;
-      else if(id_m_hazard) forward_data = m_rfdata_o;
-      else if(id_wb_hazard) forward_data = wb_wdata_i;
-      else forward_data = 64'b0;
+      if(rs1_need) begin
+        if(id_ex_hazard) forward_data1 = (ex_CsrToReg_i == 1'b0) ? ex_ALURes_o : ex_csrres_i;
+        else if(id_m_hazard) forward_data1 = m_rfdata_o;
+        else if(id_wb_hazard) forward_data1 = wb_wdata_i;
+        else forward_data1 = 64'b0;
+      end
+      else forward_data1 = 64'b0;
+    end
+
+    always@(*) begin
+      if(rs2_need) begin
+        if(id_ex_hazard) forward_data2 = (ex_CsrToReg_i == 1'b0) ? ex_ALURes_o : ex_csrres_i;
+        else if(id_m_hazard) forward_data2 = m_rfdata_o;
+        else if(id_wb_hazard) forward_data2 = wb_wdata_i;
+        else forward_data2 = 64'b0;
+      end
+      else forward_data2 = 64'b0;
     end
     /////////////IF/////////////////
     ysyx_220053_IFU my_ifu(
@@ -213,8 +226,8 @@ module top(
       assign id_flush = rst;
       wire is_Csrwen = (~id_flush) & id_Csrwen & id_valid_o;
       assign id_block = load_use;//id_Ebreak_o;   //load_use
-      assign id_busa_o = (rs1_need == 1'b0) ? id_busa : forward_data;
-      assign id_busb_o = (rs2_need == 1'b0) ? id_busb : forward_data;
+      assign id_busa_o = (rs1_need == 1'b0) ? id_busa : forward_data1;
+      assign id_busb_o = (rs2_need == 1'b0) ? id_busb : forward_data2;
       assign ex_en = ~(ex_block | m_block | wb_block);//还未处理阻塞
       assign ex_valid_i = id_valid_o & (~id_block);//还未处理冒险
     /////////////////////////////
