@@ -1485,16 +1485,12 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
     QData/*63:0*/ __Vdlyvval__top__DOT__regfile__DOT__rf__v0;
     // Body
     __Vdlyvset__top__DOT__regfile__DOT__rf__v0 = 0U;
-    if (vlSelf->rst) {
-        vlSelf->top__DOT__wb_commit_r = 0U;
-    } else if (vlSelf->top__DOT__WB_Reg__DOT__valid_r) {
-        vlSelf->top__DOT__wb_commit_r = vlSelf->top__DOT__WB_Reg__DOT__valid_r;
-    }
-    if (vlSelf->rst) {
-        vlSelf->top__DOT__wb_instr_r = 0U;
-    } else if (vlSelf->top__DOT__WB_Reg__DOT__valid_r) {
-        vlSelf->top__DOT__wb_instr_r = vlSelf->top__DOT__WB_Reg__DOT__instr_r;
-    }
+    vlSelf->top__DOT__wb_commit_r = ((~ (IData)(vlSelf->rst)) 
+                                     & (IData)(vlSelf->top__DOT__WB_Reg__DOT__valid_r));
+    vlSelf->top__DOT__wb_instr_r = ((IData)(vlSelf->rst)
+                                     ? 0U : ((IData)(vlSelf->top__DOT__WB_Reg__DOT__valid_r)
+                                              ? vlSelf->top__DOT__WB_Reg__DOT__instr_r
+                                              : 0U));
     if ((((~ (IData)(vlSelf->rst)) & (IData)(vlSelf->top__DOT__WB_Reg__DOT__wen_r)) 
          & (IData)(vlSelf->top__DOT__WB_Reg__DOT__valid_r))) {
         __Vdlyvval__top__DOT__regfile__DOT__rf__v0 
@@ -1505,13 +1501,14 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
     }
     if (vlSelf->rst) {
         vlSelf->top__DOT__next_pc_r = 0ULL;
-    } else if (vlSelf->top__DOT__WB_Reg__DOT__valid_r) {
-        vlSelf->top__DOT__next_pc_r = vlSelf->top__DOT__M_Reg__DOT__pc_r;
-    }
-    if (vlSelf->rst) {
         vlSelf->top__DOT__wb_pc_r = 0ULL;
-    } else if (vlSelf->top__DOT__WB_Reg__DOT__valid_r) {
-        vlSelf->top__DOT__wb_pc_r = vlSelf->top__DOT__WB_Reg__DOT__pc_r;
+    } else {
+        vlSelf->top__DOT__next_pc_r = ((IData)(vlSelf->top__DOT__WB_Reg__DOT__valid_r)
+                                        ? vlSelf->top__DOT__M_Reg__DOT__pc_r
+                                        : 0ULL);
+        vlSelf->top__DOT__wb_pc_r = ((IData)(vlSelf->top__DOT__WB_Reg__DOT__valid_r)
+                                      ? vlSelf->top__DOT__WB_Reg__DOT__pc_r
+                                      : 0ULL);
     }
     if (__Vdlyvset__top__DOT__regfile__DOT__rf__v0) {
         vlSelf->top__DOT__regfile__DOT__rf[__Vdlyvdim0__top__DOT__regfile__DOT__rf__v0] 
