@@ -1488,45 +1488,48 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                               ? vlSelf->top__DOT__id_busb
                                               : 4ULL)) 
            ^ (- (QData)((IData)(vlSelf->top__DOT__my_idu__DOT__na_alu__DOT__SUBctr))));
-    vlSelf->top__DOT__id_m_hazard = (((((IData)(vlSelf->top__DOT__id_use_rd) 
-                                        & ((IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r) 
-                                           & (IData)(vlSelf->top__DOT__M_Reg__DOT__wen_r))) 
-                                       & (0U != (IData)(vlSelf->top__DOT__id_rs1))) 
-                                      & (0U != (0x1fU 
+    vlSelf->top__DOT__id_m_hazard = (((IData)(vlSelf->top__DOT__id_use_rd) 
+                                      & ((IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r) 
+                                         & (IData)(vlSelf->top__DOT__M_Reg__DOT__wen_r))) 
+                                     & ((((IData)(vlSelf->top__DOT__id_rs1) 
+                                          == (IData)(vlSelf->top__DOT__M_Reg__DOT__rd_r)) 
+                                         & (0U != (IData)(vlSelf->top__DOT__id_rs1))) 
+                                        | (((0x1fU 
+                                             & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
+                                                >> 0x14U)) 
+                                            == (IData)(vlSelf->top__DOT__M_Reg__DOT__rd_r)) 
+                                           & (0U != 
+                                              (0x1fU 
+                                               & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
+                                                  >> 0x14U))))));
+    vlSelf->top__DOT__id_wb_hazard = (((IData)(vlSelf->top__DOT__id_use_rd) 
+                                       & ((IData)(vlSelf->top__DOT__WB_Reg__DOT__valid_r) 
+                                          & (IData)(vlSelf->top__DOT__WB_Reg__DOT__wen_r))) 
+                                      & ((((IData)(vlSelf->top__DOT__id_rs1) 
+                                           == (IData)(vlSelf->top__DOT__WB_Reg__DOT__waddr_r)) 
+                                          & (0U != (IData)(vlSelf->top__DOT__id_rs1))) 
+                                         | (((0x1fU 
+                                              & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
+                                                 >> 0x14U)) 
+                                             == (IData)(vlSelf->top__DOT__WB_Reg__DOT__waddr_r)) 
+                                            & (0U != 
+                                               (0x1fU 
                                                 & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
-                                                   >> 0x14U)))) 
-                                     & (((IData)(vlSelf->top__DOT__id_rs1) 
-                                         == (IData)(vlSelf->top__DOT__M_Reg__DOT__rd_r)) 
-                                        | ((0x1fU & 
-                                            (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
-                                             >> 0x14U)) 
-                                           == (IData)(vlSelf->top__DOT__M_Reg__DOT__rd_r))));
-    vlSelf->top__DOT__id_wb_hazard = (((((IData)(vlSelf->top__DOT__id_use_rd) 
-                                         & ((IData)(vlSelf->top__DOT__WB_Reg__DOT__valid_r) 
-                                            & (IData)(vlSelf->top__DOT__WB_Reg__DOT__wen_r))) 
-                                        & (0U != (IData)(vlSelf->top__DOT__id_rs1))) 
-                                       & (0U != (0x1fU 
-                                                 & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
-                                                    >> 0x14U)))) 
-                                      & (((IData)(vlSelf->top__DOT__id_rs1) 
-                                          == (IData)(vlSelf->top__DOT__WB_Reg__DOT__waddr_r)) 
-                                         | ((0x1fU 
-                                             & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
-                                                >> 0x14U)) 
-                                            == (IData)(vlSelf->top__DOT__WB_Reg__DOT__waddr_r))));
-    vlSelf->top__DOT__id_ex_hazard = (((((IData)(vlSelf->top__DOT__id_use_rd) 
-                                         & ((IData)(vlSelf->top__DOT__EX_Reg__DOT__valid_r) 
-                                            & (IData)(vlSelf->top__DOT__EX_Reg__DOT__wen_r))) 
-                                        & (0U != (IData)(vlSelf->top__DOT__id_rs1))) 
-                                       & (0U != (0x1fU 
-                                                 & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
-                                                    >> 0x14U)))) 
-                                      & (((IData)(vlSelf->top__DOT__id_rs1) 
-                                          == (IData)(vlSelf->top__DOT__EX_Reg__DOT__rd_r)) 
-                                         | ((0x1fU 
-                                             & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
-                                                >> 0x14U)) 
-                                            == (IData)(vlSelf->top__DOT__EX_Reg__DOT__rd_r))));
+                                                   >> 0x14U))))));
+    vlSelf->top__DOT__id_ex_hazard = (((IData)(vlSelf->top__DOT__id_use_rd) 
+                                       & ((IData)(vlSelf->top__DOT__EX_Reg__DOT__valid_r) 
+                                          & (IData)(vlSelf->top__DOT__EX_Reg__DOT__wen_r))) 
+                                      & ((((IData)(vlSelf->top__DOT__id_rs1) 
+                                           == (IData)(vlSelf->top__DOT__EX_Reg__DOT__rd_r)) 
+                                          & (0U != (IData)(vlSelf->top__DOT__id_rs1))) 
+                                         | (((0x1fU 
+                                              & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
+                                                 >> 0x14U)) 
+                                             == (IData)(vlSelf->top__DOT__EX_Reg__DOT__rd_r)) 
+                                            & (0U != 
+                                               (0x1fU 
+                                                & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
+                                                   >> 0x14U))))));
     vlSelf->top__DOT__id_busa = ((0U == (IData)(vlSelf->top__DOT__id_rs1))
                                   ? 0ULL : vlSelf->top__DOT__regfile__DOT__rf
                                  [vlSelf->top__DOT__id_rs1]);

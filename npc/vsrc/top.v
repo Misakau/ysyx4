@@ -16,7 +16,8 @@ module top(
   output [63:0] pc,
   output wb_commit,
   output [63:0] wb_pc,
-  output [31:0] wb_instr
+  output [31:0] wb_instr,
+  output [63:0] next_pc
 );
     our s;
     /////////////wires///////////////
@@ -367,23 +368,27 @@ module top(
     reg wb_commit_r;
     reg [63:0] wb_pc_r;
     reg [31:0] wb_instr_r;
+    reg [63:0] next_pc_r;
     wire nclk = ~clk;
     always@(posedge nclk) begin
         if(wb_flush)begin 
             wb_commit_r <= 1'b0;
             wb_pc_r    <= 64'b0;
             wb_instr_r <= 32'b0;
+            next_pc_r <= 64'b0;
         end
         else if(wb_valid_o)begin
           wb_commit_r <= wb_valid_o;
           wb_pc_r    <= wb_pc_o;
           wb_instr_r <= wb_instr_o;
+          next_pc_r <= m_pc_o;
         end
     end
     assign wb_commit = wb_commit_r;
     assign wb_pc = wb_pc_r;
     assign wb_instr = wb_instr_r;
     assign ebreak_commit = wb_Ebreak_i;
+    assign next_pc = next_pc_r;
     always@(*) begin
       if(ebreak_commit) c_trap(1);
     end
