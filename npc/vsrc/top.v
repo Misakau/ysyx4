@@ -104,19 +104,19 @@ module top(
     
     reg id_ex_hazard, id_m_hazard, id_wb_hazard;
     always@(*) begin
-      if( id_use_rd && ex_has_rd && id_rs1 != 5'b0 && id_rs2 != 5'b0 && (id_rs1 == ex_rd_i || id_rs2 == ex_rd_i)) begin
+      if( id_use_rd && ex_has_rd && ((id_rs1 == ex_rd_i && id_rs1 != 5'b0) || (id_rs2 == ex_rd_i && id_rs2 != 5'b0))) begin
         id_ex_hazard = 1'b1;
       end
       else id_ex_hazard = 1'b0;
     end
     always@(*) begin
-      if(id_use_rd && m_has_rd && id_rs1 != 5'b0 && id_rs2 != 5'b0 && (id_rs1 == m_rd_i || id_rs2 == m_rd_i)) begin
+      if(id_use_rd && m_has_rd && ((id_rs1 == m_rd_i && id_rs1 != 5'b0) || (id_rs2 == m_rd_i && id_rs2 != 5'b0))) begin
         id_m_hazard = 1'b1;
       end
       else id_m_hazard = 1'b0;
     end
     always@(*) begin
-      if(id_use_rd && wb_has_rd && id_rs1 != 5'b0 && id_rs2 != 5'b0 && (id_rs1 == wb_waddr_i || id_rs2 == wb_waddr_i)) begin
+      if(id_use_rd && wb_has_rd && ((id_rs1 == wb_waddr_i && id_rs1 != 5'b0) || (id_rs2 == wb_waddr_i && id_rs2 != 5'b0))) begin
         id_wb_hazard = 1'b1;
       end
       else id_wb_hazard = 1'b0;
