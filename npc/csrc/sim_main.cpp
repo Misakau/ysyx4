@@ -159,7 +159,7 @@ static void print_args(int argc, char**argv){
     for(int i = 0; i < argc; i++)
         printf("%s\n",argv[i]);
 }
-
+bool PASS = 0;
 void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
 void (*difftest_regcpy)(void *, bool);
 void (*difftest_exec)(uint64_t);
@@ -292,6 +292,7 @@ int main(int argc, char**argv, char**env) {
       if(cpu_gpr[10] == 0)
         printf(ASNI_FG_GREEN "HIT GOOD TRAP!" ASNI_NONE);
       else printf(ASNI_FG_RED "HIT BAD TRAP!" ASNI_NONE);
+      PASS = cpu_gpr[10];
       printf(ASNI_FG_BLUE " at PC = %lx\n" ASNI_NONE,top->pc);
     }
     printf("~~~Sim finished!~~~\n");
@@ -300,7 +301,7 @@ int main(int argc, char**argv, char**env) {
       exit(1);
     }
     if(log_ptr) fclose(log_ptr);
-    return 0;
+    return PASS;
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -352,6 +353,7 @@ static void npc_exec(uint64_t n){
     if(cpu_gpr[10] == 0)
         printf(ASNI_FG_GREEN "HIT GOOD TRAP!" ASNI_NONE);
     else printf(ASNI_FG_RED "HIT BAD TRAP!" ASNI_NONE);
+    PASS = cpu_gpr[10];
     printf(ASNI_FG_BLUE " at PC = %lx\n" ASNI_NONE,sdb_top->pc);
   }
 }
