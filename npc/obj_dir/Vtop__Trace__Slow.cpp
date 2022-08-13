@@ -2737,22 +2737,34 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullBit(oldp+84,(vlSelf->top__DOT__WB_Reg__DOT__Ebreak_r));
         tracep->fullBit(oldp+85,(vlSelf->top__DOT__id_use_rd));
         tracep->fullBit(oldp+86,(((IData)(vlSelf->top__DOT__EX_Reg__DOT__valid_r) 
-                                  & (((0x63U == (0x7fU 
-                                                 & vlSelf->top__DOT__EX_Reg__DOT__instr_r)) 
+                                  & (((((0x37U == (0x7fU 
+                                                   & vlSelf->top__DOT__EX_Reg__DOT__instr_r)) 
+                                        | (0x17U == 
+                                           (0x7fU & vlSelf->top__DOT__EX_Reg__DOT__instr_r))) 
+                                       | (0x63U == 
+                                          (0x7fU & vlSelf->top__DOT__EX_Reg__DOT__instr_r))) 
                                       | (0x23U == (0x7fU 
                                                    & vlSelf->top__DOT__EX_Reg__DOT__instr_r))) 
                                      | (0x73U == (0x7fU 
                                                   & vlSelf->top__DOT__EX_Reg__DOT__instr_r))))));
         tracep->fullBit(oldp+87,(((IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r) 
-                                  & (((0x63U == (0x7fU 
-                                                 & vlSelf->top__DOT__M_Reg__DOT__instr_r)) 
+                                  & (((((0x37U == (0x7fU 
+                                                   & vlSelf->top__DOT__M_Reg__DOT__instr_r)) 
+                                        | (0x17U == 
+                                           (0x7fU & vlSelf->top__DOT__M_Reg__DOT__instr_r))) 
+                                       | (0x63U == 
+                                          (0x7fU & vlSelf->top__DOT__M_Reg__DOT__instr_r))) 
                                       | (0x23U == (0x7fU 
                                                    & vlSelf->top__DOT__M_Reg__DOT__instr_r))) 
                                      | (0x73U == (0x7fU 
                                                   & vlSelf->top__DOT__M_Reg__DOT__instr_r))))));
         tracep->fullBit(oldp+88,(((IData)(vlSelf->top__DOT__WB_Reg__DOT__valid_r) 
-                                  & (((0x63U == (0x7fU 
-                                                 & vlSelf->top__DOT__WB_Reg__DOT__instr_r)) 
+                                  & (((((0x37U == (0x7fU 
+                                                   & vlSelf->top__DOT__WB_Reg__DOT__instr_r)) 
+                                        | (0x17U == 
+                                           (0x7fU & vlSelf->top__DOT__WB_Reg__DOT__instr_r))) 
+                                       | (0x63U == 
+                                          (0x7fU & vlSelf->top__DOT__WB_Reg__DOT__instr_r))) 
                                       | (0x23U == (0x7fU 
                                                    & vlSelf->top__DOT__WB_Reg__DOT__instr_r))) 
                                      | (0x73U == (0x7fU 
