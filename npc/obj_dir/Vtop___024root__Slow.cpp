@@ -1490,26 +1490,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
            ^ (- (QData)((IData)(vlSelf->top__DOT__my_idu__DOT__na_alu__DOT__SUBctr))));
     vlSelf->top__DOT__id_m_hazard = (((((IData)(vlSelf->top__DOT__id_use_rd) 
                                         & ((IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r) 
-                                           & (((((0x37U 
-                                                  == 
-                                                  (0x7fU 
-                                                   & vlSelf->top__DOT__M_Reg__DOT__instr_r)) 
-                                                 | (0x17U 
-                                                    == 
-                                                    (0x7fU 
-                                                     & vlSelf->top__DOT__M_Reg__DOT__instr_r))) 
-                                                | (0x63U 
-                                                   == 
-                                                   (0x7fU 
-                                                    & vlSelf->top__DOT__M_Reg__DOT__instr_r))) 
-                                               | (0x23U 
-                                                  == 
-                                                  (0x7fU 
-                                                   & vlSelf->top__DOT__M_Reg__DOT__instr_r))) 
-                                              | (0x73U 
-                                                 == 
-                                                 (0x7fU 
-                                                  & vlSelf->top__DOT__M_Reg__DOT__instr_r))))) 
+                                           & (IData)(vlSelf->top__DOT__M_Reg__DOT__wen_r))) 
                                        & (0U != (IData)(vlSelf->top__DOT__id_rs1))) 
                                       & (0U != (0x1fU 
                                                 & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
@@ -1522,26 +1503,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                            == (IData)(vlSelf->top__DOT__M_Reg__DOT__rd_r))));
     vlSelf->top__DOT__id_wb_hazard = (((((IData)(vlSelf->top__DOT__id_use_rd) 
                                          & ((IData)(vlSelf->top__DOT__WB_Reg__DOT__valid_r) 
-                                            & (((((0x37U 
-                                                   == 
-                                                   (0x7fU 
-                                                    & vlSelf->top__DOT__WB_Reg__DOT__instr_r)) 
-                                                  | (0x17U 
-                                                     == 
-                                                     (0x7fU 
-                                                      & vlSelf->top__DOT__WB_Reg__DOT__instr_r))) 
-                                                 | (0x63U 
-                                                    == 
-                                                    (0x7fU 
-                                                     & vlSelf->top__DOT__WB_Reg__DOT__instr_r))) 
-                                                | (0x23U 
-                                                   == 
-                                                   (0x7fU 
-                                                    & vlSelf->top__DOT__WB_Reg__DOT__instr_r))) 
-                                               | (0x73U 
-                                                  == 
-                                                  (0x7fU 
-                                                   & vlSelf->top__DOT__WB_Reg__DOT__instr_r))))) 
+                                            & (IData)(vlSelf->top__DOT__WB_Reg__DOT__wen_r))) 
                                         & (0U != (IData)(vlSelf->top__DOT__id_rs1))) 
                                        & (0U != (0x1fU 
                                                  & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
@@ -1554,26 +1516,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                             == (IData)(vlSelf->top__DOT__WB_Reg__DOT__waddr_r))));
     vlSelf->top__DOT__id_ex_hazard = (((((IData)(vlSelf->top__DOT__id_use_rd) 
                                          & ((IData)(vlSelf->top__DOT__EX_Reg__DOT__valid_r) 
-                                            & (((((0x37U 
-                                                   == 
-                                                   (0x7fU 
-                                                    & vlSelf->top__DOT__EX_Reg__DOT__instr_r)) 
-                                                  | (0x17U 
-                                                     == 
-                                                     (0x7fU 
-                                                      & vlSelf->top__DOT__EX_Reg__DOT__instr_r))) 
-                                                 | (0x63U 
-                                                    == 
-                                                    (0x7fU 
-                                                     & vlSelf->top__DOT__EX_Reg__DOT__instr_r))) 
-                                                | (0x23U 
-                                                   == 
-                                                   (0x7fU 
-                                                    & vlSelf->top__DOT__EX_Reg__DOT__instr_r))) 
-                                               | (0x73U 
-                                                  == 
-                                                  (0x7fU 
-                                                   & vlSelf->top__DOT__EX_Reg__DOT__instr_r))))) 
+                                            & (IData)(vlSelf->top__DOT__EX_Reg__DOT__wen_r))) 
                                         & (0U != (IData)(vlSelf->top__DOT__id_rs1))) 
                                        & (0U != (0x1fU 
                                                  & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
