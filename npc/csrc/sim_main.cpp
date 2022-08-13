@@ -125,7 +125,7 @@ void set_batch_mode(){
 
 static void sdb_mainloop();
 static bool is_diff = false;
-static char* image_file = NULL;
+static char* image_file = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/add-riscv64-npc.bin";
 static char* log_file = NULL;
 static FILE* log_ptr = NULL;
 static int npc_parse_args(int argc, char *argv[]) {
