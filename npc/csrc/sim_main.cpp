@@ -249,6 +249,7 @@ int main(int argc, char**argv, char**env) {
     int cnt = 0;
     
     if(is_batch){
+      int step = 0;
         NEMU_CPU nemu;
         while (!is_done && !contextp->gotFinish()) { 
             contextp->timeInc(1); 
@@ -272,16 +273,19 @@ int main(int argc, char**argv, char**env) {
               } 
             #endif
             if(is_diff){
+              step++;
               if(top->clk == 0 && top->wb_commit == 1){
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(top->next_pc != nemu.pc){
                   printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, top->next_pc, top->wb_pc);
+                  printf(ASNI_FG_BLUE "Step = %lx\n" ASNI_NONE,step);
                   EXIT = 1; PASS = 1;break;
                 }
                 for(int i = 1; i < 32; i++){
                   if(cpu_gpr[i] != nemu.gpr[i]){
                     printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],top->wb_pc);
+                    printf(ASNI_FG_BLUE "Step = %lx\n" ASNI_NONE,step);
                     EXIT = 1; PASS = 1;break;
                   }
                 }
