@@ -279,13 +279,13 @@ int main(int argc, char**argv, char**env) {
                 difftest_regcpy(&nemu, 1);
                 if(top->next_pc != nemu.pc){
                   printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, top->next_pc, top->wb_pc);
-                  printf(ASNI_FG_BLUE "Step = %lx\n" ASNI_NONE,step);
+                  printf(ASNI_FG_BLUE "Step = %d\n" ASNI_NONE,step);
                   EXIT = 1; PASS = 1;break;
                 }
                 for(int i = 1; i < 32; i++){
                   if(cpu_gpr[i] != nemu.gpr[i]){
                     printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],top->wb_pc);
-                    printf(ASNI_FG_BLUE "Step = %lx\n" ASNI_NONE,step);
+                    printf(ASNI_FG_BLUE "Step = %d\n" ASNI_NONE,step);
                     EXIT = 1; PASS = 1;break;
                   }
                 }
