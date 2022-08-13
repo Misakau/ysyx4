@@ -1521,6 +1521,11 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__wb_commit_r = vlSelf->top__DOT__WB_Reg__DOT__valid_r;
     }
     if (vlSelf->rst) {
+        vlSelf->top__DOT__next_pc_r = 0ULL;
+    } else if (vlSelf->top__DOT__WB_Reg__DOT__valid_r) {
+        vlSelf->top__DOT__next_pc_r = vlSelf->top__DOT__M_Reg__DOT__pc_r;
+    }
+    if (vlSelf->rst) {
         vlSelf->top__DOT__wb_pc_r = 0ULL;
     } else if (vlSelf->top__DOT__WB_Reg__DOT__valid_r) {
         vlSelf->top__DOT__wb_pc_r = vlSelf->top__DOT__WB_Reg__DOT__pc_r;
@@ -1543,6 +1548,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
             = __Vdlyvval__top__DOT__regfile__DOT__rf__v0;
     }
     vlSelf->wb_commit = vlSelf->top__DOT__wb_commit_r;
+    vlSelf->next_pc = vlSelf->top__DOT__next_pc_r;
     vlSelf->wb_pc = vlSelf->top__DOT__wb_pc_r;
     vlSelf->wb_instr = vlSelf->top__DOT__wb_instr_r;
 }

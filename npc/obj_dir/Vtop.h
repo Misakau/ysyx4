@@ -37,6 +37,7 @@ class Vtop VL_NOT_FINAL {
     VL_OUT8(&wb_commit,0,0);
     VL_OUT64(&wb_pc,63,0);
     VL_OUT(&wb_instr,31,0);
+    VL_OUT64(&next_pc,63,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.

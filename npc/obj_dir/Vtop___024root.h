@@ -36,6 +36,7 @@ VL_MODULE(Vtop___024root) {
     VL_OUT(wb_instr,31,0);
     VL_OUT64(pc,63,0);
     VL_OUT64(wb_pc,63,0);
+    VL_OUT64(next_pc,63,0);
 
     // LOCAL SIGNALS
     // Anonymous structures to workaround compiler member-count bugs
@@ -137,6 +138,7 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__m_rfdata_o;
         QData/*63:0*/ top__DOT__forward_data;
         QData/*63:0*/ top__DOT__wb_pc_r;
+        QData/*63:0*/ top__DOT__next_pc_r;
         QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
         QData/*63:0*/ top__DOT__my_ifu__DOT__rdata;
         QData/*63:0*/ top__DOT__my_ifu__DOT__valid_dnpc;
@@ -169,9 +171,9 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__csrfile__DOT__csrin;
         QData/*63:0*/ top__DOT__csrfile__DOT__mtvec;
         QData/*63:0*/ top__DOT__csrfile__DOT__mepc;
-        QData/*63:0*/ top__DOT__csrfile__DOT__mcause;
     };
     struct {
+        QData/*63:0*/ top__DOT__csrfile__DOT__mcause;
         QData/*63:0*/ top__DOT__csrfile__DOT__mscratch;
         VlUnpacked<QData/*63:0*/, 32> top__DOT__regfile__DOT__rf;
     };
