@@ -384,11 +384,19 @@ module top(
             wb_instr_r <= 32'b0;
             next_pc_r <= 64'b0;
         end
-        else if(wb_valid_o)begin
-          wb_commit_r <= wb_valid_o;
-          wb_pc_r    <= wb_pc_o;
-          wb_instr_r <= wb_instr_o;
-          next_pc_r <= m_pc_o;
+        else begin
+          if(wb_valid_o)begin
+            wb_commit_r <= wb_valid_o;
+            wb_pc_r    <= wb_pc_o;
+            wb_instr_r <= wb_instr_o;
+            next_pc_r <= m_pc_o;
+          end
+          else begin
+            wb_commit_r <= 1'b0;
+            wb_pc_r    <= 64'b0;
+            wb_instr_r <= 32'b0;
+            next_pc_r <= 64'b0;
+          end
         end
     end
     assign wb_commit = wb_commit_r;
