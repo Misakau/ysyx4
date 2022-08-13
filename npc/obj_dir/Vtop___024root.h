@@ -60,8 +60,6 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__running_r;
         CData/*0:0*/ top__DOT__running;
         CData/*0:0*/ top__DOT__id_use_rd;
-        CData/*0:0*/ top__DOT__rs1_need;
-        CData/*0:0*/ top__DOT__rs2_need;
         CData/*0:0*/ top__DOT__id_ex_hazard;
         CData/*0:0*/ top__DOT__id_m_hazard;
         CData/*0:0*/ top__DOT__id_wb_hazard;
@@ -105,10 +103,10 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__M_Reg__DOT__MemToReg_r;
         CData/*0:0*/ top__DOT__M_Reg__DOT__CsrToReg_r;
         CData/*0:0*/ top__DOT__M_Reg__DOT__Ebreak_r;
-    };
-    struct {
         CData/*0:0*/ top__DOT__my_mu__DOT__is_wen;
         CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__wmask;
+    };
+    struct {
         CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__datab;
         CData/*0:0*/ top__DOT__WB_Reg__DOT__valid_r;
         CData/*0:0*/ top__DOT__WB_Reg__DOT__wen_r;
@@ -171,10 +169,10 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__WB_Reg__DOT__pc_r;
         QData/*63:0*/ top__DOT__WB_Reg__DOT__wdata_r;
         QData/*63:0*/ top__DOT__csrfile__DOT__csrin;
-    };
-    struct {
         QData/*63:0*/ top__DOT__csrfile__DOT__mtvec;
         QData/*63:0*/ top__DOT__csrfile__DOT__mepc;
+    };
+    struct {
         QData/*63:0*/ top__DOT__csrfile__DOT__mcause;
         QData/*63:0*/ top__DOT__csrfile__DOT__mscratch;
         VlUnpacked<QData/*63:0*/, 32> top__DOT__regfile__DOT__rf;
