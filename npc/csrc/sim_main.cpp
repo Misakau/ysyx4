@@ -249,7 +249,7 @@ int main(int argc, char**argv, char**env) {
     int cnt = 0;
     
     if(is_batch){
-      #undef ITRACE
+      //#undef ITRACE
       int step = 0;
         NEMU_CPU nemu;
         while (!is_done && !contextp->gotFinish()) { 
