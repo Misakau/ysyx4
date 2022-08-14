@@ -120,19 +120,6 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__alu_inA = ((IData)(vlSelf->top__DOT__EX_Reg__DOT__ALUSrcA_r)
                                                ? vlSelf->top__DOT__EX_Reg__DOT__busa_r
                                                : vlSelf->top__DOT__EX_Reg__DOT__pc_r);
-    vlSelf->top__DOT__id_use_rd = ((IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r) 
-                                   & (~ ((((0x37U == 
-                                            (0x7fU 
-                                             & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) 
-                                           | (0x17U 
-                                              == (0x7fU 
-                                                  & vlSelf->top__DOT__ID_Reg__DOT__instr_r))) 
-                                          | (0x6fU 
-                                             == (0x7fU 
-                                                 & vlSelf->top__DOT__ID_Reg__DOT__instr_r))) 
-                                         | (0x73U == 
-                                            (0x7fU 
-                                             & vlSelf->top__DOT__ID_Reg__DOT__instr_r)))));
     if ((0x40U & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) {
         if (VL_LIKELY((0x20U & vlSelf->top__DOT__ID_Reg__DOT__instr_r))) {
             if ((0x10U & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) {
@@ -1390,8 +1377,6 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__is_Csrwen = (((~ (IData)(vlSelf->rst)) 
                                     & (IData)(vlSelf->top__DOT__id_Csrwen)) 
                                    & (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r));
-    vlSelf->top__DOT__if_block = ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
-                                  | (IData)(vlSelf->rst));
     vlSelf->top__DOT__id_imm_o = ((0U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))
                                    ? (((- (QData)((IData)(
                                                           (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
@@ -1466,6 +1451,20 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
         = Vtop__ConstPool__TABLE_f4558aae_0[__Vtableidx1];
     vlSelf->top__DOT__my_idu__DOT__na_alu__DOT__OPctr 
         = Vtop__ConstPool__TABLE_6fbd8736_0[__Vtableidx1];
+    vlSelf->top__DOT__if_block = ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
+                                  | (IData)(vlSelf->rst));
+    vlSelf->top__DOT__id_use_rd = ((IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r) 
+                                   & (~ (((((0x37U 
+                                             == (0x7fU 
+                                                 & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) 
+                                            | (0x17U 
+                                               == (0x7fU 
+                                                   & vlSelf->top__DOT__ID_Reg__DOT__instr_r))) 
+                                           | (0x6fU 
+                                              == (0x7fU 
+                                                  & vlSelf->top__DOT__ID_Reg__DOT__instr_r))) 
+                                          | (IData)(vlSelf->top__DOT__id_Ebreak_o)) 
+                                         | (IData)(vlSelf->top__DOT__id_Mret))));
     vlSelf->top__DOT__id_rs1 = ((IData)(vlSelf->top__DOT__id_Ecall)
                                  ? 0x11U : (0x1fU & 
                                             (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
