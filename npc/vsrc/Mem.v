@@ -2,6 +2,7 @@
 /* verilator lint_off UNUSED */
 /* verilator lint_off PINMISSING */
 module ysyx_220053_Mem(
+    input clk,
     input [2:0] MemOp,
     input [63:0] raddr, wdata,
     input MemWen,
@@ -20,7 +21,9 @@ module ysyx_220053_Mem(
     end
 
     always @(*) begin
-        pmem_read(raddr, dataout);
+        pmem_read(raddr, dataout); 
+    end
+    always @(posedge clk) begin
         if(MemWen == 1'b1) pmem_write(raddr, wdata, wmask);
     end
     reg [63:0] datad;

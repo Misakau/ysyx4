@@ -13,7 +13,7 @@ module ysyx_220053_MU(
     output [63:0] rfdata
 );
     wire [63:0] mdata, regsin;
-    ysyx_220053_Mem mem(.MemOp(MemOp), .raddr(raddr), .MemWen(MemWen), .wdata(wdata), .rdata(mdata));//M
+    ysyx_220053_Mem mem(.clk(~clk), .MemOp(MemOp), .raddr(raddr), .MemWen(MemWen), .wdata(wdata), .rdata(mdata));//M
     wire is_wen;
     //WB Mret, Ecall, Csrwen, CsrToReg,
     assign regsin = (MemToReg == 1'b0) ? raddr : mdata;//WB
