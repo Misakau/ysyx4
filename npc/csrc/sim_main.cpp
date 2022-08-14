@@ -105,7 +105,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     assert(real_mask == 0xffffffffull);
     uint32_t *ptr = (uint32_t *)vmem;
     printf("waddr = %llx, waddr-FB_ADDR = %lld\n",waddr,waddr-FB_ADDR);
-    ptr[waddr-FB_ADDR] = wdata;
+    ptr[(waddr-FB_ADDR)>>4] = wdata;
     printf("ok\n");
   }
   else{
