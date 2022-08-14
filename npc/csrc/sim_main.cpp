@@ -58,7 +58,7 @@ void dump_gpr() {
 extern void *vmem;
 extern uint32_t *vgactl_port_base;
 extern uint32_t vmem_len;
-
+void init_vga();
 extern "C" void pmem_read(long long raddr, long long *rdata) {
   if(raddr == RTC_ADDR){
     struct timeval tv;
