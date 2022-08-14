@@ -53,7 +53,12 @@ void dump_gpr() {
     printf("gpr[%d] = 0x%lx\n", i, cpu_gpr[i]);
   }
 }
+
 #include <sys/time.h>
+extern void *vmem = NULL;
+extern uint32_t *vgactl_port_base = NULL;
+extern uint32_t vmem_len = 0;
+
 extern "C" void pmem_read(long long raddr, long long *rdata) {
   if(raddr == RTC_ADDR){
     struct timeval tv;
@@ -61,6 +66,10 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
     *rdata = tv.tv_sec * 1000000 + tv.tv_usec - st_time;
    // printf("now time = %lld\n",(long long)*rdata);
    // printf("%llx\n",*rdata - st_time);
+  }
+  else if(raddr == VGACTL_ADDR){
+    assert(vgactl_port_base);
+    *rdata = *vgactl_port_base;
   }
   else{
     long long real_addr = (raddr - AD_BASE) >> 3;
@@ -76,6 +85,8 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
   // 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
 }
 extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
+  // maybe need some change
+  // 没有严格8字节对齐
   long long real_addr = (waddr - AD_BASE) >> 3;
   uint64_t real_mask = -1;
   if(wmask == 0x1) real_mask = 0xffull;
@@ -86,6 +97,12 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   if(waddr == SERIAL_PORT){
     assert(real_mask == 0xff);
     printf("%c",(char)(wdata & real_mask));
+  }
+  else if(waddr >= FB_ADDR && waddr < FB_ADDR + vmem_len){
+    assert(vmem);
+    assert(real_mask == 0xf);
+    //uint32_t *ptr = (uint32_t *)vmem;
+    vmem[waddr-FB_ADDR] = wdata;
   }
   else{
     if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
