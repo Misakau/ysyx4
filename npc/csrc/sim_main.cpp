@@ -210,7 +210,10 @@ int main(int argc, char**argv, char**env) {
     Vtop*top = new Vtop{contextp};
     
     npc_parse_args(argc, argv);
-    
+
+    //vga_init
+    init_vga();
+
     //sdb_init
     sdb_contextp = contextp;
     sdb_top = top;
