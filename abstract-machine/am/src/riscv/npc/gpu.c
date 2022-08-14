@@ -45,7 +45,9 @@ void __am_gpu_config(AM_GPU_CONFIG_T *cfg) {
 }
 
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
-  int width = io_read(AM_GPU_CONFIG).width;
+  AM_GPU_CONFIG_T gpu;
+  ioe_read(AM_GPU_CONFIG,&gpu);
+  int width = gpu.width;
   int h = ctl->h, w = ctl->w, x = ctl->x, y = ctl->y;
   uint32_t *pixels = (uint32_t *)ctl->pixels;
   for(int i = 0; i < h; i++){
