@@ -103,7 +103,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     assert(vgactl_port_base);
     assert((waddr - VGACTL_ADDR)>>2 == 1);
     vgactl_port_base[(waddr - VGACTL_ADDR)>>2] = wdata;
-    printf("wdata = %d\n",wdata);
+    printf("wdata = %lld\n",wdata);
   }
   else if(waddr >= FB_ADDR && waddr < FB_ADDR + vmem_len){
     assert(vmem);
