@@ -59,6 +59,8 @@ extern void *vmem;
 extern uint32_t *vgactl_port_base;
 extern uint32_t vmem_len;
 void init_vga();
+void vga_update_screen();
+
 extern "C" void pmem_read(long long raddr, long long *rdata) {
   if(raddr == RTC_ADDR){
     struct timeval tv;
@@ -103,7 +105,8 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     assert(vgactl_port_base);
     assert((waddr - VGACTL_ADDR)>>2 == 1);
     vgactl_port_base[(waddr - VGACTL_ADDR)>>2] = wdata;
-    printf("wdata = %lld\n",wdata);
+    //printf("wdata = %lld\n",wdata);
+    vga_update_screen();
   }
   else if(waddr >= FB_ADDR && waddr < FB_ADDR + vmem_len){
     assert(vmem);
@@ -111,9 +114,9 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
    // printf("real_mask = %lx\n",real_mask);
     assert(real_mask == 0xffffffffull);
     uint32_t *ptr = (uint32_t *)vmem;
-    if((waddr-FB_ADDR)>>2 == 0 || (waddr-FB_ADDR)>>2 == vmem_len - 1){
-      printf("waddr = %llx, index = %lld\n, data = %lld\n",waddr,(waddr-FB_ADDR)>>2,wdata);
-    }
+    //if((waddr-FB_ADDR)>>2 == 0 || (waddr-FB_ADDR)>>2 == vmem_len - 1){
+    //  printf("waddr = %llx, index = %lld\n, data = %lld\n",waddr,(waddr-FB_ADDR)>>2,wdata);
+    //}
     ptr[(waddr-FB_ADDR)>>2] = wdata;
     //printf("ok\n");
   }
