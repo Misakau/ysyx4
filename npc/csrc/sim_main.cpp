@@ -361,9 +361,11 @@ static void npc_exec(uint64_t n){
     return;
   }
   NEMU_CPU nemu;
+  /*
   #ifndef ITRACE
     #define ITRACE
   #endif
+  */
   for (uint64_t i = 1; i <= 2*n && !is_done && !sdb_contextp->gotFinish(); i++) { 
             sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
@@ -371,7 +373,6 @@ static void npc_exec(uint64_t n){
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", sdb_top->clk, sdb_top->rst, sdb_top->pc, sdb_top->instr);
             if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); sdb_top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", sdb_top->clk, sdb_top->rst, sdb_top->pc, sdb_top->instr);
-            if(instr_now == 0) return;
             #ifdef ITRACE
               char str[128];disassemble(str, 127, sdb_top->pc, (uint8_t*)&instr_now, 4);
               if(sdb_top->clk == 0){//instr to be fetch
