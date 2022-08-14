@@ -101,8 +101,8 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   else if(waddr >= FB_ADDR && waddr < FB_ADDR + vmem_len){
     assert(vmem);
     assert(real_mask == 0xf);
-    //uint32_t *ptr = (uint32_t *)vmem;
-    vmem[waddr-FB_ADDR] = wdata;
+    uint32_t *ptr = (uint32_t *)vmem;
+    ptr[waddr-FB_ADDR] = wdata;
   }
   else{
     if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
