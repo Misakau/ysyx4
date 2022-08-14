@@ -23,7 +23,7 @@ VERILATOR_FLAGS += --trace
 # Input files for Verilator
 VERILATOR_INPUT = $(VFILES) $(CFILES)
 LDFLAGS = -lreadline
-LDFLAGS += -ldl -lsdl2
+LDFLAGS += -ldl -lSDL2
 CFLAGS = -DITRACE
 #LDFLAGS += -L$(NEMU_HOME)/build -lriscv64-nemu-interpreter-so
 #FILEPATH ?= ./csrc/a.in
