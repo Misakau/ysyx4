@@ -55,9 +55,9 @@ void dump_gpr() {
 }
 
 #include <sys/time.h>
-extern void *vmem = NULL;
-extern uint32_t *vgactl_port_base = NULL;
-extern uint32_t vmem_len = 0;
+extern void *vmem;
+extern uint32_t *vgactl_port_base;
+extern uint32_t vmem_len;
 
 extern "C" void pmem_read(long long raddr, long long *rdata) {
   if(raddr == RTC_ADDR){
