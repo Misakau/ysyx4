@@ -94,6 +94,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
       else{
           
           printf("raddr = %llx\n",raddr);
+          printf("bytes = %d\n",bytes);
           printf("real addr = %llx\n",real_addr);
           printf("maddr = %llx\n",maddr);
           assert(0);
