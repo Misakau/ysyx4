@@ -36,7 +36,10 @@ module ysyx_220053_Mem(
                 for (i = 0; i < st; i = i + 1) begin
                     datain[i] = 0;
                 end
-                datain[st + 31 : st] = wdataw;
+                for (i = 0; i < 32; i = i + 1) begin
+                    datain[st + i] = wdataw[i];
+                end
+                //datain[st + 31 : st] = wdataw;
                 for (i = st + 32; i < 64; i = i + 1) begin
                     datain[i] = 0;
                 end
@@ -45,7 +48,10 @@ module ysyx_220053_Mem(
                 for (i = 0; i < st; i = i + 1) begin
                     datain[i] = 0;
                 end
-                datain[st + 7 : st] = wdatab;
+                for (i = 0; i < 8; i = i + 1) begin
+                    datain[st + i] = wdatab[i];
+                end
+                //datain[st + 7 : st] = wdatab;
                 for (i = st + 8; i < 64; i = i + 1) begin
                     datain[i] = 0;
                 end
@@ -56,7 +62,10 @@ module ysyx_220053_Mem(
                 for (i = 0; i < st; i = i + 1) begin
                     datain[i] = 0;
                 end
-                datain[st + 15 : st] = wdatah;
+                for (i = 0; i < 16; i = i + 1) begin
+                    datain[st + i] = wdatah[i];
+                end
+                //datain[st + 15 : st] = wdatah;
                 for (i = st + 16; i < 64; i = i + 1) begin
                     datain[i] = 0;
                 end
