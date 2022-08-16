@@ -133,7 +133,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   }
   else{
     if(waddr == 0x80000262){
-      printf("write data = %llx, wmask = %llx\n",wdata,wmask);
+      printf("write data = %llx, wmask = %x\n",wdata,(uint8_t)wmask);
     }
     if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
