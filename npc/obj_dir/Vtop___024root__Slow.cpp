@@ -872,7 +872,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                         } else if ((0U == (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
                                            >> 0x14U))) {
                             vlSelf->top__DOT__id_Ebreak_o = 0U;
-                            vlSelf->top__DOT__id_Csrwen = 1U;
+                            vlSelf->top__DOT__id_Csrwen = 0U;
                             vlSelf->top__DOT__id_Ecall = 1U;
                             vlSelf->top__DOT__id_Mret = 0U;
                             vlSelf->top__DOT__id_CsrOp = 0U;
@@ -1712,9 +1712,6 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                 ? VL_MODDIVS_III(32, (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA), (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB))
                 : VL_MODDIV_III(32, (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA), (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))
             : 0U);
-    vlSelf->top__DOT__is_Csrwen = (((~ (IData)(vlSelf->rst)) 
-                                    & (IData)(vlSelf->top__DOT__id_Csrwen)) 
-                                   & (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r));
     vlSelf->top__DOT__id_imm_o = ((0U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))
                                    ? (((- (QData)((IData)(
                                                           (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
@@ -1805,9 +1802,13 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                            | (IData)(vlSelf->top__DOT__id_Ebreak_o)) 
                                           | (IData)(vlSelf->top__DOT__id_Mret)) 
                                          | (IData)(vlSelf->top__DOT__id_Ecall))));
-    vlSelf->top__DOT__id_rs1 = ((IData)(vlSelf->top__DOT__id_Ecall)
-                                 ? 0x11U : (0x1fU & 
-                                            (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
+    vlSelf->top__DOT__is_Csrwen = (((~ (IData)(vlSelf->rst)) 
+                                    & (IData)(vlSelf->top__DOT__id_Csrwen)) 
+                                   & (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r));
+    vlSelf->top__DOT__id_rs1 = (0x1fU & ((IData)(vlSelf->top__DOT__id_Csrwen)
+                                          ? (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
+                                             >> 7U)
+                                          : (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
                                              >> 0xfU)));
     if ((0U != (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
         if ((1U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
