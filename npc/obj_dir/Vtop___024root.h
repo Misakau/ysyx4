@@ -42,7 +42,6 @@ VL_MODULE(Vtop___024root) {
     // Anonymous structures to workaround compiler member-count bugs
     struct {
         CData/*0:0*/ top__DOT__if_block;
-        CData/*4:0*/ top__DOT__id_rs1;
         CData/*0:0*/ top__DOT__id_ALUSrcA_o;
         CData/*0:0*/ top__DOT__id_MemToReg_o;
         CData/*0:0*/ top__DOT__id_MemWen_o;
@@ -105,9 +104,9 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__M_Reg__DOT__Ebreak_r;
         CData/*0:0*/ top__DOT__my_mu__DOT__is_wen;
         CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__wmask;
+        CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__datab;
     };
     struct {
-        CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__datab;
         CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__bytes;
         CData/*0:0*/ top__DOT__WB_Reg__DOT__valid_r;
         CData/*0:0*/ top__DOT__WB_Reg__DOT__wen_r;
@@ -171,9 +170,9 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__csrfile__DOT__csrin;
         QData/*63:0*/ top__DOT__csrfile__DOT__mtvec;
         QData/*63:0*/ top__DOT__csrfile__DOT__mepc;
+        QData/*63:0*/ top__DOT__csrfile__DOT__mcause;
     };
     struct {
-        QData/*63:0*/ top__DOT__csrfile__DOT__mcause;
         QData/*63:0*/ top__DOT__csrfile__DOT__mstatus;
         QData/*63:0*/ top__DOT__csrfile__DOT__mscratch;
         VlUnpacked<QData/*63:0*/, 32> top__DOT__regfile__DOT__rf;

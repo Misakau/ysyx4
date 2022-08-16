@@ -72,7 +72,7 @@ module ysyx_220053_CSR(
     //////////////////////read/////////////////////
     always@(*) begin
         case(CsrId)
-            12'h300:  csrin = mstatus;
+            12'h300:  csrres = mstatus;
             12'h305:  csrres = mtvec;
             12'h340:  csrres = mscratch;
             12'h341:  csrres = mepc;
