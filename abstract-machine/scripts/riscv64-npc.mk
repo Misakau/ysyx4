@@ -23,4 +23,4 @@ image: $(IMAGE).elf
 	@$(OBJCOPY) -S --set-section-flags .bss=alloc,contents -O binary $(IMAGE).elf $(IMAGE).bin
 
 run: image
-	$(NPC_HOME)/obj_dir/Vtop +trace -i $(IMAGE).bin -b #-d
+	$(NPC_HOME)/obj_dir/Vtop +trace -i $(IMAGE).bin -b -d
