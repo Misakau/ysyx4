@@ -50,7 +50,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     VlWide<4>/*127:0*/ __Vtemp23;
     VlWide<4>/*127:0*/ __Vtemp24;
     VlWide<4>/*127:0*/ __Vtemp25;
+    QData/*63:0*/ __Vdly__top__DOT__csrfile__DOT__mstatus;
     // Body
+    __Vdly__top__DOT__csrfile__DOT__mstatus = vlSelf->top__DOT__csrfile__DOT__mstatus;
     if (((0x340U == (IData)(vlSelf->top__DOT__id_CsrId)) 
          & (IData)(vlSelf->top__DOT__is_Csrwen))) {
         vlSelf->top__DOT__csrfile__DOT__mscratch = vlSelf->top__DOT__csrfile__DOT__csrin;
@@ -99,14 +101,36 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     if (vlSelf->rst) {
         vlSelf->top__DOT__EX_Reg__DOT__MulOp_r = 0U;
         vlSelf->top__DOT__M_Reg__DOT__raddr_r = 0ULL;
+    } else {
+        vlSelf->top__DOT__EX_Reg__DOT__MulOp_r = vlSelf->top__DOT__id_MulOp_o;
+        vlSelf->top__DOT__M_Reg__DOT__raddr_r = vlSelf->top__DOT__my_exu__DOT__res;
+    }
+    if (vlSelf->top__DOT__id_Ecall) {
+        __Vdly__top__DOT__csrfile__DOT__mstatus = (
+                                                   (0xffffffffffffe000ULL 
+                                                    & vlSelf->top__DOT__csrfile__DOT__mstatus) 
+                                                   | (QData)((IData)(
+                                                                     (0x7ffU 
+                                                                      & (IData)(vlSelf->top__DOT__csrfile__DOT__mstatus)))));
+    } else if (vlSelf->top__DOT__id_Mret) {
+        __Vdly__top__DOT__csrfile__DOT__mstatus = (
+                                                   (0xffffffffffffe000ULL 
+                                                    & vlSelf->top__DOT__csrfile__DOT__mstatus) 
+                                                   | (QData)((IData)(
+                                                                     (0x1800U 
+                                                                      | (0x7ffU 
+                                                                         & (IData)(vlSelf->top__DOT__csrfile__DOT__mstatus))))));
+    } else if (((0x300U == (IData)(vlSelf->top__DOT__id_CsrId)) 
+                & (IData)(vlSelf->top__DOT__is_Csrwen))) {
+        __Vdly__top__DOT__csrfile__DOT__mstatus = vlSelf->top__DOT__csrfile__DOT__csrin;
+    }
+    if (vlSelf->rst) {
         vlSelf->top__DOT__M_Reg__DOT__MemOp_r = 0U;
         vlSelf->top__DOT__WB_Reg__DOT__instr_r = 0U;
         vlSelf->top__DOT__WB_Reg__DOT__waddr_r = 0U;
         vlSelf->top__DOT__EX_Reg__DOT__busa_r = 0ULL;
         vlSelf->top__DOT__WB_Reg__DOT__pc_r = 0ULL;
     } else {
-        vlSelf->top__DOT__EX_Reg__DOT__MulOp_r = vlSelf->top__DOT__id_MulOp_o;
-        vlSelf->top__DOT__M_Reg__DOT__raddr_r = vlSelf->top__DOT__my_exu__DOT__res;
         vlSelf->top__DOT__M_Reg__DOT__MemOp_r = vlSelf->top__DOT__EX_Reg__DOT__MemOp_r;
         vlSelf->top__DOT__WB_Reg__DOT__instr_r = vlSelf->top__DOT__M_Reg__DOT__instr_r;
         vlSelf->top__DOT__WB_Reg__DOT__waddr_r = vlSelf->top__DOT__M_Reg__DOT__rd_r;
@@ -120,14 +144,16 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__EX_Reg__DOT__imm_r = 0ULL;
         vlSelf->top__DOT__EX_Reg__DOT__ALUSrcB_r = 0U;
         vlSelf->top__DOT__EX_Reg__DOT__ALUOp_r = 0U;
-        vlSelf->top__DOT__EX_Reg__DOT__Csrres_r = 0ULL;
     } else {
         vlSelf->top__DOT__M_Reg__DOT__wdata_r = vlSelf->top__DOT__EX_Reg__DOT__busb_r;
         vlSelf->top__DOT__EX_Reg__DOT__imm_r = vlSelf->top__DOT__id_imm_o;
         vlSelf->top__DOT__EX_Reg__DOT__ALUSrcB_r = vlSelf->top__DOT__id_ALUSrcB_o;
         vlSelf->top__DOT__EX_Reg__DOT__ALUOp_r = vlSelf->top__DOT__id_ALUOp_o;
-        vlSelf->top__DOT__EX_Reg__DOT__Csrres_r = vlSelf->top__DOT__id_csrres_o;
     }
+    vlSelf->top__DOT__csrfile__DOT__mstatus = __Vdly__top__DOT__csrfile__DOT__mstatus;
+    vlSelf->top__DOT__EX_Reg__DOT__Csrres_r = ((IData)(vlSelf->rst)
+                                                ? 0ULL
+                                                : vlSelf->top__DOT__id_csrres_o);
     vlSelf->top__DOT__M_Reg__DOT__valid_r = ((~ (IData)(vlSelf->rst)) 
                                              & (IData)(vlSelf->top__DOT__EX_Reg__DOT__valid_r));
     if (vlSelf->top__DOT__WB_Reg__DOT__Ebreak_r) {
@@ -2526,6 +2552,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                                (0x1fU 
                                                 & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
                                                    >> 0x14U))))));
+    if ((0x300U == (IData)(vlSelf->top__DOT__id_CsrId))) {
+        vlSelf->top__DOT__csrfile__DOT__csrin = vlSelf->top__DOT__csrfile__DOT__mstatus;
+    }
     if ((0x300U != (IData)(vlSelf->top__DOT__id_CsrId))) {
         vlSelf->top__DOT__id_csrres_o = ((0x305U == (IData)(vlSelf->top__DOT__id_CsrId))
                                           ? vlSelf->top__DOT__csrfile__DOT__mtvec
@@ -2897,9 +2926,6 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                                    & (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r));
     vlSelf->top__DOT__if_block = ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
                                   | (IData)(vlSelf->rst));
-    if ((0x300U == (IData)(vlSelf->top__DOT__id_CsrId))) {
-        vlSelf->top__DOT__csrfile__DOT__csrin = vlSelf->top__DOT__csrfile__DOT__mstatus;
-    }
 }
 
 VL_INLINE_OPT void Vtop___024root___multiclk__TOP__10(Vtop___024root* vlSelf) {
@@ -3045,25 +3071,6 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__13(Vtop___024root* vlSelf) {
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___combo__TOP__13\n"); );
     // Body
-    if (vlSelf->top__DOT__id_Ecall) {
-        vlSelf->top__DOT__csrfile__DOT__mstatus = (
-                                                   (0xffffffffffffe000ULL 
-                                                    & vlSelf->top__DOT__csrfile__DOT__mstatus) 
-                                                   | (QData)((IData)(
-                                                                     (0x7ffU 
-                                                                      & (IData)(vlSelf->top__DOT__csrfile__DOT__mstatus)))));
-    } else if (vlSelf->top__DOT__id_Mret) {
-        vlSelf->top__DOT__csrfile__DOT__mstatus = (
-                                                   (0xffffffffffffe000ULL 
-                                                    & vlSelf->top__DOT__csrfile__DOT__mstatus) 
-                                                   | (QData)((IData)(
-                                                                     (0x1800U 
-                                                                      | (0x7ffU 
-                                                                         & (IData)(vlSelf->top__DOT__csrfile__DOT__mstatus))))));
-    } else if (((0x300U == (IData)(vlSelf->top__DOT__id_CsrId)) 
-                & (IData)(vlSelf->top__DOT__is_Csrwen))) {
-        vlSelf->top__DOT__csrfile__DOT__mstatus = vlSelf->top__DOT__csrfile__DOT__csrin;
-    }
     vlSelf->top__DOT__if_pc_o = ((1U & ((IData)(vlSelf->top__DOT__if_block) 
                                         | (~ (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r))))
                                   ? vlSelf->top__DOT__my_ifu__DOT__now_pc
@@ -3137,11 +3144,6 @@ VL_INLINE_OPT QData Vtop___024root___change_request_1(Vtop___024root* vlSelf) {
     // Body
     // Change detection
     QData __req = false;  // Logically a bool
-    __req |= ((vlSelf->top__DOT__csrfile__DOT__mstatus ^ vlSelf->__Vchglast__TOP__top__DOT__csrfile__DOT__mstatus));
-    VL_DEBUG_IF( if(__req && ((vlSelf->top__DOT__csrfile__DOT__mstatus ^ vlSelf->__Vchglast__TOP__top__DOT__csrfile__DOT__mstatus))) VL_DBG_MSGF("        CHANGE: vsrc/Csr.v:53: top.csrfile.mstatus\n"); );
-    // Final
-    vlSelf->__Vchglast__TOP__top__DOT__csrfile__DOT__mstatus 
-        = vlSelf->top__DOT__csrfile__DOT__mstatus;
     return __req;
 }
 

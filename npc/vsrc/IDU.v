@@ -59,7 +59,7 @@ module ysyx_220053_IDU(
     assign op = instr_i[6:0];
     assign rd = instr_i[11:7];
     assign func3 = instr_i[14:12];
-    assign rs1 = (ecall == 0) ? instr_i[19:15] : 5'd17;//ecall a7
+    assign rs1 = (Csrwen == 0) ? instr_i[19:15] : instr_i[11:7];//ecall a7
     assign rs2 = instr_i[24:20];
     assign func7 = instr_i[31:25];
 
