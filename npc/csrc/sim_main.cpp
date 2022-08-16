@@ -92,10 +92,11 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
       long long ret;
       if(maddr == real_addr) ret = MEM[real_addr];
       else{
-          assert(0);
+          
           printf("raddr = %llx\n",raddr);
           printf("real addr = %llx\n",real_addr);
           printf("maddr = %llx\n",maddr);
+          assert(0);
           assert(maddr == real_addr + 1);
           long long del = (raddr - AD_BASE) - (real_addr << 3);
           long long bytes1 = 8 - del;
