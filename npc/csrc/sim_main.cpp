@@ -446,8 +446,7 @@ static void npc_exec(uint64_t n){
               } 
               
             }
-            if(tag) printf("pc = %lx\n",sdb_top->wb_pc);
-            if(tag || EXIT == 1) {sdb_top->eval();break;}
+            if(tag || EXIT == 1) {sdb_top->eval();if(tag) printf("pc = %lx\n",sdb_top->wb_pc);break;}
         }
   if(is_done){
     if(cpu_gpr[10] == 0)
