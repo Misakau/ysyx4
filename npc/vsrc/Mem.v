@@ -12,7 +12,7 @@ module ysyx_220053_Mem(
     reg [7:0] wmask;
     wire [63:0] al_addr = {raddr[63:3],{3{1'b0}}};
     integer i,st = {{29{1'b0}},raddr[2:0]};
-
+    integer st_bit = {{26{1'b0}},raddr[2:0],{3{1'b0}}};
     wire [63:0] wdatad = wdata[63:0];
     wire [31:0] wdataw = wdata[31:0];
     wire [15:0] wdatah = wdata[15:0];
@@ -40,26 +40,26 @@ module ysyx_220053_Mem(
                     wmask[i] = 1'b0;
                 end
 
-                for (i = 0; i < st; i = i + 1) begin
+                for (i = 0; i < st_bit; i = i + 1) begin
                     datain[i] = 1'b0;
                 end
                 for (i = 0; i < 32; i = i + 1) begin
-                    datain[st + i] = wdataw[i];
+                    datain[st_bit + i] = wdataw[i];
                 end
                 //datain[st + 31 : st] = wdataw;
-                for (i = st + 32; i < 64; i = i + 1) begin
+                for (i = st_bit + 32; i < 64; i = i + 1) begin
                     datain[i] = 0;
                 end
             end   
             2'b01: begin //1byte
-                for (i = 0; i < st; i = i + 1) begin
+                for (i = 0; i < st_bit; i = i + 1) begin
                     datain[i] = 0;
                 end
                 for (i = 0; i < 8; i = i + 1) begin
-                    datain[st + i] = wdatab[i];
+                    datain[st_bit + i] = wdatab[i];
                 end
                 //datain[st + 7 : st] = wdatab;
-                for (i = st + 8; i < 64; i = i + 1) begin
+                for (i = st_bit + 8; i < 64; i = i + 1) begin
                     datain[i] = 0;
                 end
 
@@ -72,14 +72,14 @@ module ysyx_220053_Mem(
                 end
             end
             2'b10: begin //2byte
-                for (i = 0; i < st; i = i + 1) begin
+                for (i = 0; i < st_bit; i = i + 1) begin
                     datain[i] = 0;
                 end
                 for (i = 0; i < 16; i = i + 1) begin
-                    datain[st + i] = wdatah[i];
+                    datain[st_bit + i] = wdatah[i];
                 end
                 //datain[st + 15 : st] = wdatah;
-                for (i = st + 16; i < 64; i = i + 1) begin
+                for (i = st_bit + 16; i < 64; i = i + 1) begin
                     datain[i] = 0;
                 end
 
@@ -105,10 +105,8 @@ module ysyx_220053_Mem(
     reg [31:0] dataw;
     reg [15:0] datah;
     reg [7:0]  datab;
-    integer st_bit;
     //read
     always @(*) begin
-        st_bit = {{26{1'b0}},raddr[2:0],{3{1'b0}}};
         case(MemOp[1:0])
             2'b00: begin
                 for (i = 0; i < 32; i = i + 1) begin
