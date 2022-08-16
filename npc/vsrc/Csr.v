@@ -3,7 +3,7 @@
 /* verilator lint_off PINMISSING */
 module ysyx_220053_CSR(
     input clk,
-    input Csrwen, Ecall,
+    input Csrwen, Ecall, Mret,
     input [2:0] CsrOp,
     input [11:0] CsrId,
     input [63:0] datain,
@@ -50,8 +50,18 @@ module ysyx_220053_CSR(
         end
     end
     /////////////////////mstatus///////////////////
-    //reg [63:0] mstatus;
-
+    reg [63:0] mstatus;
+    always@(*) begin
+        if(Ecall == 1'b1) begin
+            mstatus <= {mstatus[63:13],1'b0,1'b0,mstatus[10:0]};
+        end
+        else if(Mret == 1'b1) begin
+            mstatus <= {mstatus[63:13],1'b1,1'b1,mstatus[10:0]};
+        end
+        else if(CsrId == 12'h300 && Csrwen == 1'b1) begin
+            mstatus <= csrin;
+        end
+    end
     /////////////////////mscratch///////////////////
     reg [63:0] mscratch;
     always@(posedge clk) begin
@@ -62,7 +72,7 @@ module ysyx_220053_CSR(
     //////////////////////read/////////////////////
     always@(*) begin
         case(CsrId)
-            //12'h300:  csrin = 
+            12'h300:  csrin = mstatus;
             12'h305:  csrres = mtvec;
             12'h340:  csrres = mscratch;
             12'h341:  csrres = mepc;
