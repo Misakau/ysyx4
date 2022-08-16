@@ -408,18 +408,21 @@ static void npc_exec(uint64_t n){
             #endif
             sdb_top->eval();
             if(is_diff){
-              if(sdb_top->clk == 0  && sdb_top->wb_commit == 1) difftest_exec(1);
-              difftest_regcpy(&nemu, 1);
-              if(sdb_top->next_pc != nemu.pc){
-                printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, sdb_top->next_pc, sdb_top->wb_pc);
-                EXIT = 1;break;
-              }
-              for(int i = 1; i < 32; i++){
-                if(cpu_gpr[i] != nemu.gpr[i]){
-                  printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],sdb_top->wb_pc);
-                  EXIT = 1; break;
+              if(sdb_top->clk == 0  && sdb_top->wb_commit == 1){
+                difftest_exec(1);
+                difftest_regcpy(&nemu, 1);
+                if(sdb_top->next_pc != nemu.pc){
+                  printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, sdb_top->next_pc, sdb_top->wb_pc);
+                  EXIT = 1;break;
                 }
-              }
+                for(int i = 1; i < 32; i++){
+                  if(cpu_gpr[i] != nemu.gpr[i]){
+                    printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],sdb_top->wb_pc);
+                    EXIT = 1; break;
+                  }
+                }
+              } 
+              
             }
             if(EXIT == 1) {sdb_top->eval();break;}
         }
