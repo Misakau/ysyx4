@@ -23,7 +23,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   Elf64_Off phoff = elf->e_phoff;
   Elf64_Half phsz = elf->e_phentsize;
   for(Elf64_Half np = 0; np < phnum; np++){
-    Elf_Phdr *now_ph = (Elf_Phdr *)phoff;
+    Elf_Phdr *now_ph = (Elf_Phdr *)(phoff + (uintptr_t)elf);
     if(now_ph->p_type == PT_LOAD){
       Elf64_Off offset = now_ph->p_offset;
       Elf64_Addr vaddr = now_ph->p_vaddr;
