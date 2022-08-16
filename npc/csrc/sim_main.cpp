@@ -130,10 +130,13 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   bool is_wr[8];
   //printf("wmask = %x\n",(uint8_t)wmask);
   char wm = wmask;
+  int bytes = 0;
   for(int i = 0; i < 8; i++){
     is_wr[i] = wm & 1;
     wm >>= 1;
+    bytes += is_wr[i];
   }
+  
   /*
   if(wmask == 0x1) real_mask = 0xffull;
   else if(wmask == 0x3) real_mask = 0xffffull;
@@ -166,6 +169,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     //printf("ok\n");
   }
   else{
+    
     //if(real_addr == 0x80000260){
     //printf("write addr = %llx, data = %llx, wmask = %x\n",waddr,wdata,(uint8_t)wmask);
     //}
@@ -175,6 +179,9 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
       return;
     }
     else{//has bug
+    long long maddr = (waddr + bytes - 1 - AD_BASE) >> 3;
+    //long long ret;
+      if(maddr != real_addr) assert(0);
       uint8_t *ptr = (uint8_t *)(&MEM[real_addr]);
       uint8_t *wd = (uint8_t *)(&wdata);
       for(int i = 0; i < 8; i++){
