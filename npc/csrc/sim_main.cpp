@@ -79,6 +79,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
     
     long long real_addr = (raddr - AD_BASE) >> 3;
     
+    printf("read addr = %llx\n",raddr);
     //assert(real_addr < MEMSIZE);
     if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
@@ -87,7 +88,6 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
       return;
     }
     else *rdata = MEM[real_addr];
-    //printf("read addr = %llx, data = %llx\n",raddr,MEM[real_addr]);
   }
   printf("LEAVE R\n");
   // 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
