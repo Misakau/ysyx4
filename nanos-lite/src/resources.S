@@ -1,10 +1,8 @@
 .section .data
 .global ramdisk_start, ramdisk_end
-.align 8
 ramdisk_start:
 .incbin "build/ramdisk.img"
 ramdisk_end:
-.align 8
 
 .section .rodata
 .globl logo
