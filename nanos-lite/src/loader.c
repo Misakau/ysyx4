@@ -25,6 +25,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   for(Elf64_Half np = 0; np < phnum; np++){
     Elf_Phdr *now_ph = (Elf_Phdr *)(phoff + (uintptr_t)elf);
     if(now_ph->p_type == PT_LOAD){
+      printf("find seg to load\n");
       Elf64_Off offset = now_ph->p_offset;
       Elf64_Addr vaddr = now_ph->p_vaddr;
       Elf64_Xword filesz = now_ph->p_filesz;
