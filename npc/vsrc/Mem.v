@@ -30,7 +30,7 @@ module ysyx_220053_Mem(
     always@(*) begin
         case(MemOp[1:0])
             2'b00: begin //4byte
-                $display("%d\n",wmask);
+                $display("%d\n",st);
                 for (i = 0; i < st; i = i + 1) begin
                     wmask[i] = 1'b0;
                 end
