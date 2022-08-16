@@ -27,6 +27,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
     Elf_Phdr *now_ph = (Elf_Phdr *)(phoff + (uintptr_t)elf);
     //printf("ptype = %d\n",now_ph->p_type);
     if(now_ph->p_type == PT_LOAD){
+      printf("np = %d\n",np);
       //printf("find seg to load\n");
       Elf64_Off offset = now_ph->p_offset;
       printf("offset = %d\n",offset);
