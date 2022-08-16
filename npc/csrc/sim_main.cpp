@@ -175,7 +175,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     //}
     if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
-      //printf("ERROR W\n");
+      printf("ERROR W\n");
       return;
     }
     else{//has bug
