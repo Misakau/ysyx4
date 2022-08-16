@@ -107,7 +107,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   //assert(real_addr < MEMSIZE);
   if(waddr == SERIAL_PORT){
     //assert(real_mask == 0xff);
-    printf("%c",(char)(wdata & real_mask));
+    printf("%c",(char)(wdata & 0xff));
   }
   else if(waddr >= VGACTL_ADDR && waddr < VGACTL_ADDR + 8*4){
     //assert(real_mask == 0xffffffffull);
@@ -172,7 +172,8 @@ void set_batch_mode(){
 
 static void sdb_mainloop();
 static bool is_diff = false;
-static char pathi[] = "/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
+static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv64-nemu.bin"
+//nanos-lite/build/nanos-lite-riscv64-npc.bin";
 static char* image_file = pathi;//NULL;
 static char* log_file = NULL;
 static FILE* log_ptr = NULL;

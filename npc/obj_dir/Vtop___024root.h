@@ -124,9 +124,8 @@ VL_MODULE(Vtop___024root) {
         IData/*31:0*/ top__DOT__my_exu__DOT__alu64__DOT__divresW;
         IData/*31:0*/ top__DOT__my_exu__DOT__alu64__DOT__remresW;
         IData/*31:0*/ top__DOT__M_Reg__DOT__instr_r;
-        IData/*31:0*/ top__DOT__my_mu__DOT__mem__DOT__dataw;
         IData/*31:0*/ top__DOT__my_mu__DOT__mem__DOT__i;
-        IData/*31:0*/ top__DOT__my_mu__DOT__mem__DOT__tmp;
+        IData/*31:0*/ top__DOT__my_mu__DOT__mem__DOT__dataw;
         IData/*31:0*/ top__DOT__WB_Reg__DOT__instr_r;
         QData/*63:0*/ top__DOT__dnpc;
         QData/*63:0*/ top__DOT__if_pc_o;
@@ -164,6 +163,7 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__M_Reg__DOT__wdata_r;
         QData/*63:0*/ top__DOT__M_Reg__DOT__Csrres_r;
         QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__dataout;
+        QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__datain;
         QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__datad;
         QData/*63:0*/ top__DOT__WB_Reg__DOT__pc_r;
         QData/*63:0*/ top__DOT__WB_Reg__DOT__wdata_r;
