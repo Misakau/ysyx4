@@ -446,6 +446,7 @@ static void npc_exec(uint64_t n){
               } 
               
             }
+            if(tag) printf("pc = %llx\n",sdb_top->next_pc);
             if(tag || EXIT == 1) {sdb_top->eval();break;}
         }
   if(is_done){
