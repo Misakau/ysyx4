@@ -103,8 +103,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
         = Vtop__ConstPool__TABLE_f4558aae_0[__Vtableidx3];
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr 
         = Vtop__ConstPool__TABLE_6fbd8736_0[__Vtableidx3];
-    if (VL_UNLIKELY((0U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r))))) {
-        VL_WRITEF("%11d\n\n",32,(7U & (IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r)));
+    if ((0U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__i = 0U;
         while (VL_LTS_III(1,32,32, vlSelf->top__DOT__my_mu__DOT__mem__DOT__i, 
                           (7U & (IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r)))) {

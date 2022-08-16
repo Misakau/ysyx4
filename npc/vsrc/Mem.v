@@ -23,7 +23,6 @@ module ysyx_220053_Mem(
         pmem_read(raddr, dataout); 
     end
     always @(posedge clk) begin
-        $display(wmask);
         if(MemWen == 1'b1) pmem_write(raddr, datain, wmask);
     end
 

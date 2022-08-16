@@ -95,9 +95,10 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   //uint64_t real_mask = -1;
   bool is_wr[8];
   printf("wmask = %x\n",(uint8_t)wmask);
+  char wm = wmask;
   for(int i = 0; i < 8; i++){
-    is_wr[i] = wmask & 1;
-    wmask >>= 1;
+    is_wr[i] = wm & 1;
+    wm >>= 1;
   }
   /*
   if(wmask == 0x1) real_mask = 0xffull;
