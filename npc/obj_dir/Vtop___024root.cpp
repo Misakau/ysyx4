@@ -2546,7 +2546,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
     CData/*0:0*/ __Vdlyvset__top__DOT__regfile__DOT__rf__v0;
     QData/*63:0*/ __Vdlyvval__top__DOT__regfile__DOT__rf__v0;
     // Body
-    VL_WRITEF("%3#\n",8,vlSelf->top__DOT__my_mu__DOT__mem__DOT__wmask);
     if ((((IData)(vlSelf->top__DOT__M_Reg__DOT__MemWen_r) 
           & (~ (IData)(vlSelf->rst))) & (IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r))) {
         Vtop___024unit____Vdpiimwrap_pmem_write_TOP____024unit(vlSelf->top__DOT__M_Reg__DOT__raddr_r, vlSelf->top__DOT__my_mu__DOT__mem__DOT__datain, (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__wmask));
