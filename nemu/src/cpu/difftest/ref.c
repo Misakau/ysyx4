@@ -19,7 +19,7 @@ void difftest_memcpy(paddr_t addr, void *buf, size_t n, bool direction) {
 
 void difftest_regcpy(void *dut, bool direction) {
   if (direction == DIFFTEST_TO_REF) {
-    memcpy((CPU_state*)dut, &cpu, DIFFTEST_REG_SIZE + 4096);
+    memcpy((CPU_state*)dut, &cpu, DIFFTEST_REG_SIZE);
   } else {
     assert(0);
   }
