@@ -25,11 +25,11 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   Elf64_Half phsz = elf->e_phentsize;
   for(Elf64_Half np = 0; np < phnum; np++){
     Elf_Phdr *now_ph = (Elf_Phdr *)(phoff + (uintptr_t)elf);
-    printf("i = %d\n",np);
-    printf("ptype = %d\n",now_ph->p_type);
+    //printf("ptype = %d\n",now_ph->p_type);
     if(now_ph->p_type == PT_LOAD){
       //printf("find seg to load\n");
       Elf64_Off offset = now_ph->p_offset;
+      printf("offset = %d\n",offset);
       Elf64_Addr vaddr = now_ph->p_vaddr;
       //Elf64_Xword filesz = now_ph->p_filesz;//not aligned
       //Elf64_Xword memsz = now_ph->p_memsz;
