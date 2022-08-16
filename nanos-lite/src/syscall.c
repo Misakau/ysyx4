@@ -24,7 +24,6 @@ static size_t sys_write(int fd, const void *buf, size_t count){
   uint8_t *ptr = (uint8_t *)buf;
   for(int i = 0; i < count; i++)
     putch(ptr[i]);
-  putch('\n');
   return count;
 }
 

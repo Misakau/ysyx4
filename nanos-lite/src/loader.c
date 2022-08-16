@@ -30,6 +30,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
       Elf64_Addr vaddr = now_ph->p_vaddr;
       Elf64_Xword filesz = now_ph->p_filesz;
       Elf64_Xword memsz = now_ph->p_memsz;
+      printf("offset = %p\n", offset);
+      printf("RAMDISK_SIZE = %p\n",get_ramdisk_size());
       ramdisk_read((void *)vaddr, offset, filesz);
       memset((void *)(vaddr + filesz), 0, memsz - filesz);
     }

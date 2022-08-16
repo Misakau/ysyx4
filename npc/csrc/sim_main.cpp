@@ -17,10 +17,10 @@
 #include "itrace.h"
 #include "dev.h"
 
-#define MEMSIZE 655360
+#define MEMSIZE 0x8000000
 #define AD_BASE 0x80000000
 
-static long long MEM[MEMSIZE];//8字节为单位
+static long long *MEM = NULL;//8字节为单位
 static bool EXIT = 0;
 static bool START = 0;
 
@@ -199,6 +199,8 @@ void (*difftest_regcpy)(void *, bool);
 void (*difftest_exec)(uint64_t);
 void (*difftest_init)();
 int main(int argc, char**argv, char**env) {
+    MEM = (long long *)malloc(MEMSIZE);
+    assert(MEM);
     void *handle = dlopen("/home/wang/ysyx-workbench/nemu/build/riscv64-nemu-interpreter-so",RTLD_LAZY);
     if(!handle){
       fprintf(stderr, "%s\n", dlerror());
