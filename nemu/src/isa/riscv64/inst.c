@@ -3,6 +3,10 @@
 #include <cpu/ifetch.h>
 #include <cpu/decode.h>
 
+#define MIE  0x8
+#define MPIE 0x80
+#define MPP 0x1800
+
 #define R(i) gpr(i)
 #define CSR(i) csr(i)
 #define Mr vaddr_read
@@ -132,7 +136,11 @@ static int decode_exec(Decode *s) {
   
   INSTPAT("0000000 00000 00000 000 00000 11100 11", ecall  , N, s->dnpc = isa_raise_intr(11, s->pc);); // R(10) is $a0
   INSTPAT("0000000 00001 00000 000 00000 11100 11", ebreak , N, NEMUTRAP(s->pc, R(10))); // R(10) is $a0
-  INSTPAT("0011000 00010 00000 000 00000 11100 11", mret  , N, s->dnpc = CSR(0x341);); //MEPC
+  INSTPAT("0011000 00010 00000 000 00000 11100 11", mret  , N, {
+                                                                  s->dnpc = CSR(0x341);
+                                                                  CSR(0x300) |= MPP;
+                                                                  CSR(0x300) |= (CSR(0x300) & MPIE) << 4;
+                                                                }); //MEPC
   INSTPAT("??????? ????? ????? ??? ????? ????? ??", inv    , N, INV(s->pc));
   INSTPAT_END();
 //0011000 00010 00000 000 00000 1110011

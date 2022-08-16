@@ -6,12 +6,18 @@
 #define MEPC      0x341
 #define MCAUSE    0x342
 
+#define MIE  0x8
+#define MPIE 0x80
+#define MPP 0x1800
 word_t isa_raise_intr(word_t NO, vaddr_t epc) {
   /* TODO: Trigger an interrupt/exception with ``NO''.
    * Then return the address of the interrupt/exception vector.
    */
   cpu.csr[MEPC] = epc;
   cpu.csr[MCAUSE] = NO;
+  cpu.csr[MSTATUS] &= ~MPP;
+  cpu.csr[MSTATUS] &= ~MPIE;
+  cpu.csr[MSTATUS] |= (cpu.csr[MSTATUS] & MPIE) >> 4;
   return cpu.csr[MTVEC];
 }
 
