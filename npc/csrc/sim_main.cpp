@@ -378,11 +378,11 @@ static void npc_exec(uint64_t n){
     return;
   }
   NEMU_CPU nemu;
- /* 
+ 
   #ifndef ITRACE
     #define ITRACE
   #endif
- */
+ //*/
   for (uint64_t i = 1; i <= 2*n && !is_done && !sdb_contextp->gotFinish(); i++) { 
             sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
