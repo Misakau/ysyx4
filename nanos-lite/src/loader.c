@@ -9,9 +9,33 @@
 # define Elf_Phdr Elf32_Phdr
 #endif
 
+size_t ramdisk_read(void *buf, size_t offset, size_t len);
+size_t ramdisk_write(const void *buf, size_t offset, size_t len);
+size_t get_ramdisk_size();
+
+extern uint8_t ramdisk_start;
+
 static uintptr_t loader(PCB *pcb, const char *filename) {
-  TODO();
-  return 0;
+  Elf_Ehdr *elf = (Elf_Ehdr *)(&ramdisk_start);
+  assert(*(uint32_t *)elf->e_ident == 0x464c457f);
+  Elf64_Half phnum = elf->e_phnum;
+  Elf64_Off phoff = elf->e_phoff;
+  Elf64_Half phsz = elf->e_phentsize;
+  for(Elf64_Half np = 0; np < phnum; np++){
+    Elf_Phdr *now_ph = (Elf_Phdr *)phoff;
+    if(now_ph->p_type == PT_LOAD){
+      Elf64_Off offset = now_ph->p_offset;
+      Elf64_Addr vaddr = now_ph->p_vaddr;
+      Elf64_Xword filesz = now_ph->p_filesz;
+      Elf64_Xword memsz = now_ph->p_memsz;
+      ramdisk_write((void *)offset, vaddr, filesz);
+      memset((void *)(offset + filesz), 0, memsz - filesz);
+    }
+    phoff += phsz;
+  }
+  
+  //TODO();
+  return elf->e_entry;
 }
 
 void naive_uload(PCB *pcb, const char *filename) {
