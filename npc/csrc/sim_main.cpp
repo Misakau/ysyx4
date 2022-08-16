@@ -143,6 +143,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   //assert(real_addr < MEMSIZE);
   if(waddr == SERIAL_PORT){
     //assert(real_mask == 0xff);
+    printf("%d\n",wdata);
     printf("%c",(char)(wdata & 0xff));
   }
   else if(waddr >= VGACTL_ADDR && waddr < VGACTL_ADDR + 8*4){
