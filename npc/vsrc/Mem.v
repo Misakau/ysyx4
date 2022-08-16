@@ -23,6 +23,7 @@ module ysyx_220053_Mem(
         pmem_read(raddr, dataout); 
     end
     always @(posedge clk) begin
+        $display(wmask);
         if(MemWen == 1'b1) pmem_write(raddr, datain, wmask);
     end
 
@@ -30,7 +31,6 @@ module ysyx_220053_Mem(
     always@(*) begin
         case(MemOp[1:0])
             2'b00: begin //4byte
-                $display("%d\n",st);
                 for (i = 0; i < st; i = i + 1) begin
                     wmask[i] = 1'b0;
                 end
