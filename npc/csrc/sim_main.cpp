@@ -62,6 +62,7 @@ void init_vga();
 void vga_update_screen();
 
 extern "C" void pmem_read(long long raddr, long long *rdata) {
+  printf("ENTRY R\n");
   //assert(raddr & 0x7 == 0);
   if(raddr == RTC_ADDR){
     struct timeval tv;
@@ -82,15 +83,17 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
     if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
       *rdata = 0;
+      printf("NONE R\n");
       return;
     }
     else *rdata = MEM[real_addr];
     //printf("read addr = %llx, data = %llx\n",raddr,MEM[real_addr]);
   }
-  
+  printf("LEAVE R\n");
   // 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
 }
 extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
+  printf("ENTRY W\n");
   // maybe need some change
   // 没有严格8字节对齐
   //assert(raddr & 0x7 == 0);
@@ -140,6 +143,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     //}
     if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
+      printf("ERROR W\n");
       return;
     }
     else{//has bug
