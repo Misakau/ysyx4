@@ -30,13 +30,15 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
       printf("np = %d\n",np);
       //printf("find seg to load\n");
       Elf64_Off offset = now_ph->p_offset;
-      printf("offset = %d\n",offset);
+      printf("offset = %p\n",offset);
       Elf64_Addr vaddr = now_ph->p_vaddr;
+      printf("vaddr = %p\n",vaddr);
       //Elf64_Xword filesz = now_ph->p_filesz;//not aligned
       //Elf64_Xword memsz = now_ph->p_memsz;
       Elf64_Xword filesz = now_ph->p_filesz;//not aligned
       Elf64_Xword memsz = now_ph->p_memsz;
       printf("&now_ph->p_filesz = %p\n", phoff + (uintptr_t)elf);
+      printf("memsz = %p\n", memsz);
       printf("filesz = %p\n", filesz);
       ramdisk_read((void *)vaddr, offset, filesz);
       memset((void *)(vaddr + filesz), 0, memsz - filesz);
