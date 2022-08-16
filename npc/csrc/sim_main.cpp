@@ -88,7 +88,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
       return;
     }
     else{
-      long long maddr = (raddr + bytes*8 - AD_BASE) >> 3;
+      long long maddr = (raddr + bytes - AD_BASE) >> 3;
       long long ret;
       if(maddr == real_addr) ret = MEM[real_addr];
       else{
