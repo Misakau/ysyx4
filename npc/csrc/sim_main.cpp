@@ -94,7 +94,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
       printf("rdata = %llx\n",MEM[real_addr]);
       //return;
     }
-    if(*raddr == 0x80000450){
+    if(raddr == 0x80000450){
       EXIT = 1;
     }
   }
