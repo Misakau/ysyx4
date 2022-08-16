@@ -32,21 +32,21 @@ module ysyx_220053_CSR(
     /////////////////////mepc//////////////////////
     reg [63:0] mepc;
     always@(posedge clk) begin
-        if(CsrId == 12'h341 && Csrwen == 1'b1) begin
-            mepc <= csrin;
-        end
-        else if(Ecall == 1'b1) begin
+        if(Ecall == 1'b1) begin
             mepc <= epc_in;
+        end
+        else if(CsrId == 12'h341 && Csrwen == 1'b1) begin
+            mepc <= csrin;
         end
     end
     /////////////////////mcause////////////////////
     reg [63:0] mcause;
     always@(posedge clk) begin
-        if(CsrId == 12'h342 && Csrwen == 1'b1) begin
-            mcause <= csrin;
-        end
-        else if(Ecall == 1'b1) begin
+        if(Ecall == 1'b1) begin
             mcause <= 64'hb;
+        end
+        else if(CsrId == 12'h342 && Csrwen == 1'b1) begin
+            mcause <= csrin;
         end
     end
     /////////////////////mstatus///////////////////
