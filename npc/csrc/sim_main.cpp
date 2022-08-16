@@ -77,13 +77,14 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
   else{
     
     long long real_addr = (raddr - AD_BASE) >> 3;
-    printf("read addr = %llx, data = %llx\n",raddr,MEM[real_addr]);
+    
     //assert(real_addr < MEMSIZE);
     if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
       *rdata = 0;
       return;
     }
+    printf("read addr = %llx, data = %llx\n",raddr,MEM[real_addr]);
     else *rdata = MEM[real_addr];
   }
   
