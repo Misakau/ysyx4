@@ -139,8 +139,8 @@ static int decode_exec(Decode *s) {
   INSTPAT("0011000 00010 00000 000 00000 11100 11", mret  , N, {
                                                                   s->dnpc = CSR(0x341);
                                                                   CSR(0x300) &= ~MPP;
-                                                                  CSR(0x300) |= MPIE;
-                                                                  CSR(0x300) |= (CSR(0x300) & MPIE) >> 4;
+                                                                  //CSR(0x300) |= MPIE;
+                                                                  //CSR(0x300) |= (CSR(0x300) & MPIE) >> 4;
                                                                 }); //MEPC
   INSTPAT("??????? ????? ????? ??? ????? ????? ??", inv    , N, INV(s->pc));
   INSTPAT_END();
