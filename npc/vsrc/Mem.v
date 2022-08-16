@@ -105,6 +105,7 @@ module ysyx_220053_Mem(
     reg [31:0] dataw;
     reg [15:0] datah;
     reg [7:0]  datab;
+    $display(MemOp);
     //read
     always @(*) begin
         case(MemOp[1:0])
