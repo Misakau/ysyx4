@@ -61,6 +61,7 @@ module ysyx_220053_CSR(
         else if(CsrId == 12'h300 && Csrwen == 1'b1) begin
             mstatus <= csrin;
         end
+        else mstatus <= 64'ha00001800;
     end
     /////////////////////mscratch///////////////////
     reg [63:0] mscratch;

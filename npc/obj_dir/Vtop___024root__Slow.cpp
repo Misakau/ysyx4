@@ -2435,11 +2435,9 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                    << 0x20U) 
                                                   | (QData)((IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataw))))))
                                          : vlSelf->top__DOT__M_Reg__DOT__raddr_r));
-    if ((0x300U == (IData)(vlSelf->top__DOT__id_CsrId))) {
-        vlSelf->top__DOT__csrfile__DOT__csrin = vlSelf->top__DOT__csrfile__DOT__mstatus;
-    }
-    if ((0x300U != (IData)(vlSelf->top__DOT__id_CsrId))) {
-        vlSelf->top__DOT__id_csrres_o = ((0x305U == (IData)(vlSelf->top__DOT__id_CsrId))
+    vlSelf->top__DOT__id_csrres_o = ((0x300U == (IData)(vlSelf->top__DOT__id_CsrId))
+                                      ? vlSelf->top__DOT__csrfile__DOT__mstatus
+                                      : ((0x305U == (IData)(vlSelf->top__DOT__id_CsrId))
                                           ? vlSelf->top__DOT__csrfile__DOT__mtvec
                                           : ((0x340U 
                                               == (IData)(vlSelf->top__DOT__id_CsrId))
@@ -2451,8 +2449,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                  ((0x342U 
                                                    == (IData)(vlSelf->top__DOT__id_CsrId))
                                                    ? vlSelf->top__DOT__csrfile__DOT__mcause
-                                                   : 0ULL))));
-    }
+                                                   : 0ULL)))));
     vlSelf->top__DOT__load_use = ((IData)(vlSelf->top__DOT__id_ex_hazard) 
                                   & (3U == (0x7fU & vlSelf->top__DOT__EX_Reg__DOT__instr_r)));
 }
