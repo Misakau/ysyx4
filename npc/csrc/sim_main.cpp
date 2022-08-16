@@ -371,7 +371,7 @@ int main(int argc, char**argv, char**env) {
                 }
               } 
             }
-            if(EXIT == 1) {top->eval();break;}
+            if(EXIT == 1) {is_done = 1;top->eval();break;}
         }
     }
     else{
