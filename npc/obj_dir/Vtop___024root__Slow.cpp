@@ -79,7 +79,6 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     if (vlSelf->top__DOT__WB_Reg__DOT__Ebreak_r) {
         Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
     }
-    VL_WRITEF("%1#\n",3,vlSelf->top__DOT__M_Reg__DOT__MemOp_r);
     vlSelf->wb_commit = vlSelf->top__DOT__wb_commit_r;
     vlSelf->wb_pc = vlSelf->top__DOT__wb_pc_r;
     vlSelf->wb_instr = vlSelf->top__DOT__wb_instr_r;
@@ -104,6 +103,9 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
         = Vtop__ConstPool__TABLE_f4558aae_0[__Vtableidx3];
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr 
         = Vtop__ConstPool__TABLE_6fbd8736_0[__Vtableidx3];
+    if (VL_UNLIKELY((0x800020d1ULL == vlSelf->top__DOT__M_Reg__DOT__raddr_r))) {
+        VL_WRITEF("%1#\n",3,vlSelf->top__DOT__M_Reg__DOT__MemOp_r);
+    }
     if ((0U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__i = 0U;
         while (VL_LTS_III(1,32,32, vlSelf->top__DOT__my_mu__DOT__mem__DOT__i, 

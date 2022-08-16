@@ -139,7 +139,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                                  & (IData)(vlSelf->top__DOT__id_CsrToReg_o));
     vlSelf->top__DOT__M_Reg__DOT__wen_r = ((~ (IData)(vlSelf->rst)) 
                                            & (IData)(vlSelf->top__DOT__EX_Reg__DOT__wen_r));
-    VL_WRITEF("%1#\n",3,vlSelf->top__DOT__M_Reg__DOT__MemOp_r);
     if ((0U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__i = 0x20U;
     } else if ((1U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
@@ -150,6 +149,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__EX_Reg__DOT__MemOp_r = ((IData)(vlSelf->rst)
                                                ? 0U
                                                : (IData)(vlSelf->top__DOT__id_MemOp_o));
+    if (VL_UNLIKELY((0x800020d1ULL == vlSelf->top__DOT__M_Reg__DOT__raddr_r))) {
+        VL_WRITEF("%1#\n",3,vlSelf->top__DOT__M_Reg__DOT__MemOp_r);
+    }
     Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->top__DOT__M_Reg__DOT__raddr_r, vlSelf->__Vtask_pmem_read__3__rdata);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
         = vlSelf->__Vtask_pmem_read__3__rdata;
