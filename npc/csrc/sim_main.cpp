@@ -63,6 +63,7 @@ void init_vga();
 void vga_update_screen();
 
 extern "C" void pmem_read(long long raddr, long long *rdata) {
+  //printf("ENTRY R\n");
   //assert(raddr & 0x7 == 0);
   if(raddr == RTC_ADDR){
     struct timeval tv;
@@ -78,25 +79,29 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
   else{
     
     long long real_addr = (raddr - AD_BASE) >> 3;
+    
+    fprintf(log_ptr,"read addr = %llx\n",raddr);
     //assert(real_addr < MEMSIZE);
     if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
       *rdata = 0;
+      fprintf(log_ptr,"NONE R\n");
       return;
     }
     else *rdata = MEM[real_addr];
   }
+  //printf("LEAVE R\n");
   // 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
 }
 extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
-  //printf("ENTRY W\n");
+  printf("ENTRY W\n");
   // maybe need some change
   // 没有严格8字节对齐
   //assert(raddr & 0x7 == 0);
   long long real_addr = (waddr - AD_BASE) >> 3;
   //uint64_t real_mask = -1;
   bool is_wr[8];
-  //printf("wmask = %x\n",(uint8_t)wmask);
+  printf("wmask = %x\n",(uint8_t)wmask);
   char wm = wmask;
   for(int i = 0; i < 8; i++){
     is_wr[i] = wm & 1;
@@ -135,11 +140,11 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   }
   else{
     //if(real_addr == 0x80000260){
-    //fprintf(log_ptr,"write addr = %llx, data = %llx, wmask = %x\n",waddr,wdata,(uint8_t)wmask);
+    fprintf(log_ptr,"write addr = %llx, data = %llx, wmask = %x\n",waddr,wdata,(uint8_t)wmask);
     //}
     if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
-      //printf("ERROR W\n");
+      printf("ERROR W\n");
       return;
     }
     else{//has bug
@@ -149,7 +154,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
         if(is_wr[i]) ptr[i] = wd[i];
       }
       //MEM[real_addr] = (MEM[real_addr] & (~(real_mask << ((waddr & 0x7)<<3)))) | ((wdata & real_mask)<< ((waddr & 0x7)<<3));
-      //printf("end\n");
+      printf("end\n");
       return;
     }
   }
@@ -181,7 +186,7 @@ void set_batch_mode(){
 
 static void sdb_mainloop();
 static bool is_diff = true;
-static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/load-store-riscv64-nemu.bin";
+static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/bubble-sort-riscv64-nemu.bin";
 //static char lgp[] = "/home/wang/log1.txt";
 //nanos-lite/build/nanos-lite-riscv64-npc.bin";
 static char* image_file = pathi;//NULL;
