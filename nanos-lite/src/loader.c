@@ -18,7 +18,6 @@ extern uint8_t ramdisk_start;
 static uintptr_t loader(PCB *pcb, const char *filename) {
   printf("[ENTRY] %s\n",__func__);
   Elf_Ehdr *elf = (Elf_Ehdr *)(&ramdisk_start);
-  printf("elf = %p\n",elf);
   assert(*(uint32_t *)elf->e_ident == 0x464c457f);
   Elf64_Half phnum = elf->e_phnum;
   Elf64_Off phoff = elf->e_phoff;
@@ -30,7 +29,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
       Elf64_Addr vaddr = now_ph->p_vaddr;
       Elf64_Xword filesz = now_ph->p_filesz;
       Elf64_Xword memsz = now_ph->p_memsz;
-      ramdisk_write((void *)offset, vaddr, filesz);
+      ramdisk_read((void *)offset, vaddr, filesz);
       memset((void *)(offset + filesz), 0, memsz - filesz);
     }
     phoff += phsz;
