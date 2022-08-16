@@ -94,6 +94,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   long long real_addr = (waddr - AD_BASE) >> 3;
   //uint64_t real_mask = -1;
   bool is_wr[8];
+  printf("wmask = %x\n",wmask);
   for(int i = 0; i < 8; i++){
     is_wr[i] = wmask & 1;
     wmask >>= 1;
@@ -171,7 +172,7 @@ void set_batch_mode(){
 }
 
 static void sdb_mainloop();
-static bool is_diff = true;
+static bool is_diff = false;
 static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/load-store-riscv64-nemu.bin";
 //nanos-lite/build/nanos-lite-riscv64-npc.bin";
 static char* image_file = pathi;//NULL;
@@ -378,11 +379,11 @@ static void npc_exec(uint64_t n){
     return;
   }
   NEMU_CPU nemu;
- 
+ /* 
   #ifndef ITRACE
     #define ITRACE
   #endif
- //*/
+ */
   for (uint64_t i = 1; i <= 2*n && !is_done && !sdb_contextp->gotFinish(); i++) { 
             sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
