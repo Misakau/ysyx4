@@ -2,7 +2,7 @@
 #include "syscall.h"
 
 static size_t sys_write(int fd, const void *buf, size_t count);
-static int sys_brk();
+static int sys_brk(void *addr);
 
 void do_syscall(Context *c) {
   uintptr_t a[4];
@@ -14,7 +14,7 @@ void do_syscall(Context *c) {
     case SYS_exit:  printf("exit\n"); halt(a[1]); break;
     case SYS_yield: yield(); c->GPRx = 0; break;
     case SYS_write: c->GPRx = sys_write((int)a[1],(const void *)a[2],(size_t)a[3]); break;
-    case SYS_brk:   c->GPRx = sys_brk();break;
+    case SYS_brk:   c->GPRx = sys_brk((void *)a[1]); break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
 }
@@ -28,6 +28,6 @@ static size_t sys_write(int fd, const void *buf, size_t count){
   return count;
 }
 
-static int sys_brk(){
+static int sys_brk(void *addr){
   return 0;
 } 
