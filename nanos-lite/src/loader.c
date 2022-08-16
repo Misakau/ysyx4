@@ -16,6 +16,7 @@ size_t get_ramdisk_size();
 extern uint8_t ramdisk_start;
 
 static uintptr_t loader(PCB *pcb, const char *filename) {
+  printf("[ENTRY] %s",__func__);
   Elf_Ehdr *elf = (Elf_Ehdr *)(&ramdisk_start);
   assert(*(uint32_t *)elf->e_ident == 0x464c457f);
   Elf64_Half phnum = elf->e_phnum;
@@ -33,7 +34,9 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
     }
     phoff += phsz;
   }
-  
+
+  printf("load_entry = %llx",elf->e_entry);
+  printf("[LEAVE] %s",__func__);
   //TODO();
   return elf->e_entry;
 }
