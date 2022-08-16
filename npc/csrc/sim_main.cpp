@@ -188,7 +188,7 @@ static bool is_diff = true;
 static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/load-store-riscv64-nemu.bin";
 //nanos-lite/build/nanos-lite-riscv64-npc.bin";
 static char* image_file = pathi;//NULL;
-static char* log_file = "/home/wang/log.txt"//NULL;
+static char* log_file = "/home/wang/log.txt";//NULL;
 static FILE* log_ptr = NULL;
 static int npc_parse_args(int argc, char *argv[]) {
   const struct option table[] = {
