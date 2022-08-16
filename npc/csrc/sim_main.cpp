@@ -94,9 +94,6 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
       printf("rdata = %llx\n",MEM[real_addr]);
       //return;
     }
-    if(raddr == 0x80000450){
-      EXIT = 1;
-    }
   }
   //printf("LEAVE R\n");
   // 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
@@ -371,7 +368,7 @@ int main(int argc, char**argv, char**env) {
                 }
               } 
             }
-            if(EXIT == 1) {is_done = 1;top->eval();break;}
+            if(EXIT == 1) {top->eval();break;}
         }
     }
     else{
@@ -447,6 +444,12 @@ static void npc_exec(uint64_t n){
                 }
               } 
               
+            }
+            if(sdb_top->wb_commit == 1){
+
+              if(sdb_top->wb_pc == 0x80000450){
+                break;
+              }
             }
             if(EXIT == 1) {sdb_top->eval();break;}
         }
