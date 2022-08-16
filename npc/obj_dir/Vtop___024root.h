@@ -126,6 +126,7 @@ VL_MODULE(Vtop___024root) {
         IData/*31:0*/ top__DOT__M_Reg__DOT__instr_r;
         IData/*31:0*/ top__DOT__my_mu__DOT__mem__DOT__i;
         IData/*31:0*/ top__DOT__my_mu__DOT__mem__DOT__dataw;
+        IData/*31:0*/ top__DOT__my_mu__DOT__mem__DOT__st_bit;
         IData/*31:0*/ top__DOT__WB_Reg__DOT__instr_r;
         QData/*63:0*/ top__DOT__dnpc;
         QData/*63:0*/ top__DOT__if_pc_o;
@@ -170,9 +171,9 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__csrfile__DOT__csrin;
         QData/*63:0*/ top__DOT__csrfile__DOT__mtvec;
         QData/*63:0*/ top__DOT__csrfile__DOT__mepc;
-        QData/*63:0*/ top__DOT__csrfile__DOT__mcause;
     };
     struct {
+        QData/*63:0*/ top__DOT__csrfile__DOT__mcause;
         QData/*63:0*/ top__DOT__csrfile__DOT__mscratch;
         VlUnpacked<QData/*63:0*/, 32> top__DOT__regfile__DOT__rf;
     };
