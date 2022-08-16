@@ -175,7 +175,6 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
 
     printf("write addr = %llx, data = %llx, wmask = %x\n",waddr,wdata,(uint8_t)wmask);
 
-    printf("MEM[real_addr] = %llx\n",MEM[real_addr]);
     //}
     if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
@@ -194,6 +193,8 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
       }
       //MEM[real_addr] = (MEM[real_addr] & (~(real_mask << ((waddr & 0x7)<<3)))) | ((wdata & real_mask)<< ((waddr & 0x7)<<3));
      // printf("end\n");
+
+    printf("MEM[real_addr] = %llx\n",MEM[real_addr]);
       return;
     }
   }
