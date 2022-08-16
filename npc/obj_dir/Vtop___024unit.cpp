@@ -19,15 +19,17 @@ VL_INLINE_OPT void Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(CData/*0:0
     c_trap(done__Vcvt);
 }
 
-extern "C" void pmem_read(long long raddr, long long* rdata);
+extern "C" void pmem_read(long long raddr, long long* rdata, char bytes);
 
-VL_INLINE_OPT void Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(QData/*63:0*/ raddr, QData/*63:0*/ &rdata) {
+VL_INLINE_OPT void Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(QData/*63:0*/ raddr, QData/*63:0*/ &rdata, CData/*7:0*/ bytes) {
     VL_DEBUG_IF(VL_DBG_MSGF("+        Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit\n"); );
     // Body
     long long raddr__Vcvt;
     for (size_t raddr__Vidx = 0; raddr__Vidx < 1; ++raddr__Vidx) raddr__Vcvt = raddr;
     long long rdata__Vcvt;
-    pmem_read(raddr__Vcvt, &rdata__Vcvt);
+    char bytes__Vcvt;
+    for (size_t bytes__Vidx = 0; bytes__Vidx < 1; ++bytes__Vidx) bytes__Vcvt = bytes;
+    pmem_read(raddr__Vcvt, &rdata__Vcvt, bytes__Vcvt);
     rdata = rdata__Vcvt;
 }
 

@@ -92,7 +92,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
       long long ret;
       if(maddr == real_addr) ret = MEM[real_addr];
       else{
-        assert(maddr == real_addr + 1){
+        assert(maddr == real_addr + 1)
           long long del = (raddr - AD_BASE) - (real_addr << 3);
           long long bytes1 = 8 - del;
           long long bytes2 = bytes - bytes1;
@@ -101,7 +101,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
           long long data1 = (unsigned long long)MEM[real_addr] >> (del*8);
           long long data2 = MEM[maddr]& mask << (bytes1 * 8);
           ret = data2 | data1;
-        }
+        
       }
       *rdata = ret;
     } 
