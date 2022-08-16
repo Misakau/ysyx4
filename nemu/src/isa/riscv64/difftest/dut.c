@@ -16,6 +16,22 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
         return false;
       }
   }
+  if(ref_r->csr[0x341] != cpu.csr[0x341]){
+    Log("ref_r->mepc=%lx, while nemu_r->mepc=%lx\n",ref_r->csr[0x341],cpu.csr[0x341]);
+    return false;
+  }
+  if(ref_r->csr[0x342] != cpu.csr[0x342]){
+    Log("ref_r->mcause=%lx, while nemu_r->mcause=%lx\n",ref_r->csr[0x342],cpu.csr[0x342]);
+    return false;
+  }
+  if(ref_r->csr[0x305] != cpu.csr[0x305]){
+    Log("ref_r->mtvec=%lx, while nemu_r->mtvec=%lx\n",ref_r->csr[0x305],cpu.csr[0x305]);
+    return false;
+  }
+  if(ref_r->csr[0x300] != cpu.csr[0x300]){
+    Log("ref_r->mstatus=%lx, while nemu_r->mstatus=%lx\n",ref_r->csr[0x300],cpu.csr[0x300]);
+    return false;
+  }
   return true;
 }
 
