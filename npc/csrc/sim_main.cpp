@@ -80,6 +80,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
     
     //assert(real_addr < MEMSIZE);
     if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
+      printf("over!!\n");
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
       *rdata = 0;
       return;
