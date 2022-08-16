@@ -61,7 +61,7 @@ extern uint32_t *vgactl_port_base;
 extern uint32_t vmem_len;
 void init_vga();
 void vga_update_screen();
-
+bool tag = 0;
 extern "C" void pmem_read(long long raddr, long long *rdata) {
   //printf("ENTRY R\n");
   //assert(raddr & 0x7 == 0);
@@ -92,6 +92,8 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
     if(raddr == 0x800020d1){
       printf("read addr = %llx\n",raddr);
       printf("rdata = %llx\n",MEM[real_addr]);
+      tag = 1;
+      //return;
     }
   }
   //printf("LEAVE R\n");
@@ -444,7 +446,7 @@ static void npc_exec(uint64_t n){
               } 
               
             }
-            if(EXIT == 1) {sdb_top->eval();break;}
+            if(tag || EXIT == 1) {sdb_top->eval();break;}
         }
   if(is_done){
     if(cpu_gpr[10] == 0)
