@@ -189,7 +189,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
       uint8_t *ptr = (uint8_t *)(&MEM[real_addr]);
       uint8_t *wd = (uint8_t *)(&wdata);
       for(int i = 0; i < 8; i++){
-        printf("is_wr[%d] = %d\n",i,is_wr[i]);
+        printf("is_wr[%d] = %d, wd[%d] = %02x\n",i,is_wr[i],i,wd[i]);
         if(is_wr[i]) ptr[i] = wd[i];
       }
       //MEM[real_addr] = (MEM[real_addr] & (~(real_mask << ((waddr & 0x7)<<3)))) | ((wdata & real_mask)<< ((waddr & 0x7)<<3));
