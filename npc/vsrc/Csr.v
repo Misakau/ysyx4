@@ -51,7 +51,7 @@ module ysyx_220053_CSR(
     end
     /////////////////////mstatus///////////////////
     reg [63:0] mstatus;
-    always@(*) begin
+    always@(posedge clk) begin
         if(Ecall == 1'b1) begin
             mstatus <= {mstatus[63:13],1'b0,1'b0,mstatus[10:0]};
         end
