@@ -171,9 +171,9 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   else{
     
     //if(real_addr == 0x80000260){
-    printf("\nMEM[real_addr] = %llx\n",MEM[real_addr]);
+  //  printf("\nMEM[real_addr] = %llx\n",MEM[real_addr]);
 
-    printf("write addr = %llx, data = %llx, wmask = %x\n",waddr,wdata,(uint8_t)wmask);
+   // printf("write addr = %llx, data = %llx, wmask = %x\n",waddr,wdata,(uint8_t)wmask);
 
     //}
     if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
@@ -188,13 +188,13 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
       uint8_t *ptr = (uint8_t *)(&MEM[real_addr]);
       uint8_t *wd = (uint8_t *)(&wdata);
       for(int i = 0; i < 8; i++){
-        printf("is_wr[%d] = %d, wd[%d] = %02x\n",i,is_wr[i],i,wd[i]);
+   //     printf("is_wr[%d] = %d, wd[%d] = %02x\n",i,is_wr[i],i,wd[i]);
         if(is_wr[i]) ptr[i] = wd[i];
       }
       //MEM[real_addr] = (MEM[real_addr] & (~(real_mask << ((waddr & 0x7)<<3)))) | ((wdata & real_mask)<< ((waddr & 0x7)<<3));
      // printf("end\n");
 
-    printf("MEM[real_addr] = %016llx\n",MEM[real_addr]);
+   // printf("MEM[real_addr] = %016llx\n",MEM[real_addr]);
       return;
     }
   }
