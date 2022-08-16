@@ -62,6 +62,7 @@ void init_vga();
 void vga_update_screen();
 
 extern "C" void pmem_read(long long raddr, long long *rdata) {
+  //assert(raddr & 0x7 == 0);
   if(raddr == RTC_ADDR){
     struct timeval tv;
     gettimeofday(&tv, NULL);
@@ -89,19 +90,27 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
 extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   // maybe need some change
   // 没有严格8字节对齐
+  //assert(raddr & 0x7 == 0);
   long long real_addr = (waddr - AD_BASE) >> 3;
   uint64_t real_mask = -1;
+  bool is_wr[8];
+  for(int i = 0; i < 8; i++){
+    is_wr[i] = wmask & 1;
+    wmask >>= 1;
+  }
+  /*
   if(wmask == 0x1) real_mask = 0xffull;
   else if(wmask == 0x3) real_mask = 0xffffull;
   else if(wmask == 0xf) real_mask = 0xffffffffull;
   else real_mask = -1;
+  */
   //assert(real_addr < MEMSIZE);
   if(waddr == SERIAL_PORT){
-    assert(real_mask == 0xff);
+    //assert(real_mask == 0xff);
     printf("%c",(char)(wdata & real_mask));
   }
   else if(waddr >= VGACTL_ADDR && waddr < VGACTL_ADDR + 8*4){
-    assert(real_mask == 0xffffffffull);
+    //assert(real_mask == 0xffffffffull);
     assert(vgactl_port_base);
     assert((waddr - VGACTL_ADDR)>>2 == 1);
     vgactl_port_base[(waddr - VGACTL_ADDR)>>2] = wdata;
@@ -112,7 +121,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     assert(vmem);
    // printf("wmask = %x\n",(uint32_t)wmask);
    // printf("real_mask = %lx\n",real_mask);
-    assert(real_mask == 0xffffffffull);
+   // assert(real_mask == 0xffffffffull);
     uint32_t *ptr = (uint32_t *)vmem;
     //if((waddr-FB_ADDR)>>2 == 0 || (waddr-FB_ADDR)>>2 == vmem_len - 1){
     //  printf("waddr = %llx, index = %lld\n, data = %lld\n",waddr,(waddr-FB_ADDR)>>2,wdata);
@@ -126,7 +135,12 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
       return;
     }
     else{//has bug
-      MEM[real_addr] = (MEM[real_addr] & (~(real_mask << ((waddr & 0x7)<<3)))) | ((wdata & real_mask)<< ((waddr & 0x7)<<3));
+      uint8_t *ptr = (uint8_t *)(&MEM[real_addr]);
+      uint8_t *wd = (uint8_t *)(&wdata);
+      for(int i = 0; i < 8; i++){
+        if(is_wr[i]) ptr[i] = wd[i];
+      }
+      //MEM[real_addr] = (MEM[real_addr] & (~(real_mask << ((waddr & 0x7)<<3)))) | ((wdata & real_mask)<< ((waddr & 0x7)<<3));
       return;
     }
   }
