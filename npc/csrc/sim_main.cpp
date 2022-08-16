@@ -23,7 +23,7 @@
 static long long *MEM = NULL;//8字节为单位
 static bool EXIT = 0;
 static bool START = 0;
-
+static FILE* log_ptr;
 static uint64_t st_time = 0;//start time
 
 static bool is_done = false;
@@ -79,12 +79,12 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
     
     long long real_addr = (raddr - AD_BASE) >> 3;
     
-    printf("read addr = %llx\n",raddr);
+    fprintf(log_ptr,"read addr = %llx\n",raddr);
     //assert(real_addr < MEMSIZE);
     if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
       *rdata = 0;
-      printf("NONE R\n");
+      fprintf(log_ptr,"NONE R\n");
       return;
     }
     else *rdata = MEM[real_addr];
@@ -139,7 +139,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   }
   else{
     //if(real_addr == 0x80000260){
-    printf("write addr = %llx, data = %llx, wmask = %x\n",waddr,wdata,(uint8_t)wmask);
+    fprintf(log_ptr,"write addr = %llx, data = %llx, wmask = %x\n",waddr,wdata,(uint8_t)wmask);
     //}
     if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
