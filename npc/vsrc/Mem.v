@@ -105,9 +105,10 @@ module ysyx_220053_Mem(
     reg [31:0] dataw;
     reg [15:0] datah;
     reg [7:0]  datab;
-    $display(MemOp);
     //read
     always @(*) begin
+
+    $display(MemOp);
         case(MemOp[1:0])
             2'b00: begin
                 for (i = 0; i < 32; i = i + 1) begin
