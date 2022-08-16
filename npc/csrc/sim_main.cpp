@@ -17,7 +17,7 @@
 #include "itrace.h"
 #include "dev.h"
 
-#define MEMSIZE 0x8000000
+#define MEMSIZE 0x1000000
 #define AD_BASE 0x80000000
 
 static long long *MEM = NULL;//8字节为单位
@@ -186,7 +186,7 @@ void set_batch_mode(){
 static void sdb_mainloop();
 static bool is_diff = true;
 static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/load-store-riscv64-nemu.bin";
-static char lgp[] = "/home/wang/log2.txt";
+static char lgp[] = "/home/wang/log1.txt";
 //nanos-lite/build/nanos-lite-riscv64-npc.bin";
 static char* image_file = pathi;//NULL;
 static char* log_file = lgp;//NULL;
