@@ -15,9 +15,9 @@ word_t isa_raise_intr(word_t NO, vaddr_t epc) {
    */
   cpu.csr[MEPC] = epc;
   cpu.csr[MCAUSE] = NO;
-  cpu.csr[MSTATUS] |= MPP;
-  cpu.csr[MSTATUS] &= ~MPIE;
-  cpu.csr[MSTATUS] |= (cpu.csr[MSTATUS] & MIE) << 4;
+  //cpu.csr[MSTATUS] |= MPP;
+ // cpu.csr[MSTATUS] &= ~MPIE;
+  //cpu.csr[MSTATUS] |= (cpu.csr[MSTATUS] & MIE) << 4;
   return cpu.csr[MTVEC];
 }
 
