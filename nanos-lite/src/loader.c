@@ -31,7 +31,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
       Elf64_Xword filesz = now_ph->p_filesz;
       Elf64_Xword memsz = now_ph->p_memsz;
       ramdisk_read((void *)vaddr, offset, filesz);
-      memset((void *)(offset + filesz), 0, memsz - filesz);
+      memset((void *)(vaddr + filesz), 0, memsz - filesz);
     }
     phoff += phsz;
   }
