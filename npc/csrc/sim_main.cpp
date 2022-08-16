@@ -347,8 +347,6 @@ int main(int argc, char**argv, char**env) {
             if(is_diff){
               step++;
               if(top->clk == 0 && top->wb_commit == 1){
-
-                printf("MEM[] = %llx\n",MEM[158/8]);
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(top->next_pc != nemu.pc){
@@ -427,6 +425,8 @@ static void npc_exec(uint64_t n){
             sdb_top->eval();
             if(is_diff){
               if(sdb_top->clk == 0  && sdb_top->wb_commit == 1){
+
+                printf("MEM[] = %llx\n",MEM[158/8]);
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(sdb_top->next_pc != nemu.pc){
