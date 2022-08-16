@@ -30,11 +30,18 @@ module ysyx_220053_Mem(
     always@(*) begin
         case(MemOp[1:0])
             2'b00: begin //4byte
+                for (i = 0; i < st; i = i + 1) begin
+                    wmask[i] = 1'b0;
+                end
                 for (i = 0; i < 4; i = i + 1) begin
                     wmask[st + i] = 1'b1;
                 end
+                for (i = st + 4; i < 8; i = i + 1) begin
+                    wmask[i] = 1'b0;
+                end
+
                 for (i = 0; i < st; i = i + 1) begin
-                    datain[i] = 0;
+                    datain[i] = 1'b0;
                 end
                 for (i = 0; i < 32; i = i + 1) begin
                     datain[st + i] = wdataw[i];
@@ -56,7 +63,13 @@ module ysyx_220053_Mem(
                     datain[i] = 0;
                 end
 
+                for (i = 0; i < st; i = i + 1) begin
+                    wmask[i] = 1'b0;
+                end
                 wmask[st] = 1'b1; 
+                for (i = st + 1; i < 8; i = i + 1) begin
+                    wmask[i] = 1'b0;
+                end
             end
             2'b10: begin //2byte
                 for (i = 0; i < st; i = i + 1) begin
@@ -69,9 +82,17 @@ module ysyx_220053_Mem(
                 for (i = st + 16; i < 64; i = i + 1) begin
                     datain[i] = 0;
                 end
+
+                for (i = 0; i < st; i = i + 1) begin
+                    wmask[i] = 1'b0;
+                end
                 wmask[st] = 1'b1;
                 wmask[st + 1] = 1'b1;
-                datain = {4{wdatah}};  
+                for (i = st + 2; i < 8; i = i + 1) begin
+                    wmask[i] = 1'b0;
+                end
+
+                //datain = {4{wdatah}};  
             end
             default: begin
                 datain = wdatad;
