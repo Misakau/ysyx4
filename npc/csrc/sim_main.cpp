@@ -17,7 +17,7 @@
 #include "itrace.h"
 #include "dev.h"
 
-#define MEMSIZE 0x8000000
+#define MEMSIZE 0x2000000
 #define AD_BASE 0x80000000
 
 static long long *MEM = NULL;//8字节为单位
@@ -62,7 +62,7 @@ void init_vga();
 void vga_update_screen();
 
 extern "C" void pmem_read(long long raddr, long long *rdata) {
-  printf("ENTRY R\n");
+  //printf("ENTRY R\n");
   //assert(raddr & 0x7 == 0);
   if(raddr == RTC_ADDR){
     struct timeval tv;
@@ -89,7 +89,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
     }
     else *rdata = MEM[real_addr];
   }
-  printf("LEAVE R\n");
+  //printf("LEAVE R\n");
   // 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
 }
 extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
