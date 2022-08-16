@@ -98,7 +98,7 @@ module top(
     wire [6:0] wb_op = wb_instr_o[6:0];
     wire [2:0] id_func3 = id_instr_o[14:12];
     wire [6:0] id_func7 = id_instr_o[31:25];
-    assign id_use_rd = id_valid_o & (~(id_op == 7'b0110111 || id_op == 7'b0010111 || id_op == 7'b1101111 || id_Ebreak_o == 1'b1 || id_Mret == 1'b1)); //|| id_op == 7'b1110011
+    assign id_use_rd = id_valid_o & (~(id_op == 7'b0110111 || id_op == 7'b0010111 || id_op == 7'b1101111 || id_Ebreak_o == 1'b1 || id_Mret == 1'b1 || id_Ecall == 1'b1)); //|| id_op == 7'b1110011
     assign ex_has_rd = ex_valid_o & ex_wen_i;//(ex_op == 7'b0110111 || ex_op == 7'b0010111 || ex_op == 7'b1100011 || ex_op == 7'b0100011 || ex_op == 7'b1110011);
     assign m_has_rd = m_valid_o & m_wen_i;//(m_op == 7'b0110111 || m_op == 7'b0010111 || m_op == 7'b1100011 || m_op == 7'b0100011 || m_op == 7'b1110011);
     assign wb_has_rd = wb_valid_o & wb_wen_i;//(wb_op == 7'b0110111 || wb_op == 7'b0010111 || wb_op == 7'b1100011 || wb_op == 7'b0100011 || wb_op == 7'b1110011);

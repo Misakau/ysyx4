@@ -42,8 +42,11 @@ module ysyx_220053_CSR(
     /////////////////////mcause////////////////////
     reg [63:0] mcause;
     always@(posedge clk) begin
-        if((CsrId == 12'h342 && Csrwen == 1'b1) || Ecall == 1'b1) begin
+        if(CsrId == 12'h342 && Csrwen == 1'b1) begin
             mcause <= csrin;
+        end
+        else if(Ecall == 1'b1) begin
+            mcause <= 64'hb;
         end
     end
     /////////////////////mstatus///////////////////
