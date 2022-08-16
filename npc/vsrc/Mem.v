@@ -107,8 +107,9 @@ module ysyx_220053_Mem(
     reg [7:0]  datab;
     //read
     always @(*) begin
-
-    $display(MemOp);
+        if(raddr == 64'h800020d1) begin
+            $display(MemOp);
+        end
         case(MemOp[1:0])
             2'b00: begin
                 for (i = 0; i < 32; i = i + 1) begin

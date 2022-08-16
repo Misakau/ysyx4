@@ -139,6 +139,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                                  & (IData)(vlSelf->top__DOT__id_CsrToReg_o));
     vlSelf->top__DOT__M_Reg__DOT__wen_r = ((~ (IData)(vlSelf->rst)) 
                                            & (IData)(vlSelf->top__DOT__EX_Reg__DOT__wen_r));
+    VL_WRITEF("%1#\n",3,vlSelf->top__DOT__M_Reg__DOT__MemOp_r);
     if ((0U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__i = 0x20U;
     } else if ((1U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
@@ -872,6 +873,78 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         = Vtop__ConstPool__TABLE_f4558aae_0[__Vtableidx3];
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr 
         = Vtop__ConstPool__TABLE_6fbd8736_0[__Vtableidx3];
+    if ((0U != (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
+        if ((1U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
+            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
+                = ((0xfeU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
+                   | (1U & (IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
+                                    >> (0x38U & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
+                                                 << 3U))))));
+            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
+                = ((0xfdU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
+                   | (2U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
+                                     >> (0x3fU & ((IData)(1U) 
+                                                  + 
+                                                  (0x38U 
+                                                   & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
+                                                      << 3U)))))) 
+                            << 1U)));
+            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
+                = ((0xfbU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
+                   | (4U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
+                                     >> (0x3fU & ((IData)(2U) 
+                                                  + 
+                                                  (0x38U 
+                                                   & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
+                                                      << 3U)))))) 
+                            << 2U)));
+            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
+                = ((0xf7U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
+                   | (8U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
+                                     >> (0x3fU & ((IData)(3U) 
+                                                  + 
+                                                  (0x38U 
+                                                   & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
+                                                      << 3U)))))) 
+                            << 3U)));
+            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
+                = ((0xefU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
+                   | (0x10U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
+                                        >> (0x3fU & 
+                                            ((IData)(4U) 
+                                             + (0x38U 
+                                                & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
+                                                   << 3U)))))) 
+                               << 4U)));
+            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
+                = ((0xdfU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
+                   | (0x20U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
+                                        >> (0x3fU & 
+                                            ((IData)(5U) 
+                                             + (0x38U 
+                                                & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
+                                                   << 3U)))))) 
+                               << 5U)));
+            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
+                = ((0xbfU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
+                   | (0x40U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
+                                        >> (0x3fU & 
+                                            ((IData)(6U) 
+                                             + (0x38U 
+                                                & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
+                                                   << 3U)))))) 
+                               << 6U)));
+            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
+                = ((0x7fU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
+                   | (0x80U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
+                                        >> (0x3fU & 
+                                            ((IData)(7U) 
+                                             + (0x38U 
+                                                & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
+                                                   << 3U)))))) 
+                               << 7U)));
+        }
+    }
     if ((0U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataw 
             = ((0xfffffffeU & vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataw) 
@@ -1156,78 +1229,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                            ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
                                             << 3U)))))) 
                   << 0x1fU));
-    }
-    if ((0U != (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
-        if ((1U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
-                = ((0xfeU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
-                   | (1U & (IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
-                                    >> (0x38U & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
-                                                 << 3U))))));
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
-                = ((0xfdU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
-                   | (2U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
-                                     >> (0x3fU & ((IData)(1U) 
-                                                  + 
-                                                  (0x38U 
-                                                   & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
-                                                      << 3U)))))) 
-                            << 1U)));
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
-                = ((0xfbU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
-                   | (4U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
-                                     >> (0x3fU & ((IData)(2U) 
-                                                  + 
-                                                  (0x38U 
-                                                   & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
-                                                      << 3U)))))) 
-                            << 2U)));
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
-                = ((0xf7U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
-                   | (8U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
-                                     >> (0x3fU & ((IData)(3U) 
-                                                  + 
-                                                  (0x38U 
-                                                   & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
-                                                      << 3U)))))) 
-                            << 3U)));
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
-                = ((0xefU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
-                   | (0x10U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
-                                        >> (0x3fU & 
-                                            ((IData)(4U) 
-                                             + (0x38U 
-                                                & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
-                                                   << 3U)))))) 
-                               << 4U)));
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
-                = ((0xdfU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
-                   | (0x20U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
-                                        >> (0x3fU & 
-                                            ((IData)(5U) 
-                                             + (0x38U 
-                                                & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
-                                                   << 3U)))))) 
-                               << 5U)));
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
-                = ((0xbfU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
-                   | (0x40U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
-                                        >> (0x3fU & 
-                                            ((IData)(6U) 
-                                             + (0x38U 
-                                                & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
-                                                   << 3U)))))) 
-                               << 6U)));
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
-                = ((0x7fU & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab)) 
-                   | (0x80U & ((IData)((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
-                                        >> (0x3fU & 
-                                            ((IData)(7U) 
-                                             + (0x38U 
-                                                & ((IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r) 
-                                                   << 3U)))))) 
-                               << 7U)));
-        }
     }
     if ((0U != (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
         if ((1U != (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
