@@ -268,6 +268,7 @@ int main(int argc, char**argv, char**env) {
         assert(fread(MEM, fsize, 1, fp));
         fclose(fp);
         printf(ASNI_FG_BLUE "Load image in %s\n" ASNI_NONE ,image_file);
+        printf("MEM[0x80000260] = %llx\n",MEM[0x260 >> 3])
     }
     else{//build in code
         printf(ASNI_FG_BLUE "Load build-in image\n" ASNI_NONE);
