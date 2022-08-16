@@ -171,7 +171,7 @@ void set_batch_mode(){
 }
 
 static void sdb_mainloop();
-static bool is_diff = false;
+static bool is_diff = true;
 static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/load-store-riscv64-nemu.bin";
 //nanos-lite/build/nanos-lite-riscv64-npc.bin";
 static char* image_file = pathi;//NULL;
