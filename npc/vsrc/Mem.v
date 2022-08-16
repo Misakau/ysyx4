@@ -20,7 +20,7 @@ module ysyx_220053_Mem(
     reg [63:0] datain;
 
     always @(*) begin
-        pmem_read(raddr, dataout); 
+        pmem_read(raddr, dataout, bytes); 
     end
     always @(posedge clk) begin
         if(MemWen == 1'b1) pmem_write(raddr, datain, wmask);
@@ -105,7 +105,16 @@ module ysyx_220053_Mem(
     reg [31:0] dataw;
     reg [15:0] datah;
     reg [7:0]  datab;
+    reg [7:0]  bytes;
     //read
+    always@(*) begin
+        case(MemOp[1:0])
+            2'b00: bytes = 4;
+            2'b01: bytes = 1;
+            2'b10: bytes = 2;
+            default: bytes = 8;
+        endcase
+    end
     always @(*) begin
         if(raddr == 64'h800020d1) begin
             $display(MemOp);

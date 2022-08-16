@@ -12,7 +12,7 @@ module ysyx_220053_IFU(
     wire [63:0] now_pc, rdata, snpc;
     assign pc = (block == 1'b1 | dnpc_valid == 1'b0) ? now_pc : valid_dnpc;
     assign snpc = now_pc + 4;
-    always@(*) begin  pmem_read(pc, rdata); end
+    always@(*) begin  pmem_read(pc, rdata, 4); end
     always@(*) begin get_instr(instr_o); end
     assign instr_o = (pc[2] == 0) ? rdata[31:0] : rdata[63:32];
     wire [63:0] valid_dnpc = (dnpc_valid == 1'b0) ? snpc : dnpc;

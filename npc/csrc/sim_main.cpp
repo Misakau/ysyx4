@@ -18,7 +18,7 @@
 #include "dev.h"
 
 #define MEMSIZE 0x8000000
-#define AD_BASE 0x80000000
+#define AD_BASE 0x80000000ull
 
 //static long long *MEM = NULL;//8字节为单位
 static long long MEM[MEMSIZE];//8字节为单位
@@ -62,7 +62,7 @@ extern uint32_t vmem_len;
 void init_vga();
 void vga_update_screen();
 
-extern "C" void pmem_read(long long raddr, long long *rdata) {
+extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
   //printf("ENTRY R\n");
   //assert(raddr & 0x7 == 0);
   if(raddr == RTC_ADDR){
@@ -80,7 +80,6 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
     
     long long real_addr = (raddr - AD_BASE) >> 3;
     
-    
     //assert(real_addr < MEMSIZE);
     if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
@@ -88,7 +87,24 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
       //printf("NONE R\n");
       return;
     }
-    else *rdata = MEM[real_addr];
+    else{
+      long long maddr = (raddr + bytes*8 - AD_BASE) >> 3;
+      long long ret;
+      if(maddr == real_addr) ret = MEM[real_addr];
+      else{
+        assert(maddr == real_addr + 1){
+          long long del = (raddr - AD_BASE) - (real_addr << 3);
+          long long bytes1 = 8 - del;
+          long long bytes2 = bytes - bytes1;
+          assert(bytes2 < 8);
+          unsigned long long mask = (1ull << (bytes2*8)) - 1ull;
+          long long data1 = (unsigned long long)MEM[real_addr] >> (del*8);
+          long long data2 = MEM[maddr]& mask << (bytes1 * 8);
+          ret = data2 | data1;
+        }
+      }
+      *rdata = ret;
+    } 
     if(raddr == 0x800020d1){
       printf("read addr = %llx\n",raddr);
       printf("rdata = %llx\n",MEM[real_addr]);

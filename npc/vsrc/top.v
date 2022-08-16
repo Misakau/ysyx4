@@ -2,7 +2,7 @@
 /* verilator lint_off PINMISSING */
 
 import "DPI-C" function void pmem_read(
-  input longint raddr, output longint rdata);
+  input longint raddr, output longint rdata, input byte bytes);
 
 import "DPI-C" function void pmem_write(
   input longint waddr, input longint wdata, input byte wmask);
