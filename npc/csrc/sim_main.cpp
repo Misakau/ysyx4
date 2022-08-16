@@ -23,7 +23,7 @@
 static long long *MEM = NULL;//8字节为单位
 static bool EXIT = 0;
 static bool START = 0;
-static FILE* log_ptr;
+static FILE* log_ptr = NULL;
 static uint64_t st_time = 0;//start time
 
 static bool is_done = false;
@@ -190,7 +190,7 @@ static char lgp[] = "/home/wang/log2.txt";
 //nanos-lite/build/nanos-lite-riscv64-npc.bin";
 static char* image_file = pathi;//NULL;
 static char* log_file = lgp;//NULL;
-static FILE* log_ptr = NULL;
+//static FILE* log_ptr = NULL;
 static int npc_parse_args(int argc, char *argv[]) {
   const struct option table[] = {
     {"batch"    , no_argument      , NULL, 'b'},
