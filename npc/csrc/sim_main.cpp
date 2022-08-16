@@ -75,7 +75,9 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
     *rdata = *vgactl_port_base;
   }
   else{
+    
     long long real_addr = (raddr - AD_BASE) >> 3;
+    printf("read addr = %llx\n",real_addr);
     //assert(real_addr < MEMSIZE);
     if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
@@ -269,6 +271,7 @@ int main(int argc, char**argv, char**env) {
         fclose(fp);
         printf(ASNI_FG_BLUE "Load image in %s\n" ASNI_NONE ,image_file);
         printf("MEM[0x80000260] = %llx\n",MEM[0x260 >> 3]);
+       // 7f ff 4a bc 02 58 00 00
     }
     else{//build in code
         printf(ASNI_FG_BLUE "Load build-in image\n" ASNI_NONE);
