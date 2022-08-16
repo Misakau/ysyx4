@@ -161,7 +161,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__M_Reg__DOT__rd_r = vlSelf->top__DOT__EX_Reg__DOT__rd_r;
         vlSelf->top__DOT__M_Reg__DOT__pc_r = vlSelf->top__DOT__EX_Reg__DOT__pc_r;
     }
-    if ((0U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
+    if (VL_UNLIKELY((0U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r))))) {
+        VL_WRITEF("hh\n\n");
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__i = 0U;
         while (VL_LTS_III(1,32,32, vlSelf->top__DOT__my_mu__DOT__mem__DOT__i, 
                           (7U & (IData)(vlSelf->top__DOT__M_Reg__DOT__raddr_r)))) {
