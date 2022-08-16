@@ -194,7 +194,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
       //MEM[real_addr] = (MEM[real_addr] & (~(real_mask << ((waddr & 0x7)<<3)))) | ((wdata & real_mask)<< ((waddr & 0x7)<<3));
      // printf("end\n");
 
-    printf("MEM[real_addr] = %llx\n",MEM[real_addr]);
+    printf("MEM[real_addr] = %016llx\n",MEM[real_addr]);
       return;
     }
   }
