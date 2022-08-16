@@ -79,9 +79,21 @@ module ysyx_220053_Mem(
     always @(*) begin
         //tmp = {{29{1'b0}},raddr[2:0]};
         case(MemOp[1:0])
-            2'b00: dataw = dataout[st + 31 : st];
-            2'b01: datab = dataout[st + 7 : st];
-            2'b10: datah = dataout[st + 15 : st];
+            2'b00: begin
+                for (i = 0; i < 32; i = i + 1) begin
+                    dataw[i] = dataout[st + i];
+                end
+            end
+            2'b01: begin
+                for (i = 0; i < 8; i = i + 1) begin
+                    datab[i] = dataout[st + i];
+                end
+            end
+            2'b10: begin
+                for (i = 0; i < 16; i = i+1) begin
+                    datah[i] = dataout[st + i];
+                end
+            end
             default: datad = dataout;
         endcase
     end
