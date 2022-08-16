@@ -306,7 +306,7 @@ int main(int argc, char**argv, char**env) {
         assert(fread(MEM, fsize, 1, fp));
         fclose(fp);
         printf(ASNI_FG_BLUE "Load image in %s\n" ASNI_NONE ,image_file);
-        printf("MEM[0x80000260] = %llx\n",MEM[0x260 >> 3]);
+       // printf("MEM[0x80000260] = %llx\n",MEM[0x260 >> 3]);
        // 7f ff 4a bc 02 58 00 00
     }
     else{//build in code
@@ -467,12 +467,12 @@ static void npc_exec(uint64_t n){
               } 
               
             }
-            if(sdb_top->wb_commit == 1){
+            //if(sdb_top->wb_commit == 1){
 
-              if(sdb_top->wb_pc == 0x80000450){
-                break;
-              }
-            }
+            //  if(sdb_top->wb_pc == 0x80000450){
+            //    break;
+            //  }
+           // }
             if(EXIT == 1) {sdb_top->eval();break;}
         }
   if(is_done){
