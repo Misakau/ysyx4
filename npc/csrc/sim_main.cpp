@@ -80,12 +80,12 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
     
     long long real_addr = (raddr - AD_BASE) >> 3;
     
-    fprintf(log_ptr,"read addr = %llx\n",raddr);
+    printf("read addr = %llx\n",raddr);
     //assert(real_addr < MEMSIZE);
     if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
       *rdata = 0;
-      fprintf(log_ptr,"NONE R\n");
+      printf(log_ptr,"NONE R\n");
       return;
     }
     else *rdata = MEM[real_addr];
@@ -94,7 +94,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata) {
   // 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
 }
 extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
-  printf("ENTRY W\n");
+  //printf("ENTRY W\n");
   // maybe need some change
   // 没有严格8字节对齐
   //assert(raddr & 0x7 == 0);
@@ -140,11 +140,11 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   }
   else{
     //if(real_addr == 0x80000260){
-    fprintf(log_ptr,"write addr = %llx, data = %llx, wmask = %x\n",waddr,wdata,(uint8_t)wmask);
+    printf("write addr = %llx, data = %llx, wmask = %x\n",waddr,wdata,(uint8_t)wmask);
     //}
     if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
-      printf("ERROR W\n");
+      //printf("ERROR W\n");
       return;
     }
     else{//has bug
@@ -154,7 +154,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
         if(is_wr[i]) ptr[i] = wd[i];
       }
       //MEM[real_addr] = (MEM[real_addr] & (~(real_mask << ((waddr & 0x7)<<3)))) | ((wdata & real_mask)<< ((waddr & 0x7)<<3));
-      printf("end\n");
+     // printf("end\n");
       return;
     }
   }
