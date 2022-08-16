@@ -94,7 +94,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   long long real_addr = (waddr - AD_BASE) >> 3;
   //uint64_t real_mask = -1;
   bool is_wr[8];
-  printf("wmask = %x\n",wmask);
+  printf("wmask = %x\n",(uint8_t)wmask);
   for(int i = 0; i < 8; i++){
     is_wr[i] = wmask & 1;
     wmask >>= 1;
