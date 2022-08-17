@@ -20,7 +20,7 @@ void do_syscall(Context *c) {
 }
 
 static size_t sys_write(int fd, const void *buf, size_t count){
-  printf("fd = %d\n",fd);
+  //printf("fd = %d\n",fd);
   assert(fd == 1 || fd == 2);
   uint8_t *ptr = (uint8_t *)buf;
   for(int i = 0; i < count; i++)

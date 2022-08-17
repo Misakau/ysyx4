@@ -225,7 +225,7 @@ void set_batch_mode(){
 }
 
 static void sdb_mainloop();
-static bool is_diff = true;
+static bool is_diff = false;
 static char pathi[] = "/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
 //static char lgp[] = "/home/wang/log1.txt";
 //";
