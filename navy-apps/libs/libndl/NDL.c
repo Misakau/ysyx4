@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <sys/time.h>
 #include <sys/fcntl.h>
+#include <assert.h>
 
 static int evtdev = -1;
 static int fbdev = -1;
@@ -65,6 +66,14 @@ int NDL_Init(uint32_t flags) {
   if (getenv("NWM_APP")) {
     evtdev = 3;
   }
+  int fd = open("/proc/dispinfo", 0, 0);
+  char buf[64];
+  assert(read(fd,buf,sizeof(buf)));
+  strtok(buf,":\n");
+  screen_w = atoi(strtok(NULL,":\n"));
+  strtok(NULL,":\n");
+  screen_h = atoi(strtok(NULL,":\n"));
+  printf("screen_h = %d, screen_w = %d\n",screen_h,screen_w);
   return 0;
 }
 
