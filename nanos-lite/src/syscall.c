@@ -8,6 +8,7 @@ static int sys_open(const char *pathname, int flags, int mode);
 static size_t sys_read(int fd, void *buf, size_t len);
 static size_t sys_lseek(int fd, size_t offset, int whence);
 static int sys_close(int fd);
+static uint64_t sys_gettimeofday();
 
 void do_syscall(Context *c) {
   uintptr_t a[4];
@@ -24,6 +25,7 @@ void do_syscall(Context *c) {
     case SYS_read:  c->GPRx = sys_read((int)a[1], (void *)a[2], (size_t)a[3]); break;
     case SYS_close: c->GPRx = sys_close((int)a[1]); break;
     case SYS_lseek: c->GPRx = sys_lseek((int)a[1], (size_t)a[2], (int)a[3]); break;
+    case SYS_gettimeofday: c->GPRx = sys_gettimeofday(); break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
 }
@@ -51,3 +53,7 @@ static int sys_close(int fd){
 static int sys_brk(void *addr){
   return 0;
 } 
+
+static uint64_t sys_gettimeofday(){
+  return io_read(AM_TIMER_UPTIME).us;
+}
