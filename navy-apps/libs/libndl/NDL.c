@@ -66,7 +66,7 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
   int fd = open("/dev/fb",0,0);
   uint32_t *fixoff = pixels + y*canva_w + x;
   uint32_t scroff = ( (canva_y + y) * screen_w + (canva_x + x) ) << 2;
-  for(int i=0;i<h;i++){
+  for(int i = 0; i < h; i++){
     //lseek(fd,(canva_y+i+y)*screen_w+canva_x+x,0);
   //  printf("%d\n",scroff);  
     lseek(fd, scroff, SEEK_SET);
