@@ -223,7 +223,7 @@ static bool is_batch = false;
 void set_batch_mode(){
     is_batch = true;
 }
-
+static uint64_t tot_instr = 0;
 static void sdb_mainloop();
 static bool is_diff = false;
 static char pathi[] = "/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
@@ -384,6 +384,9 @@ int main(int argc, char**argv, char**env) {
                 if(log_ptr) fprintf(log_ptr, "wb_commit: pc = 0x%016lx, instr = %08x\n", sdb_top->wb_pc, sdb_top->wb_instr);
               } 
             #endif
+
+            if(top->clk == 0 && top->wb_commit == 1) tot_instr++;
+            
             if(is_diff){
               step++;
               if(top->clk == 0 && top->wb_commit == 1){
@@ -420,6 +423,16 @@ int main(int argc, char**argv, char**env) {
       printf(ASNI_FG_BLUE " at PC = %lx\n" ASNI_NONE,top->pc);
     }
     printf("~~~Sim finished!~~~\n");
+    gettimeofday(&stv,NULL);
+    uint64_t en_time = stv.tv_sec * 1000000 +stv.tv_usec;
+    long long ms = (en_time - st_time)/1000;
+
+    printf(ASNI_FG_BLUE "Total intructions = %lld \n" ASNI_NONE,(long long)tot_instr);
+
+    printf(ASNI_FG_BLUE "Total time = %lld ms\n" ASNI_NONE,(long long)ms);
+
+    printf(ASNI_FG_BLUE "Total time = %lld ms\n" ASNI_NONE,(long long)ms);
+    
     if(dlclose(handle) < 0){
       fprintf(stderr, "%s\n", dlerror());
       exit(1);
@@ -463,6 +476,9 @@ static void npc_exec(uint64_t n){
               } 
             #endif
             sdb_top->eval();
+
+            if(sdb_top->clk == 0 && sdb_top->wb_commit == 1) tot_instr++;
+
             if(is_diff){
               if(sdb_top->clk == 0  && sdb_top->wb_commit == 1){
                 difftest_exec(1);
