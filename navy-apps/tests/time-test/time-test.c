@@ -9,7 +9,7 @@ int main() {
   //NDL_Init(0);
   while(1){
   	struct timeval tv;
-    assert(gettimeofday(&tv,NULL));
+    assert(gettimeofday(&tv,NULL) == 0);
     time_t sec = tv.tv_sec;
     if(sec > lsec){
       lsec = sec;
