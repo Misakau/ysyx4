@@ -51,7 +51,7 @@ size_t fb_write(const void *buf, size_t offset, size_t len) {
   int wi = gpu.width;
   int x, y;
   y = pix / wi; x = pix % wi;
- // printf("x=%d,y=%d\n",x,y);
+  printf("x=%d,y=%d\n",x,y);
   io_write(AM_GPU_FBDRAW, x, y, (uint32_t*)buf, len >> 2, 1, true);
   return len;
 }
