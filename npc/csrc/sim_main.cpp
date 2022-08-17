@@ -429,7 +429,7 @@ int main(int argc, char**argv, char**env) {
 
     printf(ASNI_FG_BLUE "Total intructions = %lld \n" ASNI_NONE,(long long)tot_instr);
 
-    printf(ASNI_FG_BLUE "Total time = %lld ms\n" ASNI_NONE,(long long)ms);
+    printf(ASNI_FG_BLUE "Simulation frequency = %lld inst/s\n" ASNI_NONE,(long long)(tot_instr * 1000/ms));
 
     printf(ASNI_FG_BLUE "Total time = %lld ms\n" ASNI_NONE,(long long)ms);
     
