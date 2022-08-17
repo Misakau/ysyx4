@@ -90,7 +90,9 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
     else{
       long long maddr = (raddr + bytes - 1 - AD_BASE) >> 3;
       long long ret;
-      if(maddr == real_addr) ret = MEM[real_addr];
+      ret = MEM[real_addr];
+      /*
+      if(maddr == real_addr) 
       else{
           printf("unaligned!\n");
           printf("raddr = %llx\n",raddr);
@@ -108,7 +110,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
           long long data2 = MEM[maddr]& mask << (bytes1 * 8);
           ret = data2 | data1;
         
-      }
+      }*/
       *rdata = ret;
     } 
   }
