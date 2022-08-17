@@ -33,6 +33,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
   strcat(buf,keyname[code]);
   strcat(buf,"\n");
   int ret = strlen(buf);
+  printf("%s, ret = %d\n",buf, ret);
   assert(ret <= len);
   return ret;
 }
