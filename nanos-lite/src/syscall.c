@@ -6,7 +6,7 @@ static size_t sys_write(int fd, const void *buf, size_t count);
 static int sys_brk(void *addr);
 static int sys_open(const char *pathname, int flags, int mode);
 static size_t sys_read(int fd, void *buf, size_t len);
-//static size_t sys_lseek(int fd, size_t offset, int whence);
+static size_t sys_lseek(int fd, size_t offset, int whence);
 static int sys_close(int fd);
 
 void do_syscall(Context *c) {
@@ -23,17 +23,13 @@ void do_syscall(Context *c) {
     case SYS_open:  c->GPRx = sys_open((const char *)a[1], (int)a[2], (int)a[3]); break;
     case SYS_read:  c->GPRx = sys_read((int)a[1], (void *)a[2], (size_t)a[3]); break;
     case SYS_close: c->GPRx = sys_close((int)a[1]); break;
+    case SYS_lseek: c->GPRx = sys_lseek((int)a[1], (size_t)a[2], (int)a[3]); break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
 }
 
 static size_t sys_write(int fd, const void *buf, size_t count){
-  //printf("fd = %d\n",fd);
-  assert(fd == 1 || fd == 2);
-  uint8_t *ptr = (uint8_t *)buf;
-  for(int i = 0; i < count; i++)
-    putch(ptr[i]);
-  return count;
+  return fs_write(fd, buf, count);
 }
 
 static int sys_open(const char *pathname, int flags, int mode){
@@ -44,7 +40,9 @@ static size_t sys_read(int fd, void *buf, size_t len){
   return fs_read(fd, buf, len);
 }
 
-//static size_t sys_lseek(int fd, size_t offset, int whence);
+static size_t sys_lseek(int fd, size_t offset, int whence){
+  return fs_lseek(fd, offset, whence);
+}
 
 static int sys_close(int fd){
   return fs_close(fd);

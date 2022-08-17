@@ -57,13 +57,14 @@ int fs_open(const char *pathname, int flags, int mode){
 
 size_t fs_read(int fd, void *buf, size_t len){
   if(fd < 3) return 0;
-
+  assert(buf);
   size_t offset = file_table[fd].disk_offset + file_table[fd].open_offset;
+
+  assert(file_table[fd].size >= file_table[fd].open_offset);
+
   size_t readable = file_table[fd].size - file_table[fd].open_offset;
   
   if(readable == 0) return 0;
-
-  assert(readable > 0);
 
   size_t bytes = len;
   if(readable < len) bytes = readable;
@@ -73,15 +74,53 @@ size_t fs_read(int fd, void *buf, size_t len){
 
   return bytes;
 }
-/*
-size_t fs_write(int fd, const void *buf, size_t len){
 
+size_t fs_write(int fd, const void *buf, size_t len){
+  if(fd < 3){
+    if(fd == 0) return 0;
+    char *str = (char *)buf;
+    for(int i = 1; i <= len; i++)
+      putch(str[i]);
+    return len;
+  }
+  assert(fd >= 3);
+  assert(buf);
+  size_t offset = file_table[fd].disk_offset + file_table[fd].open_offset;
+
+  assert(file_table[fd].size >= file_table[fd].open_offset);
+
+  size_t writable = file_table[fd].size - file_table[fd].open_offset;
+  
+  if(writable == 0) return 0;
+
+
+  size_t bytes = len;
+  if(writable < len) bytes = writable;
+
+  ramdisk_write(buf, offset, bytes);
+  file_table[fd].open_offset += bytes;
+
+  return bytes;
 }
 
 size_t fs_lseek(int fd, size_t offset, int whence){
-
+  switch (whence){
+  case SEEK_SET:
+    file_table[fd].open_offset = offset;
+    break;
+  case SEEK_CUR:
+    file_table[fd].open_offset += offset;
+    break;
+  case SEEK_END:
+    file_table[fd].open_offset = file_table[fd].size + offset;
+    break;
+  default: 
+    assert(0);
+    break;
+  }
+  return file_table[fd].open_offset;
 }
-*/
+
 int fs_close(int fd){
   file_table[fd].open_offset = 0;
   return 0;
