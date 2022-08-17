@@ -1,6 +1,8 @@
 #include <sys/time.h>
 #include <stdio.h>
 #include <assert.h>
+#include <stdint.h>
+
 int NDL_Init(uint32_t flags);
 uint32_t NDL_GetTicks();
 
@@ -18,6 +20,7 @@ int main() {
     }
     */
     uint32_t ms=NDL_GetTicks();
+    printf("%d\n",ms);
     if(ms > lms + 5000){
       lms = ms;
       printf("Time is %d\n",ms); 
