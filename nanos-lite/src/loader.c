@@ -18,7 +18,7 @@ extern uint8_t ramdisk_start;
 static uintptr_t loader(PCB *pcb, const char *filename) {
   //printf("[ENTRY] %s\n",__func__);
   Elf_Ehdr *elf = (Elf_Ehdr *)(&ramdisk_start);
-  printf("elf = %p\n",elf);
+  //printf("elf = %p\n",elf);
   assert(*(uint32_t *)elf->e_ident == 0x464c457f);
   Elf64_Half phnum = elf->e_phnum;
   Elf64_Off phoff = elf->e_phoff;
@@ -29,14 +29,14 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
     if(now_ph->p_type == PT_LOAD){
       //printf("find seg to load\n");
       Elf64_Off offset = now_ph->p_offset;
-      printf("offset = %d\n",offset);
+    //  printf("offset = %d\n",offset);
       Elf64_Addr vaddr = now_ph->p_vaddr;
       //Elf64_Xword filesz = now_ph->p_filesz;//not aligned
       //Elf64_Xword memsz = now_ph->p_memsz;
       Elf64_Xword filesz = now_ph->p_filesz;//not aligned
       Elf64_Xword memsz = now_ph->p_memsz;
-      printf("&now_ph->p_filesz = %p\n", phoff + (uintptr_t)elf);
-      printf("filesz = %p\n", filesz);
+    //  printf("&now_ph->p_filesz = %p\n", phoff + (uintptr_t)elf);
+    //  printf("filesz = %p\n", filesz);
       ramdisk_read((void *)vaddr, offset, filesz);
       memset((void *)(vaddr + filesz), 0, memsz - filesz);
     }

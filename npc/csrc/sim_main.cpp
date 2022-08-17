@@ -228,8 +228,8 @@ static void sdb_mainloop();
 static bool is_diff = false;
 static char pathi[] = "/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
 //static char lgp[] = "/home/wang/log1.txt";
-//";
-static char* image_file = pathi;//NULL;
+//";pathi;//
+static char* image_file = NULL;
 static char* log_file = NULL;
 //static FILE* log_ptr = NULL;
 static int npc_parse_args(int argc, char *argv[]) {
