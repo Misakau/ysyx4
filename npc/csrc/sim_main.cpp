@@ -92,7 +92,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
       long long ret;
       if(maddr == real_addr) ret = MEM[real_addr];
       else{
-          
+          printf("unaligned!\n");
          // printf("raddr = %llx\n",raddr);
          // printf("bytes = %d\n",bytes);
          // printf("real addr = %llx\n",real_addr);
@@ -111,11 +111,6 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
       }
       *rdata = ret;
     } 
-    if(raddr == 0x800020d1){
-      printf("read addr = %llx\n",raddr);
-      printf("rdata = %llx\n",MEM[real_addr]);
-      //return;
-    }
   }
   //printf("LEAVE R\n");
   // 总是读取地址为`raddr & ~0x7ull`的8字节返回给`rdata`
