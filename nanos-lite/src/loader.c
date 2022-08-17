@@ -1,5 +1,6 @@
 #include <proc.h>
 #include <elf.h>
+#include <fs.h>
 
 #ifdef __LP64__
 # define Elf_Ehdr Elf64_Ehdr
@@ -13,11 +14,15 @@ size_t ramdisk_read(void *buf, size_t offset, size_t len);
 size_t ramdisk_write(const void *buf, size_t offset, size_t len);
 size_t get_ramdisk_size();
 
-extern uint8_t ramdisk_start;
-
+//extern uint8_t ramdisk_start;
+#define MAX_SIZE 655360
+static uint8_t filebuf[MAX_SIZE];
 static uintptr_t loader(PCB *pcb, const char *filename) {
   //printf("[ENTRY] %s\n",__func__);
-  Elf_Ehdr *elf = (Elf_Ehdr *)(&ramdisk_start);
+  int fd = fs_open(filename, 0, 0);
+  assert(fs_read(fd,filebuf,MAX_SIZE) <= MAX_SIZE);
+  fs_close(fd);
+  Elf_Ehdr *elf = (Elf_Ehdr *)filebuf;
   //printf("elf = %p\n",elf);
   assert(*(uint32_t *)elf->e_ident == 0x464c457f);
   Elf64_Half phnum = elf->e_phnum;
@@ -37,7 +42,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
       Elf64_Xword memsz = now_ph->p_memsz;
     //  printf("&now_ph->p_filesz = %p\n", phoff + (uintptr_t)elf);
     //  printf("filesz = %p\n", filesz);
-      ramdisk_read((void *)vaddr, offset, filesz);
+      memcpy((void *)vaddr, filebuf + offset, filesz);
       memset((void *)(vaddr + filesz), 0, memsz - filesz);
     }
     phoff += phsz;
