@@ -6,7 +6,7 @@ static size_t sys_write(int fd, const void *buf, size_t count);
 static int sys_brk(void *addr);
 static int sys_open(const char *pathname, int flags, int mode);
 static size_t sys_read(int fd, void *buf, size_t len);
-static size_t sys_lseek(int fd, size_t offset, int whence);
+//static size_t sys_lseek(int fd, size_t offset, int whence);
 static int sys_close(int fd);
 
 void do_syscall(Context *c) {
