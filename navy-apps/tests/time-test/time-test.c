@@ -20,8 +20,7 @@ int main() {
     }
     */
     uint32_t ms=NDL_GetTicks();
-    printf("%d\n",ms);
-    if(ms > lms + 5000){
+    if(ms > lms + 500){
       lms = ms;
       printf("Time is %d\n",ms); 
     } 
