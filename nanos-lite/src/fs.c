@@ -79,7 +79,7 @@ size_t fs_write(int fd, const void *buf, size_t len){
   if(fd < 3){
     if(fd == 0) return 0;
     char *str = (char *)buf;
-    for(int i = 1; i <= len; i++)
+    for(int i = 0; i < len; i++)
       putch(str[i]);
     return len;
   }
