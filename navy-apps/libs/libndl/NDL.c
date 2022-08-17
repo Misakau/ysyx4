@@ -55,6 +55,7 @@ void NDL_OpenCanvas(int *w, int *h) {
   assert(canva_h <= screen_h && canva_w <= screen_w);
   canva_x = (screen_w - canva_w) >> 1;
   canva_y = (screen_h - canva_h) >> 1;
+  printf("cx = %d, cy = %d, cw = %d, ch = %d\n",canva_x,canva_y,canva_w,canva_h);
 }
 
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
