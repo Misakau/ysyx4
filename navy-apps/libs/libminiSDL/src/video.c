@@ -25,7 +25,8 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
       memcpy(dstpt,srcpt,dopt->w*4);//weikuan
       dstpt=dstpt+dst->w;
       srcpt=srcpt+src->w;
-     }
+    }
+    printf("ok\n");
    }
    else{
   // printf("h=%d,w=%d\n",srcrect->h,srcrect->w);
