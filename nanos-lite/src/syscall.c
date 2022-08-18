@@ -1,6 +1,7 @@
 #include <common.h>
 #include "syscall.h"
 #include <fs.h>
+#include <proc.h>
 
 struct timeval {
   int64_t  tv_sec;     /* seconds */
@@ -18,6 +19,7 @@ static size_t sys_read(int fd, void *buf, size_t len);
 static size_t sys_lseek(int fd, size_t offset, int whence);
 static int sys_close(int fd);
 static int sys_gettimeofday(struct timeval *tv, struct timezone *tz);
+static int sys_execve(const char *fname, char * const argv[], char *const envp[]);
 
 void do_syscall(Context *c) {
   uintptr_t a[4];
@@ -35,6 +37,7 @@ void do_syscall(Context *c) {
     case SYS_close: c->GPRx = sys_close((int)a[1]); break;
     case SYS_lseek: c->GPRx = sys_lseek((int)a[1], (size_t)a[2], (int)a[3]); break;
     case SYS_gettimeofday: c->GPRx = sys_gettimeofday((struct timeval *)a[1], (struct timezone *)a[2]); break;
+    case SYS_execve: c->GPRx = sys_execve((const char *)a[1],(char * const*)a[2],(char *const*)a[3]); break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
 }
@@ -61,6 +64,12 @@ static int sys_close(int fd){
 
 static int sys_brk(void *addr){
   return 0;
+}
+
+void naive_uload(PCB *pcb, const char *filename);
+static int sys_execve(const char *fname, char * const argv[], char *const envp[]){
+  naive_uload(NULL,fname);
+  return -1;
 }
 
 static int sys_gettimeofday(struct timeval *tv, struct timezone *tz){
