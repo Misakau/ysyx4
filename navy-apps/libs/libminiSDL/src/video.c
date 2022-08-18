@@ -16,6 +16,7 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
   if(sopt->w==0&&sopt->h==0) {sopt->w=srec0.w; sopt->h=srec0.h;}
   if(dopt->w==0&&dopt->h==0) {dopt->w=srec0.w; dopt->h=srec0.h;}
   if(dst->format->BitsPerPixel==32){
+    printf("blit\n");
     uint32_t dst_off=dopt->y*dst->w+dopt->x;
     uint32_t src_off=sopt->y*src->w+sopt->x;
     uint32_t *dstpt=(uint32_t*)dst->pixels+dst_off;
@@ -48,6 +49,7 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
   SDL_Rect* sopt=dstrect;
   if(sopt==NULL) sopt=&rec0;
   if(dst->format->BitsPerPixel==32){
+    printf("fill\n");
     uint32_t dst_off=sopt->y*dst->w+sopt->x;
     uint32_t *dstpt=(uint32_t *)dst->pixels+dst_off;
     for(int i=0;i < sopt->h ;i++){
