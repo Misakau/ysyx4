@@ -24,7 +24,7 @@ void scan_wp();
 static char iringbuf[IBUF_SIZE][128];
 static int iringtmp = -1;
 
-static void iring_display(){
+void iring_display(){
   printf("IRINGBUF");
   for(int i = 0; i < IBUF_SIZE; i++){
     if(i == iringtmp){
@@ -102,11 +102,10 @@ static void statistic() {
 
 void assert_fail_msg() {
   isa_reg_display();
-  //printf("hh\n");
   #ifdef CONFIG_ITRACE_COND
   	iring_display();
   #endif
-  //statistic();
+  statistic();
 }
 
 /* Simulate how the CPU works. */
