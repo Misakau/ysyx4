@@ -40,7 +40,6 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
   	    *(dst->pixels+doffs)=tmp;
   	  }
   	}
-   
    }
 }
 
