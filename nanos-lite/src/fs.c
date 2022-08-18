@@ -61,7 +61,9 @@ int fs_open(const char *pathname, int flags, int mode){
       break;
     }
   }
-  if(!is_find) assert(0);
+  if(!is_find){
+    panic("%s: No such file !\n",pathname);
+  }
   return ret;
 }
 
