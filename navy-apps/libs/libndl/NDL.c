@@ -42,7 +42,7 @@ void NDL_OpenCanvas(int *w, int *h) {
       buf[nread] = '\0';
       if (strcmp(buf, "mmap ok") == 0) break;
     }
-    close(fbctl);
+    //close(fbctl);
   }
   if(*w == 0 && *h == 0){
     canva_h = screen_h;
@@ -105,7 +105,7 @@ int NDL_Init(uint32_t flags) {
   screen_w = atoi(strtok(NULL,":\n"));
   strtok(NULL,":\n");
   screen_h = atoi(strtok(NULL,":\n"));
-  close(fd);
+  //close(fd);
   //printf("screen_h = %d, screen_w = %d\n",screen_h,screen_w);
   return 0;
 }
