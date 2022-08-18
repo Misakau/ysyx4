@@ -19,7 +19,7 @@ static bool g_print_step = false;
 void device_update();
 void scan_wp();
 
-#ifdef CONFIG_ITRACE
+#ifdef CONFIG_ITRACE_COND
 #define IBUF_SIZE 16
 static char iringbuf[IBUF_SIZE][128];
 static int iringtmp = -1;
@@ -102,7 +102,7 @@ static void statistic() {
 
 void assert_fail_msg() {
   isa_reg_display();
-  #ifdef CONFIG_ITRACE
+  #ifdef CONFIG_ITRACE_COND
   	iring_display();
   #endif
   statistic();
