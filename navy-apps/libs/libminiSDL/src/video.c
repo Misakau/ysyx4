@@ -22,11 +22,11 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
     uint32_t *dstpt=(uint32_t*)dst->pixels+dst_off;
     uint32_t *srcpt=(uint32_t*)src->pixels+src_off;
     for(int i=0;i < dopt->h ;i++){
+      printf("dopt->w = %d\n",dopt->w);
       memcpy(dstpt,srcpt,dopt->w*4);//weikuan
       dstpt=dstpt+dst->w;
       srcpt=srcpt+src->w;
     }
-    printf("ok\n");
    }
    else{
   // printf("h=%d,w=%d\n",srcrect->h,srcrect->w);
