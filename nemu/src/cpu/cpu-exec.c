@@ -102,9 +102,10 @@ static void statistic() {
 
 void assert_fail_msg() {
   isa_reg_display();
-  #ifdef CONFIG_ITRACE_COND
+  
+  //#ifdef CONFIG_ITRACE_COND
   	iring_display();
-  #endif
+  //#endif
   statistic();
 }
 
