@@ -25,7 +25,7 @@ static char iringbuf[IBUF_SIZE][128];
 static int iringtmp = -1;
 
 static void iring_display(){
-  Log("IRINGBUF");
+  printf("IRINGBUF");
   for(int i = 0; i < IBUF_SIZE; i++){
     if(i == iringtmp){
       printf("--->\t%s\n",iringbuf[i]);
