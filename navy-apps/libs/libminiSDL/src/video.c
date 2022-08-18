@@ -71,6 +71,7 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
   //printf("%x\n",*(s->pixels));
   //assert(0);
   if(s->format->BitsPerPixel==32){
+    printf("update\n");
     NDL_DrawRect((uint32_t*)(s->pixels), x, y, w, h);//assert(0);
   }
  	else{
