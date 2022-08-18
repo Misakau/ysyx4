@@ -125,40 +125,53 @@ typedef	__uint128_t fixedptud;
  * Putting them only in macros will effectively make them optional. */
 #define fixedpt_tofloat(T) ((float) ((T)*((float)(1)/(float)(1L << FIXEDPT_FBITS))))
 
-#include <stdio.h>
-
 /* Multiplies a fixedpt number with an integer, returns the result. */
 static inline fixedpt fixedpt_muli(fixedpt A, int B) {
-	printf("FIXEDPT_BITS = %d",FIXEDPT_BITS);
-	return 0;
+	return A*B;//result is floor
 }
 
 /* Divides a fixedpt number with an integer, returns the result. */
 static inline fixedpt fixedpt_divi(fixedpt A, int B) {
-	return 0;
+	return A/B;//result is floor
 }
 
 /* Multiplies two fixedpt numbers, returns the result. */
 static inline fixedpt fixedpt_mul(fixedpt A, fixedpt B) {
-	return 0;
+	//result is floor
+	fixedptd res=A*B>>FIXEDPT_FBITS;
+	return (fixedpt)res;
 }
 
 
 /* Divides two fixedpt numbers, returns the result. */
 static inline fixedpt fixedpt_div(fixedpt A, fixedpt B) {
-	return 0;
+	//result is to 0
+	fixedpt res=(A/B)<<FIXEDPT_FBITS;
+	return res;
 }
 
 static inline fixedpt fixedpt_abs(fixedpt A) {
-	return 0;
+	return A>0 ? A : -A;//result is to 0
 }
 
 static inline fixedpt fixedpt_floor(fixedpt A) {
-	return 0;
+	fixedpt res;
+	if(A>0) res=A&0xffffff00;
+	else {
+	  if(((-A)&0xff)==0) res=A;
+	  else res=-((-A)&0xffffff00)-FIXEDPT_ONE;
+	}
+	return res;
 }
 
 static inline fixedpt fixedpt_ceil(fixedpt A) {
-	return 0;
+	fixedpt res;
+	if(A>0){
+	  if((A&0xff)==0) res=A;
+	  else res=(A&0xffffff00)+FIXEDPT_ONE;
+	}
+	else res=-((-A)&0xffffff00);
+	return res;
 }
 
 /*
