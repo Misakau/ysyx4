@@ -102,11 +102,11 @@ static void statistic() {
 
 void assert_fail_msg() {
   isa_reg_display();
-  printf("hh\n");
+  //printf("hh\n");
   #ifdef CONFIG_ITRACE_COND
   	iring_display();
   #endif
-  statistic();
+  //statistic();
 }
 
 /* Simulate how the CPU works. */
