@@ -59,7 +59,6 @@ word_t paddr_read(paddr_t addr, int len) {
 }
 
 void paddr_write(paddr_t addr, int len, word_t data) {
-  if(addr >= 0x83015740 + 16 && addr <= 0x83015740 + 32) printf("write data: %llx, len = %d\n",(unsigned long long)data,len);
   if (likely(in_pmem(addr))) { pmem_write(addr, len, data); return; }
   IFDEF(CONFIG_DEVICE, mmio_write(addr, len, data); return);
   #ifndef CONFIG_DEVICE
