@@ -16,15 +16,11 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect, SDL_Surface *dst, SDL_
   if(sopt->w==0&&sopt->h==0) {sopt->w=srec0.w; sopt->h=srec0.h;}
   if(dopt->w==0&&dopt->h==0) {dopt->w=srec0.w; dopt->h=srec0.h;}
   if(dst->format->BitsPerPixel==32){
-    printf("blit\n");
     uint32_t dst_off=dopt->y*dst->w+dopt->x;
     uint32_t src_off=sopt->y*src->w+sopt->x;
     uint32_t *dstpt=(uint32_t*)dst->pixels+dst_off;
     uint32_t *srcpt=(uint32_t*)src->pixels+src_off;
     for(int i=0;i < dopt->h ;i++){
-      printf("dopt->w = %d\n",dopt->w);
-      printf("dstpt = %p\n",dstpt);
-      printf("srcpt = %p\n",dstpt);
       memcpy(dstpt,srcpt,dopt->w << 2);//weikuan
       dstpt=dstpt+dst->w;
       srcpt=srcpt+src->w;
