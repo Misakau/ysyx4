@@ -64,6 +64,7 @@ int fs_open(const char *pathname, int flags, int mode){
   if(!is_find){
     panic("%s: No such file !\n",pathname);
   }
+  printf("open %s\n",pathname);
   return ret;
 }
 
