@@ -28,7 +28,7 @@ void do_syscall(Context *c) {
   a[2] = c->GPR3;
   a[3] = c->GPR4;
   switch (a[0]) {
-    case SYS_exit:  c->GPRx = sys_execve("/bin/menu",NULL,NULL); break;
+    case SYS_exit:  c->GPRx = sys_execve("/bin/nterm",NULL,NULL); break;
     case SYS_yield: yield(); c->GPRx = 0; break;
     case SYS_write: c->GPRx = sys_write((int)a[1],(const void *)a[2],(size_t)a[3]); break;
     case SYS_brk:   c->GPRx = sys_brk((void *)a[1]); break;
