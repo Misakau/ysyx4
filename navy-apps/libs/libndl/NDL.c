@@ -59,7 +59,7 @@ void NDL_OpenCanvas(int *w, int *h) {
   canva_y = (screen_h - canva_h) >> 1;
   //printf("cx = %d, cy = %d, cw = %d, ch = %d\n",canva_x,canva_y,canva_w,canva_h);
 }
-static int fb_fd = 0;
+int fbfd = 0;
 void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
   if(w == 0 && h == 0){
     w = canva_w;
@@ -72,8 +72,8 @@ void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h) {
   for(int i = 0; i < h; i++){
     //lseek(fd,(canva_y+i+y)*screen_w+canva_x+x,0);
     //printf("scroff = %d\n",scroff);  
-    lseek(fb_fd, scroff, SEEK_SET);
-    write(fb_fd, fixoff, w << 2);
+    lseek(fbfd, scroff, SEEK_SET);
+    write(fbfd, fixoff, w << 2);
     fixoff = fixoff + canva_w;
     scroff += screen_w << 2; 
   }
@@ -106,11 +106,11 @@ int NDL_Init(uint32_t flags) {
   strtok(NULL,":\n");
   screen_h = atoi(strtok(NULL,":\n"));
   close(fd);
-  int fb_fd = open("/dev/fb", 0, 0);
+  fbfd = open("/dev/fb", 0, 0);
   //printf("screen_h = %d, screen_w = %d\n",screen_h,screen_w);
   return 0;
 }
 
 void NDL_Quit() {
-  close(fb_fd);
+  close(fbfd);
 }
