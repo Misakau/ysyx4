@@ -64,7 +64,6 @@ int fs_open(const char *pathname, int flags, int mode){
   if(!is_find){
     panic("%s: No such file !\n",pathname);
   }
-  file_table[ret].open_offset = 0;
   return ret;
 }
 
@@ -133,6 +132,6 @@ size_t fs_lseek(int fd, size_t offset, int whence){
 }
 
 int fs_close(int fd){
-  
+  file_table[fd].open_offset = 0;
   return 0;
 }
