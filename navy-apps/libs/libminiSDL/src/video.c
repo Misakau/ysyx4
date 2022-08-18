@@ -47,7 +47,6 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
   SDL_Rect* sopt=dstrect;
   if(sopt==NULL) sopt=&rec0;
   if(dst->format->BitsPerPixel==32){
-    printf("fill\n");
     uint32_t dst_off=sopt->y*dst->w+sopt->x;
     uint32_t *dstpt=(uint32_t *)dst->pixels+dst_off;
     for(int i=0;i < sopt->h ;i++){
@@ -72,7 +71,6 @@ void SDL_UpdateRect(SDL_Surface *s, int x, int y, int w, int h) {
   //printf("%x\n",*(s->pixels));
   //assert(0);
   if(s->format->BitsPerPixel==32){
-    printf("update\n");
     NDL_DrawRect((uint32_t*)(s->pixels), x, y, w, h);//assert(0);
   }
  	else{
