@@ -409,6 +409,7 @@ int main(int argc, char**argv, char**env) {
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(rd_dev == true){
+                  printf("hh\n");
                   for(int i = 1; i < 32; i++){
                     nemu.gpr[i] = cpu_gpr[i];
                   }
