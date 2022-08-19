@@ -309,6 +309,7 @@ int main(int argc, char**argv, char**env) {
     
     npc_parse_args(argc, argv);
     init_device();
+    printf("i8042_data_port_base = %p",i8042_data_port_base);
     //vga_init
     //init_vga();
 
