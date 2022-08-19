@@ -172,9 +172,8 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     //  printf("waddr = %llx, index = %lld\n, data = %lld\n",waddr,(waddr-FB_ADDR)>>2,wdata);
     //}
     int index = (waddr-FB_ADDR)>>2;
-    printf("wdata = %llx\n",wdata);
     if(index & 1) ptr[index] = (uint64_t)wdata >> 32;
-    else ptr[index] = wdata & wmask;
+    else ptr[index] = wdata;
     //printf("ok\n");
   }
   else{
