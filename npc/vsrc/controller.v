@@ -69,9 +69,9 @@ parameter ysyx_220053_R = 5;
                     if(func7 == 7'b0000001) begin//mul div rem
                         case(func3)
                             3'b000: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01001; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b001: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b01; ALUOp = 5'b01001; ExtOp = ysyx_220053_R; wen = 1; end
+                            3'b001: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b11; ALUOp = 5'b01001; ExtOp = ysyx_220053_R; wen = 1; end
                             3'b010: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b10; ALUOp = 5'b01001; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b011: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b11; ALUOp = 5'b01001; ExtOp = ysyx_220053_R; wen = 1; end
+                            3'b011: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b01; ALUOp = 5'b01001; ExtOp = ysyx_220053_R; wen = 1; end
                             3'b100: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01011; ExtOp = ysyx_220053_R; wen = 1; end
                             3'b101: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01010; ExtOp = ysyx_220053_R; wen = 1; end
                             3'b110: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01110; ExtOp = ysyx_220053_R; wen = 1; end
