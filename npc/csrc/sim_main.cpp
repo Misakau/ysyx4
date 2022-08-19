@@ -59,7 +59,7 @@ void dump_gpr() {
 extern void *vmem;
 extern uint32_t *vgactl_port_base;
 extern uint32_t vmem_len;
-uint32_t *i8042_data_port_base;
+extern uint32_t *i8042_data_port_base;
 void init_device();
 void device_update();
 
@@ -309,7 +309,6 @@ int main(int argc, char**argv, char**env) {
     
     npc_parse_args(argc, argv);
     init_device();
-    printf("i8042_data_port_base = %p",i8042_data_port_base);
     //vga_init
     //init_vga();
 
