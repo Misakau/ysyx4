@@ -106,7 +106,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
       long long maddr = (raddr + bytes - 1 - AD_BASE) >> 3;
       long long ret;
       ret = MEM[real_addr];
-      printf("raddr = %llx, bytes = %d, Mem = %llx\n",raddr,bytes,ret);
+      //printf("raddr = %llx, bytes = %d, Mem = %llx\n",raddr,bytes,ret);
       /* for unaligned
       if(maddr == real_addr) ret = MEM[real_addr];
       else{
@@ -375,7 +375,7 @@ int main(int argc, char**argv, char**env) {
     int cnt = 0;
     
     if(is_batch){
-      #undef ITRACE
+      //#undef ITRACE
       int step = 0;
         NEMU_CPU nemu;
         while (!npc_done && !contextp->gotFinish()) { 
