@@ -18,11 +18,11 @@ extern bool npc_done;
 extern bool NPC_EXIT;
 uint64_t get_time();
 #define TIMER_HZ 60
-
+// TIMER_HZ
 void device_update() {
   static uint64_t last = 0;
   uint64_t now = get_time() - st_time;
-  if (now - last < 10000 / TIMER_HZ) {
+  if (now - last < 100) {
     return;
   }
   last = now;
