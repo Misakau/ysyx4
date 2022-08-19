@@ -614,8 +614,6 @@ static int cmd_help(char *args) {
 }
 
 void sdb_mainloop() {
-
-
   for (char *str; (str = npc_rl_gets()) != NULL; ) {
     char *str_end = str + strlen(str);
 
@@ -641,5 +639,6 @@ void sdb_mainloop() {
 
     if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
     if (EXIT) break;
+    device_update();
   }
 }
