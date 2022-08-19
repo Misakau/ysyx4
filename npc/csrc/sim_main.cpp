@@ -59,6 +59,7 @@ void dump_gpr() {
 extern void *vmem;
 extern uint32_t *vgactl_port_base;
 extern uint32_t vmem_len;
+uint32_t *i8042_data_port_base;
 void init_device();
 void device_update();
 
@@ -79,6 +80,10 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
   else if(raddr == VGACTL_ADDR){
     assert(vgactl_port_base);
     *rdata = *vgactl_port_base;
+  }
+  else if(raddr == KBD_ADDR){
+    assert(i8042_data_port_base);
+    *rdata = *i8042_data_port_base;
   }
   else{
     
@@ -386,8 +391,11 @@ int main(int argc, char**argv, char**env) {
               } 
             #endif
 
-            if(top->clk == 0 && top->wb_commit == 1) tot_instr++;
-            device_update();
+            if(top->clk == 0 && top->wb_commit == 1){
+              tot_instr++;
+              device_update();
+            }
+            
             if(is_diff){
               step++;
               if(top->clk == 0 && top->wb_commit == 1){
@@ -477,8 +485,11 @@ static void npc_exec(uint64_t n){
             #endif
             sdb_top->eval();
 
-            if(sdb_top->clk == 0 && sdb_top->wb_commit == 1) tot_instr++;
-            device_update();
+            if(sdb_top->clk == 0 && sdb_top->wb_commit == 1){
+              tot_instr++;
+              device_update();
+            }
+
             if(is_diff){
               if(sdb_top->clk == 0  && sdb_top->wb_commit == 1){
                 difftest_exec(1);
@@ -614,6 +625,8 @@ static int cmd_help(char *args) {
 }
 
 void sdb_mainloop() {
+
+
   for (char *str; (str = npc_rl_gets()) != NULL; ) {
     char *str_end = str + strlen(str);
 
@@ -639,6 +652,5 @@ void sdb_mainloop() {
 
     if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
     if (EXIT) break;
-    device_update();
   }
 }
