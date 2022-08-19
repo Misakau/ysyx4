@@ -74,8 +74,8 @@ parameter ysyx_220053_R = 5;
                             3'b011: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b11; ALUOp = 5'b01001; ExtOp = ysyx_220053_R; wen = 1; end
                             3'b100: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01010; ExtOp = ysyx_220053_R; wen = 1; end
                             3'b101: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01011; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b110: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01100; ExtOp = ysyx_220053_R; wen = 1; end
-                            default:begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01110; ExtOp = ysyx_220053_R; wen = 1; end
+                            3'b110: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01110; ExtOp = ysyx_220053_R; wen = 1; end
+                            default:begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01100; ExtOp = ysyx_220053_R; wen = 1; end
                         endcase//7'b0000001: begin  end
                     end
                     else begin
@@ -209,8 +209,8 @@ parameter ysyx_220053_R = 5;
                             case(func3)
                                 3'b100: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11010; ExtOp = ysyx_220053_R; wen = 1; end
                                 3'b101: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11011; ExtOp = ysyx_220053_R; wen = 1; end
-                                3'b110: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11100; ExtOp = ysyx_220053_R; wen = 1; end
-                                3'b111: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11110; ExtOp = ysyx_220053_R; wen = 1; end
+                                3'b110: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11110; ExtOp = ysyx_220053_R; wen = 1; end
+                                3'b111: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11100; ExtOp = ysyx_220053_R; wen = 1; end
                                 default:begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11001; ExtOp = ysyx_220053_R; wen = 1; end
                             endcase//7'b0000001: begin  end
                         end
