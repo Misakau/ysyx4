@@ -9499,9 +9499,9 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullQData(oldp+2106,(vlSelf->top__DOT__m_ALURes_i),64);
         tracep->fullBit(oldp+2108,(vlSelf->top__DOT__running_r));
         tracep->fullBit(oldp+2109,(vlSelf->top__DOT__running));
-        tracep->fullQData(oldp+2110,(0x8000000000000000ULL),64);
+        tracep->fullQData(oldp+2110,(0xffffffffffffffffULL),64);
         tracep->fullQData(oldp+2112,(0xaULL),64);
-        tracep->fullQData(oldp+2114,(8ULL),64);
+        tracep->fullQData(oldp+2114,(0xfffffffffffffff6ULL),64);
         tracep->fullIData(oldp+2116,(0x40U),32);
         tracep->fullQData(oldp+2117,(0x80000000ULL),64);
         tracep->fullIData(oldp+2119,(0U),32);

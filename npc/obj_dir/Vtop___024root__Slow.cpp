@@ -43,7 +43,7 @@ void Vtop___024root___initial__TOP__1(Vtop___024root* vlSelf) {
     __Vtemp1[4U] = 0x6cU;
     vlSymsp->_vm_contextp__->dumpfile(VL_CVT_PACK_STR_NW(5, __Vtemp1));
     vlSymsp->_traceDumpOpen();
-    VL_WRITEF("hello world\n                   8\n");
+    VL_WRITEF("hello world\n18446744073709551606\n");
     Vtop___024root____Vdpiimwrap_top__DOT__regfile__DOT__set_gpr_ptr__Vdpioc2_TOP(vlSelf->top__DOT__regfile__DOT__rf);
 }
 
@@ -1225,7 +1225,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                             if ((0x1000U & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) {
                                 vlSelf->top__DOT__id_ALUSrcA_o = 1U;
                                 vlSelf->top__DOT__id_ALUSrcB_o = 0U;
-                                vlSelf->top__DOT__id_MulOp_o = 3U;
+                                vlSelf->top__DOT__id_MulOp_o = 1U;
                                 vlSelf->top__DOT__id_ALUOp_o = 9U;
                                 vlSelf->top__DOT__my_idu__DOT__ExtOp = 5U;
                                 vlSelf->top__DOT__id_wen_o = 1U;
@@ -1240,7 +1240,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                         } else if ((0x1000U & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) {
                             vlSelf->top__DOT__id_ALUSrcA_o = 1U;
                             vlSelf->top__DOT__id_ALUSrcB_o = 0U;
-                            vlSelf->top__DOT__id_MulOp_o = 1U;
+                            vlSelf->top__DOT__id_MulOp_o = 3U;
                             vlSelf->top__DOT__id_ALUOp_o = 9U;
                             vlSelf->top__DOT__my_idu__DOT__ExtOp = 5U;
                             vlSelf->top__DOT__id_wen_o = 1U;

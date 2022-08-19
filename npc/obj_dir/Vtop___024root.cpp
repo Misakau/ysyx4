@@ -2031,7 +2031,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                             if ((0x1000U & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) {
                                 vlSelf->top__DOT__id_ALUSrcA_o = 1U;
                                 vlSelf->top__DOT__id_ALUSrcB_o = 0U;
-                                vlSelf->top__DOT__id_MulOp_o = 3U;
+                                vlSelf->top__DOT__id_MulOp_o = 1U;
                                 vlSelf->top__DOT__id_ALUOp_o = 9U;
                                 vlSelf->top__DOT__my_idu__DOT__ExtOp = 5U;
                                 vlSelf->top__DOT__id_wen_o = 1U;
@@ -2046,7 +2046,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                         } else if ((0x1000U & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) {
                             vlSelf->top__DOT__id_ALUSrcA_o = 1U;
                             vlSelf->top__DOT__id_ALUSrcB_o = 0U;
-                            vlSelf->top__DOT__id_MulOp_o = 1U;
+                            vlSelf->top__DOT__id_MulOp_o = 3U;
                             vlSelf->top__DOT__id_ALUOp_o = 9U;
                             vlSelf->top__DOT__my_idu__DOT__ExtOp = 5U;
                             vlSelf->top__DOT__id_wen_o = 1U;
