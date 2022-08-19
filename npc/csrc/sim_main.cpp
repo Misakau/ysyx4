@@ -68,20 +68,23 @@ uint64_t get_time(){
   gettimeofday(&tv, NULL);
   return tv.tv_sec * 1000000ull + tv.tv_usec;
 }
-
+static bool rd_dev = false;
 extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
   //printf("ENTRY R\n");
   //assert(raddr & 0x7 == 0);
   if(raddr == RTC_ADDR){
+    rd_dev = 1;
     *rdata = get_time() - st_time;
    // printf("now time = %lld\n",(long long)*rdata);
    // printf("%llx\n",*rdata - st_time);
   }
   else if(raddr == VGACTL_ADDR){
+    rd_dev = 1;
     assert(vgactl_port_base);
     *rdata = *vgactl_port_base;
   }
   else if(raddr == KBD_ADDR){
+    rd_dev = 1;
     assert(i8042_data_port_base);
     //printf("i8042_data_port_base[0] = %x\n",i8042_data_port_base[0]);
     i8042_data_io_handler(0, 4, false);
@@ -89,7 +92,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
     *rdata = i8042_data_port_base[0];
   }
   else{
-    
+    rd_dev = 0;
     long long real_addr = (raddr - AD_BASE) >> 3;
     
     //assert(real_addr < MEMSIZE);
@@ -222,6 +225,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
 typedef struct {
   uint64_t gpr[32];
   uint64_t pc;
+  uint64_t csr[4096];
 } NEMU_CPU;
 
 /////////////////////////////////////////////////////////
@@ -403,6 +407,11 @@ int main(int argc, char**argv, char**env) {
               step++;
               if(top->clk == 0 && top->wb_commit == 1){
                 difftest_exec(1);
+                if(rd_dev == true){
+                  for(int i = 1; i < 32; i++){
+                    nemu.gpr[i] = cpu_gpr[i];
+                  }
+                }
                 difftest_regcpy(&nemu, 1);
                 if(top->next_pc != nemu.pc){
                   printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, top->next_pc, top->wb_pc);
