@@ -83,9 +83,9 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
   }
   else if(raddr == KBD_ADDR){
     assert(i8042_data_port_base);
-    printf("i8042_data_port_base[0] = %x\n",i8042_data_port_base[0]);
+    //printf("i8042_data_port_base[0] = %x\n",i8042_data_port_base[0]);
     i8042_data_io_handler(0, 4, false);
-    printf("i8042_data_port_base[0] = %x\n",i8042_data_port_base[0]);
+    //printf("i8042_data_port_base[0] = %x\n",i8042_data_port_base[0]);
     *rdata = i8042_data_port_base[0];
   }
   else{
