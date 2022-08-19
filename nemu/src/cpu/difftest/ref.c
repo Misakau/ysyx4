@@ -22,7 +22,6 @@ void difftest_regcpy(void *dut, bool direction) {
     memcpy((CPU_state*)dut, &cpu, DIFFTEST_REG_SIZE);
   } else {
     memcpy(&cpu, (CPU_state*)dut, DIFFTEST_REG_SIZE);
-    assert(0);
   }
 }
 
