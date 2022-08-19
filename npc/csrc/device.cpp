@@ -31,7 +31,6 @@ void device_update() {
   while (SDL_PollEvent(&event)) {
     switch (event.type) {
       case SDL_QUIT:
-        printf("exit\n");
         npc_done = true;
         NPC_EXIT = true;
         break;
