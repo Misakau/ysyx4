@@ -158,7 +158,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     //assert(real_mask == 0xffffffffull);
     assert(vgactl_port_base);
     assert((waddr - VGACTL_ADDR)>>2 == 1);
-    vgactl_port_base[(waddr - VGACTL_ADDR)>>2] = wdata;
+    vgactl_port_base[(waddr - VGACTL_ADDR)>>2] = (uint64_t)wdata >> 32;
     //printf("wdata = %lld\n",wdata);
     //vga_update_screen();
   }
