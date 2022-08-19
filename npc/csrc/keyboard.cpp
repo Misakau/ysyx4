@@ -40,6 +40,7 @@ static void key_enqueue(uint32_t am_scancode) {
   key_r = (key_r + 1) % KEY_QUEUE_LEN;
   printf("am_scancode = %d, key_r = %d, key_f = %d\n",am_scancode,key_r,key_f);
   if(key_r != key_f){
+    printf("hh\n");
     printf("key queue overflow!");
     assert(0);
   }
