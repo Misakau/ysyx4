@@ -22,6 +22,4 @@ image: $(IMAGE).elf
 	@$(OBJCOPY) -S --set-section-flags .bss=alloc,contents -O binary $(IMAGE).elf $(IMAGE).bin
 
 run: image
-	@cd $(NPC_HOME)
-	@make
 	$(NPC_HOME)/obj_dir/Vtop +trace -i $(IMAGE).bin -b -d
