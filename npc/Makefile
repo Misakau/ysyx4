@@ -35,13 +35,12 @@ IMG ?= #/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/bit-riscv64-n
 LOGS ?= $(NPC_HOME)/logs/npc-logs.txt
 all:
 	@echo "Write this Makefile by your self."
-
-sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	$(VERILATOR) $(VERILATOR_FLAGS) $(addprefix -CFLAGS , $(CFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) $(VERILATOR_INPUT) $(CXXSRC)
 	@rm -rf logs
 	@mkdir -p logs
 	@cd logs && touch npc-logs.txt && cd ../
+sim:
 	obj_dir/Vtop +trace -l $(LOGS) #-i $(IMG)
 #npcrun:
 #	obj_dir/Vtop +trace $(TEST_PATH)$(IMAGE)
