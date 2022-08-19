@@ -1074,14 +1074,14 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                         vlSelf->top__DOT__id_ALUSrcA_o = 1U;
                                         vlSelf->top__DOT__id_ALUSrcB_o = 0U;
                                         vlSelf->top__DOT__id_MulOp_o = 0U;
-                                        vlSelf->top__DOT__id_ALUOp_o = 0x1eU;
+                                        vlSelf->top__DOT__id_ALUOp_o = 0x1cU;
                                         vlSelf->top__DOT__my_idu__DOT__ExtOp = 5U;
                                         vlSelf->top__DOT__id_wen_o = 1U;
                                     } else {
                                         vlSelf->top__DOT__id_ALUSrcA_o = 1U;
                                         vlSelf->top__DOT__id_ALUSrcB_o = 0U;
                                         vlSelf->top__DOT__id_MulOp_o = 0U;
-                                        vlSelf->top__DOT__id_ALUOp_o = 0x1cU;
+                                        vlSelf->top__DOT__id_ALUOp_o = 0x1eU;
                                         vlSelf->top__DOT__my_idu__DOT__ExtOp = 5U;
                                         vlSelf->top__DOT__id_wen_o = 1U;
                                     }
@@ -1195,14 +1195,14 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                     vlSelf->top__DOT__id_ALUSrcA_o = 1U;
                                     vlSelf->top__DOT__id_ALUSrcB_o = 0U;
                                     vlSelf->top__DOT__id_MulOp_o = 0U;
-                                    vlSelf->top__DOT__id_ALUOp_o = 0xeU;
+                                    vlSelf->top__DOT__id_ALUOp_o = 0xcU;
                                     vlSelf->top__DOT__my_idu__DOT__ExtOp = 5U;
                                     vlSelf->top__DOT__id_wen_o = 1U;
                                 } else {
                                     vlSelf->top__DOT__id_ALUSrcA_o = 1U;
                                     vlSelf->top__DOT__id_ALUSrcB_o = 0U;
                                     vlSelf->top__DOT__id_MulOp_o = 0U;
-                                    vlSelf->top__DOT__id_ALUOp_o = 0xcU;
+                                    vlSelf->top__DOT__id_ALUOp_o = 0xeU;
                                     vlSelf->top__DOT__my_idu__DOT__ExtOp = 5U;
                                     vlSelf->top__DOT__id_wen_o = 1U;
                                 }
