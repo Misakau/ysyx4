@@ -102,10 +102,11 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
       return;
     }
     else{
-      printf("%d\n",bytes);
+      
       long long maddr = (raddr + bytes - 1 - AD_BASE) >> 3;
       long long ret;
       ret = MEM[real_addr];
+      printf("bytes = %d, Mem = %llx\n",bytes,ret);
       /* for unaligned
       if(maddr == real_addr) ret = MEM[real_addr];
       else{
