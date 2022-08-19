@@ -71,6 +71,5 @@ static void i8042_data_io_handler(uint32_t offset, int len, bool is_write) {
 void init_i8042() {
   i8042_data_port_base = (uint32_t *)malloc(4);
   i8042_data_port_base[0] = _KEY_NONE;
-  printf("i8042_data_port_base = %p",i8042_data_port_base);
   init_keymap();
 }
