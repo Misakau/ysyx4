@@ -161,7 +161,7 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBit(c+2100,"top nclk", false,-1);
         tracep->declQuad(c+2110,"top s a", false,-1, 63,0);
         tracep->declQuad(c+2112,"top s b", false,-1, 63,0);
-        tracep->declQuad(c+2114,"top s r", false,-1, 63,0);
+        tracep->declArray(c+2114,"top s r", false,-1, 127,0);
         tracep->declBit(c+2082,"top my_ifu clk", false,-1);
         tracep->declBit(c+2083,"top my_ifu rst", false,-1);
         tracep->declBit(c+17,"top my_ifu dnpc_valid", false,-1);
@@ -174,8 +174,8 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declQuad(c+109,"top my_ifu snpc", false,-1, 63,0);
         tracep->declQuad(c+887,"top my_ifu valid_dnpc", false,-1, 63,0);
         tracep->declBit(c+2101,"top my_ifu pcen", false,-1);
-        tracep->declBus(c+2116,"top my_ifu PC WIDTH", false,-1, 31,0);
-        tracep->declQuad(c+2117,"top my_ifu PC RESET_VAL", false,-1, 63,0);
+        tracep->declBus(c+2118,"top my_ifu PC WIDTH", false,-1, 31,0);
+        tracep->declQuad(c+2119,"top my_ifu PC RESET_VAL", false,-1, 63,0);
         tracep->declBit(c+2082,"top my_ifu PC clk", false,-1);
         tracep->declBit(c+2083,"top my_ifu PC rst", false,-1);
         tracep->declQuad(c+887,"top my_ifu PC din", false,-1, 63,0);
@@ -253,12 +253,12 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBit(c+31,"top my_idu control CsrToReg", false,-1);
         tracep->declBus(c+37,"top my_idu control CsrOp", false,-1, 2,0);
         tracep->declBit(c+32,"top my_idu control Ebreak", false,-1);
-        tracep->declBus(c+2119,"top my_idu control ysyx_220053_I", false,-1, 31,0);
-        tracep->declBus(c+2120,"top my_idu control ysyx_220053_U", false,-1, 31,0);
-        tracep->declBus(c+2121,"top my_idu control ysyx_220053_S", false,-1, 31,0);
-        tracep->declBus(c+2122,"top my_idu control ysyx_220053_B", false,-1, 31,0);
-        tracep->declBus(c+2123,"top my_idu control ysyx_220053_J", false,-1, 31,0);
-        tracep->declBus(c+2124,"top my_idu control ysyx_220053_R", false,-1, 31,0);
+        tracep->declBus(c+2121,"top my_idu control ysyx_220053_I", false,-1, 31,0);
+        tracep->declBus(c+2122,"top my_idu control ysyx_220053_U", false,-1, 31,0);
+        tracep->declBus(c+2123,"top my_idu control ysyx_220053_S", false,-1, 31,0);
+        tracep->declBus(c+2124,"top my_idu control ysyx_220053_B", false,-1, 31,0);
+        tracep->declBus(c+2125,"top my_idu control ysyx_220053_J", false,-1, 31,0);
+        tracep->declBus(c+2126,"top my_idu control ysyx_220053_R", false,-1, 31,0);
         tracep->declQuad(c+889,"top my_idu na_alu inputa", false,-1, 63,0);
         tracep->declQuad(c+796,"top my_idu na_alu inputb", false,-1, 63,0);
         tracep->declBus(c+35,"top my_idu na_alu ALUOp", false,-1, 4,0);
@@ -513,7 +513,7 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declQuad(c+80,"top my_mu rfdata", false,-1, 63,0);
         tracep->declQuad(c+182,"top my_mu mdata", false,-1, 63,0);
         tracep->declQuad(c+184,"top my_mu regsin", false,-1, 63,0);
-        tracep->declBit(c+2125,"top my_mu is_wen", false,-1);
+        tracep->declBit(c+2127,"top my_mu is_wen", false,-1);
         tracep->declBit(c+2100,"top my_mu mem clk", false,-1);
         tracep->declBus(c+67,"top my_mu mem MemOp", false,-1, 2,0);
         tracep->declQuad(c+68,"top my_mu mem raddr", false,-1, 63,0);
@@ -560,8 +560,8 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declQuad(c+83,"top WB_Reg wdata_r", false,-1, 63,0);
         tracep->declBus(c+85,"top WB_Reg waddr_r", false,-1, 4,0);
         tracep->declBit(c+86,"top WB_Reg Ebreak_r", false,-1);
-        tracep->declBus(c+2124,"top regfile ADDR_WIDTH", false,-1, 31,0);
-        tracep->declBus(c+2116,"top regfile DATA_WIDTH", false,-1, 31,0);
+        tracep->declBus(c+2126,"top regfile ADDR_WIDTH", false,-1, 31,0);
+        tracep->declBus(c+2118,"top regfile DATA_WIDTH", false,-1, 31,0);
         tracep->declBit(c+2100,"top regfile clk", false,-1);
         tracep->declBus(c+23,"top regfile raaddr", false,-1, 4,0);
         tracep->declBus(c+24,"top regfile rbaddr", false,-1, 4,0);
@@ -2679,6 +2679,7 @@ void Vtop___024root__traceFullTop0(void* voidSelf, VerilatedVcd* tracep) {
 void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VlWide<4>/*127:0*/ __Vtemp63;
     vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode);
     if (false && oldp) {}  // Prevent unused
     // Body
@@ -9501,15 +9502,19 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullBit(oldp+2109,(vlSelf->top__DOT__running));
         tracep->fullQData(oldp+2110,(0xffffffffffffffffULL),64);
         tracep->fullQData(oldp+2112,(0xaULL),64);
-        tracep->fullQData(oldp+2114,(0xfffffffffffffff6ULL),64);
-        tracep->fullIData(oldp+2116,(0x40U),32);
-        tracep->fullQData(oldp+2117,(0x80000000ULL),64);
-        tracep->fullIData(oldp+2119,(0U),32);
-        tracep->fullIData(oldp+2120,(1U),32);
-        tracep->fullIData(oldp+2121,(2U),32);
-        tracep->fullIData(oldp+2122,(3U),32);
-        tracep->fullIData(oldp+2123,(4U),32);
-        tracep->fullIData(oldp+2124,(5U),32);
-        tracep->fullBit(oldp+2125,(vlSelf->top__DOT__my_mu__DOT__is_wen));
+        __Vtemp63[0U] = 0xfffffff6U;
+        __Vtemp63[1U] = 0xffffffffU;
+        __Vtemp63[2U] = 0xffffffffU;
+        __Vtemp63[3U] = 0xffffffffU;
+        tracep->fullWData(oldp+2114,(__Vtemp63),128);
+        tracep->fullIData(oldp+2118,(0x40U),32);
+        tracep->fullQData(oldp+2119,(0x80000000ULL),64);
+        tracep->fullIData(oldp+2121,(0U),32);
+        tracep->fullIData(oldp+2122,(1U),32);
+        tracep->fullIData(oldp+2123,(2U),32);
+        tracep->fullIData(oldp+2124,(3U),32);
+        tracep->fullIData(oldp+2125,(4U),32);
+        tracep->fullIData(oldp+2126,(5U),32);
+        tracep->fullBit(oldp+2127,(vlSelf->top__DOT__my_mu__DOT__is_wen));
     }
 }
