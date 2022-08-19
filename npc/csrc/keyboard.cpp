@@ -60,7 +60,7 @@ void send_key(uint8_t scancode, bool is_keydown) {
   }
 }
 
-static uint32_t *i8042_data_port_base = NULL;
+uint32_t *i8042_data_port_base = NULL;
 
 static void i8042_data_io_handler(uint32_t offset, int len, bool is_write) {
   assert(!is_write);
