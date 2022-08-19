@@ -407,12 +407,12 @@ int main(int argc, char**argv, char**env) {
               step++;
               if(top->clk == 0 && top->wb_commit == 1){
                 difftest_exec(1);
+                difftest_regcpy(&nemu, 1);
                 if(rd_dev == true){
                   for(int i = 1; i < 32; i++){
                     nemu.gpr[i] = cpu_gpr[i];
                   }
                 }
-                difftest_regcpy(&nemu, 1);
                 if(top->next_pc != nemu.pc){
                   printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, top->next_pc, top->wb_pc);
                   printf(ASNI_FG_BLUE "Step = %d\n" ASNI_NONE,step);
