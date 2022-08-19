@@ -22,7 +22,7 @@
 
 //static long long *MEM = NULL;//8字节为单位
 static long long MEM[MEMSIZE];//8字节为单位
-static bool EXIT = 0;
+bool NPC_EXIT = 0;
 static bool START = 0;
 static FILE* log_ptr = NULL;
 uint64_t st_time = 0;//start time
@@ -91,7 +91,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
     
     //assert(real_addr < MEMSIZE);
     if(raddr < AD_BASE || ((raddr - AD_BASE) >> 3) >= MEMSIZE){
-      //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
+      //if(START) NPC_EXIT = 1;//printf("addrs=%lx\n",raddr); 
       *rdata = 0;
       //printf("NONE R\n");
       return;
@@ -185,7 +185,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
 
     //}
     if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
-      //if(START) EXIT = 1;//printf("addrs=%lx\n",raddr); 
+      //if(START) NPC_EXIT = 1;//printf("addrs=%lx\n",raddr); 
       printf("ERROR W\n");
       return;
     }
@@ -374,7 +374,7 @@ int main(int argc, char**argv, char**env) {
             top->clk = !top->clk;
             
             //if(top->clk == 0)top->instr_i = pimem_read(top->pc);
-            if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); top->eval();break;}
+            if(NPC_EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr);
             top->eval();
             #ifdef ITRACE
@@ -404,18 +404,18 @@ int main(int argc, char**argv, char**env) {
                 if(top->next_pc != nemu.pc){
                   printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, top->next_pc, top->wb_pc);
                   printf(ASNI_FG_BLUE "Step = %d\n" ASNI_NONE,step);
-                  EXIT = 1; PASS = 1;break;
+                  NPC_EXIT = 1; PASS = 1;break;
                 }
                 for(int i = 1; i < 32; i++){
                   if(cpu_gpr[i] != nemu.gpr[i]){
                     printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],top->wb_pc);
                     printf(ASNI_FG_BLUE "Step = %d\n" ASNI_NONE,step);
-                    EXIT = 1; PASS = 1;break;
+                    NPC_EXIT = 1; PASS = 1;break;
                   }
                 }
               } 
             }
-            if(EXIT == 1) {top->eval();break;}
+            if(NPC_EXIT == 1) {top->eval();break;}
         }
     }
     else{
@@ -424,7 +424,7 @@ int main(int argc, char**argv, char**env) {
     }
     delete top;
     delete contextp;
-    if(EXIT == false){
+    if(NPC_EXIT == false){
       if(cpu_gpr[10] == 0)
         printf(ASNI_FG_GREEN "HIT GOOD TRAP!" ASNI_NONE);
       else printf(ASNI_FG_RED "HIT BAD TRAP!" ASNI_NONE);
@@ -467,7 +467,7 @@ static void npc_exec(uint64_t n){
             sdb_top->clk = !sdb_top->clk;
             //if(sdb_top->clk == 0)sdb_top->instr_i = pimem_read(sdb_top->pc);
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", sdb_top->clk, sdb_top->rst, sdb_top->pc, sdb_top->instr);
-            if(EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); sdb_top->eval();break;}
+            if(NPC_EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); sdb_top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", sdb_top->clk, sdb_top->rst, sdb_top->pc, sdb_top->instr);
             #ifdef ITRACE
               if(instr_now == 0) return;
@@ -496,12 +496,12 @@ static void npc_exec(uint64_t n){
                 difftest_regcpy(&nemu, 1);
                 if(sdb_top->next_pc != nemu.pc){
                   printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, sdb_top->next_pc, sdb_top->wb_pc);
-                  EXIT = 1;break;
+                  NPC_EXIT = 1;break;
                 }
                 for(int i = 1; i < 32; i++){
                   if(cpu_gpr[i] != nemu.gpr[i]){
                     printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],sdb_top->wb_pc);
-                    EXIT = 1; break;
+                    NPC_EXIT = 1; break;
                   }
                 }
               } 
@@ -513,7 +513,7 @@ static void npc_exec(uint64_t n){
             //    break;
             //  }
            // }
-            if(EXIT == 1) {sdb_top->eval();break;}
+            if(NPC_EXIT == 1) {sdb_top->eval();break;}
         }
   if(npc_done){
     if(cpu_gpr[10] == 0)
@@ -530,7 +530,7 @@ static int cmd_c(char *args) {
 }
 
 static int cmd_q(char *args) {
-  EXIT = true;
+  NPC_EXIT = true;
   return 0;
 }
 
@@ -651,6 +651,6 @@ void sdb_mainloop() {
     }
 
     if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
-    if (EXIT) break;
+    if (NPC_EXIT) break;
   }
 }
