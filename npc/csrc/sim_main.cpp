@@ -82,7 +82,6 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
     *rdata = *vgactl_port_base;
   }
   else if(raddr == KBD_ADDR){
-    printf("raddr = %llx\n",raddr);
     assert(i8042_data_port_base);
     *rdata = *i8042_data_port_base;
   }
