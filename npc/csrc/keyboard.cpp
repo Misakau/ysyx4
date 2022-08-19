@@ -36,7 +36,6 @@ static int key_queue[KEY_QUEUE_LEN] = {};
 static int key_f = 0, key_r = 0;
 
 static void key_enqueue(uint32_t am_scancode) {
-  printf("enq\n");
   key_queue[key_r] = am_scancode;
   key_r = (key_r + 1) % KEY_QUEUE_LEN;
   if(key_r == key_f){
@@ -46,7 +45,6 @@ static void key_enqueue(uint32_t am_scancode) {
 }
 
 static uint32_t key_dequeue() {
-  printf("deq\n");
   uint32_t key = _KEY_NONE;
   if (key_f != key_r) {
     key = key_queue[key_f];
