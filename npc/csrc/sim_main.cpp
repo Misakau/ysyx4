@@ -386,11 +386,8 @@ int main(int argc, char**argv, char**env) {
               } 
             #endif
 
-            if(top->clk == 0 && top->wb_commit == 1){
-              tot_instr++;
-              device_update();
-            }
-            
+            if(top->clk == 0 && top->wb_commit == 1) tot_instr++;
+            device_update();
             if(is_diff){
               step++;
               if(top->clk == 0 && top->wb_commit == 1){
@@ -480,11 +477,8 @@ static void npc_exec(uint64_t n){
             #endif
             sdb_top->eval();
 
-            if(sdb_top->clk == 0 && sdb_top->wb_commit == 1){
-              tot_instr++;
-              device_update();
-            }
-
+            if(sdb_top->clk == 0 && sdb_top->wb_commit == 1) tot_instr++;
+            device_update();
             if(is_diff){
               if(sdb_top->clk == 0  && sdb_top->wb_commit == 1){
                 difftest_exec(1);
