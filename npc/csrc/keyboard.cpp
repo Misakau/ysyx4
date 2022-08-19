@@ -38,15 +38,14 @@ static int key_f = 0, key_r = 0;
 static void key_enqueue(uint32_t am_scancode) {
   key_queue[key_r] = am_scancode;
   key_r = (key_r + 1) % KEY_QUEUE_LEN;
-  printf("am_scancode = %d, key_r = %d, key_f = %d\n",am_scancode,key_r,key_f);
   if(key_r != key_f){
-    printf("hh\n");
     printf("key queue overflow!");
     assert(0);
   }
 }
 
 static uint32_t key_dequeue() {
+  printf("deq\n");
   uint32_t key = _KEY_NONE;
   if (key_f != key_r) {
     key = key_queue[key_f];
