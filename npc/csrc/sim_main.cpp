@@ -62,7 +62,7 @@ extern uint32_t vmem_len;
 extern uint32_t *i8042_data_port_base;
 void init_device();
 void device_update();
-
+void i8042_data_io_handler(uint32_t offset, int len, bool is_write);
 uint64_t get_time(){
   struct timeval tv;
   gettimeofday(&tv, NULL);
@@ -83,6 +83,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
   }
   else if(raddr == KBD_ADDR){
     assert(i8042_data_port_base);
+    i8042_data_io_handler(0, 4, false);
     *rdata = *i8042_data_port_base;
   }
   else{
