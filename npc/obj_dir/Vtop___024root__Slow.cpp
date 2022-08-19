@@ -43,7 +43,7 @@ void Vtop___024root___initial__TOP__1(Vtop___024root* vlSelf) {
     __Vtemp1[4U] = 0x6cU;
     vlSymsp->_vm_contextp__->dumpfile(VL_CVT_PACK_STR_NW(5, __Vtemp1));
     vlSymsp->_traceDumpOpen();
-    VL_WRITEF("hello world\n340282366920938463463374607431768211446\n");
+    VL_WRITEF("hello world\n                                     10\n");
     Vtop___024root____Vdpiimwrap_top__DOT__regfile__DOT__set_gpr_ptr__Vdpioc2_TOP(vlSelf->top__DOT__regfile__DOT__rf);
 }
 
