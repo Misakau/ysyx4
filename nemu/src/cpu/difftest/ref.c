@@ -21,6 +21,7 @@ void difftest_regcpy(void *dut, bool direction) {
   if (direction == DIFFTEST_TO_REF) {
     memcpy((CPU_state*)dut, &cpu, DIFFTEST_REG_SIZE);
   } else {
+    printf("ref\n");
     memcpy(&cpu, (CPU_state*)dut, DIFFTEST_REG_SIZE);
   }
 }
