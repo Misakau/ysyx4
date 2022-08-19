@@ -47,11 +47,17 @@ extern "C" void set_csr_ptr(const svOpenArrayHandle r) {
   cpu_csr = (uint64_t *)(((VerilatedDpiOpenVar*)r)->datap());
 }
 
+const char *regs_name[] = {
+  "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
+  "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
+  "a6", "a7", "s2", "s3", "s4", "s5", "s6", "s7",
+  "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"
+};
 // 一个输出RTL中通用寄存器的值的示例
 void dump_gpr() {
   int i;
   for (i = 0; i < 32; i++) {
-    printf("gpr[%d] = 0x%lx\n", i, cpu_gpr[i]);
+    printf("%s = 0x%lx\n", regs_name[i], cpu_gpr[i]);
   }
 }
 
