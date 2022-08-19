@@ -51,10 +51,6 @@ void sdl_clear_event_queue() {
 }
 
 void init_device() {
-  #ifdef CONFIG_TARGET_AM
-  printf("IOE_INIT\n");
-  ioe_init();
-  #endif
   init_vga();
   init_i8042();
 }
