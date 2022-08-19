@@ -24,4 +24,4 @@ image: $(IMAGE).elf
 run: image
 	@cd $(NPC_HOME)
 	@make
-	$(NPC_HOME)/obj_dir/Vtop +trace -i $(IMAGE).bin -b -d
+	$(NPC_HOME)/obj_dir/Vtop +trace -i $(IMAGE).bin -b #-d
