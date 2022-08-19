@@ -85,6 +85,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
   }
   else if(raddr == KBD_ADDR){
     rd_dev = 1;
+    printf("hh\n");
     assert(i8042_data_port_base);
     //printf("i8042_data_port_base[0] = %x\n",i8042_data_port_base[0]);
     i8042_data_io_handler(0, 4, false);
@@ -409,7 +410,6 @@ int main(int argc, char**argv, char**env) {
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(rd_dev == true){
-                  printf("hh\n");
                   for(int i = 1; i < 32; i++){
                     nemu.gpr[i] = cpu_gpr[i];
                   }
