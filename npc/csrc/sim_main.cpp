@@ -245,7 +245,7 @@ static bool is_diff = false;
 static char pathi[] = "/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
 //static char lgp[] = "/home/wang/log1.txt";
 //";pathi;//
-static char* image_file = pathi;
+static char* image_file = NULL;
 static char* log_file = NULL;
 //static FILE* log_ptr = NULL;
 static int npc_parse_args(int argc, char *argv[]) {
@@ -427,6 +427,7 @@ int main(int argc, char**argv, char**env) {
                   if(cpu_gpr[i] != nemu.gpr[i]){
                     printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],top->wb_pc);
                     printf(ASNI_FG_BLUE "Step = %d\n" ASNI_NONE,step);
+                    dump_gpr();
                     NPC_EXIT = 1; PASS = 1;break;
                   }
                 }
