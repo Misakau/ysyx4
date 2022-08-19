@@ -393,7 +393,7 @@ int main(int argc, char**argv, char**env) {
 
             if(top->clk == 0 && top->wb_commit == 1){
               tot_instr++;
-              if(tot_instr % 10000 == 0) device_update();
+              device_update();
             }
             
             if(is_diff){
