@@ -59,8 +59,8 @@ void dump_gpr() {
 extern void *vmem;
 extern uint32_t *vgactl_port_base;
 extern uint32_t vmem_len;
-void init_vga();
-void vga_update_screen();
+void init_device();
+void device_update();
 
 uint64_t get_time(){
   struct timeval tv;
@@ -155,7 +155,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     assert((waddr - VGACTL_ADDR)>>2 == 1);
     vgactl_port_base[(waddr - VGACTL_ADDR)>>2] = wdata;
     //printf("wdata = %lld\n",wdata);
-    vga_update_screen();
+    //vga_update_screen();
   }
   else if(waddr >= FB_ADDR && waddr < FB_ADDR + vmem_len){
     assert(vmem);
@@ -166,7 +166,9 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     //if((waddr-FB_ADDR)>>2 == 0 || (waddr-FB_ADDR)>>2 == vmem_len - 1){
     //  printf("waddr = %llx, index = %lld\n, data = %lld\n",waddr,(waddr-FB_ADDR)>>2,wdata);
     //}
-    ptr[(waddr-FB_ADDR)>>2] = wdata;
+    int index = (waddr-FB_ADDR)>>2;
+    if(index & 1) ptr[index] = (uint64_t)wdata >> 32;
+    else ptr[index] = wdata & wmask;
     //printf("ok\n");
   }
   else{
@@ -300,7 +302,7 @@ int main(int argc, char**argv, char**env) {
     Vtop*top = new Vtop{contextp};
     
     npc_parse_args(argc, argv);
-
+    init_device();
     //vga_init
     //init_vga();
 
@@ -384,7 +386,10 @@ int main(int argc, char**argv, char**env) {
               } 
             #endif
 
-            if(top->clk == 0 && top->wb_commit == 1) tot_instr++;
+            if(top->clk == 0 && top->wb_commit == 1){
+              tot_instr++;
+              device_update();
+            }
             
             if(is_diff){
               step++;
@@ -475,7 +480,10 @@ static void npc_exec(uint64_t n){
             #endif
             sdb_top->eval();
 
-            if(sdb_top->clk == 0 && sdb_top->wb_commit == 1) tot_instr++;
+            if(sdb_top->clk == 0 && sdb_top->wb_commit == 1){
+              tot_instr++;
+              device_update();
+            }
 
             if(is_diff){
               if(sdb_top->clk == 0  && sdb_top->wb_commit == 1){
