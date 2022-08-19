@@ -85,7 +85,6 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
   }
   else if(raddr == KBD_ADDR){
     rd_dev = 1;
-    printf("hh\n");
     assert(i8042_data_port_base);
     //printf("i8042_data_port_base[0] = %x\n",i8042_data_port_base[0]);
     i8042_data_io_handler(0, 4, false);
@@ -93,7 +92,6 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
     *rdata = i8042_data_port_base[0];
   }
   else{
-    rd_dev = 0;
     long long real_addr = (raddr - AD_BASE) >> 3;
     
     //assert(real_addr < MEMSIZE);
@@ -280,6 +278,7 @@ static void print_args(int argc, char**argv){
         printf("%s\n",argv[i]);
 }
 bool PASS = 0;
+static bool commit_dev = false;
 void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
 void (*difftest_regcpy)(void *, bool);
 void (*difftest_exec)(uint64_t);
@@ -409,12 +408,14 @@ int main(int argc, char**argv, char**env) {
               if(top->clk == 0 && top->wb_commit == 1){
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
-                if(rd_dev == true){
+                if(commit_dev == true){
                   for(int i = 1; i < 32; i++){
                     nemu.gpr[i] = cpu_gpr[i];
                   }
                   difftest_regcpy(&nemu, 0);
                 }
+                commit_dev = rd_dev;
+                if(rd_dev == true) rd_dev = false;
                 if(top->next_pc != nemu.pc){
                   printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, top->next_pc, top->wb_pc);
                   printf(ASNI_FG_BLUE "Step = %d\n" ASNI_NONE,step);
