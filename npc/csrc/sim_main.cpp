@@ -25,12 +25,12 @@ static long long MEM[MEMSIZE];//8字节为单位
 static bool EXIT = 0;
 static bool START = 0;
 static FILE* log_ptr = NULL;
-static uint64_t st_time = 0;//start time
+uint64_t st_time = 0;//start time
 
-static bool is_done = false;
+bool npc_done = false;
 static unsigned int instr_now = 0;
 extern "C" void c_trap(const svBit done){
-    is_done = done;
+    npc_done = done;
 }
 
 extern "C" void get_instr(unsigned int instr) {
@@ -62,13 +62,17 @@ extern uint32_t vmem_len;
 void init_vga();
 void vga_update_screen();
 
+uint64_t get_time(){
+  struct timeval tv;
+  gettimeofday(&tv, NULL);
+  return tv.tv_sec * 1000000ull + tv.tv_usec;
+}
+
 extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
   //printf("ENTRY R\n");
   //assert(raddr & 0x7 == 0);
   if(raddr == RTC_ADDR){
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    *rdata = tv.tv_sec * 1000000 + tv.tv_usec - st_time;
+    *rdata = get_time() - st_time;
    // printf("now time = %lld\n",(long long)*rdata);
    // printf("%llx\n",*rdata - st_time);
   }
@@ -338,9 +342,7 @@ int main(int argc, char**argv, char**env) {
       difftest_init();
       difftest_memcpy(AD_BASE, MEM, fsize, 1);
     }
-    struct timeval stv;
-    gettimeofday(&stv, NULL);
-    st_time = stv.tv_sec * 1000000 +stv.tv_usec;
+    st_time = get_time();
     printf(ASNI_FG_BLUE "start time = %lld\n" ASNI_NONE,(long long)st_time);
     //reset the pc
     contextp->timeInc(1); 
@@ -360,7 +362,7 @@ int main(int argc, char**argv, char**env) {
       #undef ITRACE
       int step = 0;
         NEMU_CPU nemu;
-        while (!is_done && !contextp->gotFinish()) { 
+        while (!npc_done && !contextp->gotFinish()) { 
             contextp->timeInc(1); 
             top->clk = !top->clk;
             
@@ -420,8 +422,7 @@ int main(int argc, char**argv, char**env) {
       printf(ASNI_FG_BLUE " at PC = %lx\n" ASNI_NONE,top->pc);
     }
     printf("~~~Sim finished!~~~\n");
-    gettimeofday(&stv,NULL);
-    uint64_t en_time = stv.tv_sec * 1000000 +stv.tv_usec;
+    uint64_t en_time = get_time();
     long long ms = (en_time - st_time)/1000;
 
     printf(ASNI_FG_BLUE "Total intructions = %lld \n" ASNI_NONE,(long long)tot_instr);
@@ -441,7 +442,7 @@ int main(int argc, char**argv, char**env) {
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 static void npc_exec(uint64_t n){
-  if(is_done || sdb_contextp->gotFinish()){
+  if(npc_done || sdb_contextp->gotFinish()){
     printf("The program is done! Please quit the npc_sdb.\n");
     return;
   }
@@ -451,7 +452,7 @@ static void npc_exec(uint64_t n){
     #define ITRACE
   #endif
  */
-  for (uint64_t i = 1; i <= 2*n && !is_done && !sdb_contextp->gotFinish(); i++) { 
+  for (uint64_t i = 1; i <= 2*n && !npc_done && !sdb_contextp->gotFinish(); i++) { 
             sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
             //if(sdb_top->clk == 0)sdb_top->instr_i = pimem_read(sdb_top->pc);
@@ -501,7 +502,7 @@ static void npc_exec(uint64_t n){
            // }
             if(EXIT == 1) {sdb_top->eval();break;}
         }
-  if(is_done){
+  if(npc_done){
     if(cpu_gpr[10] == 0)
         printf(ASNI_FG_GREEN "HIT GOOD TRAP!" ASNI_NONE);
     else printf(ASNI_FG_RED "HIT BAD TRAP!" ASNI_NONE);
