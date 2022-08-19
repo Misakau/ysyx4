@@ -4,16 +4,11 @@
 #include <cstring>
 #include <cassert>
 #include <SDL2/SDL.h>
+#ifdef CONFIG_TARGET_AM
 void ioe_init();
-void init_map();
-void init_serial();
-void init_timer();
+#endif
 void init_vga();
 void init_i8042();
-void init_audio();
-void init_disk();
-void init_sdcard();
-void init_alarm();
 
 void send_key(uint8_t, bool);
 void vga_update_screen();
@@ -56,7 +51,9 @@ void sdl_clear_event_queue() {
 }
 
 void init_device() {
+  #ifdef CONFIG_TARGET_AM
   ioe_init();
+  #endif
   init_vga();
   init_i8042();
 }
