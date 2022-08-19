@@ -267,7 +267,7 @@ static int npc_parse_args(int argc, char *argv[]) {
   while ( (o = getopt_long(argc, argv, "-bhi:l:d", table, NULL)) != -1) {
     switch (o) {
       case 'b': set_batch_mode(); break;
-      case 'd': is_diff = true; break;
+      case 'd': is_diff = true; printf(ASNI_FG_BLUE"DIFFTEST"ASNI_NONE);printf(ASNI_FG_GREEN"ON\n"ASNI_NONE); break;
       case 'i': image_file = optarg; break;
       case 'l': log_file = optarg; break;
       default:
@@ -461,7 +461,7 @@ int main(int argc, char**argv, char**env) {
 
     printf(ASNI_FG_BLUE "Total intructions = %lld \n" ASNI_NONE,(long long)tot_instr);
 
-    printf(ASNI_FG_BLUE "Simulation frequency = %lld inst/s\n" ASNI_NONE,(long long)(tot_instr * 1000/ms));
+    printf(ASNI_FG_BLUE "Simulation frequency = %lld inst/s\n" ASNI_NONE,(long long)(tot_instr * 1000000/(en_time - st_time)));
 
     printf(ASNI_FG_BLUE "Total time = %lld ms\n" ASNI_NONE,(long long)ms);
     
