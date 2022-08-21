@@ -248,10 +248,10 @@ void set_batch_mode(){
 static uint64_t tot_instr = 0;
 static void sdb_mainloop();
 static bool is_diff = false;
-static char pathi[] = "/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
+static char pathi[] = "/home/wang/ysyx-workbench/am-kernel/test/cpu-test/build/div-riscv64-npc.bin";
 //static char lgp[] = "/home/wang/log1.txt";
 //";pathi;//
-static char* image_file = NULL;
+static char* image_file = pathi;
 static char* log_file = NULL;
 //static FILE* log_ptr = NULL;
 static int npc_parse_args(int argc, char *argv[]) {
