@@ -5,32 +5,32 @@
 `define ysyx_220053_XLEN 64
 `define ysyx_220053_XXLEN 128
 
-module ysyx_220053_divu(
+module divu(
     input clk,
     input rst,
-    input [`ysyx_220053XLEN - 1:0] dividend,
-    input [`ysyx_220053XLEN - 1:0] divisor,
+    input [`ysyx_220053_XLEN - 1:0] dividend,
+    input [`ysyx_220053_XLEN - 1:0] divisor,
     input div_valid,
     input div_signed,
     input flush,
     output div_ready,
     output out_valid,
-    output [`ysyx_220053XLEN - 1:0] quotient,
-    output [`ysyx_220053XLEN - 1:0] remainder
+    output [`ysyx_220053_XLEN - 1:0] quotient,
+    output [`ysyx_220053_XLEN - 1:0] remainder
 );
     reg running_r;
     reg ready_r, valid_r;
     reg [6:0] cnt;
-    reg [`ysyx_220053XXLEN - 1:0] udividend_r;
-    reg [`ysyx_220053XLEN - 1:0] udivisor_r, quotient_r, remainder_r;
+    reg [`ysyx_220053_XXLEN - 1:0] udividend_r;
+    reg [`ysyx_220053_XLEN - 1:0] udivisor_r, quotient_r, remainder_r;
     reg dividend_s, divisor_s;
-    wire [`ysyx_220053XLEN - 1:0] dividend_abs, divisor_abs;
-    wire [`ysyx_220053XLEN - 1 : 0] sub;
+    wire [`ysyx_220053_XLEN - 1:0] dividend_abs, divisor_abs;
+    wire [`ysyx_220053_XLEN - 1 : 0] sub;
     wire sub_s;
 
 //abs
-    assign dividend_abs = ~dividend + `ysyx_220053XLEN'b1;
-    assign divisor_abs  = ~divisor  + `ysyx_220053XLEN'b1;
+    assign dividend_abs = ~dividend + `ysyx_220053_XLEN'b1;
+    assign divisor_abs  = ~divisor  + `ysyx_220053_XLEN'b1;
 
 //status
     assign ready_to_doing = ready_r && div_valid;
@@ -71,8 +71,8 @@ module ysyx_220053_divu(
             divisor_s  <= 1'b0;
         end
         else if(ready_to_doing) begin
-            dividend_s <= div_signed & dividend[`ysyx_220053XLEN - 1];
-            divisor_s  <= div_signed & divisor[`ysyx_220053XLEN - 1];
+            dividend_s <= div_signed & dividend[`ysyx_220053_XLEN - 1];
+            divisor_s  <= div_signed & divisor[`ysyx_220053_XLEN - 1];
         end
     end
 
@@ -89,15 +89,15 @@ module ysyx_220053_divu(
 //calculate
     always @(posedge clk) begin
         if(ready_to_doing) begin
-            udividend_r <= div_signed & dividend[`ysyx_220053XLEN - 1] ? {`ysyx_220053XLEN'b0, dividend_abs} : {`ysyx_220053XLEN'b0, dividend};
-            udivisor_r  <= div_signed & divisor[`ysyx_220053XLEN - 1]  ? divisor_abs : divisor;
+            udividend_r <= div_signed & dividend[`ysyx_220053_XLEN - 1] ? {`ysyx_220053_XLEN'b0, dividend_abs} : {`ysyx_220053_XLEN'b0, dividend};
+            udivisor_r  <= div_signed & divisor[`ysyx_220053_XLEN - 1]  ? divisor_abs : divisor;
         end
         else if(running_r) begin
-            udividend_r <= sub_s ? {udividend_r[`ysyx_220053XXLEN - 2 : 0],1'b0} : {sub[`ysyx_220053XLEN - 2:0], udividend_r[`ysyx_220053XLEN - 2 : 0], 1'b0};
+            udividend_r <= sub_s ? {udividend_r[`ysyx_220053_XXLEN - 2 : 0],1'b0} : {sub[`ysyx_220053_XLEN - 2:0], udividend_r[`ysyx_220053_XLEN - 2 : 0], 1'b0};
         end
     end 
 
-    adder_XLEN1 suber(.src1(udividend_r[`ysyx_220053XXLEN - 1: `ysyx_220053XLEN - 1]),
+    adder_XLEN1 suber(.src1(udividend_r[`ysyx_220053_XXLEN - 1: `ysyx_220053_XLEN - 1]),
                       .src2({1'b1,~udivisor_r}),
                       .cin(1'b1),
                       .cout(sub_s),
@@ -106,30 +106,30 @@ module ysyx_220053_divu(
 
     always @(posedge clk) begin
         if(rst || flush || ready_to_doing) begin
-            remainder_r <= `ysyx_220053XLEN'b0;
-            quotient_r  <= `ysyx_220053XLEN'b0;
+            remainder_r <= `ysyx_220053_XLEN'b0;
+            quotient_r  <= `ysyx_220053_XLEN'b0;
         end
         else if(calculate_done) begin
-            remainder_r <= udividend_r[`ysyx_220053XXLEN - 1: `ysyx_220053XLEN]; 
+            remainder_r <= udividend_r[`ysyx_220053_XXLEN - 1: `ysyx_220053_XLEN]; 
             quotient_r  <= quotient_r;
         end
         else if(running_r) begin
-            quotient_r <= {quotient_r[`ysyx_220053XLEN - 2 : 0], ~sub_s};
+            quotient_r <= {quotient_r[`ysyx_220053_XLEN - 2 : 0], ~sub_s};
         end 
     end
 //correct
-    assign quotient = dividend_s ^ divisor_s ? ~quotient_r + `ysyx_220053XLEN'b1 : quotient_r;
-    assign remainder = dividend_s ? ~remainder_r + `ysyx_220053XLEN'b1 : remainder_r;
+    assign quotient = dividend_s ^ divisor_s ? ~quotient_r + `ysyx_220053_XLEN'b1 : quotient_r;
+    assign remainder = dividend_s ? ~remainder_r + `ysyx_220053_XLEN'b1 : remainder_r;
     assign div_ready = ready_r;
     assign out_valid = valid_r;
 endmodule
 
 module adder_XLEN1 (
-    input [`ysyx_220053XLEN:0] src1,
-    input [`ysyx_220053XLEN:0] src2,
+    input [`ysyx_220053_XLEN:0] src1,
+    input [`ysyx_220053_XLEN:0] src2,
     input cin,
     output cout,
-    output [`ysyx_220053XLEN - 1:0] result
+    output [`ysyx_220053_XLEN - 1:0] result
 );
-assign {cout, result} = src1 + src2 + {`ysyx_220053XLEN'b0,cin};
+assign {cout, result} = src1 + src2 + {`ysyx_220053_XLEN'b0,cin};
 endmodule
