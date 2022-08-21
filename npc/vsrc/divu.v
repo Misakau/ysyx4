@@ -5,7 +5,7 @@
 `define ysyx_220053_XLEN 64
 `define ysyx_220053_XXLEN 128
 
-module divu(
+module ysyx_220053_divu(
     input clk,
     input rst,
     input [`ysyx_220053_XLEN - 1:0] dividend,
