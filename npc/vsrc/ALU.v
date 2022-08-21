@@ -68,8 +68,8 @@ module ysyx_220053_ALU(
     wire op_div = OPctr[3];
     wire [63:0] dividend, divisor, quotient, remainder;
 
-    assign dividend = (Wctr == 1'b0) ? inputa : {32{SIGctr & inputa[31]},inputa[31:0]};
-    assign divisor  = (Wctr == 1'b0) ? inputb : {32{SIGctr & inputb[31]},inputb[31:0]};
+    assign dividend = (Wctr == 1'b0) ? inputa : {{32{SIGctr & inputa[31]}},inputa[31:0]};
+    assign divisor  = (Wctr == 1'b0) ? inputb : {{32{SIGctr & inputb[31]}},inputb[31:0]};
 
     reg [63:0] quotient_r, remainder_r;
     reg  div_doing;
