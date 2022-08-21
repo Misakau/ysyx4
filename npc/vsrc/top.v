@@ -271,6 +271,8 @@ module top(
       .Ebreak_o(ex_Ebreak_i)
     );
     ///////////EX////////////////
+    wire alu_busy;
+
     ysyx_220053_EXU my_exu(
       .clk(clk),
       .rst(rst),
@@ -283,10 +285,12 @@ module top(
       .MulOp(ex_MulOp_i),
       .pc(ex_pc_o),
       .imm(ex_imm_i),
-      .ALURes(ex_ALURes_o)
+      .ALURes(ex_ALURes_o),
+      .mwb_block(m_block | wb_block),
+      .alu_busy(alu_busy)
     );
     assign ex_flush = rst;
-    assign ex_block = 1'b0;
+    assign ex_block = alu_busy;
     assign m_en = ~(m_block | wb_block);//还未处理阻塞
     assign m_valid_i = ex_valid_o & (~ex_block);//还未处理冒险
     /////////////////////////////

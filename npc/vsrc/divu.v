@@ -36,7 +36,7 @@ module divu(
     assign ready_to_doing = ready_r && div_valid;
     assign doing_to_done  =  calculate_done;
     assign done_to_ready  = valid_r;
-    assign calculate_done = running_r &&  cnt == 7'h20;
+    assign calculate_done = running_r &&  cnt == 7'h40;
     always @(posedge clk) begin
         if (rst || flush  || done_to_ready) begin
             ready_r <= 1'b1;
