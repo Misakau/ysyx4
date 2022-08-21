@@ -29,14 +29,14 @@ module ysyx_220053_divu(
     wire sub_s;
 
 //abs
-    assign dividend_abs = ~dividend + `ysyx_220053_XLEN'b1;
-    assign divisor_abs  = ~divisor  + `ysyx_220053_XLEN'b1;
+    wire dividend_abs = ~dividend + `ysyx_220053_XLEN'b1;
+    wire divisor_abs  = ~divisor  + `ysyx_220053_XLEN'b1;
 
 //status
-    assign ready_to_doing = ready_r && div_valid;
-    assign doing_to_done  =  calculate_done;
-    assign done_to_ready  = valid_r;
-    assign calculate_done = running_r &&  cnt == 7'h40;
+    wire ready_to_doing = ready_r && div_valid;
+    wire doing_to_done  =  calculate_done;
+    wire done_to_ready  = valid_r;
+    wire calculate_done = running_r &&  cnt == 7'h40;
     always @(posedge clk) begin
         if (rst || flush  || done_to_ready) begin
             ready_r <= 1'b1;
