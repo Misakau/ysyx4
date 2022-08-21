@@ -497,9 +497,9 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declQuad(c+211,"top my_exu alu64 divu sub", false,-1, 63,0);
         tracep->declBit(c+213,"top my_exu alu64 divu sub_s", false,-1);
         tracep->declBit(c+214,"top my_exu alu64 divu ready_to_doing", false,-1);
-        tracep->declBit(c+215,"top my_exu alu64 divu calculate_done", false,-1);
         tracep->declBit(c+215,"top my_exu alu64 divu doing_to_done", false,-1);
         tracep->declBit(c+186,"top my_exu alu64 divu done_to_ready", false,-1);
+        tracep->declBit(c+215,"top my_exu alu64 divu calculate_done", false,-1);
         tracep->declArray(c+216,"top my_exu alu64 divu suber src1", false,-1, 64,0);
         tracep->declArray(c+219,"top my_exu alu64 divu suber src2", false,-1, 64,0);
         tracep->declBit(c+2144,"top my_exu alu64 divu suber cin", false,-1);

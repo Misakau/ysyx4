@@ -109,8 +109,8 @@ VL_MODULE(Vtop___024root) {
     struct {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__sub_s;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__ready_to_doing;
-        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__calculate_done;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__done_to_ready;
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__calculate_done;
         CData/*0:0*/ top__DOT__M_Reg__DOT__valid_r;
         CData/*2:0*/ top__DOT__M_Reg__DOT__MemOp_r;
         CData/*0:0*/ top__DOT__M_Reg__DOT__MemWen_r;

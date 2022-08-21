@@ -3013,8 +3013,8 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__sub = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__sub_s = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__ready_to_doing = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__calculate_done = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__done_to_ready = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__calculate_done = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__M_Reg__DOT__valid_r = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__M_Reg__DOT__instr_r = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__M_Reg__DOT__pc_r = VL_RAND_RESET_Q(64);

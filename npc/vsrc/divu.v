@@ -93,7 +93,7 @@ module ysyx_220053_divu(
             udivisor_r  <= div_signed & divisor[`ysyx_220053_XLEN - 1]  ? divisor_abs : divisor;
         end
         else if(running_r) begin
-            udividend_r <= sub_s ? {udividend_r[`ysyx_220053_XXLEN - 2 : 0],1'b0} : {sub[`ysyx_220053_XLEN - 2:0], udividend_r[`ysyx_220053_XLEN - 2 : 0], 1'b0};
+            udividend_r <= sub_s ? {udividend_r[`ysyx_220053_XXLEN - 2 : 0],1'b0} : {sub[`ysyx_220053_XLEN - 1:0], udividend_r[`ysyx_220053_XLEN - 2 : 0], 1'b0};
         end
     end 
 
