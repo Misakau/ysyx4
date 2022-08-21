@@ -124,8 +124,8 @@ module ysyx_220053_ALU(
             div_doing <= 1'b1;
         end
     end
-    assign res8 = quotient_r;
-    assign res9 = remainder_r;
+    assign res8 = (!mwb_block && old_div) ? quotient_r : quotient;
+    assign res9 = (!mwb_block && old_div) ? remainder_r : remainder;
 /*
     wire [63:0] divres;
     wire [31:0] divresW;
