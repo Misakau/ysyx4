@@ -1,8 +1,11 @@
+/* verilator lint_off DECLFILENAME */
+/* verilator lint_off PINMISSING */
+/* verilator lint_off UNUSED */
 
-`define ysyx_220053XLEN 64
-`define ysyx_220053XXLEN 128
+`define ysyx_220053_XLEN 64
+`define ysyx_220053_XXLEN 128
 
-module ysyx_220053divu(
+module ysyx_220053_divu(
     input clk,
     input rst,
     input [`ysyx_220053XLEN - 1:0] dividend,
