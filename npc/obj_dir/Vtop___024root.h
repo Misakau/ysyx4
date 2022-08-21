@@ -176,6 +176,8 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulresW;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__dividend;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__divisor;
+        QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__quotient;
+        QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__remainder;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__quotient_r;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__remainder_r;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udivisor_r;

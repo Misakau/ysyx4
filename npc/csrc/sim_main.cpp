@@ -381,7 +381,7 @@ int main(int argc, char**argv, char**env) {
     int cnt = 0;
     
     if(is_batch){
-      //#undef ITRACE
+      #undef ITRACE
       int step = 0;
         NEMU_CPU nemu;
         while (!npc_done && !contextp->gotFinish()) { 
@@ -481,11 +481,11 @@ static void npc_exec(uint64_t n){
     return;
   }
   NEMU_CPU nemu;
- 
+ /*
   #ifndef ITRACE
     #define ITRACE
   #endif
- 
+ */
   for (uint64_t i = 1; i <= 2*n && !npc_done && !sdb_contextp->gotFinish(); i++) { 
             sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
