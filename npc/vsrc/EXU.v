@@ -14,7 +14,7 @@ module ysyx_220053_EXU(
     input [63:0] imm,
     input mwb_block,
     output [63:0] ALURes,
-    output alu_busy,
+    output alu_busy
 );
     wire zero;
     wire [63:0] res;
