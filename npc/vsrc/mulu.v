@@ -24,7 +24,7 @@ module ysyx_220053_mulu (
     reg running_r;
     wire calculate_done, ready_to_doing, doing_to_done, done_to_ready;
     wire [`ysyx_220053_WIDTH*2-1:0] p_result;
-    reg [7:0] cnt;
+    reg [6:0] cnt;
 //state transition
     always @(posedge clk) begin
         if(rst || done_to_ready) begin
