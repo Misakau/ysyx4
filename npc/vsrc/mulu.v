@@ -125,7 +125,7 @@ module ysyx_220053_mulu (
     // Temporary Results or Final Results
     always @(posedge clk) begin
         if (ready_to_doing) begin
-            tem_result <={`ysyx_220053_WIDTH*2-1{1'b0}};
+            tem_result <= {`ysyx_220053_WIDTH*2{1'b0}};
         end
         else if (running_r) begin
         tem_result <= adder_result;
