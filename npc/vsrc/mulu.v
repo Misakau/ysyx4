@@ -131,7 +131,7 @@ module ysyx_220053_mulu (
         tem_result <= adder_result;
         end
     end
-    assign result = tem_result[63:0];
+    assign result = tem_result[127:0];
 
 endmodule
 
