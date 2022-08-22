@@ -120,7 +120,7 @@ module ysyx_220053_mulu (
     assign adder_a   = p_result;
     assign adder_b   = tem_result;
     assign adder_cin = partial_cout;
-    assign {adder_cout, adder_result} = adder_a + adder_b + {{`ysyx_220053_WIDTH*2-2{1'b0}},adder_cin};
+    assign {adder_cout, adder_result} = adder_a + adder_b + {{`ysyx_220053_WIDTH*2-1{1'b0}},adder_cin};
 
     // Temporary Results or Final Results
     always @(posedge clk) begin
