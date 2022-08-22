@@ -110,7 +110,7 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__calculate_done;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__ready_to_doing;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__done_to_ready;
-        CData/*7:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt;
+        CData/*6:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__partial_cout;
         CData/*3:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__running_r;

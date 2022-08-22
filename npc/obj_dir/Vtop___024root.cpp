@@ -38,7 +38,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     CData/*4:0*/ __Vtableidx1;
     CData/*4:0*/ __Vtableidx3;
     CData/*2:0*/ __Vtableidx4;
-    CData/*7:0*/ __Vdly__top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt;
+    CData/*6:0*/ __Vdly__top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt;
     CData/*6:0*/ __Vdly__top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__cnt;
     VlWide<5>/*131:0*/ __Vdly__top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r;
     VlWide<3>/*66:0*/ __Vdly__top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r;
@@ -103,7 +103,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         __Vdly__top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt = 0U;
     } else if (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__running_r) {
         __Vdly__top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt 
-            = (0xffU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt)));
+            = (0x7fU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt)));
     }
     if (vlSelf->rst) {
         vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_doing = 0U;

@@ -5128,7 +5128,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__ready_to_doing = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__done_to_ready = VL_RAND_RESET_I(1);
     VL_RAND_RESET_W(132, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result);
-    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt = VL_RAND_RESET_I(8);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt = VL_RAND_RESET_I(7);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__partial_cout = VL_RAND_RESET_I(1);
     VL_RAND_RESET_W(132, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__adder_result);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel = VL_RAND_RESET_I(4);

@@ -500,7 +500,7 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBit(c+232,"top my_exu alu64 mulu doing_to_done", false,-1);
         tracep->declBit(c+186,"top my_exu alu64 mulu done_to_ready", false,-1);
         tracep->declArray(c+234,"top my_exu alu64 mulu p_result", false,-1, 131,0);
-        tracep->declBus(c+239,"top my_exu alu64 mulu cnt", false,-1, 7,0);
+        tracep->declBus(c+239,"top my_exu alu64 mulu cnt", false,-1, 6,0);
         tracep->declBit(c+240,"top my_exu alu64 mulu partial_cout", false,-1);
         tracep->declArray(c+234,"top my_exu alu64 mulu adder_a", false,-1, 131,0);
         tracep->declArray(c+218,"top my_exu alu64 mulu adder_b", false,-1, 131,0);
@@ -4414,7 +4414,7 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullBit(oldp+232,(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__calculate_done));
         tracep->fullBit(oldp+233,(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__ready_to_doing));
         tracep->fullWData(oldp+234,(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result),132);
-        tracep->fullCData(oldp+239,(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt),8);
+        tracep->fullCData(oldp+239,(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt),7);
         tracep->fullBit(oldp+240,(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__partial_cout));
         VL_ADD_W(5, __Vtemp100, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result);
         VL_EXTEND_WI(133,1, __Vtemp101, (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__partial_cout));
