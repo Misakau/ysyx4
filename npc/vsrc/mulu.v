@@ -1,7 +1,6 @@
 /* verilator lint_off DECLFILENAME */
 /* verilator lint_off PINMISSING */
 /* verilator lint_off UNUSED */
-
 `define ysyx_220053_COMPUTER_WIDTH 64
 //32
 `define ysyx_220053_WIDTH 66
