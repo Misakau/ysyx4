@@ -12,10 +12,10 @@ out_valid	output	1	为高表示乘法器输出的结果有效
 result_hi	output	xlen	�?? xlen bits 结果
 result_lo	output	xlen	�?? xlen bits 结果
 */
-`define ysyx_220053_COMPUTER_WIDTH 32
-`define ysyx_220053_WIDTH 34
+`define ysyx_220053_COMPUTER_WIDTH 64//32
+`define ysyx_220053_WIDTH 66//34
 // `ysyx_220053_COMPUTER_WIDTH+2
-module ysyx_220053_boothmul (
+module ysyx_220053_mulu (
   input  clk,
   input  rst,
   input  [`ysyx_220053_COMPUTER_WIDTH:0] multiplicand,//33bits * 33bits

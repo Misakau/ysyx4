@@ -44,7 +44,70 @@ module ysyx_220053_ALU(
     assign res4 = (SFTctr == 1'b0) ? shiftL : shiftR;//not finish ysyx_220053_Shifter shifter(.dout(res4),.din(inputa),.shamt(shamt),.AL(ALctr),.LR(SFTctr));
     assign res5 = inputb;
     assign res6 = {{63{1'b0}},{(SIGctr == 1'b1) ? OF ^ SF : CF}}; //cmp,not finish
+
+    
 //mul
+    wire op_mul = ~OPctr[3] & OPctr[2] & OPctr[1] & OPctr[0];//res7
+    wire [64:0] multiplicand, multiplier;
+    wire [63:0] result_hi, result_lo;
+    
+    assign multiplicand = (Wctr == 1'b0) ? {MulOp[1] & inputa[63],inputa} : {{33{inputa[31]}},inputa[31:0]};
+    assign multiplier  = (Wctr == 1'b0) ? {MulOp[1] & MulOp[0] & inputb[63],inputb} : {{33{inputb[31]}},inputb[31:0]};
+
+    reg [63:0] result_hi_r, result_lo_r;
+    reg  mul_doing;
+    wire mul_ready, mul_out_valid, mul_valid;
+    ysyx_220053_mulu mulu(
+        .clk(clk),
+        .rst(rst),
+        .multiplicand(multiplicand),
+        .multiplier(multiplier),
+        .mul_valid(mul_valid),
+        .mul_ready(mul_ready),
+        .out_valid(mul_out_valid),
+        .result({result_hi,result_lo})
+    );
+    reg old_mul;
+    assign mul_valid = op_mul && !mul_doing && !mul_out_valid && !old_mul;
+
+    always @(posedge clk) begin
+        if (rst || !mwb_block) begin
+            old_mul <= 1'b0;
+        end
+        else if(mul_out_valid && mwb_block) begin
+            old_mul <= 1'b1;
+        end
+    end
+    always @(posedge clk) begin
+        if (rst) begin
+            mul_doing <= 1'b0;
+            result_hi_r <= 64'b0;
+            result_lo_r <= 64'b0;
+        end
+        /*除法结果输出后需要将div_doing置零*/
+        else if (mul_out_valid) begin
+            mul_doing <= 1'b0;
+            result_hi_r <= result_hi;
+            result_lo_r <= result_lo;
+        end
+        /*握手成功后，也就是除法器接受输入的数据后需要把div_doing置高*/
+        else if(mul_valid && mul_ready) begin
+            mul_doing <= 1'b1;
+        end
+    end
+    
+    wire [63:0] rhi, rlo;
+    assign rhi = (!mwb_block && old_div) ? result_hi_r : result_hi;
+    assign rlo = (!mwb_block && old_div) ? result_lo_r : result_lo;
+    
+    always @(*)begin
+        if(MulOp == 2'b00) begin
+            res7 = (Wctr == 1'b0) ? rlo : {{32{rlo[31]}},rlo[31:0]};
+        end
+        else res7 = rhi;
+    end
+    
+/*
     reg [127:0] mulres;
     wire [63:0] mulresW;
 
@@ -64,6 +127,7 @@ module ysyx_220053_ALU(
         end
         else res7 = mulres[127:64];
     end
+*/
 //div & rem
     wire op_div = OPctr[3];
     wire [63:0] dividend, divisor, quotient, remainder;
@@ -98,7 +162,7 @@ module ysyx_220053_ALU(
     //如果下个周期新指令进不来，就说明下个周期alu_busy,div_valid都是低
     reg old_div;
     assign div_valid = op_div && !div_doing && !out_valid && !old_div;
-    assign alu_busy = op_div && !out_valid && !old_div;
+    assign alu_busy = (op_div && !out_valid && !old_div) | (op_mul && !mul_out_valid && !old_mul);
     always @(posedge clk) begin
         if (rst || !mwb_block) begin
             old_div <= 1'b0;
