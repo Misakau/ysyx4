@@ -36,6 +36,7 @@ module ysyx_220053_mulu (
             cnt <= cnt + 1'b1;
         end
     end
+
     assign ready_to_doing = mul_valid && mul_ready;
     assign doing_to_done  = calculate_done;
     assign done_to_ready  = out_valid;
