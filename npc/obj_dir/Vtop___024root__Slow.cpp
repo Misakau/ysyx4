@@ -65,23 +65,15 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     CData/*4:0*/ __Vtableidx1;
     CData/*4:0*/ __Vtableidx3;
     CData/*2:0*/ __Vtableidx4;
-    VlWide<3>/*95:0*/ __Vtemp51;
-    VlWide<3>/*95:0*/ __Vtemp52;
-    VlWide<3>/*95:0*/ __Vtemp53;
-    VlWide<3>/*95:0*/ __Vtemp54;
-    VlWide<3>/*95:0*/ __Vtemp55;
-    VlWide<4>/*127:0*/ __Vtemp69;
-    VlWide<4>/*127:0*/ __Vtemp70;
-    VlWide<4>/*127:0*/ __Vtemp71;
-    VlWide<4>/*127:0*/ __Vtemp72;
-    VlWide<4>/*127:0*/ __Vtemp73;
-    VlWide<4>/*127:0*/ __Vtemp74;
-    VlWide<4>/*127:0*/ __Vtemp75;
-    VlWide<4>/*127:0*/ __Vtemp76;
-    VlWide<4>/*127:0*/ __Vtemp77;
-    VlWide<4>/*127:0*/ __Vtemp78;
-    VlWide<4>/*127:0*/ __Vtemp79;
-    VlWide<4>/*127:0*/ __Vtemp80;
+    VlWide<3>/*95:0*/ __Vtemp63;
+    VlWide<3>/*95:0*/ __Vtemp64;
+    VlWide<3>/*95:0*/ __Vtemp65;
+    VlWide<3>/*95:0*/ __Vtemp66;
+    VlWide<3>/*95:0*/ __Vtemp67;
+    VlWide<5>/*159:0*/ __Vtemp89;
+    VlWide<5>/*159:0*/ __Vtemp90;
+    VlWide<5>/*159:0*/ __Vtemp91;
+    VlWide<5>/*159:0*/ __Vtemp92;
     // Body
     if (vlSelf->top__DOT__WB_Reg__DOT__Ebreak_r) {
         Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
@@ -90,25 +82,25 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     vlSelf->wb_pc = vlSelf->top__DOT__wb_pc_r;
     vlSelf->wb_instr = vlSelf->top__DOT__wb_instr_r;
     vlSelf->next_pc = vlSelf->top__DOT__next_pc_r;
-    __Vtemp51[0U] = 1U;
-    __Vtemp51[1U] = 0U;
-    __Vtemp51[2U] = 0U;
-    __Vtemp52[0U] = ((vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udividend_r[2U] 
+    __Vtemp63[0U] = 1U;
+    __Vtemp63[1U] = 0U;
+    __Vtemp63[2U] = 0U;
+    __Vtemp64[0U] = ((vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udividend_r[2U] 
                       << 1U) | (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udividend_r[1U] 
                                 >> 0x1fU));
-    __Vtemp52[1U] = ((vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udividend_r[3U] 
+    __Vtemp64[1U] = ((vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udividend_r[3U] 
                       << 1U) | (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udividend_r[2U] 
                                 >> 0x1fU));
-    __Vtemp52[2U] = (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udividend_r[3U] 
+    __Vtemp64[2U] = (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udividend_r[3U] 
                      >> 0x1fU);
-    __Vtemp53[0U] = (IData)((~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udivisor_r));
-    __Vtemp53[1U] = (IData)(((~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udivisor_r) 
+    __Vtemp65[0U] = (IData)((~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udivisor_r));
+    __Vtemp65[1U] = (IData)(((~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udivisor_r) 
                              >> 0x20U));
-    __Vtemp53[2U] = 1U;
-    VL_ADD_W(3, __Vtemp54, __Vtemp52, __Vtemp53);
-    VL_ADD_W(3, __Vtemp55, __Vtemp51, __Vtemp54);
+    __Vtemp65[2U] = 1U;
+    VL_ADD_W(3, __Vtemp66, __Vtemp64, __Vtemp65);
+    VL_ADD_W(3, __Vtemp67, __Vtemp63, __Vtemp66);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__sub_s 
-        = (1U & __Vtemp55[2U]);
+        = (1U & __Vtemp67[2U]);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__sub 
         = (1ULL + ((((QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udividend_r[3U])) 
                      << 0x21U) | (((QData)((IData)(
@@ -124,6 +116,48 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     } else if ((2U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__i = 0x10U;
     }
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel 
+        = ((8U & ((vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U] 
+                   << 1U) & ((0xfffffff8U & ((vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U] 
+                                              << 2U) 
+                                             & ((~ 
+                                                 vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U]) 
+                                                << 3U))) 
+                             | (((~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U] 
+                                     >> 1U)) & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U]) 
+                                << 3U)))) | ((4U & 
+                                              (((~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U] 
+                                                  >> 2U)) 
+                                                << 2U) 
+                                               & ((0xfffffffcU 
+                                                   & ((vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U] 
+                                                       << 1U) 
+                                                      & ((~ 
+                                                          vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U]) 
+                                                         << 2U))) 
+                                                  | (((~ 
+                                                       (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U] 
+                                                        >> 1U)) 
+                                                      & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U]) 
+                                                     << 2U)))) 
+                                             | ((2U 
+                                                 & (((vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U] 
+                                                      >> 1U) 
+                                                     & ((~ 
+                                                         (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U] 
+                                                          >> 1U)) 
+                                                        << 1U)) 
+                                                    & ((~ 
+                                                        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U]) 
+                                                       << 1U))) 
+                                                | (1U 
+                                                   & (((~ 
+                                                        (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U] 
+                                                         >> 2U)) 
+                                                       & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U] 
+                                                          >> 1U)) 
+                                                      & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U])))));
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__quotient 
         = (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__dividend_s) 
             ^ (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__divisor_s))
@@ -847,6 +881,11 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
             = vlSelf->top__DOT__M_Reg__DOT__wdata_r;
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__wmask = 0xffU;
     }
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__rlo 
+        = ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__old_div)
+            ? vlSelf->top__DOT__my_exu__DOT__alu64__DOT__result_lo_r
+            : (((QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[1U])) 
+                << 0x20U) | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[0U]))));
     vlSelf->top__DOT__my_exu__DOT__alu_inB = ((1U == (IData)(vlSelf->top__DOT__EX_Reg__DOT__ALUSrcB_r))
                                                ? vlSelf->top__DOT__EX_Reg__DOT__imm_r
                                                : ((0U 
@@ -856,8 +895,16 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__calculate_done 
         = ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__running_r) 
            & (0x40U == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__cnt)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__done_to_ready 
+        = vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_out_valid;
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__done_to_ready 
         = vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__valid_r;
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__calculate_done 
+        = ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__running_r) 
+           & ((0x10U == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt)) 
+              | (0U == ((vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U] 
+                         | vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[1U]) 
+                        | vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[2U]))));
     vlSelf->top__DOT__my_exu__DOT__alu_inA = ((IData)(vlSelf->top__DOT__EX_Reg__DOT__ALUSrcA_r)
                                                ? vlSelf->top__DOT__EX_Reg__DOT__busa_r
                                                : vlSelf->top__DOT__EX_Reg__DOT__pc_r);
@@ -1652,37 +1699,2129 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     } else {
         VL_WRITEF("no, op=%x\n",7,(0x7fU & vlSelf->top__DOT__ID_Reg__DOT__instr_r));
     }
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__partial_cout 
+        = (IData)((0U != (0xaU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel))));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfffffffeU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (1U & (~ (((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                             >> 3U) & (~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U]))) 
+                        & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              >> 1U))) & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                              >> 2U) 
+                                             & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U]))))));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfffffffdU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (2U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                            >> 1U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U])))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                          >> 1U)))) 
+                        & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U])))) 
+                    << 1U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfffffffbU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (4U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                            >> 2U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                              >> 1U))))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U]) 
+                               >> 2U))) & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                              & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                 >> 1U))))) 
+                    << 2U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfffffff7U & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (8U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                            >> 3U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                              >> 2U))))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                          >> 3U)))) 
+                        & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                 >> 2U))))) << 3U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xffffffefU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x10U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                               >> 4U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                 >> 3U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                             >> 4U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                    >> 3U))))) << 4U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xffffffdfU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x20U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                               >> 5U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                 >> 4U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                             >> 5U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                    >> 4U))))) << 5U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xffffffbfU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x40U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                               >> 6U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                 >> 5U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                             >> 6U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                    >> 5U))))) << 6U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xffffff7fU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x80U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                               >> 7U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                 >> 6U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                             >> 7U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                    >> 6U))))) << 7U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfffffeffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x100U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                >> 8U)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 7U))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                              >> 8U)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                     >> 7U))))) << 8U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfffffdffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x200U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                >> 9U)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 8U))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                              >> 9U)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                     >> 8U))))) << 9U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfffffbffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x400U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                >> 0xaU)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 9U))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                              >> 0xaU)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                     >> 9U))))) << 0xaU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfffff7ffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x800U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                >> 0xbU)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0xaU))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                              >> 0xbU)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                     >> 0xaU))))) << 0xbU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xffffefffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x1000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                 >> 0xcU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0xbU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                               >> 0xcU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                      >> 0xbU))))) 
+                         << 0xcU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xffffdfffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x2000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                 >> 0xdU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0xcU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                               >> 0xdU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                      >> 0xcU))))) 
+                         << 0xdU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xffffbfffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x4000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                 >> 0xeU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0xdU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                               >> 0xeU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                      >> 0xdU))))) 
+                         << 0xeU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xffff7fffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x8000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                 >> 0xfU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0xeU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                               >> 0xfU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                      >> 0xeU))))) 
+                         << 0xfU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfffeffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x10000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x10U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0xfU))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                >> 0x10U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                       >> 0xfU))))) 
+                          << 0x10U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfffdffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x20000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x11U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x10U))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                >> 0x11U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                       >> 0x10U))))) 
+                          << 0x11U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfffbffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x40000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x12U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x11U))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                >> 0x12U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                       >> 0x11U))))) 
+                          << 0x12U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfff7ffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x80000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x13U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x12U))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                >> 0x13U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                       >> 0x12U))))) 
+                          << 0x13U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xffefffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x100000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x14U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x13U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                 >> 0x14U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                        >> 0x13U))))) 
+                           << 0x14U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xffdfffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x200000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x15U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x14U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                 >> 0x15U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                        >> 0x14U))))) 
+                           << 0x15U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xffbfffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x400000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x16U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x15U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                 >> 0x16U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                        >> 0x15U))))) 
+                           << 0x16U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xff7fffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x800000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x17U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x16U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                 >> 0x17U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                        >> 0x16U))))) 
+                           << 0x17U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfeffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x1000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x18U)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                    >> 0x17U))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x18U)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                         >> 0x17U))))) 
+                            << 0x18U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfdffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x2000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x19U)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                    >> 0x18U))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x19U)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                         >> 0x18U))))) 
+                            << 0x19U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xfbffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x4000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x1aU)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                    >> 0x19U))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x1aU)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                         >> 0x19U))))) 
+                            << 0x1aU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xf7ffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x8000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x1bU)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                    >> 0x1aU))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                  >> 0x1bU)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                         >> 0x1aU))))) 
+                            << 0x1bU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xefffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x10000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 3U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x1cU)))) 
+                                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                          >> 1U) & 
+                                         (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                             >> 0x1bU))))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 2U) & (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x1cU)))) 
+                                 & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                          >> 0x1bU))))) 
+                             << 0x1cU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xdfffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x20000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 3U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x1dU)))) 
+                                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                          >> 1U) & 
+                                         (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                             >> 0x1cU))))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 2U) & (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x1dU)))) 
+                                 & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                          >> 0x1cU))))) 
+                             << 0x1dU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0xbfffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | (0x40000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 3U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x1eU)))) 
+                                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                          >> 1U) & 
+                                         (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                             >> 0x1dU))))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 2U) & (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                                   >> 0x1eU)))) 
+                                 & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                          >> 0x1dU))))) 
+                             << 0x1eU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U] 
+        = ((0x7fffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[0U]) 
+           | ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                         >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                      >> 0x1fU)))) 
+                    & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                           >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                        >> 0x1eU))))) 
+                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                          >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                    >> 0x1fU)))) & 
+                  (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                         >> 0x1eU))))) << 0x1fU));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfffffffeU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (1U & (~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              >> 3U) & (~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U]))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                             >> 0x1fU))))) 
+                        & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 2U) & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U]))) 
+                       & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                             & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
+                                >> 0x1fU)))))));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfffffffdU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (2U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                            >> 1U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U])))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                          >> 1U)))) 
+                        & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U])))) 
+                    << 1U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfffffffbU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (4U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                            >> 2U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                              >> 1U))))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U]) 
+                               >> 2U))) & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                              & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                 >> 1U))))) 
+                    << 2U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfffffff7U & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (8U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                            >> 3U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                              >> 2U))))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                          >> 3U)))) 
+                        & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                 >> 2U))))) << 3U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xffffffefU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x10U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                               >> 4U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                 >> 3U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                             >> 4U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                    >> 3U))))) << 4U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xffffffdfU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x20U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                               >> 5U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                 >> 4U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                             >> 5U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                    >> 4U))))) << 5U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xffffffbfU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x40U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                               >> 6U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                 >> 5U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                             >> 6U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                    >> 5U))))) << 6U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xffffff7fU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x80U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                               >> 7U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                 >> 6U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                             >> 7U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                    >> 6U))))) << 7U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfffffeffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x100U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                >> 8U)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 7U))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                              >> 8U)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                     >> 7U))))) << 8U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfffffdffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x200U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                >> 9U)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 8U))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                              >> 9U)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                     >> 8U))))) << 9U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfffffbffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x400U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                >> 0xaU)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 9U))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                              >> 0xaU)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                     >> 9U))))) << 0xaU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfffff7ffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x800U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                >> 0xbU)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0xaU))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                              >> 0xbU)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                     >> 0xaU))))) << 0xbU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xffffefffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x1000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                 >> 0xcU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0xbU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                               >> 0xcU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                      >> 0xbU))))) 
+                         << 0xcU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xffffdfffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x2000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                 >> 0xdU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0xcU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                               >> 0xdU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                      >> 0xcU))))) 
+                         << 0xdU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xffffbfffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x4000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                 >> 0xeU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0xdU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                               >> 0xeU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                      >> 0xdU))))) 
+                         << 0xeU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xffff7fffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x8000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                 >> 0xfU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0xeU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                               >> 0xfU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                      >> 0xeU))))) 
+                         << 0xfU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfffeffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x10000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x10U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0xfU))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                >> 0x10U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                       >> 0xfU))))) 
+                          << 0x10U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfffdffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x20000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x11U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x10U))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                >> 0x11U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                       >> 0x10U))))) 
+                          << 0x11U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfffbffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x40000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x12U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x11U))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                >> 0x12U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                       >> 0x11U))))) 
+                          << 0x12U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfff7ffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x80000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x13U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x12U))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                >> 0x13U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                       >> 0x12U))))) 
+                          << 0x13U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xffefffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x100000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x14U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x13U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                 >> 0x14U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                        >> 0x13U))))) 
+                           << 0x14U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xffdfffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x200000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x15U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x14U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                 >> 0x15U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                        >> 0x14U))))) 
+                           << 0x15U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xffbfffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x400000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x16U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x15U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                 >> 0x16U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                        >> 0x15U))))) 
+                           << 0x16U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xff7fffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x800000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x17U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x16U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                 >> 0x17U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                        >> 0x16U))))) 
+                           << 0x17U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfeffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x1000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x18U)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                    >> 0x17U))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x18U)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                         >> 0x17U))))) 
+                            << 0x18U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfdffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x2000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x19U)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                    >> 0x18U))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x19U)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                         >> 0x18U))))) 
+                            << 0x19U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xfbffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x4000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x1aU)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                    >> 0x19U))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x1aU)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                         >> 0x19U))))) 
+                            << 0x1aU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xf7ffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x8000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x1bU)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                    >> 0x1aU))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                  >> 0x1bU)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                         >> 0x1aU))))) 
+                            << 0x1bU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xefffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x10000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 3U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x1cU)))) 
+                                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                          >> 1U) & 
+                                         (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                             >> 0x1bU))))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 2U) & (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x1cU)))) 
+                                 & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                          >> 0x1bU))))) 
+                             << 0x1cU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xdfffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x20000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 3U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x1dU)))) 
+                                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                          >> 1U) & 
+                                         (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                             >> 0x1cU))))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 2U) & (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x1dU)))) 
+                                 & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                          >> 0x1cU))))) 
+                             << 0x1dU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0xbfffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | (0x40000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 3U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x1eU)))) 
+                                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                          >> 1U) & 
+                                         (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                             >> 0x1dU))))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 2U) & (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                                   >> 0x1eU)))) 
+                                 & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                          >> 0x1dU))))) 
+                             << 0x1eU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U] 
+        = ((0x7fffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[1U]) 
+           | ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                         >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                      >> 0x1fU)))) 
+                    & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                           >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                        >> 0x1eU))))) 
+                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                          >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                    >> 0x1fU)))) & 
+                  (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                         >> 0x1eU))))) << 0x1fU));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfffffffeU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (1U & (~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              >> 3U) & (~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U]))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                             >> 0x1fU))))) 
+                        & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 2U) & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U]))) 
+                       & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                             & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
+                                >> 0x1fU)))))));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfffffffdU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (2U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                            >> 1U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U])))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                          >> 1U)))) 
+                        & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U])))) 
+                    << 1U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfffffffbU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (4U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                            >> 2U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                              >> 1U))))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U]) 
+                               >> 2U))) & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                              & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                 >> 1U))))) 
+                    << 2U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfffffff7U & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (8U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                            >> 3U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                              >> 2U))))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                          >> 3U)))) 
+                        & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                 >> 2U))))) << 3U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xffffffefU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x10U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                               >> 4U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                 >> 3U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                             >> 4U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                    >> 3U))))) << 4U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xffffffdfU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x20U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                               >> 5U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                 >> 4U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                             >> 5U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                    >> 4U))))) << 5U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xffffffbfU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x40U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                               >> 6U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                 >> 5U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                             >> 6U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                    >> 5U))))) << 6U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xffffff7fU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x80U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                               >> 7U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                 >> 6U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                             >> 7U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                    >> 6U))))) << 7U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfffffeffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x100U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                >> 8U)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 7U))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                              >> 8U)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                     >> 7U))))) << 8U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfffffdffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x200U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                >> 9U)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 8U))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                              >> 9U)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                     >> 8U))))) << 9U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfffffbffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x400U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                >> 0xaU)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 9U))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                              >> 0xaU)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                     >> 9U))))) << 0xaU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfffff7ffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x800U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                >> 0xbU)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0xaU))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                              >> 0xbU)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                     >> 0xaU))))) << 0xbU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xffffefffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x1000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                 >> 0xcU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0xbU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                               >> 0xcU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                      >> 0xbU))))) 
+                         << 0xcU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xffffdfffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x2000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                 >> 0xdU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0xcU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                               >> 0xdU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                      >> 0xcU))))) 
+                         << 0xdU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xffffbfffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x4000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                 >> 0xeU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0xdU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                               >> 0xeU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                      >> 0xdU))))) 
+                         << 0xeU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xffff7fffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x8000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                 >> 0xfU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0xeU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                               >> 0xfU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                      >> 0xeU))))) 
+                         << 0xfU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfffeffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x10000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x10U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0xfU))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                >> 0x10U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                       >> 0xfU))))) 
+                          << 0x10U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfffdffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x20000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x11U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x10U))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                >> 0x11U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                       >> 0x10U))))) 
+                          << 0x11U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfffbffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x40000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x12U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x11U))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                >> 0x12U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                       >> 0x11U))))) 
+                          << 0x12U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfff7ffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x80000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x13U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x12U))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                >> 0x13U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                       >> 0x12U))))) 
+                          << 0x13U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xffefffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x100000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x14U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x13U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                 >> 0x14U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                        >> 0x13U))))) 
+                           << 0x14U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xffdfffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x200000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x15U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x14U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                 >> 0x15U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                        >> 0x14U))))) 
+                           << 0x15U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xffbfffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x400000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x16U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x15U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                 >> 0x16U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                        >> 0x15U))))) 
+                           << 0x16U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xff7fffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x800000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x17U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x16U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                 >> 0x17U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                        >> 0x16U))))) 
+                           << 0x17U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfeffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x1000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x18U)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                    >> 0x17U))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x18U)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                         >> 0x17U))))) 
+                            << 0x18U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfdffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x2000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x19U)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                    >> 0x18U))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x19U)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                         >> 0x18U))))) 
+                            << 0x19U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xfbffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x4000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x1aU)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                    >> 0x19U))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x1aU)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                         >> 0x19U))))) 
+                            << 0x1aU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xf7ffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x8000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x1bU)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                    >> 0x1aU))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                  >> 0x1bU)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                         >> 0x1aU))))) 
+                            << 0x1bU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xefffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x10000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 3U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x1cU)))) 
+                                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                          >> 1U) & 
+                                         (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                             >> 0x1bU))))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 2U) & (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x1cU)))) 
+                                 & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                          >> 0x1bU))))) 
+                             << 0x1cU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xdfffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x20000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 3U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x1dU)))) 
+                                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                          >> 1U) & 
+                                         (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                             >> 0x1cU))))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 2U) & (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x1dU)))) 
+                                 & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                          >> 0x1cU))))) 
+                             << 0x1dU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0xbfffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | (0x40000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 3U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x1eU)))) 
+                                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                          >> 1U) & 
+                                         (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                             >> 0x1dU))))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 2U) & (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                                   >> 0x1eU)))) 
+                                 & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                          >> 0x1dU))))) 
+                             << 0x1eU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U] 
+        = ((0x7fffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[2U]) 
+           | ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                         >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                      >> 0x1fU)))) 
+                    & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                           >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                        >> 0x1eU))))) 
+                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                          >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                    >> 0x1fU)))) & 
+                  (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                         >> 0x1eU))))) << 0x1fU));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfffffffeU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (1U & (~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              >> 3U) & (~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U]))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                             >> 0x1fU))))) 
+                        & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 2U) & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U]))) 
+                       & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                             & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[2U] 
+                                >> 0x1fU)))))));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfffffffdU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (2U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                            >> 1U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U])))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                          >> 1U)))) 
+                        & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U])))) 
+                    << 1U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfffffffbU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (4U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                            >> 2U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                              >> 1U))))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U]) 
+                               >> 2U))) & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                              & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                 >> 1U))))) 
+                    << 2U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfffffff7U & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (8U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                            >> 3U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                              >> 2U))))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                          >> 3U)))) 
+                        & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                 >> 2U))))) << 3U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xffffffefU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x10U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                               >> 4U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                 >> 3U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                             >> 4U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                    >> 3U))))) << 4U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xffffffdfU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x20U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                               >> 5U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                 >> 4U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                             >> 5U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                    >> 4U))))) << 5U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xffffffbfU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x40U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                               >> 6U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                 >> 5U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                             >> 6U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                    >> 5U))))) << 6U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xffffff7fU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x80U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                               >> 7U)))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                 >> 6U))))) 
+                            & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                             >> 7U)))) 
+                           & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                    >> 6U))))) << 7U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfffffeffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x100U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                >> 8U)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 7U))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                              >> 8U)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                     >> 7U))))) << 8U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfffffdffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x200U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                >> 9U)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 8U))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                              >> 9U)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                     >> 8U))))) << 9U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfffffbffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x400U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                >> 0xaU)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 9U))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                              >> 0xaU)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                     >> 9U))))) << 0xaU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfffff7ffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x800U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                >> 0xbU)))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0xaU))))) 
+                             & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                              >> 0xbU)))) 
+                            & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                  & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                     >> 0xaU))))) << 0xbU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xffffefffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x1000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                 >> 0xcU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0xbU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                               >> 0xcU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                      >> 0xbU))))) 
+                         << 0xcU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xffffdfffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x2000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                 >> 0xdU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0xcU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                               >> 0xdU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                      >> 0xcU))))) 
+                         << 0xdU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xffffbfffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x4000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                 >> 0xeU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0xdU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                               >> 0xeU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                      >> 0xdU))))) 
+                         << 0xeU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xffff7fffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x8000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                 >> 0xfU)))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 1U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0xeU))))) 
+                              & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                               >> 0xfU)))) 
+                             & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                   & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                      >> 0xeU))))) 
+                         << 0xfU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfffeffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x10000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x10U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0xfU))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                >> 0x10U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                       >> 0xfU))))) 
+                          << 0x10U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfffdffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x20000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x11U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x10U))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                >> 0x11U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                       >> 0x10U))))) 
+                          << 0x11U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfffbffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x40000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x12U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x11U))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                >> 0x12U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                       >> 0x11U))))) 
+                          << 0x12U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfff7ffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x80000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x13U)))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 1U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x12U))))) 
+                               & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                >> 0x13U)))) 
+                              & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                    & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                       >> 0x12U))))) 
+                          << 0x13U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xffefffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x100000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x14U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x13U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                 >> 0x14U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                        >> 0x13U))))) 
+                           << 0x14U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xffdfffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x200000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x15U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x14U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                 >> 0x15U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                        >> 0x14U))))) 
+                           << 0x15U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xffbfffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x400000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x16U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x15U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                 >> 0x16U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                        >> 0x15U))))) 
+                           << 0x16U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xff7fffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x800000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      >> 3U) & (~ (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x17U)))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 1U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x16U))))) 
+                                & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                 >> 0x17U)))) 
+                               & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                     & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                        >> 0x16U))))) 
+                           << 0x17U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfeffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x1000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x18U)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                    >> 0x17U))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x18U)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                         >> 0x17U))))) 
+                            << 0x18U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfdffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x2000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x19U)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                    >> 0x18U))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x19U)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                         >> 0x18U))))) 
+                            << 0x19U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xfbffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x4000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x1aU)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                    >> 0x19U))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x1aU)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                         >> 0x19U))))) 
+                            << 0x1aU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xf7ffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x8000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       >> 3U) & (~ 
+                                                 (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x1bU)))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 1U) & (~ 
+                                                   (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                    >> 0x1aU))))) 
+                                 & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                  >> 0x1bU)))) 
+                                & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                         >> 0x1aU))))) 
+                            << 0x1bU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xefffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x10000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 3U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x1cU)))) 
+                                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                          >> 1U) & 
+                                         (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                             >> 0x1bU))))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 2U) & (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x1cU)))) 
+                                 & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                          >> 0x1bU))))) 
+                             << 0x1cU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xdfffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x20000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 3U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x1dU)))) 
+                                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                          >> 1U) & 
+                                         (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                             >> 0x1cU))))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 2U) & (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x1dU)))) 
+                                 & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                          >> 0x1cU))))) 
+                             << 0x1dU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0xbfffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | (0x40000000U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                        >> 3U) & (~ 
+                                                  (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x1eU)))) 
+                                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                          >> 1U) & 
+                                         (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                             >> 0x1dU))))) 
+                                  & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                         >> 2U) & (
+                                                   vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                                   >> 0x1eU)))) 
+                                 & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                       & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                          >> 0x1dU))))) 
+                             << 0x1eU)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U] 
+        = ((0x7fffffffU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[3U]) 
+           | ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                         >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                      >> 0x1fU)))) 
+                    & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                           >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                        >> 0x1eU))))) 
+                   & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                          >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                    >> 0x1fU)))) & 
+                  (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                      & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                         >> 0x1eU))))) << 0x1fU));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[4U] 
+        = ((0xeU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[4U]) 
+           | (1U & (~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              >> 3U) & (~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U]))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                             >> 0x1fU))))) 
+                        & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 2U) & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U]))) 
+                       & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                             & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[3U] 
+                                >> 0x1fU)))))));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[4U] 
+        = ((0xdU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[4U]) 
+           | (2U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U] 
+                                            >> 1U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U])))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U] 
+                                          >> 1U)))) 
+                        & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U])))) 
+                    << 1U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[4U] 
+        = ((0xbU & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[4U]) 
+           | (4U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U] 
+                                            >> 2U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U] 
+                                              >> 1U))))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U]) 
+                               >> 2U))) & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                              & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U] 
+                                                 >> 1U))))) 
+                    << 2U)));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[4U] 
+        = ((7U & vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result[4U]) 
+           | (8U & ((~ ((((~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                               >> 3U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U] 
+                                            >> 3U)))) 
+                          & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                 >> 1U) & (~ (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U] 
+                                              >> 2U))))) 
+                         & (~ (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                                >> 2U) & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U] 
+                                          >> 3U)))) 
+                        & (~ ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel) 
+                              & (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[4U] 
+                                 >> 2U))))) << 3U)));
     Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->top__DOT__M_Reg__DOT__raddr_r, vlSelf->__Vtask_pmem_read__3__rdata, (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__bytes));
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
         = vlSelf->__Vtask_pmem_read__3__rdata;
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__op_mul 
+        = (IData)((7U == (0xfU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))));
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__div_valid 
         = (1U & (((((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr) 
                     >> 3U) & (~ (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__div_doing))) 
                   & (~ (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__valid_r))) 
                  & (~ (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__old_div))));
-    vlSelf->top__DOT__alu_busy = (1U & ((((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr) 
-                                          >> 3U) & 
-                                         (~ (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__valid_r))) 
-                                        & (~ (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__old_div))));
-    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divisor 
-        = ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__Wctr)
-            ? (((QData)((IData)((- (IData)(((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SIGctr) 
+    if (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__Wctr) {
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplier[0U] 
+            = (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB);
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplier[1U] 
+            = (IData)((0x1ffffffffULL & (- (QData)((IData)(
+                                                           (1U 
+                                                            & (IData)(
+                                                                      (vlSelf->top__DOT__my_exu__DOT__alu_inB 
+                                                                       >> 0x1fU))))))));
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplier[2U] 
+            = (IData)(((0x1ffffffffULL & (- (QData)((IData)(
+                                                            (1U 
+                                                             & (IData)(
+                                                                       (vlSelf->top__DOT__my_exu__DOT__alu_inB 
+                                                                        >> 0x1fU))))))) 
+                       >> 0x20U));
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divisor 
+            = (((QData)((IData)((- (IData)(((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SIGctr) 
                                             & (IData)(
                                                       (vlSelf->top__DOT__my_exu__DOT__alu_inB 
                                                        >> 0x1fU))))))) 
-                << 0x20U) | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))
-            : vlSelf->top__DOT__my_exu__DOT__alu_inB);
+                << 0x20U) | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)));
+    } else {
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplier[0U] 
+            = (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB);
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplier[1U] 
+            = (IData)((vlSelf->top__DOT__my_exu__DOT__alu_inB 
+                       >> 0x20U));
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplier[2U] 
+            = (1U & ((((IData)(vlSelf->top__DOT__EX_Reg__DOT__MulOp_r) 
+                       >> 1U) & (IData)(vlSelf->top__DOT__EX_Reg__DOT__MulOp_r)) 
+                     & (IData)((vlSelf->top__DOT__my_exu__DOT__alu_inB 
+                                >> 0x3fU))));
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divisor 
+            = vlSelf->top__DOT__my_exu__DOT__alu_inB;
+    }
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__adderb 
         = (vlSelf->top__DOT__my_exu__DOT__alu_inB ^ 
            (- (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SUBctr))));
-    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__dividend 
-        = ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__Wctr)
-            ? (((QData)((IData)((- (IData)(((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SIGctr) 
+    if (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__Wctr) {
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplicand[0U] 
+            = (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA);
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplicand[1U] 
+            = (IData)((0x1ffffffffULL & (- (QData)((IData)(
+                                                           (1U 
+                                                            & (IData)(
+                                                                      (vlSelf->top__DOT__my_exu__DOT__alu_inA 
+                                                                       >> 0x1fU))))))));
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplicand[2U] 
+            = (IData)(((0x1ffffffffULL & (- (QData)((IData)(
+                                                            (1U 
+                                                             & (IData)(
+                                                                       (vlSelf->top__DOT__my_exu__DOT__alu_inA 
+                                                                        >> 0x1fU))))))) 
+                       >> 0x20U));
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__dividend 
+            = (((QData)((IData)((- (IData)(((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__SIGctr) 
                                             & (IData)(
                                                       (vlSelf->top__DOT__my_exu__DOT__alu_inA 
                                                        >> 0x1fU))))))) 
-                << 0x20U) | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA)))
-            : vlSelf->top__DOT__my_exu__DOT__alu_inA);
+                << 0x20U) | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA)));
+    } else {
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplicand[0U] 
+            = (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA);
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplicand[1U] 
+            = (IData)((vlSelf->top__DOT__my_exu__DOT__alu_inA 
+                       >> 0x20U));
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplicand[2U] 
+            = (1U & (((IData)(vlSelf->top__DOT__EX_Reg__DOT__MulOp_r) 
+                      >> 1U) & (IData)((vlSelf->top__DOT__my_exu__DOT__alu_inA 
+                                        >> 0x3fU))));
+        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__dividend 
+            = vlSelf->top__DOT__my_exu__DOT__alu_inA;
+    }
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__sllWres 
         = ((IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA) 
            << (0x1fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)));
@@ -1692,85 +3831,6 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                              (0x1fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))
             : ((IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA) 
                >> (0x1fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB))));
-    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulresW 
-        = ((QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA)) 
-           * (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)));
-    VL_EXTEND_WQ(128,64, __Vtemp69, vlSelf->top__DOT__my_exu__DOT__alu_inA);
-    VL_EXTEND_WQ(128,64, __Vtemp70, vlSelf->top__DOT__my_exu__DOT__alu_inB);
-    VL_MUL_W(4, __Vtemp71, __Vtemp69, __Vtemp70);
-    VL_EXTEND_WQ(128,64, __Vtemp72, vlSelf->top__DOT__my_exu__DOT__alu_inA);
-    VL_EXTEND_WQ(128,64, __Vtemp73, vlSelf->top__DOT__my_exu__DOT__alu_inB);
-    VL_MUL_W(4, __Vtemp74, __Vtemp72, __Vtemp73);
-    __Vtemp75[0U] = (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA);
-    __Vtemp75[1U] = (IData)((vlSelf->top__DOT__my_exu__DOT__alu_inA 
-                             >> 0x20U));
-    __Vtemp75[2U] = (IData)((- (QData)((IData)((1U 
-                                                & (IData)(
-                                                          (vlSelf->top__DOT__my_exu__DOT__alu_inA 
-                                                           >> 0x3fU)))))));
-    __Vtemp75[3U] = (IData)(((- (QData)((IData)((1U 
-                                                 & (IData)(
-                                                           (vlSelf->top__DOT__my_exu__DOT__alu_inA 
-                                                            >> 0x3fU)))))) 
-                             >> 0x20U));
-    VL_EXTEND_WQ(128,64, __Vtemp76, vlSelf->top__DOT__my_exu__DOT__alu_inB);
-    VL_MUL_W(4, __Vtemp77, __Vtemp75, __Vtemp76);
-    __Vtemp78[0U] = (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA);
-    __Vtemp78[1U] = (IData)((vlSelf->top__DOT__my_exu__DOT__alu_inA 
-                             >> 0x20U));
-    __Vtemp78[2U] = (IData)((- (QData)((IData)((1U 
-                                                & (IData)(
-                                                          (vlSelf->top__DOT__my_exu__DOT__alu_inA 
-                                                           >> 0x3fU)))))));
-    __Vtemp78[3U] = (IData)(((- (QData)((IData)((1U 
-                                                 & (IData)(
-                                                           (vlSelf->top__DOT__my_exu__DOT__alu_inA 
-                                                            >> 0x3fU)))))) 
-                             >> 0x20U));
-    __Vtemp79[0U] = (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB);
-    __Vtemp79[1U] = (IData)((vlSelf->top__DOT__my_exu__DOT__alu_inB 
-                             >> 0x20U));
-    __Vtemp79[2U] = (IData)((- (QData)((IData)((1U 
-                                                & (IData)(
-                                                          (vlSelf->top__DOT__my_exu__DOT__alu_inB 
-                                                           >> 0x3fU)))))));
-    __Vtemp79[3U] = (IData)(((- (QData)((IData)((1U 
-                                                 & (IData)(
-                                                           (vlSelf->top__DOT__my_exu__DOT__alu_inB 
-                                                            >> 0x3fU)))))) 
-                             >> 0x20U));
-    VL_MULS_WWW(128,128,128, __Vtemp80, __Vtemp78, __Vtemp79);
-    if ((0U == (IData)(vlSelf->top__DOT__EX_Reg__DOT__MulOp_r))) {
-        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulres[0U] 
-            = __Vtemp71[0U];
-        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulres[1U] 
-            = __Vtemp71[1U];
-        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulres[2U] 
-            = __Vtemp71[2U];
-        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulres[3U] 
-            = __Vtemp71[3U];
-    } else {
-        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulres[0U] 
-            = ((1U == (IData)(vlSelf->top__DOT__EX_Reg__DOT__MulOp_r))
-                ? __Vtemp74[0U] : ((2U == (IData)(vlSelf->top__DOT__EX_Reg__DOT__MulOp_r))
-                                    ? __Vtemp77[0U]
-                                    : __Vtemp80[0U]));
-        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulres[1U] 
-            = ((1U == (IData)(vlSelf->top__DOT__EX_Reg__DOT__MulOp_r))
-                ? __Vtemp74[1U] : ((2U == (IData)(vlSelf->top__DOT__EX_Reg__DOT__MulOp_r))
-                                    ? __Vtemp77[1U]
-                                    : __Vtemp80[1U]));
-        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulres[2U] 
-            = ((1U == (IData)(vlSelf->top__DOT__EX_Reg__DOT__MulOp_r))
-                ? __Vtemp74[2U] : ((2U == (IData)(vlSelf->top__DOT__EX_Reg__DOT__MulOp_r))
-                                    ? __Vtemp77[2U]
-                                    : __Vtemp80[2U]));
-        vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulres[3U] 
-            = ((1U == (IData)(vlSelf->top__DOT__EX_Reg__DOT__MulOp_r))
-                ? __Vtemp74[3U] : ((2U == (IData)(vlSelf->top__DOT__EX_Reg__DOT__MulOp_r))
-                                    ? __Vtemp77[3U]
-                                    : __Vtemp80[3U]));
-    }
     vlSelf->top__DOT__is_Csrwen = (((~ (IData)(vlSelf->rst)) 
                                     & (IData)(vlSelf->top__DOT__id_Csrwen)) 
                                    & (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r));
@@ -1864,6 +3924,24 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                            | (IData)(vlSelf->top__DOT__id_Ebreak_o)) 
                                           | (IData)(vlSelf->top__DOT__id_Mret)) 
                                          | (IData)(vlSelf->top__DOT__id_Ecall))));
+    VL_ADD_W(5, __Vtemp89, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result);
+    VL_EXTEND_WI(133,1, __Vtemp90, (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__partial_cout));
+    __Vtemp91[0U] = __Vtemp90[0U];
+    __Vtemp91[1U] = __Vtemp90[1U];
+    __Vtemp91[2U] = __Vtemp90[2U];
+    __Vtemp91[3U] = __Vtemp90[3U];
+    __Vtemp91[4U] = __Vtemp90[4U];
+    VL_ADD_W(5, __Vtemp92, __Vtemp89, __Vtemp91);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__adder_result[0U] 
+        = __Vtemp92[0U];
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__adder_result[1U] 
+        = __Vtemp92[1U];
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__adder_result[2U] 
+        = __Vtemp92[2U];
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__adder_result[3U] 
+        = __Vtemp92[3U];
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__adder_result[4U] 
+        = (0xfU & __Vtemp92[4U]);
     if ((0U != (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
         if ((1U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
             vlSelf->top__DOT__my_mu__DOT__mem__DOT__datab 
@@ -2388,6 +4466,18 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
             }
         }
     }
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_valid 
+        = ((((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__op_mul) 
+             & (~ (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_doing))) 
+            & (~ (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_out_valid))) 
+           & (~ (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__old_div)));
+    vlSelf->top__DOT__alu_busy = (1U & (((((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr) 
+                                           >> 3U) & 
+                                          (~ (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__valid_r))) 
+                                         & (~ (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__old_div))) 
+                                        | (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__op_mul) 
+                                            & (~ (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_out_valid))) 
+                                           & (~ (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__old_div)))));
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__ready_to_doing 
         = ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__ready_r) 
            & (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__div_valid));
@@ -2497,6 +4587,9 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                    << 0x20U) 
                                                   | (QData)((IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataw))))))
                                          : vlSelf->top__DOT__M_Reg__DOT__raddr_r));
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__ready_to_doing 
+        = ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_valid) 
+           & (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_ready));
     vlSelf->top__DOT__id_csrres_o = ((0x300U == (IData)(vlSelf->top__DOT__id_CsrId))
                                       ? vlSelf->top__DOT__csrfile__DOT__mstatus
                                       : ((0x305U == (IData)(vlSelf->top__DOT__id_CsrId))
@@ -2522,6 +4615,8 @@ void Vtop___024root___settle__TOP__6(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___settle__TOP__6\n"); );
+    // Variables
+    VlWide<4>/*127:0*/ __Vtemp94;
     // Body
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__adderres 
         = (((QData)((IData)(((vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high.__PVT__ff
@@ -2542,6 +4637,10 @@ void Vtop___024root___settle__TOP__6(Vtop___024root* vlSelf) {
                                                 << 8U) 
                                                | vlSymsp->TOP__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low.__PVT__ff
                                                [0U]))))));
+    VL_EXTEND_WQ(128,64, __Vtemp94, (((QData)((IData)(
+                                                      vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[1U])) 
+                                      << 0x20U) | (QData)((IData)(
+                                                                  vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[0U]))));
     vlSelf->top__DOT__my_exu__DOT__res = (((((((((0U 
                                                   == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr)) 
                                                  | (1U 
@@ -2670,22 +4769,20 @@ void Vtop___024root___settle__TOP__6(Vtop___024root* vlSelf) {
                                                                            (- (IData)(
                                                                                 (1U 
                                                                                 & (IData)(
-                                                                                (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulresW 
+                                                                                (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__rlo 
                                                                                 >> 0x1fU))))))) 
                                                            << 0x20U) 
-                                                          | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulresW)))
+                                                          | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__rlo)))
+                                                          : vlSelf->top__DOT__my_exu__DOT__alu64__DOT__rlo)
+                                                         : 
+                                                        ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__old_div)
+                                                          ? vlSelf->top__DOT__my_exu__DOT__alu64__DOT__result_hi_r
                                                           : 
                                                          (((QData)((IData)(
-                                                                           vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulres[1U])) 
+                                                                           __Vtemp94[3U])) 
                                                            << 0x20U) 
                                                           | (QData)((IData)(
-                                                                            vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulres[0U]))))
-                                                         : 
-                                                        (((QData)((IData)(
-                                                                          vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulres[3U])) 
-                                                          << 0x20U) 
-                                                         | (QData)((IData)(
-                                                                           vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulres[2U])))))))))))
+                                                                            __Vtemp94[2U]))))))))))))
                                            : ((8U == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))
                                                ? ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__old_div)
                                                    ? vlSelf->top__DOT__my_exu__DOT__alu64__DOT__quotient_r
@@ -3004,8 +5101,16 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__adderb = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__sllWres = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__srWres = VL_RAND_RESET_I(32);
-    VL_RAND_RESET_W(128, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulres);
-    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulresW = VL_RAND_RESET_Q(64);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__op_mul = VL_RAND_RESET_I(1);
+    VL_RAND_RESET_W(65, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplicand);
+    VL_RAND_RESET_W(65, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplier);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__result_hi_r = VL_RAND_RESET_Q(64);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__result_lo_r = VL_RAND_RESET_Q(64);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_doing = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_ready = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_out_valid = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_valid = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__rlo = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__dividend = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divisor = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__quotient = VL_RAND_RESET_Q(64);
@@ -3015,6 +5120,18 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__div_doing = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__div_valid = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__old_div = VL_RAND_RESET_I(1);
+    VL_RAND_RESET_W(132, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result);
+    VL_RAND_RESET_W(132, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r);
+    VL_RAND_RESET_W(67, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__running_r = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__calculate_done = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__ready_to_doing = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__done_to_ready = VL_RAND_RESET_I(1);
+    VL_RAND_RESET_W(132, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt = VL_RAND_RESET_I(8);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__partial_cout = VL_RAND_RESET_I(1);
+    VL_RAND_RESET_W(132, vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__adder_result);
+    vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel = VL_RAND_RESET_I(4);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__running_r = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__ready_r = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__valid_r = VL_RAND_RESET_I(1);

@@ -1,17 +1,7 @@
-/*
-clock	input	1	时钟信号
-reset	input	1	复位信号（高有效�??
-mul_valid	input	1	为高表示输入的数据有效，如果没有新的乘法输入，在乘法被接受的下一个周期要置低
-flush	input	1	为高表示取消乘法
-mulw	input	1	为高表示�?? 32 位乘�??
-mul_signed	input	2	2’b11（signed x signed）；2’b10（signed x unsigned）；2’b00（unsigned x unsigned）；
-multiplicand	input	xlen	被乘数，xlen 表示乘法器位�??
-multiplier	input	xlen	乘数
-mul_ready	output	1	为高表示乘法器准备好，表示可以输入数�??
-out_valid	output	1	为高表示乘法器输出的结果有效
-result_hi	output	xlen	�?? xlen bits 结果
-result_lo	output	xlen	�?? xlen bits 结果
-*/
+/* verilator lint_off DECLFILENAME */
+/* verilator lint_off PINMISSING */
+/* verilator lint_off UNUSED */
+
 `define ysyx_220053_COMPUTER_WIDTH 64//32
 `define ysyx_220053_WIDTH 66//34
 // `ysyx_220053_COMPUTER_WIDTH+2

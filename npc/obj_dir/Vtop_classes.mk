@@ -10,7 +10,7 @@ VM_C11 = 1
 # Coverage output mode?  0/1 (from --coverage)
 VM_COVERAGE = 0
 # Parallel builds?  0/1 (from --output-split)
-VM_PARALLEL_BUILDS = 0
+VM_PARALLEL_BUILDS = 1
 # Threaded output mode?  0/1/N threads (from --threads)
 VM_THREADS = 0
 # Tracing output mode?  0/1 (from --trace/--trace-fst)
@@ -41,11 +41,13 @@ VM_CLASSES_SLOW += \
 VM_SUPPORT_FAST += \
 	Vtop__Dpi \
 	Vtop__Trace \
+	Vtop__Trace__1 \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
 VM_SUPPORT_SLOW += \
 	Vtop__Syms \
 	Vtop__Trace__Slow \
+	Vtop__Trace__1__Slow \
 
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \

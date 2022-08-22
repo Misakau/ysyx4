@@ -96,17 +96,29 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SFTctr;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__Wctr;
         CData/*3:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__op_mul;
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_doing;
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_ready;
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_out_valid;
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_valid;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__div_doing;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__div_valid;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__old_div;
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__running_r;
+    };
+    struct {
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__calculate_done;
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__ready_to_doing;
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__done_to_ready;
+        CData/*7:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt;
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__partial_cout;
+        CData/*3:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__booth_partial__DOT__sel;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__running_r;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__ready_r;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__valid_r;
         CData/*6:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__cnt;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__dividend_s;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__divisor_s;
-    };
-    struct {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__sub_s;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__ready_to_doing;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__done_to_ready;
@@ -135,7 +147,13 @@ VL_MODULE(Vtop___024root) {
         IData/*31:0*/ top__DOT__EX_Reg__DOT__instr_r;
         IData/*31:0*/ top__DOT__my_exu__DOT__alu64__DOT__sllWres;
         IData/*31:0*/ top__DOT__my_exu__DOT__alu64__DOT__srWres;
-        VlWide<4>/*127:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulres;
+        VlWide<3>/*64:0*/ top__DOT__my_exu__DOT__alu64__DOT__multiplicand;
+        VlWide<3>/*64:0*/ top__DOT__my_exu__DOT__alu64__DOT__multiplier;
+        VlWide<5>/*131:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result;
+        VlWide<5>/*131:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r;
+        VlWide<3>/*66:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r;
+        VlWide<5>/*131:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result;
+        VlWide<5>/*131:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__adder_result;
         VlWide<4>/*127:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udividend_r;
         IData/*31:0*/ top__DOT__M_Reg__DOT__instr_r;
         IData/*31:0*/ top__DOT__my_mu__DOT__mem__DOT__i;
@@ -153,6 +171,8 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__next_pc_r;
         QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
         QData/*63:0*/ top__DOT__my_ifu__DOT__rdata;
+    };
+    struct {
         QData/*63:0*/ top__DOT__my_ifu__DOT__valid_dnpc;
         QData/*63:0*/ top__DOT__ID_Reg__DOT__pc_r;
         QData/*63:0*/ top__DOT__my_idu__DOT__alu_inA;
@@ -171,9 +191,9 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__my_exu__DOT__alu_inB;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderres;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderb;
-    };
-    struct {
-        QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulresW;
+        QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__result_hi_r;
+        QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__result_lo_r;
+        QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__rlo;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__dividend;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__divisor;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__quotient;
