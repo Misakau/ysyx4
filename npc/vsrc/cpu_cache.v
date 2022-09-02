@@ -145,9 +145,9 @@ wire [127:0] rw_w_data_o;
     wire                              rw_req_i = rw_req_o;          //IF&MEM输入信号
     wire                              rw_valid_i = rw_valid_o;         //IF&MEM输入信号
 	wire                              rw_ready_o;         //IF&MEM输入信号
-    wire  [`RW_DATA_WIDTH-1:0]         data_read_o;        //IF&MEM输入信号
-    wire  [`RW_DATA_WIDTH-1:0]          rw_w_data_i = rw_w_data_o;      //IF&MEM输入信号
-    wire  [`RW_ADDR_WIDTH-1:0]          rw_addr_i = rw_addr_o;          //IF&MEM输入信号
+    wire  [128-1:0]         data_read_o;        //IF&MEM输入信号
+    wire  [128-1:0]          rw_w_data_i = rw_w_data_o;      //IF&MEM输入信号
+    wire  [64-1:0]          rw_addr_i = rw_addr_o;          //IF&MEM输入信号
     wire  [7:0]                        rw_size_i = 8'hff;         //IF&MEM输入信号
 
     ysyx_220053_axi_rw axi(
