@@ -487,7 +487,7 @@ static void npc_exec(uint64_t n){
     #define ITRACE
   #endif
  */
- 
+ uint64_t mem_ls = 0;
   for (uint64_t i = 1; i <= 2*n && !npc_done && !sdb_contextp->gotFinish(); i++) { 
             sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
@@ -517,10 +517,10 @@ static void npc_exec(uint64_t n){
               sdb_top->i_data_read_i[2] = (uint32_t)MEM[midx+1];
               sdb_top->i_data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
               sdb_top->i_rw_ready_i = 1;
+              mem_ls = i;
             }
-            if(sdb_top->clk == 1 && sdb_top->i_rw_valid_o == 0) sdb_top->i_rw_ready_i = 0;
+            if(sdb_top->clk == 1 && i == mem_ls + 2) sdb_top->i_rw_ready_i = 0;
             sdb_top->eval();
-            
             //printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, i_rw_req_o = %x\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o, sdb_top->i_rw_req_o);
             //NPC_EXIT = 1;break;
             if(sdb_top->clk == 0 && sdb_top->wb_commit == 1){
