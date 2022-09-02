@@ -191,6 +191,7 @@ module top(
       .instr_o(id_instr_o)
     );
     ////////////ID///////////////////
+    wire [63:0] ex_dnpc,m_dnpc,wb_dnpc;
     ysyx_220053_IDU my_idu(
       .instr_i(id_instr_o),
       .rd(id_rd_o),
@@ -271,6 +272,10 @@ module top(
       .CsrToReg_o(ex_CsrToReg_i),
       .Csrres_o(ex_csrres_i),
       .Ebreak_o(ex_Ebreak_i)
+
+
+      ,.dnpc_i(id_dnpc),
+      .dnpc_o(ex_dnpc)
     );
     ///////////EX////////////////
     wire alu_busy;
@@ -330,6 +335,10 @@ module top(
     .MemToReg_o(m_MemToReg_i),
     .CsrToReg_o(m_CsrToReg_i),
     .Ebreak_o(m_Ebreak_i)
+
+
+      ,.dnpc_i(ex_dnpc),
+      .dnpc_o(m_dnpc)
   );
     ///////////M/////////////////
     ysyx_220053_MU my_mu(
@@ -372,6 +381,9 @@ module top(
     .wdata_o(wb_wdata_i),
     .waddr_o(wb_waddr_i),
     .Ebreak_o(wb_Ebreak_i)
+
+    ,.dnpc_i(m_dnpc),
+      .dnpc_o(wb_dnpc)
     );
     ///////////WB////////////////
     assign wb_block = 1'b0;
@@ -395,7 +407,7 @@ module top(
             wb_commit_r <= wb_valid_o;
             wb_pc_r    <= wb_pc_o;
             wb_instr_r <= wb_instr_o;
-            next_pc_r <= m_pc_o;
+            next_pc_r <= wb_dnpc;
           end
           else begin
             wb_commit_r <= 1'b0;

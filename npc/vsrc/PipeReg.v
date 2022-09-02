@@ -76,6 +76,9 @@ module ysyx_220053_EX_Reg(
     output [2:0] MemOp_o,
     output [1:0] MulOp_o,
     output [63:0] imm_o
+
+    ,input  [63:0] dnpc_i,
+    output reg [63:0] dnpc_o
 );
     reg valid_r;
     reg [31:0] instr_r;
@@ -121,6 +124,8 @@ module ysyx_220053_EX_Reg(
             MulOp_r    <= 2'b0;
             Csrres_r   <= 64'b0;
             Ebreak_r   <= 1'b0;
+
+            dnpc_o <=0;
         end
         else if(enable)begin
             instr_r    <= instr_i;
@@ -140,6 +145,8 @@ module ysyx_220053_EX_Reg(
             MulOp_r    <= MulOp_i;
             Csrres_r   <= Csrres_i;
             Ebreak_r   <= Ebreak_i;
+
+            dnpc_o <=dnpc_i;
         end
     end
     assign instr_o = instr_r;
@@ -192,6 +199,10 @@ module ysyx_220053_M_Reg(
     output MemWen_o,
     output [63:0] wdata_o,
     output [63:0] Csrres_o
+
+
+    ,input  [63:0] dnpc_i,
+    output reg [63:0] dnpc_o
 );
     reg valid_r;
     reg [31:0] instr_r;
@@ -228,6 +239,8 @@ module ysyx_220053_M_Reg(
             MemToReg_r <= 1'b0;
             CsrToReg_r <= 1'b0;
             Ebreak_r  <= 1'b0;
+
+            dnpc_o <= 0;
         end
         else if(enable)begin
             instr_r  <= instr_i;
@@ -242,6 +255,8 @@ module ysyx_220053_M_Reg(
             MemToReg_r <= MemToReg_i;
             CsrToReg_r <= CsrToReg_i;
             Ebreak_r <= Ebreak_i;
+
+            dnpc_o <= dnpc_i;
         end
     end
     assign instr_o = instr_r;
@@ -281,6 +296,9 @@ module ysyx_220053_WB_Reg(
     output wen_o,
     output [63:0] wdata_o,
     output [4:0] waddr_o
+
+    ,input  [63:0] dnpc_i,
+    output reg [63:0] dnpc_o
 );
     reg valid_r;
     reg [31:0] instr_r;
@@ -305,6 +323,8 @@ module ysyx_220053_WB_Reg(
             wdata_r <= 64'b0;
             waddr_r <= 5'b0;
             Ebreak_r <= 1'b0;
+
+            dnpc_o <= 0;
         end
         else if(enable)begin
             instr_r <= instr_i;
@@ -313,6 +333,8 @@ module ysyx_220053_WB_Reg(
             wdata_r <= wdata_i;
             waddr_r <= waddr_i;
             Ebreak_r <= Ebreak_i;
+
+            dnpc_o <= dnpc_i;
         end
     end
     assign instr_o = instr_r;

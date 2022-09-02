@@ -5069,8 +5069,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__wb_instr_r = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__next_pc_r = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__instr_read_r = VL_RAND_RESET_I(32);
-    vlSelf->top__DOT__my_ifu__DOT__now_pc = VL_RAND_RESET_Q(64);
-    vlSelf->top__DOT__my_ifu__DOT__rdata = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_ifu__DOT__cpu_data_read = VL_RAND_RESET_Q(64);
