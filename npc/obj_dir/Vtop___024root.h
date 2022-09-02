@@ -180,10 +180,14 @@ VL_MODULE(Vtop___024root) {
     struct {
         QData/*63:0*/ top__DOT__m_ALURes_i;
         QData/*63:0*/ top__DOT__m_rfdata_o;
+        QData/*63:0*/ top__DOT__ex_dnpc;
+        QData/*63:0*/ top__DOT__m_dnpc;
+        QData/*63:0*/ top__DOT__wb_dnpc;
         QData/*63:0*/ top__DOT__wb_pc_r;
         QData/*63:0*/ top__DOT__next_pc_r;
         QData/*63:0*/ top__DOT__my_ifu__DOT__cpu_data_read;
         QData/*63:0*/ top__DOT__ID_Reg__DOT__pc_r;
+        QData/*63:0*/ top__DOT__my_idu__DOT__addr_res;
         QData/*63:0*/ top__DOT__my_idu__DOT__alu_inA;
         QData/*63:0*/ top__DOT__my_idu__DOT__na_alu__DOT__adderres;
         QData/*63:0*/ top__DOT__my_idu__DOT__na_alu__DOT__adderb;
@@ -246,7 +250,6 @@ VL_MODULE(Vtop___024root) {
     VlWide<4>/*127:0*/ top__DOT__my_ifu__DOT__icache__DOT____Vcellout__ram2__Q;
     VlWide<4>/*127:0*/ top__DOT__my_ifu__DOT__icache__DOT____Vcellout__ram3__Q;
     QData/*63:0*/ __Vtask_pmem_read__2__rdata;
-    QData/*63:0*/ __Vdly__top__DOT__if_pc_o;
     VlUnpacked<CData/*0:0*/, 5> __Vm_traceActivity;
 
     // INTERNAL VARIABLES

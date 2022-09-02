@@ -18,6 +18,7 @@ module ysyx_220053_IFU(
     input  id_en_i
 );  
     reg [31:0] instr_read_r;
+    reg dnpc_valid_r;
     //wire [63:0] now_pc, rdata, snpc;
     //assign pc = (block == 1'b1 | dnpc_valid == 1'b0) ? now_pc : valid_dnpc;
     //assign snpc = now_pc + 4;
@@ -26,12 +27,15 @@ module ysyx_220053_IFU(
     assign instr_o = instr_read_r;//(pc[2] == 0) ? rdata[31:0] : rdata[63:32];
    // wire [63:0] valid_dnpc = (dnpc_valid == 1'b0) ? snpc : dnpc;
     wire pcen = ~block & dnpc_valid;
+
     always @(posedge clk)begin
         if(rst) begin
             pc <= 64'h80000000;
+            dnpc_valid_r <= 0;
         end
         else if(pcen) begin
             pc <= dnpc;
+            dnpc_valid_r <= dnpc_valid;
         end
     end
     //ysyx_220053_Reg #(64, 64'h80000000) PC(.clk(clk), .rst(rst), valid_dnpc, pc, pcen);
@@ -45,10 +49,9 @@ module ysyx_220053_IFU(
         if(rst) begin
             cpu_req_valid <= 1'b1;
         end
-        else if(dnpc_valid && cpu_req_valid == 1'b0)begin
+        else if(dnpc_valid_r && cpu_req_valid == 1'b0)
             cpu_req_valid <= 1'b1;
-        end
-        else cpu_req_valid <= 1'b0;
+        else
     end
 
     always @(posedge clk) begin
@@ -60,6 +63,7 @@ module ysyx_220053_IFU(
             inst_valid_o <= 1'b1;
             instr_read_r <= (pc[2]) ? cpu_data_read[63:32] : cpu_data_read[31:0];
         end
+        else if(id_en_i) inst_valid_o <= inst_valid_o;
         else inst_valid_o <= 1'b0;
     end
     ysyx_220053_icache icache(

@@ -22,7 +22,7 @@ module ysyx_220053_ID_Reg(
         if(flush) begin
             valid_r <= 1'b0;
         end
-        else valid_r <= valid_i;
+        else if(enable) valid_r <= valid_i;
     end
     //data_r
     always@(posedge clk) begin
@@ -102,7 +102,7 @@ module ysyx_220053_EX_Reg(
         if(flush)begin
             valid_r <= 1'b0;
         end
-        else valid_r <= valid_i;
+        else if(enable) valid_r <= valid_i;
     end
     //data_r
     always@(posedge clk) begin
@@ -222,7 +222,7 @@ module ysyx_220053_M_Reg(
         if(flush)begin
             valid_r <= 1'b0;
         end
-        else valid_r <= valid_i;
+        else if(enable) valid_r <= valid_i;
     end
     //data_r
     always@(posedge clk) begin
@@ -312,7 +312,7 @@ module ysyx_220053_WB_Reg(
         if(flush)begin
             valid_r <= 1'b0;
         end
-        else valid_r <= valid_i;
+        else if(enable) valid_r <= valid_i;
     end
     //data_r
     always@(posedge clk) begin
