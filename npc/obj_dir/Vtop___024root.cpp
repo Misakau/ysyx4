@@ -326,7 +326,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     }
     __Vdly__top__DOT__inst_valid_o = ((~ (IData)(vlSelf->rst)) 
                                       & ((IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready) 
-                                         | ((IData)(vlSelf->top__DOT__id_en) 
+                                         | ((~ (IData)(vlSelf->top__DOT__id_en)) 
                                             & (IData)(vlSelf->top__DOT__inst_valid_o))));
     if (vlSelf->rst) {
         vlSelf->i_rw_addr_o = 0ULL;
