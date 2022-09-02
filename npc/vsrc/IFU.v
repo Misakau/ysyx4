@@ -62,7 +62,7 @@ module ysyx_220053_IFU(
 */
     always @(posedge clk) begin
         if(rst) begin
-            cache_doing <= 1'b0;
+            cache_doing <= 1'b1;
             instr_read_r <= 0;
         end
         else if(i_cpu_ready) begin

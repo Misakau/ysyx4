@@ -46,6 +46,7 @@ VL_MODULE(Vtop___024root) {
     // LOCAL SIGNALS
     // Anonymous structures to workaround compiler member-count bugs
     struct {
+        CData/*0:0*/ top__DOT__id_valid_i;
         CData/*0:0*/ top__DOT__id_en;
         CData/*0:0*/ top__DOT__id_ALUSrcA_o;
         CData/*0:0*/ top__DOT__id_MemToReg_o;
@@ -109,9 +110,9 @@ VL_MODULE(Vtop___024root) {
         CData/*3:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__op_mul;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_doing;
-        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_ready;
     };
     struct {
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_ready;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_out_valid;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_valid;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__div_doing;
@@ -175,9 +176,9 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__if_pc_o;
         QData/*63:0*/ top__DOT__id_csrres_o;
         QData/*63:0*/ top__DOT__id_busa_o;
-        QData/*63:0*/ top__DOT__id_busb_o;
     };
     struct {
+        QData/*63:0*/ top__DOT__id_busb_o;
         QData/*63:0*/ top__DOT__id_imm_o;
         QData/*63:0*/ top__DOT__m_ALURes_i;
         QData/*63:0*/ top__DOT__m_rfdata_o;
@@ -241,6 +242,8 @@ VL_MODULE(Vtop___024root) {
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram1__DOT__ram;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram2__DOT__ram;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram3__DOT__ram;
+    };
+    struct {
         VlUnpacked<QData/*63:0*/, 32> top__DOT__regfile__DOT__rf;
     };
 
