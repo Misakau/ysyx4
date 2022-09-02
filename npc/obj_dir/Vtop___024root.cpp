@@ -495,7 +495,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         }
     }
     vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid = 
-        ((IData)(vlSelf->rst) | (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r));
+        ((IData)(vlSelf->rst) | ((IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r) 
+                                 & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready))));
     vlSelf->top__DOT__WB_Reg__DOT__valid_r = ((~ (IData)(vlSelf->rst)) 
                                               & (IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r));
     vlSelf->top__DOT__M_Reg__DOT__raddr_r = ((IData)(vlSelf->rst)

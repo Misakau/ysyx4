@@ -163,7 +163,7 @@ module top(
       .instr_o(if_instr_o),
       .dnpc_valid(id_valid_o),
       .block(cpu_halt),
-      .inst_valid_o(inst_valid_o),
+      .if_busy(if_busy),
       .i_rw_addr_o(i_rw_addr_o),
       .i_rw_req_o(i_rw_req_o),
       .i_rw_valid_o(i_rw_valid_o),
@@ -174,9 +174,9 @@ module top(
     assign pc = if_pc_o;
     assign instr = if_instr_o;
     assign cpu_halt = id_Ebreak_o | rst;
-    assign if_block = id_Ebreak_o | rst;
+    assign if_block = id_Ebreak_o | if_busy;
     assign id_en = ~(id_block | ex_block | m_block | wb_block);
-    assign id_valid_i = ~(rst | if_block | cpu_halt) & inst_valid_o;
+    assign id_valid_i = ~(rst | if_block | cpu_halt);
     /////////////////////////////////
     ysyx_220053_ID_Reg ID_Reg(
       .clk(clk),

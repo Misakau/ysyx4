@@ -10,7 +10,7 @@ module ysyx_220053_icache (
     input cpu_req_valid,
     output reg [63:0] cpu_data_read,
     output reg cpu_ready,
-
+    output cache_idle,
     //cache<->memory
     output reg [63:0]   rw_addr_o,
     output reg          rw_req_o,//
@@ -42,7 +42,7 @@ module ysyx_220053_icache (
         if(rst) cur_status <= IDLE;
         else cur_status <= next_status;
     end
-
+    assign cache_idle = (cur_status == IDLE);
     always @(*) begin
         case (cur_status)
             IDLE: begin
