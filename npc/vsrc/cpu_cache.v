@@ -90,15 +90,13 @@ module ysyx_220053_cpu_cache(
     wire [127:0]     d_data_read_o;//finish burst
     wire             d_rw_ready_o;//ready to give data or fetch data
 
-    ysyx_220053_icache icache(clock,reset,
-    //cpu<->cache
-    i_cpu_req_addr,
-    i_cpu_req_rw,
-    i_cpu_req_valid,
-    i_cpu_data_read,
-    i_cpu_ready,
-    i_rw_addr_i, i_rw_req_i,i_rw_valid_i,i_data_read_o,i_rw_ready_o//data_read_i in ram
-);
+    ysyx_220053_icache icache(
+         clock,reset,
+        //cpu<->cache
+         i_cpu_req_addr,i_cpu_req_rw,i_cpu_req_valid,i_cpu_data_read,i_cpu_ready,
+         //cache<->memory
+        i_rw_addr_i, i_rw_req_i,i_rw_valid_i,i_data_read_o,i_rw_ready_o
+    );
 
 wire [127:0] rw_w_data_o;
     ysyx_220053_dcache dcache(
@@ -213,6 +211,5 @@ wire [127:0] rw_w_data_o;
     axi_r_last_i,
     axi_r_id_i,
     axi_r_user_i
-
 );
 endmodule

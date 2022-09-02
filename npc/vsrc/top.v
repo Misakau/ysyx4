@@ -17,7 +17,13 @@ module top(
   output wb_commit,
   output [63:0] wb_pc,
   output [31:0] wb_instr,
-  output [63:0] next_pc
+  output [63:0] next_pc,
+
+  output [63:0] i_rw_addr_o,
+  output i_rw_req_o,
+  output i_rw_valid_o,
+  input  [127:0] i_data_read_i,
+  input  i_rw_ready_i
 );
     our s;
     /////////////wires///////////////
@@ -147,6 +153,8 @@ module top(
       else forward_data2 = 64'b0;
     end
     /////////////IF/////////////////
+    wire inst_valid_o;
+    wire cpu_halt;
     ysyx_220053_IFU my_ifu(
       .clk(clk),
       .rst(rst),
@@ -154,27 +162,20 @@ module top(
       .pc(if_pc_o),
       .instr_o(if_instr_o),
       .dnpc_valid(id_valid_o),
-      .block(if_block)
+      .block(cpu_halt),
+      .inst_valid_o(inst_valid_o),
+      .i_rw_addr_o(i_rw_addr_o),
+      .i_rw_req_o(i_rw_req_o),
+      .i_rw_valid_o(i_rw_valid_o),
+      .i_data_read_i(i_data_read_i),
+      .i_rw_ready_i(i_rw_ready_i)
     );
-    /*
-    always@(posedge clk) begin
-      if(rst) begin
-        running_r <= 1'b0;
-      end
-      else if(ebreak_commit) begin
-        running_r <= 1'b0;
-      end
-
-      else if(running_r == 1'b0)begin
-        running_r <= 1'b1;
-      end
-    end*/
-    //assign running = running_r & ~ebreak_commit;
     assign pc = if_pc_o;
     assign instr = if_instr_o;
-    assign if_block = id_Ebreak_o | rst;//| ~running;
+    assign cpu_halt = id_Ebreak_o | rst;
+    assign if_block = id_Ebreak_o | rst;
     assign id_en = ~(id_block | ex_block | m_block | wb_block);
-    assign id_valid_i = ~(rst | if_block);
+    assign id_valid_i = ~(rst | if_block | cpu_halt) & inst_valid_o;
     /////////////////////////////////
     ysyx_220053_ID_Reg ID_Reg(
       .clk(clk),
