@@ -77,6 +77,7 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__my_ifu__DOT__cpu_req_valid;
         CData/*0:0*/ top__DOT__my_ifu__DOT__old_instr;
         CData/*0:0*/ top__DOT__my_ifu__DOT__cache_doing;
+        CData/*0:0*/ top__DOT__my_ifu__DOT__start;
         CData/*2:0*/ top__DOT__my_ifu__DOT__icache__DOT__cur_status;
         CData/*2:0*/ top__DOT__my_ifu__DOT__icache__DOT__next_status;
         CData/*0:0*/ top__DOT__ID_Reg__DOT__valid_r;
@@ -109,9 +110,9 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__Wctr;
         CData/*3:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__op_mul;
-        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_doing;
     };
     struct {
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_doing;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_ready;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_out_valid;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_valid;
@@ -175,9 +176,9 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__dnpc;
         QData/*63:0*/ top__DOT__if_pc_o;
         QData/*63:0*/ top__DOT__id_csrres_o;
-        QData/*63:0*/ top__DOT__id_busa_o;
     };
     struct {
+        QData/*63:0*/ top__DOT__id_busa_o;
         QData/*63:0*/ top__DOT__id_busb_o;
         QData/*63:0*/ top__DOT__id_imm_o;
         QData/*63:0*/ top__DOT__m_ALURes_i;
@@ -241,9 +242,9 @@ VL_MODULE(Vtop___024root) {
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram0__DOT__ram;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram1__DOT__ram;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram2__DOT__ram;
-        VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram3__DOT__ram;
     };
     struct {
+        VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram3__DOT__ram;
         VlUnpacked<QData/*63:0*/, 32> top__DOT__regfile__DOT__rf;
     };
 

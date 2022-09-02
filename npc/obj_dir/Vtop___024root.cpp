@@ -126,6 +126,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
          & (IData)(vlSelf->top__DOT__is_Csrwen))) {
         vlSelf->top__DOT__csrfile__DOT__mtvec = vlSelf->top__DOT__csrfile__DOT__csrin;
     }
+    vlSelf->top__DOT__my_ifu__DOT__start = vlSelf->rst;
     vlSelf->top__DOT__wb_dnpc = ((IData)(vlSelf->rst)
                                   ? 0ULL : vlSelf->top__DOT__m_dnpc);
     vlSelf->i_rw_valid_o = ((~ (IData)(vlSelf->rst)) 
@@ -173,7 +174,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__my_ifu__DOT__old_instr = 1U;
     }
     if (vlSelf->rst) {
-        vlSelf->top__DOT__my_ifu__DOT__cache_doing = 1U;
+        vlSelf->top__DOT__my_ifu__DOT__cache_doing = 0U;
     } else if (vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready) {
         vlSelf->top__DOT__my_ifu__DOT__cache_doing = 0U;
     } else if (((IData)(vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid) 
@@ -5508,7 +5509,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__ID_Reg__DOT__valid_r = vlSelf->top__DOT__id_valid_i;
     }
     vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid = 
-        ((((IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r) 
+        (((((IData)(vlSelf->top__DOT__my_ifu__DOT__start) 
+            | (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r)) 
            & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__cache_doing))) 
           & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready))) 
          & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__old_instr)));
