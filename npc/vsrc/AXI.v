@@ -121,14 +121,11 @@ module ysyx_220053_axi_rw # (
     input                               axi_r_last_i,
     input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
     input  [AXI_USER_WIDTH-1:0]         axi_r_user_i
-
-    ,output r_valid_o
 );
     wire w_trans    = rw_req_i == 1'b1;//write
     wire r_trans    = rw_req_i == 1'b0;//read
     wire w_valid    = rw_valid_i & w_trans;
     wire r_valid    = rw_valid_i & r_trans;
-    assign r_valid_o = r_valid;
 // handshake
     wire aw_fire      = axi_aw_ready_i & axi_aw_valid_o;
     wire w_fire       = axi_w_ready_i  & axi_w_valid_o;
