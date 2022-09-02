@@ -5962,7 +5962,7 @@ VL_INLINE_OPT void Vtop___024root___settle__TOP__9(Vtop___024root* vlSelf) {
                                                     : vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__respc));
 }
 
-extern const VlUnpacked<CData/*2:0*/, 64> Vtop__ConstPool__TABLE_d8c76d00_0;
+extern const VlUnpacked<CData/*2:0*/, 64> Vtop__ConstPool__TABLE_091dc012_0;
 
 VL_INLINE_OPT void Vtop___024root___combo__TOP__10(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -6011,7 +6011,7 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__10(Vtop___024root* vlSelf) {
                                 << 4U) | (((IData)(vlSelf->i_rw_ready_i) 
                                            << 3U) | (IData)(vlSelf->top__DOT__my_ifu__DOT__icache__DOT__cur_status))));
     vlSelf->top__DOT__my_ifu__DOT__icache__DOT__next_status 
-        = Vtop__ConstPool__TABLE_d8c76d00_0[__Vtableidx1];
+        = Vtop__ConstPool__TABLE_091dc012_0[__Vtableidx1];
 }
 
 VL_INLINE_OPT void Vtop___024root___multiclk__TOP__11(Vtop___024root* vlSelf) {
