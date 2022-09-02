@@ -87,7 +87,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
   else if(raddr == VGACTL_ADDR){
     rd_dev = sdb_top->mem_valid;
     assert(vgactl_port_base);
-    printf("rdata = %x\n",*vgactl_port_base);
+    printf("rd_dev = %d, rdata = %x\n",rd_dev,*vgactl_port_base);
     *rdata = *vgactl_port_base;
   }
   else if(raddr == KBD_ADDR){
