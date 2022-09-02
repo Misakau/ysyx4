@@ -379,7 +379,7 @@ int main(int argc, char**argv, char**env) {
     top->rst = 0;
     START = 1;
     int cnt = 0;
-    
+    int mem_ls = 0;
     if(is_batch){
       #undef ITRACE
       int step = 0;
@@ -391,7 +391,18 @@ int main(int argc, char**argv, char**env) {
             //if(top->clk == 0)top->instr_i = pimem_read(top->pc);
             if(NPC_EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr);
+             if(top->clk == 1 && top->i_rw_valid_o == 1){
+              long long midx = ((sdb_top->i_rw_addr_o - AD_BASE) >> 4) << 1;
+              //printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, midx = %lld\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o,midx);
+              top->i_data_read_i[0] = (uint32_t)MEM[midx];
+              top->i_data_read_i[1] = (uint32_t)(MEM[midx]>>32);
+              top->i_data_read_i[2] = (uint32_t)MEM[midx+1];
+              top->i_data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
+              top->i_rw_ready_i = 1;
+              mem_ls = step;
+            }
             top->eval();
+            if(top->clk == 1 && step == mem_ls + 2) top->i_rw_ready_i = 0;
             #ifdef ITRACE
               char str[128];disassemble(str, 127, sdb_top->pc, (uint8_t*)&instr_now, 4);
               if(sdb_top->clk == 0){
