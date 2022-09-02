@@ -299,6 +299,8 @@ module ysyx_220053_WB_Reg(
 
     ,input  [63:0] dnpc_i,
     output reg [63:0] dnpc_o
+    ,input  dev_i,
+    output reg dev_o
 );
     reg valid_r;
     reg [31:0] instr_r;
@@ -325,6 +327,7 @@ module ysyx_220053_WB_Reg(
             Ebreak_r <= 1'b0;
 
             dnpc_o <= 0;
+            dev_o <= 0;
         end
         else if(enable)begin
             instr_r <= instr_i;
@@ -335,6 +338,7 @@ module ysyx_220053_WB_Reg(
             Ebreak_r <= Ebreak_i;
 
             dnpc_o <= dnpc_i;
+            dev_o <= dev_i;
         end
     end
     assign instr_o = instr_r;

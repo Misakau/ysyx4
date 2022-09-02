@@ -25,7 +25,8 @@ module top(
   input  [127:0] i_data_read_i,
   input  i_rw_ready_i,
   
-  output mem_valid
+  output mem_valid,
+  output reg wb_dev_o
 );
     our s;
     /////////////wires///////////////
@@ -360,6 +361,9 @@ module top(
     assign m_block = 1'b0;
     assign wb_en = ~wb_block;//还未处理阻塞
     assign wb_valid_i = m_valid_o & (~m_block);//还未处理冒险
+
+    wire dev_i = (m_raddr_i[31:28] == 4'ha) && (is_men == 1'b0);
+    wire dev_o;
     assign mem_valid = m_valid_o;
     /////////////////////////////
     ysyx_220053_WB_Reg WB_Reg(
@@ -387,6 +391,8 @@ module top(
 
     ,.dnpc_i(m_dnpc),
       .dnpc_o(wb_dnpc)
+    ,.dev_i(dev_i),
+    .dev_o(dev_o)
     );
     ///////////WB////////////////
     assign wb_block = 1'b0;
@@ -404,6 +410,7 @@ module top(
             wb_pc_r    <= 64'b0;
             wb_instr_r <= 32'b0;
             next_pc_r <= 64'b0;
+            wb_dev_o <= 0;
         end
         else begin
           if(wb_valid_o)begin
@@ -411,12 +418,14 @@ module top(
             wb_pc_r    <= wb_pc_o;
             wb_instr_r <= wb_instr_o;
             next_pc_r <= wb_dnpc;
+            wb_dev_o <= dev_o;
           end
           else begin
             wb_commit_r <= 1'b0;
             wb_pc_r    <= 64'b0;
             wb_instr_r <= 32'b0;
             next_pc_r <= 64'b0;
+            wb_dev_o <= 0;
           end
         end
     end
