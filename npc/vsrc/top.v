@@ -362,7 +362,7 @@ module top(
     assign wb_en = ~wb_block;//还未处理阻塞
     assign wb_valid_i = m_valid_o & (~m_block);//还未处理冒险
 
-    wire dev_i = (m_raddr_i[31:28] == 4'ha) && (is_men == 1'b0);
+    wire dev_i = m_valid_o && (m_raddr_i[31:28] == 4'ha) && (is_men == 1'b0);
     wire dev_o;
     assign mem_valid = m_valid_o;
     /////////////////////////////
