@@ -168,7 +168,8 @@ module top(
       .i_rw_req_o(i_rw_req_o),
       .i_rw_valid_o(i_rw_valid_o),
       .i_data_read_i(i_data_read_i),
-      .i_rw_ready_i(i_rw_ready_i)
+      .i_rw_ready_i(i_rw_ready_i),
+      .id_en_i(id_en)
     );
     assign pc = if_pc_o;
     assign instr = if_instr_o;

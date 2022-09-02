@@ -14,7 +14,8 @@ module ysyx_220053_IFU(
     output i_rw_req_o,
     output i_rw_valid_o,
     input  [127:0] i_data_read_i,
-    input  i_rw_ready_i
+    input  i_rw_ready_i,
+    input  id_en_i
 );  
     reg [31:0] instr_read_r;
     wire [63:0] now_pc, rdata, snpc;
@@ -36,7 +37,7 @@ module ysyx_220053_IFU(
         if(rst) begin
             cpu_req_valid <= 1'b1;
         end
-        else if(dnpc_valid && cpu_req_valid == 1'b0)begin
+        else if(dnpc_valid && cpu_req_valid == 1'b0 && id_en_i)begin
             cpu_req_valid <= 1'b1;
         end
         else cpu_req_valid <= 1'b0;
@@ -51,7 +52,7 @@ module ysyx_220053_IFU(
             inst_valid_o <= 1'b1;
             instr_read_r <= (pc[2]) ? cpu_data_read[63:32] : cpu_data_read[31:0];
         end
-        else inst_valid_o <= 1'b0;
+        else inst_valid_o <= ~id_en_i;
     end
     ysyx_220053_icache icache(
          clk,rst,

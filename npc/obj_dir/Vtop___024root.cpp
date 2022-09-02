@@ -4484,12 +4484,10 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__my_ifu__DOT__instr_read_r = 0U;
     } else if (vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready) {
         vlSelf->top__DOT__my_ifu__DOT__instr_read_r 
-            = (IData)((0x1ffffffffULL & ((1U & (IData)(
-                                                       (vlSelf->top__DOT__if_pc_o 
-                                                        >> 2U)))
-                                          ? (vlSelf->top__DOT__my_ifu__DOT__cpu_data_read 
-                                             >> 0x1fU)
-                                          : (QData)((IData)(vlSelf->top__DOT__my_ifu__DOT__cpu_data_read)))));
+            = ((1U & (IData)((vlSelf->top__DOT__if_pc_o 
+                              >> 2U))) ? (IData)((vlSelf->top__DOT__my_ifu__DOT__cpu_data_read 
+                                                  >> 0x20U))
+                : (IData)(vlSelf->top__DOT__my_ifu__DOT__cpu_data_read));
     }
     if ((0x40U & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) {
         if (VL_LIKELY((0x20U & vlSelf->top__DOT__ID_Reg__DOT__instr_r))) {
