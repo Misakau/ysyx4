@@ -33,7 +33,7 @@ module ysyx_220053_IFU(
     reg [63:0] cpu_data_read_r;
     always @(posedge clk) begin
         if(rst) begin
-            cpu_req_valid <= 1'b0;
+            cpu_req_valid <= 1'b1;
         end
         else if(dnpc_valid && cpu_req_valid == 1'b0)begin
             cpu_req_valid <= 1'b1;
