@@ -153,7 +153,7 @@ module top(
       else forward_data2 = 64'b0;
     end
     /////////////IF/////////////////
-    wire inst_valid_o;
+    wire if_busy;
     wire cpu_halt;
     ysyx_220053_IFU my_ifu(
       .clk(clk),

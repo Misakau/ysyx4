@@ -38,7 +38,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     // Variables
     CData/*4:0*/ __Vtableidx4;
     CData/*2:0*/ __Vtableidx5;
-    CData/*0:0*/ __Vdly__top__DOT__inst_valid_o;
     CData/*0:0*/ __Vdlyvset__top__DOT__my_ifu__DOT__icache__DOT__V__v0;
     CData/*7:0*/ __Vdlyvdim0__top__DOT__my_ifu__DOT__icache__DOT__V__v256;
     CData/*0:0*/ __Vdlyvset__top__DOT__my_ifu__DOT__icache__DOT__V__v256;
@@ -83,7 +82,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         = vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__cnt;
     __Vdly__top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt 
         = vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt;
-    __Vdly__top__DOT__inst_valid_o = vlSelf->top__DOT__inst_valid_o;
     __Vdly__top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
         = vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U];
     __Vdly__top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[1U] 
@@ -153,10 +151,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         __Vdly__top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt 
             = (0x7fU & ((IData)(1U) + (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__cnt)));
     }
-    __Vdly__top__DOT__inst_valid_o = ((~ (IData)(vlSelf->rst)) 
-                                      & ((IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready) 
-                                         | ((~ (IData)(vlSelf->top__DOT__id_en)) 
-                                            & (IData)(vlSelf->top__DOT__inst_valid_o))));
     if (vlSelf->rst) {
         vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_doing = 0U;
     } else if (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_out_valid) {
@@ -172,6 +166,14 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     } else if (((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__div_valid) 
                 & (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__ready_r))) {
         vlSelf->top__DOT__my_exu__DOT__alu64__DOT__div_doing = 1U;
+    }
+    if (vlSelf->rst) {
+        vlSelf->top__DOT__my_ifu__DOT__cache_doing = 0U;
+    } else if (vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready) {
+        vlSelf->top__DOT__my_ifu__DOT__cache_doing = 0U;
+    } else if (((IData)(vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid) 
+                & (0U == (IData)(vlSelf->top__DOT__my_ifu__DOT__icache__DOT__cur_status)))) {
+        vlSelf->top__DOT__my_ifu__DOT__cache_doing = 1U;
     }
     if (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__ready_to_doing) {
         __Vdly__top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r[0U] 
@@ -494,9 +496,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                    & vlSelf->top__DOT__if_pc_o);
         }
     }
-    vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid = 
-        ((IData)(vlSelf->rst) | ((IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r) 
-                                 & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready))));
     vlSelf->top__DOT__WB_Reg__DOT__valid_r = ((~ (IData)(vlSelf->rst)) 
                                               & (IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r));
     vlSelf->top__DOT__M_Reg__DOT__raddr_r = ((IData)(vlSelf->rst)
@@ -4498,9 +4497,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     }
     Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit(vlSelf->top__DOT__my_ifu__DOT__instr_read_r);
     vlSelf->instr = vlSelf->top__DOT__my_ifu__DOT__instr_read_r;
-    vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready = ((~ (IData)(vlSelf->rst)) 
-                                                  & (3U 
-                                                     == (IData)(vlSelf->top__DOT__my_ifu__DOT__icache__DOT__cur_status)));
     if (vlSelf->rst) {
         vlSelf->top__DOT__my_ifu__DOT__cpu_data_read = 0ULL;
     } else if ((3U == (IData)(vlSelf->top__DOT__my_ifu__DOT__icache__DOT__cur_status))) {
@@ -4596,8 +4592,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         = vlSelf->top__DOT__my_ifu__DOT__icache__DOT____Vcellout__ram3__Q[2U];
     vlSelf->top__DOT__my_ifu__DOT__icache__DOT__line_o[3U][3U] 
         = vlSelf->top__DOT__my_ifu__DOT__icache__DOT____Vcellout__ram3__Q[3U];
-    vlSelf->top__DOT__my_ifu__DOT__icache__DOT__cur_status 
-        = ((IData)(vlSelf->rst) ? 0U : (IData)(vlSelf->top__DOT__my_ifu__DOT__icache__DOT__next_status));
     if (vlSelf->rst) {
         vlSelf->top__DOT__if_pc_o = 0x80000000ULL;
     } else if (((~ (IData)(vlSelf->top__DOT__cpu_halt)) 
@@ -4609,14 +4603,14 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     if (vlSelf->rst) {
         vlSelf->top__DOT__ID_Reg__DOT__valid_r = 0U;
     } else if (vlSelf->top__DOT__id_en) {
-        vlSelf->top__DOT__ID_Reg__DOT__valid_r = ((~ 
-                                                   (((IData)(vlSelf->rst) 
-                                                     | ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
-                                                        | (IData)(vlSelf->rst))) 
-                                                    | (IData)(vlSelf->top__DOT__cpu_halt))) 
-                                                  & (IData)(vlSelf->top__DOT__inst_valid_o));
+        vlSelf->top__DOT__ID_Reg__DOT__valid_r = (1U 
+                                                  & (~ 
+                                                     (((IData)(vlSelf->rst) 
+                                                       | ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
+                                                          | ((~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready)) 
+                                                             & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__old_instr))))) 
+                                                      | (IData)(vlSelf->top__DOT__cpu_halt))));
     }
-    vlSelf->top__DOT__inst_valid_o = __Vdly__top__DOT__inst_valid_o;
     if ((0x40U & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) {
         if (VL_LIKELY((0x20U & vlSelf->top__DOT__ID_Reg__DOT__instr_r))) {
             if ((0x10U & vlSelf->top__DOT__ID_Reg__DOT__instr_r)) {
@@ -5417,6 +5411,12 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
     // Variables
     CData/*4:0*/ __Vtableidx2;
     // Body
+    if (((IData)(vlSelf->rst) | (IData)(vlSelf->top__DOT__id_en))) {
+        vlSelf->top__DOT__my_ifu__DOT__old_instr = 0U;
+    } else if (((IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready) 
+                & (~ (IData)(vlSelf->top__DOT__id_en)))) {
+        vlSelf->top__DOT__my_ifu__DOT__old_instr = 1U;
+    }
     vlSelf->top__DOT__id_imm_o = ((0U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))
                                    ? (((- (QData)((IData)(
                                                           (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
@@ -5564,6 +5564,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
                                                (0x1fU 
                                                 & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
                                                    >> 0x14U))))));
+    vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready = ((~ (IData)(vlSelf->rst)) 
+                                                  & (3U 
+                                                     == (IData)(vlSelf->top__DOT__my_ifu__DOT__icache__DOT__cur_status)));
     vlSelf->top__DOT__id_csrres_o = ((0x300U == (IData)(vlSelf->top__DOT__id_CsrId))
                                       ? vlSelf->top__DOT__csrfile__DOT__mstatus
                                       : ((0x305U == (IData)(vlSelf->top__DOT__id_CsrId))
@@ -5583,6 +5586,12 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
                                   & (3U == (0x7fU & vlSelf->top__DOT__EX_Reg__DOT__instr_r)));
     vlSelf->top__DOT__id_en = (1U & (~ ((IData)(vlSelf->top__DOT__load_use) 
                                         | (IData)(vlSelf->top__DOT__alu_busy))));
+    vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid = 
+        (1U & (((~ (IData)(vlSelf->top__DOT__my_ifu__DOT__cache_doing)) 
+                & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready))) 
+               & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__old_instr))));
+    vlSelf->top__DOT__my_ifu__DOT__icache__DOT__cur_status 
+        = ((IData)(vlSelf->rst) ? 0U : (IData)(vlSelf->top__DOT__my_ifu__DOT__icache__DOT__next_status));
 }
 
 VL_INLINE_OPT void Vtop___024root___sequent__TOP__4(Vtop___024root* vlSelf) {
@@ -5932,6 +5941,11 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__10(Vtop___024root* vlSelf) {
     // Variables
     CData/*5:0*/ __Vtableidx1;
     // Body
+    vlSelf->top__DOT__is_Csrwen = (((~ (IData)(vlSelf->rst)) 
+                                    & (IData)(vlSelf->top__DOT__id_Csrwen)) 
+                                   & (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r));
+    vlSelf->top__DOT__cpu_halt = ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
+                                  | (IData)(vlSelf->rst));
     vlSelf->top__DOT__my_ifu__DOT__icache__DOT__line_wen[0U] 
         = (1U & (~ (((0U == (3U & (IData)((vlSelf->top__DOT__if_pc_o 
                                            >> 0xaU)))) 
@@ -5968,11 +5982,6 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__10(Vtop___024root* vlSelf) {
                                            << 3U) | (IData)(vlSelf->top__DOT__my_ifu__DOT__icache__DOT__cur_status))));
     vlSelf->top__DOT__my_ifu__DOT__icache__DOT__next_status 
         = Vtop__ConstPool__TABLE_d8c76d00_0[__Vtableidx1];
-    vlSelf->top__DOT__is_Csrwen = (((~ (IData)(vlSelf->rst)) 
-                                    & (IData)(vlSelf->top__DOT__id_Csrwen)) 
-                                   & (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r));
-    vlSelf->top__DOT__cpu_halt = ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
-                                  | (IData)(vlSelf->rst));
 }
 
 VL_INLINE_OPT void Vtop___024root___multiclk__TOP__11(Vtop___024root* vlSelf) {
