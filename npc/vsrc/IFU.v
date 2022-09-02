@@ -21,7 +21,7 @@ module ysyx_220053_IFU(
     assign snpc = now_pc + 4;
     //always@(*) begin  pmem_read(pc, rdata, 4); end
     always@(*) begin get_instr(instr_o); end
-    assign instr_o = (pc[2] == 0) ? rdata[31:0] : rdata[63:32];
+    assign instr_o = instr_read_r;//(pc[2] == 0) ? rdata[31:0] : rdata[63:32];
     wire [63:0] valid_dnpc = (dnpc_valid == 1'b0) ? snpc : dnpc;
     wire pcen = ~block & dnpc_valid;
     ysyx_220053_Reg #(64, 64'h80000000) PC(.clk(clk), .rst(rst), valid_dnpc, now_pc, pcen);
@@ -30,7 +30,7 @@ module ysyx_220053_IFU(
     wire i_cpu_ready;
     reg cpu_req_valid;
     wire [63:0] cpu_data_read;
-    reg [63:0] cpu_data_read_r;
+    reg [31:0] instr_read_r;
     always @(posedge clk) begin
         if(rst) begin
             cpu_req_valid <= 1'b1;
@@ -47,7 +47,7 @@ module ysyx_220053_IFU(
         end
         else if(i_cpu_ready)begin
             inst_valid_o <= 1'b1;
-            cpu_data_read_r <= cpu_data_read;
+            instr_read_r <= (pc[2]) ? cpu_data_read[63:31] : cpu_data_read[31:0];
         end
         else inst_valid_o <= 1'b0;
     end
