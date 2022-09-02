@@ -248,7 +248,7 @@ void set_batch_mode(){
 static uint64_t tot_instr = 0;
 static void sdb_mainloop();
 static bool is_diff = false;
-static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/div-riscv64-npc.bin";
+static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv64-npc.bin";
 //static char lgp[] = "/home/wang/log1.txt";
 //";pathi;//
 static char* image_file = pathi;
@@ -507,6 +507,7 @@ static void npc_exec(uint64_t n){
                 if(log_ptr) fprintf(log_ptr, "wb_commit: pc = 0x%016lx, instr = %08x\n", sdb_top->wb_pc, sdb_top->wb_instr);
               } 
             #endif
+            printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, i_rw_req_o = %x\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o, sdb_top->i_rw_req_o);
             sdb_top->eval();
 
             if(sdb_top->clk == 0 && sdb_top->wb_commit == 1){

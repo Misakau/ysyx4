@@ -73,8 +73,8 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__is_Csrwen;
         CData/*0:0*/ top__DOT__alu_busy;
         CData/*0:0*/ top__DOT__wb_commit_r;
-        CData/*0:0*/ top__DOT__my_ifu__DOT__cpu_req_valid;
         CData/*0:0*/ top__DOT__my_ifu__DOT__i_cpu_ready;
+        CData/*0:0*/ top__DOT__my_ifu__DOT__cpu_req_valid;
         CData/*2:0*/ top__DOT__my_ifu__DOT__icache__DOT__cur_status;
         CData/*2:0*/ top__DOT__my_ifu__DOT__icache__DOT__next_status;
         CData/*0:0*/ top__DOT__ID_Reg__DOT__valid_r;

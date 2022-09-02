@@ -212,9 +212,9 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
             tracep->chgQData(oldp+110,(vlSelf->top__DOT__my_ifu__DOT__now_pc),64);
             tracep->chgQData(oldp+112,(vlSelf->top__DOT__my_ifu__DOT__cpu_data_read_r),64);
             tracep->chgQData(oldp+114,((4ULL + vlSelf->top__DOT__my_ifu__DOT__now_pc)),64);
-            tracep->chgBit(oldp+116,(vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid));
-            tracep->chgQData(oldp+117,(vlSelf->top__DOT__my_ifu__DOT__cpu_data_read),64);
-            tracep->chgBit(oldp+119,(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready));
+            tracep->chgBit(oldp+116,(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready));
+            tracep->chgBit(oldp+117,(vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid));
+            tracep->chgQData(oldp+118,(vlSelf->top__DOT__my_ifu__DOT__cpu_data_read),64);
             tracep->chgCData(oldp+120,(vlSelf->top__DOT__my_ifu__DOT__icache__DOT__cur_status),3);
             tracep->chgWData(oldp+121,(vlSelf->top__DOT__my_ifu__DOT__icache__DOT__line_o[0]),128);
             tracep->chgWData(oldp+125,(vlSelf->top__DOT__my_ifu__DOT__icache__DOT__line_o[1]),128);
