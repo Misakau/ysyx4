@@ -8,7 +8,7 @@ module ysyx_220053_IFU(
     input [63:0] dnpc,
     output [63:0] pc,
     output [31:0] instr_o,
-    output inst_valid_o,
+    output reg inst_valid_o,
     
     output [63:0] i_rw_addr_o,
     output i_rw_req_o,
@@ -28,7 +28,6 @@ module ysyx_220053_IFU(
     //未取到：取指令
     //取到了：不取
 
-    reg inst_valid_o;
     reg cpu_req_valid;
     wire [63:0] cpu_data_read;
     reg [63:0] cpu_data_read_r;
