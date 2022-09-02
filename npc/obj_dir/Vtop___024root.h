@@ -36,6 +36,7 @@ VL_MODULE(Vtop___024root) {
     VL_OUT8(i_rw_valid_o,0,0);
     VL_IN8(i_rw_ready_i,0,0);
     VL_OUT8(mem_valid,0,0);
+    VL_OUT8(wb_dev_o,0,0);
     VL_OUT(instr,31,0);
     VL_OUT(wb_instr,31,0);
     VL_INW(i_data_read_i,127,0,4);
@@ -72,6 +73,7 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__cpu_halt;
         CData/*0:0*/ top__DOT__is_Csrwen;
         CData/*0:0*/ top__DOT__alu_busy;
+        CData/*0:0*/ top__DOT__dev_o;
         CData/*0:0*/ top__DOT__wb_commit_r;
         CData/*0:0*/ top__DOT__my_ifu__DOT__old_instr;
         CData/*0:0*/ top__DOT__my_ifu__DOT__cache_doing;
@@ -110,9 +112,9 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__Wctr;
         CData/*3:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__op_mul;
-        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_doing;
     };
     struct {
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_doing;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_ready;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_out_valid;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_valid;
@@ -176,9 +178,9 @@ VL_MODULE(Vtop___024root) {
         IData/*31:0*/ top__DOT__WB_Reg__DOT__instr_r;
         QData/*63:0*/ top__DOT__dnpc;
         QData/*63:0*/ top__DOT__if_pc_o;
-        QData/*63:0*/ top__DOT__id_csrres_o;
     };
     struct {
+        QData/*63:0*/ top__DOT__id_csrres_o;
         QData/*63:0*/ top__DOT__id_busa_o;
         QData/*63:0*/ top__DOT__id_busb_o;
         QData/*63:0*/ top__DOT__id_imm_o;
@@ -242,9 +244,9 @@ VL_MODULE(Vtop___024root) {
         VlUnpacked<CData/*0:0*/, 4> top__DOT__my_ifu__DOT__icache__DOT__line_wen;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram0__DOT__ram;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram1__DOT__ram;
-        VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram2__DOT__ram;
     };
     struct {
+        VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram2__DOT__ram;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram3__DOT__ram;
         VlUnpacked<QData/*63:0*/, 32> top__DOT__regfile__DOT__rf;
     };
