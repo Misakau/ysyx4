@@ -18,13 +18,13 @@ module ysyx_220053_IFU(
     input  id_en_i
 );  
     reg [31:0] instr_read_r;
-    wire [63:0] now_pc, rdata, snpc;
+    //wire [63:0] now_pc, rdata, snpc;
     //assign pc = (block == 1'b1 | dnpc_valid == 1'b0) ? now_pc : valid_dnpc;
-    assign snpc = now_pc + 4;
+    //assign snpc = now_pc + 4;
     //always@(*) begin  pmem_read(pc, rdata, 4); end
     always@(*) begin get_instr(instr_o); end
     assign instr_o = instr_read_r;//(pc[2] == 0) ? rdata[31:0] : rdata[63:32];
-    wire [63:0] valid_dnpc = (dnpc_valid == 1'b0) ? snpc : dnpc;
+   // wire [63:0] valid_dnpc = (dnpc_valid == 1'b0) ? snpc : dnpc;
     wire pcen = ~block & dnpc_valid;
     always @(posedge clk)begin
         if(rst) begin

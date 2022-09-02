@@ -184,7 +184,6 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__next_pc_r;
         QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
         QData/*63:0*/ top__DOT__my_ifu__DOT__rdata;
-        QData/*63:0*/ top__DOT__my_ifu__DOT__valid_dnpc;
         QData/*63:0*/ top__DOT__my_ifu__DOT__cpu_data_read;
         QData/*63:0*/ top__DOT__ID_Reg__DOT__pc_r;
         QData/*63:0*/ top__DOT__my_idu__DOT__alu_inA;
@@ -249,6 +248,7 @@ VL_MODULE(Vtop___024root) {
     VlWide<4>/*127:0*/ top__DOT__my_ifu__DOT__icache__DOT____Vcellout__ram2__Q;
     VlWide<4>/*127:0*/ top__DOT__my_ifu__DOT__icache__DOT____Vcellout__ram3__Q;
     QData/*63:0*/ __Vtask_pmem_read__2__rdata;
+    QData/*63:0*/ __Vdly__top__DOT__if_pc_o;
     VlUnpacked<CData/*0:0*/, 5> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
