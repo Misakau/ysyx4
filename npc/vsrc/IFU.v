@@ -61,7 +61,7 @@ module ysyx_220053_IFU(
     end
 */
     reg start;
-    always @([posedge clk)begin
+    always @(posedge clk)begin
         if(rst) begin
             start <= 1'b1;
         end
