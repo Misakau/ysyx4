@@ -63,7 +63,7 @@ module ysyx_220053_IFU(
             inst_valid_o <= 1'b1;
             instr_read_r <= (pc[2]) ? cpu_data_read[63:32] : cpu_data_read[31:0];
         end
-        else if(id_en_i) inst_valid_o <= inst_valid_o;
+        else if(~id_en_i) inst_valid_o <= inst_valid_o;
         else inst_valid_o <= 1'b0;
     end
     ysyx_220053_icache icache(
