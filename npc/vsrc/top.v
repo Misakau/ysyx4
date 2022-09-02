@@ -23,7 +23,9 @@ module top(
   output i_rw_req_o,
   output i_rw_valid_o,
   input  [127:0] i_data_read_i,
-  input  i_rw_ready_i
+  input  i_rw_ready_i,
+  
+  output mem_valid
 );
     our s;
     /////////////wires///////////////
@@ -358,6 +360,7 @@ module top(
     assign m_block = 1'b0;
     assign wb_en = ~wb_block;//还未处理阻塞
     assign wb_valid_i = m_valid_o & (~m_block);//还未处理冒险
+    assign mem_valid = m_valid_o;
     /////////////////////////////
     ysyx_220053_WB_Reg WB_Reg(
 //control

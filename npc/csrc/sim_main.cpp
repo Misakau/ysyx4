@@ -435,7 +435,7 @@ int main(int argc, char**argv, char**env) {
                   }
                   difftest_regcpy(&nemu, 0);
                 }
-                commit_dev = rd_dev;
+                commit_dev = rd_dev && top->mem_valid;
                 if(rd_dev == true) rd_dev = false;
                 if(top->next_pc != nemu.pc){
                   printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, top->next_pc, top->wb_pc);
