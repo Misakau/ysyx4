@@ -51,7 +51,7 @@ module ysyx_220053_IFU(
         end
         else if(dnpc_valid_r && cpu_req_valid == 1'b0)
             cpu_req_valid <= 1'b1;
-        else
+        else cpu_req_valid <= 1'b0;
     end
 
     always @(posedge clk) begin
