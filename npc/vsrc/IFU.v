@@ -27,7 +27,7 @@ module ysyx_220053_IFU(
     ysyx_220053_Reg #(64, 64'h80000000) PC(.clk(clk), .rst(rst), valid_dnpc, now_pc, pcen);
     //未取到：取指令
     //取到了：不取
-    wire i_cpu_ready
+    wire i_cpu_ready;
     reg cpu_req_valid;
     wire [63:0] cpu_data_read;
     reg [63:0] cpu_data_read_r;
