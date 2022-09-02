@@ -517,7 +517,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                                      & (IData)(vlSelf->top__DOT__is_Csrwen))
                                                      ? vlSelf->top__DOT__csrfile__DOT__csrin
                                                      : 0xa00001800ULL)));
-    if (vlSelf->top__DOT__id_Ecall) {
+    if (VL_UNLIKELY(vlSelf->top__DOT__id_Ecall)) {
+        VL_WRITEF("%20#\n",64,vlSelf->top__DOT__ID_Reg__DOT__pc_r);
         vlSelf->top__DOT__csrfile__DOT__mepc = vlSelf->top__DOT__ID_Reg__DOT__pc_r;
     } else if (((0x341U == (IData)(vlSelf->top__DOT__id_CsrId)) 
                 & (IData)(vlSelf->top__DOT__is_Csrwen))) {
