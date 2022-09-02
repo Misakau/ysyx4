@@ -18,7 +18,6 @@ module ysyx_220053_IFU(
     input  id_en_i
 );  
     reg [31:0] instr_read_r;
-    reg dnpc_valid_r;
     //wire [63:0] now_pc, rdata, snpc;
     //assign pc = (block == 1'b1 | dnpc_valid == 1'b0) ? now_pc : valid_dnpc;
     //assign snpc = now_pc + 4;
@@ -31,11 +30,9 @@ module ysyx_220053_IFU(
     always @(posedge clk)begin
         if(rst) begin
             pc <= 64'h80000000;
-            dnpc_valid_r <= 0;
         end
         else if(pcen) begin
             pc <= dnpc;
-            dnpc_valid_r <= dnpc_valid;
         end
     end
     //ysyx_220053_Reg #(64, 64'h80000000) PC(.clk(clk), .rst(rst), valid_dnpc, pc, pcen);
@@ -49,7 +46,7 @@ module ysyx_220053_IFU(
         if(rst) begin
             cpu_req_valid <= 1'b1;
         end
-        else if(dnpc_valid_r) cpu_req_valid <= 1'b1;
+        else if(dnpc_valid) cpu_req_valid <= 1'b1;
         else cpu_req_valid <= 1'b0;
     end
 
