@@ -49,7 +49,7 @@ module ysyx_220053_IFU(
         end
         else if(i_cpu_ready)begin
             inst_valid_o <= 1'b1;
-            instr_read_r <= (pc[2]) ? cpu_data_read[63:31] : cpu_data_read[31:0];
+            instr_read_r <= (pc[2]) ? cpu_data_read[63:32] : cpu_data_read[31:0];
         end
         else inst_valid_o <= 1'b0;
     end

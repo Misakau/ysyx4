@@ -151,8 +151,8 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__WB_Reg__DOT__Ebreak_r;
         SData/*11:0*/ top__DOT__id_CsrId;
         SData/*15:0*/ top__DOT__my_mu__DOT__mem__DOT__datah;
-        IData/*31:0*/ top__DOT__if_instr_o;
         IData/*31:0*/ top__DOT__wb_instr_r;
+        IData/*31:0*/ top__DOT__my_ifu__DOT__instr_read_r;
         IData/*31:0*/ top__DOT__my_ifu__DOT__icache__DOT__i;
         IData/*31:0*/ top__DOT__ID_Reg__DOT__instr_r;
         IData/*31:0*/ top__DOT__EX_Reg__DOT__instr_r;
@@ -183,9 +183,9 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__wb_pc_r;
         QData/*63:0*/ top__DOT__next_pc_r;
         QData/*63:0*/ top__DOT__my_ifu__DOT__now_pc;
+        QData/*63:0*/ top__DOT__my_ifu__DOT__rdata;
         QData/*63:0*/ top__DOT__my_ifu__DOT__valid_dnpc;
         QData/*63:0*/ top__DOT__my_ifu__DOT__cpu_data_read;
-        QData/*63:0*/ top__DOT__my_ifu__DOT__cpu_data_read_r;
         QData/*63:0*/ top__DOT__ID_Reg__DOT__pc_r;
         QData/*63:0*/ top__DOT__my_idu__DOT__alu_inA;
         QData/*63:0*/ top__DOT__my_idu__DOT__na_alu__DOT__adderres;

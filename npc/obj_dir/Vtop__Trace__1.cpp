@@ -7,7 +7,7 @@
 void Vtop___024root__traceChgSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode + 2345);
+    vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode + 2343);
     if (false && oldp) {}  // Prevent unused
     // Body
     {
