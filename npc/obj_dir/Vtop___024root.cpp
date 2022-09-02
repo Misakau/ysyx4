@@ -4479,9 +4479,13 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                              (0x1fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))
             : ((IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA) 
                >> (0x1fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB))));
-    vlSelf->top__DOT__inst_valid_o = (1U & ((~ (IData)(vlSelf->rst)) 
-                                            & ((IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready) 
-                                               | (~ (IData)(vlSelf->top__DOT__id_en)))));
+    if (vlSelf->rst) {
+        vlSelf->top__DOT__inst_valid_o = 0U;
+    } else if (vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready) {
+        vlSelf->top__DOT__inst_valid_o = 1U;
+    } else if (vlSelf->top__DOT__id_en) {
+        vlSelf->top__DOT__inst_valid_o = 0U;
+    }
     if (vlSelf->rst) {
         vlSelf->top__DOT__my_ifu__DOT__instr_read_r = 0U;
     } else if (vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready) {
