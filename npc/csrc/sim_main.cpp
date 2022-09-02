@@ -430,7 +430,7 @@ int main(int argc, char**argv, char**env) {
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(top->wb_dev_o == true){
-                  printf("a5 = %lx\n",cpu_gpr[15]);
+                  //printf("a5 = %lx\n",cpu_gpr[15]);
                   for(int i = 1; i < 32; i++){
                     nemu.gpr[i] = cpu_gpr[i];
                   }
