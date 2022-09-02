@@ -18,13 +18,14 @@ module ysyx_220053_IFU(
     input  id_en_i
 );  
     wire cache_idle;
+    reg old_instr, cache_doing;
     reg [31:0] instr_read_r;
     //wire [63:0] now_pc, rdata, snpc;
     //assign pc = (block == 1'b1 | dnpc_valid == 1'b0) ? now_pc : valid_dnpc;
     //assign snpc = now_pc + 4;
     //always@(*) begin  pmem_read(pc, rdata, 4); end
     always@(*) begin get_instr(instr_o); end
-    assign instr_o = instr_read_r;//(pc[2] == 0) ? rdata[31:0] : rdata[63:32];
+    assign instr_o = (id_en_i && old_instr) ? instr_read_r : ((pc[2]) ? cpu_data_read[63:32] : cpu_data_read[31:0]);//(pc[2] == 0) ? rdata[31:0] : rdata[63:32];
    // wire [63:0] valid_dnpc = (dnpc_valid == 1'b0) ? snpc : dnpc;
     wire pcen = ~block & dnpc_valid;
 
@@ -41,7 +42,6 @@ module ysyx_220053_IFU(
     //取到了：不取
     wire i_cpu_ready;
     wire cpu_req_valid;
-    reg old_instr, cache_doing;
     wire [63:0] cpu_data_read;
     always @(posedge clk) begin
         if (rst || id_en_i) begin

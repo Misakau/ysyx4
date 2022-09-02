@@ -4100,10 +4100,9 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullBit(oldp+21,(vlSelf->top__DOT__ID_Reg__DOT__valid_r));
         tracep->fullBit(oldp+22,(vlSelf->top__DOT__EX_Reg__DOT__valid_r));
         tracep->fullBit(oldp+23,(vlSelf->top__DOT__WB_Reg__DOT__valid_r));
-        tracep->fullBit(oldp+24,(((IData)(vlSelf->top__DOT__id_Ebreak_o) 
-                                  | (((IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r) 
-                                      & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready))) 
-                                     & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__old_instr))))));
+        tracep->fullBit(oldp+24,((1U & ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
+                                        | ((~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready)) 
+                                           & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__old_instr)))))));
         tracep->fullBit(oldp+25,(vlSelf->top__DOT__load_use));
         tracep->fullBit(oldp+26,(vlSelf->top__DOT__alu_busy));
         tracep->fullQData(oldp+27,(vlSelf->top__DOT__id_csrres_o),64);
@@ -4247,9 +4246,8 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
                                                  == (IData)(vlSelf->top__DOT__WB_Reg__DOT__waddr_r)))
                                               ? vlSelf->top__DOT__WB_Reg__DOT__wdata_r
                                               : 0ULL)))),64);
-        tracep->fullBit(oldp+114,((((IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r) 
-                                    & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready))) 
-                                   & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__old_instr)))));
+        tracep->fullBit(oldp+114,((1U & ((~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready)) 
+                                         & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__old_instr))))));
         tracep->fullQData(oldp+115,(vlSelf->top__DOT__ex_dnpc),64);
         tracep->fullQData(oldp+117,(vlSelf->top__DOT__m_dnpc),64);
         tracep->fullQData(oldp+119,(vlSelf->top__DOT__wb_dnpc),64);
