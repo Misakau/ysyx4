@@ -185,6 +185,7 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBit(c+2651,"top my_ifu i_rw_valid_o", false,-1);
         tracep->declArray(c+2652,"top my_ifu i_data_read_i", false,-1, 127,0);
         tracep->declBit(c+2656,"top my_ifu i_rw_ready_i", false,-1);
+        tracep->declBit(c+17,"top my_ifu id_en_i", false,-1);
         tracep->declBus(c+1,"top my_ifu instr_read_r", false,-1, 31,0);
         tracep->declQuad(c+112,"top my_ifu now_pc", false,-1, 63,0);
         tracep->declQuad(c+2676,"top my_ifu rdata", false,-1, 63,0);

@@ -520,8 +520,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__my_ifu__DOT__now_pc = vlSelf->top__DOT__my_ifu__DOT__valid_dnpc;
     }
     vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid = 
-        ((IData)(vlSelf->rst) | ((IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r) 
-                                 & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid))));
+        ((IData)(vlSelf->rst) | (((IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r) 
+                                  & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid))) 
+                                 & (IData)(vlSelf->top__DOT__id_en)));
     vlSelf->top__DOT__WB_Reg__DOT__valid_r = ((~ (IData)(vlSelf->rst)) 
                                               & (IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r));
     vlSelf->top__DOT__M_Reg__DOT__raddr_r = ((IData)(vlSelf->rst)
@@ -4478,8 +4479,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                              (0x1fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB)))
             : ((IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA) 
                >> (0x1fU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inB))));
-    vlSelf->top__DOT__inst_valid_o = ((~ (IData)(vlSelf->rst)) 
-                                      & (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready));
+    vlSelf->top__DOT__inst_valid_o = (1U & ((~ (IData)(vlSelf->rst)) 
+                                            & ((IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready) 
+                                               | (~ (IData)(vlSelf->top__DOT__id_en)))));
     if (vlSelf->rst) {
         vlSelf->top__DOT__my_ifu__DOT__instr_read_r = 0U;
     } else if (vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready) {
