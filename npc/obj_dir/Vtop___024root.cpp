@@ -173,7 +173,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__my_ifu__DOT__old_instr = 1U;
     }
     if (vlSelf->rst) {
-        vlSelf->top__DOT__my_ifu__DOT__cache_doing = 0U;
+        vlSelf->top__DOT__my_ifu__DOT__cache_doing = 1U;
     } else if (vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready) {
         vlSelf->top__DOT__my_ifu__DOT__cache_doing = 0U;
     } else if (((IData)(vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid) 
