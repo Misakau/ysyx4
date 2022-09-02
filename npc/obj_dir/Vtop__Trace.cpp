@@ -213,11 +213,11 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                                     == (IData)(vlSelf->top__DOT__WB_Reg__DOT__waddr_r)))
                                                  ? vlSelf->top__DOT__WB_Reg__DOT__wdata_r
                                                  : 0ULL)))),64);
-            tracep->chgQData(oldp+113,(vlSelf->top__DOT__ex_dnpc),64);
-            tracep->chgQData(oldp+115,(vlSelf->top__DOT__m_dnpc),64);
-            tracep->chgQData(oldp+117,(vlSelf->top__DOT__wb_dnpc),64);
-            tracep->chgBit(oldp+119,((1U & ((~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready)) 
+            tracep->chgBit(oldp+113,((1U & ((~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready)) 
                                             & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__old_instr))))));
+            tracep->chgQData(oldp+114,(vlSelf->top__DOT__ex_dnpc),64);
+            tracep->chgQData(oldp+116,(vlSelf->top__DOT__m_dnpc),64);
+            tracep->chgQData(oldp+118,(vlSelf->top__DOT__wb_dnpc),64);
             tracep->chgBit(oldp+120,((0U == (IData)(vlSelf->top__DOT__my_ifu__DOT__icache__DOT__cur_status))));
             tracep->chgBit(oldp+121,(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready));
             tracep->chgBit(oldp+122,(vlSelf->top__DOT__my_ifu__DOT__cpu_req_valid));

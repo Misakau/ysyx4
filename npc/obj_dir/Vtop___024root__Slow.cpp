@@ -5064,7 +5064,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__id_m_hazard = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__id_wb_hazard = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__load_use = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__inst_valid_o = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__cpu_halt = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__ex_dnpc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__m_dnpc = VL_RAND_RESET_Q(64);
