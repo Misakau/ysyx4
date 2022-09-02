@@ -34,6 +34,7 @@ module ysyx_220053_CSR(
     always@(posedge clk) begin
         if(Ecall == 1'b1) begin
             mepc <= epc_in;
+            $display(epc_in);
         end
         else if(CsrId == 12'h341 && Csrwen == 1'b1) begin
             mepc <= csrin;
