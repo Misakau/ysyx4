@@ -73,8 +73,6 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__is_Csrwen;
         CData/*0:0*/ top__DOT__alu_busy;
         CData/*0:0*/ top__DOT__wb_commit_r;
-        CData/*0:0*/ top__DOT__my_ifu__DOT__dnpc_valid_r;
-        CData/*0:0*/ top__DOT__my_ifu__DOT__pcen;
         CData/*0:0*/ top__DOT__my_ifu__DOT__i_cpu_ready;
         CData/*0:0*/ top__DOT__my_ifu__DOT__cpu_req_valid;
         CData/*2:0*/ top__DOT__my_ifu__DOT__icache__DOT__cur_status;
@@ -110,10 +108,10 @@ VL_MODULE(Vtop___024root) {
         CData/*3:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__op_mul;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_doing;
-    };
-    struct {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_ready;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_out_valid;
+    };
+    struct {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_valid;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__div_doing;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__div_valid;
@@ -176,10 +174,10 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__if_pc_o;
         QData/*63:0*/ top__DOT__id_csrres_o;
         QData/*63:0*/ top__DOT__id_busa_o;
-    };
-    struct {
         QData/*63:0*/ top__DOT__id_busb_o;
         QData/*63:0*/ top__DOT__id_imm_o;
+    };
+    struct {
         QData/*63:0*/ top__DOT__m_ALURes_i;
         QData/*63:0*/ top__DOT__m_rfdata_o;
         QData/*63:0*/ top__DOT__ex_dnpc;
@@ -242,8 +240,6 @@ VL_MODULE(Vtop___024root) {
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram1__DOT__ram;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram2__DOT__ram;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram3__DOT__ram;
-    };
-    struct {
         VlUnpacked<QData/*63:0*/, 32> top__DOT__regfile__DOT__rf;
     };
 

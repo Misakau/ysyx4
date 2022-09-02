@@ -46,7 +46,7 @@ module ysyx_220053_IFU(
         if(rst) begin
             cpu_req_valid <= 1'b1;
         end
-        else if(dnpc_valid) cpu_req_valid <= 1'b1;
+        else if(dnpc_valid && i_cpu_ready == 0) cpu_req_valid <= 1'b1;
         else cpu_req_valid <= 1'b0;
     end
 
