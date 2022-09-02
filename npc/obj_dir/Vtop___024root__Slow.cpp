@@ -3972,6 +3972,8 @@ void Vtop___024root___settle__TOP__6(Vtop___024root* vlSelf) {
         = Vtop__ConstPool__TABLE_6fbd8736_0[__Vtableidx2];
     vlSelf->top__DOT__cpu_halt = ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
                                   | (IData)(vlSelf->rst));
+    vlSelf->top__DOT____Vcellinp__csrfile__Ecall = 
+        ((IData)(vlSelf->top__DOT__id_Ecall) & (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r));
     vlSelf->top__DOT__id_use_rd = ((IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r) 
                                    & (~ ((((((0x37U 
                                               == (0x7fU 
@@ -5090,6 +5092,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__wb_pc_r = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__wb_instr_r = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__next_pc_r = VL_RAND_RESET_Q(64);
+    vlSelf->top__DOT____Vcellinp__csrfile__Ecall = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_ifu__DOT__old_instr = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_ifu__DOT__cache_doing = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_ifu__DOT__instr_read_r = VL_RAND_RESET_I(32);

@@ -252,6 +252,7 @@ VL_MODULE(Vtop___024root) {
     };
 
     // LOCAL VARIABLES
+    CData/*0:0*/ top__DOT____Vcellinp__csrfile__Ecall;
     CData/*0:0*/ __Vclklast__TOP__clk;
     VlWide<4>/*127:0*/ top__DOT__my_ifu__DOT__icache__DOT____Vcellout__ram0__Q;
     VlWide<4>/*127:0*/ top__DOT__my_ifu__DOT__icache__DOT____Vcellout__ram1__Q;

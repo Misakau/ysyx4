@@ -59,8 +59,8 @@ module ysyx_220053_icache (
                 end
                 else next_status = Allocate;
             end
-            Readin: next_status = RETN;
-            RETN: next_status = IDLE;
+            Readin: next_status = IDLE;//RETN;
+            //RETN: next_status = IDLE;
             default: next_status = IDLE;
         endcase
     end
