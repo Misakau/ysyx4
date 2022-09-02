@@ -564,9 +564,11 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__M_Reg__DOT__MemOp_r = vlSelf->top__DOT__EX_Reg__DOT__MemOp_r;
     }
     vlSelf->top__DOT__dev_o = ((~ (IData)(vlSelf->rst)) 
-                               & ((0xaU == (0xfU & (IData)(
-                                                           (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
-                                                            >> 0x1cU)))) 
+                               & (((IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r) 
+                                   & (0xaU == (0xfU 
+                                               & (IData)(
+                                                         (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
+                                                          >> 0x1cU))))) 
                                   & (~ (((IData)(vlSelf->top__DOT__M_Reg__DOT__MemWen_r) 
                                          & (~ (IData)(vlSelf->rst))) 
                                         & (IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r)))));
