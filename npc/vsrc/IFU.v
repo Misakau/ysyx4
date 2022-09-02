@@ -81,7 +81,7 @@ module ysyx_220053_IFU(
         end
     end
     assign cpu_req_valid = start | (!cache_doing && !i_cpu_ready && !old_instr);
-    assign if_busy = !i_cpu_ready && !old_instr);
+    assign if_busy = (!i_cpu_ready && !old_instr);
 /*
     always @(posedge clk) begin
         if(rst) begin
