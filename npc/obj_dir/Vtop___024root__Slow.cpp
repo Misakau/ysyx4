@@ -930,6 +930,7 @@ void Vtop___024root___settle__TOP__6(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__calculate_done 
         = ((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__running_r) 
            & (0x40U == (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__cnt)));
+    vlSelf->mem_valid = vlSelf->top__DOT__M_Reg__DOT__valid_r;
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__done_to_ready 
         = vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mul_out_valid;
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__done_to_ready 
@@ -5044,6 +5045,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->i_rw_valid_o = VL_RAND_RESET_I(1);
     VL_RAND_RESET_W(128, vlSelf->i_data_read_i);
     vlSelf->i_rw_ready_i = VL_RAND_RESET_I(1);
+    vlSelf->mem_valid = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__if_instr_o = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__dnpc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__if_pc_o = VL_RAND_RESET_Q(64);

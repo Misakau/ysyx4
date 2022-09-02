@@ -26,7 +26,7 @@ bool NPC_EXIT = 0;
 static bool START = 0;
 static FILE* log_ptr = NULL;
 uint64_t st_time = 0;//start time
-
+static Vtop* sdb_top = NULL;
 bool npc_done = false;
 static unsigned int instr_now = 0;
 extern "C" void c_trap(const svBit done){
@@ -79,19 +79,19 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
   //printf("ENTRY R\n");
   //assert(raddr & 0x7 == 0);
   if(raddr == RTC_ADDR){
-    rd_dev = 1;
+    rd_dev = sdb_top->mem_valid;
     *rdata = get_time() - st_time;
    // printf("now time = %lld\n",(long long)*rdata);
    // printf("%llx\n",*rdata - st_time);
   }
   else if(raddr == VGACTL_ADDR){
-    rd_dev = 1;
+    rd_dev = sdb_top->mem_valid;
     assert(vgactl_port_base);
     printf("rdata = %x\n",*vgactl_port_base);
     *rdata = *vgactl_port_base;
   }
   else if(raddr == KBD_ADDR){
-    rd_dev = 1;
+    rd_dev = sdb_top->mem_valid;
     assert(i8042_data_port_base);
     //printf("i8042_data_port_base[0] = %x\n",i8042_data_port_base[0]);
     i8042_data_io_handler(0, 4, false);
@@ -240,7 +240,7 @@ typedef struct {
 /*                        sdb                          */
 /////////////////////////////////////////////////////////
 static VerilatedContext* sdb_contextp = NULL;
-static Vtop* sdb_top = NULL;
+
 
 static bool is_batch = false;
 void set_batch_mode(){
@@ -435,7 +435,7 @@ int main(int argc, char**argv, char**env) {
                   }
                   difftest_regcpy(&nemu, 0);
                 }
-                commit_dev = rd_dev && top->mem_valid;
+                commit_dev = rd_dev;
                 if(rd_dev == true) rd_dev = false;
                 if(top->next_pc != nemu.pc){
                   printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, top->next_pc, top->wb_pc);

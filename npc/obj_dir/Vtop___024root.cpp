@@ -3858,6 +3858,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     } else if ((1U & (~ (IData)(vlSelf->top__DOT__alu_busy)))) {
         vlSelf->top__DOT__EX_Reg__DOT__wen_r = vlSelf->top__DOT__id_wen_o;
     }
+    vlSelf->mem_valid = vlSelf->top__DOT__M_Reg__DOT__valid_r;
     if (vlSelf->rst) {
         vlSelf->top__DOT__EX_Reg__DOT__valid_r = 0U;
     } else if ((1U & (~ (IData)(vlSelf->top__DOT__alu_busy)))) {
