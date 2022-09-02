@@ -19,6 +19,11 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     , wb_pc{vlSymsp->TOP.wb_pc}
     , wb_instr{vlSymsp->TOP.wb_instr}
     , next_pc{vlSymsp->TOP.next_pc}
+    , i_rw_addr_o{vlSymsp->TOP.i_rw_addr_o}
+    , i_rw_req_o{vlSymsp->TOP.i_rw_req_o}
+    , i_rw_valid_o{vlSymsp->TOP.i_rw_valid_o}
+    , i_data_read_i{vlSymsp->TOP.i_data_read_i}
+    , i_rw_ready_i{vlSymsp->TOP.i_rw_ready_i}
     , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
     , __PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low}
     , __PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high}
