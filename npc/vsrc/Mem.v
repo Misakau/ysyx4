@@ -39,13 +39,13 @@ module ysyx_220053_Mem(
     wire [63:0] cpu_data_read;
     reg cache_doing;
     reg [63:0] dataout_read_r;
-    
+
     always @(posedge clk) begin
         if(rst) begin
             cache_doing <= 1'b0;
             dataout_read_r <= 0;
         end
-        else if(i_cpu_ready) begin
+        else if(d_cpu_ready) begin
             cache_doing <= 1'b0;
             dataout_read_r <= cpu_data_read;
         end
