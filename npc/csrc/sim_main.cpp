@@ -382,7 +382,7 @@ int main(int argc, char**argv, char**env) {
     top->rst = 0;
     START = 1;
     int cnt = 0;
-    int mem_ls = 0;
+    int imem_ls = 0,dmem_ls = 0;
     if(is_batch){
       #undef ITRACE
       int step = 0;
@@ -402,10 +402,27 @@ int main(int argc, char**argv, char**env) {
               top->i_data_read_i[2] = (uint32_t)MEM[midx+1];
               top->i_data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
               top->i_rw_ready_i = 1;
-              mem_ls = step;
+              imem_ls = step;
+            }
+            if(top->clk == 1 && top->d_rw_valid_o == 1){
+              long long midx = ((top->d_rw_addr_o - AD_BASE) >> 4) << 1;
+              //printf("d_rw_req = %d, d_rw_valid_o = %x, d_rw_addr_o = %lx, midx = %lld\n",sdb_top->d_rw_req_o, sdb_top->d_rw_valid_o,sdb_top->d_rw_addr_o,midx);
+              if(top->d_rw_req_o == 0){
+                top->d_data_read_i[0] = (uint32_t)MEM[midx];
+                top->d_data_read_i[1] = (uint32_t)(MEM[midx]>>32);
+                top->d_data_read_i[2] = (uint32_t)MEM[midx+1];
+                top->d_data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
+              }
+              else{
+                MEM[midx] = top->d_data_read_i[0] | (uint64_t)top->d_data_read_i[1] << 32;
+                MEM[midx + 1] = top->d_data_read_i[2] | (uint64_t)top->d_data_read_i[3] << 32;
+              }
+              top->d_rw_ready_i = 1;
+              dmem_ls = step;
             }
             top->eval();
-            if(top->clk == 1 && step == mem_ls + 2) top->i_rw_ready_i = 0;
+            if(top->clk == 1 && step == imem_ls + 2) top->i_rw_ready_i = 0;
+            if(top->clk == 1 && step == dmem_ls + 2) top->d_rw_ready_i = 0;
             #ifdef ITRACE
               char str[128];disassemble(str, 127, sdb_top->pc, (uint8_t*)&instr_now, 4);
               if(sdb_top->clk == 0){
