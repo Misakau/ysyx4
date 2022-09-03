@@ -37,7 +37,7 @@ module top(
   output           rw_valid_o,
   output [127:0]   rw_w_data_o,
   input  [127:0]   data_read_i,//finish burst
-  input            rw_ready_i//data_read_i in ram
+  input            rw_ready_i,//data_read_i in ram
   output mem_valid,
   output reg wb_dev_o
 );
