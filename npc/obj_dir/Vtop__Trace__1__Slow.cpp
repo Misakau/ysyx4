@@ -11,14 +11,6 @@ void Vtop___024root__traceFullSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep)
     if (false && oldp) {}  // Prevent unused
     // Body
     {
-        tracep->fullBit(oldp+2415,((1U & (((IData)(
-                                                   (vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__SrcA 
-                                                    >> 0x1aU)) 
-                                           ^ (IData)(
-                                                     (vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__SrcB 
-                                                      >> 0x1aU))) 
-                                          ^ ((IData)(vlSymsp->TOP__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                                             >> 1U)))));
         tracep->fullBit(oldp+2416,((1U & (((IData)(
                                                    (vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__SrcA 
                                                     >> 0x1aU)) 
@@ -1244,43 +1236,38 @@ void Vtop___024root__traceFullSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullBit(oldp+2770,(vlSelf->wb_dev_o));
         tracep->fullBit(oldp+2771,((1U & (~ (((IData)(vlSelf->rst) 
                                               | ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
-                                                 | ((~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready)) 
-                                                    & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__old_instr))))) 
+                                                 | (IData)(vlSelf->top__DOT__if_busy))) 
                                              | (IData)(vlSelf->top__DOT__cpu_halt))))));
         tracep->fullBit(oldp+2772,((((~ (IData)(vlSelf->rst)) 
                                      & (IData)(vlSelf->top__DOT__WB_Reg__DOT__wen_r)) 
                                     & (IData)(vlSelf->top__DOT__WB_Reg__DOT__valid_r))));
-        tracep->fullBit(oldp+2773,(((IData)(vlSelf->top__DOT__arbiter__DOT__cur_status)
-                                     ? ((IData)(vlSelf->top__DOT__arbiter__DOT__cur_status) 
-                                        & (~ (IData)(vlSelf->rw_ready_i)))
-                                     : ((IData)(vlSelf->top__DOT__d_rw_valid_o) 
-                                        | (IData)(vlSelf->top__DOT__i_rw_valid_o)))));
-        tracep->fullQData(oldp+2774,(vlSelf->top__DOT__dnpc),64);
-        tracep->fullBit(oldp+2776,(1U));
-        tracep->fullBit(oldp+2777,(0U));
-        tracep->fullQData(oldp+2778,(vlSelf->top__DOT__m_ALURes_i),64);
-        tracep->fullBit(oldp+2780,(vlSelf->top__DOT__running_r));
-        tracep->fullBit(oldp+2781,(vlSelf->top__DOT__running));
-        tracep->fullIData(oldp+2782,(0x100U),32);
-        tracep->fullCData(oldp+2783,(0U),3);
-        tracep->fullCData(oldp+2784,(1U),3);
-        tracep->fullCData(oldp+2785,(2U),3);
-        tracep->fullCData(oldp+2786,(3U),3);
-        tracep->fullCData(oldp+2787,(4U),3);
-        tracep->fullIData(oldp+2788,(0x80U),32);
-        tracep->fullIData(oldp+2789,(0x40U),32);
-        tracep->fullIData(oldp+2790,(6U),32);
-        tracep->fullIData(oldp+2791,(0U),32);
-        tracep->fullIData(oldp+2792,(1U),32);
-        tracep->fullIData(oldp+2793,(2U),32);
-        tracep->fullIData(oldp+2794,(3U),32);
-        tracep->fullIData(oldp+2795,(4U),32);
-        tracep->fullIData(oldp+2796,(5U),32);
-        tracep->fullCData(oldp+2797,(5U),3);
-        tracep->fullCData(oldp+2798,(6U),3);
-        tracep->fullCData(oldp+2799,(7U),3);
-        tracep->fullIData(oldp+2800,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__j),32);
-        tracep->fullBit(oldp+2801,(0U));
-        tracep->fullBit(oldp+2802,(1U));
+        tracep->fullQData(oldp+2773,(vlSelf->top__DOT__dnpc),64);
+        tracep->fullBit(oldp+2775,(1U));
+        tracep->fullBit(oldp+2776,(0U));
+        tracep->fullQData(oldp+2777,(vlSelf->top__DOT__m_ALURes_i),64);
+        tracep->fullBit(oldp+2779,(vlSelf->top__DOT__running_r));
+        tracep->fullBit(oldp+2780,(vlSelf->top__DOT__running));
+        tracep->fullIData(oldp+2781,(0x100U),32);
+        tracep->fullCData(oldp+2782,(0U),3);
+        tracep->fullCData(oldp+2783,(1U),3);
+        tracep->fullCData(oldp+2784,(2U),3);
+        tracep->fullCData(oldp+2785,(3U),3);
+        tracep->fullCData(oldp+2786,(4U),3);
+        tracep->fullIData(oldp+2787,(0x80U),32);
+        tracep->fullIData(oldp+2788,(0x40U),32);
+        tracep->fullIData(oldp+2789,(6U),32);
+        tracep->fullIData(oldp+2790,(0U),32);
+        tracep->fullIData(oldp+2791,(1U),32);
+        tracep->fullIData(oldp+2792,(2U),32);
+        tracep->fullIData(oldp+2793,(3U),32);
+        tracep->fullIData(oldp+2794,(4U),32);
+        tracep->fullIData(oldp+2795,(5U),32);
+        tracep->fullCData(oldp+2796,(5U),3);
+        tracep->fullCData(oldp+2797,(6U),3);
+        tracep->fullCData(oldp+2798,(7U),3);
+        tracep->fullIData(oldp+2799,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__j),32);
+        tracep->fullCData(oldp+2800,(0U),2);
+        tracep->fullCData(oldp+2801,(1U),2);
+        tracep->fullCData(oldp+2802,(2U),2);
     }
 }

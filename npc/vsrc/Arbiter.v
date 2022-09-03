@@ -67,9 +67,9 @@ module ysyx_220053_arbiter(
                 d_rw_ready_o = rw_ready_i;
             end
             ICACHE: begin
-                rw_addr_o   <= i_rw_addr_i;
-                rw_req_o    <= i_rw_req_i;
-                rw_valid_o  <= i_rw_valid_i;
+                rw_addr_o    = i_rw_addr_i;
+                rw_req_o     = i_rw_req_i;
+                rw_valid_o   = i_rw_valid_i;
                 i_rw_ready_o = rw_ready_i;
                 d_rw_ready_o = 1'b0;
             end

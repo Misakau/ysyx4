@@ -1310,17 +1310,11 @@ void Vtop___024root__traceChgSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
         tracep->chgBit(oldp+358,(vlSelf->wb_dev_o));
         tracep->chgBit(oldp+359,((1U & (~ (((IData)(vlSelf->rst) 
                                             | ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
-                                               | ((~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready)) 
-                                                  & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__old_instr))))) 
+                                               | (IData)(vlSelf->top__DOT__if_busy))) 
                                            | (IData)(vlSelf->top__DOT__cpu_halt))))));
         tracep->chgBit(oldp+360,((((~ (IData)(vlSelf->rst)) 
                                    & (IData)(vlSelf->top__DOT__WB_Reg__DOT__wen_r)) 
                                   & (IData)(vlSelf->top__DOT__WB_Reg__DOT__valid_r))));
-        tracep->chgBit(oldp+361,(((IData)(vlSelf->top__DOT__arbiter__DOT__cur_status)
-                                   ? ((IData)(vlSelf->top__DOT__arbiter__DOT__cur_status) 
-                                      & (~ (IData)(vlSelf->rw_ready_i)))
-                                   : ((IData)(vlSelf->top__DOT__d_rw_valid_o) 
-                                      | (IData)(vlSelf->top__DOT__i_rw_valid_o)))));
     }
 }
 
