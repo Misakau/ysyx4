@@ -538,7 +538,7 @@ static void npc_exec(uint64_t n){
             if(sdb_top->clk == 1 && sdb_top->d_rw_valid_o == 1){
               long long midx = ((sdb_top->d_rw_addr_o - AD_BASE) >> 4) << 1;
               printf("d_rw_req = %d, d_rw_valid_o = %x, d_rw_addr_o = %lx, midx = %lld\n",sdb_top->d_rw_req_o, sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o,midx);
-              return 0;
+              return;
               sdb_top->d_data_read_i[0] = (uint32_t)MEM[midx];
               sdb_top->d_data_read_i[1] = (uint32_t)(MEM[midx]>>32);
               sdb_top->d_data_read_i[2] = (uint32_t)MEM[midx+1];
