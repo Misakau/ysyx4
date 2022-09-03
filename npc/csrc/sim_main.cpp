@@ -415,8 +415,8 @@ int main(int argc, char**argv, char**env) {
                 top->d_data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
               }
               else{
-                MEM[midx] = top->d_data_read_i[0] | (uint64_t)top->d_data_read_i[1] << 32;
-                MEM[midx + 1] = top->d_data_read_i[2] | (uint64_t)top->d_data_read_i[3] << 32;
+                MEM[midx] = top->d_rw_w_data_o[0] | (uint64_t)top->d_rw_w_data_o[1] << 32;
+                MEM[midx + 1] = top->d_rw_w_data_o[2] | (uint64_t)top->d_rw_w_data_o[3] << 32;
               }
               top->d_rw_ready_i = 1;
               dmem_ls = step;
