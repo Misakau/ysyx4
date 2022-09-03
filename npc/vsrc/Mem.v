@@ -39,6 +39,8 @@ module ysyx_220053_Mem(
     wire [63:0] cpu_data_read;
     reg cache_doing;
 
+    wire vis_dev = raddr[31:28] == 4'ha;
+
     always @(posedge clk) begin
         if(rst) begin
             cache_doing <= 1'b0;
@@ -50,8 +52,8 @@ module ysyx_220053_Mem(
             cache_doing <= 1'b1;
         end
     end
-    assign cpu_req_valid = (!cache_doing && !d_cpu_ready && vis_mem);
-    assign m_busy = (!d_cpu_ready && vis_mem);
+    assign cpu_req_valid = (!cache_doing && !d_cpu_ready && vis_mem && !vis_dev);
+    assign m_busy = (!d_cpu_ready && vis_mem && !vis_dev);
 
     ysyx_220053_dcache dcache(
       clk,rst,
@@ -62,14 +64,13 @@ module ysyx_220053_Mem(
     );
 
     assign dataout = cpu_data_read;
-/*
     always @(*) begin
-        pmem_read(raddr, dataout, bytes); 
+        if(vis_dev) pmem_read(raddr, dataout, bytes); 
     end
     always @(posedge clk) begin
-        if(MemWen == 1'b1) pmem_write(raddr, datain, wmask);
+        if(vis_dev && MemWen == 1'b1) pmem_write(raddr, datain, wmask);
     end
-*/
+
     //write
     always@(*) begin
         case(MemOp[1:0])
