@@ -3861,6 +3861,10 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
         Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->top__DOT__M_Reg__DOT__raddr_r, vlSelf->__Vtask_pmem_read__2__rdata, (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__bytes));
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
             = vlSelf->__Vtask_pmem_read__2__rdata;
+    } else {
+        Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->top__DOT__M_Reg__DOT__raddr_r, vlSelf->__Vtask_pmem_read__3__rdata, (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__bytes));
+        vlSelf->top__DOT__my_mu__DOT__mem__DOT__tmp 
+            = vlSelf->__Vtask_pmem_read__3__rdata;
     }
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__op_mul 
         = (IData)((7U == (0xfU & (IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__OPctr))));
@@ -5442,6 +5446,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__d_cpu_ready = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__cpu_data_read = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__cache_doing = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__my_mu__DOT__mem__DOT__tmp = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__datad = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataw = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__datah = VL_RAND_RESET_I(16);
@@ -5501,6 +5506,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__csrfile__DOT__mstatus = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__csrfile__DOT__mscratch = VL_RAND_RESET_Q(64);
     vlSelf->__Vtask_pmem_read__2__rdata = 0;
+    vlSelf->__Vtask_pmem_read__3__rdata = 0;
     for (int __Vi0=0; __Vi0<3; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
     }

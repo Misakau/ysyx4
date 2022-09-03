@@ -252,6 +252,7 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__cpu_data_read;
     };
     struct {
+        QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__tmp;
         QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__datad;
         QData/*63:0*/ top__DOT__WB_Reg__DOT__pc_r;
         QData/*63:0*/ top__DOT__WB_Reg__DOT__wdata_r;
@@ -293,6 +294,7 @@ VL_MODULE(Vtop___024root) {
     VlWide<4>/*127:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT____Vcellout__ram2__Q;
     VlWide<4>/*127:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT____Vcellout__ram3__Q;
     QData/*63:0*/ __Vtask_pmem_read__2__rdata;
+    QData/*63:0*/ __Vtask_pmem_read__3__rdata;
     VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
 
     // INTERNAL VARIABLES

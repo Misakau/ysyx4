@@ -62,11 +62,10 @@ module ysyx_220053_Mem(
     //cache<->memory
       d_rw_addr_o,d_rw_req_o,d_rw_valid_o,d_rw_w_data_o,d_data_read_i,d_rw_ready_i
     );
-    wire [63:0] tmp;
-    assign dataout = cpu_data_read;
+    wire [63:0] dev_dataout;
+    assign dataout = (vis_dev) ? dev_dataout : cpu_data_read;
     always @(*) begin
-        if(vis_dev) pmem_read(raddr, dataout, bytes);
-        else pmem_read(raddr, tmp, bytes);
+        pmem_read(raddr, dev_dataout, bytes);
     end
     always @(posedge clk) begin
         if(vis_dev && MemWen == 1'b1) pmem_write(raddr, datain, wmask);

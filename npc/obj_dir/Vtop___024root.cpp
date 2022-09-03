@@ -4668,6 +4668,10 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
         Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->top__DOT__M_Reg__DOT__raddr_r, vlSelf->__Vtask_pmem_read__2__rdata, (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__bytes));
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
             = vlSelf->__Vtask_pmem_read__2__rdata;
+    } else {
+        Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(vlSelf->top__DOT__M_Reg__DOT__raddr_r, vlSelf->__Vtask_pmem_read__3__rdata, (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__bytes));
+        vlSelf->top__DOT__my_mu__DOT__mem__DOT__tmp 
+            = vlSelf->__Vtask_pmem_read__3__rdata;
     }
     vlSelf->mem_valid = vlSelf->top__DOT__M_Reg__DOT__valid_r;
     if (vlSelf->rst) {
