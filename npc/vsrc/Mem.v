@@ -54,7 +54,7 @@ module ysyx_220053_Mem(
         end
     end
     assign cpu_req_valid = (!cache_doing && !d_cpu_ready && vis_mem);
-    assign m_busy = (!d_cpu_ready);
+    assign m_busy = (!d_cpu_ready && vis_mem);
 
     ysyx_220053_dcache dcache(
       clk,rst,
