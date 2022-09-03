@@ -19,17 +19,12 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     , wb_pc{vlSymsp->TOP.wb_pc}
     , wb_instr{vlSymsp->TOP.wb_instr}
     , next_pc{vlSymsp->TOP.next_pc}
-    , i_rw_addr_o{vlSymsp->TOP.i_rw_addr_o}
-    , i_rw_req_o{vlSymsp->TOP.i_rw_req_o}
-    , i_rw_valid_o{vlSymsp->TOP.i_rw_valid_o}
-    , i_data_read_i{vlSymsp->TOP.i_data_read_i}
-    , i_rw_ready_i{vlSymsp->TOP.i_rw_ready_i}
-    , d_rw_addr_o{vlSymsp->TOP.d_rw_addr_o}
-    , d_rw_req_o{vlSymsp->TOP.d_rw_req_o}
-    , d_rw_valid_o{vlSymsp->TOP.d_rw_valid_o}
-    , d_rw_w_data_o{vlSymsp->TOP.d_rw_w_data_o}
-    , d_data_read_i{vlSymsp->TOP.d_data_read_i}
-    , d_rw_ready_i{vlSymsp->TOP.d_rw_ready_i}
+    , rw_addr_o{vlSymsp->TOP.rw_addr_o}
+    , rw_req_o{vlSymsp->TOP.rw_req_o}
+    , rw_valid_o{vlSymsp->TOP.rw_valid_o}
+    , rw_w_data_o{vlSymsp->TOP.rw_w_data_o}
+    , data_read_i{vlSymsp->TOP.data_read_i}
+    , rw_ready_i{vlSymsp->TOP.rw_ready_i}
     , mem_valid{vlSymsp->TOP.mem_valid}
     , wb_dev_o{vlSymsp->TOP.wb_dev_o}
     , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
