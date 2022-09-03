@@ -608,7 +608,7 @@ static void npc_exec(uint64_t n){
             sdb_top->eval();
             //if(sdb_top->clk == 1 && i == imem_ls + 2) sdb_top->i_rw_ready_i = 0;
             //if(sdb_top->clk == 1 && i == dmem_ls + 2) sdb_top->d_rw_ready_i = 0;
-            if(sdb_top->clk == 1 && i == mem_ls + 1) sdb_top->rw_ready_i = 0;
+            if(sdb_top->clk == 1 && i == mem_ls + 2) sdb_top->rw_ready_i = 0;
             //printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, i_rw_req_o = %x\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o, sdb_top->i_rw_req_o);
             //NPC_EXIT = 1;break;
             if(sdb_top->clk == 0 && sdb_top->wb_commit == 1){
