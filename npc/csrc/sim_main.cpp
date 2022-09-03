@@ -586,7 +586,7 @@ static void npc_exec(uint64_t n){
               sdb_top->d_rw_ready_i = 1;
               dmem_ls = i;
             }*/
-            if(i == 530) printf("rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
+            if(i == 530) printf("i == 530, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
 
             if(sdb_top->clk == 1 && sdb_top->rw_valid_o == 1){
               long long midx = (sdb_top->rw_addr_o - AD_BASE) >> 3;
