@@ -172,8 +172,8 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__WB_Reg__DOT__wen_r;
         CData/*4:0*/ top__DOT__WB_Reg__DOT__waddr_r;
         CData/*0:0*/ top__DOT__WB_Reg__DOT__Ebreak_r;
-        CData/*0:0*/ top__DOT__arbiter__DOT__cur_status;
-        CData/*0:0*/ top__DOT__arbiter__DOT__next_status;
+        CData/*1:0*/ top__DOT__arbiter__DOT__cur_status;
+        CData/*1:0*/ top__DOT__arbiter__DOT__next_status;
         SData/*11:0*/ top__DOT__id_CsrId;
         SData/*15:0*/ top__DOT__my_mu__DOT__mem__DOT__datah;
         VlWide<4>/*127:0*/ top__DOT__d_rw_w_data_o;
