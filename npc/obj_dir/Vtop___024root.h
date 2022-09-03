@@ -249,10 +249,9 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__M_Reg__DOT__Csrres_r;
         QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__datain;
         QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__cpu_data_read;
-        QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__dataout_read_r;
+        QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__datad;
     };
     struct {
-        QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__datad;
         QData/*63:0*/ top__DOT__WB_Reg__DOT__pc_r;
         QData/*63:0*/ top__DOT__WB_Reg__DOT__wdata_r;
         QData/*63:0*/ top__DOT__csrfile__DOT__csrin;
