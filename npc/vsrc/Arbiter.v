@@ -32,7 +32,7 @@ module ysyx_220053_arbiter(
 );  
     //wire cache_valid =  d_rw_valid_i || i_rw_valid_i;
     parameter [1:0] IDLE = 2'b00, ICACHE = 2'b01, DCACHE = 2'b10;
-    reg cur_status, next_status;
+    reg [1:0] cur_status, next_status;
     always @(posedge clk) begin
         if(rst) cur_status <= IDLE;
         else cur_status <= next_status;
