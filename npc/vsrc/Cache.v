@@ -214,11 +214,11 @@ module ysyx_220053_dcache (
             end
             WriteBack: begin
                 if(rw_ready_i) begin
-                    next_status = Readout;
+                    next_status = Allocate;
                 end
                 else next_status = WriteBack;
             end
-            Readout: next_status = Allocate;
+            //Readout: next_status = Allocate;
             Writein: next_status = IDLE;//RETN
             //RETN: next_status = IDLE;
             default: next_status = IDLE;
@@ -338,7 +338,7 @@ module ysyx_220053_dcache (
                 tag[cpu_index] <= cpu_tag;
             end
         end
-        else if(cur_status == Readout) begin
+        else if(cur_status == WriteBack) begin
             if(!rw_ready_i) begin
                 rw_addr_o <= {tag[cpu_index],cpu_index,4'b0000};
                 rw_req_o  <= 1'b1;
