@@ -23,7 +23,7 @@ module ysyx_220053_MU(
     wire req_rw  = ~MemToReg;
     wire [63:0] mdata, regsin;
     ysyx_220053_Mem mem(.clk(~clk), .MemOp(MemOp), .raddr(raddr), .MemWen(MemWen),.req_rw(req_rw), .wdata(wdata), .rdata(mdata), .vis_mem(vis_mem)
-        .m_busy(m_busy), .d_rw_addr_o(d_rw_addr_o), .d_rw_req_o(d_rw_req_o), .d_rw_valid_o(d_rw_valid_o), .d_rw_w_data_o(d_rw_w_data_o),
+        ,.m_busy(m_busy), .d_rw_addr_o(d_rw_addr_o), .d_rw_req_o(d_rw_req_o), .d_rw_valid_o(d_rw_valid_o), .d_rw_w_data_o(d_rw_w_data_o),
         .d_data_read_i(d_data_read_i), .d_rw_ready_i(d_rw_ready_i)
     );//M
     
