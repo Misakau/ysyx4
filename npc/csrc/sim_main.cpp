@@ -79,7 +79,7 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
   //printf("ENTRY R\n");
   //assert(raddr & 0x7 == 0);
   if(raddr == RTC_ADDR){
-    printf("read rtc\n");
+    //printf("read rtc\n");
     rd_dev = sdb_top->mem_valid;
     *rdata = get_time() - st_time;
    // printf("now time = %lld\n",(long long)*rdata);
