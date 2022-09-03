@@ -1957,7 +1957,7 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declQuad(c+748,"top my_mu mem cpu_data_read", false,-1, 63,0);
         tracep->declBit(c+750,"top my_mu mem cache_doing", false,-1);
         tracep->declBit(c+751,"top my_mu mem vis_dev", false,-1);
-        tracep->declQuad(c+752,"top my_mu mem tmp", false,-1, 63,0);
+        tracep->declQuad(c+752,"top my_mu mem dev_dataout", false,-1, 63,0);
         tracep->declQuad(c+754,"top my_mu mem datad", false,-1, 63,0);
         tracep->declBus(c+756,"top my_mu mem dataw", false,-1, 31,0);
         tracep->declBus(c+757,"top my_mu mem datah", false,-1, 15,0);
@@ -7749,7 +7749,7 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullBit(oldp+751,((0xaU == (0xfU & (IData)(
                                                            (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
                                                             >> 0x1cU))))));
-        tracep->fullQData(oldp+752,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__tmp),64);
+        tracep->fullQData(oldp+752,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dev_dataout),64);
         tracep->fullQData(oldp+754,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datad),64);
         tracep->fullIData(oldp+756,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataw),32);
         tracep->fullSData(oldp+757,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datah),16);
