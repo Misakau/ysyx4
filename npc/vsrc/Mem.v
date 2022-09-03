@@ -28,7 +28,7 @@ module ysyx_220053_Mem(
     reg [63:0] datain;
 
     wire [63:0] cpu_req_addr = raddr;
-    wire cpu_req_rw = ~MemToReg;
+    wire cpu_req_rw = req_rw;
     wire cpu_req_valid;
     wire [63:0] cpu_data_write = datain;
     wire [7:0]  cpu_wmask = wmask;
