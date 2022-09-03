@@ -7,7 +7,7 @@
 void Vtop___024root__traceChgSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode + 2412);
+    vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode + 2414);
     if (false && oldp) {}  // Prevent unused
     // Body
     {
@@ -1310,8 +1310,7 @@ void Vtop___024root__traceChgSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
         tracep->chgBit(oldp+358,(vlSelf->wb_dev_o));
         tracep->chgBit(oldp+359,((1U & (~ (((IData)(vlSelf->rst) 
                                             | ((IData)(vlSelf->top__DOT__id_Ebreak_o) 
-                                               | ((~ (IData)(vlSelf->top__DOT__my_ifu__DOT__i_cpu_ready)) 
-                                                  & (~ (IData)(vlSelf->top__DOT__my_ifu__DOT__old_instr))))) 
+                                               | (IData)(vlSelf->top__DOT__if_busy))) 
                                            | (IData)(vlSelf->top__DOT__cpu_halt))))));
         tracep->chgBit(oldp+360,((((~ (IData)(vlSelf->rst)) 
                                    & (IData)(vlSelf->top__DOT__WB_Reg__DOT__wen_r)) 

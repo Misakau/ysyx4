@@ -250,7 +250,7 @@ void set_batch_mode(){
 static uint64_t tot_instr = 0;
 static void sdb_mainloop();
 static bool is_diff = true;
-static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/pascal-riscv64-npc.bin";
+static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv64-npc.bin";
 //"/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
 //
 //static char lgp[] = "/home/wang/log1.txt";
