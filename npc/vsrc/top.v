@@ -403,8 +403,7 @@ module top(
     reg [63:0] wb_pc_r;
     reg [31:0] wb_instr_r;
     reg [63:0] next_pc_r;
-    wire nclk = ~clk;
-    always@(posedge nclk) begin
+    always@(posedge clk) begin
         if(wb_flush)begin 
             wb_commit_r <= 1'b0;
             wb_pc_r    <= 64'b0;
@@ -438,7 +437,7 @@ module top(
       if(ebreak_commit) c_trap(1);
     end
     ///////////Regfile///////////
-    ysyx_220053_RegisterFile #(5, 64) regfile(.clk(~clk),
+    ysyx_220053_RegisterFile #(5, 64) regfile(.clk(clk),
                                               .raaddr(id_rs1),
                                               .rbaddr(id_rs2),
                                               .radata(id_busa),
