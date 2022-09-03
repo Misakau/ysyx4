@@ -35,20 +35,27 @@ VL_MODULE(Vtop___024root) {
     VL_OUT8(i_rw_req_o,0,0);
     VL_OUT8(i_rw_valid_o,0,0);
     VL_IN8(i_rw_ready_i,0,0);
+    VL_OUT8(d_rw_req_o,0,0);
+    VL_OUT8(d_rw_valid_o,0,0);
+    VL_IN8(d_rw_ready_i,0,0);
     VL_OUT8(mem_valid,0,0);
     VL_OUT8(wb_dev_o,0,0);
     VL_OUT(instr,31,0);
     VL_OUT(wb_instr,31,0);
     VL_INW(i_data_read_i,127,0,4);
+    VL_OUTW(d_rw_w_data_o,127,0,4);
+    VL_INW(d_data_read_i,127,0,4);
     VL_OUT64(pc,63,0);
     VL_OUT64(wb_pc,63,0);
     VL_OUT64(next_pc,63,0);
     VL_OUT64(i_rw_addr_o,63,0);
+    VL_OUT64(d_rw_addr_o,63,0);
 
     // LOCAL SIGNALS
     // Anonymous structures to workaround compiler member-count bugs
     struct {
         CData/*0:0*/ top__DOT__id_en;
+        CData/*0:0*/ top__DOT__ex_en;
         CData/*0:0*/ top__DOT__id_ALUSrcA_o;
         CData/*0:0*/ top__DOT__id_MemToReg_o;
         CData/*0:0*/ top__DOT__id_MemWen_o;
@@ -73,6 +80,8 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__cpu_halt;
         CData/*0:0*/ top__DOT__is_Csrwen;
         CData/*0:0*/ top__DOT__alu_busy;
+        CData/*0:0*/ top__DOT__is_MemToReg;
+        CData/*0:0*/ top__DOT__is_men;
         CData/*0:0*/ top__DOT__dev_o;
         CData/*0:0*/ top__DOT__wb_commit_r;
         CData/*0:0*/ top__DOT__my_ifu__DOT__old_instr;
@@ -109,15 +118,16 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SIGctr;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__ALctr;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__SFTctr;
+    };
+    struct {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__Wctr;
         CData/*3:0*/ top__DOT__my_exu__DOT__alu64__DOT__OPctr;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__op_mul;
-    };
-    struct {
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_doing;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_ready;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_out_valid;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__mul_valid;
+        CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__old_mul;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__div_doing;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__div_valid;
         CData/*0:0*/ top__DOT__my_exu__DOT__alu64__DOT__old_div;
@@ -146,10 +156,14 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__M_Reg__DOT__MemToReg_r;
         CData/*0:0*/ top__DOT__M_Reg__DOT__CsrToReg_r;
         CData/*0:0*/ top__DOT__M_Reg__DOT__Ebreak_r;
-        CData/*0:0*/ top__DOT__my_mu__DOT__is_wen;
         CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__wmask;
+        CData/*0:0*/ top__DOT__my_mu__DOT__mem__DOT__cpu_req_valid;
+        CData/*0:0*/ top__DOT__my_mu__DOT__mem__DOT__d_cpu_ready;
+        CData/*0:0*/ top__DOT__my_mu__DOT__mem__DOT__cache_doing;
         CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__datab;
         CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__bytes;
+        CData/*2:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status;
+        CData/*2:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__next_status;
         CData/*0:0*/ top__DOT__WB_Reg__DOT__valid_r;
         CData/*0:0*/ top__DOT__WB_Reg__DOT__wen_r;
         CData/*4:0*/ top__DOT__WB_Reg__DOT__waddr_r;
@@ -170,16 +184,20 @@ VL_MODULE(Vtop___024root) {
         VlWide<5>/*131:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplicand_r;
         VlWide<3>/*66:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r;
         VlWide<5>/*131:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result;
+    };
+    struct {
         VlWide<5>/*131:0*/ top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__adder_result;
         VlWide<4>/*127:0*/ top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udividend_r;
         IData/*31:0*/ top__DOT__M_Reg__DOT__instr_r;
         IData/*31:0*/ top__DOT__my_mu__DOT__mem__DOT__i;
         IData/*31:0*/ top__DOT__my_mu__DOT__mem__DOT__dataw;
+        VlWide<4>/*127:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__data_in_ram;
+        VlWide<4>/*127:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__bwen;
+        IData/*31:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__i;
+        IData/*31:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__j;
         IData/*31:0*/ top__DOT__WB_Reg__DOT__instr_r;
         QData/*63:0*/ top__DOT__dnpc;
         QData/*63:0*/ top__DOT__if_pc_o;
-    };
-    struct {
         QData/*63:0*/ top__DOT__id_csrres_o;
         QData/*63:0*/ top__DOT__id_busa_o;
         QData/*63:0*/ top__DOT__id_busb_o;
@@ -227,10 +245,13 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__M_Reg__DOT__raddr_r;
         QData/*63:0*/ top__DOT__M_Reg__DOT__wdata_r;
         QData/*63:0*/ top__DOT__M_Reg__DOT__Csrres_r;
-        QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__dataout;
         QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__datain;
+        QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__cpu_data_read;
+        QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__dataout_read_r;
         QData/*63:0*/ top__DOT__my_mu__DOT__mem__DOT__datad;
         QData/*63:0*/ top__DOT__WB_Reg__DOT__pc_r;
+    };
+    struct {
         QData/*63:0*/ top__DOT__WB_Reg__DOT__wdata_r;
         QData/*63:0*/ top__DOT__csrfile__DOT__csrin;
         QData/*63:0*/ top__DOT__csrfile__DOT__mtvec;
@@ -244,10 +265,17 @@ VL_MODULE(Vtop___024root) {
         VlUnpacked<CData/*0:0*/, 4> top__DOT__my_ifu__DOT__icache__DOT__line_wen;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram0__DOT__ram;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram1__DOT__ram;
-    };
-    struct {
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram2__DOT__ram;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_ifu__DOT__icache__DOT__ram3__DOT__ram;
+        VlUnpacked<CData/*0:0*/, 256> top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__V;
+        VlUnpacked<CData/*0:0*/, 256> top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__D;
+        VlUnpacked<QData/*51:0*/, 256> top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__tag;
+        VlUnpacked<VlWide<4>/*127:0*/, 4> top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__line_o;
+        VlUnpacked<CData/*0:0*/, 4> top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__line_wen;
+        VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__ram0__DOT__ram;
+        VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__ram1__DOT__ram;
+        VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__ram2__DOT__ram;
+        VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__ram3__DOT__ram;
         VlUnpacked<QData/*63:0*/, 32> top__DOT__regfile__DOT__rf;
     };
 
@@ -258,8 +286,11 @@ VL_MODULE(Vtop___024root) {
     VlWide<4>/*127:0*/ top__DOT__my_ifu__DOT__icache__DOT____Vcellout__ram1__Q;
     VlWide<4>/*127:0*/ top__DOT__my_ifu__DOT__icache__DOT____Vcellout__ram2__Q;
     VlWide<4>/*127:0*/ top__DOT__my_ifu__DOT__icache__DOT____Vcellout__ram3__Q;
-    QData/*63:0*/ __Vtask_pmem_read__2__rdata;
-    VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
+    VlWide<4>/*127:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT____Vcellout__ram0__Q;
+    VlWide<4>/*127:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT____Vcellout__ram1__Q;
+    VlWide<4>/*127:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT____Vcellout__ram2__Q;
+    VlWide<4>/*127:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT____Vcellout__ram3__Q;
+    VlUnpacked<CData/*0:0*/, 5> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
     Vtop__Syms* vlSymsp;  // Symbol table

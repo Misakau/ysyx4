@@ -249,7 +249,7 @@ void set_batch_mode(){
 static uint64_t tot_instr = 0;
 static void sdb_mainloop();
 static bool is_diff = true;
-static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/div-riscv64-npc.bin";
+static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv64-npc.bin";
 //"/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
 //
 //static char lgp[] = "/home/wang/log1.txt";
@@ -502,7 +502,7 @@ static void npc_exec(uint64_t n){
     #define ITRACE
   #endif
  */
- uint64_t mem_ls = 0;
+ uint64_t dmem_ls = 0, imem_ls = 0;
   for (uint64_t i = 1; i <= 2*n && !npc_done && !sdb_contextp->gotFinish(); i++) { 
             sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
@@ -533,10 +533,21 @@ static void npc_exec(uint64_t n){
               sdb_top->i_data_read_i[2] = (uint32_t)MEM[midx+1];
               sdb_top->i_data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
               sdb_top->i_rw_ready_i = 1;
-              mem_ls = i;
+              imem_ls = i;
+            }
+            if(sdb_top->clk == 1 && sdb_top->d_rw_valid_o == 1){
+              long long midx = ((sdb_top->d_rw_addr_o - AD_BASE) >> 4) << 1;
+              printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, midx = %lld\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o,midx);
+              sdb_top->d_data_read_i[0] = (uint32_t)MEM[midx];
+              sdb_top->d_data_read_i[1] = (uint32_t)(MEM[midx]>>32);
+              sdb_top->d_data_read_i[2] = (uint32_t)MEM[midx+1];
+              sdb_top->d_data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
+              sdb_top->d_rw_ready_i = 1;
+              dmem_ls = i;
             }
             sdb_top->eval();
-            if(sdb_top->clk == 1 && i == mem_ls + 2) sdb_top->i_rw_ready_i = 0;
+            if(sdb_top->clk == 1 && i == imem_ls + 2) sdb_top->i_rw_ready_i = 0;
+            if(sdb_top->clk == 1 && i == dmem_ls + 2) sdb_top->d_rw_ready_i = 0;
             //printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, i_rw_req_o = %x\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o, sdb_top->i_rw_req_o);
             //NPC_EXIT = 1;break;
             if(sdb_top->clk == 0 && sdb_top->wb_commit == 1){

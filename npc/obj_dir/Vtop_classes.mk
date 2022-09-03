@@ -27,6 +27,7 @@ VM_TRACE_FST_WRITER_THREAD = 0
 VM_CLASSES_FAST += \
 	Vtop \
 	Vtop___024root \
+	Vtop___024root__1 \
 	Vtop___024unit \
 	Vtop_ysyx_220053_Adder32 \
 
