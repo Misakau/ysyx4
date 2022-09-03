@@ -25,6 +25,7 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     , rw_w_data_o{vlSymsp->TOP.rw_w_data_o}
     , data_read_i{vlSymsp->TOP.data_read_i}
     , rw_ready_i{vlSymsp->TOP.rw_ready_i}
+    , d_rw_ready{vlSymsp->TOP.d_rw_ready}
     , mem_valid{vlSymsp->TOP.mem_valid}
     , wb_dev_o{vlSymsp->TOP.wb_dev_o}
     , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}

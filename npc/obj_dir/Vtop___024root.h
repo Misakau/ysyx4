@@ -35,6 +35,7 @@ VL_MODULE(Vtop___024root) {
     VL_OUT8(rw_req_o,0,0);
     VL_OUT8(rw_valid_o,0,0);
     VL_IN8(rw_ready_i,0,0);
+    VL_OUT8(d_rw_ready,0,0);
     VL_OUT8(mem_valid,0,0);
     VL_OUT8(wb_dev_o,0,0);
     VL_OUT(instr,31,0);

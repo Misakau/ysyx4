@@ -601,8 +601,8 @@ static void npc_exec(uint64_t n){
                 MEM[midx] = sdb_top->rw_w_data_o[0] | (uint64_t)sdb_top->rw_w_data_o[1] << 32;
                 MEM[midx + 1] = sdb_top->rw_w_data_o[2] | (uint64_t)sdb_top->rw_w_data_o[3] << 32;
               }
+              if (sdb_top->rw_ready_i == 0) mem_ls = i;
               sdb_top->rw_ready_i = 1;
-              mem_ls = i;
               printf("mem_ls = %ld\n",mem_ls);
               //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
             }

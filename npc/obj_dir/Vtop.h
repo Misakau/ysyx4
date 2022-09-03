@@ -44,6 +44,7 @@ class Vtop VL_NOT_FINAL {
     VL_OUTW((&rw_w_data_o),127,0,4);
     VL_INW((&data_read_i),127,0,4);
     VL_IN8(&rw_ready_i,0,0);
+    VL_OUT8(&d_rw_ready,0,0);
     VL_OUT8(&mem_valid,0,0);
     VL_OUT8(&wb_dev_o,0,0);
 
