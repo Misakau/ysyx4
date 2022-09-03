@@ -17,7 +17,7 @@ module ysyx_220053_MU(
     output            d_rw_valid_o,
     output [127:0]    d_rw_w_data_o,
     input  [127:0]    d_data_read_i,//finish burst
-    input             d_rw_ready_i,
+    input             d_rw_ready_i
 );
     wire vis_mem = MemToReg | MemWen;
     wire req_rw  = ~MemToReg;
