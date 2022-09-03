@@ -128,7 +128,7 @@ module ysyx_220053_icache (
         end
         else if(cur_status == Allocate) begin//read new block from memory to cache
             if(!rw_ready_i) begin// not finish
-                rw_addr_o <= {cpu_req_addr[63:3],3'b000};
+                rw_addr_o <= {cpu_req_addr[63:4],4'b0000};
                 rw_req_o <= 1'b0;
                 rw_valid_o <= 1'b1;
             end
@@ -328,7 +328,7 @@ module ysyx_220053_dcache (
         end
         else if(cur_status == Allocate) begin//read new block from memory to cache
             if(!rw_ready_i) begin// not finish
-                rw_addr_o <= {cpu_req_addr[63:3],3'b000};
+                rw_addr_o <= {cpu_req_addr[63:4],4'b0000};
                 rw_req_o <= 1'b0;
                 rw_valid_o <= 1'b1;
             end

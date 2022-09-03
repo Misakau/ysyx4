@@ -4825,10 +4825,8 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
             ? vlSelf->top__DOT__my_exu__DOT__alu64__DOT__result_lo_r
             : (((QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[1U])) 
                 << 0x20U) | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[0U]))));
-    __Vtableidx6 = ((((IData)(vlSelf->top__DOT__if_busy) 
-                      | (IData)(vlSelf->top__DOT__my_ifu__DOT__cache_doing)) 
-                     << 3U) | ((((IData)(vlSelf->top__DOT__m_busy) 
-                                 | (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__cache_doing)) 
+    __Vtableidx6 = (((IData)(vlSelf->top__DOT__if_busy) 
+                     << 3U) | (((IData)(vlSelf->top__DOT__m_busy) 
                                 << 2U) | (IData)(vlSelf->top__DOT__arbiter__DOT__cur_status)));
     vlSelf->top__DOT__arbiter__DOT__next_status = Vtop__ConstPool__TABLE_9a38e7b0_0
         [__Vtableidx6];
