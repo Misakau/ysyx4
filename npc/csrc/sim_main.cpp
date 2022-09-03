@@ -546,8 +546,8 @@ static void npc_exec(uint64_t n){
                 sdb_top->d_data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
               }
               else{
-                MEM[midx] = sdb_top->d_data_read_i[0] | sdb_top->d_data_read_i[1] << 32;
-                MEM[midx + 1] = sdb_top->d_data_read_i[2] | sdb_top->d_data_read_i[3] << 32;
+                MEM[midx] = sdb_top->d_data_read_i[0] | (uint64_t)sdb_top->d_data_read_i[1] << 32;
+                MEM[midx + 1] = sdb_top->d_data_read_i[2] | (uint64_t)sdb_top->d_data_read_i[3] << 32;
               }
               sdb_top->d_rw_ready_i = 1;
               dmem_ls = i;
