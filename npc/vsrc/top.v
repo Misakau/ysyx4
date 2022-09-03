@@ -491,7 +491,7 @@ module top(
   //icache <-> arbiter
     my_ifu.cache_doing,i_rw_addr_o,i_rw_req_o,i_rw_valid_o,i_data_read_i,i_rw_ready_i,
   //dcache <-> arbiter
-    my_mu.cache_doing,d_rw_addr_o,d_rw_req_o,d_rw_valid_o,d_rw_w_data_o,d_data_read_i,d_rw_ready_i,
+    my_mu.mem.cache_doing,d_rw_addr_o,d_rw_req_o,d_rw_valid_o,d_rw_w_data_o,d_data_read_i,d_rw_ready_i,
   //arbiter<->memory
     rw_addr_o,rw_req_o,rw_valid_o,rw_w_data_o,data_read_i,rw_ready_i
     );
