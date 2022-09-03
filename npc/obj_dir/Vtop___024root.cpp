@@ -195,7 +195,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     vlSelf->d_rw_valid_o = (1U & ((~ (IData)(vlSelf->rst)) 
                                   & ((2U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
                                       ? (~ (IData)(vlSelf->d_rw_ready_i))
-                                      : ((5U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status)) 
+                                      : ((4U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status)) 
                                          & (~ (IData)(vlSelf->d_rw_ready_i))))));
     if (vlSelf->rst) {
         vlSelf->d_rw_req_o = 0U;
@@ -203,7 +203,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         if ((1U & (~ (IData)(vlSelf->d_rw_ready_i)))) {
             vlSelf->d_rw_req_o = 0U;
         }
-    } else if ((5U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) {
+    } else if ((4U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) {
         if ((1U & (~ (IData)(vlSelf->d_rw_ready_i)))) {
             vlSelf->d_rw_req_o = 1U;
         }
@@ -821,7 +821,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->d_rw_w_data_o[2U] = 0U;
         vlSelf->d_rw_w_data_o[3U] = 0U;
     } else if ((2U != (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) {
-        if ((5U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) {
+        if ((4U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) {
             if ((1U & (~ (IData)(vlSelf->d_rw_ready_i)))) {
                 vlSelf->d_rw_w_data_o[0U] = vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__line_o
                     [(3U & (IData)((vlSelf->top__DOT__M_Reg__DOT__raddr_r 
@@ -845,7 +845,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
             vlSelf->d_rw_addr_o = (0xfffffffffffffff8ULL 
                                    & vlSelf->top__DOT__M_Reg__DOT__raddr_r);
         }
-    } else if ((5U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) {
+    } else if ((4U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) {
         if ((1U & (~ (IData)(vlSelf->d_rw_ready_i)))) {
             vlSelf->d_rw_addr_o = ((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__tag
                                     [(0xffU & (IData)(

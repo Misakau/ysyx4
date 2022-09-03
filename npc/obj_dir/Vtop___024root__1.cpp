@@ -332,8 +332,8 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
         = ((4U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
             ? ((2U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
                 ? 0U : ((1U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
-                         ? 2U : ((IData)(vlSelf->d_rw_ready_i)
-                                  ? 5U : 4U))) : ((2U 
+                         ? 0U : ((IData)(vlSelf->d_rw_ready_i)
+                                  ? 2U : 4U))) : ((2U 
                                                    & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
                                                    ? 
                                                   ((1U 

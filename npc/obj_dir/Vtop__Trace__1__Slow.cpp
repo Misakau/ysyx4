@@ -1205,10 +1205,10 @@ void Vtop___024root__traceFullSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep)
                                            ? 0U : (
                                                    (1U 
                                                     & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
-                                                    ? 2U
+                                                    ? 0U
                                                     : 
                                                    ((IData)(vlSelf->d_rw_ready_i)
-                                                     ? 5U
+                                                     ? 2U
                                                      : 4U)))
                                        : ((2U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
                                            ? ((1U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
