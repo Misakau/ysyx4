@@ -3,6 +3,7 @@
 /* verilator lint_off PINMISSING */
 module ysyx_220053_Mem(
     input clk,
+    input rst,
     input [2:0] MemOp,
     input [63:0] raddr, wdata,
     input MemWen,
