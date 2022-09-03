@@ -51,15 +51,7 @@ module ysyx_220053_IFU(
             old_instr <= 1'b1;
         end
     end
-    /*
-    always @(posedge clk) begin
-        if(rst) begin
-            cpu_req_valid <= 1'b1;
-        end
-        else if(dnpc_valid && !old_instr) cpu_req_valid <= 1'b1;
-        else cpu_req_valid <= 1'b0;
-    end
-*/
+
     reg start;
     always @(posedge clk)begin
         if(rst) begin
@@ -82,20 +74,7 @@ module ysyx_220053_IFU(
     end
     assign cpu_req_valid = start | (!cache_doing && !i_cpu_ready && !old_instr);
     assign if_busy = (!i_cpu_ready && !old_instr);
-/*
-    always @(posedge clk) begin
-        if(rst) begin
-            inst_valid_o <= 1'b0;
-            instr_read_r <= 0;
-        end
-        else if(i_cpu_ready)begin
-            inst_valid_o <= 1'b1;
-            instr_read_r <= (pc[2]) ? cpu_data_read[63:32] : cpu_data_read[31:0];
-        end
-        else if(~id_en_i) inst_valid_o <= inst_valid_o;
-        else inst_valid_o <= 1'b0;
-    end
-*/
+
     ysyx_220053_icache icache(
          clk,rst,
         //cpu<->cache

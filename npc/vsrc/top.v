@@ -25,6 +25,13 @@ module top(
   input  [127:0] i_data_read_i,
   input  i_rw_ready_i,
   
+  output [63:0]     d_rw_addr_o,
+  output            d_rw_req_o,//
+  output            d_rw_valid_o,
+  output [127:0]    d_rw_w_data_o,
+  input  [127:0]    d_data_read_i,//finish burst
+  input             d_rw_ready_i,
+
   output mem_valid,
   output reg wb_dev_o
 );
@@ -344,21 +351,30 @@ module top(
       .dnpc_o(m_dnpc)
   );
     ///////////M/////////////////
+    wire m_busy;
     ysyx_220053_MU my_mu(
       .clk(clk), 
       .rst(rst),
       .MemOp(m_MemOp_i),
-      .MemToReg(m_MemToReg_i),
+      .MemToReg(is_MemToReg),
       .MemWen(is_men),
       .CsrToReg(m_CsrToReg_i),
       .raddr(m_raddr_i),//load指令的读取地址，save指令的waddr，其他指令的ALURes
       .wdata(m_wdata_i),
       .csrres(m_Csrres_i),
-      .rfdata(m_rfdata_o)
+      .rfdata(m_rfdata_o),
+      .m_busy(m_busy),
+      .d_rw_addr_o(d_rw_addr_o),
+      .d_rw_req_o(d_rw_req_o),//
+      .d_rw_valid_o(d_rw_valid_o),
+      .d_rw_w_data_o(d_rw_w_data_o),
+      .d_data_read_i(d_data_read_i),//finish burst
+      .d_rw_ready_i(d_rw_ready_i)
     );
+    wire is_MemToReg = m_MemToReg_i & (~m_flush) & m_valid_o;
     wire is_men = m_MemWen_i & (~m_flush) & m_valid_o;
     assign m_flush = rst;
-    assign m_block = 1'b0;
+    assign m_block = m_busy;
     assign wb_en = ~wb_block;//还未处理阻塞
     assign wb_valid_i = m_valid_o & (~m_block);//还未处理冒险
 

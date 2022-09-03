@@ -6,11 +6,19 @@ module ysyx_220053_Mem(
     input [2:0] MemOp,
     input [63:0] raddr, wdata,
     input MemWen,
-    output reg [63:0] rdata
+    input vis_mem,
+    input req_rw,
+    output reg [63:0] rdata,
+    output m_busy,
+    output [63:0]     d_rw_addr_o,
+    output            d_rw_req_o,
+    output            d_rw_valid_o,
+    output [127:0]    d_rw_w_data_o,
+    input  [127:0]    d_data_read_i,
+    input             d_rw_ready_i
 );
     wire [63:0] dataout;
     reg [7:0] wmask;
-    wire [63:0] al_addr = {raddr[63:3],{3{1'b0}}};
     integer i,st = {{29{1'b0}},raddr[2:0]};
     integer st_bit = {{26{1'b0}},raddr[2:0],{3{1'b0}}};
     wire [63:0] wdatad = wdata[63:0];
@@ -19,13 +27,49 @@ module ysyx_220053_Mem(
     wire [7:0]  wdatab = wdata[7:0];
     reg [63:0] datain;
 
+    wire [63:0] cpu_req_addr = raddr;
+    wire cpu_req_rw = ~MemToReg;
+    wire cpu_req_valid;
+    wire [63:0] cpu_data_write = datain;
+    wire [7:0]  cpu_wmask = wmask;
+    wire cache_idle;
+
+    wire d_cpu_ready;
+    wire [63:0] cpu_data_read;
+
+    always @(posedge clk) begin
+        if(rst) begin
+            cache_doing <= 1'b0;
+            dataout_read_r <= 0;
+        end
+        else if(i_cpu_ready) begin
+            cache_doing <= 1'b0;
+            dataout_read_r <= cpu_data_read;
+        end
+        else if(cpu_req_valid && cache_idle) begin
+            cache_doing <= 1'b1;
+        end
+    end
+    assign cpu_req_valid = (!cache_doing && !d_cpu_ready && vis_mem);
+    assign m_busy = (!d_cpu_ready);
+
+    ysyx_220053_dcache dcache(
+      clk,rst,
+    //cpu<->cache
+      cpu_req_addr,cpu_req_rw,cpu_req_valid,cpu_data_write,cpu_wmask,cpu_data_read,d_cpu_ready,cache_idle,
+    //cache<->memory
+      d_rw_addr_o,d_rw_req_o,d_rw_valid_o,d_rw_w_data_o,d_data_read_i,d_rw_ready_i
+    );
+
+    assign dataout = dataout_read_r;
+/*
     always @(*) begin
         pmem_read(raddr, dataout, bytes); 
     end
     always @(posedge clk) begin
         if(MemWen == 1'b1) pmem_write(raddr, datain, wmask);
     end
-
+*/
     //write
     always@(*) begin
         case(MemOp[1:0])
@@ -116,9 +160,6 @@ module ysyx_220053_Mem(
         endcase
     end
     always @(*) begin
-        if(raddr == 64'h800020d1) begin
-            $display(MemOp);
-        end
         case(MemOp[1:0])
             2'b00: begin
                 for (i = 0; i < 32; i = i + 1) begin

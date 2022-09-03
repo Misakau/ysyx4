@@ -155,7 +155,7 @@ module ysyx_220053_dcache (
     input [7:0]  cpu_wmask,
     output reg [63:0] cpu_data_read,
     output reg cpu_ready,
-
+    output cache_idle,
     //cache<->memory
     output reg [63:0]   rw_addr_o,
     output reg          rw_req_o,//
@@ -184,7 +184,8 @@ module ysyx_220053_dcache (
     parameter [2:0] WriteBack = 3'b100, Readout = 3'b101, Writein = 3'b110, RETN = 3'b111;
 
     reg [2:0] cur_status, next_status;
-
+    assign cache_idle = (cur_status == IDLE);
+    
     always @(posedge clk) begin
         if(rst) cur_status <= IDLE;
         else cur_status <= next_status;
@@ -209,7 +210,7 @@ module ysyx_220053_dcache (
             end
             Readin: begin
                 if(cpu_req_rw) next_status = Writein;
-                else next_status = RETN;
+                else next_status = IDLE;
             end
             WriteBack: begin
                 if(rw_ready_i) begin
@@ -218,8 +219,8 @@ module ysyx_220053_dcache (
                 else next_status = WriteBack;
             end
             Readout: next_status = Allocate;
-            Writein: next_status = RETN;
-            RETN: next_status = IDLE;
+            Writein: next_status = IDLE;//RETN
+            //RETN: next_status = IDLE;
             default: next_status = IDLE;
         endcase
     end
