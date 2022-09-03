@@ -581,7 +581,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__i_rw_addr_o = 0ULL;
     } else if ((2U == (IData)(vlSelf->top__DOT__my_ifu__DOT__icache__DOT__cur_status))) {
         if ((1U & (~ (IData)(vlSelf->top__DOT__i_rw_ready_i)))) {
-            vlSelf->top__DOT__i_rw_addr_o = (0xfffffffffffffff8ULL 
+            vlSelf->top__DOT__i_rw_addr_o = (0xfffffffffffffff0ULL 
                                              & vlSelf->top__DOT__if_pc_o);
         }
     }
@@ -858,7 +858,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__d_rw_addr_o = 0ULL;
     } else if ((2U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) {
         if ((1U & (~ (IData)(vlSelf->top__DOT__d_rw_ready_i)))) {
-            vlSelf->top__DOT__d_rw_addr_o = (0xfffffffffffffff8ULL 
+            vlSelf->top__DOT__d_rw_addr_o = (0xfffffffffffffff0ULL 
                                              & vlSelf->top__DOT__M_Reg__DOT__raddr_r);
         }
     } else if ((4U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) {

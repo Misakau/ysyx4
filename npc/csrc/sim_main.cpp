@@ -587,8 +587,8 @@ static void npc_exec(uint64_t n){
               dmem_ls = i;
             }*/
             if(sdb_top->clk == 1 && sdb_top->rw_valid_o == 1){
-              long long midx = ((sdb_top->rw_addr_o - AD_BASE) >> 4) << 1;
-              //printf("d_rw_req = %d, d_rw_valid_o = %x, d_rw_addr_o = %lx, midx = %lld\n",sdb_top->d_rw_req_o, sdb_top->d_rw_valid_o,sdb_top->d_rw_addr_o,midx);
+              long long midx = (sdb_top->rw_addr_o - AD_BASE) >> 3;
+              printf("rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, midx = %lld\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o,midx);
               if(sdb_top->rw_req_o == 0){
                 sdb_top->data_read_i[0] = (uint32_t)MEM[midx];
                 sdb_top->data_read_i[1] = (uint32_t)(MEM[midx]>>32);
@@ -601,6 +601,7 @@ static void npc_exec(uint64_t n){
               }
               sdb_top->rw_ready_i = 1;
               mem_ls = i;
+              printf("mem_ls = %d\n",mem_ls);
             }
             sdb_top->eval();
             //if(sdb_top->clk == 1 && i == imem_ls + 2) sdb_top->i_rw_ready_i = 0;
