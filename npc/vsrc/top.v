@@ -18,7 +18,7 @@ module top(
   output [63:0] wb_pc,
   output [31:0] wb_instr,
   output [63:0] next_pc,
-
+/*
   output [63:0] i_rw_addr_o,
   output i_rw_req_o,
   output i_rw_valid_o,
@@ -31,12 +31,30 @@ module top(
   output [127:0]    d_rw_w_data_o,
   input  [127:0]    d_data_read_i,//finish burst
   input             d_rw_ready_i,
-
+  */
+  output  [63:0]   rw_addr_o,
+  output           rw_req_o,//
+  output           rw_valid_o,
+  output [127:0]   rw_w_data_o,
+  input  [127:0]   data_read_i,//finish burst
+  input            rw_ready_i//data_read_i in ram
   output mem_valid,
   output reg wb_dev_o
 );
     our s;
     /////////////wires///////////////
+    wire [63:0] i_rw_addr_o;
+    wire i_rw_req_o;
+    wire i_rw_valid_o;
+    wire  [127:0] i_data_read_i;
+    wire  i_rw_ready_i;
+    
+    wire [63:0]     d_rw_addr_o;
+    wire            d_rw_req_o;//
+    wire            d_rw_valid_o;
+    wire [127:0]    d_rw_w_data_o;
+    wire  [127:0]    d_data_read_i;//finish burst
+    wire             d_rw_ready_i;
     ////////////////////////all/////////////////////////
     wire [31:0] if_instr_o, id_instr_o, ex_instr_o, m_instr_o, wb_instr_o;
     wire [63:0] dnpc;
@@ -466,6 +484,17 @@ module top(
     //Csrwen:阻塞时不能写,还没完成这里的逻辑，阻塞和冒险判断放在top里
     ysyx_220053_CSR csrfile( .clk(clk), .Csrwen(is_Csrwen), .CsrOp(id_CsrOp), .CsrId(id_CsrId), .datain(id_busa_o),
                              .mepc_o(id_mepc), .csrres(id_csrres_o), .mtvec_o(id_mtvec), .Ecall(id_Ecall & id_valid_o), .epc_in(id_pc_o),.Mret(id_Mret & id_valid_o));
+    
+    //////////Arbiter//////////////
+    ysyx_220053_arbiter arbiter(
+    clk,rst,
+  //icache <-> arbiter
+    i_rw_addr_i,i_rw_req_i,i_rw_valid_i,i_data_read_o,i_rw_ready_o,
+  //dcache <-> arbiter
+    d_rw_addr_i,d_rw_req_i,d_rw_valid_i,d_rw_w_data_i,d_data_read_o,d_rw_ready_o,
+  //arbiter<->memory
+    rw_addr_o,rw_req_o,rw_valid_o,rw_w_data_o,data_read_i,rw_ready_i
+    );
     initial begin
         $dumpfile("logs/vlt_dump.vcd");
         $dumpvars();

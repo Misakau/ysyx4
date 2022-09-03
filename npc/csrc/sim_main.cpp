@@ -383,7 +383,7 @@ int main(int argc, char**argv, char**env) {
     top->rst = 0;
     START = 1;
     int cnt = 0;
-    int imem_ls = 0,dmem_ls = 0;
+    int mem_ls = 0;//int imem_ls = 0,dmem_ls = 0;
     if(is_batch){
       #undef ITRACE
       int step = 0;
@@ -395,7 +395,7 @@ int main(int argc, char**argv, char**env) {
             //if(top->clk == 0)top->instr_i = pimem_read(top->pc);
             if(NPC_EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); top->eval();break;}
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr);
-             if(top->clk == 1 && top->i_rw_valid_o == 1){
+             /*if(top->clk == 1 && top->i_rw_valid_o == 1){
               long long midx = ((sdb_top->i_rw_addr_o - AD_BASE) >> 4) << 1;
               //printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, midx = %lld\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o,midx);
               top->i_data_read_i[0] = (uint32_t)MEM[midx];
@@ -420,10 +420,27 @@ int main(int argc, char**argv, char**env) {
               }
               top->d_rw_ready_i = 1;
               dmem_ls = step;
+            }*/
+            if(top->clk == 1 && top->rw_valid_o == 1){
+              long long midx = ((top->rw_addr_o - AD_BASE) >> 4) << 1;
+              //printf("d_rw_req = %d, d_rw_valid_o = %x, d_rw_addr_o = %lx, midx = %lld\n",sdb_top->d_rw_req_o, sdb_top->d_rw_valid_o,sdb_top->d_rw_addr_o,midx);
+              if(top->rw_req_o == 0){
+                top->data_read_i[0] = (uint32_t)MEM[midx];
+                top->data_read_i[1] = (uint32_t)(MEM[midx]>>32);
+                top->data_read_i[2] = (uint32_t)MEM[midx+1];
+                top->data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
+              }
+              else{
+                MEM[midx] = top->rw_w_data_o[0] | (uint64_t)top->rw_w_data_o[1] << 32;
+                MEM[midx + 1] = top->rw_w_data_o[2] | (uint64_t)top->rw_w_data_o[3] << 32;
+              }
+              top->rw_ready_i = 1;
+              mem_ls = step;
             }
             top->eval();
-            if(top->clk == 1 && step == imem_ls + 2) top->i_rw_ready_i = 0;
-            if(top->clk == 1 && step == dmem_ls + 2) top->d_rw_ready_i = 0;
+            //if(top->clk == 1 && step == imem_ls + 2) top->i_rw_ready_i = 0;
+            //if(top->clk == 1 && step == dmem_ls + 2) top->d_rw_ready_i = 0;
+            if(top->clk == 1 && step == mem_ls + 2) top->rw_ready_i = 0;
             #ifdef ITRACE
               char str[128];disassemble(str, 127, sdb_top->pc, (uint8_t*)&instr_now, 4);
               if(sdb_top->clk == 0){
@@ -520,7 +537,7 @@ static void npc_exec(uint64_t n){
     #define ITRACE
   #endif
  */
- uint64_t dmem_ls = 0, imem_ls = 0;
+ uint64_t mem_ls = 0;//dmem_ls = 0, imem_ls = 0;
   for (uint64_t i = 1; i <= 2*n && !npc_done && !sdb_contextp->gotFinish(); i++) { 
             sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
@@ -543,7 +560,7 @@ static void npc_exec(uint64_t n){
               } 
             #endif
             //printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, i_rw_req_o = %x\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o, sdb_top->i_rw_req_o);
-            if(sdb_top->clk == 1 && sdb_top->i_rw_valid_o == 1){
+            /*if(sdb_top->clk == 1 && sdb_top->i_rw_valid_o == 1){
               long long midx = ((sdb_top->i_rw_addr_o - AD_BASE) >> 4) << 1;
               //printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, midx = %lld\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o,midx);
               sdb_top->i_data_read_i[0] = (uint32_t)MEM[midx];
@@ -568,10 +585,27 @@ static void npc_exec(uint64_t n){
               }
               sdb_top->d_rw_ready_i = 1;
               dmem_ls = i;
+            }*/
+            if(sdb_top->clk == 1 && sdb_top->rw_valid_o == 1){
+              long long midx = ((sdb_top->rw_addr_o - AD_BASE) >> 4) << 1;
+              //printf("d_rw_req = %d, d_rw_valid_o = %x, d_rw_addr_o = %lx, midx = %lld\n",sdb_top->d_rw_req_o, sdb_top->d_rw_valid_o,sdb_top->d_rw_addr_o,midx);
+              if(sdb_top->rw_req_o == 0){
+                sdb_top->data_read_i[0] = (uint32_t)MEM[midx];
+                sdb_top->data_read_i[1] = (uint32_t)(MEM[midx]>>32);
+                sdb_top->data_read_i[2] = (uint32_t)MEM[midx+1];
+                sdb_top->data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
+              }
+              else{
+                MEM[midx] = sdb_top->rw_w_data_o[0] | (uint64_t)sdb_top->rw_w_data_o[1] << 32;
+                MEM[midx + 1] = sdb_top->rw_w_data_o[2] | (uint64_t)sdb_top->rw_w_data_o[3] << 32;
+              }
+              sdb_top->rw_ready_i = 1;
+              mem_ls = step;
             }
             sdb_top->eval();
-            if(sdb_top->clk == 1 && i == imem_ls + 2) sdb_top->i_rw_ready_i = 0;
-            if(sdb_top->clk == 1 && i == dmem_ls + 2) sdb_top->d_rw_ready_i = 0;
+            //if(sdb_top->clk == 1 && i == imem_ls + 2) sdb_top->i_rw_ready_i = 0;
+            //if(sdb_top->clk == 1 && i == dmem_ls + 2) sdb_top->d_rw_ready_i = 0;
+            if(top->clk == 1 && step == mem_ls + 2) top->rw_ready_i = 0;
             //printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, i_rw_req_o = %x\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o, sdb_top->i_rw_req_o);
             //NPC_EXIT = 1;break;
             if(sdb_top->clk == 0 && sdb_top->wb_commit == 1){
