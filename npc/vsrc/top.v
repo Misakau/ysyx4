@@ -38,6 +38,7 @@ module top(
   output [127:0]   rw_w_data_o,
   input  [127:0]   data_read_i,//finish burst
   input            rw_ready_i,//data_read_i in ram
+  output d_rw_ready,
   output mem_valid,
   output reg wb_dev_o
 );
@@ -389,6 +390,7 @@ module top(
       .d_data_read_i(d_data_read_i),//finish burst
       .d_rw_ready_i(d_rw_ready_i)
     );
+    assign d_rw_ready = d_rw_ready_i;
     wire is_MemToReg = m_MemToReg_i & (~m_flush) & m_valid_o;
     wire is_men = m_MemWen_i & (~m_flush) & m_valid_o;
     assign m_flush = rst;
