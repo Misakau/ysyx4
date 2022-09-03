@@ -149,7 +149,6 @@ VL_INLINE_OPT void Vtop___024root___settle__TOP__8(Vtop___024root* vlSelf) {
 }
 
 extern const VlUnpacked<CData/*2:0*/, 64> Vtop__ConstPool__TABLE_091dc012_0;
-extern const VlUnpacked<CData/*1:0*/, 16> Vtop__ConstPool__TABLE_9a38e7b0_0;
 void Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit(IData/*31:0*/ instr);
 
 VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
@@ -158,7 +157,6 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___combo__TOP__9\n"); );
     // Variables
     CData/*5:0*/ __Vtableidx1;
-    CData/*3:0*/ __Vtableidx6;
     // Body
     vlSelf->top__DOT__d_rw_ready_i = ((2U == (IData)(vlSelf->top__DOT__arbiter__DOT__cur_status)) 
                                       & (IData)(vlSelf->rw_ready_i));
@@ -401,11 +399,6 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
             ? vlSelf->top__DOT__my_exu__DOT__alu64__DOT__result_lo_r
             : (((QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[1U])) 
                 << 0x20U) | (QData)((IData)(vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[0U]))));
-    __Vtableidx6 = (((IData)(vlSelf->top__DOT__if_busy) 
-                     << 3U) | (((IData)(vlSelf->top__DOT__m_busy) 
-                                << 2U) | (IData)(vlSelf->top__DOT__arbiter__DOT__cur_status)));
-    vlSelf->top__DOT__arbiter__DOT__next_status = Vtop__ConstPool__TABLE_9a38e7b0_0
-        [__Vtableidx6];
     vlSelf->top__DOT__id_en = (1U & (~ (((IData)(vlSelf->top__DOT__load_use) 
                                          | (IData)(vlSelf->top__DOT__alu_busy)) 
                                         | (IData)(vlSelf->top__DOT__m_busy))));
