@@ -434,8 +434,8 @@ int main(int argc, char**argv, char**env) {
                 MEM[midx] = top->rw_w_data_o[0] | (uint64_t)top->rw_w_data_o[1] << 32;
                 MEM[midx + 1] = top->rw_w_data_o[2] | (uint64_t)top->rw_w_data_o[3] << 32;
               }
+              if (top->rw_ready_i == 0) mem_ls = i;
               top->rw_ready_i = 1;
-              mem_ls = step;
             }
             top->eval();
             //if(top->clk == 1 && step == imem_ls + 2) top->i_rw_ready_i = 0;
