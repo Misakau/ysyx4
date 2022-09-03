@@ -292,7 +292,7 @@ VL_MODULE(Vtop___024root) {
     VlWide<4>/*127:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT____Vcellout__ram1__Q;
     VlWide<4>/*127:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT____Vcellout__ram2__Q;
     VlWide<4>/*127:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT____Vcellout__ram3__Q;
-    VlUnpacked<CData/*0:0*/, 5> __Vm_traceActivity;
+    VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
 
     // INTERNAL VARIABLES
     Vtop__Syms* vlSymsp;  // Symbol table

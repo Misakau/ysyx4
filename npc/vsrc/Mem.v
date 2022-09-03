@@ -38,16 +38,13 @@ module ysyx_220053_Mem(
     wire d_cpu_ready;
     wire [63:0] cpu_data_read;
     reg cache_doing;
-    reg [63:0] dataout_read_r;
 
     always @(posedge clk) begin
         if(rst) begin
             cache_doing <= 1'b0;
-            dataout_read_r <= 0;
         end
         else if(d_cpu_ready) begin
             cache_doing <= 1'b0;
-            dataout_read_r <= cpu_data_read;
         end
         else if(cpu_req_valid && cache_idle) begin
             cache_doing <= 1'b1;
@@ -64,7 +61,7 @@ module ysyx_220053_Mem(
       d_rw_addr_o,d_rw_req_o,d_rw_valid_o,d_rw_w_data_o,d_data_read_i,d_rw_ready_i
     );
 
-    assign dataout = dataout_read_r;
+    assign dataout = cpu_data_read;
 /*
     always @(*) begin
         pmem_read(raddr, dataout, bytes); 
