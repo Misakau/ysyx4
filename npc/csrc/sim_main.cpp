@@ -250,9 +250,9 @@ void set_batch_mode(){
 static uint64_t tot_instr = 0;
 static void sdb_mainloop();
 static bool is_diff = true;
-static char pathi[] = "/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
-//"/home/wang/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv64-npc.bin";
+static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv64-npc.bin";
 //
+//"/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
 //static char lgp[] = "/home/wang/log1.txt";
 //";pathi;//
 static char* image_file = pathi;
@@ -423,7 +423,7 @@ int main(int argc, char**argv, char**env) {
             }*/
             if(top->clk == 1 && top->rw_valid_o == 1){
               long long midx = ((top->rw_addr_o - AD_BASE) >> 4) << 1;
-              printf("rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, midx = %lld\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o,midx);
+              //printf("rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, midx = %lld\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o,midx);
               if(top->rw_req_o == 0){
                 top->data_read_i[0] = (uint32_t)MEM[midx];
                 top->data_read_i[1] = (uint32_t)(MEM[midx]>>32);
