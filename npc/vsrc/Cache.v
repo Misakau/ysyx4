@@ -316,7 +316,7 @@ module ysyx_220053_dcache (
         end
         else if(cur_status == Allocate && rw_ready_i) D[cpu_index] <= 1'b0;
         else if(cur_status == Readin && cpu_req_rw) D[cpu_index] <= 1'b1;
-        else if(cur_status == FENCE_I) && rw_ready_i) D[idx_cnt] <= 1'b0;
+        else if(cur_status == FENCE_I && rw_ready_i) D[idx_cnt] <= 1'b0;
     end
 
     always @(posedge clk) begin
