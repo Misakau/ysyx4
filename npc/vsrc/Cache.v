@@ -229,13 +229,13 @@ module ysyx_220053_dcache (
             Writein: next_status = IDLE;////
             //RETN: next_status = IDLE;
             FENCE_I: begin
-                if(rw_ready_i) next_status = Readout;
+                if(rw_ready_i) begin
+                    if(idx_cnt == 8'd255) next_status = IDLE;
+                    else next_status = Readout;
+                end
                 else next_status = FENCE_I;
             end
-            Readout: begin
-                if(idx_cnt == 8'd256) next_status = IDLE;
-                else next_status = FENCE_I;
-            end
+            Readout: next_status = FENCE_I;
             default: next_status = IDLE;
         endcase
     end

@@ -5422,9 +5422,13 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                 ? ((1U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
                     ? ((IData)(vlSelf->top__DOT__d_rw_ready_i)
                         ? 5U : 7U) : 0U) : ((1U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
-                                             ? 7U : 
-                                            ((IData)(vlSelf->top__DOT__d_rw_ready_i)
-                                              ? 2U : 4U)))
+                                             ? ((0U 
+                                                 == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__idx_cnt))
+                                                 ? 0U
+                                                 : 7U)
+                                             : ((IData)(vlSelf->top__DOT__d_rw_ready_i)
+                                                 ? 2U
+                                                 : 4U)))
             : ((2U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
                 ? ((1U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
                     ? ((IData)(vlSelf->top__DOT__is_MemToReg)
