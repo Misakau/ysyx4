@@ -233,7 +233,7 @@ module ysyx_220053_dcache (
                 else next_status = FENCE_I;
             end
             Readout: begin
-                if(idx_cnt == nline) next_status = IDLE;
+                if(idx_cnt == 8'd256) next_status = IDLE;
                 else next_status = FENCE_I;
             end
             default: next_status = IDLE;
