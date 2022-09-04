@@ -361,7 +361,7 @@ module top(
     .MemToReg_i(ex_MemToReg_i),
     .CsrToReg_i(ex_CsrToReg_i),
     .Ebreak_i(ex_Ebreak_i),
-    .Fence_i_i(ex_Fence_i_i)
+    .Fence_i_i(ex_Fence_i_i),
 
     .rd_o(m_rd_i),
     .wen_o(m_wen_i),
@@ -436,7 +436,7 @@ module top(
     .wdata_o(wb_wdata_i),
     .waddr_o(wb_waddr_i),
     .Ebreak_o(wb_Ebreak_i),
-    .Fence_i_o(wb_Fence_i_i)
+    .Fence_i_o(wb_Fence_i_i),
 
     ,.dnpc_i(m_dnpc),
       .dnpc_o(wb_dnpc)
