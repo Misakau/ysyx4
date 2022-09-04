@@ -16,7 +16,7 @@ module ysyx_220053_controler(
     output reg Ecall, Mret, Csrwen, CsrToReg,
     output reg [2:0]CsrOp,
     output reg Ebreak,
-    output reg Fence_i,
+    output reg Fence_i
 );
 
 parameter ysyx_220053_I = 0;
