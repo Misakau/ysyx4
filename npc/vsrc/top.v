@@ -76,6 +76,7 @@ module top(
     wire id_wen_o;
     wire id_CsrToReg_o;
     wire id_Ebreak_o;
+    wire id_Fence_i_o;
     wire [1:0] id_ALUSrcB_o;
     wire [2:0] id_MemOp_o;
     wire [4:0] id_ALUOp_o;
@@ -97,6 +98,7 @@ module top(
     wire ex_wen_i;
     wire ex_CsrToReg_i;
     wire ex_Ebreak_i;
+    wire ex_Fence_i_i;
     wire [1:0] ex_ALUSrcB_i;
     wire [2:0] ex_MemOp_i;
     wire [4:0] ex_ALUOp_i;
@@ -113,17 +115,19 @@ module top(
     wire [4:0]  m_rd_i;
     wire m_wen_i, m_MemToReg_i, m_CsrToReg_i;
     wire m_Ebreak_i;
-    
+    wire m_Fence_i_i;
     wire [63:0] m_rfdata_o;//m 段输出
     //////////////WB///////////////////////////
     wire wb_wen_i;
     wire [63:0] wb_wdata_i;
     wire [4:0] wb_waddr_i;//wb 段输入
     wire wb_Ebreak_i;
+    wire wb_Fence_i_i;
     //wb 段输出
     ////////////////others//////////////////////
     reg running_r;
     wire ebreak_commit;
+    wire Fence_i_commit;
     wire running;
     /////////////////hazard and block/////////////
     wire id_use_rd, ex_has_rd, m_has_rd, wb_has_rd, rs1_need, rs2_need;
@@ -182,8 +186,10 @@ module top(
       else forward_data2 = 64'b0;
     end
     /////////////IF/////////////////
+    wire has_fence_i = id_Fence_i_o | ex_Fence_i_i | m_Fence_i_i;// | wb_Fence_i_i;
     wire if_busy;
     wire cpu_halt;
+    wire dnpc_valid = id_valid_o & ~has_fence_i;
     ysyx_220053_IFU my_ifu(
       .clk(clk),
       .rst(rst),
@@ -247,11 +253,12 @@ module top(
       .mtvec(id_mtvec),
       .mepc(id_mepc),
       .CsrId(id_CsrId),
-      .Ebreak(id_Ebreak_o)
+      .Ebreak(id_Ebreak_o),
+      .Fence_i(id_Fence_i_o)
       );
       assign id_flush = rst;
       wire is_Csrwen = (~id_flush) & id_Csrwen & id_valid_o;
-      assign id_block = load_use;//id_Ebreak_o;   //load_use
+      assign id_block = load_use | has_fence_i;//id_Ebreak_o;   //load_use
       assign id_busa_o = (rs1_need == 1'b0) ? id_busa : forward_data1;
       assign id_busb_o = (rs2_need == 1'b0) ? id_busb : forward_data2;
       assign ex_en = ~(ex_block | m_block | wb_block);//还未处理阻塞
@@ -285,6 +292,7 @@ module top(
       .CsrToReg_i(id_CsrToReg_o),
       .Csrres_i(id_csrres_o),
       .Ebreak_i(id_Ebreak_o),
+      .Fence_i_i(id_Fence_i_o),
 
       .rd_o(ex_rd_i),
       .busa_o(ex_busa_i),
@@ -300,8 +308,8 @@ module top(
       .wen_o(ex_wen_i),
       .CsrToReg_o(ex_CsrToReg_i),
       .Csrres_o(ex_csrres_i),
-      .Ebreak_o(ex_Ebreak_i)
-
+      .Ebreak_o(ex_Ebreak_i),
+      .Fence_i_o(ex_Fence_i_i)
 
       ,.dnpc_i(id_dnpc),
       .dnpc_o(ex_dnpc)
@@ -353,6 +361,7 @@ module top(
     .MemToReg_i(ex_MemToReg_i),
     .CsrToReg_i(ex_CsrToReg_i),
     .Ebreak_i(ex_Ebreak_i),
+    .Fence_i_i(ex_Fence_i_i)
 
     .rd_o(m_rd_i),
     .wen_o(m_wen_i),
@@ -363,7 +372,8 @@ module top(
     .Csrres_o(m_Csrres_i),
     .MemToReg_o(m_MemToReg_i),
     .CsrToReg_o(m_CsrToReg_i),
-    .Ebreak_o(m_Ebreak_i)
+    .Ebreak_o(m_Ebreak_i),
+    .Fence_i_o(m_Fence_i_i)
 
 
       ,.dnpc_i(ex_dnpc),
@@ -388,7 +398,8 @@ module top(
       .d_rw_valid_o(d_rw_valid_o),
       .d_rw_w_data_o(d_rw_w_data_o),
       .d_data_read_i(d_data_read_i),//finish burst
-      .d_rw_ready_i(d_rw_ready_i)
+      .d_rw_ready_i(d_rw_ready_i),
+      .Fence_i(m_Fence_i_i)
     );
     assign d_rw_ready = d_rw_ready_i;
     wire is_MemToReg = m_MemToReg_i & (~m_flush) & m_valid_o;
@@ -419,11 +430,13 @@ module top(
     .wdata_i(m_rfdata_o),
     .waddr_i(m_rd_i),
     .Ebreak_i(m_Ebreak_i),
+    .Fence_i_i(m_Fence_i_i),
 
     .wen_o(wb_wen_i),
     .wdata_o(wb_wdata_i),
     .waddr_o(wb_waddr_i),
-    .Ebreak_o(wb_Ebreak_i)
+    .Ebreak_o(wb_Ebreak_i),
+    .Fence_i_o(wb_Fence_i_i)
 
     ,.dnpc_i(m_dnpc),
       .dnpc_o(wb_dnpc)

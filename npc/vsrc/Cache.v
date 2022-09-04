@@ -162,7 +162,8 @@ module ysyx_220053_dcache (
     output reg          rw_valid_o,
     output reg [127:0]  rw_w_data_o,
     input [127:0]       data_read_i,//finish burst
-    input               rw_ready_i//ready to give data or fetch data
+    input               rw_ready_i,//ready to give data or fetch data
+    input Fence_i
 );
     parameter nline = 256;
     reg V [0:nline - 1], D [0:nline - 1];
@@ -177,15 +178,22 @@ module ysyx_220053_dcache (
     assign cpu_tag = cpu_req_addr[63:12];
 
     reg hit;
-
+    reg [7:0] idx_cnt;
     //status transform
 
     parameter [2:0] IDLE = 3'b000, CompareTag = 3'b001, Allocate = 3'b010, Readin = 3'b011;
-    parameter [2:0] WriteBack = 3'b100, Readout = 3'b101, Writein = 3'b110, RETN = 3'b111;
+    parameter [2:0] WriteBack = 3'b100, Readout = 3'b101, Writein = 3'b110, FENCE_I = 3'b111; //RETN = 3'b111;
 
     reg [2:0] cur_status, next_status;
     assign cache_idle = (cur_status == IDLE);
     
+    always @(posedge clk) begin
+        if(rst || (cur_status == IDLE && Fence_i)) idx_cnt <= 0;
+        else if(next_status == Readout) begin
+            idx_cnt <= idx_cnt + 1;
+        end
+    end
+
     always @(posedge clk) begin
         if(rst) cur_status <= IDLE;
         else cur_status <= next_status;
@@ -218,9 +226,16 @@ module ysyx_220053_dcache (
                 end
                 else next_status = WriteBack;
             end
-            //Readout: next_status = Allocate;
-            Writein: next_status = IDLE;//RETN
+            Writein: next_status = IDLE;////
             //RETN: next_status = IDLE;
+            FENCE_I: begin
+                if(rw_ready_i) next_status = Readout;
+                else next_status = FENCE_I;
+            end
+            Readout: begin
+                if(idx_cnt == nline) next_status = IDLE;
+                else next_status = FENCE_I;
+            end
             default: next_status = IDLE;
         endcase
     end
@@ -299,8 +314,9 @@ module ysyx_220053_dcache (
                 D[i] <= 1'b0;
             end
         end
-        else if(cur_status == Allocate && rw_ready_i) D[cpu_index] <= 1'b0;
+        else if(cur_status == Allocate) && rw_ready_i) D[cpu_index] <= 1'b0;
         else if(cur_status == Readin && cpu_req_rw) D[cpu_index] <= 1'b1;
+        else if(cur_status == FENCE_I) && rw_ready_i) D[idx_cnt] <= 1'b0;
     end
 
     always @(posedge clk) begin
@@ -343,6 +359,17 @@ module ysyx_220053_dcache (
                 rw_addr_o <= {tag[cpu_index],cpu_index,4'b0000};
                 rw_req_o  <= 1'b1;
                 rw_w_data_o <= line_o[cpu_index[7:6]];
+                rw_valid_o <= 1'b1;
+            end
+            else begin
+                rw_valid_o <= 1'b0;
+            end
+        end
+        else if(cur_status == FENCE_I) begin
+            if(!rw_ready_i) begin
+                rw_addr_o <= {tag[idx_cnt],idx_cnt,4'b0000};
+                rw_req_o  <= 1'b1;
+                rw_w_data_o <= line_o[idx_cnt[7:6]];
                 rw_valid_o <= 1'b1;
             end
             else begin

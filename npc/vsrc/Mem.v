@@ -16,7 +16,8 @@ module ysyx_220053_Mem(
     output            d_rw_valid_o,
     output [127:0]    d_rw_w_data_o,
     input  [127:0]    d_data_read_i,
-    input             d_rw_ready_i
+    input             d_rw_ready_i,
+    input Fence_i
 );
     wire [63:0] dataout;
     reg [7:0] wmask;
@@ -60,7 +61,9 @@ module ysyx_220053_Mem(
     //cpu<->cache
       cpu_req_addr,cpu_req_rw,cpu_req_valid,cpu_data_write,cpu_wmask,cpu_data_read,d_cpu_ready,cache_idle,
     //cache<->memory
-      d_rw_addr_o,d_rw_req_o,d_rw_valid_o,d_rw_w_data_o,d_data_read_i,d_rw_ready_i
+      d_rw_addr_o,d_rw_req_o,d_rw_valid_o,d_rw_w_data_o,d_data_read_i,d_rw_ready_i,
+    //fence.i
+      Fence_i
     );
     wire [63:0] dev_dataout;
     assign dataout = (vis_dev) ? dev_dataout : cpu_data_read;

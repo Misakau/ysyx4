@@ -423,7 +423,7 @@ int main(int argc, char**argv, char**env) {
             }*/
             if(top->clk == 1 && top->rw_valid_o == 1){
               long long midx = ((top->rw_addr_o - AD_BASE) >> 4) << 1;
-              //printf("d_rw_req = %d, d_rw_valid_o = %x, d_rw_addr_o = %lx, midx = %lld\n",sdb_top->d_rw_req_o, sdb_top->d_rw_valid_o,sdb_top->d_rw_addr_o,midx);
+              printf("rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, midx = %lld\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o,midx);
               if(top->rw_req_o == 0){
                 top->data_read_i[0] = (uint32_t)MEM[midx];
                 top->data_read_i[1] = (uint32_t)(MEM[midx]>>32);

@@ -65,7 +65,9 @@ module ysyx_220053_EX_Reg(
     input CsrToReg_i,
     input [63:0] Csrres_i,
     input Ebreak_i,
+    input Fence_i_i,
 
+    output Fence_i_o,
     output Ebreak_o,
     output [63:0] Csrres_o,
     output [4:0] rd_o,
@@ -97,6 +99,7 @@ module ysyx_220053_EX_Reg(
     reg [1:0] MulOp_r;
     reg [63:0] Csrres_r;
     reg Ebreak_r;
+    reg Fence_i_r;
     //control_r
     always@(posedge clk) begin
         if(flush)begin
@@ -124,7 +127,8 @@ module ysyx_220053_EX_Reg(
             MulOp_r    <= 2'b0;
             Csrres_r   <= 64'b0;
             Ebreak_r   <= 1'b0;
-
+            Fence_i_r  <= 1'b0;
+            
             dnpc_o <=0;
         end
         else if(enable)begin
@@ -145,6 +149,7 @@ module ysyx_220053_EX_Reg(
             MulOp_r    <= MulOp_i;
             Csrres_r   <= Csrres_i;
             Ebreak_r   <= Ebreak_i;
+            Fence_i_r  <= Fence_i_i;
 
             dnpc_o <=dnpc_i;
         end
@@ -167,6 +172,7 @@ module ysyx_220053_EX_Reg(
     assign imm_o = imm_r;
     assign Csrres_o = Csrres_r;
     assign Ebreak_o = Ebreak_r;
+    assign Fence_i_o = Fence_i_r;
 endmodule
 
 module ysyx_220053_M_Reg(
@@ -190,7 +196,9 @@ module ysyx_220053_M_Reg(
     input [4:0]  rd_i,
     input wen_i, MemToReg_i, CsrToReg_i,
     input Ebreak_i,
+    input Fence_i_i,
 
+    output Fence_i_o,
     output Ebreak_o,
     output [4:0] rd_o,
     output wen_o, MemToReg_o, CsrToReg_o,
@@ -217,6 +225,7 @@ module ysyx_220053_M_Reg(
     reg MemToReg_r;
     reg CsrToReg_r;
     reg Ebreak_r;
+    reg Fence_i_r;
     //control_r
     always@(posedge clk) begin
         if(flush)begin
@@ -239,6 +248,7 @@ module ysyx_220053_M_Reg(
             MemToReg_r <= 1'b0;
             CsrToReg_r <= 1'b0;
             Ebreak_r  <= 1'b0;
+            Fence_i_r <= 1'b0;
 
             dnpc_o <= 0;
         end
@@ -255,6 +265,7 @@ module ysyx_220053_M_Reg(
             MemToReg_r <= MemToReg_i;
             CsrToReg_r <= CsrToReg_i;
             Ebreak_r <= Ebreak_i;
+            Fence_i_r <= Fence_i_i;
 
             dnpc_o <= dnpc_i;
         end
@@ -272,6 +283,7 @@ module ysyx_220053_M_Reg(
     assign MemToReg_o = MemToReg_r;
     assign CsrToReg_o = CsrToReg_r;
     assign Ebreak_o = Ebreak_r;
+    assign Fence_i_o = Fence_i_r;
 endmodule
 
 module ysyx_220053_WB_Reg(
@@ -291,7 +303,9 @@ module ysyx_220053_WB_Reg(
     input  [63:0] wdata_i,
     input  [4:0] waddr_i,
     input Ebreak_i,
+    input Fence_i_i,
 
+    output Fence_i_o,
     output Ebreak_o,
     output wen_o,
     output [63:0] wdata_o,
@@ -309,6 +323,7 @@ module ysyx_220053_WB_Reg(
     reg [63:0] wdata_r;
     reg [4:0] waddr_r;
     reg Ebreak_r;
+    reg Fence_i_r;
     //control_r
     always@(posedge clk) begin
         if(flush)begin
@@ -325,6 +340,7 @@ module ysyx_220053_WB_Reg(
             wdata_r <= 64'b0;
             waddr_r <= 5'b0;
             Ebreak_r <= 1'b0;
+            Fence_i_r <= 1'b0;
 
             dnpc_o <= 0;
             dev_o <= 0;
@@ -336,6 +352,7 @@ module ysyx_220053_WB_Reg(
             wdata_r <= wdata_i;
             waddr_r <= waddr_i;
             Ebreak_r <= Ebreak_i;
+            Fence_i_r <= Fence_i_i;
 
             dnpc_o <= dnpc_i;
             dev_o <= dev_i;
@@ -348,4 +365,5 @@ module ysyx_220053_WB_Reg(
     assign wdata_o = wdata_r;
     assign waddr_o = waddr_r;
     assign Ebreak_o = Ebreak_r;
+    assign Fence_i_o = Fence_i_r;
 endmodule
