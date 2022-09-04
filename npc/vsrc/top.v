@@ -436,7 +436,7 @@ module top(
     .wdata_o(wb_wdata_i),
     .waddr_o(wb_waddr_i),
     .Ebreak_o(wb_Ebreak_i),
-    .Fence_i_o(wb_Fence_i_i),
+    .Fence_i_o(wb_Fence_i_i)
 
     ,.dnpc_i(m_dnpc),
       .dnpc_o(wb_dnpc)
