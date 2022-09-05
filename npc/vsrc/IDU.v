@@ -28,7 +28,8 @@ module ysyx_220053_IDU(
     output [2:0]CsrOp,
     output [11:0] CsrId,
     output Ebreak,
-    output Fence_i
+    output Fence_i,
+    output Csri
 );
     wire [2:0] ExtOp;
     wire [2:0] Branch;
@@ -40,7 +41,7 @@ module ysyx_220053_IDU(
                                  .ExtOp(ExtOp), .ALUOp(ALUOp), .wen(wen), .MemWen(MemWen),
                                  .MulOp(MulOp),
                                  .Ecall(Ecall), .Mret(Mret), .Csrwen(Csrwen), .CsrToReg(CsrToReg), .CsrOp(CsrOp), .Ebreak(Ebreak)
-                                 ,.Fence_i(Fence_i));
+                                 ,.Fence_i(Fence_i), .Csri(Csri));
     wire ecall = Ecall;
     assign CsrId = (ecall == 0) ? imm[11:0] : 12'h342;//ecall mcause
     wire [63:0] addr_res;

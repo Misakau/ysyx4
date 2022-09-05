@@ -77,6 +77,7 @@ module top(
     wire id_CsrToReg_o;
     wire id_Ebreak_o;
     wire id_Fence_i_o;
+    wire id_Csri_o;
     wire [1:0] id_ALUSrcB_o;
     wire [2:0] id_MemOp_o;
     wire [4:0] id_ALUOp_o;
@@ -137,7 +138,7 @@ module top(
     wire [6:0] wb_op = wb_instr_o[6:0];
     wire [2:0] id_func3 = id_instr_o[14:12];
     wire [6:0] id_func7 = id_instr_o[31:25];
-    assign id_use_rd = id_valid_o & (~(id_op == 7'b0110111 || id_op == 7'b0010111 || id_op == 7'b1101111 || id_Ebreak_o == 1'b1 || id_Mret == 1'b1 || id_Ecall == 1'b1)); //|| id_op == 7'b1110011
+    assign id_use_rd = id_valid_o & (~(id_op == 7'b0110111 || id_op == 7'b0010111 || id_op == 7'b1101111 || id_Ebreak_o == 1'b1 || id_Mret == 1'b1 || id_Ecall == 1'b1 || id_Csri_o == 1'b1)); //|| id_op == 7'b1110011
     assign ex_has_rd = ex_valid_o & ex_wen_i;//(ex_op == 7'b0110111 || ex_op == 7'b0010111 || ex_op == 7'b1100011 || ex_op == 7'b0100011 || ex_op == 7'b1110011);
     assign m_has_rd = m_valid_o & m_wen_i;//(m_op == 7'b0110111 || m_op == 7'b0010111 || m_op == 7'b1100011 || m_op == 7'b0100011 || m_op == 7'b1110011);
     assign wb_has_rd = wb_valid_o & wb_wen_i;//(wb_op == 7'b0110111 || wb_op == 7'b0010111 || wb_op == 7'b1100011 || wb_op == 7'b0100011 || wb_op == 7'b1110011);
@@ -254,7 +255,8 @@ module top(
       .mepc(id_mepc),
       .CsrId(id_CsrId),
       .Ebreak(id_Ebreak_o),
-      .Fence_i(id_Fence_i_o)
+      .Fence_i(id_Fence_i_o),
+      .Csri(id_Csri_o)
       );
       assign id_flush = rst;
       wire is_Csrwen = (~id_flush) & id_Csrwen & id_valid_o;
@@ -498,7 +500,8 @@ module top(
                                             );
     //////////Csr////////////////
     //Csrwen:阻塞时不能写,还没完成这里的逻辑，阻塞和冒险判断放在top里
-    ysyx_220053_CSR csrfile( .clk(clk), .Csrwen(is_Csrwen), .CsrOp(id_CsrOp), .CsrId(id_CsrId), .datain(id_busa_o),
+    wire Csr_datain = id_Csri_o ? {{59{1'b0}},id_imm_o[4:0]} : id_busa_o;
+    ysyx_220053_CSR csrfile( .clk(clk), .Csrwen(is_Csrwen), .CsrOp(id_CsrOp), .CsrId(id_CsrId), .datain(Csr_datain),
                              .mepc_o(id_mepc), .csrres(id_csrres_o), .mtvec_o(id_mtvec), .Ecall(id_Ecall & id_valid_o), .epc_in(id_pc_o),.Mret(id_Mret & id_valid_o));
     
     //////////Arbiter//////////////

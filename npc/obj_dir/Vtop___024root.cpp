@@ -1529,7 +1529,10 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
             = vlSelf->top__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__adder_result[4U];
     }
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__d_cpu_ready 
-        = ((~ (IData)(vlSelf->rst)) & (3U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status)));
+        = ((~ (IData)(vlSelf->rst)) & ((3U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status)) 
+                                       | (((7U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status)) 
+                                           | (5U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) 
+                                          & (0U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__next_status)))));
     if (vlSelf->top__DOT__WB_Reg__DOT__Ebreak_r) {
         Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
     }

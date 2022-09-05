@@ -16,7 +16,8 @@ module ysyx_220053_controler(
     output reg Ecall, Mret, Csrwen, CsrToReg,
     output reg [2:0]CsrOp,
     output reg Ebreak,
-    output reg Fence_i
+    output reg Fence_i,
+    output reg Csri
 );
 
 parameter ysyx_220053_I = 0;
@@ -30,27 +31,27 @@ parameter ysyx_220053_R = 5;
         case(op)
             7'b0110111://lui
                 begin
-                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0;
+                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b01111; ExtOp = ysyx_220053_U; wen = 1;
                 end
             7'b0010111://auipc
                 begin
-                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0;
+                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 0; ALUSrcB = 1; ALUOp = 5'b00000; ExtOp = ysyx_220053_U; wen = 1;
                 end
             7'b1101111://jal
                 begin
-                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0;
+                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 3'b001; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 5'b00000; ExtOp = ysyx_220053_J; wen = 1;
                 end
             7'b1100111://jalr
                 begin
-                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0;
+                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemOp = 0; MemToReg = 0; Branch = 3'b010; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 5'b00000; ExtOp = ysyx_220053_I; wen = 1;
                 end
             7'b0010011://addi
                 begin
-                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0;
+                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; ExtOp = ysyx_220053_I; wen = 1; end
@@ -65,7 +66,7 @@ parameter ysyx_220053_R = 5;
                 end
             7'b0110011://add MulOp = 0; 
                 begin
-                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0;
+                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     if(func7 == 7'b0000001) begin//mul div rem
                         case(func3)
@@ -123,7 +124,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b1100011://beq
                 begin
-                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0;
+                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0;  //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_220053_B; Branch = 3'b100; wen = 0; end
@@ -145,7 +146,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b0000011://ld
                 begin
-                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0;
+                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MulOp = 0; MemWen = 0; MemToReg = 1; Branch = 0; //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b001; ExtOp = ysyx_220053_I; wen = 1; end
@@ -169,7 +170,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b0100011://sd
                 begin
-                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0;
+                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MulOp = 0; MemWen = 1; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b001; ExtOp = ysyx_220053_S; wen = 0; end
@@ -187,7 +188,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b0011011://addiw
                 begin
-                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0;
+                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
                         3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b10000; ExtOp = ysyx_220053_I; wen = 1; end
@@ -204,7 +205,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b0111011://addw MulOp = 0; 
                 begin
-                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0;
+                    Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     if(func7 == 7'b0000001) begin//mulw divw remw
                             case(func3)
@@ -245,6 +246,7 @@ parameter ysyx_220053_R = 5;
                     case(func3)
                         3'b000: 
                             begin
+                                Csri = 0;
                                 case(instr_i[31:20])
                                     0://ecall
                                         begin
@@ -264,29 +266,41 @@ parameter ysyx_220053_R = 5;
                             end
                         3'b001://csrrw
                             begin
-                                Ebreak = 0; Csrwen = 1;  Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 1; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 1;
+                                Csri = 0; Ebreak = 0; Csrwen = 1;  Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 1; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 1;
                             end
                         3'b010://csrrs
                             begin
-                                Ebreak = 0; Csrwen = 1;  Ecall = 0; Mret = 0; CsrOp = 1; CsrToReg = 1; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 1;
+                                Csri = 0; Ebreak = 0; Csrwen = 1;  Ecall = 0; Mret = 0; CsrOp = 1; CsrToReg = 1; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 1;
                             end
                         3'b011://csrrc
                             begin
-                                Ebreak = 0; Csrwen = 1;  Ecall = 0; Mret = 0; CsrOp = 2; CsrToReg = 1; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 1;
+                                Csri = 0; Ebreak = 0; Csrwen = 1;  Ecall = 0; Mret = 0; CsrOp = 2; CsrToReg = 1; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 1;
+                            end
+                        3'b101://csrrwi
+                            begin
+                                Csri = 1; Ebreak = 0; Csrwen = 1;  Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 1; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 1;
+                            end
+                        3'b110://csrrsi
+                            begin
+                                Csri = 1; Ebreak = 0; Csrwen = 1;  Ecall = 0; Mret = 0; CsrOp = 1; CsrToReg = 1; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 1;
+                            end
+                        3'b111://csrrci
+                            begin
+                                Csri = 1; Ebreak = 0; Csrwen = 1;  Ecall = 0; Mret = 0; CsrOp = 2; CsrToReg = 1; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 1;
                             end
                         default: $display("no");
                     endcase
              	end
             7'b0001111://fence.i
                 begin
-                    ExtOp = ysyx_220053_I; MulOp = 0; Fence_i = 1;
+                    ExtOp = ysyx_220053_I; MulOp = 0; Fence_i = 1; Csri = 0;
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0;
                     Ebreak = 0; Csrwen = 0;  Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; wen = 0;
 
                 end
             default: begin
                 $display("no, op=%x",op);
-                ExtOp = ysyx_220053_I; MulOp = 0; Fence_i = 0;
+                ExtOp = ysyx_220053_I; MulOp = 0; Fence_i = 0; Csri = 0;
                 MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0;
                 Ebreak = 0; Csrwen = 0;  Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; wen = 0;           
             end
