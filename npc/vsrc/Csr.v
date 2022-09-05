@@ -51,7 +51,7 @@ MIP               0x344
             mcause <= 64'h8000000000000007;
         end
         else if(Ecall == 1'b1) begin
-            mcause <= {(60{1'b0}},4'hb};
+            mcause <= {{60{1'b0}},4'hb};
         end
         else if(CsrId == 12'h342 && Csrwen == 1'b1) begin
             mcause <= csrin;
