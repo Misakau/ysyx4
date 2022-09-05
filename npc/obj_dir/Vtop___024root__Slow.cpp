@@ -4638,8 +4638,9 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__data_in_ram[3U] 
             = vlSelf->data_read_i[3U];
     }
-    vlSelf->top__DOT__my_mu__DOT__vis_mem = ((IData)(vlSelf->top__DOT__is_MemToReg) 
-                                             | (IData)(vlSelf->top__DOT__is_men));
+    vlSelf->top__DOT__my_mu__DOT__vis_mem = (((IData)(vlSelf->top__DOT__is_MemToReg) 
+                                              | (IData)(vlSelf->top__DOT__is_men)) 
+                                             | (IData)(vlSelf->top__DOT__M_Reg__DOT__Fence_i_r));
     if (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__Wctr) {
         vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplicand[0U] 
             = (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA);

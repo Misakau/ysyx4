@@ -276,8 +276,9 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                     & (((2U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status)) 
                         & (IData)(vlSelf->top__DOT__d_rw_ready_i)) 
                        | (6U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))))));
-    vlSelf->top__DOT__my_mu__DOT__vis_mem = ((IData)(vlSelf->top__DOT__is_MemToReg) 
-                                             | (IData)(vlSelf->top__DOT__is_men));
+    vlSelf->top__DOT__my_mu__DOT__vis_mem = (((IData)(vlSelf->top__DOT__is_MemToReg) 
+                                              | (IData)(vlSelf->top__DOT__is_men)) 
+                                             | (IData)(vlSelf->top__DOT__M_Reg__DOT__Fence_i_r));
     vlSelf->top__DOT__m_rfdata_o = ((IData)(vlSelf->top__DOT__M_Reg__DOT__CsrToReg_r)
                                      ? vlSelf->top__DOT__M_Reg__DOT__Csrres_r
                                      : ((IData)(vlSelf->top__DOT__is_MemToReg)
