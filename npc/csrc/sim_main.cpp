@@ -202,7 +202,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     //}
     if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
       //if(START) NPC_EXIT = 1;//
-      printf("addrs=%lx\n",waddr); 
+      printf("addrs=%llx\n",waddr); 
       printf("ERROR W\n");
       return;
     }
