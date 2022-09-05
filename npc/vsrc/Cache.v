@@ -202,7 +202,10 @@ module ysyx_220053_dcache (
     always @(*) begin
         case (cur_status)
             IDLE: begin
-                if(cpu_req_valid) next_status = CompareTag;
+                if(cpu_req_valid)begin
+                    if(Fence_i) next_status = FENCE_I;
+                    else next_status = CompareTag;
+                end
                 else next_status = IDLE;
             end
             CompareTag: begin
