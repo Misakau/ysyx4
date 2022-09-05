@@ -104,7 +104,7 @@ MIP               0x344
     always@(*) begin
         case(CsrId)
             12'h300:  csrres = mstatus;
-            12'h304:  csrres = mie
+            12'h304:  csrres = mie;
             12'h305:  csrres = mtvec;
             12'h340:  csrres = mscratch;
             12'h341:  csrres = mepc;
