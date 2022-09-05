@@ -330,13 +330,10 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
         = ((((~ (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__cache_doing)) 
              & (~ (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__d_cpu_ready))) 
             & (IData)(vlSelf->top__DOT__my_mu__DOT__vis_mem)) 
-           & (0xaU != (0xfU & (IData)((vlSelf->top__DOT__M_Reg__DOT__raddr_r 
-                                       >> 0x1cU)))));
+           & (~ (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__vis_dev)));
     vlSelf->top__DOT__m_busy = (((~ (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__d_cpu_ready)) 
                                  & (IData)(vlSelf->top__DOT__my_mu__DOT__vis_mem)) 
-                                & (0xaU != (0xfU & (IData)(
-                                                           (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
-                                                            >> 0x1cU)))));
+                                & (~ (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__vis_dev)));
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__next_status 
         = ((4U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
             ? ((2U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
