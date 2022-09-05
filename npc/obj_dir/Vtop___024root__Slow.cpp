@@ -6058,7 +6058,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     VL_RAND_RESET_W(128, vlSelf->top__DOT__d_rw_w_data_o);
     vlSelf->top__DOT__d_rw_ready_i = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__mstatus_MIE = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__mip_MITP = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__if_instr_o = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__dnpc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__if_pc_o = VL_RAND_RESET_Q(64);

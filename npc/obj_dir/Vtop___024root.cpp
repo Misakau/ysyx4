@@ -646,10 +646,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                 & (IData)(vlSelf->top__DOT__is_Csrwen))) {
         vlSelf->top__DOT__csrfile__DOT__mepc = vlSelf->top__DOT__csrfile__DOT__csrin;
     }
-    if (((((IData)((vlSelf->top__DOT__csrfile__DOT__mie 
-                    >> 7U)) & (IData)(vlSelf->top__DOT__mip_MITP)) 
-          & (vlSelf->top__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtime 
-             >= vlSelf->top__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtimecmp)) 
+    if ((((IData)((vlSelf->top__DOT__csrfile__DOT__mie 
+                   >> 7U)) & (vlSelf->top__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtime 
+                              >= vlSelf->top__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtimecmp)) 
          & (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r))) {
         __Vdly__top__DOT__csrfile__DOT__mip = ((0xffffffffffffff00ULL 
                                                 & vlSelf->top__DOT__csrfile__DOT__mip) 

@@ -51,9 +51,8 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                                    >> 3U)))));
             tracep->chgBit(oldp+13,((1U & (IData)((vlSelf->top__DOT__csrfile__DOT__mie 
                                                    >> 7U)))));
-            tracep->chgBit(oldp+14,((((IData)((vlSelf->top__DOT__csrfile__DOT__mie 
-                                               >> 7U)) 
-                                      & (IData)(vlSelf->top__DOT__mip_MITP)) 
+            tracep->chgBit(oldp+14,(((IData)((vlSelf->top__DOT__csrfile__DOT__mie 
+                                              >> 7U)) 
                                      & (vlSelf->top__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtime 
                                         >= vlSelf->top__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtimecmp))));
             tracep->chgIData(oldp+15,(vlSelf->top__DOT__ID_Reg__DOT__instr_r),32);
@@ -4005,9 +4004,8 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
             tracep->chgQData(oldp+900,(vlSelf->top__DOT__regfile__DOT__rf[31]),64);
             tracep->chgBit(oldp+902,(vlSelf->top__DOT____Vcellinp__csrfile__Ecall));
             tracep->chgBit(oldp+903,(vlSelf->top__DOT____Vcellinp__csrfile__Mret));
-            tracep->chgBit(oldp+904,(((((IData)((vlSelf->top__DOT__csrfile__DOT__mie 
-                                                 >> 7U)) 
-                                        & (IData)(vlSelf->top__DOT__mip_MITP)) 
+            tracep->chgBit(oldp+904,((((IData)((vlSelf->top__DOT__csrfile__DOT__mie 
+                                                >> 7U)) 
                                        & (vlSelf->top__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtime 
                                           >= vlSelf->top__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtimecmp)) 
                                       & (IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r))));
