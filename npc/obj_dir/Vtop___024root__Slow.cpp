@@ -87,6 +87,8 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     vlSelf->wb_pc = vlSelf->top__DOT__wb_pc_r;
     vlSelf->wb_instr = vlSelf->top__DOT__wb_instr_r;
     vlSelf->next_pc = vlSelf->top__DOT__next_pc_r;
+    vlSelf->top__DOT__mstatus_MIE = (1U & (IData)((vlSelf->top__DOT__csrfile__DOT__mstatus 
+                                                   >> 3U)));
     vlSelf->rw_w_data_o[0U] = vlSelf->top__DOT__d_rw_w_data_o[0U];
     vlSelf->rw_w_data_o[1U] = vlSelf->top__DOT__d_rw_w_data_o[1U];
     vlSelf->rw_w_data_o[2U] = vlSelf->top__DOT__d_rw_w_data_o[2U];
@@ -6055,6 +6057,8 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__d_rw_valid_o = VL_RAND_RESET_I(1);
     VL_RAND_RESET_W(128, vlSelf->top__DOT__d_rw_w_data_o);
     vlSelf->top__DOT__d_rw_ready_i = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__mstatus_MIE = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__mip_MITP = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__if_instr_o = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__dnpc = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__if_pc_o = VL_RAND_RESET_Q(64);

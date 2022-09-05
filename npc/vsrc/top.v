@@ -58,7 +58,6 @@ module top(
     wire             d_rw_ready_i;
     wire mstatus_MIE;
     wire mie_MITE;
-    wire mip_MITP;
     wire Time_interrupt;
     ////////////////////////all/////////////////////////
     wire [31:0] if_instr_o, id_instr_o, ex_instr_o, m_instr_o, wb_instr_o;
