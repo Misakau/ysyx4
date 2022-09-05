@@ -3900,10 +3900,10 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
             tracep->chgQData(oldp+773,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__cpu_data_read),64);
             tracep->chgBit(oldp+775,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__cache_doing));
             tracep->chgBit(oldp+776,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__vis_dev));
-            tracep->chgBit(oldp+777,((2U == (0x3ffffffU 
+            tracep->chgBit(oldp+777,((2U == (0xffU 
                                              & (IData)(
                                                        (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
-                                                        >> 6U))))));
+                                                        >> 0x18U))))));
             tracep->chgQData(oldp+778,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtimecmp),64);
             tracep->chgQData(oldp+780,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dev_dataout),64);
             tracep->chgQData(oldp+782,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datad),64);
@@ -6474,10 +6474,10 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                                    | (QData)((IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataw))))))
                                           : vlSelf->top__DOT__M_Reg__DOT__raddr_r)),64);
             tracep->chgBit(oldp+1525,(((IData)(vlSelf->top__DOT__is_men) 
-                                       & (2U == (0x3ffffffU 
+                                       & (2U == (0xffU 
                                                  & (IData)(
                                                            (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
-                                                            >> 6U)))))));
+                                                            >> 0x18U)))))));
         }
         if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[2U])) {
             tracep->chgBit(oldp+1526,(vlSelf->top__DOT__i_rw_ready_i));
