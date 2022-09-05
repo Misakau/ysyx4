@@ -1315,7 +1315,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     }
     if (vlSelf->rst) {
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtimecmp = 0ULL;
-    } else if (vlSelf->top__DOT__is_men) {
+    } else if (((IData)(vlSelf->top__DOT__is_men) & 
+                (2U == (0x3ffffffU & (IData)((vlSelf->top__DOT__M_Reg__DOT__raddr_r 
+                                              >> 6U)))))) {
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtimecmp 
             = vlSelf->top__DOT__M_Reg__DOT__wdata_r;
     }

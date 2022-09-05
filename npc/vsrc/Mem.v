@@ -41,8 +41,8 @@ module ysyx_220053_Mem(
     wire [63:0] cpu_data_read;
     reg cache_doing;
 
-    wire vis_dev = (raddr[31:28] == 4'ha || raddr[31:6] == 26'h2);
-    wire vis_clint = raddr[31:6] == 26'h2;
+    wire vis_dev = (raddr[31:28] == 4'ha || raddr[31:24] == 8'h2);//0x 0200 0000
+    wire vis_clint = (raddr[31:24] == 8'h2);
     wire clint_wen = MemWen & vis_clint;
     wire [63:0] clint_rdata;
     ysyx_220053_CLint clint(
