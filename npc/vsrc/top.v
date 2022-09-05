@@ -56,6 +56,10 @@ module top(
     wire [127:0]    d_rw_w_data_o;
     wire  [127:0]    d_data_read_i;//finish burst
     wire             d_rw_ready_i;
+    wire mstatus_MIE;
+    wire mie_MITE;
+    wire mip_MITP;
+    wire Time_interrupt;
     ////////////////////////all/////////////////////////
     wire [31:0] if_instr_o, id_instr_o, ex_instr_o, m_instr_o, wb_instr_o;
     wire [63:0] dnpc;
@@ -187,6 +191,9 @@ module top(
       else if(id_wb_hazard && id_rs2 == wb_waddr_i) forward_data2 = wb_wdata_i;
       else forward_data2 = 64'b0;
     end
+
+
+    assign Time_interrupt = mie_MITE & mip_MITP & is_cmp;
     /////////////IF/////////////////
     wire has_fence_i = id_Fence_i_o && id_valid_o | ex_Fence_i_i && ex_valid_o | m_Fence_i_i && m_valid_o;// | wb_Fence_i_i;
     wire if_busy;
@@ -505,7 +512,8 @@ module top(
     wire [63:0] Csr_datain = id_Csri_o ? {{59{1'b0}},id_imm_o[4:0]} : id_busa_o;
     ysyx_220053_CSR csrfile( .clk(clk), .Csrwen(is_Csrwen), .CsrOp(id_CsrOp), .CsrId(id_CsrId), .datain(Csr_datain),
                              .mepc_o(id_mepc), .csrres(id_csrres_o), .mtvec_o(id_mtvec), .Ecall(id_Ecall & id_valid_o),
-                             .epc_in(id_pc_o),.Mret(id_Mret & id_valid_o));
+                             .epc_in(id_pc_o),.Mret(id_Mret & id_valid_o),
+                             .mstatus_MIE(mstatus_MIE), .mie_MITE(mie_MITE), .Time_interrupt(Time_interrupt & id_valid_o));
     
     //////////Arbiter//////////////
     ysyx_220053_arbiter arbiter(

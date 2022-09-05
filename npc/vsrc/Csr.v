@@ -9,7 +9,10 @@ module ysyx_220053_CSR(
     input [63:0] datain,
     input [63:0] epc_in,
     output [63:0] mepc_o, mtvec_o,
-    output reg [63:0] csrres
+    output reg [63:0] csrres,
+    output mstatus_MIE,
+    output mie_MITE,
+    input  Time_interrupt
 );
 /*
 #define MSTATUS   0x300
@@ -55,16 +58,17 @@ MIP               0x344
     reg [63:0] mstatus;
     always@(posedge clk) begin
         if(Ecall == 1'b1) begin
-            mstatus <= {mstatus[63:13],1'b0,1'b0,mstatus[10:0]};
+            mstatus <= {mstatus[63:13],1'b0,1'b0,mstatus[10:8],mstatus_MIE,mstatus[6:4],1'b0,mstatus[2:0]};
         end
         else if(Mret == 1'b1) begin
-            mstatus <= {mstatus[63:13],1'b1,1'b1,mstatus[10:0]};
+            mstatus <= {mstatus[63:13],1'b1,1'b1,mstatus[10:8],1'b1,mstatus[6:4],mstatus[7],mstatus[2:0]};
         end
         else if(CsrId == 12'h300 && Csrwen == 1'b1) begin
             mstatus <= csrin;
         end
         else mstatus <= 64'ha00001800;
     end
+    assign mstatus_MIE = mstatus[3];
     /////////////////////mscratch///////////////////
     reg [63:0] mscratch;
     always@(posedge clk) begin
@@ -86,10 +90,14 @@ MIP               0x344
         end
         //else mstatus <= 64'ha00001800;
     end
+    assign mie_MITE = mie[7];
     ///////////////////mip/////////////////////////
     reg [63:0] mip;
     always@(posedge clk) begin
-        if(Ecall == 1'b1) begin
+        if (Time_interrupt) begin
+            mip <= {mip[63:8],1'b1,mip[6:0]};
+        end
+        else if(Ecall == 1'b1) begin
             mip <= {mip[63:13],1'b0,1'b0,mip[10:0]};
         end
         else if(Mret == 1'b1) begin
