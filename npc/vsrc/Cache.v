@@ -276,6 +276,7 @@ module ysyx_220053_dcache (
                 endcase
             end
         end
+        else if((cur_status == FENCE_I || cur_status == Readout) && next_status == IDLE) cpu_ready <= 1'b1;
         else cpu_ready <= 1'b0;
     end
 
