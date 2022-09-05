@@ -370,7 +370,7 @@ module ysyx_220053_dcache (
             end
         end
         else if(cur_status == FENCE_I) begin
-            if(!rw_ready_i) begin
+            if(!rw_ready_i && V[idx_cnt]) begin
                 rw_addr_o <= {tag[idx_cnt],idx_cnt,4'b0000};
                 rw_req_o  <= 1'b1;
                 rw_w_data_o <= line_o[idx_cnt[7:6]];
