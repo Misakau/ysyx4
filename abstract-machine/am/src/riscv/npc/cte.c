@@ -53,12 +53,12 @@ bool ienabled() {
 void iset(bool enable) {
   if(enable){
     asm volatile("csrsi mstatus, 8\n");
-    asm volatile("addi t0, x0, 64\n");
+    asm volatile("addi t0, x0, 128\n");
     asm volatile("csrs mie, t0\n");
   }
   else{
     asm volatile("csrci mstatus, 8\n");
-    asm volatile("addi t0, x0, 64\n");
+    asm volatile("addi t0, x0, 128\n");
     asm volatile("csrc mie, t0\n");
   }
 }
