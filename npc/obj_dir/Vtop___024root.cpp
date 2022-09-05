@@ -6849,9 +6849,12 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__id_ALUOp_o = 0U;
         vlSelf->top__DOT__id_wen_o = 0U;
     }
-    vlSelf->top__DOT__has_fence_i = (((IData)(vlSelf->top__DOT__id_Fence_i_o) 
-                                      | (IData)(vlSelf->top__DOT__EX_Reg__DOT__Fence_i_r)) 
-                                     | (IData)(vlSelf->top__DOT__M_Reg__DOT__Fence_i_r));
+    vlSelf->top__DOT__has_fence_i = ((((IData)(vlSelf->top__DOT__id_Fence_i_o) 
+                                       & ((IData)(vlSelf->top__DOT__ID_Reg__DOT__valid_r) 
+                                          | (IData)(vlSelf->top__DOT__EX_Reg__DOT__Fence_i_r))) 
+                                      & ((IData)(vlSelf->top__DOT__EX_Reg__DOT__valid_r) 
+                                         | (IData)(vlSelf->top__DOT__M_Reg__DOT__Fence_i_r))) 
+                                     & (IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r));
     vlSelf->top__DOT__id_imm_o = ((0U == (IData)(vlSelf->top__DOT__my_idu__DOT__ExtOp))
                                    ? (((- (QData)((IData)(
                                                           (vlSelf->top__DOT__ID_Reg__DOT__instr_r 

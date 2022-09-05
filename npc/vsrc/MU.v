@@ -20,7 +20,7 @@ module ysyx_220053_MU(
     input             d_rw_ready_i,
     input Fence_i
 );
-    wire vis_mem = MemToReg | MemWen;
+    wire vis_mem = MemToReg | MemWen | Fence_i;
     wire req_rw  = ~MemToReg;
     wire [63:0] mdata, regsin;
     ysyx_220053_Mem mem(.clk(clk),.rst(rst), .MemOp(MemOp), .raddr(raddr), .MemWen(MemWen),.req_rw(req_rw), .wdata(wdata), .rdata(mdata), .vis_mem(vis_mem)
