@@ -8,6 +8,8 @@ Context* __am_irq_handle(Context *c) {
     Event ev = {0};
     //printf("mcause = %d\n",c->mcause);
     switch (c->mcause) {
+      case 0x8000000000000007:
+        ev.event = EVENT_IRQ_TIMER;break;
       case 11:
         if(c->GPR1 == -1) ev.event = EVENT_YIELD;
         else if(c->GPR1 >= 0 && c->GPR1 <= 19) ev.event = EVENT_SYSCALL;
@@ -41,7 +43,7 @@ Context *kcontext(Area kstack, void (*entry)(void *), void *arg) {
 }
 
 void yield() {
-  asm volatile("li a7, -1; ecall");
+  asm volatile("li a7, -1\n ecall");
 }
 
 bool ienabled() {
@@ -49,4 +51,14 @@ bool ienabled() {
 }
 
 void iset(bool enable) {
+  if(enable){
+    asm volatile("csrsi mstatus, 8\n");
+    asm volatile("addi t0, x0, 256\n");
+    asm volatile("csrs mie, t0\n");
+  }
+  else{
+    asm volatile("csrci mstatus, 8\n");
+    asm volatile("addi t0, x0, 256\n");
+    asm volatile("csrc mie, t0\n");
+  }
 }

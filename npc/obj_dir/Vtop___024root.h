@@ -57,6 +57,7 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__d_rw_valid_o;
         CData/*0:0*/ top__DOT__d_rw_ready_i;
         CData/*0:0*/ top__DOT__mstatus_MIE;
+        CData/*0:0*/ top__DOT__Time_interrupt;
         CData/*0:0*/ top__DOT__id_en;
         CData/*0:0*/ top__DOT__ex_en;
         CData/*0:0*/ top__DOT__id_block;
@@ -113,9 +114,9 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__my_idu__DOT__nextaddr__DOT__NexA;
         CData/*0:0*/ top__DOT__my_idu__DOT__nextaddr__DOT__NexB;
         CData/*0:0*/ top__DOT__EX_Reg__DOT__valid_r;
-        CData/*4:0*/ top__DOT__EX_Reg__DOT__rd_r;
     };
     struct {
+        CData/*4:0*/ top__DOT__EX_Reg__DOT__rd_r;
         CData/*0:0*/ top__DOT__EX_Reg__DOT__ALUSrcA_r;
         CData/*0:0*/ top__DOT__EX_Reg__DOT__MemToReg_r;
         CData/*0:0*/ top__DOT__EX_Reg__DOT__MemWen_r;
@@ -179,9 +180,9 @@ VL_MODULE(Vtop___024root) {
         CData/*7:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__idx_cnt;
         CData/*2:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status;
         CData/*2:0*/ top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__next_status;
-        CData/*0:0*/ top__DOT__WB_Reg__DOT__valid_r;
     };
     struct {
+        CData/*0:0*/ top__DOT__WB_Reg__DOT__valid_r;
         CData/*0:0*/ top__DOT__WB_Reg__DOT__wen_r;
         CData/*4:0*/ top__DOT__WB_Reg__DOT__waddr_r;
         CData/*0:0*/ top__DOT__WB_Reg__DOT__Ebreak_r;
@@ -245,9 +246,9 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__EX_Reg__DOT__busb_r;
         QData/*63:0*/ top__DOT__EX_Reg__DOT__imm_r;
         QData/*63:0*/ top__DOT__EX_Reg__DOT__Csrres_r;
-        QData/*63:0*/ top__DOT__my_exu__DOT__res;
     };
     struct {
+        QData/*63:0*/ top__DOT__my_exu__DOT__res;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu_inA;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu_inB;
         QData/*63:0*/ top__DOT__my_exu__DOT__alu64__DOT__adderres;
@@ -307,7 +308,7 @@ VL_MODULE(Vtop___024root) {
     };
 
     // LOCAL VARIABLES
-    CData/*0:0*/ top__DOT____Vcellinp__csrfile__Mret;
+    CData/*0:0*/ top__DOT____Vcellinp__csrfile__Time_interrupt;
     CData/*0:0*/ top__DOT____Vcellinp__csrfile__Ecall;
     CData/*0:0*/ __Vclklast__TOP__clk;
     VlWide<4>/*127:0*/ top__DOT__my_ifu__DOT__icache__DOT____Vcellout__ram0__Q;
