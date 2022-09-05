@@ -186,7 +186,7 @@ module top(
       else forward_data2 = 64'b0;
     end
     /////////////IF/////////////////
-    wire has_fence_i = id_Fence_i_o | ex_Fence_i_i | m_Fence_i_i;// | wb_Fence_i_i;
+    wire has_fence_i = id_Fence_i_o && id_valid_o | ex_Fence_i_i && ex_valid_o | m_Fence_i_i && m_valid_o;// | wb_Fence_i_i;
     wire if_busy;
     wire cpu_halt;
     wire dnpc_valid = id_valid_o & ~has_fence_i;
