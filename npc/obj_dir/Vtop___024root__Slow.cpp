@@ -994,6 +994,8 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
             = vlSelf->top__DOT__M_Reg__DOT__wdata_r;
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__wmask = 0xffU;
     }
+    vlSelf->top__DOT__is_Fence_i = ((IData)(vlSelf->top__DOT__M_Reg__DOT__Fence_i_r) 
+                                    & (IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r));
     vlSelf->top__DOT__is_men = (((IData)(vlSelf->top__DOT__M_Reg__DOT__MemWen_r) 
                                  & (~ (IData)(vlSelf->rst))) 
                                 & (IData)(vlSelf->top__DOT__M_Reg__DOT__valid_r));
@@ -4640,7 +4642,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     }
     vlSelf->top__DOT__my_mu__DOT__vis_mem = (((IData)(vlSelf->top__DOT__is_MemToReg) 
                                               | (IData)(vlSelf->top__DOT__is_men)) 
-                                             | (IData)(vlSelf->top__DOT__M_Reg__DOT__Fence_i_r));
+                                             | (IData)(vlSelf->top__DOT__is_Fence_i));
     if (vlSelf->top__DOT__my_exu__DOT__alu64__DOT__Wctr) {
         vlSelf->top__DOT__my_exu__DOT__alu64__DOT__multiplicand[0U] 
             = (IData)(vlSelf->top__DOT__my_exu__DOT__alu_inA);
@@ -5974,6 +5976,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__is_Csrwen = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__alu_busy = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__m_busy = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__is_Fence_i = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__is_MemToReg = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__is_men = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__dev_o = VL_RAND_RESET_I(1);
