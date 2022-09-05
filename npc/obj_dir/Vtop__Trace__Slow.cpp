@@ -7855,10 +7855,9 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullQData(oldp+774,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__cpu_data_read),64);
         tracep->fullBit(oldp+776,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__cache_doing));
         tracep->fullBit(oldp+777,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__vis_dev));
-        tracep->fullBit(oldp+778,((2U == (0x3ffffffU 
-                                          & (IData)(
-                                                    (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
-                                                     >> 6U))))));
+        tracep->fullBit(oldp+778,((2U == (0xfU & (IData)(
+                                                         (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
+                                                          >> 0x1cU))))));
         tracep->fullQData(oldp+779,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtimecmp),64);
         tracep->fullQData(oldp+781,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dev_dataout),64);
         tracep->fullQData(oldp+783,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__datad),64);
