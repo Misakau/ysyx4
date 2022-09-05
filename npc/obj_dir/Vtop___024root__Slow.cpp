@@ -5969,7 +5969,8 @@ void Vtop___024root___settle__TOP__6(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__Csr_datain = ((IData)(vlSelf->top__DOT__id_Csri_o)
                                      ? (QData)((IData)(
                                                        (0x1fU 
-                                                        & (IData)(vlSelf->top__DOT__id_imm_o))))
+                                                        & (vlSelf->top__DOT__ID_Reg__DOT__instr_r 
+                                                           >> 0xfU))))
                                      : vlSelf->top__DOT__id_busa_o);
     vlSelf->top__DOT__my_idu__DOT__alu_inA = ((IData)(vlSelf->top__DOT__id_ALUSrcA_o)
                                                ? vlSelf->top__DOT__id_busa_o
