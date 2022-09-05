@@ -192,7 +192,7 @@ module top(
     end
 
 
-    assign Time_interrupt = mie_MITE & mie_MITE & is_cmp;
+    assign Time_interrupt = mie_MITE & mstatus_MIE & is_cmp;
     /////////////IF/////////////////
     wire has_fence_i = id_Fence_i_o && id_valid_o | ex_Fence_i_i && ex_valid_o | m_Fence_i_i && m_valid_o;// | wb_Fence_i_i;
     wire if_busy;
