@@ -76,13 +76,13 @@ MIP               0x344
     reg [63:0] mie;
     always@(posedge clk) begin
         if(Ecall == 1'b1) begin
-            mstatus <= {mstatus[63:13],1'b0,1'b0,mstatus[10:0]};
+            mie <= {mie[63:13],1'b0,1'b0,mie[10:0]};
         end
         else if(Mret == 1'b1) begin
-            mstatus <= {mstatus[63:13],1'b1,1'b1,mstatus[10:0]};
+            mie <= {mie[63:13],1'b1,1'b1,mie[10:0]};
         end
         else if(CsrId == 12'h304 && Csrwen == 1'b1) begin
-            mstatus <= csrin;
+            mie <= csrin;
         end
         //else mstatus <= 64'ha00001800;
     end
@@ -90,13 +90,13 @@ MIP               0x344
     reg [63:0] mip;
     always@(posedge clk) begin
         if(Ecall == 1'b1) begin
-            mstatus <= {mstatus[63:13],1'b0,1'b0,mstatus[10:0]};
+            mip <= {mip[63:13],1'b0,1'b0,mip[10:0]};
         end
         else if(Mret == 1'b1) begin
-            mstatus <= {mstatus[63:13],1'b1,1'b1,mstatus[10:0]};
+            mip <= {mip[63:13],1'b1,1'b1,mip[10:0]};
         end
         else if(CsrId == 12'h344 && Csrwen == 1'b1) begin
-            mstatus <= csrin;
+            mip <= csrin;
         end
         //else mstatus <= 64'ha00001800;
     end

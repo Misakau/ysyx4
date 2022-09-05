@@ -283,6 +283,8 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__csrfile__DOT__mcause;
         QData/*63:0*/ top__DOT__csrfile__DOT__mstatus;
         QData/*63:0*/ top__DOT__csrfile__DOT__mscratch;
+        QData/*63:0*/ top__DOT__csrfile__DOT__mie;
+        QData/*63:0*/ top__DOT__csrfile__DOT__mip;
         VlUnpacked<CData/*0:0*/, 256> top__DOT__my_ifu__DOT__icache__DOT__V;
         VlUnpacked<QData/*51:0*/, 256> top__DOT__my_ifu__DOT__icache__DOT__tag;
         VlUnpacked<VlWide<4>/*127:0*/, 4> top__DOT__my_ifu__DOT__icache__DOT__line_o;
@@ -304,6 +306,7 @@ VL_MODULE(Vtop___024root) {
     };
 
     // LOCAL VARIABLES
+    CData/*0:0*/ top__DOT____Vcellinp__csrfile__Mret;
     CData/*0:0*/ top__DOT____Vcellinp__csrfile__Ecall;
     CData/*0:0*/ __Vclklast__TOP__clk;
     VlWide<4>/*127:0*/ top__DOT__my_ifu__DOT__icache__DOT____Vcellout__ram0__Q;

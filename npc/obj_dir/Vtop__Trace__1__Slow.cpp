@@ -11,14 +11,6 @@ void Vtop___024root__traceFullSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep)
     if (false && oldp) {}  // Prevent unused
     // Body
     {
-        tracep->fullBit(oldp+2438,((1U & (((IData)(
-                                                   (vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__SrcA 
-                                                    >> 0x1bU)) 
-                                           ^ (IData)(
-                                                     (vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__SrcB 
-                                                      >> 0x1bU))) 
-                                          ^ ((IData)(vlSymsp->TOP__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.genblk2__BRA__3__KET____DOT__adder8__DOT__adder_low__DOT____Vcellout__gen__c) 
-                                             >> 2U)))));
         tracep->fullBit(oldp+2439,((1U & (((IData)(
                                                    (vlSelf->top__DOT__my_idu__DOT__nextaddr__DOT__SrcA 
                                                     >> 0x1bU)) 
@@ -1249,8 +1241,10 @@ void Vtop___024root__traceFullSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullCData(oldp+2817,(6U),3);
         tracep->fullCData(oldp+2818,(7U),3);
         tracep->fullIData(oldp+2819,(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__j),32);
-        tracep->fullCData(oldp+2820,(0U),2);
-        tracep->fullCData(oldp+2821,(1U),2);
-        tracep->fullCData(oldp+2822,(2U),2);
+        tracep->fullQData(oldp+2820,(vlSelf->top__DOT__csrfile__DOT__mie),64);
+        tracep->fullQData(oldp+2822,(vlSelf->top__DOT__csrfile__DOT__mip),64);
+        tracep->fullCData(oldp+2824,(0U),2);
+        tracep->fullCData(oldp+2825,(1U),2);
+        tracep->fullCData(oldp+2826,(2U),2);
     }
 }
