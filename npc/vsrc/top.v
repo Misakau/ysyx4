@@ -509,7 +509,7 @@ module top(
                                             );
     //////////Csr////////////////
     //Csrwen:阻塞时不能写,还没完成这里的逻辑，阻塞和冒险判断放在top里
-    wire [63:0] Csr_datain = id_Csri_o ? {{59{1'b0}},id_imm_o[4:0]} : id_busa_o;
+    wire [63:0] Csr_datain = (id_Csri_o == 1'b1) ? {{59{1'b0}},id_rs1} : id_busa_o;
     ysyx_220053_CSR csrfile( .clk(clk), .Csrwen(is_Csrwen), .CsrOp(id_CsrOp), .CsrId(id_CsrId), .datain(Csr_datain),
                              .mepc_o(id_mepc), .csrres(id_csrres_o), .mtvec_o(id_mtvec), .Ecall(id_Ecall & id_valid_o),
                              .epc_in(id_pc_o),.Mret(id_Mret & id_valid_o),
