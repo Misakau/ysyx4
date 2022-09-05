@@ -171,7 +171,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
          & (~ (IData)(vlSelf->top__DOT__is_MemToReg)))) {
         vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__i = 0x10U;
     }
-    if (((IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__vis_dev) 
+    if ((((IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__vis_dev) 
+          & (2U != (0xffU & (IData)((vlSelf->top__DOT__M_Reg__DOT__raddr_r 
+                                     >> 0x18U))))) 
          & (IData)(vlSelf->top__DOT__is_men))) {
         Vtop___024unit____Vdpiimwrap_pmem_write_TOP____024unit(vlSelf->top__DOT__M_Reg__DOT__raddr_r, vlSelf->top__DOT__my_mu__DOT__mem__DOT__datain, (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__wmask));
     }
