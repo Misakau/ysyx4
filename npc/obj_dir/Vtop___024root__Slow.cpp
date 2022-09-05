@@ -1001,8 +1001,8 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__vis_dev 
         = ((0xaU == (0xfU & (IData)((vlSelf->top__DOT__M_Reg__DOT__raddr_r 
                                      >> 0x1cU)))) | 
-           (2U == (0xfU & (IData)((vlSelf->top__DOT__M_Reg__DOT__raddr_r 
-                                   >> 0x1cU)))));
+           (2U == (0x3ffffffU & (IData)((vlSelf->top__DOT__M_Reg__DOT__raddr_r 
+                                         >> 6U)))));
     vlSelf->top__DOT__my_exu__DOT__alu_inB = ((1U == (IData)(vlSelf->top__DOT__EX_Reg__DOT__ALUSrcB_r))
                                                ? vlSelf->top__DOT__EX_Reg__DOT__imm_r
                                                : ((0U 
@@ -4923,8 +4923,8 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
         = (0xfU & __Vtemp150[4U]);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataout 
         = ((IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__vis_dev)
-            ? ((2U == (0xfU & (IData)((vlSelf->top__DOT__M_Reg__DOT__raddr_r 
-                                       >> 0x1cU))))
+            ? ((2U == (0x3ffffffU & (IData)((vlSelf->top__DOT__M_Reg__DOT__raddr_r 
+                                             >> 6U))))
                 ? vlSelf->top__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtimecmp
                 : vlSelf->top__DOT__my_mu__DOT__mem__DOT__dev_dataout)
             : vlSelf->top__DOT__my_mu__DOT__mem__DOT__cpu_data_read);
