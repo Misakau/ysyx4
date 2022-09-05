@@ -5941,44 +5941,28 @@ void Vtop___024root___settle__TOP__6(Vtop___024root* vlSelf) {
                                               ? vlSelf->top__DOT__id_busb_o
                                               : 4ULL)) 
            ^ (- (QData)((IData)(vlSelf->top__DOT__my_idu__DOT__na_alu__DOT__SUBctr))));
+    vlSelf->top__DOT__Csr_datain = ((IData)(vlSelf->top__DOT__id_Csri_o)
+                                     ? (QData)((IData)(
+                                                       (0x1fU 
+                                                        & (IData)(vlSelf->top__DOT__id_imm_o))))
+                                     : vlSelf->top__DOT__id_busa_o);
+    vlSelf->top__DOT__my_idu__DOT__alu_inA = ((IData)(vlSelf->top__DOT__id_ALUSrcA_o)
+                                               ? vlSelf->top__DOT__id_busa_o
+                                               : vlSelf->top__DOT__ID_Reg__DOT__pc_r);
     vlSelf->top__DOT__csrfile__DOT__csrin = ((0U == (IData)(vlSelf->top__DOT__id_CsrOp))
-                                              ? (QData)((IData)(
-                                                                (1U 
-                                                                 & (IData)(
-                                                                           ((IData)(vlSelf->top__DOT__id_Csri_o)
-                                                                             ? (QData)((IData)(
-                                                                                (0x1fU 
-                                                                                & (IData)(vlSelf->top__DOT__id_imm_o))))
-                                                                             : vlSelf->top__DOT__id_busa_o)))))
+                                              ? vlSelf->top__DOT__Csr_datain
                                               : ((1U 
                                                   == (IData)(vlSelf->top__DOT__id_CsrOp))
                                                   ? 
                                                  (vlSelf->top__DOT__id_csrres_o 
-                                                  | (QData)((IData)(
-                                                                    (1U 
-                                                                     & (IData)(
-                                                                               ((IData)(vlSelf->top__DOT__id_Csri_o)
-                                                                                 ? (QData)((IData)(
-                                                                                (0x1fU 
-                                                                                & (IData)(vlSelf->top__DOT__id_imm_o))))
-                                                                                 : vlSelf->top__DOT__id_busa_o))))))
+                                                  | vlSelf->top__DOT__Csr_datain)
                                                   : 
                                                  ((2U 
                                                    == (IData)(vlSelf->top__DOT__id_CsrOp))
                                                    ? 
                                                   (vlSelf->top__DOT__id_csrres_o 
-                                                   & (~ (QData)((IData)(
-                                                                        (1U 
-                                                                         & (IData)(
-                                                                                ((IData)(vlSelf->top__DOT__id_Csri_o)
-                                                                                 ? (QData)((IData)(
-                                                                                (0x1fU 
-                                                                                & (IData)(vlSelf->top__DOT__id_imm_o))))
-                                                                                 : vlSelf->top__DOT__id_busa_o)))))))
+                                                   & (~ vlSelf->top__DOT__Csr_datain))
                                                    : 0ULL)));
-    vlSelf->top__DOT__my_idu__DOT__alu_inA = ((IData)(vlSelf->top__DOT__id_ALUSrcA_o)
-                                               ? vlSelf->top__DOT__id_busa_o
-                                               : vlSelf->top__DOT__ID_Reg__DOT__pc_r);
 }
 
 void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
@@ -6109,6 +6093,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__wb_pc_r = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__wb_instr_r = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__next_pc_r = VL_RAND_RESET_Q(64);
+    vlSelf->top__DOT__Csr_datain = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT____Vcellinp__csrfile__Ecall = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_ifu__DOT__old_instr = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_ifu__DOT__cache_doing = VL_RAND_RESET_I(1);

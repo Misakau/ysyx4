@@ -118,6 +118,7 @@ module top(
     wire m_Ebreak_i;
     wire m_Fence_i_i;
     wire [63:0] m_rfdata_o;//m 段输出
+    wire is_cmp;
     //////////////WB///////////////////////////
     wire wb_wen_i;
     wire [63:0] wb_wdata_i;
@@ -401,7 +402,8 @@ module top(
       .d_rw_w_data_o(d_rw_w_data_o),
       .d_data_read_i(d_data_read_i),//finish burst
       .d_rw_ready_i(d_rw_ready_i),
-      .Fence_i(is_Fence_i)
+      .Fence_i(is_Fence_i),
+      .is_cmp(is_cmp)
     );
     wire is_Fence_i = m_Fence_i_i & m_valid_o;
     assign d_rw_ready = d_rw_ready_i;

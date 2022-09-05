@@ -17,7 +17,8 @@ module ysyx_220053_Mem(
     output [127:0]    d_rw_w_data_o,
     input  [127:0]    d_data_read_i,
     input             d_rw_ready_i,
-    input Fence_i
+    input Fence_i,
+    output is_cmp
 );
     wire [63:0] dataout;
     reg [7:0] wmask;
@@ -40,7 +41,13 @@ module ysyx_220053_Mem(
     wire [63:0] cpu_data_read;
     reg cache_doing;
 
-    wire vis_dev = raddr[31:28] == 4'ha;
+    wire vis_dev = (raddr[31:28] == 4'ha || raddr[31:28] == 4'h2);
+    wire vis_clint = raddr[31:28] == 4'h2;
+    wire [63:0] clint_rdata;
+    ysyx_220053_CLint clint(
+        .clk(clk),.rst(rst),.clint_wen(MemWen),.wdata(wdata),.rdata(clint_rdata),.is_cmp(is_cmp)
+    );
+
 
     always @(posedge clk) begin
         if(rst) begin
@@ -66,7 +73,7 @@ module ysyx_220053_Mem(
       Fence_i
     );
     wire [63:0] dev_dataout;
-    assign dataout = (vis_dev) ? dev_dataout : cpu_data_read;
+    assign dataout = (vis_dev) ? ((vis_clint) ? clint_rdata : dev_dataout) : cpu_data_read;
     always @(*) begin
         pmem_read(raddr, dev_dataout, bytes);
     end
@@ -194,5 +201,35 @@ module ysyx_220053_Mem(
             3'b110: rdata = {{48{1'b0}},datah};
             default: rdata = 0;
         endcase
+    end
+endmodule
+module ysyx_220053_CLint(
+    input clk,
+    input rst,
+    input clint_wen,
+    input [63:0] wdata,
+    output [63:0] rdata,
+    output is_cmp
+);
+    reg [63:0] mtime, mtimecmp;
+    assign rdata = mtimecmp;
+    assign is_cmp = (mtime >= mtimecmp);
+
+    always @(posedge clk) begin
+        if(rst) begin
+            mtime <= 0;
+        end
+        else begin
+            mtime <= mtime + 1;
+        end
+    end
+
+    always @(posedge clk) begin
+        if(rst) begin
+            mtimecmp <= 0;
+        end
+        else if(clint_wen) begin
+            mtime <= wdata;
+        end
     end
 endmodule
