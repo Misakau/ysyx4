@@ -52,7 +52,7 @@ module ysyx_220053_IDU(
     assign alu_inB = (ALUSrcB == 2'b01) ? imm : ((ALUSrcB == 2'b00) ? busb : 4);
 
     ysyx_220053_ALU_lite na_alu(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .result(res), .zero(zero));
-    ysyx_220053_NexAddr nextaddr(.mtvec(mtvec), .Ecall(Ecall), .mepc(mepc), .Mret(Mret),
+    ysyx_220053_NexAddr nextaddr(.mtvec(mtvec), .Trap(Ecall), .mepc(mepc), .Mret(Mret),
                                  .Zero(zero), .res0(res[0]), .Branch(Branch), .pc(pc),
                                  .imm(imm), .busa(busa), .dnpc(addr_res));
     

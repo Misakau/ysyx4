@@ -5,7 +5,7 @@ module ysyx_220053_NexAddr(
     input Zero, res0,
     input [2:0] Branch,
     input [63:0] pc, imm, busa, mepc, mtvec,
-    input Mret, Ecall,
+    input Mret, Trap,
     output [63:0] dnpc
 );
     reg NexA, NexB;//A:0:pc,1:busa //B: 0:4, 1:imm
@@ -25,7 +25,7 @@ module ysyx_220053_NexAddr(
     assign SrcB = (NexB == 1'b0) ? 4 : imm;
     wire [63:0] respc;
     ysyx_220053_Adder64 pcadder(.result(respc), .x(SrcA), .y(SrcB), .sub(1'b0));
-    assign dnpc = (Ecall == 1'b0) ? ((Mret == 1'b0) ? respc : mepc) : mtvec;
+    assign dnpc = (Trap == 1'b0) ? ((Mret == 1'b0) ? respc : mepc) : mtvec;
  //   always@(*) begin
   //      $display("pc = %x, dnpc=%x",pc,dnpc);
   //  end

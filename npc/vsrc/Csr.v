@@ -13,10 +13,12 @@ module ysyx_220053_CSR(
 );
 /*
 #define MSTATUS   0x300
+MIE               0x304
 #define MTVEC     0x305
 #define MSCRATCH  0x340
 #define MEPC      0x341
 #define MCAUSE    0x342
+MIP               0x344
 */
 
     reg [63:0] csrin;//data to be written
@@ -70,14 +72,44 @@ module ysyx_220053_CSR(
             mscratch <= csrin;
         end
     end
+    ///////////////////mie/////////////////////////
+    reg [63:0] mie;
+    always@(posedge clk) begin
+        if(Ecall == 1'b1) begin
+            mstatus <= {mstatus[63:13],1'b0,1'b0,mstatus[10:0]};
+        end
+        else if(Mret == 1'b1) begin
+            mstatus <= {mstatus[63:13],1'b1,1'b1,mstatus[10:0]};
+        end
+        else if(CsrId == 12'h304 && Csrwen == 1'b1) begin
+            mstatus <= csrin;
+        end
+        //else mstatus <= 64'ha00001800;
+    end
+    ///////////////////mip/////////////////////////
+    reg [63:0] mip;
+    always@(posedge clk) begin
+        if(Ecall == 1'b1) begin
+            mstatus <= {mstatus[63:13],1'b0,1'b0,mstatus[10:0]};
+        end
+        else if(Mret == 1'b1) begin
+            mstatus <= {mstatus[63:13],1'b1,1'b1,mstatus[10:0]};
+        end
+        else if(CsrId == 12'h344 && Csrwen == 1'b1) begin
+            mstatus <= csrin;
+        end
+        //else mstatus <= 64'ha00001800;
+    end
     //////////////////////read/////////////////////
     always@(*) begin
         case(CsrId)
             12'h300:  csrres = mstatus;
+            12'h304:  csrres = mie
             12'h305:  csrres = mtvec;
             12'h340:  csrres = mscratch;
             12'h341:  csrres = mepc;
             12'h342:  csrres = mcause;
+            12'h344:  csrres = mip;
             default: csrres = 0;
         endcase
     end
