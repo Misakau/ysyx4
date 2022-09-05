@@ -81,6 +81,7 @@ MIP               0x344
         else if(CsrId == 12'h300 && Csrwen == 1'b1) begin
             mstatus <= csrin;
         end
+        else mstatus <= {mstatus[63:13],1'b1,1'b1,mstatus[10:0]};
     end
     assign mstatus_MIE = mstatus[3];
     /////////////////////mscratch///////////////////
