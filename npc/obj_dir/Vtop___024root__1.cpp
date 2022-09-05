@@ -667,18 +667,39 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                                               : 4ULL)) 
            ^ (- (QData)((IData)(vlSelf->top__DOT__my_idu__DOT__na_alu__DOT__SUBctr))));
     vlSelf->top__DOT__csrfile__DOT__csrin = ((0U == (IData)(vlSelf->top__DOT__id_CsrOp))
-                                              ? vlSelf->top__DOT__id_busa_o
+                                              ? (QData)((IData)(
+                                                                (1U 
+                                                                 & (IData)(
+                                                                           ((IData)(vlSelf->top__DOT__id_Csri_o)
+                                                                             ? (QData)((IData)(
+                                                                                (0x1fU 
+                                                                                & (IData)(vlSelf->top__DOT__id_imm_o))))
+                                                                             : vlSelf->top__DOT__id_busa_o)))))
                                               : ((1U 
                                                   == (IData)(vlSelf->top__DOT__id_CsrOp))
                                                   ? 
                                                  (vlSelf->top__DOT__id_csrres_o 
-                                                  | vlSelf->top__DOT__id_busa_o)
+                                                  | (QData)((IData)(
+                                                                    (1U 
+                                                                     & (IData)(
+                                                                               ((IData)(vlSelf->top__DOT__id_Csri_o)
+                                                                                 ? (QData)((IData)(
+                                                                                (0x1fU 
+                                                                                & (IData)(vlSelf->top__DOT__id_imm_o))))
+                                                                                 : vlSelf->top__DOT__id_busa_o))))))
                                                   : 
                                                  ((2U 
                                                    == (IData)(vlSelf->top__DOT__id_CsrOp))
                                                    ? 
                                                   (vlSelf->top__DOT__id_csrres_o 
-                                                   & (~ vlSelf->top__DOT__id_busa_o))
+                                                   & (~ (QData)((IData)(
+                                                                        (1U 
+                                                                         & (IData)(
+                                                                                ((IData)(vlSelf->top__DOT__id_Csri_o)
+                                                                                 ? (QData)((IData)(
+                                                                                (0x1fU 
+                                                                                & (IData)(vlSelf->top__DOT__id_imm_o))))
+                                                                                 : vlSelf->top__DOT__id_busa_o)))))))
                                                    : 0ULL)));
     vlSelf->top__DOT__my_idu__DOT__alu_inA = ((IData)(vlSelf->top__DOT__id_ALUSrcA_o)
                                                ? vlSelf->top__DOT__id_busa_o
