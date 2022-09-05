@@ -229,7 +229,7 @@ module ysyx_220053_CLint(
             mtimecmp <= 0;
         end
         else if(clint_wen) begin
-            mtime <= wdata;
+            mtimecmp <= wdata;
         end
     end
 endmodule

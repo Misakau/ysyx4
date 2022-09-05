@@ -29,7 +29,8 @@ module ysyx_220053_IDU(
     output [11:0] CsrId,
     output Ebreak,
     output Fence_i,
-    output Csri
+    output Csri,
+    input Time_interrupt
 );
     wire [2:0] ExtOp;
     wire [2:0] Branch;
@@ -50,9 +51,9 @@ module ysyx_220053_IDU(
     wire zero;
     assign alu_inA = (ALUSrcA == 1'b1) ? busa : pc;
     assign alu_inB = (ALUSrcB == 2'b01) ? imm : ((ALUSrcB == 2'b00) ? busb : 4);
-
+    wire Trap = Time_interrupt | Ecall;
     ysyx_220053_ALU_lite na_alu(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .result(res), .zero(zero));
-    ysyx_220053_NexAddr nextaddr(.mtvec(mtvec), .Trap(Ecall), .mepc(mepc), .Mret(Mret),
+    ysyx_220053_NexAddr nextaddr(.mtvec(mtvec), .Trap(Trap), .mepc(mepc), .Mret(Mret),
                                  .Zero(zero), .res0(res[0]), .Branch(Branch), .pc(pc),
                                  .imm(imm), .busa(busa), .dnpc(addr_res));
     

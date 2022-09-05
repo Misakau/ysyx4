@@ -37,7 +37,7 @@ MIP               0x344
     /////////////////////mepc//////////////////////
     reg [63:0] mepc;
     always@(posedge clk) begin
-        if(Ecall == 1'b1) begin
+        if(Ecall == 1'b1 || Time_interrupt == 1'b1) begin
             mepc <= epc_in;
         end
         else if(CsrId == 12'h341 && Csrwen == 1'b1) begin
@@ -47,8 +47,11 @@ MIP               0x344
     /////////////////////mcause////////////////////
     reg [63:0] mcause;
     always@(posedge clk) begin
-        if(Ecall == 1'b1) begin
-            mcause <= 64'hb;
+        if(Time_interrupt == 1'b1) begin
+            mcause <= 64'h8000000000000007;
+        end
+        else if(Ecall == 1'b1) begin
+            mcause <= {60{1'b0},4'hb};
         end
         else if(CsrId == 12'h342 && Csrwen == 1'b1) begin
             mcause <= csrin;
@@ -57,7 +60,7 @@ MIP               0x344
     /////////////////////mstatus///////////////////
     reg [63:0] mstatus;
     always@(posedge clk) begin
-        if(Ecall == 1'b1) begin
+        if(Ecall == 1'b1 || Time_interrupt == 1'b1) begin
             mstatus <= {mstatus[63:13],1'b0,1'b0,mstatus[10:8],mstatus_MIE,mstatus[6:4],1'b0,mstatus[2:0]};
         end
         else if(Mret == 1'b1) begin
@@ -79,16 +82,9 @@ MIP               0x344
     ///////////////////mie/////////////////////////
     reg [63:0] mie;
     always@(posedge clk) begin
-        if(Ecall == 1'b1) begin
-            mie <= {mie[63:13],1'b0,1'b0,mie[10:0]};
-        end
-        else if(Mret == 1'b1) begin
-            mie <= {mie[63:13],1'b1,1'b1,mie[10:0]};
-        end
-        else if(CsrId == 12'h304 && Csrwen == 1'b1) begin
+        if(CsrId == 12'h304 && Csrwen == 1'b1) begin
             mie <= csrin;
         end
-        //else mstatus <= 64'ha00001800;
     end
     assign mie_MITE = mie[7];
     ///////////////////mip/////////////////////////
@@ -97,16 +93,10 @@ MIP               0x344
         if (Time_interrupt) begin
             mip <= {mip[63:8],1'b1,mip[6:0]};
         end
-        else if(Ecall == 1'b1) begin
-            mip <= {mip[63:13],1'b0,1'b0,mip[10:0]};
-        end
-        else if(Mret == 1'b1) begin
-            mip <= {mip[63:13],1'b1,1'b1,mip[10:0]};
-        end
         else if(CsrId == 12'h344 && Csrwen == 1'b1) begin
             mip <= csrin;
         end
-        //else mstatus <= 64'ha00001800;
+        else mip <= {mip[63:8],1'b0,mip[6:0]};
     end
     //////////////////////read/////////////////////
     always@(*) begin

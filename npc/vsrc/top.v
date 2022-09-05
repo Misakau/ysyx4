@@ -263,7 +263,8 @@ module top(
       .CsrId(id_CsrId),
       .Ebreak(id_Ebreak_o),
       .Fence_i(id_Fence_i_o),
-      .Csri(id_Csri_o)
+      .Csri(id_Csri_o),
+      .Time_interrupt(Time_interrupt)
       );
       assign id_flush = rst;
       wire is_Csrwen = (~id_flush) & id_Csrwen & id_valid_o;
@@ -271,7 +272,7 @@ module top(
       assign id_busa_o = (rs1_need == 1'b0) ? id_busa : forward_data1;
       assign id_busb_o = (rs2_need == 1'b0) ? id_busb : forward_data2;
       assign ex_en = ~(ex_block | m_block | wb_block);//还未处理阻塞
-      assign ex_valid_i = id_valid_o & (~id_block);//还未处理冒险
+      assign ex_valid_i = id_valid_o & (~id_block) & ~Time_interrupt;//还未处理冒险
     /////////////////////////////
     ysyx_220053_EX_Reg EX_Reg(
       //control
