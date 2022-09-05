@@ -390,7 +390,10 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                                                     ? 4U
                                                     : 2U))
                                                : ((IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__cpu_req_valid)
-                                                   ? 1U
+                                                   ? 
+                                                  ((IData)(vlSelf->top__DOT__is_Fence_i)
+                                                    ? 7U
+                                                    : 1U)
                                                    : 0U))));
     vlSelf->top__DOT__ex_en = (1U & (~ ((IData)(vlSelf->top__DOT__alu_busy) 
                                         | (IData)(vlSelf->top__DOT__m_busy))));
