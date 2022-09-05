@@ -79,7 +79,7 @@ module ysyx_220053_Mem(
         pmem_read(raddr, dev_dataout, bytes);
     end
     always @(posedge clk) begin
-        if(vis_dev && MemWen == 1'b1) pmem_write(raddr, datain, wmask);
+        if(vis_dev && !vis_clint && MemWen == 1'b1) pmem_write(raddr, datain, wmask);
     end
 
     //write
