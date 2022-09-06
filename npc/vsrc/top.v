@@ -529,7 +529,7 @@ module top(
   //dcache <-> arbiter
     m_busy,d_rw_addr_o,d_rw_req_o,d_rw_valid_o,d_rw_w_data_o,d_data_read_i,d_rw_ready_i,d_rw_size_o,d_rw_dev_o,
   //arbiter<->memory
-    rw_addr_o,rw_req_o,rw_valid_o,rw_w_data_o,data_read_i,rw_ready_i,rw_size_o,rw_dev_o,
+    rw_addr_o,rw_req_o,rw_valid_o,rw_w_data_o,data_read_i,rw_ready_i,rw_size_o,rw_dev_o
     );
     initial begin
         $dumpfile("logs/vlt_dump.vcd");
