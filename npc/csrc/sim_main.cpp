@@ -431,7 +431,7 @@ int main(int argc, char**argv, char**env) {
                 //printf("[MMIO] rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
                 if(top->rw_req_o == 0){
                   long long dataout = 0;
-                  if (top->rw_ready_i == 0) pmem_read(top->rw_addr_o , &dataout, 8);
+                  pmem_read(top->rw_addr_o , &dataout, 8);
                   top->data_read_i[0] = (uint32_t)dataout;
                   top->data_read_i[1] = (uint32_t)(dataout>>32);
                   top->data_read_i[2] = 0;
@@ -615,7 +615,7 @@ static void npc_exec(uint64_t n){
                 //printf("[MMIO] rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
                 if(sdb_top->rw_req_o == 0){
                   long long dataout = 0;
-                  if (sdb_top->rw_ready_i == 0) pmem_read(sdb_top->rw_addr_o , &dataout, 8);
+                  pmem_read(sdb_top->rw_addr_o , &dataout, 8);
                   sdb_top->data_read_i[0] = (uint32_t)dataout;
                   sdb_top->data_read_i[1] = (uint32_t)(dataout>>32);
                   sdb_top->data_read_i[2] = 0;
