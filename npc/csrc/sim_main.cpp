@@ -427,17 +427,34 @@ int main(int argc, char**argv, char**env) {
               dmem_ls = step;
             }*/
             if(top->clk == 1 && top->rw_valid_o == 1){
-              long long midx = ((top->rw_addr_o - AD_BASE) >> 4) << 1;
-              //printf("rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, midx = %lld\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o,midx);
-              if(top->rw_req_o == 0){
-                top->data_read_i[0] = (uint32_t)MEM[midx];
-                top->data_read_i[1] = (uint32_t)(MEM[midx]>>32);
-                top->data_read_i[2] = (uint32_t)MEM[midx+1];
-                top->data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
+              if(top->rw_dev_o == 1){
+                //printf("[MMIO] rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
+                if(top->rw_req_o == 0){
+                  long long dataout = 0;
+                  if (top->rw_ready_i == 0) pmem_read(top->rw_addr_o , &dataout, 8);
+                  top->data_read_i[0] = (uint32_t)dataout;
+                  top->data_read_i[1] = (uint32_t)(dataout>>32);
+                  top->data_read_i[2] = 0;
+                  top->data_read_i[3] = 0;
+                }
+                else{
+                  uint64_t wdata = top->rw_w_data_o[0] | (uint64_t)top->rw_w_data_o[1] << 32;;
+                  if (top->rw_ready_i == 0) pmem_write(top->rw_addr_o, wdata, top->rw_size_o);
+                }
               }
               else{
-                MEM[midx] = top->rw_w_data_o[0] | (uint64_t)top->rw_w_data_o[1] << 32;
-                MEM[midx + 1] = top->rw_w_data_o[2] | (uint64_t)top->rw_w_data_o[3] << 32;
+                long long midx = ((top->rw_addr_o - AD_BASE) >> 4) << 1;
+                //printf("rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, midx = %lld\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o,midx);
+                if(top->rw_req_o == 0){
+                  top->data_read_i[0] = (uint32_t)MEM[midx];
+                  top->data_read_i[1] = (uint32_t)(MEM[midx]>>32);
+                  top->data_read_i[2] = (uint32_t)MEM[midx+1];
+                  top->data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
+                }
+                else{
+                  MEM[midx] = top->rw_w_data_o[0] | (uint64_t)top->rw_w_data_o[1] << 32;
+                  MEM[midx + 1] = top->rw_w_data_o[2] | (uint64_t)top->rw_w_data_o[3] << 32;
+                }
               }
               if (top->rw_ready_i == 0) mem_ls = step;
               top->rw_ready_i = 1;
