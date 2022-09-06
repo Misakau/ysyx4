@@ -594,7 +594,7 @@ static void npc_exec(uint64_t n){
             //if(i == 530) printf("i == 530, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
 
             if(sdb_top->clk == 1 && sdb_top->rw_valid_o == 1){
-              if(sdb_top->rw_dev == 1){
+              if(sdb_top->rw_dev_o == 1){
                 printf("[MMIO] rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
                 return;
               }
