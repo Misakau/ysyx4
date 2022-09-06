@@ -600,7 +600,7 @@ static void npc_exec(uint64_t n){
                   long long dataout = 0;
                   pmem_read(sdb_top->rw_addr_o , &dataout, 8);
                   sdb_top->data_read_i[0] = (uint32_t)dataout;
-                  sdb_top->data_read_i[1] = (uint32_t)dataout>>32;
+                  sdb_top->data_read_i[1] = (uint32_t)(dataout>>32);
                   sdb_top->data_read_i[2] = 0;
                   sdb_top->data_read_i[3] = 0;
                 }
