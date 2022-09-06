@@ -598,7 +598,7 @@ static void npc_exec(uint64_t n){
                 //printf("[MMIO] rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
                 if(sdb_top->rw_req_o == 0){
                   long long dataout = 0;
-                  pmem_read(sdb_top->rw_addr_o , &dataout, 8);
+                  if (sdb_top->rw_ready_i == 0) pmem_read(sdb_top->rw_addr_o , &dataout, 8);
                   sdb_top->data_read_i[0] = (uint32_t)dataout;
                   sdb_top->data_read_i[1] = (uint32_t)(dataout>>32);
                   sdb_top->data_read_i[2] = 0;
@@ -606,7 +606,7 @@ static void npc_exec(uint64_t n){
                 }
                 else{
                   uint64_t wdata = sdb_top->rw_w_data_o[0] | (uint64_t)sdb_top->rw_w_data_o[1] << 32;;
-                  pmem_write(sdb_top->rw_addr_o, wdata, sdb_top->rw_size_o);
+                  if (sdb_top->rw_ready_i == 0) pmem_write(sdb_top->rw_addr_o, wdata, sdb_top->rw_size_o);
                 }
               }
               else{
