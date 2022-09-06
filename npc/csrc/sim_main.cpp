@@ -596,19 +596,32 @@ static void npc_exec(uint64_t n){
             if(sdb_top->clk == 1 && sdb_top->rw_valid_o == 1){
               if(sdb_top->rw_dev_o == 1){
                 printf("[MMIO] rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
-                return;
-              }
-              long long midx = ((sdb_top->rw_addr_o & 0xffffffffull) - AD_BASE) >> 3;
-              //printf("rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, midx = %lld\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o,midx);
-              if(sdb_top->rw_req_o == 0){
-                sdb_top->data_read_i[0] = (uint32_t)MEM[midx];
-                sdb_top->data_read_i[1] = (uint32_t)(MEM[midx]>>32);
-                sdb_top->data_read_i[2] = (uint32_t)MEM[midx+1];
-                sdb_top->data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
+                if(sdb_top->rw_req_o == 0){
+                  long long dataout = 0;
+                  pmem_read(sdb_top->rw_addr_o , &dataout, 8);
+                  sdb_top->data_read_i[0] = (uint32_t)dataout;
+                  sdb_top->data_read_i[1] = (uint32_t)dataout>>32;
+                  sdb_top->data_read_i[2] = 0;
+                  sdb_top->data_read_i[3] = 0;
+                }
+                else{
+                  uint64_t wdata = sdb_top->rw_w_data_o[0] | (uint64_t)sdb_top->rw_w_data_o[1] << 32;;
+                  pmem_write(sdb_top->rw_addr_o, wdata, sdb_top->rw_size_o);
+                }
               }
               else{
-                MEM[midx] = sdb_top->rw_w_data_o[0] | (uint64_t)sdb_top->rw_w_data_o[1] << 32;
-                MEM[midx + 1] = sdb_top->rw_w_data_o[2] | (uint64_t)sdb_top->rw_w_data_o[3] << 32;
+                long long midx = ((sdb_top->rw_addr_o & 0xffffffffull) - AD_BASE) >> 3;
+                //printf("rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, midx = %lld\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o,midx);
+                if(sdb_top->rw_req_o == 0){
+                  sdb_top->data_read_i[0] = (uint32_t)MEM[midx];
+                  sdb_top->data_read_i[1] = (uint32_t)(MEM[midx]>>32);
+                  sdb_top->data_read_i[2] = (uint32_t)MEM[midx+1];
+                  sdb_top->data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
+                }
+                else{
+                  MEM[midx] = sdb_top->rw_w_data_o[0] | (uint64_t)sdb_top->rw_w_data_o[1] << 32;
+                  MEM[midx + 1] = sdb_top->rw_w_data_o[2] | (uint64_t)sdb_top->rw_w_data_o[3] << 32;
+                }
               }
               if (sdb_top->rw_ready_i == 0) mem_ls = i;
               sdb_top->rw_ready_i = 1;
