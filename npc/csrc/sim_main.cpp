@@ -252,7 +252,8 @@ void set_batch_mode(){
 static uint64_t tot_instr = 0;
 static void sdb_mainloop();
 static bool is_diff = false;
-static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv64-npc.bin";
+static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv64-npc.bin";
+//"/home/wang/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv64-npc.bin";
 //"/home/wang/ysyx-workbench/npc/test.bin";
 //"/home/wang/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv64-npc.bin";
 //"/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
@@ -593,6 +594,10 @@ static void npc_exec(uint64_t n){
             //if(i == 530) printf("i == 530, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
 
             if(sdb_top->clk == 1 && sdb_top->rw_valid_o == 1){
+              if(sdb_top->rw_dev == 1){
+                printf("[MMIO] rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
+                return;
+              }
               long long midx = ((sdb_top->rw_addr_o & 0xffffffffull) - AD_BASE) >> 3;
               //printf("rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, midx = %lld\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o,midx);
               if(sdb_top->rw_req_o == 0){

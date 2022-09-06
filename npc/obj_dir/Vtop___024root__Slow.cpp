@@ -120,7 +120,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                              >> 0x1fU))) 
                    + (~ vlSelf->top__DOT__my_exu__DOT__alu64__DOT__divu__DOT__udivisor_r)));
     vlSelf->rw_size_o = ((2U == (IData)(vlSelf->top__DOT__arbiter__DOT__cur_status))
-                          ? (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT____Vcellout__dcache____pinNumber18)
+                          ? (IData)(vlSelf->top__DOT__d_rw_size_o)
                           : ((1U == (IData)(vlSelf->top__DOT__arbiter__DOT__cur_status))
                               ? 0xffU : 0U));
     if ((0U == (3U & (IData)(vlSelf->top__DOT__M_Reg__DOT__MemOp_r)))) {
@@ -6136,6 +6136,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__is_Csrwen = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__alu_busy = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__m_busy = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__d_rw_size_o = VL_RAND_RESET_I(8);
     vlSelf->top__DOT__is_Fence_i = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__is_MemToReg = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__is_men = VL_RAND_RESET_I(1);
@@ -6307,7 +6308,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__d_cpu_ready = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__cpu_data_read = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__cache_doing = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__my_mu__DOT__mem__DOT____Vcellout__dcache____pinNumber18 = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__datad = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__dataw = VL_RAND_RESET_I(32);
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__datah = VL_RAND_RESET_I(16);

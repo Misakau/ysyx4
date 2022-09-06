@@ -855,22 +855,22 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__d_rw_w_data_o[1U] = 0U;
         vlSelf->top__DOT__d_rw_w_data_o[2U] = 0U;
         vlSelf->top__DOT__d_rw_w_data_o[3U] = 0U;
-        vlSelf->top__DOT__my_mu__DOT__mem__DOT____Vcellout__dcache____pinNumber18 = 0U;
+        vlSelf->top__DOT__d_rw_size_o = 0U;
     } else if ((2U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) {
         if (vlSelf->top__DOT__d_rw_ready_i) {
             vlSelf->top__DOT__d_rw_valid_o = 0U;
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT____Vcellout__dcache____pinNumber18 = 0U;
+            vlSelf->top__DOT__d_rw_size_o = 0U;
         } else {
             vlSelf->top__DOT__d_rw_addr_o = (0xfffffffffffffff0ULL 
                                              & vlSelf->top__DOT__M_Reg__DOT__raddr_r);
             vlSelf->top__DOT__d_rw_req_o = 0U;
             vlSelf->top__DOT__d_rw_valid_o = 1U;
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT____Vcellout__dcache____pinNumber18 = 1U;
+            vlSelf->top__DOT__d_rw_size_o = 0xffU;
         }
     } else if ((4U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) {
         if (vlSelf->top__DOT__d_rw_ready_i) {
             vlSelf->top__DOT__d_rw_valid_o = 0U;
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT____Vcellout__dcache____pinNumber18 = 0U;
+            vlSelf->top__DOT__d_rw_size_o = 0U;
         } else {
             vlSelf->top__DOT__d_rw_addr_o = ((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__tag
                                               [(0xffU 
@@ -898,7 +898,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                 [(3U & (IData)((vlSelf->top__DOT__M_Reg__DOT__raddr_r 
                                 >> 0xaU)))][3U];
             vlSelf->top__DOT__d_rw_valid_o = 1U;
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT____Vcellout__dcache____pinNumber18 = 1U;
+            vlSelf->top__DOT__d_rw_size_o = 0xffU;
         }
     } else if ((7U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) {
         if (((~ (IData)(vlSelf->top__DOT__d_rw_ready_i)) 
@@ -924,15 +924,15 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                 [(3U & ((IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__idx_cnt) 
                         >> 6U))][3U];
             vlSelf->top__DOT__d_rw_valid_o = 1U;
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT____Vcellout__dcache____pinNumber18 = 1U;
+            vlSelf->top__DOT__d_rw_size_o = 0xffU;
         } else {
             vlSelf->top__DOT__d_rw_valid_o = 0U;
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT____Vcellout__dcache____pinNumber18 = 0U;
+            vlSelf->top__DOT__d_rw_size_o = 0U;
         }
     } else if ((8U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))) {
         if (vlSelf->top__DOT__d_rw_ready_i) {
             vlSelf->top__DOT__d_rw_valid_o = 0U;
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT____Vcellout__dcache____pinNumber18 = 0U;
+            vlSelf->top__DOT__d_rw_size_o = 0U;
         } else {
             vlSelf->top__DOT__d_rw_addr_o = (0xfffffffffffffff8ULL 
                                              & vlSelf->top__DOT__M_Reg__DOT__raddr_r);
@@ -943,12 +943,11 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
             vlSelf->top__DOT__d_rw_w_data_o[2U] = __Vtemp54[2U];
             vlSelf->top__DOT__d_rw_w_data_o[3U] = __Vtemp54[3U];
             vlSelf->top__DOT__d_rw_valid_o = 1U;
-            vlSelf->top__DOT__my_mu__DOT__mem__DOT____Vcellout__dcache____pinNumber18 
-                = (1U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__wmask));
+            vlSelf->top__DOT__d_rw_size_o = vlSelf->top__DOT__my_mu__DOT__mem__DOT__wmask;
         }
     } else {
         vlSelf->top__DOT__d_rw_valid_o = 0U;
-        vlSelf->top__DOT__my_mu__DOT__mem__DOT____Vcellout__dcache____pinNumber18 = 0U;
+        vlSelf->top__DOT__d_rw_size_o = 0U;
     }
     if (((3U == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status)) 
          & (~ (IData)(vlSelf->top__DOT__is_MemToReg)))) {
@@ -1704,7 +1703,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     vlSelf->rw_w_data_o[2U] = vlSelf->top__DOT__d_rw_w_data_o[2U];
     vlSelf->rw_w_data_o[3U] = vlSelf->top__DOT__d_rw_w_data_o[3U];
     if ((2U == (IData)(vlSelf->top__DOT__arbiter__DOT__cur_status))) {
-        vlSelf->rw_size_o = vlSelf->top__DOT__my_mu__DOT__mem__DOT____Vcellout__dcache____pinNumber18;
+        vlSelf->rw_size_o = vlSelf->top__DOT__d_rw_size_o;
         vlSelf->rw_req_o = vlSelf->top__DOT__d_rw_req_o;
         vlSelf->rw_valid_o = vlSelf->top__DOT__d_rw_valid_o;
         vlSelf->rw_addr_o = vlSelf->top__DOT__d_rw_addr_o;
