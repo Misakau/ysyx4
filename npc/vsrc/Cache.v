@@ -163,7 +163,9 @@ module ysyx_220053_dcache (
     output reg [127:0]  rw_w_data_o,
     input [127:0]       data_read_i,//finish burst
     input               rw_ready_i,//ready to give data or fetch data
-    input Fence_i
+    input Fence_i,
+    output reg rw_size_o,
+    input cpu_dev
 );
     parameter nline = 256;
     reg V [0:nline - 1], D [0:nline - 1];
@@ -181,10 +183,11 @@ module ysyx_220053_dcache (
     reg [7:0] idx_cnt;
     //status transform
 
-    parameter [2:0] IDLE = 3'b000, CompareTag = 3'b001, Allocate = 3'b010, Readin = 3'b011;
-    parameter [2:0] WriteBack = 3'b100, Readout = 3'b101, Writein = 3'b110, FENCE_I = 3'b111; //RETN = 3'b111;
+    parameter [3:0] IDLE = 4'b0000, CompareTag = 4'b0001, Allocate = 4'b0010, Readin = 4'b0011;
+    parameter [3:0] WriteBack = 4'b0100, Readout = 4'b0101, Writein = 4'b0110, FENCE_I = 4'b0111; //RETN = 3'b111;
+    parameter [3:0] DEV = 4'b1000; //RETN = 3'b111;
 
-    reg [2:0] cur_status, next_status;
+    reg [3:0] cur_status, next_status;
     assign cache_idle = (cur_status == IDLE);
     
     always @(posedge clk) begin
@@ -204,6 +207,7 @@ module ysyx_220053_dcache (
             IDLE: begin
                 if(cpu_req_valid)begin
                     if(Fence_i) next_status = FENCE_I;
+                    else if(cpu_dev) next_status = DEV;
                     else next_status = CompareTag;
                 end
                 else next_status = IDLE;
@@ -239,6 +243,10 @@ module ysyx_220053_dcache (
                 else next_status = FENCE_I;
             end
             Readout: next_status = FENCE_I;
+            DEV: begin
+                if(rw_ready_i) next_status = IDLE;
+                else next_status = DEV;
+            end
             default: next_status = IDLE;
         endcase
     end
@@ -277,6 +285,12 @@ module ysyx_220053_dcache (
             end
         end
         else if((cur_status == FENCE_I || cur_status == Readout) && next_status == IDLE) cpu_ready <= 1'b1;
+        else if(cur_status == DEV && rw_ready_i) begin
+            cpu_ready <= 1'b1;
+            if(cpu_req_rw == 1'b0) begin//read hit
+                cpu_data_read <= data_read_i[63:0];
+            end
+        end
         else cpu_ready <= 1'b0;
     end
 
@@ -329,6 +343,7 @@ module ysyx_220053_dcache (
             rw_valid_o      <= 1'b0;
             rw_addr_o <= 0;
             rw_w_data_o <= 0;
+            rw_size_o <= 0;
             for (i = 0; i < 64; i = i + 1)begin
                 V[i] <= 1'b0;
                 tag[i]  <= 0;
@@ -351,9 +366,11 @@ module ysyx_220053_dcache (
                 rw_addr_o <= {cpu_req_addr[63:4],4'b0000};
                 rw_req_o <= 1'b0;
                 rw_valid_o <= 1'b1;
+                rw_size_o <= 8'hff;
             end
             else begin
                 rw_valid_o <= 1'b0;
+                rw_size_o <= 0;
                 V[cpu_index] <= 1'b1;
                 tag[cpu_index] <= cpu_tag;
             end
@@ -364,9 +381,11 @@ module ysyx_220053_dcache (
                 rw_req_o  <= 1'b1;
                 rw_w_data_o <= line_o[cpu_index[7:6]];
                 rw_valid_o <= 1'b1;
+                rw_size_o <= 8'hff;
             end
             else begin
                 rw_valid_o <= 1'b0;
+                rw_size_o <= 0;
             end
         end
         else if(cur_status == FENCE_I) begin
@@ -375,13 +394,29 @@ module ysyx_220053_dcache (
                 rw_req_o  <= 1'b1;
                 rw_w_data_o <= line_o[idx_cnt[7:6]];
                 rw_valid_o <= 1'b1;
+                rw_size_o <= 8'hff;
             end
             else begin
                 rw_valid_o <= 1'b0;
+                rw_size_o <= 0;
+            end
+        end
+        else if(cur_status == DEV) begin
+            if(!rw_ready_i) begin
+                rw_addr_o <= {cpu_req_addr[63:3],3'b000};
+                rw_req_o  <= cpu_req_rw;
+                rw_w_data_o <= {{64{1'b0}},cpu_data_write};
+                rw_valid_o <= 1'b1;
+                rw_size_o <= cpu_wmask;
+            end
+            else begin
+                rw_valid_o <= 1'b0;
+                rw_size_o <= 0;
             end
         end
         else begin
             rw_valid_o <= 1'b0;
+            rw_size_o <= 0;
         end
     end
 endmodule

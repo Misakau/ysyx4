@@ -15,6 +15,8 @@ module ysyx_220053_Mem(
     output            d_rw_req_o,
     output            d_rw_valid_o,
     output [127:0]    d_rw_w_data_o,
+    output [7:0]      d_rw_size_o,
+    output            d_rw_dev_o,
     input  [127:0]    d_data_read_i,
     input             d_rw_ready_i,
     input Fence_i,
@@ -41,7 +43,7 @@ module ysyx_220053_Mem(
     wire [63:0] cpu_data_read;
     reg cache_doing;
 
-    wire vis_dev = (raddr[31:28] == 4'ha || raddr[31:24] == 8'h2);//0x 0200 0000
+    wire vis_dev = (raddr[31:24] == 8'h2);//0x 0200 0000
     wire vis_clint = (raddr[31:24] == 8'h2);
     wire clint_wen = MemWen & vis_clint;
     wire [63:0] clint_rdata;
@@ -49,7 +51,8 @@ module ysyx_220053_Mem(
         .clk(clk),.rst(rst),.clint_wen(clint_wen),.wdata(wdata),.rdata(clint_rdata),.is_cmp(is_cmp)
     );
 
-
+    assign d_rw_dev_o = raddr[31:28] == 4'ha;
+    wire cpu_dev = raddr[31:28] == 4'ha;
     always @(posedge clk) begin
         if(rst) begin
             cache_doing <= 1'b0;
@@ -71,17 +74,18 @@ module ysyx_220053_Mem(
     //cache<->memory
       d_rw_addr_o,d_rw_req_o,d_rw_valid_o,d_rw_w_data_o,d_data_read_i,d_rw_ready_i,
     //fence.i
-      Fence_i
+      Fence_i, d_rw_size_o, cpu_dev
     );
-    wire [63:0] dev_dataout;
-    assign dataout = (vis_dev) ? ((vis_clint) ? clint_rdata : dev_dataout) : cpu_data_read;
+    //wire [63:0] dev_dataout;
+    assign dataout = (vis_clint) ? clint_rdata : cpu_data_read;
+    /*
     always @(*) begin
         pmem_read(raddr, dev_dataout, bytes);
     end
     always @(posedge clk) begin
         if(vis_dev && !vis_clint && MemWen == 1'b1) pmem_write(raddr, datain, wmask);
     end
-
+    */
     //write
     always@(*) begin
         case(MemOp[1:0])

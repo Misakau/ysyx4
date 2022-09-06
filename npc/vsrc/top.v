@@ -38,6 +38,8 @@ module top(
   output [127:0]   rw_w_data_o,
   input  [127:0]   data_read_i,//finish burst
   input            rw_ready_i,//data_read_i in ram
+  output [7:0]     rw_size_o,
+  output           rw_dev_o,
   output d_rw_ready,
   output mem_valid,
   output reg wb_dev_o
@@ -391,6 +393,8 @@ module top(
   );
     ///////////M/////////////////
     wire m_busy;
+    wire [7:0] d_rw_size_o;
+    wire d_rw_dev_o;
     ysyx_220053_MU my_mu(
       .clk(clk), 
       .rst(rst),
@@ -410,7 +414,9 @@ module top(
       .d_data_read_i(d_data_read_i),//finish burst
       .d_rw_ready_i(d_rw_ready_i),
       .Fence_i(is_Fence_i),
-      .is_cmp(is_cmp)
+      .is_cmp(is_cmp),
+      .d_rw_size_o(d_rw_size_o),
+      .d_rw_dev_o(d_rw_dev_o)
     );
     wire is_Fence_i = m_Fence_i_i & m_valid_o;
     assign d_rw_ready = d_rw_ready_i;
@@ -519,11 +525,11 @@ module top(
     ysyx_220053_arbiter arbiter(
     clk,rst,
   //icache <-> arbiter
-    if_busy,i_rw_addr_o,i_rw_req_o,i_rw_valid_o,i_data_read_i,i_rw_ready_i,
+    if_busy,i_rw_addr_o,i_rw_req_o,i_rw_valid_o,i_data_read_i,i_rw_ready_i,8'hff,0,
   //dcache <-> arbiter
-    m_busy,d_rw_addr_o,d_rw_req_o,d_rw_valid_o,d_rw_w_data_o,d_data_read_i,d_rw_ready_i,
+    m_busy,d_rw_addr_o,d_rw_req_o,d_rw_valid_o,d_rw_w_data_o,d_data_read_i,d_rw_ready_i,d_rw_size_o,d_rw_dev_o,
   //arbiter<->memory
-    rw_addr_o,rw_req_o,rw_valid_o,rw_w_data_o,data_read_i,rw_ready_i
+    rw_addr_o,rw_req_o,rw_valid_o,rw_w_data_o,data_read_i,rw_ready_i,rw_size_o,rw_dev_o,
     );
     initial begin
         $dumpfile("logs/vlt_dump.vcd");

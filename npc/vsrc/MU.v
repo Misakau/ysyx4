@@ -18,6 +18,8 @@ module ysyx_220053_MU(
     output [127:0]    d_rw_w_data_o,
     input  [127:0]    d_data_read_i,//finish burst
     input             d_rw_ready_i,
+    output [7:0]      d_rw_size_o,
+    output            d_rw_dev_o,
     input Fence_i,
     output is_cmp
 );
@@ -26,7 +28,8 @@ module ysyx_220053_MU(
     wire [63:0] mdata, regsin;
     ysyx_220053_Mem mem(.clk(clk),.rst(rst), .MemOp(MemOp), .raddr(raddr), .MemWen(MemWen),.req_rw(req_rw), .wdata(wdata), .rdata(mdata), .vis_mem(vis_mem)
         ,.m_busy(m_busy), .d_rw_addr_o(d_rw_addr_o), .d_rw_req_o(d_rw_req_o), .d_rw_valid_o(d_rw_valid_o), .d_rw_w_data_o(d_rw_w_data_o),
-        .d_data_read_i(d_data_read_i), .d_rw_ready_i(d_rw_ready_i),.Fence_i(Fence_i), .is_cmp(is_cmp)
+        .d_data_read_i(d_data_read_i), .d_rw_ready_i(d_rw_ready_i),.Fence_i(Fence_i), .is_cmp(is_cmp),
+        .d_rw_size_o(d_rw_size_o), .d_rw_dev_o(d_rw_dev_o)
     );//M
     
     assign regsin = (MemToReg == 1'b0) ? raddr : mdata;//WB

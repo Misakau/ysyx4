@@ -12,7 +12,8 @@ module ysyx_220053_arbiter(
     input              i_rw_valid_i,
     output [127:0]     i_data_read_o,//finish burst
     output reg         i_rw_ready_o,//data_read_i in ram
-
+    input [7:0]        i_rw_size_o,
+    input              i_rw_dev_o,
 //dcache <-> arbiter
     input              d_acq,
     input  [63:0]      d_rw_addr_i,
@@ -21,14 +22,17 @@ module ysyx_220053_arbiter(
     input  [127:0]     d_rw_w_data_i,
     output [127:0]     d_data_read_o,//finish burst
     output reg         d_rw_ready_o,//ready to give data or fetch data
-
+    input [7:0]        d_rw_size_o,
+    input              d_rw_dev_o,
 //arbiter<->memory
     output reg [63:0]   rw_addr_o,
     output reg          rw_req_o,//
     output reg          rw_valid_o,
     output [127:0]      rw_w_data_o,
     input  [127:0]      data_read_i,//finish burst
-    input               rw_ready_i//data_read_i in ram
+    input               rw_ready_i,//data_read_i in ram
+    output reg [7:0]    rw_size_o,
+    output reg          rw_dev_o
 );  
     //wire cache_valid =  d_rw_valid_i || i_rw_valid_i;
     parameter [1:0] IDLE = 2'b00, ICACHE = 2'b01, DCACHE = 2'b10;
@@ -65,6 +69,8 @@ module ysyx_220053_arbiter(
                 rw_valid_o  = d_rw_valid_i;
                 i_rw_ready_o = 1'b0;
                 d_rw_ready_o = rw_ready_i;
+                rw_size_o   = d_rw_size_o;
+                rw_dev_o = d_rw_dev_o;
             end
             ICACHE: begin
                 rw_addr_o    = i_rw_addr_i;
@@ -72,6 +78,8 @@ module ysyx_220053_arbiter(
                 rw_valid_o   = i_rw_valid_i;
                 i_rw_ready_o = rw_ready_i;
                 d_rw_ready_o = 1'b0;
+                rw_size_o   = i_rw_size_o;
+                rw_dev_o = i_rw_dev_o;
             end
             default: begin
                 rw_addr_o   = 0;
@@ -79,6 +87,8 @@ module ysyx_220053_arbiter(
                 rw_valid_o  = 0;
                 i_rw_ready_o = 1'b0;
                 d_rw_ready_o = 1'b0;
+                rw_size_o   = 0;
+                rw_dev_o = 0;
             end
         endcase
     end
