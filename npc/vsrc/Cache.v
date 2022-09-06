@@ -164,7 +164,7 @@ module ysyx_220053_dcache (
     input [127:0]       data_read_i,//finish burst
     input               rw_ready_i,//ready to give data or fetch data
     input Fence_i,
-    output reg rw_size_o,
+    output reg [7:0] rw_size_o,
     input cpu_dev
 );
     parameter nline = 256;

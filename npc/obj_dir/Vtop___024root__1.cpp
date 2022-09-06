@@ -331,70 +331,95 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
         = ((((~ (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__cache_doing)) 
              & (~ (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__d_cpu_ready))) 
             & (IData)(vlSelf->top__DOT__my_mu__DOT__vis_mem)) 
-           & (~ (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__vis_dev)));
+           & (2U != (0xffU & (IData)((vlSelf->top__DOT__M_Reg__DOT__raddr_r 
+                                      >> 0x18U)))));
     vlSelf->top__DOT__m_busy = (((~ (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__d_cpu_ready)) 
                                  & (IData)(vlSelf->top__DOT__my_mu__DOT__vis_mem)) 
-                                & (~ (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__vis_dev)));
+                                & (2U != (0xffU & (IData)(
+                                                          (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
+                                                           >> 0x18U)))));
     vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__next_status 
-        = ((4U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
-            ? ((2U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
-                ? ((1U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
-                    ? ((1U & ((IData)(vlSelf->top__DOT__d_rw_ready_i) 
-                              | (~ vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__V
-                                 [vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__idx_cnt])))
-                        ? ((0xffU == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__idx_cnt))
-                            ? 0U : 5U) : 7U) : 0U) : 
-               ((1U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
-                 ? 7U : ((IData)(vlSelf->top__DOT__d_rw_ready_i)
-                          ? 2U : 4U))) : ((2U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
-                                           ? ((1U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
-                                               ? ((IData)(vlSelf->top__DOT__is_MemToReg)
-                                                   ? 0U
-                                                   : 6U)
-                                               : ((IData)(vlSelf->top__DOT__d_rw_ready_i)
-                                                   ? 1U
-                                                   : 2U))
-                                           : ((1U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
-                                               ? ((
-                                                   ((1U 
-                                                     == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status)) 
-                                                    & vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__V
-                                                    [
-                                                    (0xffU 
-                                                     & (IData)(
-                                                               (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
-                                                                >> 4U)))]) 
-                                                   & (vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__tag
-                                                      [
-                                                      (0xffU 
+        = ((8U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
+            ? ((4U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
+                ? 0U : ((2U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
+                         ? 0U : ((1U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
+                                  ? 0U : ((IData)(vlSelf->top__DOT__d_rw_ready_i)
+                                           ? 0U : 8U))))
+            : ((4U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
+                ? ((2U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
+                    ? ((1U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
+                        ? ((1U & ((IData)(vlSelf->top__DOT__d_rw_ready_i) 
+                                  | (~ vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__V
+                                     [vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__idx_cnt])))
+                            ? ((0xffU == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__idx_cnt))
+                                ? 0U : 5U) : 7U) : 0U)
+                    : ((1U & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
+                        ? 7U : ((IData)(vlSelf->top__DOT__d_rw_ready_i)
+                                 ? 2U : 4U))) : ((2U 
+                                                  & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
+                                                  ? 
+                                                 ((1U 
+                                                   & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
+                                                   ? 
+                                                  ((IData)(vlSelf->top__DOT__is_MemToReg)
+                                                    ? 0U
+                                                    : 6U)
+                                                   : 
+                                                  ((IData)(vlSelf->top__DOT__d_rw_ready_i)
+                                                    ? 1U
+                                                    : 2U))
+                                                  : 
+                                                 ((1U 
+                                                   & (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
+                                                   ? 
+                                                  ((((1U 
+                                                      == (IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status)) 
+                                                     & vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__V
+                                                     [
+                                                     (0xffU 
+                                                      & (IData)(
+                                                                (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
+                                                                 >> 4U)))]) 
+                                                    & (vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__tag
+                                                       [
+                                                       (0xffU 
+                                                        & (IData)(
+                                                                  (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
+                                                                   >> 4U)))] 
+                                                       == 
+                                                       (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
+                                                        >> 0xcU)))
+                                                    ? 3U
+                                                    : 
+                                                   ((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__V
+                                                     [
+                                                     (0xffU 
+                                                      & (IData)(
+                                                                (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
+                                                                 >> 4U)))] 
+                                                     & vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__D
+                                                     [
+                                                     (0xffU 
+                                                      & (IData)(
+                                                                (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
+                                                                 >> 4U)))])
+                                                     ? 4U
+                                                     : 2U))
+                                                   : 
+                                                  ((IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__cpu_req_valid)
+                                                    ? 
+                                                   ((IData)(vlSelf->top__DOT__is_Fence_i)
+                                                     ? 7U
+                                                     : 
+                                                    ((0xaU 
+                                                      == 
+                                                      (0xfU 
                                                        & (IData)(
                                                                  (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
-                                                                  >> 4U)))] 
-                                                      == 
-                                                      (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
-                                                       >> 0xcU)))
-                                                   ? 3U
-                                                   : 
-                                                  ((vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__V
-                                                    [
-                                                    (0xffU 
-                                                     & (IData)(
-                                                               (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
-                                                                >> 4U)))] 
-                                                    & vlSelf->top__DOT__my_mu__DOT__mem__DOT__dcache__DOT__D
-                                                    [
-                                                    (0xffU 
-                                                     & (IData)(
-                                                               (vlSelf->top__DOT__M_Reg__DOT__raddr_r 
-                                                                >> 4U)))])
-                                                    ? 4U
-                                                    : 2U))
-                                               : ((IData)(vlSelf->top__DOT__my_mu__DOT__mem__DOT__cpu_req_valid)
-                                                   ? 
-                                                  ((IData)(vlSelf->top__DOT__is_Fence_i)
-                                                    ? 7U
-                                                    : 1U)
-                                                   : 0U))));
+                                                                  >> 0x1cU))))
+                                                      ? 8U
+                                                      : 1U))
+                                                    : 0U)))));
     vlSelf->top__DOT__ex_en = (1U & (~ ((IData)(vlSelf->top__DOT__alu_busy) 
                                         | (IData)(vlSelf->top__DOT__m_busy))));
     vlSelf->top__DOT__my_exu__DOT__alu64__DOT__rlo 
