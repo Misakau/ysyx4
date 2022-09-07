@@ -416,8 +416,12 @@ int main(int argc, char**argv, char**env) {
 
     connect_wire(top, &mem_ptr);
     assert(mem_ptr.check());
-    printf(ASNI_FG_GREEN "Check Complete\n" ASNI_NONE);
+    axi4_ref <64,64,4> mem_ref(mem_ptr);
+    axi4 <64,64,4> mem_sig;
+    axi4_ref <64,64,4> mem_sig_ref(mem_sig);
 
+    printf(ASNI_FG_GREEN "Check Complete\n" ASNI_NONE);
+    
     st_time = get_time();
     printf(ASNI_FG_BLUE "start time = %lld\n" ASNI_NONE,(long long)st_time);
     //reset the pc
