@@ -22,9 +22,6 @@
 
 axi4_mem <64,64,4> mem(4096l*1024*1024);
 axi4_ptr <64,64,4> mem_ptr;
-axi4_ref <64,64,4> mem_ref(mem_ptr);
-axi4 <64,64,4> mem_sig;
-axi4_ref <64,64,4> mem_sig_ref(mem_sig);
 void connect_wire(Vtop *top, axi4_ptr <64,64,4> *ptr){
     ptr->awid = &(top->axi_aw_id_o);
     ptr->awaddr = &(top->axi_aw_addr_o);
@@ -603,6 +600,10 @@ int main(int argc, char**argv, char**env) {
 //////////////////////////////////////////////////////////////////////////////
 
 static void npc_exec(uint64_t n){
+
+    axi4_ref <64,64,4> mem_ref(mem_ptr);
+    axi4 <64,64,4> mem_sig;
+    axi4_ref <64,64,4> mem_sig_ref(mem_sig);
   if(npc_done || sdb_contextp->gotFinish()){
     printf("The program is done! Please quit the npc_sdb.\n");
     return;
@@ -702,14 +703,14 @@ static void npc_exec(uint64_t n){
             //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, d_rw_ready = %d, rw_ready_i = %d\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o, sdb_top->d_rw_ready,sdb_top->rw_ready_i);
             */
            //return;
-            //printf("axi_ar_addr_o = %lx\n",sdb_top->axi_ar_addr_o);
-            //mem_sig.update_input(mem_ref);
+            printf("axi_ar_addr_o = %lx\n",sdb_top->axi_ar_addr_o);
+            mem_sig.update_input(mem_ref);
             sdb_top->eval();
             //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, d_rw_ready = %d, rw_ready_i = %d\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o, sdb_top->d_rw_ready,sdb_top->rw_ready_i);
             //return;
             if(sdb_top->clk == 1) mem.beat(mem_sig_ref);
             //printf("[after beat] arready_i = %d\n",mem_sig.arready);
-            //mem_sig.update_output(mem_ref);
+            mem_sig.update_output(mem_ref);
             //if(i == 528) printf("i == 528, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
             //if(sdb_top->clk == 1 && i == imem_ls + 2) sdb_top->i_rw_ready_i = 0;
             //if(sdb_top->clk == 1 && i == dmem_ls + 2) sdb_top->d_rw_ready_i = 0;
