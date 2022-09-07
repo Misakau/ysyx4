@@ -601,9 +601,9 @@ int main(int argc, char**argv, char**env) {
 
 static void npc_exec(uint64_t n){
 
-    axi4_ref <64,64,4> mem_ref(mem_ptr);
-    axi4 <64,64,4> mem_sig;
-    axi4_ref <64,64,4> mem_sig_ref(mem_sig);
+  axi4_ref <64,64,4> mem_ref(mem_ptr);
+  axi4 <64,64,4> mem_sig;
+  axi4_ref <64,64,4> mem_sig_ref(mem_sig);
   if(npc_done || sdb_contextp->gotFinish()){
     printf("The program is done! Please quit the npc_sdb.\n");
     return;
