@@ -382,13 +382,13 @@ int main(int argc, char**argv, char**env) {
     //print_args(argc, argv);
     int fsize = 24;
     if(image_file != NULL){//has image
-        /*FILE* fp = fopen(image_file, "r");
+        FILE* fp = fopen(image_file, "r");
         assert(fp);
         fseek(fp, 0, SEEK_END);
         fsize = ftell(fp);
         fseek(fp, 0, SEEK_SET);
         assert(fread(MEM, fsize, 1, fp));
-        fclose(fp);*/
+        fclose(fp);
         mem.load_binary(image_file,0x80000000);
         printf(ASNI_FG_BLUE "Load image in %s\n" ASNI_NONE ,image_file);
        // printf("MEM[0x80000260] = %llx\n",MEM[0x260 >> 3]);
