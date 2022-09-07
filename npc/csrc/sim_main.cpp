@@ -506,11 +506,11 @@ int main(int argc, char**argv, char**env) {
               top->rw_ready_i = 1;
             }
             */
-            mem_sig.update_input(mem_ref);
-            top->eval();
-            if(top->clk == 1) mem.beat(mem_sig_ref);
+            //mem_sig.update_input(mem_ref);
+            //top->eval();
+            //if(top->clk == 1) mem.beat(mem_sig_ref);
             //printf("[after beat] arready_i = %d\n",mem_sig.arready);
-            mem_sig.update_output(mem_ref);
+            //mem_sig.update_output(mem_ref);
             //if(top->clk == 1 && step == imem_ls + 2) top->i_rw_ready_i = 0;
             //if(top->clk == 1 && step == dmem_ls + 2) top->d_rw_ready_i = 0;
             //if(top->clk == 1 && step == mem_ls + 2) top->rw_ready_i = 0;
