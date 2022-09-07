@@ -12,13 +12,55 @@
 #include <readline/readline.h>
 
 #include <dlfcn.h>
-
+#include "axi4_mem.hpp"
 #include "npc_sdb.h"
 #include "itrace.h"
 #include "dev.h"
 
 #define MEMSIZE 0x8000000
 #define AD_BASE 0x80000000ull
+
+axi4_mem <64,64,4> mem(4096l*1024*1024);
+axi4_ptr <64,64,4> mem_ptr;
+axi4_ref <64,64,4> mem_ref(mem_ptr);
+axi4 <64,64,4> mem_sig;
+axi4_ref <64,64,4> mem_sig_ref(mem_sig);
+void connect_wire(Vtop *top, axi4_ptr <64,64,4> *ptr){
+    ptr->awid = &(top->axi_aw_id_o);
+    ptr->awaddr = &(top->axi_aw_addr_o);
+    ptr->awlen = &(top->axi_aw_len_o);
+    ptr->awsize = &(top->axi_aw_size_o);
+    ptr->awburst = &(top->axi_aw_burst_o);
+    ptr->awvalid = &(top->axi_aw_valid_o);
+    ptr->awready = &(top->axi_aw_ready_i);
+
+    ptr->wdata = &(top->axi_w_data_o);
+    ptr->wstrb = &(top->axi_w_strb_o);
+    ptr->wlast = &(top->axi_w_last_o);
+    ptr->wvalid = &(top->axi_w_valid_o);
+    ptr->wready = &(top->axi_w_ready_i);
+    
+    ptr->bid = &(top->axi_b_id_i);
+    ptr->bresp = &(top->axi_b_resp_i);
+    ptr->bvalid = &(top->axi_b_valid_i);
+    ptr->bready = &(top->axi_b_ready_o);
+
+    ptr->arid = &(top->axi_ar_id_o);
+    ptr->araddr = &(top->axi_ar_addr_o);
+    ptr->arlen = &(top->axi_ar_len_o);
+    ptr->arsize = &(top->axi_ar_size_o);
+    ptr->arburst = &(top->axi_ar_burst_o);
+    ptr->arvalid = &(top->axi_ar_valid_o);
+    ptr->arready = &(top->axi_ar_ready_i);
+    
+    
+    ptr->rid = &(top->axi_r_id_i);
+    ptr->rdata = &(top->axi_r_data_i);
+    ptr->rresp = &(top->axi_r_resp_i);
+    ptr->rlast = &(top->axi_r_last_i);
+    ptr->rvalid = &(top->axi_r_valid_i);
+    ptr->rready = &(top->axi_r_ready_o);
+}
 
 //static long long *MEM = NULL;//8字节为单位
 static long long MEM[MEMSIZE];//8字节为单位
@@ -343,13 +385,14 @@ int main(int argc, char**argv, char**env) {
     //print_args(argc, argv);
     int fsize = 24;
     if(image_file != NULL){//has image
-        FILE* fp = fopen(image_file, "r");
+        /*FILE* fp = fopen(image_file, "r");
         assert(fp);
         fseek(fp, 0, SEEK_END);
         fsize = ftell(fp);
         fseek(fp, 0, SEEK_SET);
         assert(fread(MEM, fsize, 1, fp));
-        fclose(fp);
+        fclose(fp);*/
+        mem.load_binary(image_file,0x80000000);
         printf(ASNI_FG_BLUE "Load image in %s\n" ASNI_NONE ,image_file);
        // printf("MEM[0x80000260] = %llx\n",MEM[0x260 >> 3]);
        // 7f ff 4a bc 02 58 00 00
@@ -373,6 +416,11 @@ int main(int argc, char**argv, char**env) {
       difftest_init();
       difftest_memcpy(AD_BASE, MEM, fsize, 1);
     }
+
+    connect_wire(top, &mem_ptr);
+    assert(mem_ptr.check());
+    printf(ASNI_FG_GREEN "Check Complete\n" ASNI_NONE);
+
     st_time = get_time();
     printf(ASNI_FG_BLUE "start time = %lld\n" ASNI_NONE,(long long)st_time);
     //reset the pc
@@ -426,6 +474,7 @@ int main(int argc, char**argv, char**env) {
               top->d_rw_ready_i = 1;
               dmem_ls = step;
             }*/
+            /*
             if(top->clk == 1 && top->rw_valid_o == 1){
               if(top->rw_dev_o == 1){
                 //printf("[MMIO] rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
@@ -459,10 +508,15 @@ int main(int argc, char**argv, char**env) {
               if (top->rw_ready_i == 0) mem_ls = step;
               top->rw_ready_i = 1;
             }
+            */
+            mem_sig.update_input(mem_ref);
             top->eval();
+            if(top->clk == 1) mem.beat(mem_sig_ref);
+            //printf("[after beat] arready_i = %d\n",mem_sig.arready);
+            mem_sig.update_output(mem_ref);
             //if(top->clk == 1 && step == imem_ls + 2) top->i_rw_ready_i = 0;
             //if(top->clk == 1 && step == dmem_ls + 2) top->d_rw_ready_i = 0;
-            if(top->clk == 1 && step == mem_ls + 2) top->rw_ready_i = 0;
+            //if(top->clk == 1 && step == mem_ls + 2) top->rw_ready_i = 0;
             #ifdef ITRACE
               char str[128];disassemble(str, 127, sdb_top->pc, (uint8_t*)&instr_now, 4);
               if(sdb_top->clk == 0){
@@ -609,7 +663,7 @@ static void npc_exec(uint64_t n){
               dmem_ls = i;
             }*/
             //if(i == 530) printf("i == 530, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
-
+            /*
             if(sdb_top->clk == 1 && sdb_top->rw_valid_o == 1){
               if(sdb_top->rw_dev_o == 1){
                 //printf("[MMIO] rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
@@ -646,9 +700,15 @@ static void npc_exec(uint64_t n){
               //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
             }
             //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, d_rw_ready = %d, rw_ready_i = %d\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o, sdb_top->d_rw_ready,sdb_top->rw_ready_i);
+            */
+            mem_sig.update_input(mem_ref);
+            
             sdb_top->eval();
             //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, d_rw_ready = %d, rw_ready_i = %d\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o, sdb_top->d_rw_ready,sdb_top->rw_ready_i);
-
+            
+            if(sdb_top->clk == 1) mem.beat(mem_sig_ref);
+            //printf("[after beat] arready_i = %d\n",mem_sig.arready);
+            mem_sig.update_output(mem_ref);
             //if(i == 528) printf("i == 528, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
             //if(sdb_top->clk == 1 && i == imem_ls + 2) sdb_top->i_rw_ready_i = 0;
             //if(sdb_top->clk == 1 && i == dmem_ls + 2) sdb_top->d_rw_ready_i = 0;

@@ -19,24 +19,60 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     , wb_pc{vlSymsp->TOP.wb_pc}
     , wb_instr{vlSymsp->TOP.wb_instr}
     , next_pc{vlSymsp->TOP.next_pc}
-    , rw_addr_o{vlSymsp->TOP.rw_addr_o}
-    , rw_req_o{vlSymsp->TOP.rw_req_o}
-    , rw_valid_o{vlSymsp->TOP.rw_valid_o}
-    , rw_w_data_o{vlSymsp->TOP.rw_w_data_o}
-    , data_read_i{vlSymsp->TOP.data_read_i}
-    , rw_ready_i{vlSymsp->TOP.rw_ready_i}
-    , rw_size_o{vlSymsp->TOP.rw_size_o}
-    , rw_dev_o{vlSymsp->TOP.rw_dev_o}
-    , d_rw_ready{vlSymsp->TOP.d_rw_ready}
     , mem_valid{vlSymsp->TOP.mem_valid}
     , wb_dev_o{vlSymsp->TOP.wb_dev_o}
+    , d_rw_ready{vlSymsp->TOP.d_rw_ready}
+    , axi_aw_ready_i{vlSymsp->TOP.axi_aw_ready_i}
+    , axi_aw_valid_o{vlSymsp->TOP.axi_aw_valid_o}
+    , axi_aw_addr_o{vlSymsp->TOP.axi_aw_addr_o}
+    , axi_aw_prot_o{vlSymsp->TOP.axi_aw_prot_o}
+    , axi_aw_id_o{vlSymsp->TOP.axi_aw_id_o}
+    , axi_aw_user_o{vlSymsp->TOP.axi_aw_user_o}
+    , axi_aw_len_o{vlSymsp->TOP.axi_aw_len_o}
+    , axi_aw_size_o{vlSymsp->TOP.axi_aw_size_o}
+    , axi_aw_burst_o{vlSymsp->TOP.axi_aw_burst_o}
+    , axi_aw_lock_o{vlSymsp->TOP.axi_aw_lock_o}
+    , axi_aw_cache_o{vlSymsp->TOP.axi_aw_cache_o}
+    , axi_aw_qos_o{vlSymsp->TOP.axi_aw_qos_o}
+    , axi_aw_region_o{vlSymsp->TOP.axi_aw_region_o}
+    , axi_w_ready_i{vlSymsp->TOP.axi_w_ready_i}
+    , axi_w_valid_o{vlSymsp->TOP.axi_w_valid_o}
+    , axi_w_data_o{vlSymsp->TOP.axi_w_data_o}
+    , axi_w_strb_o{vlSymsp->TOP.axi_w_strb_o}
+    , axi_w_last_o{vlSymsp->TOP.axi_w_last_o}
+    , axi_w_user_o{vlSymsp->TOP.axi_w_user_o}
+    , axi_b_ready_o{vlSymsp->TOP.axi_b_ready_o}
+    , axi_b_valid_i{vlSymsp->TOP.axi_b_valid_i}
+    , axi_b_resp_i{vlSymsp->TOP.axi_b_resp_i}
+    , axi_b_id_i{vlSymsp->TOP.axi_b_id_i}
+    , axi_b_user_i{vlSymsp->TOP.axi_b_user_i}
+    , axi_ar_ready_i{vlSymsp->TOP.axi_ar_ready_i}
+    , axi_ar_valid_o{vlSymsp->TOP.axi_ar_valid_o}
+    , axi_ar_addr_o{vlSymsp->TOP.axi_ar_addr_o}
+    , axi_ar_prot_o{vlSymsp->TOP.axi_ar_prot_o}
+    , axi_ar_id_o{vlSymsp->TOP.axi_ar_id_o}
+    , axi_ar_user_o{vlSymsp->TOP.axi_ar_user_o}
+    , axi_ar_len_o{vlSymsp->TOP.axi_ar_len_o}
+    , axi_ar_size_o{vlSymsp->TOP.axi_ar_size_o}
+    , axi_ar_burst_o{vlSymsp->TOP.axi_ar_burst_o}
+    , axi_ar_lock_o{vlSymsp->TOP.axi_ar_lock_o}
+    , axi_ar_cache_o{vlSymsp->TOP.axi_ar_cache_o}
+    , axi_ar_qos_o{vlSymsp->TOP.axi_ar_qos_o}
+    , axi_ar_region_o{vlSymsp->TOP.axi_ar_region_o}
+    , axi_r_ready_o{vlSymsp->TOP.axi_r_ready_o}
+    , axi_r_valid_i{vlSymsp->TOP.axi_r_valid_i}
+    , axi_r_resp_i{vlSymsp->TOP.axi_r_resp_i}
+    , axi_r_data_i{vlSymsp->TOP.axi_r_data_i}
+    , axi_r_last_i{vlSymsp->TOP.axi_r_last_i}
+    , axi_r_id_i{vlSymsp->TOP.axi_r_id_i}
+    , axi_r_user_i{vlSymsp->TOP.axi_r_user_i}
     , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
-    , __PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low}
-    , __PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high}
-    , __PVT__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low}
-    , __PVT__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_high}
-    , __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low}
-    , __PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high}
+    , __PVT__top__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low}
+    , __PVT__top__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high}
+    , __PVT__top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low}
+    , __PVT__top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_high}
+    , __PVT__top__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low}
+    , __PVT__top__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high}
     , rootp{&(vlSymsp->TOP)}
 {
 }
@@ -83,7 +119,7 @@ static void _eval_initial_loop(Vtop__Syms* __restrict vlSymsp) {
             Verilated::debug(1);
             __Vchange = Vtop___024root___change_request(&(vlSymsp->TOP));
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("vsrc/top.v", 12, "",
+            VL_FATAL_MT("vsrc/top.v", 5, "",
                 "Verilated model didn't DC converge\n"
                 "- See https://verilator.org/warn/DIDNOTCONVERGE");
         } else {
@@ -114,21 +150,13 @@ void Vtop::eval_step() {
             Verilated::debug(1);
             __Vchange = Vtop___024root___change_request(&(vlSymsp->TOP));
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("vsrc/top.v", 12, "",
+            VL_FATAL_MT("vsrc/top.v", 5, "",
                 "Verilated model didn't converge\n"
                 "- See https://verilator.org/warn/DIDNOTCONVERGE");
         } else {
             __Vchange = Vtop___024root___change_request(&(vlSymsp->TOP));
         }
     } while (VL_UNLIKELY(__Vchange));
-}
-
-void Vtop::eval_end_step() {
-    VL_DEBUG_IF(VL_DBG_MSGF("+eval_end_step Vtop::eval_end_step\n"); );
-#ifdef VM_TRACE
-    // Tracing
-    if (VL_UNLIKELY(vlSymsp->__Vm_dumping)) vlSymsp->_traceDump();
-#endif  // VM_TRACE
 }
 
 //============================================================

@@ -9,16 +9,6 @@
 
 //==========
 
-extern "C" void c_trap(svBit done);
-
-VL_INLINE_OPT void Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(CData/*0:0*/ done) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+        Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit\n"); );
-    // Body
-    svBit done__Vcvt;
-    for (size_t done__Vidx = 0; done__Vidx < 1; ++done__Vidx) done__Vcvt = done;
-    c_trap(done__Vcvt);
-}
-
 extern "C" void pmem_read(long long raddr, long long* rdata, char bytes);
 
 VL_INLINE_OPT void Vtop___024unit____Vdpiimwrap_pmem_read_TOP____024unit(QData/*63:0*/ raddr, QData/*63:0*/ &rdata, CData/*7:0*/ bytes) {
@@ -55,4 +45,14 @@ VL_INLINE_OPT void Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit(IData/*
     int instr__Vcvt;
     for (size_t instr__Vidx = 0; instr__Vidx < 1; ++instr__Vidx) instr__Vcvt = instr;
     get_instr(instr__Vcvt);
+}
+
+extern "C" void c_trap(svBit done);
+
+VL_INLINE_OPT void Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(CData/*0:0*/ done) {
+    VL_DEBUG_IF(VL_DBG_MSGF("+        Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit\n"); );
+    // Body
+    svBit done__Vcvt;
+    for (size_t done__Vidx = 0; done__Vidx < 1; ++done__Vidx) done__Vcvt = done;
+    c_trap(done__Vcvt);
 }
