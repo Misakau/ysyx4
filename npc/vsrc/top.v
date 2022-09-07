@@ -148,4 +148,9 @@ module top(
         axi_r_id_i,
         axi_r_user_i
     );
+
+    initial begin
+        $dumpfile("logs/vlt_dump.vcd");
+        $dumpvars();
+    end
 endmodule
