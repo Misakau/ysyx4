@@ -69,7 +69,7 @@ module ysyx_220053_axi_rw # (
     input  [RW_DATA_WIDTH-1:0]          rw_w_data_i,        //IF&MEM输入信号
     input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号
     input  [7:0]                        rw_size_i,          //IF&MEM输入信号
-
+    input                               rw_dev_i,
 
 
 // Advanced eXtensible Interface
@@ -197,7 +197,7 @@ module ysyx_220053_axi_rw # (
     localparam TRANSLEN      = RW_DATA_WIDTH / AXI_DATA_WIDTH;
     wire [AXI_ID_WIDTH-1:0] axi_id              = {AXI_ID_WIDTH{1'b0}};
     wire [AXI_USER_WIDTH-1:0] axi_user          = {AXI_USER_WIDTH{1'b0}};
-    wire [7:0] axi_len      = TRANSLEN - 1 ;
+    wire [7:0] axi_len      = (rw_dev_i == 1'b0) ? (TRANSLEN - 1) : 0;
     wire [2:0] axi_size     = AXI_SIZE[2:0];
     always @(posedge clock) begin
         if (reset | (r_trans & r_state_idle)) begin
@@ -239,7 +239,7 @@ module ysyx_220053_axi_rw # (
         end
         else if(aw_fire || w_fire) begin
             rw_w_data_r <= rw_w_data_i[wcnt*AXI_DATA_WIDTH+:AXI_DATA_WIDTH];
-            rw_size_r <= {AXI_DATA_WIDTH/8{1'b1}};
+            rw_size_r <= rw_size_i;
         end
     end
     always @(posedge clock) begin
