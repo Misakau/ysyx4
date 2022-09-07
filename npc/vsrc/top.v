@@ -13,7 +13,7 @@ module top(
     output [63:0] next_pc,
     output mem_valid,
     output reg wb_dev_o,
-    output d_rw_ready;
+    output d_rw_ready
 ///////////////////////AXI////////////////////////////
     input                               axi_aw_ready_i,              
     output                              axi_aw_valid_o,
