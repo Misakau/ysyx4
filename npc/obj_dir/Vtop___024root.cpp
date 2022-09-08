@@ -187,8 +187,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     } else if (vlSelf->top__DOT__axi__DOT__b_fire) {
         vlSelf->top__DOT__axi__DOT__axi_w_last_r = 0U;
     }
-    vlSelf->top__DOT__core__DOT__my_ifu__DOT__start 
-        = vlSelf->rst;
     if (((IData)(vlSelf->rst) | ((~ (IData)(vlSelf->top__DOT__rw_req_o)) 
                                  & (0U == (IData)(vlSelf->top__DOT__axi__DOT__r_status))))) {
         vlSelf->__Vdly__top__DOT__axi__DOT__rcnt = 0U;
@@ -198,6 +196,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
         vlSelf->__Vdly__top__DOT__axi__DOT__rcnt = 
             (0xffU & ((IData)(1U) + (IData)(vlSelf->top__DOT__axi__DOT__rcnt)));
     }
+    vlSelf->top__DOT__core__DOT__my_ifu__DOT__start 
+        = vlSelf->rst;
     if (((IData)(vlSelf->rst) | ((IData)(vlSelf->top__DOT__rw_req_o) 
                                  & (0U == (IData)(vlSelf->top__DOT__axi__DOT__w_status))))) {
         __Vdly__top__DOT__axi__DOT__wcnt = 0U;
@@ -4254,11 +4254,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
         vlSelf->top__DOT__core__DOT__M_Reg__DOT__raddr_r 
             = vlSelf->top__DOT__core__DOT__my_exu__DOT__res;
     }
-    vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_req_valid 
-        = (1U & ((IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__start) 
-                 | (((~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__cache_doing)) 
-                     & (~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__i_cpu_ready))) 
-                    & (~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__old_instr)))));
     vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__cur_status 
         = ((IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__flush)
             ? 0U : (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__next_status));
@@ -6667,22 +6662,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
                                            >> 0xaU)))) 
                      & (2U == (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__cur_status))) 
                     & (IData)(vlSelf->top__DOT__core__DOT__i_rw_ready_i))));
-    __Vtableidx1 = (((IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_req_valid) 
-                     << 5U) | (((((1U == (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__cur_status)) 
-                                  & vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__V
-                                  [(0xffU & (IData)(
-                                                    (vlSelf->top__DOT__core__DOT__if_pc_o 
-                                                     >> 4U)))]) 
-                                 & (vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__tag
-                                    [(0xffU & (IData)(
-                                                      (vlSelf->top__DOT__core__DOT__if_pc_o 
-                                                       >> 4U)))] 
-                                    == (vlSelf->top__DOT__core__DOT__if_pc_o 
-                                        >> 0xcU))) 
-                                << 4U) | (((IData)(vlSelf->top__DOT__core__DOT__i_rw_ready_i) 
-                                           << 3U) | (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__cur_status))));
-    vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__next_status 
-        = Vtop__ConstPool__TABLE_091dc012_0[__Vtableidx1];
     vlSelf->top__DOT__core__DOT__WB_Reg__DOT__Fence_i_r 
         = ((~ (IData)(vlSelf->rst)) & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__Fence_i_r));
     vlSelf->top__DOT__core__DOT__WB_Reg__DOT__valid_r 
@@ -6806,6 +6785,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
                                                     & (IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__valid_r))) 
                                                 | ((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__Fence_i_r) 
                                                    & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r)));
+    vlSelf->top__DOT__core__DOT__if_fencei = ((IData)(vlSelf->top__DOT__core__DOT__id_Fence_i_o) 
+                                              & (IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r));
     vlSelf->top__DOT__core__DOT__id_use_rd = ((IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r) 
                                               & (~ 
                                                  (((((((0x37U 
@@ -6824,6 +6805,12 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
                                                     | (IData)(vlSelf->top__DOT__core__DOT__id_Mret)) 
                                                    | (IData)(vlSelf->top__DOT__core__DOT__id_Ecall)) 
                                                   | (IData)(vlSelf->top__DOT__core__DOT__id_Csri_o))));
+    vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_req_valid 
+        = (1U & ((IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__start) 
+                 | ((((~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__cache_doing)) 
+                      & (~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__i_cpu_ready))) 
+                     & (~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__old_instr))) 
+                    & (~ (IData)(vlSelf->top__DOT__core__DOT__if_fencei)))));
     vlSelf->top__DOT__core__DOT__id_ex_hazard = (((IData)(vlSelf->top__DOT__core__DOT__id_use_rd) 
                                                   & ((IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__valid_r) 
                                                      & (IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__wen_r))) 
@@ -6887,6 +6874,22 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
                                                           (0x1fU 
                                                            & (vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r 
                                                               >> 0x14U))))));
+    __Vtableidx1 = (((IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_req_valid) 
+                     << 5U) | (((((1U == (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__cur_status)) 
+                                  & vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__V
+                                  [(0xffU & (IData)(
+                                                    (vlSelf->top__DOT__core__DOT__if_pc_o 
+                                                     >> 4U)))]) 
+                                 & (vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__tag
+                                    [(0xffU & (IData)(
+                                                      (vlSelf->top__DOT__core__DOT__if_pc_o 
+                                                       >> 4U)))] 
+                                    == (vlSelf->top__DOT__core__DOT__if_pc_o 
+                                        >> 0xcU))) 
+                                << 4U) | (((IData)(vlSelf->top__DOT__core__DOT__i_rw_ready_i) 
+                                           << 3U) | (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__cur_status))));
+    vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__next_status 
+        = Vtop__ConstPool__TABLE_091dc012_0[__Vtableidx1];
     vlSelf->top__DOT__core__DOT__load_use = ((IData)(vlSelf->top__DOT__core__DOT__id_ex_hazard) 
                                              & (3U 
                                                 == 

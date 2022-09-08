@@ -182,7 +182,7 @@ module ysyx_220053_core(
     ysyx_220053_IFU my_ifu(
       .clk(clk),
       .rst(rst),
-      .Fence_i(if_fencei),
+      .Fence_i(has_fence_i),
       .dnpc(id_dnpc),
       .pc(if_pc_o),
       .instr_o(if_instr_o),
