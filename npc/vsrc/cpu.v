@@ -248,7 +248,7 @@ module ysyx_220053_core(
       );
       assign id_flush = rst;
       wire is_Csrwen = (~id_flush) & id_Csrwen & id_valid_o;
-      assign id_block = load_use | has_fence_i;//id_Ebreak_o;   //load_use
+      assign id_block = load_use;//id_Ebreak_o;   //load_use
       assign id_busa_o = (rs1_need == 1'b0) ? id_busa : forward_data1;
       assign id_busb_o = (rs2_need == 1'b0) ? id_busb : forward_data2;
       assign ex_en = ~(ex_block | m_block | wb_block);//还未处理阻塞
