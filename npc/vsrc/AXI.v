@@ -243,14 +243,14 @@ module ysyx_220053_axi_rw # (
     // 写地址通道  以下没有备注初始化信号的都可能是你需要产生和用到的
     assign axi_aw_valid_o   = w_state_addr;//
     assign axi_aw_addr_o    = rw_addr_i;//
-    assign axi_aw_prot_o    = `AXI_PROT_UNPRIVILEGED_ACCESS | `AXI_PROT_SECURE_ACCESS | `AXI_PROT_DATA_ACCESS;  //初始化信号即可
+    assign axi_aw_prot_o    = `ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS | `ysyx_220053_AXI_PROT_SECURE_ACCESS | `ysyx_220053_AXI_PROT_DATA_ACCESS;  //初始化信号即可
     assign axi_aw_id_o      = axi_id;                                                                           //初始化信号即可
     assign axi_aw_user_o    = axi_user;                                                                         //初始化信号即可
     assign axi_aw_len_o     = axi_len;//
     assign axi_aw_size_o    = axi_size;//
-    assign axi_aw_burst_o   = `AXI_BURST_TYPE_INCR;//                                                             
+    assign axi_aw_burst_o   = `ysyx_220053_AXI_BURST_TYPE_INCR;//                                                             
     assign axi_aw_lock_o    = 1'b0;                                                                             //初始化信号即可
-    assign axi_aw_cache_o   = `AXI_AWCACHE_WRITE_BACK_READ_AND_WRITE_ALLOCATE;                                  //初始化信号即可
+    assign axi_aw_cache_o   = `ysyx_220053_AXI_AWCACHE_WRITE_BACK_READ_AND_WRITE_ALLOCATE;                                  //初始化信号即可
     assign axi_aw_qos_o     = 4'h0;                                                                             //初始化信号即可
     assign axi_aw_region_o  = 4'h0;      
     // 写数据通道
@@ -297,14 +297,14 @@ module ysyx_220053_axi_rw # (
     // Read address channel signals
     assign axi_ar_valid_o   = r_state_addr;//
     assign axi_ar_addr_o    = rw_addr_i;//
-    assign axi_ar_prot_o    = `AXI_PROT_UNPRIVILEGED_ACCESS | `AXI_PROT_SECURE_ACCESS | `AXI_PROT_DATA_ACCESS;  //初始化信号即可
+    assign axi_ar_prot_o    = `ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS | `ysyx_220053_AXI_PROT_SECURE_ACCESS | `ysyx_220053_AXI_PROT_DATA_ACCESS;  //初始化信号即可
     assign axi_ar_id_o      = axi_id;                                                                           //初始化信号即可                        
     assign axi_ar_user_o    = axi_user;                                                                         //初始化信号即可
     assign axi_ar_len_o     = axi_len;//                                                                          
     assign axi_ar_size_o    = axi_size;//
-    assign axi_ar_burst_o   = `AXI_BURST_TYPE_INCR;//
+    assign axi_ar_burst_o   = `ysyx_220053_AXI_BURST_TYPE_INCR;//
     assign axi_ar_lock_o    = 1'b0;                                                                             //初始化信号即可
-    assign axi_ar_cache_o   = `AXI_ARCACHE_NORMAL_NON_CACHEABLE_NON_BUFFERABLE;                                 //初始化信号即可
+    assign axi_ar_cache_o   = `ysyx_220053_AXI_ARCACHE_NORMAL_NON_CACHEABLE_NON_BUFFERABLE;                                 //初始化信号即可
     assign axi_ar_qos_o     = 4'h0;                                                                             //初始化信号即可
     assign axi_ar_region_o  = 4'h0;                                                                             //初始化信号即可
     // Read data channel signals
