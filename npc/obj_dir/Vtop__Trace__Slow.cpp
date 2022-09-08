@@ -2386,7 +2386,6 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declBus(c+960,"top axi rcnt", false,-1, 7,0);
         tracep->declBus(c+961,"top axi wcnt", false,-1, 7,0);
         tracep->declBus(c+2892,"top axi AXI_SIZE", false,-1, 31,0);
-        tracep->declBus(c+2891,"top axi TRANSLEN", false,-1, 31,0);
         tracep->declBus(c+2895,"top axi axi_id", false,-1, 3,0);
         tracep->declBus(c+2874,"top axi axi_user", false,-1, 0,0);
         tracep->declBus(c+962,"top axi axi_len", false,-1, 7,0);

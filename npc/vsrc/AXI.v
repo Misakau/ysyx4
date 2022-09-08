@@ -267,6 +267,9 @@ module ysyx_220053_axi_rw # (
             axi_w_last_r <= 0;
         end
     end
+
+
+
     assign axi_w_valid_o    = w_state_write;//
     assign axi_w_data_o     = rw_w_data_r ;//
     assign axi_w_strb_o     = rw_size_r;//
@@ -292,7 +295,6 @@ module ysyx_220053_axi_rw # (
     assign axi_ar_qos_o     = 4'h0;                                                                             //初始化信号即可
     assign axi_ar_region_o  = 4'h0;                                                                             //初始化信号即可
     // Read data channel signals
-    assign axi_r_ready_o    = r_state_read;//
     //low 64
     always @(posedge clock) begin
         if(reset) begin
@@ -311,5 +313,9 @@ module ysyx_220053_axi_rw # (
             data_read_o[2*AXI_DATA_WIDTH - 1:AXI_DATA_WIDTH] <= axi_r_data_i;
         end
     end
+
+
+
+    assign axi_r_ready_o    = r_state_read;//
 
 endmodule
