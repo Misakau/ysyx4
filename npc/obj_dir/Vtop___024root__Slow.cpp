@@ -4755,8 +4755,6 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                     & (IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__valid_r))) 
                                                 | ((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__Fence_i_r) 
                                                    & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r)));
-    vlSelf->top__DOT__core__DOT__if_fencei = ((IData)(vlSelf->top__DOT__core__DOT__id_Fence_i_o) 
-                                              & (IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r));
     vlSelf->top__DOT__core__DOT__cpu_halt = ((IData)(vlSelf->top__DOT__core__DOT__id_Ebreak_o) 
                                              | (IData)(vlSelf->rst));
     vlSelf->top__DOT__core__DOT__id_use_rd = ((IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r) 
@@ -4882,13 +4880,13 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                          (vlSelf->top__DOT__core__DOT__M_Reg__DOT__raddr_r 
                                                           >> 0x18U)))));
     vlSelf->top__DOT__core__DOT__my_ifu__DOT__flush 
-        = ((IData)(vlSelf->rst) | (IData)(vlSelf->top__DOT__core__DOT__if_fencei));
+        = ((IData)(vlSelf->rst) | (IData)(vlSelf->top__DOT__core__DOT__has_fence_i));
     vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_req_valid 
         = (1U & ((IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__start) 
                  | ((((~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__cache_doing)) 
                       & (~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__i_cpu_ready))) 
                      & (~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__old_instr))) 
-                    & (~ (IData)(vlSelf->top__DOT__core__DOT__if_fencei)))));
+                    & (~ (IData)(vlSelf->top__DOT__core__DOT__has_fence_i)))));
     vlSelf->top__DOT__core__DOT__id_ex_hazard = (((IData)(vlSelf->top__DOT__core__DOT__id_use_rd) 
                                                   & ((IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__valid_r) 
                                                      & (IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__wen_r))) 
@@ -5538,7 +5536,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__core__DOT__id_wb_hazard = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__core__DOT__load_use = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__core__DOT__has_fence_i = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__core__DOT__if_fencei = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__core__DOT__if_busy = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__core__DOT__cpu_halt = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__core__DOT__ex_dnpc = VL_RAND_RESET_Q(64);

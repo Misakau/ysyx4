@@ -319,7 +319,7 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declQuad(c+1594,"top core Csr_datain", false,-1, 63,0);
         tracep->declBit(c+2804,"top core my_ifu clk", false,-1);
         tracep->declBit(c+2805,"top core my_ifu rst", false,-1);
-        tracep->declBit(c+141,"top core my_ifu Fence_i", false,-1);
+        tracep->declBit(c+140,"top core my_ifu Fence_i", false,-1);
         tracep->declBit(c+143,"top core my_ifu dnpc_valid", false,-1);
         tracep->declBit(c+1590,"top core my_ifu block", false,-1);
         tracep->declQuad(c+1584,"top core my_ifu dnpc", false,-1, 63,0);
@@ -4691,7 +4691,8 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
                                     | (IData)(vlSelf->top__DOT__core__DOT__id_m_hazard)) 
                                    | (IData)(vlSelf->top__DOT__core__DOT__id_wb_hazard))));
         tracep->fullBit(oldp+140,(vlSelf->top__DOT__core__DOT__has_fence_i));
-        tracep->fullBit(oldp+141,(vlSelf->top__DOT__core__DOT__if_fencei));
+        tracep->fullBit(oldp+141,(((IData)(vlSelf->top__DOT__core__DOT__id_Fence_i_o) 
+                                   & (IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r))));
         tracep->fullBit(oldp+142,(vlSelf->top__DOT__core__DOT__if_busy));
         tracep->fullBit(oldp+143,((((IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r) 
                                     & (~ (IData)(vlSelf->top__DOT__core__DOT__has_fence_i))) 

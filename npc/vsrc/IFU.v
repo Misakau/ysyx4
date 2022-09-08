@@ -73,7 +73,7 @@ module ysyx_220053_IFU(
         end
     end
     assign cpu_req_valid = start | (!cache_doing && !i_cpu_ready && !old_instr && !Fence_i);
-    assign if_busy = (!i_cpu_ready && !old_instr);
+    assign if_busy = (!i_cpu_ready && !old_instr && !Fence_i);
     wire flush = rst | Fence_i;
     ysyx_220053_icache icache(
          clk,flush,
