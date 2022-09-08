@@ -120,12 +120,12 @@ module ysyx_220053_axi_rw # (
     input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
     input  [AXI_USER_WIDTH-1:0]         axi_r_user_i
 );
-    wire bresp = axi_b_resp_i;
-    wire bid   = axi_b_id_i;
-    wire buser = axi_b_user_i;
-    wire rresp = axi_r_resp_i;
-    wire rid   = axi_r_id_i;
-    wire ruser = axi_r_user_i;
+    wire [1:0] bresp = axi_b_resp_i;
+    wire [AXI_ID_WIDTH-1:0] bid   = axi_b_id_i;
+    wire [AXI_USER_WIDTH-1:0] buser = axi_b_user_i;
+    wire [1:0] rresp = axi_r_resp_i;
+    wire [AXI_ID_WIDTH-1:0] rid   = axi_r_id_i;
+    wire [AXI_USER_WIDTH-1:0] ruser = axi_r_user_i;
 
 
 // ------------------State Machine------------------TODO
