@@ -11,6 +11,8 @@ void Vtop___024root__traceFullSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep)
     if (false && oldp) {}  // Prevent unused
     // Body
     {
+        tracep->fullBit(oldp+2441,((1U & (IData)((vlSelf->top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__SrcA 
+                                                  >> 0x17U)))));
         tracep->fullBit(oldp+2442,((1U & (IData)((vlSelf->top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__SrcB 
                                                   >> 0x17U)))));
         tracep->fullBit(oldp+2443,((1U & ((IData)(vlSymsp->TOP__top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low.genblk2__BRA__2__KET____DOT__adder8__DOT__adder_high__DOT____Vcellout__gen__c) 

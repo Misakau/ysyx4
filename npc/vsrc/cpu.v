@@ -175,12 +175,14 @@ module ysyx_220053_core(
     assign Time_interrupt = mie_MITE & mstatus_MIE & is_cmp;
     /////////////IF/////////////////
     wire has_fence_i = (id_Fence_i_o && id_valid_o) || (ex_Fence_i_i && ex_valid_o) || (m_Fence_i_i && m_valid_o);// | wb_Fence_i_i;
+    wire if_fencei = m_Fence_i_i && m_valid_o;
     wire if_busy;
     wire cpu_halt;
     wire dnpc_valid = (id_valid_o & ~has_fence_i) | (wb_Fence_i_i & wb_valid_o);
     ysyx_220053_IFU my_ifu(
       .clk(clk),
       .rst(rst),
+      .Fence_i(if_fencei),
       .dnpc(id_dnpc),
       .pc(if_pc_o),
       .instr_o(if_instr_o),

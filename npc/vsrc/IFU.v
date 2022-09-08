@@ -3,6 +3,7 @@
 module ysyx_220053_IFU(
     input clk,
     input rst,
+    input Fence_i,
     input dnpc_valid, block,
     input [63:0] dnpc,
     output reg [63:0] pc,
@@ -73,9 +74,9 @@ module ysyx_220053_IFU(
     end
     assign cpu_req_valid = start | (!cache_doing && !i_cpu_ready && !old_instr);
     assign if_busy = (!i_cpu_ready && !old_instr);
-
+    wire flush = rst | Fence_i;
     ysyx_220053_icache icache(
-         clk,rst,
+         clk,flush,
         //cpu<->cache
          pc,1'b0,cpu_req_valid,cpu_data_read,i_cpu_ready,cache_idle,
          //cache<->memory
