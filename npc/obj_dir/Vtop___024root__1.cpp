@@ -350,12 +350,6 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                                                     : 0U)))));
     vlSelf->top__DOT__core__DOT__ex_en = (1U & (~ ((IData)(vlSelf->top__DOT__core__DOT__alu_busy) 
                                                    | (IData)(vlSelf->top__DOT__core__DOT__m_busy))));
-    vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__rlo 
-        = (((~ (IData)(vlSelf->top__DOT__core__DOT__m_busy)) 
-            & (IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__old_div))
-            ? vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__result_lo_r
-            : (((QData)((IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[1U])) 
-                << 0x20U) | (QData)((IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[0U]))));
     __Vtableidx6 = (((IData)(vlSelf->top__DOT__core__DOT__if_busy) 
                      << 3U) | (((IData)(vlSelf->top__DOT__core__DOT__m_busy) 
                                 << 2U) | (IData)(vlSelf->top__DOT__core__DOT__arbiter__DOT__cur_status)));
@@ -365,6 +359,24 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                                                    ((IData)(vlSelf->top__DOT__core__DOT__load_use) 
                                                     | (IData)(vlSelf->top__DOT__core__DOT__alu_busy)) 
                                                    | (IData)(vlSelf->top__DOT__core__DOT__m_busy))));
+    vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__rlo 
+        = (((~ (IData)(vlSelf->top__DOT__core__DOT__m_busy)) 
+            & (IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__old_div))
+            ? vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__result_lo_r
+            : (((QData)((IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[1U])) 
+                << 0x20U) | (QData)((IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[0U]))));
+    vlSelf->top__DOT__core__DOT__if_instr_o = (((IData)(vlSelf->top__DOT__core__DOT__id_en) 
+                                                & (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__old_instr))
+                                                ? vlSelf->top__DOT__core__DOT__my_ifu__DOT__instr_read_r
+                                                : (
+                                                   (1U 
+                                                    & (IData)(
+                                                              (vlSelf->top__DOT__core__DOT__if_pc_o 
+                                                               >> 2U)))
+                                                    ? (IData)(
+                                                              (vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_data_read 
+                                                               >> 0x20U))
+                                                    : (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_data_read)));
     vlSelf->top__DOT__core__DOT__my_exu__DOT__res = 
         (((((((((0U == (IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__OPctr)) 
                 | (1U == (IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__OPctr))) 
@@ -477,18 +489,7 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                   & (IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__old_div))
                   ? vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__remainder_r
                   : vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__remainder)));
-    vlSelf->top__DOT__core__DOT__if_instr_o = (((IData)(vlSelf->top__DOT__core__DOT__id_en) 
-                                                & (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__old_instr))
-                                                ? vlSelf->top__DOT__core__DOT__my_ifu__DOT__instr_read_r
-                                                : (
-                                                   (1U 
-                                                    & (IData)(
-                                                              (vlSelf->top__DOT__core__DOT__if_pc_o 
-                                                               >> 2U)))
-                                                    ? (IData)(
-                                                              (vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_data_read 
-                                                               >> 0x20U))
-                                                    : (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_data_read)));
+    vlSelf->instr = vlSelf->top__DOT__core__DOT__if_instr_o;
     vlSelf->top__DOT__core__DOT__id_busb_o = (((((IData)(vlSelf->top__DOT__core__DOT__id_ex_hazard) 
                                                  & ((0x1fU 
                                                      & (vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r 
@@ -591,7 +592,6 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                                                   (0x1fU 
                                                    & (vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r 
                                                       >> 0xfU))]));
-    vlSelf->instr = vlSelf->top__DOT__core__DOT__if_instr_o;
     vlSelf->top__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adderb 
         = (((1U == (IData)(vlSelf->top__DOT__core__DOT__id_ALUSrcB_o))
              ? vlSelf->top__DOT__core__DOT__id_imm_o

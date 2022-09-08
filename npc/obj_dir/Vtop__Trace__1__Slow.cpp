@@ -1382,10 +1382,11 @@ void Vtop___024root__traceFullSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullBit(oldp+2859,(vlSelf->axi_r_last_i));
         tracep->fullCData(oldp+2860,(vlSelf->axi_r_id_i),4);
         tracep->fullBit(oldp+2861,(vlSelf->axi_r_user_i));
-        tracep->fullBit(oldp+2862,((1U & (~ (((IData)(vlSelf->rst) 
-                                              | ((IData)(vlSelf->top__DOT__core__DOT__id_Ebreak_o) 
-                                                 | (IData)(vlSelf->top__DOT__core__DOT__if_busy))) 
-                                             | (IData)(vlSelf->top__DOT__core__DOT__cpu_halt))))));
+        tracep->fullBit(oldp+2862,((1U & (~ ((((IData)(vlSelf->rst) 
+                                               | ((IData)(vlSelf->top__DOT__core__DOT__id_Ebreak_o) 
+                                                  | (IData)(vlSelf->top__DOT__core__DOT__if_busy))) 
+                                              | (IData)(vlSelf->top__DOT__core__DOT__cpu_halt)) 
+                                             | (IData)(vlSelf->top__DOT__core__DOT__WB_Reg__DOT__Fence_i_r))))));
         tracep->fullBit(oldp+2863,((((~ (IData)(vlSelf->rst)) 
                                      & (IData)(vlSelf->top__DOT__core__DOT__WB_Reg__DOT__wen_r)) 
                                     & (IData)(vlSelf->top__DOT__core__DOT__WB_Reg__DOT__valid_r))));

@@ -1849,19 +1849,12 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                            >> 0x14U)))));
     vlSelf->pc = vlSelf->top__DOT__core__DOT__if_pc_o;
     vlSelf->mem_valid = vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r;
-    vlSelf->top__DOT__core__DOT__is_Fence_i = ((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__Fence_i_r) 
-                                               & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r));
     vlSelf->top__DOT__core__DOT__is_men = (((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__MemWen_r) 
                                             & (~ (IData)(vlSelf->rst))) 
                                            & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r));
     vlSelf->top__DOT__core__DOT__is_MemToReg = (((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__MemToReg_r) 
                                                  & (~ (IData)(vlSelf->rst))) 
                                                 & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r));
-    vlSelf->top__DOT__core__DOT__id_Fence_i_o = (IData)(
-                                                        (0xfU 
-                                                         == 
-                                                         (0x7fU 
-                                                          & vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r)));
     vlSelf->top__DOT__core__DOT__Time_interrupt = (
                                                    ((IData)(
                                                             (vlSelf->top__DOT__core__DOT__csrfile__DOT__mie 
@@ -1907,6 +1900,13 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                                          (0x3000U 
                                                                           & vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r))))))) 
                                               & (IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r));
+    vlSelf->top__DOT__core__DOT__is_Fence_i = ((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__Fence_i_r) 
+                                               & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r));
+    vlSelf->top__DOT__core__DOT__id_Fence_i_o = (IData)(
+                                                        (0xfU 
+                                                         == 
+                                                         (0x7fU 
+                                                          & vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r)));
     vlSelf->top__DOT__axi__DOT__aw_fire = ((IData)(vlSelf->axi_aw_ready_i) 
                                            & (IData)(vlSelf->axi_aw_valid_o));
     vlSelf->top__DOT__axi__DOT__w_fire = ((IData)(vlSelf->axi_w_ready_i) 
@@ -4763,10 +4763,6 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__core__DOT____Vcellinp__csrfile__Ecall 
         = ((IData)(vlSelf->top__DOT__core__DOT__id_Ecall) 
            & (IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r));
-    vlSelf->top__DOT__core__DOT__my_mu__DOT__vis_mem 
-        = (((IData)(vlSelf->top__DOT__core__DOT__is_MemToReg) 
-            | (IData)(vlSelf->top__DOT__core__DOT__is_men)) 
-           | (IData)(vlSelf->top__DOT__core__DOT__is_Fence_i));
     vlSelf->top__DOT__core__DOT____Vcellinp__csrfile__Time_interrupt 
         = ((IData)(vlSelf->top__DOT__core__DOT__Time_interrupt) 
            & (IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r));
@@ -4790,6 +4786,10 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                     | (IData)(vlSelf->top__DOT__core__DOT__id_Mret)) 
                                                    | (IData)(vlSelf->top__DOT__core__DOT__id_Ecall)) 
                                                   | (IData)(vlSelf->top__DOT__core__DOT__id_Csri_o))));
+    vlSelf->top__DOT__core__DOT__my_mu__DOT__vis_mem 
+        = (((IData)(vlSelf->top__DOT__core__DOT__is_MemToReg) 
+            | (IData)(vlSelf->top__DOT__core__DOT__is_men)) 
+           | (IData)(vlSelf->top__DOT__core__DOT__is_Fence_i));
     vlSelf->top__DOT__axi__DOT__r_last = ((IData)(vlSelf->top__DOT__axi__DOT__r_fire) 
                                           & (IData)(vlSelf->axi_r_last_i));
     VL_ADD_W(5, __Vtemp156, vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result, vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result);
@@ -4881,19 +4881,6 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                               ? 0x342U
                                               : (0xfffU 
                                                  & (IData)(vlSelf->top__DOT__core__DOT__id_imm_o)));
-    vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__cpu_req_valid 
-        = ((((~ (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__cache_doing)) 
-             & (~ (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__d_cpu_ready))) 
-            & (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__vis_mem)) 
-           & (2U != (0xffU & (IData)((vlSelf->top__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                      >> 0x18U)))));
-    vlSelf->top__DOT__core__DOT__m_busy = (((~ (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__d_cpu_ready)) 
-                                            & (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__vis_mem)) 
-                                           & (2U != 
-                                              (0xffU 
-                                               & (IData)(
-                                                         (vlSelf->top__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                                          >> 0x18U)))));
     vlSelf->top__DOT__core__DOT__id_ex_hazard = (((IData)(vlSelf->top__DOT__core__DOT__id_use_rd) 
                                                   & ((IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__valid_r) 
                                                      & (IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__wen_r))) 
@@ -4957,6 +4944,19 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                           (0x1fU 
                                                            & (vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r 
                                                               >> 0x14U))))));
+    vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__cpu_req_valid 
+        = ((((~ (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__cache_doing)) 
+             & (~ (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__d_cpu_ready))) 
+            & (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__vis_mem)) 
+           & (2U != (0xffU & (IData)((vlSelf->top__DOT__core__DOT__M_Reg__DOT__raddr_r 
+                                      >> 0x18U)))));
+    vlSelf->top__DOT__core__DOT__m_busy = (((~ (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__d_cpu_ready)) 
+                                            & (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__vis_mem)) 
+                                           & (2U != 
+                                              (0xffU 
+                                               & (IData)(
+                                                         (vlSelf->top__DOT__core__DOT__M_Reg__DOT__raddr_r 
+                                                          >> 0x18U)))));
     vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__ready_to_doing 
         = ((IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mul_valid) 
            & (IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mul_ready));
@@ -4988,6 +4988,11 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                        == (IData)(vlSelf->top__DOT__core__DOT__id_CsrId))
                                                        ? vlSelf->top__DOT__core__DOT__csrfile__DOT__mip
                                                        : 0ULL)))))));
+    vlSelf->top__DOT__core__DOT__load_use = ((IData)(vlSelf->top__DOT__core__DOT__id_ex_hazard) 
+                                             & (3U 
+                                                == 
+                                                (0x7fU 
+                                                 & vlSelf->top__DOT__core__DOT__EX_Reg__DOT__instr_r)));
     vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__next_status 
         = ((8U & (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
             ? ((4U & (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))
@@ -5072,22 +5077,17 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                     : 0U)))));
     vlSelf->top__DOT__core__DOT__ex_en = (1U & (~ ((IData)(vlSelf->top__DOT__core__DOT__alu_busy) 
                                                    | (IData)(vlSelf->top__DOT__core__DOT__m_busy))));
+    __Vtableidx6 = (((IData)(vlSelf->top__DOT__core__DOT__if_busy) 
+                     << 3U) | (((IData)(vlSelf->top__DOT__core__DOT__m_busy) 
+                                << 2U) | (IData)(vlSelf->top__DOT__core__DOT__arbiter__DOT__cur_status)));
+    vlSelf->top__DOT__core__DOT__arbiter__DOT__next_status 
+        = Vtop__ConstPool__TABLE_9a38e7b0_0[__Vtableidx6];
     vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__rlo 
         = (((~ (IData)(vlSelf->top__DOT__core__DOT__m_busy)) 
             & (IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__old_div))
             ? vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__result_lo_r
             : (((QData)((IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[1U])) 
                 << 0x20U) | (QData)((IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result[0U]))));
-    __Vtableidx6 = (((IData)(vlSelf->top__DOT__core__DOT__if_busy) 
-                     << 3U) | (((IData)(vlSelf->top__DOT__core__DOT__m_busy) 
-                                << 2U) | (IData)(vlSelf->top__DOT__core__DOT__arbiter__DOT__cur_status)));
-    vlSelf->top__DOT__core__DOT__arbiter__DOT__next_status 
-        = Vtop__ConstPool__TABLE_9a38e7b0_0[__Vtableidx6];
-    vlSelf->top__DOT__core__DOT__load_use = ((IData)(vlSelf->top__DOT__core__DOT__id_ex_hazard) 
-                                             & (3U 
-                                                == 
-                                                (0x7fU 
-                                                 & vlSelf->top__DOT__core__DOT__EX_Reg__DOT__instr_r)));
     vlSelf->top__DOT__core__DOT__id_en = (1U & (~ (
                                                    ((IData)(vlSelf->top__DOT__core__DOT__load_use) 
                                                     | (IData)(vlSelf->top__DOT__core__DOT__alu_busy)) 
