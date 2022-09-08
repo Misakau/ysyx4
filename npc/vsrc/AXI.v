@@ -54,7 +54,7 @@ module ysyx_220053_axi_rw # (
     parameter RW_DATA_WIDTH     = 128,
     parameter RW_ADDR_WIDTH     = 64,
     parameter AXI_DATA_WIDTH    = 64,
-    parameter AXI_ADDR_WIDTH    = 64,
+    parameter AXI_ADDR_WIDTH    = 32,
     parameter AXI_ID_WIDTH      = 4,
     parameter AXI_STRB_WIDTH    = AXI_DATA_WIDTH/8,
     parameter AXI_USER_WIDTH    = 1
@@ -242,7 +242,7 @@ module ysyx_220053_axi_rw # (
     
     // 写地址通道  以下没有备注初始化信号的都可能是你需要产生和用到的
     assign axi_aw_valid_o   = w_state_addr;//
-    assign axi_aw_addr_o    = rw_addr_i;//
+    assign axi_aw_addr_o    = rw_addr_i[31:0];//
     assign axi_aw_prot_o    = `ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS | `ysyx_220053_AXI_PROT_SECURE_ACCESS | `ysyx_220053_AXI_PROT_DATA_ACCESS;  //初始化信号即可
     assign axi_aw_id_o      = axi_id;                                                                           //初始化信号即可
     assign axi_aw_user_o    = axi_user;                                                                         //初始化信号即可
@@ -296,7 +296,7 @@ module ysyx_220053_axi_rw # (
 
     // Read address channel signals
     assign axi_ar_valid_o   = r_state_addr;//
-    assign axi_ar_addr_o    = rw_addr_i;//
+    assign axi_ar_addr_o    = rw_addr_i[31:0];//
     assign axi_ar_prot_o    = `ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS | `ysyx_220053_AXI_PROT_SECURE_ACCESS | `ysyx_220053_AXI_PROT_DATA_ACCESS;  //初始化信号即可
     assign axi_ar_id_o      = axi_id;                                                                           //初始化信号即可                        
     assign axi_ar_user_o    = axi_user;                                                                         //初始化信号即可

@@ -153,7 +153,6 @@ VL_INLINE_OPT void Vtop___024root___settle__TOP__8(Vtop___024root* vlSelf) {
 }
 
 extern const VlUnpacked<CData/*1:0*/, 16> Vtop__ConstPool__TABLE_9a38e7b0_0;
-void Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit(IData/*31:0*/ instr);
 
 VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -592,7 +591,6 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                                                   (0x1fU 
                                                    & (vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r 
                                                       >> 0xfU))]));
-    Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit(vlSelf->top__DOT__core__DOT__if_instr_o);
     vlSelf->instr = vlSelf->top__DOT__core__DOT__if_instr_o;
     vlSelf->top__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adderb 
         = (((1U == (IData)(vlSelf->top__DOT__core__DOT__id_ALUSrcB_o))

@@ -76,7 +76,6 @@ extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_f4558aae_0;
 extern const VlUnpacked<CData/*3:0*/, 32> Vtop__ConstPool__TABLE_6fbd8736_0;
 extern const VlUnpacked<CData/*2:0*/, 64> Vtop__ConstPool__TABLE_091dc012_0;
 extern const VlUnpacked<CData/*1:0*/, 16> Vtop__ConstPool__TABLE_9a38e7b0_0;
-void Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit(IData/*31:0*/ instr);
 
 void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -5115,7 +5114,6 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                               (vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_data_read 
                                                                >> 0x20U))
                                                     : (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_data_read)));
-    Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit(vlSelf->top__DOT__core__DOT__if_instr_o);
     vlSelf->instr = vlSelf->top__DOT__core__DOT__if_instr_o;
 }
 
