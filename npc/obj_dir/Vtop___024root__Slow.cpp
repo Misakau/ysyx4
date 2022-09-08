@@ -1849,6 +1849,9 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                            >> 0x14U)))));
     vlSelf->pc = vlSelf->top__DOT__core__DOT__if_pc_o;
     vlSelf->mem_valid = vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r;
+    vlSelf->top__DOT__core__DOT__my_ifu__DOT__flush 
+        = ((IData)(vlSelf->rst) | ((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__Fence_i_r) 
+                                   & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r)));
     vlSelf->top__DOT__core__DOT__is_Fence_i = ((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__Fence_i_r) 
                                                & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r));
     vlSelf->top__DOT__core__DOT__is_men = (((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__MemWen_r) 
@@ -5560,6 +5563,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_req_valid = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_data_read = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__core__DOT__my_ifu__DOT__start = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__core__DOT__my_ifu__DOT__flush = VL_RAND_RESET_I(1);
     for (int __Vi0=0; __Vi0<256; ++__Vi0) {
         vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__V[__Vi0] = VL_RAND_RESET_I(1);
     }
