@@ -227,8 +227,8 @@ void Vtop___024root__traceChgSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
                                        | (IData)(vlSelf->top__DOT__core__DOT__id_m_hazard)) 
                                       | (IData)(vlSelf->top__DOT__core__DOT__id_wb_hazard))));
             tracep->chgBit(oldp+139,(vlSelf->top__DOT__core__DOT__has_fence_i));
-            tracep->chgBit(oldp+140,(((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__Fence_i_r) 
-                                      & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r))));
+            tracep->chgBit(oldp+140,(((IData)(vlSelf->top__DOT__core__DOT__WB_Reg__DOT__Fence_i_r) 
+                                      & (IData)(vlSelf->top__DOT__core__DOT__WB_Reg__DOT__valid_r))));
             tracep->chgBit(oldp+141,(vlSelf->top__DOT__core__DOT__if_busy));
             tracep->chgBit(oldp+142,((((IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r) 
                                        & (~ (IData)(vlSelf->top__DOT__core__DOT__has_fence_i))) 
