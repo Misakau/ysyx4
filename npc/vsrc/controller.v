@@ -133,7 +133,9 @@ parameter ysyx_220053_R = 5;
                         3'b101: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_220053_B; Branch = 3'b111; wen = 0; end
                         3'b110: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00011; ExtOp = ysyx_220053_B; Branch = 3'b110; wen = 0; end
                         3'b111: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00011; ExtOp = ysyx_220053_B; Branch = 3'b111; wen = 0; end
-                        default: $display("no");
+                        default: begin
+                            ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; ExtOp = ysyx_220053_B; Branch = 3'b000; wen = 0;
+                        end
                     endcase
                 end
 /*
@@ -156,7 +158,9 @@ parameter ysyx_220053_R = 5;
                         3'b100: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b101; ExtOp = ysyx_220053_I; wen = 1; end
                         3'b101: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b110; ExtOp = ysyx_220053_I; wen = 1; end
                         3'b110: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b100; ExtOp = ysyx_220053_I; wen = 1; end
-                        default: $display("no");
+                        default: begin
+                            ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; MemOp = 0; ExtOp = ysyx_220053_I; wen = 0;
+                        end
                     endcase
                 end
 /*
@@ -177,7 +181,9 @@ parameter ysyx_220053_R = 5;
                         3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b010; ExtOp = ysyx_220053_S; wen = 0; end
                         3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b000; ExtOp = ysyx_220053_S; wen = 0; end
                         3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b011; ExtOp = ysyx_220053_S; wen = 0; end
-                        default: $display("no");
+                        default: begin
+                            ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; MemOp = 0; ExtOp = ysyx_220053_S; wen = 0;
+                        end
                     endcase
                 end
 /*
@@ -261,7 +267,9 @@ parameter ysyx_220053_R = 5;
                                         begin
                                             Ebreak = 0; Csrwen = 0;  Ecall = 0; Mret = 1; CsrOp = 0; CsrToReg = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 0;
                                         end
-                                    default: $display("no");
+                                    default: begin
+                                        Ebreak = 0; Csrwen = 0;  Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; wen = 0;           
+                                    end
                                 endcase
                             end
                         3'b001://csrrw
@@ -288,7 +296,9 @@ parameter ysyx_220053_R = 5;
                             begin
                                 Csri = 1; Ebreak = 0; Csrwen = 1;  Ecall = 0; Mret = 0; CsrOp = 2; CsrToReg = 1; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; wen = 1;
                             end
-                        default: $display("no");
+                        default: begin
+                            Csri = 0; Ebreak = 0; Csrwen = 0;  Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; wen = 0;           
+                        end
                     endcase
              	end
             7'b0001111://fence.i
@@ -299,7 +309,7 @@ parameter ysyx_220053_R = 5;
 
                 end
             default: begin
-                $display("no, op=%x",op);
+                //$display("no, op=%x",op);
                 ExtOp = ysyx_220053_I; MulOp = 0; Fence_i = 0; Csri = 0;
                 MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0;
                 Ebreak = 0; Csrwen = 0;  Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; wen = 0;           
