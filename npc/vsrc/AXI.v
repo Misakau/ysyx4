@@ -1,6 +1,4 @@
 /* verilator lint_off DECLFILENAME */
-/* verilator lint_off PINMISSING */
-/* verilator lint_off UNUSED */
 
 // Burst types
 `define AXI_BURST_TYPE_FIXED                                2'b00               //突发类型  FIFO
@@ -136,10 +134,11 @@ module ysyx_220053_axi_rw # (
     wire w_state_resp = (w_status == W_RESP);
     
     // 写通道状态切换
-
+//握手信号
     wire aw_fire = axi_aw_ready_i & axi_aw_valid_o;
     wire w_fire  = axi_w_ready_i  & axi_w_valid_o;
     wire b_fire  = axi_b_ready_o  & axi_b_valid_i;
+
     wire w_last = w_fire & axi_w_last_o;
 
     always @(posedge clock) begin
@@ -167,9 +166,10 @@ module ysyx_220053_axi_rw # (
     end
 
     // 读通道状态切换
-
+//握手信号
     wire ar_fire = axi_ar_ready_i & axi_ar_valid_o;
     wire r_fire  = axi_r_ready_o  & axi_r_valid_i;
+
     wire r_last = r_fire & axi_r_last_i;
 
     always @(posedge clock) begin
