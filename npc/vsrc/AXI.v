@@ -123,16 +123,6 @@ module ysyx_220053_axi_rw # (
     input  [AXI_USER_WIDTH-1:0]         axi_r_user_i
 );
 
-    wire aw_fire      = axi_aw_ready_i & axi_aw_valid_o;
-    wire w_fire       = axi_w_ready_i  & axi_w_valid_o;
-    wire b_fire       = axi_b_ready_o  & axi_b_valid_i;
-    wire ar_fire      = axi_ar_ready_i & axi_ar_valid_o;
-    wire r_fire       = axi_r_ready_o  & axi_r_valid_i;
-    
-    wire w_last     = w_fire & axi_w_last_o;
-    wire r_last     = r_fire & axi_r_last_i;
-    wire trans_done = (rw_req_i == 1'b1) ? b_fire : r_last;
-
 // ------------------State Machine------------------TODO
     localparam [2:0] W_IDLE = 3'b000, W_ADDR = 3'b001, W_WRITE = 3'b010, W_RESP = 3'b011, W_DONE = 3'b100;
     localparam [2:0] R_IDLE = 3'b000, R_ADDR = 3'b001, R_READ = 3'b010, R_DONE = 3'b100;
@@ -146,6 +136,12 @@ module ysyx_220053_axi_rw # (
     wire w_state_resp = (w_status == W_RESP);
     
     // 写通道状态切换
+
+    wire aw_fire = axi_aw_ready_i & axi_aw_valid_o;
+    wire w_fire  = axi_w_ready_i  & axi_w_valid_o;
+    wire b_fire  = axi_b_ready_o  & axi_b_valid_i;
+    wire w_last = w_fire & axi_w_last_o;
+
     always @(posedge clock) begin
         if(reset) begin
             w_status <= W_IDLE;
@@ -171,6 +167,11 @@ module ysyx_220053_axi_rw # (
     end
 
     // 读通道状态切换
+
+    wire ar_fire = axi_ar_ready_i & axi_ar_valid_o;
+    wire r_fire  = axi_r_ready_o  & axi_r_valid_i;
+    wire r_last = r_fire & axi_r_last_i;
+
     always @(posedge clock) begin
         if(reset) begin
             r_status <= R_IDLE;
@@ -193,11 +194,12 @@ module ysyx_220053_axi_rw # (
     end
 
     reg rw_ready_r;
+    //wire axi_done = (rw_req_i == 1'b1) ? b_fire : r_last;
     always @(posedge clock) begin
         if(reset) begin
             rw_ready_r <= 1'b0;
         end
-        else if(trans_done) begin
+        else if(((rw_req_i == 1'b1) && b_fire) || ((rw_req_i == 1'b0) && r_last)) begin
             rw_ready_r <= 1'b1;
         end
         else rw_ready_r <= 1'b0;
@@ -243,7 +245,7 @@ module ysyx_220053_axi_rw # (
     assign axi_aw_qos_o     = 4'h0;                                                                             //初始化信号即可
     assign axi_aw_region_o  = 4'h0;      
     // 写数据通道
-    reg axi_w_last_r;
+    
     reg [AXI_DATA_WIDTH - 1: 0] rw_w_data_r;
     reg [AXI_DATA_WIDTH/8-1:0] rw_size_r;
     always @(posedge clock) begin
@@ -256,6 +258,8 @@ module ysyx_220053_axi_rw # (
             rw_size_r <= rw_size_i;
         end
     end
+
+    reg axi_w_last_r;
     always @(posedge clock) begin
         if(reset) begin
             axi_w_last_r <= 0;
