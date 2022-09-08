@@ -77,12 +77,12 @@ VL_MODULE(Vtop___024root) {
     VL_IN8(axi_r_user_i,0,0);
     VL_OUT(instr,31,0);
     VL_OUT(wb_instr,31,0);
+    VL_OUT(axi_aw_addr_o,31,0);
+    VL_OUT(axi_ar_addr_o,31,0);
     VL_OUT64(pc,63,0);
     VL_OUT64(wb_pc,63,0);
     VL_OUT64(next_pc,63,0);
-    VL_OUT64(axi_aw_addr_o,63,0);
     VL_OUT64(axi_w_data_o,63,0);
-    VL_OUT64(axi_ar_addr_o,63,0);
     VL_IN64(axi_r_data_i,63,0);
 
     // LOCAL SIGNALS

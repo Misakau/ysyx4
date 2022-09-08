@@ -43,7 +43,7 @@ class Vtop VL_NOT_FINAL {
     VL_OUT8(&d_rw_ready,0,0);
     VL_IN8(&axi_aw_ready_i,0,0);
     VL_OUT8(&axi_aw_valid_o,0,0);
-    VL_OUT64(&axi_aw_addr_o,63,0);
+    VL_OUT(&axi_aw_addr_o,31,0);
     VL_OUT8(&axi_aw_prot_o,2,0);
     VL_OUT8(&axi_aw_id_o,3,0);
     VL_OUT8(&axi_aw_user_o,0,0);
@@ -67,7 +67,7 @@ class Vtop VL_NOT_FINAL {
     VL_IN8(&axi_b_user_i,0,0);
     VL_IN8(&axi_ar_ready_i,0,0);
     VL_OUT8(&axi_ar_valid_o,0,0);
-    VL_OUT64(&axi_ar_addr_o,63,0);
+    VL_OUT(&axi_ar_addr_o,31,0);
     VL_OUT8(&axi_ar_prot_o,2,0);
     VL_OUT8(&axi_ar_id_o,3,0);
     VL_OUT8(&axi_ar_user_o,0,0);

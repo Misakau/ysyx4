@@ -20,9 +20,9 @@
 #define MEMSIZE 0x8000000
 #define AD_BASE 0x80000000ull
 
-axi4_mem <64,64,4> mem(4096l*1024*1024);
-axi4_ptr <64,64,4> mem_ptr;
-void connect_wire(Vtop *top, axi4_ptr <64,64,4> *ptr){
+axi4_mem <32,64,4> mem(4096l*1024*1024);
+axi4_ptr <32,64,4> mem_ptr;
+void connect_wire(Vtop *top, axi4_ptr <32,64,4> *ptr){
     ptr->awid = &(top->axi_aw_id_o);
     ptr->awaddr = &(top->axi_aw_addr_o);
     ptr->awlen = &(top->axi_aw_len_o);
@@ -416,9 +416,9 @@ int main(int argc, char**argv, char**env) {
 
     connect_wire(top, &mem_ptr);
     assert(mem_ptr.check());
-    axi4_ref <64,64,4> mem_ref(mem_ptr);
-    axi4 <64,64,4> mem_sig;
-    axi4_ref <64,64,4> mem_sig_ref(mem_sig);
+    axi4_ref <32,64,4> mem_ref(mem_ptr);
+    axi4 <32,64,4> mem_sig;
+    axi4_ref <32,64,4> mem_sig_ref(mem_sig);
 
     printf(ASNI_FG_GREEN "Check Complete\n" ASNI_NONE);
     
@@ -605,9 +605,9 @@ int main(int argc, char**argv, char**env) {
 
 static void npc_exec(uint64_t n){
 
-  axi4_ref <64,64,4> sdb_mem_ref(mem_ptr);
-  axi4 <64,64,4> sdb_mem_sig;
-  axi4_ref <64,64,4> sdb_mem_sig_ref(sdb_mem_sig);
+  axi4_ref <32,64,4> sdb_mem_ref(mem_ptr);
+  axi4 <32,64,4> sdb_mem_sig;
+  axi4_ref <32,64,4> sdb_mem_sig_ref(sdb_mem_sig);
   if(npc_done || sdb_contextp->gotFinish()){
     printf("The program is done! Please quit the npc_sdb.\n");
     return;

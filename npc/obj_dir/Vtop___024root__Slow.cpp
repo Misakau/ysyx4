@@ -4009,8 +4009,8 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                     & (((2U == (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status)) 
                         & (IData)(vlSelf->top__DOT__core__DOT__d_rw_ready_i)) 
                        | (6U == (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))))));
-    vlSelf->axi_ar_addr_o = (QData)((IData)(vlSelf->top__DOT__rw_addr_o));
-    vlSelf->axi_aw_addr_o = (QData)((IData)(vlSelf->top__DOT__rw_addr_o));
+    vlSelf->axi_aw_addr_o = (IData)(vlSelf->top__DOT__rw_addr_o);
+    vlSelf->axi_ar_addr_o = (IData)(vlSelf->top__DOT__rw_addr_o);
     __Vtableidx1 = (((IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_req_valid) 
                      << 5U) | (((((1U == (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__cur_status)) 
                                   & vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__V
@@ -5445,7 +5445,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->d_rw_ready = VL_RAND_RESET_I(1);
     vlSelf->axi_aw_ready_i = VL_RAND_RESET_I(1);
     vlSelf->axi_aw_valid_o = VL_RAND_RESET_I(1);
-    vlSelf->axi_aw_addr_o = VL_RAND_RESET_Q(64);
+    vlSelf->axi_aw_addr_o = VL_RAND_RESET_I(32);
     vlSelf->axi_aw_prot_o = VL_RAND_RESET_I(3);
     vlSelf->axi_aw_id_o = VL_RAND_RESET_I(4);
     vlSelf->axi_aw_user_o = VL_RAND_RESET_I(1);
@@ -5469,7 +5469,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->axi_b_user_i = VL_RAND_RESET_I(1);
     vlSelf->axi_ar_ready_i = VL_RAND_RESET_I(1);
     vlSelf->axi_ar_valid_o = VL_RAND_RESET_I(1);
-    vlSelf->axi_ar_addr_o = VL_RAND_RESET_Q(64);
+    vlSelf->axi_ar_addr_o = VL_RAND_RESET_I(32);
     vlSelf->axi_ar_prot_o = VL_RAND_RESET_I(3);
     vlSelf->axi_ar_id_o = VL_RAND_RESET_I(4);
     vlSelf->axi_ar_user_o = VL_RAND_RESET_I(1);
