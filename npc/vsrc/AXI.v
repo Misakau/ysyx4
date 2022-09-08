@@ -66,7 +66,7 @@ module ysyx_220053_axi_rw # (
     output reg [RW_DATA_WIDTH-1:0]      data_read_o,        //IF&MEM输入信号
     input  [RW_DATA_WIDTH-1:0]          rw_w_data_i,        //IF&MEM输入信号
     input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号
-    input  [7:0]                        rw_size_i,          //IF&MEM输入信号
+    input  [AXI_STRB_WIDTH - 1:0]       rw_size_i,          //IF&MEM输入信号
     input                               rw_dev_i,
 
 
@@ -120,6 +120,13 @@ module ysyx_220053_axi_rw # (
     input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
     input  [AXI_USER_WIDTH-1:0]         axi_r_user_i
 );
+    wire bresp = axi_b_resp_i;
+    wire bid   = axi_b_id_i;
+    wire buser = axi_b_user_i;
+    wire rresp = axi_r_resp_i;
+    wire rid   = axi_r_id_i;
+    wire ruser = axi_r_user_i;
+
 
 // ------------------State Machine------------------TODO
     localparam [2:0] W_IDLE = 3'b000, W_ADDR = 3'b001, W_WRITE = 3'b010, W_RESP = 3'b011, W_DONE = 3'b100;
