@@ -187,10 +187,6 @@ module ysyx_220053_axi_rw # (
             rw_ready_r <= 1'b1;
         end
         else rw_ready_r <= 1'b0;
-        /*
-        else if (trans_done | rw_ready_r) begin
-        rw_ready_r <= trans_done;
-        end*/
     end
     assign rw_ready_o     = rw_ready_r;
 // ------------------Write Transaction------------------
@@ -202,18 +198,18 @@ module ysyx_220053_axi_rw # (
     wire [2:0] axi_size     = AXI_SIZE[2:0];
     always @(posedge clock) begin
         if (reset | ((rw_req_i == 1'b0) & r_state_idle)) begin
-        rcnt <= 0;
+            rcnt <= 0;
         end
         else if ((rcnt != axi_len) && r_fire) begin
-        rcnt <= rcnt + 1;
+            rcnt <= rcnt + 1;
         end
     end
     always @(posedge clock) begin
         if (reset | ((rw_req_i == 1'b1) & w_state_idle)) begin
-        wcnt <= 0;
+            wcnt <= 0;
         end
         else if ((wcnt != axi_len) && (aw_fire || w_fire)) begin
-        wcnt <= wcnt + 1;
+            wcnt <= wcnt + 1;
         end
     end
     // 写地址通道  以下没有备注初始化信号的都可能是你需要产生和用到的
@@ -280,6 +276,25 @@ module ysyx_220053_axi_rw # (
     assign axi_ar_region_o  = 4'h0;                                                                             //初始化信号即可
     // Read data channel signals
     assign axi_r_ready_o    = r_state_read;//
+    //low 64
+    always @(posedge clock) begin
+        if (reset) begin
+            data_read_o[AXI_DATA_WIDTH - 1:0] <= 0;
+        end
+        else if(r_fire && rcnt == 0) begin//r_trans0
+            data_read_o[AXI_DATA_WIDTH - 1:0] <= axi_r_data_i;
+        end
+    end
+    //high 64
+    always @(posedge clock) begin
+        if (reset) begin
+            data_read_o[2*AXI_DATA_WIDTH - 1:AXI_DATA_WIDTH] <= 0;
+        end
+        else if(r_fire && rcnt == 1) begin//r_trans1
+            data_read_o[2*AXI_DATA_WIDTH - 1:AXI_DATA_WIDTH] <= axi_r_data_i;
+        end
+    end
+    /*
     genvar i;
     generate
         for(i = 0; i < TRANSLEN; i = i + 1) begin
@@ -287,11 +302,11 @@ module ysyx_220053_axi_rw # (
                 if (reset) begin
                     data_read_o[i*AXI_DATA_WIDTH +: AXI_DATA_WIDTH] <= 0;
                 end
-                else if(r_fire && rcnt == i) begin//r_trans
+                else if(r_fire && rcnt == i) begin//r_trans1
                     data_read_o[i*AXI_DATA_WIDTH +: AXI_DATA_WIDTH] <= axi_r_data_i;
                 end
             end
         end
     endgenerate
-
+*/
 endmodule

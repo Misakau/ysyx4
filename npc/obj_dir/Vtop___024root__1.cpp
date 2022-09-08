@@ -238,9 +238,6 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                                                         << 0x20U) 
                                                        | (QData)((IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__dataw))))))
                                                     : vlSelf->top__DOT__core__DOT__M_Reg__DOT__raddr_r));
-    vlSelf->top__DOT__axi__DOT__trans_done = ((IData)(vlSelf->top__DOT__rw_req_o)
-                                               ? (IData)(vlSelf->top__DOT__axi__DOT__b_fire)
-                                               : (IData)(vlSelf->top__DOT__axi__DOT__r_last));
     vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__cpu_req_valid 
         = ((((~ (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__cache_doing)) 
              & (~ (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__d_cpu_ready))) 
