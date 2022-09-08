@@ -177,7 +177,23 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                                                  & (~ (IData)(vlSelf->rst))) 
                                                 & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r));
     vlSelf->top__DOT__core__DOT__is_Csrwen = (((~ (IData)(vlSelf->rst)) 
-                                               & (IData)(vlSelf->top__DOT__core__DOT__id_Csrwen)) 
+                                               & (IData)(
+                                                         ((0x73U 
+                                                           == 
+                                                           (0x7fU 
+                                                            & vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r)) 
+                                                          & ((0x4000U 
+                                                              & vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r)
+                                                              ? (IData)(
+                                                                        (0U 
+                                                                         != 
+                                                                         (0x3000U 
+                                                                          & vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r)))
+                                                              : (IData)(
+                                                                        (0U 
+                                                                         != 
+                                                                         (0x3000U 
+                                                                          & vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r))))))) 
                                               & (IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r));
     vlSelf->top__DOT__core__DOT__cpu_halt = ((IData)(vlSelf->top__DOT__core__DOT__id_Ebreak_o) 
                                              | (IData)(vlSelf->rst));

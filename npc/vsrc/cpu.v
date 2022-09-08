@@ -2,14 +2,6 @@
 /* verilator lint_off PINMISSING */
 /* verilator lint_off DECLFILENAME */
 
-import "DPI-C" function void pmem_read(
-  input longint raddr, output longint rdata, input byte bytes);
-
-import "DPI-C" function void pmem_write(
-  input longint waddr, input longint wdata, input byte wmask);
-
-import "DPI-C" function void get_instr(input int instr);
-
 module ysyx_220053_core(
   input clk,
   input rst,
