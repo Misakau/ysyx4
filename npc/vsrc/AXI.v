@@ -122,27 +122,23 @@ module ysyx_220053_axi_rw # (
     input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
     input  [AXI_USER_WIDTH-1:0]         axi_r_user_i
 );
-    wire w_trans    = rw_req_i == 1'b1;//write
-    wire r_trans    = rw_req_i == 1'b0;//read
-    wire w_valid    = rw_valid_i & w_trans;
-    wire r_valid    = rw_valid_i & r_trans;
-// handshake
+
     wire aw_fire      = axi_aw_ready_i & axi_aw_valid_o;
     wire w_fire       = axi_w_ready_i  & axi_w_valid_o;
     wire b_fire       = axi_b_ready_o  & axi_b_valid_i;
     wire ar_fire      = axi_ar_ready_i & axi_ar_valid_o;
     wire r_fire       = axi_r_ready_o  & axi_r_valid_i;
     
-    wire w_done     = w_fire & axi_w_last_o;
-    wire r_done     = r_fire & axi_r_last_i;
-    wire trans_done = w_trans ? b_fire : r_done;
+    wire w_last     = w_fire & axi_w_last_o;
+    wire r_last     = r_fire & axi_r_last_i;
+    wire trans_done = (rw_req_i == 1'b1) ? b_fire : r_last;
 
 // ------------------State Machine------------------TODO
     localparam [2:0] W_IDLE = 3'b000, W_ADDR = 3'b001, W_WRITE = 3'b010, W_RESP = 3'b011, W_DONE = 3'b100;
     localparam [2:0] R_IDLE = 3'b000, R_ADDR = 3'b001, R_READ = 3'b010, R_DONE = 3'b100;
     reg [2:0] w_status, r_status;
-    wire w_state_idle = w_status == W_IDLE, w_state_addr = w_status == W_ADDR, w_state_write = w_status == W_WRITE, w_state_resp = w_status == W_RESP;
-    wire r_state_idle = r_status == R_IDLE, r_state_addr = r_status == R_ADDR, r_state_read  = r_status == R_READ;
+    wire w_state_idle = (w_status == W_IDLE), w_state_addr = (w_status == W_ADDR), w_state_write = (w_status == W_WRITE), w_state_resp = (w_status == W_RESP);
+    wire r_state_idle = (r_status == R_IDLE), r_state_addr = (r_status == R_ADDR), r_state_read  = (r_status == R_READ);
     
     // 写通道状态切换
     always @(posedge clock) begin
@@ -150,12 +146,12 @@ module ysyx_220053_axi_rw # (
             w_status <= W_IDLE;
         end
         else begin
-            if (w_valid) begin
+            if ((rw_valid_i == 1'b1) && (rw_req_i == 1'b1)) begin
                 case (w_status)
                     W_IDLE:               w_status <= W_ADDR;
                     W_ADDR:  if (aw_fire) w_status <= W_WRITE;
-                    W_WRITE: if (w_done)  w_status <= W_RESP;
-                    W_RESP:  if (b_fire)  w_status <= W_DONE;//W_IDLE;
+                    W_WRITE: if (w_last)  w_status <= W_RESP;
+                    W_RESP:  if (b_fire)  w_status <= W_DONE;//wait valid down
                     W_DONE:               w_status <= W_IDLE;
                     default:              w_status <= W_IDLE;
                 endcase
@@ -169,11 +165,11 @@ module ysyx_220053_axi_rw # (
             r_status <= R_IDLE;
         end
         else begin
-            if (r_valid) begin
+            if ((rw_valid_i == 1'b1) && (rw_req_i == 1'b0)) begin
                 case (r_status)
                     R_IDLE:               r_status <= R_ADDR;
                     R_ADDR: if (ar_fire)  r_status <= R_READ;
-                    R_READ: if (r_done)   r_status <= R_DONE;//R_IDLE;
+                    R_READ: if (r_last)   r_status <= R_DONE;//wait valid down
                     R_DONE:               r_status <= R_IDLE;
                     default:              r_status <= R_IDLE;
                 endcase
@@ -200,7 +196,7 @@ module ysyx_220053_axi_rw # (
     wire [7:0] axi_len      = (rw_dev_i == 1'b0) ? (TRANSLEN - 1) : 0;
     wire [2:0] axi_size     = AXI_SIZE[2:0];
     always @(posedge clock) begin
-        if (reset | (r_trans & r_state_idle)) begin
+        if (reset | ((rw_req_i == 1'b0) & r_state_idle)) begin
         cnt <= 0;
         end
         else if ((cnt != axi_len) && r_fire) begin
@@ -208,7 +204,7 @@ module ysyx_220053_axi_rw # (
         end
     end
     always @(posedge clock) begin
-        if (reset | (w_trans & w_state_idle)) begin
+        if (reset | ((rw_req_i == 1'b1) & w_state_idle)) begin
         wcnt <= 0;
         end
         else if ((wcnt != axi_len) && (aw_fire || w_fire)) begin
