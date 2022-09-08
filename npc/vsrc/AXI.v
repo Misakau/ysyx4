@@ -137,23 +137,34 @@ module ysyx_220053_axi_rw # (
     localparam [2:0] W_IDLE = 3'b000, W_ADDR = 3'b001, W_WRITE = 3'b010, W_RESP = 3'b011, W_DONE = 3'b100;
     localparam [2:0] R_IDLE = 3'b000, R_ADDR = 3'b001, R_READ = 3'b010, R_DONE = 3'b100;
     reg [2:0] w_status, r_status;
-    wire w_state_idle = (w_status == W_IDLE), w_state_addr = (w_status == W_ADDR), w_state_write = (w_status == W_WRITE), w_state_resp = (w_status == W_RESP);
-    wire r_state_idle = (r_status == R_IDLE), r_state_addr = (r_status == R_ADDR), r_state_read  = (r_status == R_READ);
+    wire r_state_idle = (r_status == R_IDLE);
+    wire r_state_addr = (r_status == R_ADDR);
+    wire r_state_read = (r_status == R_READ);
+    wire w_state_idle = (w_status == W_IDLE);
+    wire w_state_addr = (w_status == W_ADDR);
+    wire w_state_write = (w_status == W_WRITE);
+    wire w_state_resp = (w_status == W_RESP);
     
     // 写通道状态切换
     always @(posedge clock) begin
-        if (reset) begin
+        if(reset) begin
             w_status <= W_IDLE;
         end
         else begin
-            if ((rw_valid_i == 1'b1) && (rw_req_i == 1'b1)) begin
-                case (w_status)
-                    W_IDLE:               w_status <= W_ADDR;
-                    W_ADDR:  if (aw_fire) w_status <= W_WRITE;
-                    W_WRITE: if (w_last)  w_status <= W_RESP;
-                    W_RESP:  if (b_fire)  w_status <= W_DONE;//wait valid down
-                    W_DONE:               w_status <= W_IDLE;
-                    default:              w_status <= W_IDLE;
+            if((rw_valid_i == 1'b1) && (rw_req_i == 1'b1)) begin//now write
+                case(w_status)
+                    W_IDLE: w_status <= W_ADDR;
+                    W_ADDR: begin
+                        if(aw_fire) w_status <= W_WRITE;
+                    end
+                    W_WRITE: begin
+                        if(w_last) w_status <= W_RESP;
+                    end
+                    W_RESP: begin
+                        if(b_fire) w_status <= W_DONE;//wait valid down
+                    end
+                    W_DONE: w_status <= W_IDLE;
+                    default: w_status <= W_IDLE;
                 endcase
             end
         end
@@ -161,34 +172,56 @@ module ysyx_220053_axi_rw # (
 
     // 读通道状态切换
     always @(posedge clock) begin
-        if (reset) begin
+        if(reset) begin
             r_status <= R_IDLE;
         end
         else begin
-            if ((rw_valid_i == 1'b1) && (rw_req_i == 1'b0)) begin
-                case (r_status)
-                    R_IDLE:               r_status <= R_ADDR;
-                    R_ADDR: if (ar_fire)  r_status <= R_READ;
-                    R_READ: if (r_last)   r_status <= R_DONE;//wait valid down
-                    R_DONE:               r_status <= R_IDLE;
-                    default:              r_status <= R_IDLE;
+            if((rw_valid_i == 1'b1) && (rw_req_i == 1'b0)) begin//now read
+                case(r_status)
+                    R_IDLE: r_status <= R_ADDR;
+                    R_ADDR: begin
+                        if(ar_fire) r_status <= R_READ;
+                    end
+                    R_READ: begin
+                        if(r_last) r_status <= R_DONE;//wait valid down
+                    end
+                    R_DONE: r_status <= R_IDLE;
+                    default: r_status <= R_IDLE;
                 endcase
             end
         end
     end
-    reg [7:0] rcnt,wcnt;
-    
+
     reg rw_ready_r;
     always @(posedge clock) begin
-        if (reset) begin
+        if(reset) begin
             rw_ready_r <= 1'b0;
         end
-        else if (trans_done) begin
+        else if(trans_done) begin
             rw_ready_r <= 1'b1;
         end
         else rw_ready_r <= 1'b0;
     end
-    assign rw_ready_o     = rw_ready_r;
+    assign rw_ready_o = rw_ready_r;
+
+    /////////burst number////////
+    reg [7:0] rcnt,wcnt;
+    always @(posedge clock) begin
+        if(reset || ((rw_req_i == 1'b0) && (r_state_idle == 1'b1))) begin
+            rcnt <= 0;
+        end
+        else if((rcnt != axi_len) && r_fire) begin
+            rcnt <= rcnt + 1;
+        end
+    end
+    always @(posedge clock) begin
+        if(reset || ((rw_req_i == 1'b1) && (w_state_idle == 1'b1))) begin
+            wcnt <= 0;
+        end
+        else if((wcnt != axi_len) && (aw_fire || w_fire)) begin
+            wcnt <= wcnt + 1;
+        end
+    end
 // ------------------Write Transaction------------------
     localparam AXI_SIZE      = $clog2(AXI_DATA_WIDTH / 8);
     localparam TRANSLEN      = RW_DATA_WIDTH / AXI_DATA_WIDTH;
@@ -196,22 +229,7 @@ module ysyx_220053_axi_rw # (
     wire [AXI_USER_WIDTH-1:0] axi_user          = {AXI_USER_WIDTH{1'b0}};
     wire [7:0] axi_len      = (rw_dev_i == 1'b0) ? (TRANSLEN - 1) : 0;
     wire [2:0] axi_size     = AXI_SIZE[2:0];
-    always @(posedge clock) begin
-        if (reset | ((rw_req_i == 1'b0) & r_state_idle)) begin
-            rcnt <= 0;
-        end
-        else if ((rcnt != axi_len) && r_fire) begin
-            rcnt <= rcnt + 1;
-        end
-    end
-    always @(posedge clock) begin
-        if (reset | ((rw_req_i == 1'b1) & w_state_idle)) begin
-            wcnt <= 0;
-        end
-        else if ((wcnt != axi_len) && (aw_fire || w_fire)) begin
-            wcnt <= wcnt + 1;
-        end
-    end
+    
     // 写地址通道  以下没有备注初始化信号的都可能是你需要产生和用到的
     assign axi_aw_valid_o   = w_state_addr;//
     assign axi_aw_addr_o    = rw_addr_i;//
@@ -243,7 +261,7 @@ module ysyx_220053_axi_rw # (
         if(reset) begin
             axi_w_last_r <= 0;
         end
-        else if(w_fire && wcnt == axi_len) begin
+        else if(w_fire && (wcnt == axi_len)) begin
             axi_w_last_r <= 1'b1;
         end
         else if(b_fire) begin
@@ -278,35 +296,21 @@ module ysyx_220053_axi_rw # (
     assign axi_r_ready_o    = r_state_read;//
     //low 64
     always @(posedge clock) begin
-        if (reset) begin
+        if(reset) begin
             data_read_o[AXI_DATA_WIDTH - 1:0] <= 0;
         end
-        else if(r_fire && rcnt == 0) begin//r_trans0
+        else if(r_fire && (rcnt == 0)) begin//r_trans0
             data_read_o[AXI_DATA_WIDTH - 1:0] <= axi_r_data_i;
         end
     end
     //high 64
     always @(posedge clock) begin
-        if (reset) begin
+        if(reset) begin
             data_read_o[2*AXI_DATA_WIDTH - 1:AXI_DATA_WIDTH] <= 0;
         end
-        else if(r_fire && rcnt == 1) begin//r_trans1
+        else if(r_fire && (rcnt == 1)) begin//r_trans1
             data_read_o[2*AXI_DATA_WIDTH - 1:AXI_DATA_WIDTH] <= axi_r_data_i;
         end
     end
-    /*
-    genvar i;
-    generate
-        for(i = 0; i < TRANSLEN; i = i + 1) begin
-            always @(posedge clock) begin
-                if (reset) begin
-                    data_read_o[i*AXI_DATA_WIDTH +: AXI_DATA_WIDTH] <= 0;
-                end
-                else if(r_fire && rcnt == i) begin//r_trans1
-                    data_read_o[i*AXI_DATA_WIDTH +: AXI_DATA_WIDTH] <= axi_r_data_i;
-                end
-            end
-        end
-    endgenerate
-*/
+
 endmodule
