@@ -184,7 +184,7 @@ module ysyx_220053_core(
       .dnpc(id_dnpc),
       .pc(if_pc_o),
       .instr_o(if_instr_o),
-      .dnpc_valid(id_valid_o),
+      .dnpc_valid(dnpc_valid),
       .block(cpu_halt),
       .if_busy(if_busy),
       .i_rw_addr_o(i_rw_addr_o),
