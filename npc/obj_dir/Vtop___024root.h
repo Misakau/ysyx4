@@ -235,7 +235,7 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__axi__DOT__w_fire;
         CData/*0:0*/ top__DOT__axi__DOT__b_fire;
         CData/*0:0*/ top__DOT__axi__DOT__r_fire;
-        CData/*0:0*/ top__DOT__axi__DOT__r_done;
+        CData/*0:0*/ top__DOT__axi__DOT__r_last;
         CData/*0:0*/ top__DOT__axi__DOT__trans_done;
         CData/*2:0*/ top__DOT__axi__DOT__w_status;
         CData/*2:0*/ top__DOT__axi__DOT__r_status;

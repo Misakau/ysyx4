@@ -20,10 +20,10 @@ VL_INLINE_OPT void Vtop___024root____Vdpiimwrap_top__DOT__core__DOT__regfile__DO
     set_gpr_ptr(&a__Vopenarray);
 }
 
-extern const VlUnpacked<CData/*0:0*/, 256> Vtop__ConstPool__TABLE_dd56f82a_0;
-extern const VlUnpacked<CData/*2:0*/, 256> Vtop__ConstPool__TABLE_735dd189_0;
-extern const VlUnpacked<CData/*0:0*/, 128> Vtop__ConstPool__TABLE_24bcd130_0;
-extern const VlUnpacked<CData/*2:0*/, 128> Vtop__ConstPool__TABLE_4054019a_0;
+extern const VlUnpacked<CData/*0:0*/, 512> Vtop__ConstPool__TABLE_685b7a29_0;
+extern const VlUnpacked<CData/*2:0*/, 512> Vtop__ConstPool__TABLE_6e5373d7_0;
+extern const VlUnpacked<CData/*0:0*/, 256> Vtop__ConstPool__TABLE_910c6f09_0;
+extern const VlUnpacked<CData/*2:0*/, 256> Vtop__ConstPool__TABLE_0f94737b_0;
 void Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(CData/*0:0*/ done);
 extern const VlUnpacked<CData/*7:0*/, 8> Vtop__ConstPool__TABLE_bef31cc5_0;
 extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_8db4e481_0;
@@ -40,8 +40,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     // Variables
     CData/*4:0*/ __Vtableidx4;
     CData/*2:0*/ __Vtableidx5;
-    CData/*7:0*/ __Vtableidx7;
-    CData/*6:0*/ __Vtableidx8;
+    CData/*7:0*/ __Vtableidx8;
     CData/*0:0*/ __Vdlyvset__top__DOT__core__DOT__my_ifu__DOT__icache__DOT__V__v0;
     CData/*7:0*/ __Vdlyvdim0__top__DOT__core__DOT__my_ifu__DOT__icache__DOT__V__v256;
     CData/*0:0*/ __Vdlyvset__top__DOT__core__DOT__my_ifu__DOT__icache__DOT__V__v256;
@@ -77,6 +76,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     CData/*0:0*/ __Vdlyvset__top__DOT__core__DOT__regfile__DOT__rf__v0;
     CData/*0:0*/ __Vdly__top__DOT__axi__DOT__rw_ready_r;
     CData/*7:0*/ __Vdly__top__DOT__axi__DOT__wcnt;
+    SData/*8:0*/ __Vtableidx7;
     VlWide<4>/*127:0*/ __Vdlyvval__top__DOT__core__DOT__my_ifu__DOT__icache__DOT__ram0__DOT__ram__v0;
     VlWide<4>/*127:0*/ __Vdlyvval__top__DOT__core__DOT__my_ifu__DOT__icache__DOT__ram1__DOT__ram__v0;
     VlWide<4>/*127:0*/ __Vdlyvval__top__DOT__core__DOT__my_ifu__DOT__icache__DOT__ram2__DOT__ram__v0;
@@ -264,31 +264,33 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
             = vlSelf->top__DOT__core__DOT__csrfile__DOT__csrin;
     }
     __Vtableidx7 = (((IData)(vlSelf->top__DOT__axi__DOT__aw_fire) 
-                     << 7U) | ((((IData)(vlSelf->top__DOT__axi__DOT__w_fire) 
+                     << 8U) | ((((IData)(vlSelf->top__DOT__axi__DOT__w_fire) 
                                  & (IData)(vlSelf->axi_w_last_o)) 
-                                << 6U) | (((IData)(vlSelf->top__DOT__axi__DOT__b_fire) 
-                                           << 5U) | 
+                                << 7U) | (((IData)(vlSelf->top__DOT__axi__DOT__b_fire) 
+                                           << 6U) | 
                                           (((IData)(vlSelf->top__DOT__axi__DOT__w_status) 
-                                            << 2U) 
-                                           | ((((IData)(vlSelf->top__DOT__rw_valid_o) 
-                                                & (IData)(vlSelf->top__DOT__rw_req_o)) 
-                                               << 1U) 
-                                              | (IData)(vlSelf->rst))))));
-    if (Vtop__ConstPool__TABLE_dd56f82a_0[__Vtableidx7]) {
-        vlSelf->top__DOT__axi__DOT__w_status = Vtop__ConstPool__TABLE_735dd189_0
+                                            << 3U) 
+                                           | (((IData)(vlSelf->top__DOT__rw_req_o) 
+                                               << 2U) 
+                                              | (((IData)(vlSelf->top__DOT__rw_valid_o) 
+                                                  << 1U) 
+                                                 | (IData)(vlSelf->rst)))))));
+    if (Vtop__ConstPool__TABLE_685b7a29_0[__Vtableidx7]) {
+        vlSelf->top__DOT__axi__DOT__w_status = Vtop__ConstPool__TABLE_6e5373d7_0
             [__Vtableidx7];
     }
     __Vtableidx8 = ((((IData)(vlSelf->axi_ar_ready_i) 
                       & (IData)(vlSelf->axi_ar_valid_o)) 
-                     << 6U) | (((IData)(vlSelf->top__DOT__axi__DOT__r_done) 
-                                << 5U) | (((IData)(vlSelf->top__DOT__axi__DOT__r_status) 
-                                           << 2U) | 
-                                          ((((IData)(vlSelf->top__DOT__rw_valid_o) 
-                                             & (~ (IData)(vlSelf->top__DOT__rw_req_o))) 
-                                            << 1U) 
-                                           | (IData)(vlSelf->rst)))));
-    if (Vtop__ConstPool__TABLE_24bcd130_0[__Vtableidx8]) {
-        vlSelf->top__DOT__axi__DOT__r_status = Vtop__ConstPool__TABLE_4054019a_0
+                     << 7U) | (((IData)(vlSelf->top__DOT__axi__DOT__r_last) 
+                                << 6U) | (((IData)(vlSelf->top__DOT__axi__DOT__r_status) 
+                                           << 3U) | 
+                                          (((IData)(vlSelf->top__DOT__rw_req_o) 
+                                            << 2U) 
+                                           | (((IData)(vlSelf->top__DOT__rw_valid_o) 
+                                               << 1U) 
+                                              | (IData)(vlSelf->rst))))));
+    if (Vtop__ConstPool__TABLE_910c6f09_0[__Vtableidx8]) {
+        vlSelf->top__DOT__axi__DOT__r_status = Vtop__ConstPool__TABLE_0f94737b_0
             [__Vtableidx8];
     }
     vlSelf->top__DOT__core__DOT__i_rw_valid_o = ((~ (IData)(vlSelf->rst)) 

@@ -5491,7 +5491,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                     | (IData)(vlSelf->top__DOT__core__DOT__id_Mret)) 
                                                    | (IData)(vlSelf->top__DOT__core__DOT__id_Ecall)) 
                                                   | (IData)(vlSelf->top__DOT__core__DOT__id_Csri_o))));
-    vlSelf->top__DOT__axi__DOT__r_done = ((IData)(vlSelf->top__DOT__axi__DOT__r_fire) 
+    vlSelf->top__DOT__axi__DOT__r_last = ((IData)(vlSelf->top__DOT__axi__DOT__r_fire) 
                                           & (IData)(vlSelf->axi_r_last_i));
     VL_ADD_W(5, __Vtemp156, vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__p_result, vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__tem_result);
     VL_EXTEND_WI(133,1, __Vtemp157, (IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__partial_cout));
@@ -5660,7 +5660,7 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                               >> 0x14U))))));
     vlSelf->top__DOT__axi__DOT__trans_done = ((IData)(vlSelf->top__DOT__rw_req_o)
                                                ? (IData)(vlSelf->top__DOT__axi__DOT__b_fire)
-                                               : (IData)(vlSelf->top__DOT__axi__DOT__r_done));
+                                               : (IData)(vlSelf->top__DOT__axi__DOT__r_last));
     vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__ready_to_doing 
         = ((IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mul_valid) 
            & (IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mul_ready));
@@ -6487,7 +6487,7 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__axi__DOT__w_fire = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__axi__DOT__b_fire = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__axi__DOT__r_fire = VL_RAND_RESET_I(1);
-    vlSelf->top__DOT__axi__DOT__r_done = VL_RAND_RESET_I(1);
+    vlSelf->top__DOT__axi__DOT__r_last = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__axi__DOT__trans_done = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__axi__DOT__w_status = VL_RAND_RESET_I(3);
     vlSelf->top__DOT__axi__DOT__r_status = VL_RAND_RESET_I(3);

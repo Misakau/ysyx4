@@ -176,16 +176,21 @@ module ysyx_220053_axi_rw # (
             end
         end
     end
-    reg [7:0] cnt,wcnt;
+    reg [7:0] rcnt,wcnt;
     
     reg rw_ready_r;
     always @(posedge clock) begin
         if (reset) begin
-        rw_ready_r <= 1'b0;
+            rw_ready_r <= 1'b0;
         end
+        else if (trans_done) begin
+            rw_ready_r <= 1'b1;
+        end
+        else rw_ready_r <= 1'b0;
+        /*
         else if (trans_done | rw_ready_r) begin
         rw_ready_r <= trans_done;
-        end
+        end*/
     end
     assign rw_ready_o     = rw_ready_r;
 // ------------------Write Transaction------------------
@@ -197,10 +202,10 @@ module ysyx_220053_axi_rw # (
     wire [2:0] axi_size     = AXI_SIZE[2:0];
     always @(posedge clock) begin
         if (reset | ((rw_req_i == 1'b0) & r_state_idle)) begin
-        cnt <= 0;
+        rcnt <= 0;
         end
-        else if ((cnt != axi_len) && r_fire) begin
-        cnt <= cnt + 1;
+        else if ((rcnt != axi_len) && r_fire) begin
+        rcnt <= rcnt + 1;
         end
     end
     always @(posedge clock) begin
@@ -234,7 +239,7 @@ module ysyx_220053_axi_rw # (
             rw_size_r <= 0;
         end
         else if(aw_fire || w_fire) begin
-            rw_w_data_r <= rw_w_data_i[wcnt*AXI_DATA_WIDTH+:AXI_DATA_WIDTH];
+            rw_w_data_r <= rw_w_data_i[wcnt*AXI_DATA_WIDTH +: AXI_DATA_WIDTH];
             rw_size_r <= rw_size_i;
         end
     end
@@ -280,10 +285,10 @@ module ysyx_220053_axi_rw # (
         for(i = 0; i < TRANSLEN; i = i + 1) begin
             always @(posedge clock) begin
                 if (reset) begin
-                    data_read_o[i*AXI_DATA_WIDTH+:AXI_DATA_WIDTH] <= 0;
+                    data_read_o[i*AXI_DATA_WIDTH +: AXI_DATA_WIDTH] <= 0;
                 end
-                else if(r_fire && cnt == i) begin//r_trans
-                    data_read_o[i*AXI_DATA_WIDTH+:AXI_DATA_WIDTH] <= axi_r_data_i;
+                else if(r_fire && rcnt == i) begin//r_trans
+                    data_read_o[i*AXI_DATA_WIDTH +: AXI_DATA_WIDTH] <= axi_r_data_i;
                 end
             end
         end
