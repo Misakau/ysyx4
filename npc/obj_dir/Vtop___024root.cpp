@@ -6800,11 +6800,11 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
         = ((IData)(vlSelf->top__DOT__core__DOT__id_Ecall) 
            & (IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r));
     vlSelf->top__DOT__core__DOT__has_fence_i = ((((IData)(vlSelf->top__DOT__core__DOT__id_Fence_i_o) 
-                                                  & ((IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r) 
-                                                     | (IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__Fence_i_r))) 
-                                                 & ((IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__valid_r) 
-                                                    | (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__Fence_i_r))) 
-                                                & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r));
+                                                  & (IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r)) 
+                                                 | ((IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__Fence_i_r) 
+                                                    & (IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__valid_r))) 
+                                                | ((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__Fence_i_r) 
+                                                   & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r)));
     vlSelf->top__DOT__core__DOT__id_use_rd = ((IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r) 
                                               & (~ 
                                                  (((((((0x37U 

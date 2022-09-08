@@ -4688,11 +4688,11 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
             : ((IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu_inA) 
                >> (0x1fU & (IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu_inB))));
     vlSelf->top__DOT__core__DOT__has_fence_i = ((((IData)(vlSelf->top__DOT__core__DOT__id_Fence_i_o) 
-                                                  & ((IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r) 
-                                                     | (IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__Fence_i_r))) 
-                                                 & ((IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__valid_r) 
-                                                    | (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__Fence_i_r))) 
-                                                & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r));
+                                                  & (IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r)) 
+                                                 | ((IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__Fence_i_r) 
+                                                    & (IData)(vlSelf->top__DOT__core__DOT__EX_Reg__DOT__valid_r))) 
+                                                | ((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__Fence_i_r) 
+                                                   & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r)));
     vlSelf->top__DOT__core__DOT__id_imm_o = ((0U == (IData)(vlSelf->top__DOT__core__DOT__my_idu__DOT__ExtOp))
                                               ? (((- (QData)((IData)(
                                                                      (vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r 
