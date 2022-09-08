@@ -6487,9 +6487,9 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__axi__DOT__r_last = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__axi__DOT__w_status = VL_RAND_RESET_I(3);
     vlSelf->top__DOT__axi__DOT__r_status = VL_RAND_RESET_I(3);
+    vlSelf->top__DOT__axi__DOT__rw_ready_r = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__axi__DOT__rcnt = VL_RAND_RESET_I(8);
     vlSelf->top__DOT__axi__DOT__wcnt = VL_RAND_RESET_I(8);
-    vlSelf->top__DOT__axi__DOT__rw_ready_r = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__axi__DOT__axi_w_last_r = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__axi__DOT__rw_w_data_r = VL_RAND_RESET_Q(64);
     vlSelf->top__DOT__axi__DOT__rw_size_r = VL_RAND_RESET_I(8);

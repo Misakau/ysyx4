@@ -224,10 +224,9 @@ module ysyx_220053_axi_rw # (
     end
 // ------------------Write Transaction------------------
     localparam AXI_SIZE      = $clog2(AXI_DATA_WIDTH / 8);
-    localparam TRANSLEN      = RW_DATA_WIDTH / AXI_DATA_WIDTH;
     wire [AXI_ID_WIDTH-1:0] axi_id              = {AXI_ID_WIDTH{1'b0}};
     wire [AXI_USER_WIDTH-1:0] axi_user          = {AXI_USER_WIDTH{1'b0}};
-    wire [7:0] axi_len      = (rw_dev_i == 1'b0) ? (TRANSLEN - 1) : 0;
+    wire [7:0] axi_len      = (rw_dev_i == 1'b0) ? 1 : 0;
     wire [2:0] axi_size     = AXI_SIZE[2:0];
     
     // 写地址通道  以下没有备注初始化信号的都可能是你需要产生和用到的

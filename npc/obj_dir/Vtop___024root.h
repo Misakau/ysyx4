@@ -238,9 +238,9 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__axi__DOT__r_last;
         CData/*2:0*/ top__DOT__axi__DOT__w_status;
         CData/*2:0*/ top__DOT__axi__DOT__r_status;
+        CData/*0:0*/ top__DOT__axi__DOT__rw_ready_r;
         CData/*7:0*/ top__DOT__axi__DOT__rcnt;
         CData/*7:0*/ top__DOT__axi__DOT__wcnt;
-        CData/*0:0*/ top__DOT__axi__DOT__rw_ready_r;
         CData/*0:0*/ top__DOT__axi__DOT__axi_w_last_r;
         CData/*7:0*/ top__DOT__axi__DOT__rw_size_r;
         SData/*11:0*/ top__DOT__core__DOT__id_CsrId;
