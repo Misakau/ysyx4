@@ -7,7 +7,7 @@
 void Vtop___024root__traceChgSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode + 2468);
+    vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode + 2467);
     if (false && oldp) {}  // Prevent unused
     // Body
     {
@@ -1377,10 +1377,10 @@ void Vtop___024root__traceChgSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep) 
         tracep->chgBit(oldp+400,((((~ (IData)(vlSelf->rst)) 
                                    & (IData)(vlSelf->top__DOT__core__DOT__WB_Reg__DOT__wen_r)) 
                                   & (IData)(vlSelf->top__DOT__core__DOT__WB_Reg__DOT__valid_r))));
-        tracep->chgBit(oldp+401,(((IData)(vlSelf->axi_ar_ready_i) 
-                                  & (IData)(vlSelf->axi_ar_valid_o))));
-        tracep->chgBit(oldp+402,(((IData)(vlSelf->top__DOT__axi__DOT__w_fire) 
+        tracep->chgBit(oldp+401,(((IData)(vlSelf->top__DOT__axi__DOT__w_fire) 
                                   & (IData)(vlSelf->axi_w_last_o))));
+        tracep->chgBit(oldp+402,(((IData)(vlSelf->axi_ar_ready_i) 
+                                  & (IData)(vlSelf->axi_ar_valid_o))));
     }
 }
 

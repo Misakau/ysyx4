@@ -193,8 +193,8 @@ module ysyx_220053_axi_rw # (
         end
     end
 
+
     reg rw_ready_r;
-    //wire axi_done = (rw_req_i == 1'b1) ? b_fire : r_last;
     always @(posedge clock) begin
         if(reset) begin
             rw_ready_r <= 1'b0;
