@@ -17,7 +17,7 @@ module top(
 ///////////////////////AXI////////////////////////////
     input                               axi_aw_ready_i,              
     output                              axi_aw_valid_o,
-    output [64-1:0]                     axi_aw_addr_o,
+    output [32-1:0]                     axi_aw_addr_o,
     output [2:0]                        axi_aw_prot_o,
     output [4-1:0]                      axi_aw_id_o,
     output [1-1:0]                      axi_aw_user_o,
@@ -44,7 +44,7 @@ module top(
 
     input                               axi_ar_ready_i,                
     output                              axi_ar_valid_o,
-    output [64-1:0]                     axi_ar_addr_o,
+    output [32-1:0]                     axi_ar_addr_o,
     output [2:0]                        axi_ar_prot_o,
     output [4-1:0]                      axi_ar_id_o,
     output [1-1:0]                      axi_ar_user_o,

@@ -4300,8 +4300,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__divu__DOT__calculate_done 
         = ((IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__divu__DOT__running_r) 
            & (0x40U == (IData)(vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__divu__DOT__cnt)));
-    vlSelf->axi_aw_addr_o = vlSelf->top__DOT__rw_addr_o;
-    vlSelf->axi_ar_addr_o = vlSelf->top__DOT__rw_addr_o;
+    vlSelf->axi_ar_addr_o = (QData)((IData)(vlSelf->top__DOT__rw_addr_o));
+    vlSelf->axi_aw_addr_o = (QData)((IData)(vlSelf->top__DOT__rw_addr_o));
     vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__done_to_ready 
         = vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mul_out_valid;
     vlSelf->top__DOT__core__DOT__my_exu__DOT__alu64__DOT__mul_valid 

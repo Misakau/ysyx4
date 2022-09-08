@@ -4009,8 +4009,8 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                     & (((2U == (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status)) 
                         & (IData)(vlSelf->top__DOT__core__DOT__d_rw_ready_i)) 
                        | (6U == (IData)(vlSelf->top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))))));
-    vlSelf->axi_aw_addr_o = vlSelf->top__DOT__rw_addr_o;
-    vlSelf->axi_ar_addr_o = vlSelf->top__DOT__rw_addr_o;
+    vlSelf->axi_ar_addr_o = (QData)((IData)(vlSelf->top__DOT__rw_addr_o));
+    vlSelf->axi_aw_addr_o = (QData)((IData)(vlSelf->top__DOT__rw_addr_o));
     __Vtableidx1 = (((IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_req_valid) 
                      << 5U) | (((((1U == (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__cur_status)) 
                                   & vlSelf->top__DOT__core__DOT__my_ifu__DOT__icache__DOT__V
