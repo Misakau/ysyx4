@@ -122,6 +122,7 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__core__DOT__id_m_hazard;
         CData/*0:0*/ top__DOT__core__DOT__id_wb_hazard;
         CData/*0:0*/ top__DOT__core__DOT__load_use;
+        CData/*0:0*/ top__DOT__core__DOT__has_fence_i;
         CData/*0:0*/ top__DOT__core__DOT__if_busy;
         CData/*0:0*/ top__DOT__core__DOT__cpu_halt;
         CData/*0:0*/ top__DOT__core__DOT__is_Csrwen;
@@ -151,9 +152,9 @@ VL_MODULE(Vtop___024root) {
         CData/*3:0*/ top__DOT__core__DOT__my_idu__DOT__na_alu__DOT__OPctr;
         CData/*0:0*/ top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__NexA;
         CData/*0:0*/ top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__NexB;
-        CData/*0:0*/ top__DOT__core__DOT__EX_Reg__DOT__valid_r;
     };
     struct {
+        CData/*0:0*/ top__DOT__core__DOT__EX_Reg__DOT__valid_r;
         CData/*4:0*/ top__DOT__core__DOT__EX_Reg__DOT__rd_r;
         CData/*0:0*/ top__DOT__core__DOT__EX_Reg__DOT__ALUSrcA_r;
         CData/*0:0*/ top__DOT__core__DOT__EX_Reg__DOT__MemToReg_r;
@@ -217,9 +218,9 @@ VL_MODULE(Vtop___024root) {
         CData/*7:0*/ top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__idx_cnt;
         CData/*3:0*/ top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status;
         CData/*3:0*/ top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__next_status;
-        CData/*0:0*/ top__DOT__core__DOT__WB_Reg__DOT__valid_r;
     };
     struct {
+        CData/*0:0*/ top__DOT__core__DOT__WB_Reg__DOT__valid_r;
         CData/*0:0*/ top__DOT__core__DOT__WB_Reg__DOT__wen_r;
         CData/*4:0*/ top__DOT__core__DOT__WB_Reg__DOT__waddr_r;
         CData/*0:0*/ top__DOT__core__DOT__WB_Reg__DOT__Ebreak_r;
@@ -283,9 +284,9 @@ VL_MODULE(Vtop___024root) {
         QData/*63:0*/ top__DOT__core__DOT__wb_pc_r;
         QData/*63:0*/ top__DOT__core__DOT__next_pc_r;
         QData/*63:0*/ top__DOT__core__DOT__Csr_datain;
-        QData/*63:0*/ top__DOT__core__DOT__my_ifu__DOT__cpu_data_read;
     };
     struct {
+        QData/*63:0*/ top__DOT__core__DOT__my_ifu__DOT__cpu_data_read;
         QData/*63:0*/ top__DOT__core__DOT__ID_Reg__DOT__pc_r;
         QData/*63:0*/ top__DOT__core__DOT__my_idu__DOT__addr_res;
         QData/*63:0*/ top__DOT__core__DOT__my_idu__DOT__alu_inA;
@@ -349,9 +350,9 @@ VL_MODULE(Vtop___024root) {
         VlUnpacked<CData/*0:0*/, 256> top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__V;
         VlUnpacked<CData/*0:0*/, 256> top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__D;
         VlUnpacked<QData/*51:0*/, 256> top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__tag;
-        VlUnpacked<VlWide<4>/*127:0*/, 4> top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__line_o;
     };
     struct {
+        VlUnpacked<VlWide<4>/*127:0*/, 4> top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__line_o;
         VlUnpacked<CData/*0:0*/, 4> top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__line_wen;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__ram0__DOT__ram;
         VlUnpacked<VlWide<4>/*127:0*/, 64> top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__ram1__DOT__ram;
@@ -363,7 +364,6 @@ VL_MODULE(Vtop___024root) {
     // LOCAL VARIABLES
     CData/*0:0*/ top__DOT__core__DOT____Vcellinp__csrfile__Time_interrupt;
     CData/*0:0*/ top__DOT__core__DOT____Vcellinp__csrfile__Ecall;
-    CData/*0:0*/ __Vdly__top__DOT__core__DOT__EX_Reg__DOT__valid_r;
     CData/*7:0*/ __Vdly__top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__idx_cnt;
     CData/*0:0*/ __Vdlyvset__top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__V__v0;
     CData/*7:0*/ __Vdlyvdim0__top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__V__v256;

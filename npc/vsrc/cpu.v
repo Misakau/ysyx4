@@ -177,7 +177,7 @@ module ysyx_220053_core(
     wire has_fence_i = (id_Fence_i_o && id_valid_o) || (ex_Fence_i_i && ex_valid_o) || (m_Fence_i_i && m_valid_o);// | wb_Fence_i_i;
     wire if_busy;
     wire cpu_halt;
-    wire dnpc_valid = id_valid_o & ~has_fence_i ;
+    wire dnpc_valid = (id_valid_o & ~has_fence_i) | (wb_Fence_i_i & wb_valid_o);
     ysyx_220053_IFU my_ifu(
       .clk(clk),
       .rst(rst),
