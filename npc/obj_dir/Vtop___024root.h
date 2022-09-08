@@ -363,6 +363,7 @@ VL_MODULE(Vtop___024root) {
     // LOCAL VARIABLES
     CData/*0:0*/ top__DOT__core__DOT____Vcellinp__csrfile__Time_interrupt;
     CData/*0:0*/ top__DOT__core__DOT____Vcellinp__csrfile__Ecall;
+    CData/*0:0*/ __Vdly__top__DOT__core__DOT__EX_Reg__DOT__valid_r;
     CData/*7:0*/ __Vdly__top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__idx_cnt;
     CData/*0:0*/ __Vdlyvset__top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__V__v0;
     CData/*7:0*/ __Vdlyvdim0__top__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__V__v256;

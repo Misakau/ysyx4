@@ -169,12 +169,6 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                                           & (IData)(vlSelf->axi_b_valid_i));
     vlSelf->top__DOT__axi__DOT__r_fire = ((IData)(vlSelf->axi_r_ready_o) 
                                           & (IData)(vlSelf->axi_r_valid_i));
-    vlSelf->top__DOT__core__DOT__is_men = (((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__MemWen_r) 
-                                            & (~ (IData)(vlSelf->rst))) 
-                                           & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r));
-    vlSelf->top__DOT__core__DOT__is_MemToReg = (((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__MemToReg_r) 
-                                                 & (~ (IData)(vlSelf->rst))) 
-                                                & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r));
     vlSelf->top__DOT__core__DOT__is_Csrwen = (((~ (IData)(vlSelf->rst)) 
                                                & (IData)(
                                                          ((0x73U 
@@ -196,6 +190,12 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                                               & (IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r));
     vlSelf->top__DOT__core__DOT__cpu_halt = ((IData)(vlSelf->top__DOT__core__DOT__id_Ebreak_o) 
                                              | (IData)(vlSelf->rst));
+    vlSelf->top__DOT__core__DOT__is_men = (((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__MemWen_r) 
+                                            & (~ (IData)(vlSelf->rst))) 
+                                           & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r));
+    vlSelf->top__DOT__core__DOT__is_MemToReg = (((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__MemToReg_r) 
+                                                 & (~ (IData)(vlSelf->rst))) 
+                                                & (IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__valid_r));
     vlSelf->top__DOT__axi__DOT__r_last = ((IData)(vlSelf->top__DOT__axi__DOT__r_fire) 
                                           & (IData)(vlSelf->axi_r_last_i));
     vlSelf->top__DOT__core__DOT__m_rfdata_o = ((IData)(vlSelf->top__DOT__core__DOT__M_Reg__DOT__CsrToReg_r)

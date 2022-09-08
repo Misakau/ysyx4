@@ -199,7 +199,7 @@ module ysyx_220053_core(
     assign cpu_halt = id_Ebreak_o | rst;
     assign if_block = id_Ebreak_o | if_busy;
     assign id_en = ~(id_block | ex_block | m_block | wb_block);
-    assign id_valid_i = ~(rst | if_block | cpu_halt | (wb_Fence_i_i & wb_valid_o));
+    assign id_valid_i = ~(rst | if_block | cpu_halt | has_fence_i);
     /////////////////////////////////
     ysyx_220053_ID_Reg ID_Reg(
       .clk(clk),
