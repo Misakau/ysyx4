@@ -291,7 +291,7 @@ void set_batch_mode(){
 static uint64_t tot_instr = 0;
 static void sdb_mainloop();
 static bool is_diff = false;
-static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv64-npc.bin";
+static char pathi[] = "/home/wang/ysyx-workbench/npc/test.bin";
 //"/home/wang/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv64-npc.bin";
 //"/home/wang/ysyx-workbench/npc/test.bin";
 //"/home/wang/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv64-npc.bin";

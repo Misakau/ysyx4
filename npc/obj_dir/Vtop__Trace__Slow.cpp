@@ -318,7 +318,7 @@ void Vtop___024root__traceInitSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->declQuad(c+1594,"top core Csr_datain", false,-1, 63,0);
         tracep->declBit(c+2803,"top core my_ifu clk", false,-1);
         tracep->declBit(c+2804,"top core my_ifu rst", false,-1);
-        tracep->declBit(c+45,"top core my_ifu dnpc_valid", false,-1);
+        tracep->declBit(c+143,"top core my_ifu dnpc_valid", false,-1);
         tracep->declBit(c+1590,"top core my_ifu block", false,-1);
         tracep->declQuad(c+1584,"top core my_ifu dnpc", false,-1, 63,0);
         tracep->declQuad(c+33,"top core my_ifu pc", false,-1, 63,0);
@@ -10373,7 +10373,8 @@ void Vtop___024root__traceFullSub0(Vtop___024root* vlSelf, VerilatedVcd* tracep)
                                                             >> 0x1cU))))) 
                                     & (~ (IData)(vlSelf->top__DOT__core__DOT__is_men)))));
         tracep->fullBit(oldp+1553,(((~ (IData)(vlSelf->top__DOT__core__DOT__cpu_halt)) 
-                                    & (IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r))));
+                                    & ((IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r) 
+                                       & (~ (IData)(vlSelf->top__DOT__core__DOT__has_fence_i))))));
         tracep->fullQData(oldp+1554,(((1U == (IData)(vlSelf->top__DOT__core__DOT__id_ALUSrcB_o))
                                        ? vlSelf->top__DOT__core__DOT__id_imm_o
                                        : ((0U == (IData)(vlSelf->top__DOT__core__DOT__id_ALUSrcB_o))

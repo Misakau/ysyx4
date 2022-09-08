@@ -6611,7 +6611,8 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
     if (vlSelf->rst) {
         vlSelf->top__DOT__core__DOT__if_pc_o = 0x80000000ULL;
     } else if (((~ (IData)(vlSelf->top__DOT__core__DOT__cpu_halt)) 
-                & (IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r))) {
+                & ((IData)(vlSelf->top__DOT__core__DOT__ID_Reg__DOT__valid_r) 
+                   & (~ (IData)(vlSelf->top__DOT__core__DOT__has_fence_i))))) {
         vlSelf->top__DOT__core__DOT__if_pc_o = (0xfffffffffffffffeULL 
                                                 & vlSelf->top__DOT__core__DOT__my_idu__DOT__addr_res);
     }
