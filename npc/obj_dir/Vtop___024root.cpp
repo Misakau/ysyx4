@@ -6756,8 +6756,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
                          | (IData)(vlSelf->top__DOT__core__DOT__cpu_halt)) 
                         | (IData)(vlSelf->top__DOT__core__DOT__has_fence_i))));
     }
-    vlSelf->top__DOT__core__DOT__if_busy = (1U & ((~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__i_cpu_ready)) 
-                                                  & (~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__old_instr))));
     vlSelf->top__DOT__core__DOT__id_Ebreak_o = ((vlSelf->top__DOT__core__DOT__ID_Reg__DOT__instr_r 
                                                  >> 6U) 
                                                 & (IData)(
@@ -6803,6 +6801,10 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
                                                     | (IData)(vlSelf->top__DOT__core__DOT__id_Mret)) 
                                                    | (IData)(vlSelf->top__DOT__core__DOT__id_Ecall)) 
                                                   | (IData)(vlSelf->top__DOT__core__DOT__id_Csri_o))));
+    vlSelf->top__DOT__core__DOT__if_busy = (1U & ((
+                                                   (~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__i_cpu_ready)) 
+                                                   & (~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__old_instr))) 
+                                                  & (~ (IData)(vlSelf->top__DOT__core__DOT__has_fence_i))));
     vlSelf->top__DOT__core__DOT__my_ifu__DOT__cpu_req_valid 
         = (1U & ((IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__start) 
                  | ((((~ (IData)(vlSelf->top__DOT__core__DOT__my_ifu__DOT__cache_doing)) 
