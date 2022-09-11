@@ -856,7 +856,7 @@ module ysyx_220053_axi_rw # (
     assign axi_w_valid_o    = w_state_write;//
     assign axi_w_data_o     = rw_w_data_r;//
     assign axi_w_strb_o     = rw_size_r;//
-    assign axi_w_last_o     = axi_w_last_r;//
+    assign axi_w_last_o     = axi_w_last_r || (w_fire && (wcnt == axi_len));//
     assign axi_w_user_o     = axi_user;                                                                         //初始化信号即可
 
     // 写应答通道
@@ -1056,7 +1056,7 @@ module ysyx_220053_icache(
         end
         else if(cur_status == DEV) begin
             if(!rw_ready_i) begin
-                rw_addr_o <= {cpu_req_addr[63:3],3'b000};
+                rw_addr_o <= cpu_req_addr;//{cpu_req_addr[63:3],3'b000};
                 rw_req_o  <= 1'b0;
                 rw_valid_o <= 1'b1;
             end
@@ -1332,7 +1332,7 @@ module ysyx_220053_dcache (
         end
         else if(cur_status == DEV) begin
             if(!rw_ready_i) begin
-                rw_addr_o <= {cpu_req_addr[63:3],3'b000};
+                rw_addr_o <= cpu_req_addr;//{cpu_req_addr[63:3],3'b000};
                 rw_req_o  <= cpu_req_rw;
                 rw_w_data_o <= {{64{1'b0}},cpu_data_write};
                 rw_valid_o <= 1'b1;
