@@ -70,7 +70,7 @@ module ysyx_220053_axi_rw # (
     input  [RW_ADDR_WIDTH-1:0]          rw_addr_i,          //IF&MEM输入信号
     input  [AXI_STRB_WIDTH - 1:0]       rw_size_i,          //IF&MEM输入信号
     input                               rw_dev_i,
-
+    input                               rw_bytes_i,
 
 // Advanced eXtensible Interface
     input                               axi_aw_ready_i,              
@@ -235,10 +235,19 @@ module ysyx_220053_axi_rw # (
     end
 // ------------------Write Transaction------------------
     localparam AXI_SIZE      = $clog2(AXI_DATA_WIDTH / 8);
+    reg [2:0] dev_size;
+    always @(*)begin
+        case(rw_bytes_i)
+            4'h1: dev_size = 0;
+            4'h2: dev_size = 1;
+            4'h4: dev_size = 2;
+            default dev_size = 2;
+        endcase
+    end
     wire [AXI_ID_WIDTH-1:0] axi_id              = {AXI_ID_WIDTH{1'b0}};
     wire [AXI_USER_WIDTH-1:0] axi_user          = {AXI_USER_WIDTH{1'b0}};
     wire [7:0] axi_len      = (rw_dev_i == 1'b0) ? 1 : 0;
-    wire [2:0] axi_size     = AXI_SIZE[2:0];
+    wire [2:0] axi_size     = (rw_dev_i == 1'b0) ? AXI_SIZE[2:0] : dev_size;
     
     // 写地址通道  以下没有备注初始化信号的都可能是你需要产生和用到的
     assign axi_aw_valid_o   = w_state_addr;//

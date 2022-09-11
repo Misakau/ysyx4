@@ -6,7 +6,6 @@ module ysyx_220053_icache (
     input rst,
     //cpu<->cache
     input [63:0] cpu_req_addr,
-    input cpu_req_rw,
     input cpu_req_valid,
     output reg [63:0] cpu_data_read,
     output reg cpu_ready,
@@ -16,7 +15,8 @@ module ysyx_220053_icache (
     output reg          rw_req_o,//
     output reg          rw_valid_o,
     input [127:0]       data_read_i,//finish burst
-    input               rw_ready_i//data_read_i in ram
+    input               rw_ready_i,//data_read_i in ram
+    input cpu_dev
 );
     parameter nline = 256;
     reg V [0:nline - 1];
@@ -34,7 +34,7 @@ module ysyx_220053_icache (
 
     //status transform
 
-    parameter [2:0] IDLE = 3'b000, CompareTag = 3'b001, Allocate = 3'b010, Readin = 3'b011, RETN = 3'b100;
+    parameter [2:0] IDLE = 3'b000, CompareTag = 3'b001, Allocate = 3'b010, Readin = 3'b011, DEV = 3'b100;
 
     reg [2:0] cur_status, next_status;
 
@@ -46,7 +46,10 @@ module ysyx_220053_icache (
     always @(*) begin
         case (cur_status)
             IDLE: begin
-                if(cpu_req_valid) next_status = CompareTag;
+                if(cpu_req_valid) begin
+                    if(cpu_dev) next_status = DEV;
+                    else next_status = CompareTag;
+                end
                 else next_status = IDLE;
             end
             CompareTag: begin
@@ -60,7 +63,12 @@ module ysyx_220053_icache (
                 else next_status = Allocate;
             end
             Readin: next_status = IDLE;//RETN;
-            //RETN: next_status = IDLE;
+            DEV: begin
+                if(rw_ready_i) begin
+                    next_status = IDLE;
+                end
+                else next_status = DEV;
+            end
             default: next_status = IDLE;
         endcase
     end
@@ -93,6 +101,10 @@ module ysyx_220053_icache (
                 2'b10: cpu_data_read <= cpu_offset[3] ? line_o[2][127:64] : line_o[2][63:0];
                 default: cpu_data_read <= cpu_offset[3] ? line_o[3][127:64] : line_o[3][63:0];
             endcase
+        end
+        else if(cur_status == DEV && rw_ready_i) begin
+            cpu_ready <= 1'b1;
+            cpu_data_read <= data_read_i[63:0];
         end
         else cpu_ready <= 1'b0;
     end
@@ -136,6 +148,15 @@ module ysyx_220053_icache (
                 rw_valid_o <= 1'b0;
                 V[cpu_index] <= 1'b1;
                 tag[cpu_index] <= cpu_tag;
+            end
+        end
+        else if(cur_status == DEV) begin
+            if(!rw_ready_i) begin
+                rw_addr_o <= {cpu_req_addr[63:3],3'b000};
+                rw_valid_o <= 1'b1;
+            end
+            else begin
+                rw_valid_o <= 1'b0;
             end
         end
         else begin
