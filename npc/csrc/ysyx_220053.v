@@ -856,7 +856,7 @@ module ysyx_220053_axi_rw # (
     assign axi_w_valid_o    = w_state_write;//
     assign axi_w_data_o     = rw_w_data_r;//
     assign axi_w_strb_o     = rw_size_r;//
-    assign axi_w_last_o     = axi_w_last_r || (w_fire && (wcnt == axi_len));//
+    assign axi_w_last_o     = (axi_len == 0) ? (w_fire && (wcnt == axi_len)) : axi_w_last_r;//
     assign axi_w_user_o     = axi_user;                                                                         //初始化信号即可
 
     // 写应答通道
@@ -1181,10 +1181,11 @@ module ysyx_220053_dcache (
     reg  [127:0] bwen;
     wire [127:0] line_o [0:3];
     wire line_wen [0:3];
-    ysyx_220053_S011HD1P_X32Y2D128 ram0(.Q(line_o[0]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [0]),.A(cpu_index[5:0]),.D(data_in_ram));
-    ysyx_220053_S011HD1P_X32Y2D128 ram1(.Q(line_o[1]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [1]),.A(cpu_index[5:0]),.D(data_in_ram));
-    ysyx_220053_S011HD1P_X32Y2D128 ram2(.Q(line_o[2]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [2]),.A(cpu_index[5:0]),.D(data_in_ram));
-    ysyx_220053_S011HD1P_X32Y2D128 ram3(.Q(line_o[3]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [3]),.A(cpu_index[5:0]),.D(data_in_ram));
+    wire [5:0] ram_addr = (Fence_i) ? idx_cnt[5:0] : cpu_index[5:0];
+    ysyx_220053_S011HD1P_X32Y2D128 ram0(.Q(line_o[0]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [0]),.A(ram_addr),.D(data_in_ram));
+    ysyx_220053_S011HD1P_X32Y2D128 ram1(.Q(line_o[1]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [1]),.A(ram_addr),.D(data_in_ram));
+    ysyx_220053_S011HD1P_X32Y2D128 ram2(.Q(line_o[2]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [2]),.A(ram_addr),.D(data_in_ram));
+    ysyx_220053_S011HD1P_X32Y2D128 ram3(.Q(line_o[3]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [3]),.A(ram_addr),.D(data_in_ram));
     
     integer  i;
     //CompareTag
@@ -1896,10 +1897,10 @@ module ysyx_220053_core(
       else forward_data2 = 64'b0;
     end
 
-
+    reg fence_i_commit;
     assign Time_interrupt = mie_MITE & mstatus_MIE & is_cmp;
     /////////////IF/////////////////
-    wire has_fence_i = (id_Fence_i_o && id_valid_o) || (ex_Fence_i_i && ex_valid_o) || (m_Fence_i_i && m_valid_o);// | wb_Fence_i_i;
+    wire has_fence_i = ((id_Fence_i_o && id_valid_o) || (ex_Fence_i_i && ex_valid_o) || (m_Fence_i_i && m_valid_o)) & ~fence_i_commit;
     wire if_busy;
     wire cpu_halt;
     wire dnpc_valid = (id_valid_o & ~has_fence_i) | (wb_Fence_i_i & wb_valid_o);
@@ -1984,7 +1985,7 @@ module ysyx_220053_core(
       assign id_busa_o = (rs1_need == 1'b0) ? id_busa : forward_data1;
       assign id_busb_o = (rs2_need == 1'b0) ? id_busb : forward_data2;
       assign ex_en = ~(ex_block | m_block | wb_block);//还未处理阻塞
-      assign ex_valid_i = id_valid_o & (~id_block) & ~Time_interrupt;//还未处理冒险
+      assign ex_valid_i = id_valid_o & (~id_block | (id_Fence_i_o & ~ex_Fence_i_i)) & ~Time_interrupt;//还未处理冒险
     /////////////////////////////
     ysyx_220053_EX_Reg EX_Reg(
       //control
@@ -2054,7 +2055,7 @@ module ysyx_220053_core(
       .mwb_block(m_block | wb_block),
       .alu_busy(alu_busy)
     );
-    assign ex_flush = rst;
+    assign ex_flush = rst | fence_i_commit;
     assign ex_block = alu_busy;
     assign m_en = ~(m_block | wb_block);//还未处理阻塞
     assign m_valid_i = ex_valid_o & (~ex_block);//还未处理冒险
@@ -2132,7 +2133,7 @@ module ysyx_220053_core(
     wire is_Fence_i = m_Fence_i_i & m_valid_o;
     wire is_MemToReg = m_MemToReg_i & (~m_flush) & m_valid_o;
     wire is_men = m_MemWen_i & (~m_flush) & m_valid_o;
-    assign m_flush = rst;
+    assign m_flush = rst | fence_i_commit;
     assign m_block = m_busy;
     assign wb_en = ~wb_block;//还未处理阻塞
     assign wb_valid_i = m_valid_o & (~m_block);//还未处理冒险
@@ -2187,6 +2188,7 @@ module ysyx_220053_core(
             wb_instr_r <= 32'b0;
             next_pc_r <= 64'b0;
             wb_dev_o <= 0;
+            fence_i_commit <= 0;
         end
         else begin
           if(wb_valid_o)begin
@@ -2195,6 +2197,7 @@ module ysyx_220053_core(
             wb_instr_r <= wb_instr_o;
             next_pc_r <= wb_dnpc;
             wb_dev_o <= dev_o;
+            fence_i_commit <= wb_Fence_i_i;
           end
           else begin
             wb_commit_r <= 1'b0;
@@ -2202,6 +2205,7 @@ module ysyx_220053_core(
             wb_instr_r <= 32'b0;
             next_pc_r <= 64'b0;
             wb_dev_o <= 0;
+            fence_i_commit <= 0;
           end
         end
     end
@@ -2671,6 +2675,7 @@ module ysyx_220053_IFU(
             pc <= dnpc;
         end
     end
+
     //ysyx_220053_Reg #(64, 64'h80000000) PC(.clk(clk), .rst(rst), valid_dnpc, pc, pcen);
     //未取到：取指令
     //取到了：不取
@@ -2706,15 +2711,17 @@ module ysyx_220053_IFU(
             cache_doing <= 1'b1;
         end
     end
-    assign cpu_req_valid = start | (!cache_doing && !i_cpu_ready && !old_instr && !Fence_i);
+    wire [63:0] cache_pc = (cpu_req_valid) ? dnpc : pc;
+    assign cpu_req_valid = start | (!cache_doing && !i_cpu_ready && !old_instr && !Fence_i);// && !(dnpc[31:28] == 4'h8 && dnpc_valid && pc[31:28] == 4'h3));
     assign if_busy = (!i_cpu_ready && !old_instr && !Fence_i);
-    wire cpu_dev = (pc[31:28] == 4'h3);
+    wire cpu_dev = (cache_pc[31:28] == 4'h3);
     assign i_rw_dev_o = cpu_dev;
     wire flush = rst | Fence_i;
+    
     ysyx_220053_icache icache(
          clk,flush,
         //cpu<->cache
-         pc,cpu_req_valid,cpu_data_read,i_cpu_ready,cache_idle,
+         cache_pc,cpu_req_valid,cpu_data_read,i_cpu_ready,cache_idle,
          //cache<->memory
          i_rw_addr_o, i_rw_req_o,i_rw_valid_o,i_data_read_i,i_rw_ready_i,
          cpu_dev
