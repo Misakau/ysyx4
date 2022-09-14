@@ -2979,8 +2979,17 @@ module ysyx_220053_CLint(
     reg [63:0] mtime, mtimecmp;
     assign rdata = mtimecmp;
     assign is_cmp = (mtime >= mtimecmp);
-
+    reg [3:0] cnt;
     always @(posedge clk) begin
+        if(rst) begin
+            cnt <= 0;
+        end
+        else begin
+            cnt <= cnt + 1;
+        end
+    end
+
+    always @(posedge cnt[3]) begin
         if(rst) begin
             mtime <= 0;
         end
