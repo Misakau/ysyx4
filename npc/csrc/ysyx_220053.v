@@ -2989,11 +2989,11 @@ module ysyx_220053_CLint(
         end
     end
 
-    always @(posedge cnt[3]) begin
+    always @(posedge clk) begin
         if(rst) begin
             mtime <= 0;
         end
-        else begin
+        else if(cnt == 4'b0111)begin
             mtime <= mtime + 1;
         end
     end
