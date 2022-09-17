@@ -920,7 +920,31 @@ module ysyx_220053_icache(
     output reg          rw_valid_o,
     input [127:0]       data_read_i,//finish burst
     input               rw_ready_i,//data_read_i in ram
-    input cpu_dev
+    input cpu_dev,
+    
+    output[5:0] io_sram0_addr,
+	output io_sram0_cen,
+	output io_sram0_wen,
+	output[127:0] io_sram0_wdata,
+	input[127:0] io_sram0_rdata,
+
+	output[5:0] io_sram1_addr,
+	output io_sram1_cen, 
+	output io_sram1_wen, 		
+	output[127:0] io_sram1_wdata,
+	input[127:0] io_sram1_rdata,
+
+	output[5:0] io_sram2_addr,	
+	output io_sram2_cen, 
+	output io_sram2_wen, 
+	output[127:0] io_sram2_wdata, 
+	input[127:0] io_sram2_rdata, 
+
+	output[5:0] io_sram3_addr, 
+	output io_sram3_cen, 
+	output io_sram3_wen, 
+	output[127:0] io_sram3_wdata, 
+	input[127:0] io_sram3_rdata
 );
     parameter nline = 256;
     reg V [0:nline - 1];
@@ -980,10 +1004,34 @@ module ysyx_220053_icache(
     //cache line
     wire [127:0] line_o [0:3];
     wire line_wen [0:3];
-    ysyx_220053_S011HD1P_X32Y2D128 ram0(.Q(line_o[0]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [0]),.A(cpu_index[5:0]),.D(data_read_i));
-    ysyx_220053_S011HD1P_X32Y2D128 ram1(.Q(line_o[1]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [1]),.A(cpu_index[5:0]),.D(data_read_i));
-    ysyx_220053_S011HD1P_X32Y2D128 ram2(.Q(line_o[2]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [2]),.A(cpu_index[5:0]),.D(data_read_i));
-    ysyx_220053_S011HD1P_X32Y2D128 ram3(.Q(line_o[3]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [3]),.A(cpu_index[5:0]),.D(data_read_i));
+
+    assign io_sram0_addr = cpu_index[5:0];
+	assign io_sram0_cen = 1'b0;
+	assign io_sram0_wen = line_wen[0];
+	assign io_sram0_wdata = data_read_i;
+	assign line_o[0] = io_sram0_rdata;
+    //ysyx_220053_S011HD1P_X32Y2D128 ram0(.Q(line_o[0]),.CLK(clk),.CEN(1'b0),.WEN(line_wen[0]),.A(cpu_index[5:0]),.D(data_read_i));
+
+	assign io_sram1_addr = cpu_index[5:0];
+	assign io_sram1_cen = 1'b0;
+	assign io_sram1_wen = line_wen[1];
+	assign io_sram1_wdata = data_read_i;
+	assign line_o[1] = io_sram1_rdata;
+    //ysyx_220053_S011HD1P_X32Y2D128 ram1(.Q(line_o[1]),.CLK(clk),.CEN(1'b0),.WEN(line_wen[1]),.A(cpu_index[5:0]),.D(data_read_i));
+
+	assign io_sram2_addr = cpu_index[5:0];
+	assign io_sram2_cen = 1'b0;
+	assign io_sram2_wen = line_wen[2];
+	assign io_sram2_wdata = data_read_i;
+	assign line_o[2] = io_sram2_rdata;
+    //ysyx_220053_S011HD1P_X32Y2D128 ram2(.Q(line_o[2]),.CLK(clk),.CEN(1'b0),.WEN(line_wen[2]),.A(cpu_index[5:0]),.D(data_read_i));
+
+	assign io_sram3_addr = cpu_index[5:0];
+	assign io_sram3_cen = 1'b0;
+	assign io_sram3_wen = line_wen[3];
+	assign io_sram3_wdata = data_read_i;
+	assign line_o[3] = io_sram3_rdata;
+    //ysyx_220053_S011HD1P_X32Y2D128 ram3(.Q(line_o[3]),.CLK(clk),.CEN(1'b0),.WEN(line_wen[3]),.A(cpu_index[5:0]),.D(data_read_i));
     
     //CompareTag
     always @(*) begin
@@ -1091,7 +1139,31 @@ module ysyx_220053_dcache (
     input               rw_ready_i,//ready to give data or fetch data
     input Fence_i,
     output reg [7:0] rw_size_o,
-    input cpu_dev
+    input cpu_dev,
+
+    output[5:0] io_sram4_addr, 
+	output io_sram4_cen, 
+	output io_sram4_wen, 
+	output[127:0] io_sram4_wdata, 
+	input[127:0] io_sram4_rdata, 
+
+	output[5:0] io_sram5_addr, 
+	output io_sram5_cen, 
+	output io_sram5_wen, 
+	output[127:0] io_sram5_wdata, 
+	input[127:0] io_sram5_rdata, 
+
+	output[5:0] io_sram6_addr, 
+	output io_sram6_cen, 
+	output io_sram6_wen, 
+	output[127:0] io_sram6_wdata, 
+	input[127:0] io_sram6_rdata, 
+    
+	output[5:0] io_sram7_addr, 
+	output io_sram7_cen, 
+	output io_sram7_wen, 
+	output[127:0] io_sram7_wdata,
+	input[127:0] io_sram7_rdata
 );
     parameter nline = 256;
     reg V [0:nline - 1], D [0:nline - 1];
@@ -1182,10 +1254,31 @@ module ysyx_220053_dcache (
     wire [127:0] line_o [0:3];
     wire line_wen [0:3];
     wire [5:0] ram_addr = (Fence_i) ? idx_cnt[5:0] : cpu_index[5:0];
-    ysyx_220053_S011HD1P_X32Y2D128 ram0(.Q(line_o[0]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [0]),.A(ram_addr),.D(data_in_ram));
-    ysyx_220053_S011HD1P_X32Y2D128 ram1(.Q(line_o[1]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [1]),.A(ram_addr),.D(data_in_ram));
-    ysyx_220053_S011HD1P_X32Y2D128 ram2(.Q(line_o[2]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [2]),.A(ram_addr),.D(data_in_ram));
-    ysyx_220053_S011HD1P_X32Y2D128 ram3(.Q(line_o[3]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [3]),.A(ram_addr),.D(data_in_ram));
+
+    assign io_sram4_addr = ram_addr;
+    assign io_sram4_cen = 1'b0;
+    assign io_sram4_wen = line_wen[0];
+    assign io_sram4_wdata = data_in_ram;
+    assign line_o[0] = io_sram4_rdata;
+    //ysyx_220053_S011HD1P_X32Y2D128 ram0(.Q(line_o[0]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [0]),.A(ram_addr),.D(data_in_ram));
+    assign io_sram5_addr = ram_addr;
+    assign io_sram5_cen = 1'b0;
+    assign io_sram5_wen = line_wen[1];
+    assign io_sram5_wdata = data_in_ram;
+    assign line_o[1] = io_sram5_rdata;
+    //ysyx_220053_S011HD1P_X32Y2D128 ram1(.Q(line_o[1]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [1]),.A(ram_addr),.D(data_in_ram));
+    assign io_sram6_addr = ram_addr;
+    assign io_sram6_cen = 1'b0;
+    assign io_sram6_wen = line_wen[2];
+    assign io_sram6_wdata = data_in_ram;
+    assign line_o[2] = io_sram6_rdata;
+    //ysyx_220053_S011HD1P_X32Y2D128 ram2(.Q(line_o[2]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [2]),.A(ram_addr),.D(data_in_ram));
+    assign io_sram7_addr = ram_addr;
+    assign io_sram7_cen = 1'b0;
+    assign io_sram7_wen = line_wen[3];
+    assign io_sram7_wdata = data_in_ram;
+    assign line_o[3] = io_sram7_rdata;
+    //ysyx_220053_S011HD1P_X32Y2D128 ram3(.Q(line_o[3]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [3]),.A(ram_addr),.D(data_in_ram));
     
     integer  i;
     //CompareTag
@@ -1754,7 +1847,55 @@ module ysyx_220053_core(
   output           rw_dev_o,
   output mem_valid,
   output reg wb_dev_o,
-  output [3:0] rw_bytes_o
+  output [3:0] rw_bytes_o,
+
+    output[5:0] io_sram0_addr,
+	output io_sram0_cen,
+	output io_sram0_wen,
+	output[127:0] io_sram0_wdata,
+	input[127:0] io_sram0_rdata,
+
+	output[5:0] io_sram1_addr,
+	output io_sram1_cen, 
+	output io_sram1_wen, 		
+	output[127:0] io_sram1_wdata,
+	input[127:0] io_sram1_rdata,
+
+	output[5:0] io_sram2_addr,	
+	output io_sram2_cen, 
+	output io_sram2_wen, 
+	output[127:0] io_sram2_wdata, 
+	input[127:0] io_sram2_rdata, 
+
+	output[5:0] io_sram3_addr, 
+	output io_sram3_cen, 
+	output io_sram3_wen, 
+	output[127:0] io_sram3_wdata, 
+	input[127:0] io_sram3_rdata,	
+
+	output[5:0] io_sram4_addr, 
+	output io_sram4_cen, 
+	output io_sram4_wen, 
+	output[127:0] io_sram4_wdata, 
+	input[127:0] io_sram4_rdata, 
+
+	output[5:0] io_sram5_addr, 
+	output io_sram5_cen, 
+	output io_sram5_wen, 
+	output[127:0] io_sram5_wdata, 
+	input[127:0] io_sram5_rdata, 
+
+	output[5:0] io_sram6_addr, 
+	output io_sram6_cen, 
+	output io_sram6_wen, 
+	output[127:0] io_sram6_wdata, 
+	input[127:0] io_sram6_rdata, 
+    
+	output[5:0] io_sram7_addr, 
+	output io_sram7_cen, 
+	output io_sram7_wen, 
+	output[127:0] io_sram7_wdata,
+	input[127:0] io_sram7_rdata
 );
     /////////////wires///////////////
     wire [63:0] i_rw_addr_o;
@@ -1925,7 +2066,11 @@ module ysyx_220053_core(
       .id_en_i(id_en),
       .i_rw_dev_o(i_rw_dev_o),
       .i_rw_size_o(i_rw_size_o),
-      .i_rw_bytes_o(i_rw_bytes_o)
+      .i_rw_bytes_o(i_rw_bytes_o),
+      .io_sram0_addr(io_sram0_addr),.io_sram0_cen(io_sram0_cen),.io_sram0_wen(io_sram0_wen),.io_sram0_wdata(io_sram0_wdata),.io_sram0_rdata(io_sram0_rdata),
+      .io_sram1_addr(io_sram1_addr),.io_sram1_cen(io_sram1_cen),.io_sram1_wen(io_sram1_wen),.io_sram1_wdata(io_sram1_wdata),.io_sram1_rdata(io_sram1_rdata),
+      .io_sram2_addr(io_sram2_addr),.io_sram2_cen(io_sram2_cen),.io_sram2_wen(io_sram2_wen),.io_sram2_wdata(io_sram2_wdata),.io_sram2_rdata(io_sram2_rdata),
+      .io_sram3_addr(io_sram3_addr),.io_sram3_cen(io_sram3_cen),.io_sram3_wen(io_sram3_wen),.io_sram3_wdata(io_sram3_wdata),.io_sram3_rdata(io_sram3_rdata)
     );
     assign pc = if_pc_o;
     assign instr = if_instr_o;
@@ -2128,7 +2273,11 @@ module ysyx_220053_core(
       .is_cmp(is_cmp),
       .d_rw_size_o(d_rw_size_o),
       .d_rw_dev_o(d_rw_dev_o),
-      .d_rw_bytes_o(d_rw_bytes_o)
+      .d_rw_bytes_o(d_rw_bytes_o),
+        .io_sram4_addr(io_sram4_addr),.io_sram4_cen(io_sram4_cen),.io_sram4_wen(io_sram4_wen),.io_sram4_wdata(io_sram4_wdata),.io_sram4_rdata(io_sram4_rdata),
+        .io_sram5_addr(io_sram5_addr),.io_sram5_cen(io_sram5_cen),.io_sram5_wen(io_sram5_wen),.io_sram5_wdata(io_sram5_wdata),.io_sram5_rdata(io_sram5_rdata),
+        .io_sram6_addr(io_sram6_addr),.io_sram6_cen(io_sram6_cen),.io_sram6_wen(io_sram6_wen),.io_sram6_wdata(io_sram6_wdata),.io_sram6_rdata(io_sram6_rdata),
+        .io_sram7_addr(io_sram7_addr),.io_sram7_cen(io_sram7_cen),.io_sram7_wen(io_sram7_wen),.io_sram7_wdata(io_sram7_wdata),.io_sram7_rdata(io_sram7_rdata)
     );
     wire is_Fence_i = m_Fence_i_i & m_valid_o;
     wire is_MemToReg = m_MemToReg_i & (~m_flush) & m_valid_o;
@@ -2651,7 +2800,31 @@ module ysyx_220053_IFU(
     input  id_en_i,
     output i_rw_dev_o,
     output [7:0] i_rw_size_o,
-    output [3:0] i_rw_bytes_o
+    output [3:0] i_rw_bytes_o,
+
+    output[5:0] io_sram0_addr,
+	output io_sram0_cen,
+	output io_sram0_wen,
+	output[127:0] io_sram0_wdata,
+	input[127:0] io_sram0_rdata,
+
+	output[5:0] io_sram1_addr,
+	output io_sram1_cen, 
+	output io_sram1_wen, 		
+	output[127:0] io_sram1_wdata,
+	input[127:0] io_sram1_rdata,
+
+	output[5:0] io_sram2_addr,	
+	output io_sram2_cen, 
+	output io_sram2_wen, 
+	output[127:0] io_sram2_wdata, 
+	input[127:0] io_sram2_rdata, 
+
+	output[5:0] io_sram3_addr, 
+	output io_sram3_cen, 
+	output io_sram3_wen, 
+	output[127:0] io_sram3_wdata, 
+	input[127:0] io_sram3_rdata
 );  
     wire cache_idle;
     reg old_instr, cache_doing;
@@ -2724,7 +2897,11 @@ module ysyx_220053_IFU(
          cache_pc,cpu_req_valid,cpu_data_read,i_cpu_ready,cache_idle,
          //cache<->memory
          i_rw_addr_o, i_rw_req_o,i_rw_valid_o,i_data_read_i,i_rw_ready_i,
-         cpu_dev
+         cpu_dev,
+         io_sram0_addr,io_sram0_cen,io_sram0_wen,io_sram0_wdata,io_sram0_rdata,
+         io_sram1_addr,io_sram1_cen,io_sram1_wen,io_sram1_wdata,io_sram1_rdata,
+         io_sram2_addr,io_sram2_cen,io_sram2_wen,io_sram2_wdata,io_sram2_rdata, 
+         io_sram3_addr,io_sram3_cen,io_sram3_wen,io_sram3_wdata,io_sram3_rdata
     );
     //assign rdata = cpu_data_read_r;
 endmodule
@@ -2781,7 +2958,31 @@ module ysyx_220053_Mem(
     input             d_rw_ready_i,
     output [3:0]      d_rw_bytes_o,
     input Fence_i,
-    output is_cmp
+    output is_cmp,
+
+    output[5:0] io_sram4_addr, 
+	output io_sram4_cen, 
+	output io_sram4_wen, 
+	output[127:0] io_sram4_wdata, 
+	input[127:0] io_sram4_rdata, 
+
+	output[5:0] io_sram5_addr, 
+	output io_sram5_cen, 
+	output io_sram5_wen, 
+	output[127:0] io_sram5_wdata, 
+	input[127:0] io_sram5_rdata, 
+
+	output[5:0] io_sram6_addr, 
+	output io_sram6_cen, 
+	output io_sram6_wen, 
+	output[127:0] io_sram6_wdata, 
+	input[127:0] io_sram6_rdata, 
+    
+	output[5:0] io_sram7_addr, 
+	output io_sram7_cen, 
+	output io_sram7_wen, 
+	output[127:0] io_sram7_wdata,
+	input[127:0] io_sram7_rdata
 );
     wire [63:0] dataout;
     reg [7:0] wmask;
@@ -2835,7 +3036,11 @@ module ysyx_220053_Mem(
     //cache<->memory
       d_rw_addr_o,d_rw_req_o,d_rw_valid_o,d_rw_w_data_o,d_data_read_i,d_rw_ready_i,
     //fence.i
-      Fence_i, d_rw_size_o, cpu_dev
+      Fence_i, d_rw_size_o, cpu_dev,
+      io_sram4_addr,io_sram4_cen,io_sram4_wen,io_sram4_wdata,io_sram4_rdata,
+      io_sram5_addr,io_sram5_cen,io_sram5_wen,io_sram5_wdata,io_sram5_rdata,
+      io_sram6_addr,io_sram6_cen,io_sram6_wen,io_sram6_wdata,io_sram6_rdata, 
+      io_sram7_addr,io_sram7_cen,io_sram7_wen,io_sram7_wdata,io_sram7_rdata
     );
     //wire [63:0] dev_dataout;
     assign dataout = (vis_clint) ? clint_rdata : cpu_data_read;
@@ -3029,14 +3234,13 @@ module ysyx_220053_mulu (
 //`ysyx_220053_WIDTH = 34
 //68bits
 //32+1+1+1bits
-//两位booth要补补够倍数
     reg [`ysyx_220053_WIDTH*2-1:0] tem_result, multiplicand_r;//68
     reg [`ysyx_220053_WIDTH:0] multiplier_r;//34+1
     reg running_r;
     wire calculate_done, ready_to_doing, doing_to_done, done_to_ready;
     wire [`ysyx_220053_WIDTH*2-1:0] p_result;
     reg [6:0] cnt;
-//state transition
+
     always @(posedge clk) begin
         if(rst || done_to_ready) begin
             cnt <= 7'b0;
@@ -3085,28 +3289,25 @@ module ysyx_220053_mulu (
         end    
     end
 
-    //iterate
-    //update multiplicand_r
+    //multiplicand_r
     always @(posedge clk) begin
         if(rst) multiplicand_r <= 0;
         else if (ready_to_doing) begin
             multiplicand_r <= {{`ysyx_220053_WIDTH{multiplicand[`ysyx_220053_COMPUTER_WIDTH]}},multiplicand[`ysyx_220053_COMPUTER_WIDTH],multiplicand};
             //68  
         end
-        //shift left  << 2
-        else if (running_r) begin
+        else if (running_r) begin //<< 2
             multiplicand_r <= {multiplicand_r[`ysyx_220053_WIDTH*2-3:0],2'b0};//65:0->66
         end
     end
-    //update multiplier_r
+    //multiplier_r
     always @(posedge clk) begin
-        // lowest bit is 0
         if(rst) multiplier_r <= 0;
         else if (ready_to_doing) begin
+            // lowest bit is 0
             multiplier_r <= {multiplier[`ysyx_220053_COMPUTER_WIDTH],multiplier,1'b0};//34+1
         end
-        //shift right >> 2
-        else if (running_r) begin 
+        else if (running_r) begin //>> 2
             multiplier_r <= {2'b0,multiplier_r[`ysyx_220053_WIDTH:2]};
         end
     end
@@ -3114,12 +3315,7 @@ module ysyx_220053_mulu (
     assign calculate_done = running_r && (cnt == 7'h10 ||multiplier_r[`ysyx_220053_WIDTH:0] == {{`ysyx_220053_WIDTH{1'b0}},1'b0});//34 == 34
    
     wire partial_cout;
-    ysyx_220053_booth_partial  booth_partial   (
-        .x_src  (multiplicand_r),
-        .y_src   (multiplier_r[2:0]),
-        .p_result (p_result),
-        .cout      (partial_cout)
-    );
+    ysyx_220053_partial partial(.x_src(multiplicand_r),.y_src(multiplier_r[2:0]),.p_result(p_result),.cout(partial_cout));
 //33 32 31
 //7 6 5 4 3 2 1 0 -1
     // `ysyx_220053_WIDTH*2-bit adder
@@ -3147,10 +3343,9 @@ module ysyx_220053_mulu (
 
 endmodule
 
-module ysyx_220053_booth_sel(
+module ysyx_220053_sel_gen(
   input [2:0] src,
   output [3:0] sel
-
 );
     ///y+1,y,y-1///
     wire y_add,y,y_sub;
@@ -3163,25 +3358,24 @@ module ysyx_220053_booth_sel(
     assign sel_double_negative =  y_add & ~y & ~y_sub;
     assign sel_double_positive = ~y_add &  y &  y_sub;
 
-    assign sel={sel_negative,sel_positive,sel_double_negative,sel_double_positive};
+    assign sel = {sel_negative,sel_positive,sel_double_negative,sel_double_positive};
 endmodule
 
-module ysyx_220053_booth_result_sel(
+module ysyx_220053_res_sel(
   input [3:0] sel,
   input [1:0] src,
-  output      p 
+  output p 
 );
     ////x,x-1////
     wire x,x_sub;
-    wire sel_negative,sel_double_negative,sel_positive,sel_double_positive;
-    assign {sel_negative,sel_positive,sel_double_negative,sel_double_positive}=sel;
+    wire sel_negative, sel_double_negative, sel_positive, sel_double_positive;
+    assign {sel_negative,sel_positive,sel_double_negative,sel_double_positive} = sel;
     assign {x,x_sub} =src;
     assign p = ~(~(sel_negative & ~x) & ~(sel_double_negative & ~x_sub) 
             & ~(sel_positive & x ) & ~(sel_double_positive &  x_sub));
-
 endmodule
 
-module ysyx_220053_booth_partial(
+module ysyx_220053_partial(
   input [2*`ysyx_220053_WIDTH-1:0]  x_src,
   input [2:0] y_src,
   output [2*`ysyx_220053_WIDTH-1:0]   p_result,
@@ -3189,25 +3383,19 @@ module ysyx_220053_booth_partial(
 );
 
     ///y+1,y,y-1///
-    //wire y_add,y,y_sub;
 
-    //assign {y_add,y,y_sub} = y_src;
     wire [3:0] sel;
     wire sel_negative = sel[3];
     wire sel_double_negative = sel[1];
-    //sel_positive,sel_double_positive;
-    //assign {sel_negative,sel_positive,sel_double_negative,sel_double_positive} = sel;
-    assign cout = sel_negative || sel_double_negative;
-    ysyx_220053_booth_sel booth_sel(
-        .src    (y_src),
-        .sel    (sel)
-    );
 
-    ysyx_220053_booth_result_sel partial0(.sel (sel), .src ({x_src[0],1'b0}), .p (p_result[0]));
+    assign cout = sel_negative || sel_double_negative;
+    ysyx_220053_sel_gen sel_gen(.src(y_src),.sel(sel));
+
+    ysyx_220053_res_sel p_res0(.sel (sel), .src ({x_src[0],1'b0}), .p (p_result[0]));
     genvar x;
     generate 
         for ( x = 1; x < `ysyx_220053_WIDTH * 2; x = x + 1) begin
-            ysyx_220053_booth_result_sel partial(.sel (sel), .src (x_src[x:x-1]), .p (p_result[x]));
+            ysyx_220053_res_sel p_res(.sel (sel), .src (x_src[x:x-1]), .p (p_result[x]));
         end 
     endgenerate
 endmodule
@@ -3235,7 +3423,32 @@ module ysyx_220053_MU(
     output            d_rw_dev_o,
     output [3:0]      d_rw_bytes_o,
     input Fence_i,
-    output is_cmp
+    output is_cmp,
+
+
+    output[5:0] io_sram4_addr, 
+	output io_sram4_cen, 
+	output io_sram4_wen, 
+	output[127:0] io_sram4_wdata, 
+	input[127:0] io_sram4_rdata, 
+
+	output[5:0] io_sram5_addr, 
+	output io_sram5_cen, 
+	output io_sram5_wen, 
+	output[127:0] io_sram5_wdata, 
+	input[127:0] io_sram5_rdata, 
+
+	output[5:0] io_sram6_addr, 
+	output io_sram6_cen, 
+	output io_sram6_wen, 
+	output[127:0] io_sram6_wdata, 
+	input[127:0] io_sram6_rdata, 
+    
+	output[5:0] io_sram7_addr, 
+	output io_sram7_cen, 
+	output io_sram7_wen, 
+	output[127:0] io_sram7_wdata,
+	input[127:0] io_sram7_rdata
 );
     wire vis_mem = MemToReg | MemWen | Fence_i;
     wire req_rw  = ~MemToReg;
@@ -3243,7 +3456,11 @@ module ysyx_220053_MU(
     ysyx_220053_Mem mem(.clk(clk),.rst(rst), .MemOp(MemOp), .raddr(raddr), .MemWen(MemWen),.req_rw(req_rw), .wdata(wdata), .rdata(mdata), .vis_mem(vis_mem)
         ,.m_busy(m_busy), .d_rw_addr_o(d_rw_addr_o), .d_rw_req_o(d_rw_req_o), .d_rw_valid_o(d_rw_valid_o), .d_rw_w_data_o(d_rw_w_data_o),
         .d_data_read_i(d_data_read_i), .d_rw_ready_i(d_rw_ready_i),.Fence_i(Fence_i), .is_cmp(is_cmp),
-        .d_rw_size_o(d_rw_size_o), .d_rw_dev_o(d_rw_dev_o),.d_rw_bytes_o(d_rw_bytes_o)
+        .d_rw_size_o(d_rw_size_o), .d_rw_dev_o(d_rw_dev_o),.d_rw_bytes_o(d_rw_bytes_o),
+        .io_sram4_addr(io_sram4_addr),.io_sram4_cen(io_sram4_cen),.io_sram4_wen(io_sram4_wen),.io_sram4_wdata(io_sram4_wdata),.io_sram4_rdata(io_sram4_rdata),
+        .io_sram5_addr(io_sram5_addr),.io_sram5_cen(io_sram5_cen),.io_sram5_wen(io_sram5_wen),.io_sram5_wdata(io_sram5_wdata),.io_sram5_rdata(io_sram5_rdata),
+        .io_sram6_addr(io_sram6_addr),.io_sram6_cen(io_sram6_cen),.io_sram6_wen(io_sram6_wen),.io_sram6_wdata(io_sram6_wdata),.io_sram6_rdata(io_sram6_rdata),
+        .io_sram7_addr(io_sram7_addr),.io_sram7_cen(io_sram7_cen),.io_sram7_wen(io_sram7_wen),.io_sram7_wdata(io_sram7_wdata),.io_sram7_rdata(io_sram7_rdata)
     );//M
     
     assign regsin = (MemToReg == 1'b0) ? raddr : mdata;//WB
@@ -3925,9 +4142,73 @@ module ysyx_220053(
     output  [1:0]                        io_slave_rresp,
     output  [64-1:0]                     io_slave_rdata,
     output                               io_slave_rlast,
-    output  [4-1:0]                      io_slave_rid//,
+    output  [4-1:0]                      io_slave_rid,
     //output  [1-1:0]                      io_slave_ruser
-);
+    output[5:0] io_sram0_addr,
+	output io_sram0_cen,
+	output io_sram0_wen,
+	output[127:0] io_sram0_wmask,
+	output[127:0] io_sram0_wdata,
+	input[127:0] io_sram0_rdata,
+
+	output[5:0] io_sram1_addr,
+	output io_sram1_cen, 
+	output io_sram1_wen, 
+	output[127:0] io_sram1_wmask,			
+	output[127:0] io_sram1_wdata,
+	input[127:0] io_sram1_rdata,
+
+	output[5:0] io_sram2_addr,	
+	output io_sram2_cen, 
+	output io_sram2_wen, 
+	output[127:0] io_sram2_wmask, 
+	output[127:0] io_sram2_wdata, 
+	input[127:0] io_sram2_rdata, 
+
+	output[5:0] io_sram3_addr, 
+	output io_sram3_cen, 
+	output io_sram3_wen, 
+	output[127:0] io_sram3_wmask, 
+	output[127:0] io_sram3_wdata, 
+	input[127:0] io_sram3_rdata,	
+
+	output[5:0] io_sram4_addr, 
+	output io_sram4_cen, 
+	output io_sram4_wen, 
+	output[127:0] io_sram4_wmask, 
+	output[127:0] io_sram4_wdata, 
+	input[127:0] io_sram4_rdata, 
+
+	output[5:0] io_sram5_addr, 
+	output io_sram5_cen, 
+	output io_sram5_wen, 
+	output[127:0] io_sram5_wmask, 
+	output[127:0] io_sram5_wdata, 
+	input[127:0] io_sram5_rdata, 
+
+	output[5:0] io_sram6_addr, 
+	output io_sram6_cen, 
+	output io_sram6_wen, 
+	output[127:0] io_sram6_wmask, 
+	output[127:0] io_sram6_wdata, 
+	input[127:0] io_sram6_rdata, 
+
+	output[5:0] io_sram7_addr, 
+	output io_sram7_cen, 
+	output io_sram7_wen, 
+	output[127:0] io_sram7_wmask, 
+	output[127:0] io_sram7_wdata,
+	input[127:0] io_sram7_rdata
+);  
+    assign io_sram0_wmask = 0; 
+	assign io_sram1_wmask = 0;
+	assign io_sram2_wmask = 0;
+	assign io_sram3_wmask = 0;
+	assign io_sram4_wmask = 0;
+	assign io_sram5_wmask = 0;
+	assign io_sram6_wmask = 0;
+	assign io_sram7_wmask = 0;
+
     wire  [63:0]   rw_addr_o;
     wire           rw_req_o;//
     wire           rw_valid_o;
@@ -3951,7 +4232,16 @@ module ysyx_220053(
         .instr(instr),.pc(pc),.wb_commit(wb_commit),.wb_pc(wb_pc),.wb_instr(wb_instr),.next_pc(next_pc),.mem_valid(mem_valid),.wb_dev_o(wb_dev_o),
         .rw_addr_o(rw_addr_o),.rw_req_o(rw_req_o),.rw_valid_o(rw_valid_o),.rw_w_data_o(rw_w_data_o),
         .data_read_i(data_read_i),.rw_ready_i(rw_ready_i),.rw_size_o(rw_size_o),
-        .rw_dev_o(rw_dev_o), .rw_bytes_o(rw_bytes_o)
+        .rw_dev_o(rw_dev_o), .rw_bytes_o(rw_bytes_o),
+        .io_sram0_addr(io_sram0_addr),.io_sram0_cen(io_sram0_cen),.io_sram0_wen(io_sram0_wen),.io_sram0_wdata(io_sram0_wdata),.io_sram0_rdata(io_sram0_rdata),
+        .io_sram1_addr(io_sram1_addr),.io_sram1_cen(io_sram1_cen),.io_sram1_wen(io_sram1_wen),.io_sram1_wdata(io_sram1_wdata),.io_sram1_rdata(io_sram1_rdata),
+        .io_sram2_addr(io_sram2_addr),.io_sram2_cen(io_sram2_cen),.io_sram2_wen(io_sram2_wen),.io_sram2_wdata(io_sram2_wdata),.io_sram2_rdata(io_sram2_rdata),
+        .io_sram3_addr(io_sram3_addr),.io_sram3_cen(io_sram3_cen),.io_sram3_wen(io_sram3_wen),.io_sram3_wdata(io_sram3_wdata),.io_sram3_rdata(io_sram3_rdata),
+        .io_sram4_addr(io_sram4_addr),.io_sram4_cen(io_sram4_cen),.io_sram4_wen(io_sram4_wen),.io_sram4_wdata(io_sram4_wdata),.io_sram4_rdata(io_sram4_rdata),
+        .io_sram5_addr(io_sram5_addr),.io_sram5_cen(io_sram5_cen),.io_sram5_wen(io_sram5_wen),.io_sram5_wdata(io_sram5_wdata),.io_sram5_rdata(io_sram5_rdata),
+        .io_sram6_addr(io_sram6_addr),.io_sram6_cen(io_sram6_cen),.io_sram6_wen(io_sram6_wen),.io_sram6_wdata(io_sram6_wdata),.io_sram6_rdata(io_sram6_rdata),
+        .io_sram7_addr(io_sram7_addr),.io_sram7_cen(io_sram7_cen),.io_sram7_wen(io_sram7_wen),.io_sram7_wdata(io_sram7_wdata),.io_sram7_rdata(io_sram7_rdata)
+
     );
     ysyx_220053_axi_rw axi(
         clock,
