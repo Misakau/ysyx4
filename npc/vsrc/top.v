@@ -245,7 +245,7 @@ module top(
     assign axi_ar_region_o = 0;
     assign axi_ar_prot_o = `ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS | `ysyx_220053_AXI_PROT_SECURE_ACCESS | `ysyx_220053_AXI_PROT_DATA_ACCESS;;
     initial begin
-        $dumpfile("/media/wang/U__/vlt_dump.vcd");
+        $dumpfile("logs/vlt_dump.vcd");
         if(pc >= 64'h83000000) $dumpvars();
     end
 endmodule
