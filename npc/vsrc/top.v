@@ -212,6 +212,20 @@ module top(
     ysyx_040053_S011HD1P_X32Y2D128_BW sram5(io_sram5_rdata, clk, io_sram5_cen, io_sram5_wen, io_sram5_wmask, io_sram5_addr, io_sram5_wdata);
     ysyx_040053_S011HD1P_X32Y2D128_BW sram6(io_sram6_rdata, clk, io_sram6_cen, io_sram6_wen, io_sram6_wmask, io_sram6_addr, io_sram6_wdata);
     ysyx_040053_S011HD1P_X32Y2D128_BW sram7(io_sram7_rdata, clk, io_sram7_cen, io_sram7_wen, io_sram7_wmask, io_sram7_addr, io_sram7_wdata);
+    
+    
+    assign axi_aw_user_o = 0;
+    assign axi_aw_lock_o = 0;
+    assign axi_aw_cache_o = 0;
+    assign axi_aw_qos_o = 0;
+    assign axi_aw_region_o = 0;
+    assign axi_w_user_o = 0;
+    assign axi_ar_user_o = 0;
+    assign axi_ar_lock_o = 0;
+    assign axi_ar_cache_o = 0;
+    assign axi_ar_qos_o = 0;
+    assign axi_ar_region_o = 0;
+    
     initial begin
         $dumpfile("logs/vlt_dump.vcd");
         $dumpvars();
