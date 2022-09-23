@@ -490,6 +490,8 @@ static void npc_exec(uint64_t n){
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(sdb_top->wb_dev_o == true){
+                  if(sdb_top->wb_pc >= 0x0000000083000000)
+                    printf("nemu_last_pc = %lx\n",nemu_last_pc);
                   for(int i = 1; i < 32; i++){
                     nemu.gpr[i] = cpu_gpr[i];
                   }
