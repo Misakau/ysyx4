@@ -41,7 +41,7 @@ all:
 	@mkdir -p logs
 	@cd logs && touch npc-logs.txt && cd ../
 sim:all
-	obj_dir/Vtop #+trace -l $(LOGS) #-i $(IMG)
+	obj_dir/Vtop -l $(LOGS) #-i $(IMG)
 #npcrun:
 #	obj_dir/Vtop +trace $(TEST_PATH)$(IMAGE)
 clean:
