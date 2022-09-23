@@ -11,9 +11,7 @@ module top(
     output [63:0] wb_pc,
     output [31:0] wb_instr,
     output [63:0] next_pc,
-    output mem_valid,
-    output reg wb_dev_o,
-    output d_rw_ready,
+    output wb_dev_o,
 ///////////////////////AXI////////////////////////////
     input                               axi_aw_ready_i,              
     output                              axi_aw_valid_o,
@@ -201,7 +199,15 @@ module top(
 	.io_sram7_wen  (io_sram7_wen  ), 
 	.io_sram7_wmask(io_sram7_wmask), 
 	.io_sram7_wdata(io_sram7_wdata),
-	.io_sram7_rdata(io_sram7_rdata)
+	.io_sram7_rdata(io_sram7_rdata),
+
+    .instr(instr),
+    .pc(pc),
+    .wb_commit(wb_commit),
+    .wb_pc(wb_pc),
+    .wb_instr(wb_instr),
+    .next_pc(next_pc),
+    .wb_dev_o(wb_dev_o)
     );
 
     ysyx_040053_S011HD1P_X32Y2D128_BW sram0(io_sram0_rdata, clk, io_sram0_cen, io_sram0_wen, io_sram0_wmask, io_sram0_addr, io_sram0_wdata);

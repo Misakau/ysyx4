@@ -39,6 +39,17 @@ void Vtop___024root___initial__TOP__1(Vtop___024root* vlSelf) {
     __Vtemp1[4U] = 0x6cU;
     vlSymsp->_vm_contextp__->dumpfile(VL_CVT_PACK_STR_NW(5, __Vtemp1));
     vlSymsp->_traceDumpOpen();
+    vlSelf->axi_aw_user_o = 0U;
+    vlSelf->axi_aw_lock_o = 0U;
+    vlSelf->axi_aw_cache_o = 0U;
+    vlSelf->axi_aw_qos_o = 0U;
+    vlSelf->axi_aw_region_o = 0U;
+    vlSelf->axi_w_user_o = 0U;
+    vlSelf->axi_ar_user_o = 0U;
+    vlSelf->axi_ar_lock_o = 0U;
+    vlSelf->axi_ar_cache_o = 0U;
+    vlSelf->axi_ar_qos_o = 0U;
+    vlSelf->axi_ar_region_o = 0U;
     vlSelf->axi_aw_id_o = 0U;
     vlSelf->axi_aw_burst_o = 1U;
     vlSelf->axi_ar_id_o = 0U;
