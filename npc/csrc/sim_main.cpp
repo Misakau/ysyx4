@@ -491,13 +491,14 @@ static void npc_exec(uint64_t n){
               if(sdb_top->clk == 0  && sdb_top->wb_commit == 1){
                 difftest_regcpy(&nemu, 1);
                 nemu_last_pc = nemu.pc;
+                /*
                 if(sdb_top->wb_pc == 0x00000000830188d8){
                   for (i = 0; i < 32; i++) {
                     printf("nemu_%s = 0x%lx\n", regs_name[i], nemu.gpr[i]);
                   }
                   printf("nemu_last_pc = %lx\n",nemu_last_pc);
                   break;
-                }
+                }*/
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(sdb_top->wb_dev_o == true){
