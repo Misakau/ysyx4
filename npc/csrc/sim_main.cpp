@@ -466,7 +466,7 @@ static void npc_exec(uint64_t n){
               }
 
               if(sdb_mem_sig_ref.araddr == VGACTL_ADDR && sdb_mem_sig_ref.arvalid == 1){
-                printf("wh_data!\n");
+                printf("wh_data = %x\n",vgactl_port_base[0]);
                 uint32_t vctr = vgactl_port_base[0];
                 mem.write(RTC_ADDR,4,(uint8_t *)(&vctr));
               }
