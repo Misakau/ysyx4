@@ -464,6 +464,11 @@ static void npc_exec(uint64_t n){
                 uint64_t rtc_r = get_time() - st_time;
                 mem.write(RTC_ADDR,8,(uint8_t *)(&rtc_r));
               }
+
+              if(sdb_mem_sig_ref.araddr == VGACTL_ADDR && sdb_mem_sig_ref.arvalid == 1){
+                uint32_t vctr = vgactl_port_base[0];
+                mem.write(RTC_ADDR,4,(uint8_t *)(&vctr));
+              }
               mem.beat(sdb_mem_sig_ref);
             }
             //printf("[after beat] arready_i = %d\n",mem_sig.arready);
