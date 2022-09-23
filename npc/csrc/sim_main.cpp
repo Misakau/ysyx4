@@ -699,7 +699,7 @@ static void npc_exec(uint64_t n){
             */
            //return;
             //printf("axi_ar_addr_o = %lx\n",sdb_top->axi_ar_addr_o);
-            print("pc = %x\n",sdb_top->pc);
+            printf("pc = %x\n",sdb_top->pc);
             sdb_mem_sig.update_input(sdb_mem_ref);
             sdb_top->eval();
             //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, d_rw_ready = %d, rw_ready_i = %d\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o, sdb_top->d_rw_ready,sdb_top->rw_ready_i);
@@ -707,7 +707,7 @@ static void npc_exec(uint64_t n){
             if(sdb_top->clk == 1) mem.beat(sdb_mem_sig_ref);
             //printf("[after beat] arready_i = %d\n",mem_sig.arready);
             sdb_mem_sig.update_output(sdb_mem_ref);
-            print("hh\n");
+            printf("hh\n");
             //if(i == 528) printf("i == 528, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
             //if(sdb_top->clk == 1 && i == imem_ls + 2) sdb_top->i_rw_ready_i = 0;
             //if(sdb_top->clk == 1 && i == dmem_ls + 2) sdb_top->d_rw_ready_i = 0;
