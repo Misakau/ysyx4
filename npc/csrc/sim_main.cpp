@@ -458,7 +458,7 @@ static void npc_exec(uint64_t n){
             if(sdb_top->clk == 1){
               if(sdb_mem_sig_ref.awaddr >= DEVICE_BASE && sdb_mem_sig_ref.awvalid == 1){
                 pmem_write(sdb_mem_sig_ref.awaddr,sdb_mem_sig_ref.wdata,sdb_mem_sig_ref.wstrb);
-                printf("waddr = %lx, wmask = %x, wdata = %lx\n",sdb_mem_sig_ref.awaddr, (uint32_t)((uint8_t)sdb_mem_sig_ref.wstrb),sdb_mem_sig_ref.wdata);
+                printf("waddr = %lx, wmask = %x, wdata = %lx\n",sdb_mem_sig_ref.awaddr, sdb_mem_sig_ref.wstrb,sdb_mem_sig_ref.wdata);
               }
                 
               if(sdb_mem_sig_ref.araddr == RTC_ADDR && sdb_mem_sig_ref.arvalid == 1){
