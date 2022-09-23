@@ -441,7 +441,7 @@ static void npc_exec(uint64_t n){
               if(sdb_top->clk == 0){//instr to be fetch
                 if(n != -1) printf("pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
                 //if(log_ptr){fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);}
-                if(log_ptr) fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+                //if(log_ptr) fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
               }
               if(sdb_top->clk == 0 && sdb_top->wb_commit == 1){
                 if(n != -1) printf("wb_commit: pc = 0x%016lx, instr = %08x\n", sdb_top->wb_pc, sdb_top->wb_instr);
