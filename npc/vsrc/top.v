@@ -1,7 +1,17 @@
 /* verilator lint_off UNUSED */
 /* verilator lint_off PINMISSING */
 /* verilator lint_off DECLFILENAME */
+
 import "DPI-C" function void c_trap(input bit done);
+
+`define ysyx_220053_AXI_AWCACHE_WRITE_BACK_READ_AND_WRITE_ALLOCATE      4'b1111
+`define ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS                        3'b000
+`define ysyx_220053_AXI_PROT_PRIVILEGED_ACCESS                          3'b001
+`define ysyx_220053_AXI_PROT_SECURE_ACCESS                              3'b000
+`define ysyx_220053_AXI_PROT_NON_SECURE_ACCESS                          3'b010
+`define ysyx_220053_AXI_PROT_DATA_ACCESS                                3'b000
+`define ysyx_220053_AXI_PROT_INSTRUCTION_ACCESS                         3'b100
+
 module top(
     input clk,
     input rst,
