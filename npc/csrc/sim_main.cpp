@@ -22,8 +22,6 @@
 
 axi4_mem <32,64,4> mem(4096l*1024*1024);
 axi4_ptr <32,64,4> mem_ptr;
-
-void npc_exec(uint64_t n);
 void connect_wire(Vtop *top, axi4_ptr <32,64,4> *ptr){
     ptr->awid = &(top->axi_aw_id_o);
     ptr->awaddr = &(top->axi_aw_addr_o);
@@ -411,7 +409,135 @@ int main(int argc, char**argv, char**env) {
     int cnt = 0;
     int mem_ls = 0;//int imem_ls = 0,dmem_ls = 0;
     if(is_batch){
-      npc_exec(-1);
+      #undef ITRACE
+      int step = 0;
+        NEMU_CPU nemu;
+        while (!npc_done && !contextp->gotFinish()) { 
+            contextp->timeInc(1); 
+            top->clk = !top->clk;
+            
+            //if(top->clk == 0)top->instr_i = pimem_read(top->pc);
+            if(NPC_EXIT){printf(ASNI_FG_RED "ASSERT!\n" ASNI_NONE); top->eval();break;}
+            //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", top->clk, top->rst, top->pc, top->instr);
+             /*if(top->clk == 1 && top->i_rw_valid_o == 1){
+              long long midx = ((sdb_top->i_rw_addr_o - AD_BASE) >> 4) << 1;
+              //printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, midx = %lld\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o,midx);
+              top->i_data_read_i[0] = (uint32_t)MEM[midx];
+              top->i_data_read_i[1] = (uint32_t)(MEM[midx]>>32);
+              top->i_data_read_i[2] = (uint32_t)MEM[midx+1];
+              top->i_data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
+              top->i_rw_ready_i = 1;
+              imem_ls = step;
+            }
+            if(top->clk == 1 && top->d_rw_valid_o == 1){
+              long long midx = ((top->d_rw_addr_o - AD_BASE) >> 4) << 1;
+              //printf("d_rw_req = %d, d_rw_valid_o = %x, d_rw_addr_o = %lx, midx = %lld\n",sdb_top->d_rw_req_o, sdb_top->d_rw_valid_o,sdb_top->d_rw_addr_o,midx);
+              if(top->d_rw_req_o == 0){
+                top->d_data_read_i[0] = (uint32_t)MEM[midx];
+                top->d_data_read_i[1] = (uint32_t)(MEM[midx]>>32);
+                top->d_data_read_i[2] = (uint32_t)MEM[midx+1];
+                top->d_data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
+              }
+              else{
+                MEM[midx] = top->d_rw_w_data_o[0] | (uint64_t)top->d_rw_w_data_o[1] << 32;
+                MEM[midx + 1] = top->d_rw_w_data_o[2] | (uint64_t)top->d_rw_w_data_o[3] << 32;
+              }
+              top->d_rw_ready_i = 1;
+              dmem_ls = step;
+            }*/
+            /*
+            if(top->clk == 1 && top->rw_valid_o == 1){
+              if(top->rw_dev_o == 1){
+                //printf("[MMIO] rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
+                if(top->rw_req_o == 0){
+                  long long dataout = 0;
+                  pmem_read(top->rw_addr_o , &dataout, 8);
+                  top->data_read_i[0] = (uint32_t)dataout;
+                  top->data_read_i[1] = (uint32_t)(dataout>>32);
+                  top->data_read_i[2] = 0;
+                  top->data_read_i[3] = 0;
+                }
+                else{
+                  uint64_t wdata = top->rw_w_data_o[0] | (uint64_t)top->rw_w_data_o[1] << 32;;
+                  if (top->rw_ready_i == 0) pmem_write(top->rw_addr_o, wdata, top->rw_size_o);
+                }
+              }
+              else{
+                long long midx = ((top->rw_addr_o - AD_BASE) >> 4) << 1;
+                //printf("rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, midx = %lld\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o,midx);
+                if(top->rw_req_o == 0){
+                  top->data_read_i[0] = (uint32_t)MEM[midx];
+                  top->data_read_i[1] = (uint32_t)(MEM[midx]>>32);
+                  top->data_read_i[2] = (uint32_t)MEM[midx+1];
+                  top->data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
+                }
+                else{
+                  MEM[midx] = top->rw_w_data_o[0] | (uint64_t)top->rw_w_data_o[1] << 32;
+                  MEM[midx + 1] = top->rw_w_data_o[2] | (uint64_t)top->rw_w_data_o[3] << 32;
+                }
+              }
+              if (top->rw_ready_i == 0) mem_ls = step;
+              top->rw_ready_i = 1;
+            }
+            */
+            mem_sig.update_input(mem_ref);
+            top->eval();
+            if(top->clk == 1) mem.beat(mem_sig_ref);
+            //printf("[after beat] arready_i = %d\n",mem_sig.arready);
+            mem_sig.update_output(mem_ref);
+            //if(top->clk == 1 && step == imem_ls + 2) top->i_rw_ready_i = 0;
+            //if(top->clk == 1 && step == dmem_ls + 2) top->d_rw_ready_i = 0;
+            //if(top->clk == 1 && step == mem_ls + 2) top->rw_ready_i = 0;
+            #ifdef ITRACE
+              char str[128];disassemble(str, 127, sdb_top->pc, (uint8_t*)&instr_now, 4);
+              if(sdb_top->clk == 0){
+                if(log_ptr == NULL) printf("pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+                //else fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+                if(log_ptr) fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
+              } 
+              if(sdb_top->clk == 0 && sdb_top->wb_commit == 1){
+                printf("wb_commit: pc = 0x%016lx, instr = %08x\n", sdb_top->wb_pc, sdb_top->wb_instr);
+                //if(log_ptr){fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);}
+                if(log_ptr) fprintf(log_ptr, "wb_commit: pc = 0x%016lx, instr = %08x\n", sdb_top->wb_pc, sdb_top->wb_instr);
+              } 
+            #endif
+
+            if(top->clk == 0 && top->wb_commit == 1){
+              tot_instr++;
+              device_update();
+            }
+            
+            if(is_diff){
+              step++;
+              if(top->clk == 0 && top->wb_commit == 1){
+                difftest_exec(1);
+                difftest_regcpy(&nemu, 1);
+                if(top->wb_dev_o == true){
+                  //printf("a5 = %lx\n",cpu_gpr[15]);
+                  for(int i = 1; i < 32; i++){
+                    nemu.gpr[i] = cpu_gpr[i];
+                  }
+                  difftest_regcpy(&nemu, 0);
+                }
+                //commit_dev = false;
+                //printf("top->wb_pc = %lx, commit = %d, mem_valid = %d\n",top->wb_pc,top->wb_commit, top->mem_valid);}
+                if(top->next_pc != nemu.pc){
+                  printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, top->next_pc, top->wb_pc);
+                  printf(ASNI_FG_BLUE "Step = %d\n" ASNI_NONE,step);
+                  NPC_EXIT = 1; PASS = 1;break;
+                }
+                for(int i = 1; i < 32; i++){
+                  if(cpu_gpr[i] != nemu.gpr[i]){
+                    printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],top->wb_pc);
+                    printf(ASNI_FG_BLUE "Step = %d\n" ASNI_NONE,step);
+                    dump_gpr();
+                    NPC_EXIT = 1; PASS = 1;break;
+                  }
+                }
+              } 
+            }
+            if(NPC_EXIT == 1) {top->eval();break;}
+        }
     }
     else{
         printf(ASNI_FG_RED "Not in batch mode!\n" ASNI_NONE);
@@ -447,7 +573,7 @@ int main(int argc, char**argv, char**env) {
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-void npc_exec(uint64_t n){
+static void npc_exec(uint64_t n){
 
   axi4_ref <32,64,4> sdb_mem_ref(mem_ptr);
   axi4 <32,64,4> sdb_mem_sig;
