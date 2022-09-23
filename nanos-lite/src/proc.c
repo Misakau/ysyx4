@@ -22,7 +22,7 @@ void hello_fun(void *arg) {
 void naive_uload(PCB *pcb, const char *filename);
 void init_proc() {
   switch_boot_pcb();
-  naive_uload(NULL,"/bin/nterm");
+  naive_uload(NULL,"/bin/pal");
   Log("Initializing processes...");
 
   // load program here
