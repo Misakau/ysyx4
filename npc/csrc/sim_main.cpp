@@ -554,7 +554,7 @@ static void npc_exec(uint64_t n){
                 pmem_write(sdb_mem_sig_ref.awaddr,sdb_mem_sig_ref.wdata,sdb_mem_sig_ref.wstrb);
               if(sdb_mem_sig_ref.araddr == RTC_ADDR && sdb_mem_sig_ref.arvalid == 1){
                 uint64_t rtc_r = get_time() - st_time;
-                mem.write(RTC_ADDR,8,&rtc_r);
+                mem.write(RTC_ADDR,8,(uint8_t *)(&rtc_r));
               }
               mem.beat(sdb_mem_sig_ref);
             }
