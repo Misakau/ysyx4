@@ -204,7 +204,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     //printf("ok\n");
   }
   else{
-    
+     printf("waddr = %llx, wmask = %x, wdata = %llx\n",waddr, (uint32_t)((uint8_t)wmask),wdata);
     //if(real_addr == 0x80000260){
   //  printf("\nMEM[real_addr] = %llx\n",MEM[real_addr]);
 
