@@ -478,11 +478,11 @@ static void npc_exec(uint64_t n){
             }
 
             if(is_diff){
-              uint64_t nemu_last_pc = 0x80000000;
+              //uint64_t nemu_last_pc = 0x80000000;
               if(sdb_top->clk == 0  && sdb_top->wb_commit == 1){
-                difftest_regcpy(&nemu, 1);
-                nemu_last_pc = nemu.pc;
-                if(sdb_top->wb_pc == 0x00000000830188d8){
+                //difftest_regcpy(&nemu, 1);
+                //nemu_last_pc = nemu.pc;
+                /*if(sdb_top->wb_pc == 0x00000000830188d8){
                   dump_gpr();
                   for (i = 0; i < 32; i++) {
                     printf("nemu_%s = 0x%lx\n", regs_name[i], nemu.gpr[i]);
@@ -491,7 +491,7 @@ static void npc_exec(uint64_t n){
                   difftest_regcpy(&nemu, 1);
                   printf("nemu_last_pc = %lx\n",nemu_last_pc);
                   break;
-                }
+                }*/
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(sdb_top->wb_dev_o == true){
@@ -500,11 +500,13 @@ static void npc_exec(uint64_t n){
                   }
                   difftest_regcpy(&nemu, 0);
                 }
+                /*
                 if(sdb_top->wb_pc != nemu_last_pc){
                   printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu_last_pc, sdb_top->wb_pc);
                   dump_gpr();
                   NPC_EXIT = 1;break;
                 }
+                */
                 for(int i = 1; i < 32; i++){
                   if(cpu_gpr[i] != nemu.gpr[i]){
                     printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],sdb_top->wb_pc);
