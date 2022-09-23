@@ -204,35 +204,8 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     //printf("ok\n");
   }
   else{
-     printf("waddr = %llx, wmask = %x, wdata = %llx\n",waddr, (uint32_t)((uint8_t)wmask),wdata);
-    //if(real_addr == 0x80000260){
-  //  printf("\nMEM[real_addr] = %llx\n",MEM[real_addr]);
-
-   // printf("write addr = %llx, data = %llx, wmask = %x\n",waddr,wdata,(uint8_t)wmask);
-
-    //}
-    if(waddr < AD_BASE || ((waddr - AD_BASE) >> 3) >= MEMSIZE){
-      //if(START) NPC_EXIT = 1;//
-      //printf("addrs=%llx\n",waddr); 
-      //printf("ERROR W\n");
-      return;
-    }
-    else{//has bug
-    long long maddr = (waddr + bytes - 1 - AD_BASE) >> 3;
-    //long long ret;
-      if(maddr != real_addr) assert(0);
-      uint8_t *ptr = (uint8_t *)(&MEM[real_addr]);
-      uint8_t *wd = (uint8_t *)(&wdata);
-      for(int i = 0; i < 8; i++){
-   //     printf("is_wr[%d] = %d, wd[%d] = %02x\n",i,is_wr[i],i,wd[i]);
-        if(is_wr[i]) ptr[i] = wd[i];
-      }
-      //MEM[real_addr] = (MEM[real_addr] & (~(real_mask << ((waddr & 0x7)<<3)))) | ((wdata & real_mask)<< ((waddr & 0x7)<<3));
-     // printf("end\n");
-
-   // printf("MEM[real_addr] = %016llx\n",MEM[real_addr]);
-      return;
-    }
+    printf(ASNI_FG_RED "Invalid MMIO address! %llx\n" ASNI_NONE,waddr);
+    assert(0);
   }
   
   // 总是往地址为`waddr & ~0x7ull`的8字节按写掩码`wmask`写入`wdata`
