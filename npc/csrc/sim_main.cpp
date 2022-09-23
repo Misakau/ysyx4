@@ -704,7 +704,11 @@ static void npc_exec(uint64_t n){
             sdb_top->eval();
             //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, d_rw_ready = %d, rw_ready_i = %d\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o, sdb_top->d_rw_ready,sdb_top->rw_ready_i);
             //return;
-            if(sdb_top->clk == 1) mem.beat(sdb_mem_sig_ref);
+            if(sdb_top->clk == 1){
+              printf("start to beat at awaddr = %lx, araddr = %lx\n",sdb_mem_sig_ref.awaddr,sdb_mem_sig_ref.araddr);
+              mem.beat(sdb_mem_sig_ref);
+              printf("finish beat\n");
+            }
             //printf("[after beat] arready_i = %d\n",mem_sig.arready);
             sdb_mem_sig.update_output(sdb_mem_ref);
             printf("hh\n");
