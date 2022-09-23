@@ -459,7 +459,7 @@ static void npc_exec(uint64_t n){
             sdb_mem_sig.update_input(sdb_mem_ref);
             sdb_top->eval();
             if(sdb_top->pc >= 0x83000000){
-              tfp->dump(sdb_contextp->time());
+              sdb_tfp->dump(sdb_contextp->time());
             }
             //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, d_rw_ready = %d, rw_ready_i = %d\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o, sdb_top->d_rw_ready,sdb_top->rw_ready_i);
             //return;
