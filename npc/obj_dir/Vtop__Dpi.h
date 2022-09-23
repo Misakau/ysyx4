@@ -13,7 +13,7 @@ extern "C" {
 
 
     // DPI IMPORTS
-    // DPI import at vsrc/top.v:4:30
+    // DPI import at vsrc/top.v:5:30
     extern void c_trap(svBit done);
 
 #ifdef __cplusplus

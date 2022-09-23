@@ -43,14 +43,14 @@ void Vtop___024root___initial__TOP__1(Vtop___024root* vlSelf) {
     vlSymsp->_traceDumpOpen();
     vlSelf->axi_aw_user_o = 0U;
     vlSelf->axi_aw_lock_o = 0U;
-    vlSelf->axi_aw_cache_o = 0U;
+    vlSelf->axi_aw_cache_o = 0xfU;
     vlSelf->axi_aw_qos_o = 0U;
     vlSelf->axi_aw_region_o = 0U;
     vlSelf->axi_aw_prot_o = 0U;
     vlSelf->axi_w_user_o = 0U;
     vlSelf->axi_ar_user_o = 0U;
     vlSelf->axi_ar_lock_o = 0U;
-    vlSelf->axi_ar_cache_o = 0U;
+    vlSelf->axi_ar_cache_o = 0xfU;
     vlSelf->axi_ar_qos_o = 0U;
     vlSelf->axi_ar_region_o = 0U;
     vlSelf->axi_ar_prot_o = 0U;
