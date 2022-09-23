@@ -20,7 +20,7 @@ VL_INLINE_OPT void Vtop___024root____Vdpiimwrap_top__DOT__mycpu__DOT__core__DOT_
     set_gpr_ptr(&a__Vopenarray);
 }
 
-void Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit(QData/*63:0*/ instr);
+void Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit(IData/*31:0*/ instr);
 extern const VlUnpacked<CData/*0:0*/, 256> Vtop__ConstPool__TABLE_13cca9cb_0;
 extern const VlUnpacked<CData/*2:0*/, 256> Vtop__ConstPool__TABLE_847b487e_0;
 extern const VlUnpacked<CData/*0:0*/, 256> Vtop__ConstPool__TABLE_376f51ec_0;
@@ -178,7 +178,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                             | (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__if_busy))) 
                    | (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__cpu_halt)) 
                   | (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__has_fence_i))))) {
-        Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit((QData)((IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__if_instr_o)));
+        Vtop___024unit____Vdpiimwrap_get_instr_TOP____024unit(vlSelf->top__DOT__mycpu__DOT__core__DOT__if_instr_o);
     }
     if ((1U & (~ (IData)(vlSelf->rst)))) {
         if (((3U == (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status)) 
