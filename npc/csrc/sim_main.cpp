@@ -757,6 +757,7 @@ static void npc_exec(uint64_t n){
             if(NPC_EXIT == 1) {sdb_top->eval();break;}
         }
   if(npc_done){
+    printf("hh\n");
     if(cpu_gpr[10] == 0)
         printf(ASNI_FG_GREEN "HIT GOOD TRAP!" ASNI_NONE);
     else printf(ASNI_FG_RED "HIT BAD TRAP!" ASNI_NONE);
