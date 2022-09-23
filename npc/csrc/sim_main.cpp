@@ -113,25 +113,20 @@ uint64_t get_time(){
   gettimeofday(&tv, NULL);
   return tv.tv_sec * 1000000ull + tv.tv_usec;
 }
-static bool rd_dev = false;
 extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
   //printf("ENTRY R\n");
   //assert(raddr & 0x7 == 0);
   if(raddr == RTC_ADDR){
     //printf("read rtc\n");
-    rd_dev = sdb_top->mem_valid;
     *rdata = get_time() - st_time;
    // printf("now time = %lld\n",(long long)*rdata);
    // printf("%llx\n",*rdata - st_time);
   }
   else if(raddr == VGACTL_ADDR){
-    rd_dev = sdb_top->mem_valid;
     assert(vgactl_port_base);
-    //printf("rd_dev = %d, rdata = %x\n",rd_dev,*vgactl_port_base);
     *rdata = *vgactl_port_base;
   }
   else if(raddr == KBD_ADDR){
-    rd_dev = sdb_top->mem_valid;
     assert(i8042_data_port_base);
     //printf("i8042_data_port_base[0] = %x\n",i8042_data_port_base[0]);
     i8042_data_io_handler(0, 4, false);

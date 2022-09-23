@@ -1,5 +1,4 @@
-/* verilator lint_off DECLFILENAME */
-module ysyx_220053_Adder64(//y turn into ~y outside when to sub
+module ysyx_040053_Adder64(//y turn into ~y outside when to sub
     output [63:0] result,
     output cout,OF,SF,ZF,CF,
     input [63:0] x,y,
@@ -7,8 +6,8 @@ module ysyx_220053_Adder64(//y turn into ~y outside when to sub
 );
     wire [31:0] res_l, res_h;
     wire c_l;
-    ysyx_220053_Adder32 adder_low(res_l, c_l, x[31:0], y[31:0], sub);
-    ysyx_220053_Adder32 adder_high(res_h, cout, x[63:32], y[63:32], c_l);
+    ysyx_040053_Adder32 adder_low(res_l, c_l, x[31:0], y[31:0], sub);
+    ysyx_040053_Adder32 adder_high(res_h, cout, x[63:32], y[63:32], c_l);
     assign result = {res_h, res_l};
     assign OF = (!x[63] & !y[63] & result[63]) | (x[63] & y[63] & !result[63]);
     assign SF = result[63];
@@ -16,7 +15,7 @@ module ysyx_220053_Adder64(//y turn into ~y outside when to sub
     assign CF = cout ^ sub;
 endmodule
 
-module ysyx_220053_FA(
+module ysyx_040053_FA(
     output f,cout,
     input x,y,cin
 );
@@ -24,7 +23,7 @@ module ysyx_220053_FA(
     assign cout= (x & y) | (x & cin) | (y & cin);
 endmodule
 
-module ysyx_220053_CLU4(
+module ysyx_040053_CLU4(
     input [3:0] p,g,
     input c0,
     output [3:0] c
@@ -37,7 +36,7 @@ module ysyx_220053_CLU4(
     assign c = {c4,c3,c2,c1};
 endmodule
 
-module ysyx_220053_CLA4(
+module ysyx_040053_CLA4(
     output [3:0] f,
     output cout,
     input [3:0] x,y,
@@ -47,7 +46,7 @@ module ysyx_220053_CLA4(
     wire [4:1] c;
     assign p=x|y;
     assign g=x&y;
-    ysyx_220053_CLU4 gen(
+    ysyx_040053_CLU4 gen(
         .c0(cin),
         .p(p),
         .g(g),
@@ -55,7 +54,7 @@ module ysyx_220053_CLA4(
     );
     genvar i;
     wire cout_miss_fa;
-    ysyx_220053_FA adder(
+    ysyx_040053_FA adder(
         .x(x[0]),
         .y(y[0]),
         .cin(cin),
@@ -65,7 +64,7 @@ module ysyx_220053_CLA4(
     wire [3:1] cout_miss;
     generate
         for (i=1;i<=3;i=i+1) begin
-            ysyx_220053_FA adder(
+            ysyx_040053_FA adder(
                 .cout(cout_miss[i]),
                 .x(x[i]),
                 .y(y[i]),
@@ -77,7 +76,7 @@ module ysyx_220053_CLA4(
     assign cout = c[4];
 endmodule
 
-module ysyx_220053_CLA8(
+module ysyx_040053_CLA8(
     output [7:0] f,
     output cout,
     input [7:0] x,y,
@@ -89,14 +88,14 @@ module ysyx_220053_CLA8(
     assign g=x[3:0] & y[3:0];
     assign cin2=g[3] | (p[3]&g[2]) | (p[3]&p[2]&g[1]) | (p[3]&p[2]&p[1]&g[0]) | (p[3]&p[2]&p[1]&p[0]&cin);
     wire cout_miss_l;
-    ysyx_220053_CLA4 adder_low(
+    ysyx_040053_CLA4 adder_low(
         .x(x[3:0]),
         .y(y[3:0]),
         .cin(cin),
         .f(f[3:0]),
         .cout(cout_miss_l)
     );
-    ysyx_220053_CLA4 adder_high(
+    ysyx_040053_CLA4 adder_high(
         .x(x[7:4]),
         .y(y[7:4]),
         .cin(cin2),
@@ -106,7 +105,7 @@ module ysyx_220053_CLA8(
 endmodule
 
 
-module ysyx_220053_Adder32(
+module ysyx_040053_Adder32(
     output [31:0] result,
     output cout,
     input [31:0] x,
@@ -130,7 +129,7 @@ module ysyx_220053_Adder32(
             (p[i][7] & p[i][6] & p[i][5] & p[i][4] & p[i][3] & p[i][2] & g[i][1]) | (p[i][7] & p[i][6] & p[i][5] & p[i][4] & p[i][3] & p[i][2] & p[i][1] & p[i][0] & g[i][0]);
         end
     endgenerate
-    ysyx_220053_CLU4 gen(
+    ysyx_040053_CLU4 gen(
         .p(Pg),
         .g(Gg),
         .c0(sub),
@@ -140,7 +139,7 @@ module ysyx_220053_Adder32(
     wire [7:0] ff[3:0];
     generate
         for (i=0;i<=3;i=i+1) begin
-            ysyx_220053_CLA8 adder8(
+            ysyx_040053_CLA8 adder8(
                 .x(x[i*8+7:i*8]),
                 .y(y[i*8+7:i*8]),
                 .cin(c[i]),
@@ -156,7 +155,7 @@ endmodule
 
 
 
-module ysyx_220053_ALU(
+module ysyx_040053_ALU(
     input clk,
     input rst,
     input mwb_block,
@@ -179,8 +178,8 @@ module ysyx_220053_ALU(
     assign adderb = inputb ^ {64{SUBctr}};
     wire CF, SF, OF, ZF;
     wire cout_miss;
-    ysyx_220053_ALUSig alusig(.ALUOp(ALUOp), .SUBctr(SUBctr), .SIGctr(SIGctr), .ALctr(ALctr), .SFTctr(SFTctr), .OPctr(OPctr), .Wctr(Wctr));
-    ysyx_220053_Adder64 adder(.result(adderres),.x(inputa),.y(adderb),.sub(SUBctr),.CF(CF),.OF(OF),.SF(SF),.ZF(ZF),.cout(cout_miss));
+    ysyx_040053_ALUSig alusig(.ALUOp(ALUOp), .SUBctr(SUBctr), .SIGctr(SIGctr), .ALctr(ALctr), .SFTctr(SFTctr), .OPctr(OPctr), .Wctr(Wctr));
+    ysyx_040053_Adder64 adder(.result(adderres),.x(inputa),.y(adderb),.sub(SUBctr),.CF(CF),.OF(OF),.SF(SF),.ZF(ZF),.cout(cout_miss));
     assign res0 = (Wctr == 1'b0) ? adderres : {{32{adderres[31]}}, adderres[31:0]};
     assign res1 = inputa & inputb;
     assign res2 = inputa | inputb;
@@ -197,7 +196,7 @@ module ysyx_220053_ALU(
     assign srres = (ALctr == 1'b0) ? inputa >> shamt : $signed($signed(inputa) >>> shamt);
     assign shiftR = (Wctr == 1'b0) ? srres : {{32{srWres[31]}}, srWres[31:0]};
     
-    assign res4 = (SFTctr == 1'b0) ? shiftL : shiftR;//not finish ysyx_220053_Shifter shifter(.dout(res4),.din(inputa),.shamt(shamt),.AL(ALctr),.LR(SFTctr));
+    assign res4 = (SFTctr == 1'b0) ? shiftL : shiftR;//not finish ysyx_040053_Shifter shifter(.dout(res4),.din(inputa),.shamt(shamt),.AL(ALctr),.LR(SFTctr));
     assign res5 = inputb;
     assign res6 = {{63{1'b0}},{(SIGctr == 1'b1) ? OF ^ SF : CF}}; //cmp,not finish
 
@@ -213,7 +212,7 @@ module ysyx_220053_ALU(
     reg [63:0] result_hi_r, result_lo_r;
     reg  mul_doing;
     wire mul_ready, mul_out_valid, mul_valid;
-    ysyx_220053_mulu mulu(
+    ysyx_040053_mulu mulu(
         .clk(clk),
         .rst(rst),
         .multiplicand(multiplicand),
@@ -253,8 +252,8 @@ module ysyx_220053_ALU(
     end
     
     wire [63:0] rhi, rlo;
-    assign rhi = (!mwb_block && old_div) ? result_hi_r : result_hi;
-    assign rlo = (!mwb_block && old_div) ? result_lo_r : result_lo;
+    assign rhi = (!mwb_block && old_mul) ? result_hi_r : result_hi;
+    assign rlo = (!mwb_block && old_mul) ? result_lo_r : result_lo;
     
     always @(*)begin
         if(MulOp == 2'b00) begin
@@ -294,7 +293,7 @@ module ysyx_220053_ALU(
     reg [63:0] quotient_r, remainder_r;
     reg  div_doing;
     wire div_ready, out_valid, div_valid;
-    ysyx_220053_divu divu(
+    ysyx_040053_divu divu(
         .clk(clk),
         .rst(rst),
         .dividend(dividend),
@@ -376,7 +375,7 @@ module ysyx_220053_ALU(
     assign zero = ZF;
 endmodule
 
-module ysyx_220053_ALU_lite(
+module ysyx_040053_ALU_lite(
     input [63:0] inputa, inputb,
     input [4:0] ALUOp,
     output zero,
@@ -392,8 +391,8 @@ module ysyx_220053_ALU_lite(
     wire [63:0] adderb;
     assign adderb = inputb ^ {64{SUBctr}};
     wire CF, SF, OF, ZF;
-    ysyx_220053_ALUSig alusig(.ALUOp(ALUOp), .SUBctr(SUBctr), .SIGctr(SIGctr), .ALctr(ALctr), .SFTctr(SFTctr), .OPctr(OPctr), .Wctr(Wctr));
-    ysyx_220053_Adder64 adder(.result(adderres),.x(inputa),.y(adderb),.sub(SUBctr),.CF(CF),.OF(OF),.SF(SF),.ZF(ZF), .cout(cout_miss));
+    ysyx_040053_ALUSig alusig(.ALUOp(ALUOp), .SUBctr(SUBctr), .SIGctr(SIGctr), .ALctr(ALctr), .SFTctr(SFTctr), .OPctr(OPctr), .Wctr(Wctr));
+    ysyx_040053_Adder64 adder(.result(adderres),.x(inputa),.y(adderb),.sub(SUBctr),.CF(CF),.OF(OF),.SF(SF),.ZF(ZF), .cout(cout_miss));
     assign res0 = (Wctr == 1'b0) ? adderres : {{32{adderres[31]}}, adderres[31:0]};
 
     assign res6 = {{63{1'b0}},{(SIGctr == 1'b1) ? OF ^ SF : CF}}; //cmp,not finish
@@ -408,7 +407,7 @@ module ysyx_220053_ALU_lite(
 endmodule
 
 
-module ysyx_220053_ALUSig(
+module ysyx_040053_ALUSig(
     input [4:0] ALUOp,
     output reg SUBctr,SIGctr,ALctr,SFTctr,Wctr,
     output reg [3:0] OPctr
@@ -459,7 +458,7 @@ endmodule
 
 
 
-module ysyx_220053_arbiter(
+module ysyx_040053_arbiter(
     input clk,
     input rst,
 //icache <-> arbiter
@@ -566,61 +565,60 @@ endmodule
 
 
 // Burst types
-`define ysyx_220053_AXI_BURST_TYPE_FIXED                                2'b00               //突发类型  FIFO
-`define ysyx_220053_AXI_BURST_TYPE_INCR                                 2'b01               //ram  
-`define ysyx_220053_AXI_BURST_TYPE_WRAP                                 2'b10
+`define ysyx_040053_AXI_BURST_TYPE_FIXED                                2'b00               //突发类型  FIFO
+`define ysyx_040053_AXI_BURST_TYPE_INCR                                 2'b01               //ram  
+`define ysyx_040053_AXI_BURST_TYPE_WRAP                                 2'b10
 // Access permissions
-`define ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS                        3'b000
-`define ysyx_220053_AXI_PROT_PRIVILEGED_ACCESS                          3'b001
-`define ysyx_220053_AXI_PROT_SECURE_ACCESS                              3'b000
-`define ysyx_220053_AXI_PROT_NON_SECURE_ACCESS                          3'b010
-`define ysyx_220053_AXI_PROT_DATA_ACCESS                                3'b000
-`define ysyx_220053_AXI_PROT_INSTRUCTION_ACCESS                         3'b100
+`define ysyx_040053_AXI_PROT_UNPRIVILEGED_ACCESS                        3'b000
+`define ysyx_040053_AXI_PROT_PRIVILEGED_ACCESS                          3'b001
+`define ysyx_040053_AXI_PROT_SECURE_ACCESS                              3'b000
+`define ysyx_040053_AXI_PROT_NON_SECURE_ACCESS                          3'b010
+`define ysyx_040053_AXI_PROT_DATA_ACCESS                                3'b000
+`define ysyx_040053_AXI_PROT_INSTRUCTION_ACCESS                         3'b100
 // Memory types (AR)
-`define ysyx_220053_AXI_ARCACHE_DEVICE_NON_BUFFERABLE                   4'b0000
-`define ysyx_220053_AXI_ARCACHE_DEVICE_BUFFERABLE                       4'b0001
-`define ysyx_220053_AXI_ARCACHE_NORMAL_NON_CACHEABLE_NON_BUFFERABLE     4'b0010
-`define ysyx_220053_AXI_ARCACHE_NORMAL_NON_CACHEABLE_BUFFERABLE         4'b0011
-`define ysyx_220053_AXI_ARCACHE_WRITE_THROUGH_NO_ALLOCATE               4'b1010
-`define ysyx_220053_AXI_ARCACHE_WRITE_THROUGH_READ_ALLOCATE             4'b1110
-`define ysyx_220053_AXI_ARCACHE_WRITE_THROUGH_WRITE_ALLOCATE            4'b1010
-`define ysyx_220053_AXI_ARCACHE_WRITE_THROUGH_READ_AND_WRITE_ALLOCATE   4'b1110
-`define ysyx_220053_AXI_ARCACHE_WRITE_BACK_NO_ALLOCATE                  4'b1011
-`define ysyx_220053_AXI_ARCACHE_WRITE_BACK_READ_ALLOCATE                4'b1111
-`define ysyx_220053_AXI_ARCACHE_WRITE_BACK_WRITE_ALLOCATE               4'b1011
-`define ysyx_220053_AXI_ARCACHE_WRITE_BACK_READ_AND_WRITE_ALLOCATE      4'b1111
+`define ysyx_040053_AXI_ARCACHE_DEVICE_NON_BUFFERABLE                   4'b0000
+`define ysyx_040053_AXI_ARCACHE_DEVICE_BUFFERABLE                       4'b0001
+`define ysyx_040053_AXI_ARCACHE_NORMAL_NON_CACHEABLE_NON_BUFFERABLE     4'b0010
+`define ysyx_040053_AXI_ARCACHE_NORMAL_NON_CACHEABLE_BUFFERABLE         4'b0011
+`define ysyx_040053_AXI_ARCACHE_WRITE_THROUGH_NO_ALLOCATE               4'b1010
+`define ysyx_040053_AXI_ARCACHE_WRITE_THROUGH_READ_ALLOCATE             4'b1110
+`define ysyx_040053_AXI_ARCACHE_WRITE_THROUGH_WRITE_ALLOCATE            4'b1010
+`define ysyx_040053_AXI_ARCACHE_WRITE_THROUGH_READ_AND_WRITE_ALLOCATE   4'b1110
+`define ysyx_040053_AXI_ARCACHE_WRITE_BACK_NO_ALLOCATE                  4'b1011
+`define ysyx_040053_AXI_ARCACHE_WRITE_BACK_READ_ALLOCATE                4'b1111
+`define ysyx_040053_AXI_ARCACHE_WRITE_BACK_WRITE_ALLOCATE               4'b1011
+`define ysyx_040053_AXI_ARCACHE_WRITE_BACK_READ_AND_WRITE_ALLOCATE      4'b1111
 // Memory types (AW)
-`define ysyx_220053_AXI_AWCACHE_DEVICE_NON_BUFFERABLE                   4'b0000
-`define ysyx_220053_AXI_AWCACHE_DEVICE_BUFFERABLE                       4'b0001
-`define ysyx_220053_AXI_AWCACHE_NORMAL_NON_CACHEABLE_NON_BUFFERABLE     4'b0010
-`define ysyx_220053_AXI_AWCACHE_NORMAL_NON_CACHEABLE_BUFFERABLE         4'b0011
-`define ysyx_220053_AXI_AWCACHE_WRITE_THROUGH_NO_ALLOCATE               4'b0110
-`define ysyx_220053_AXI_AWCACHE_WRITE_THROUGH_READ_ALLOCATE             4'b0110
-`define ysyx_220053_AXI_AWCACHE_WRITE_THROUGH_WRITE_ALLOCATE            4'b1110
-`define ysyx_220053_AXI_AWCACHE_WRITE_THROUGH_READ_AND_WRITE_ALLOCATE   4'b1110
-`define ysyx_220053_AXI_AWCACHE_WRITE_BACK_NO_ALLOCATE                  4'b0111
-`define ysyx_220053_AXI_AWCACHE_WRITE_BACK_READ_ALLOCATE                4'b0111
-`define ysyx_220053_AXI_AWCACHE_WRITE_BACK_WRITE_ALLOCATE               4'b1111
-`define ysyx_220053_AXI_AWCACHE_WRITE_BACK_READ_AND_WRITE_ALLOCATE      4'b1111
+`define ysyx_040053_AXI_AWCACHE_DEVICE_NON_BUFFERABLE                   4'b0000
+`define ysyx_040053_AXI_AWCACHE_DEVICE_BUFFERABLE                       4'b0001
+`define ysyx_040053_AXI_AWCACHE_NORMAL_NON_CACHEABLE_NON_BUFFERABLE     4'b0010
+`define ysyx_040053_AXI_AWCACHE_NORMAL_NON_CACHEABLE_BUFFERABLE         4'b0011
+`define ysyx_040053_AXI_AWCACHE_WRITE_THROUGH_NO_ALLOCATE               4'b0110
+`define ysyx_040053_AXI_AWCACHE_WRITE_THROUGH_READ_ALLOCATE             4'b0110
+`define ysyx_040053_AXI_AWCACHE_WRITE_THROUGH_WRITE_ALLOCATE            4'b1110
+`define ysyx_040053_AXI_AWCACHE_WRITE_THROUGH_READ_AND_WRITE_ALLOCATE   4'b1110
+`define ysyx_040053_AXI_AWCACHE_WRITE_BACK_NO_ALLOCATE                  4'b0111
+`define ysyx_040053_AXI_AWCACHE_WRITE_BACK_READ_ALLOCATE                4'b0111
+`define ysyx_040053_AXI_AWCACHE_WRITE_BACK_WRITE_ALLOCATE               4'b1111
+`define ysyx_040053_AXI_AWCACHE_WRITE_BACK_READ_AND_WRITE_ALLOCATE      4'b1111
 
-`define ysyx_220053_AXI_SIZE_BYTES_1                                    3'b000                //突发宽度一个数据的宽度
-`define ysyx_220053_AXI_SIZE_BYTES_2                                    3'b001
-`define ysyx_220053_AXI_SIZE_BYTES_4                                    3'b010
-`define ysyx_220053_AXI_SIZE_BYTES_8                                    3'b011
-`define ysyx_220053_AXI_SIZE_BYTES_16                                   3'b100
-`define ysyx_220053_AXI_SIZE_BYTES_32                                   3'b101
-`define ysyx_220053_AXI_SIZE_BYTES_64                                   3'b110
-`define ysyx_220053_AXI_SIZE_BYTES_128                                  3'b111
+`define ysyx_040053_AXI_SIZE_BYTES_1                                    3'b000                //突发宽度一个数据的宽度
+`define ysyx_040053_AXI_SIZE_BYTES_2                                    3'b001
+`define ysyx_040053_AXI_SIZE_BYTES_4                                    3'b010
+`define ysyx_040053_AXI_SIZE_BYTES_8                                    3'b011
+`define ysyx_040053_AXI_SIZE_BYTES_16                                   3'b100
+`define ysyx_040053_AXI_SIZE_BYTES_32                                   3'b101
+`define ysyx_040053_AXI_SIZE_BYTES_64                                   3'b110
+`define ysyx_040053_AXI_SIZE_BYTES_128                                  3'b111
 
 
-module ysyx_220053_axi_rw # (
+module ysyx_040053_axi_rw # (
     parameter RW_DATA_WIDTH     = 128,
     parameter RW_ADDR_WIDTH     = 64,
     parameter AXI_DATA_WIDTH    = 64,
     parameter AXI_ADDR_WIDTH    = 32,
     parameter AXI_ID_WIDTH      = 4,
-    parameter AXI_STRB_WIDTH    = AXI_DATA_WIDTH/8,
-    parameter AXI_USER_WIDTH    = 1
+    parameter AXI_STRB_WIDTH    = AXI_DATA_WIDTH/8
 )(
     input                               clock,
     input                               reset,
@@ -639,63 +637,46 @@ module ysyx_220053_axi_rw # (
     input                               axi_aw_ready_i,              
     output                              axi_aw_valid_o,
     output [AXI_ADDR_WIDTH-1:0]         axi_aw_addr_o,
-    output [2:0]                        axi_aw_prot_o,
     output [AXI_ID_WIDTH-1:0]           axi_aw_id_o,
-    output [AXI_USER_WIDTH-1:0]         axi_aw_user_o,
     output [7:0]                        axi_aw_len_o,
     output [2:0]                        axi_aw_size_o,
     output [1:0]                        axi_aw_burst_o,
-    output                              axi_aw_lock_o,
-    output [3:0]                        axi_aw_cache_o,
-    output [3:0]                        axi_aw_qos_o,
-    output [3:0]                        axi_aw_region_o,
 
     input                               axi_w_ready_i,                
     output                              axi_w_valid_o,
     output [AXI_DATA_WIDTH-1:0]         axi_w_data_o,
     output [AXI_DATA_WIDTH/8-1:0]       axi_w_strb_o,
     output                              axi_w_last_o,
-    output [AXI_USER_WIDTH-1:0]         axi_w_user_o,
     
     output                              axi_b_ready_o,                
     input                               axi_b_valid_i,
     input  [1:0]                        axi_b_resp_i,                 
     input  [AXI_ID_WIDTH-1:0]           axi_b_id_i,
-    input  [AXI_USER_WIDTH-1:0]         axi_b_user_i,
 
     input                               axi_ar_ready_i,                
     output                              axi_ar_valid_o,
     output [AXI_ADDR_WIDTH-1:0]         axi_ar_addr_o,
-    output [2:0]                        axi_ar_prot_o,
     output [AXI_ID_WIDTH-1:0]           axi_ar_id_o,
-    output [AXI_USER_WIDTH-1:0]         axi_ar_user_o,
     output [7:0]                        axi_ar_len_o,
     output [2:0]                        axi_ar_size_o,
     output [1:0]                        axi_ar_burst_o,
-    output                              axi_ar_lock_o,
-    output [3:0]                        axi_ar_cache_o,
-    output [3:0]                        axi_ar_qos_o,
-    output [3:0]                        axi_ar_region_o,
     
     output                              axi_r_ready_o,                 
     input                               axi_r_valid_i,                
     input  [1:0]                        axi_r_resp_i,
     input  [AXI_DATA_WIDTH-1:0]         axi_r_data_i,
     input                               axi_r_last_i,
-    input  [AXI_ID_WIDTH-1:0]           axi_r_id_i,
-    input  [AXI_USER_WIDTH-1:0]         axi_r_user_i
+    input  [AXI_ID_WIDTH-1:0]           axi_r_id_i
 );
 
 // ------------------State Machine------------------TODO
-    localparam [2:0] W_IDLE = 3'b000, W_ADDR = 3'b001, W_WRITE = 3'b010, W_RESP = 3'b011, W_DONE = 3'b100;
+    localparam [2:0] W_IDLE = 3'b000, W_WRITE = 3'b010, W_RESP = 3'b011, W_DONE = 3'b100;
     localparam [2:0] R_IDLE = 3'b000, R_ADDR = 3'b001, R_READ = 3'b010, R_DONE = 3'b100;
     reg [2:0] w_status, r_status;
     wire r_state_idle = (r_status == R_IDLE);
     wire r_state_addr = (r_status == R_ADDR);
     wire r_state_read = (r_status == R_READ);
     wire w_state_idle = (w_status == W_IDLE);
-    wire w_state_addr = (w_status == W_ADDR);
-    wire w_state_write = (w_status == W_WRITE);
     wire w_state_resp = (w_status == W_RESP);
     
     // 写通道状态切换
@@ -704,7 +685,19 @@ module ysyx_220053_axi_rw # (
     wire w_fire  = axi_w_ready_i  & axi_w_valid_o;
     wire b_fire  = axi_b_ready_o  & axi_b_valid_i;
 
-    wire w_last = w_fire & axi_w_last_o;
+    wire w_last = w_fire & axi_w_last_o;//now is trans the last
+    reg aw_valid_r, w_valid_r;
+    always @(posedge clock) begin
+        if(reset) aw_valid_r <= 1'b0;
+        else if(aw_fire) aw_valid_r <= 1'b0;
+        else if(w_state_idle && rw_valid_i && rw_req_i) aw_valid_r <= 1'b1;
+    end
+
+    always @(posedge clock) begin
+        if(reset) w_valid_r <= 1'b0;
+        else if(w_last) w_valid_r <= 1'b0;
+        else if(w_state_idle && rw_valid_i && rw_req_i) w_valid_r <= 1'b1;
+    end
 
     always @(posedge clock) begin
         if(reset) begin
@@ -713,11 +706,7 @@ module ysyx_220053_axi_rw # (
         else begin
             if((rw_valid_i == 1'b1) && (rw_req_i == 1'b1)) begin//now write
                 case(w_status)
-                    W_IDLE: w_status <= W_ADDR;
-                    W_ADDR: begin
-                        if(aw_fire) w_status <= W_WRITE;
-                        else w_status <= W_ADDR;
-                    end
+                    W_IDLE: w_status <= W_WRITE;
                     W_WRITE: begin
                         if(w_last) w_status <= W_RESP;
                         else w_status <= W_WRITE;
@@ -777,6 +766,7 @@ module ysyx_220053_axi_rw # (
     assign rw_ready_o = rw_ready_r;
 
     /////////burst number////////
+    wire [7:0] axi_len;
     reg [7:0] rcnt,wcnt;
     always @(posedge clock) begin
         if(reset || ((rw_req_i == 1'b0) && (r_state_idle == 1'b1))) begin
@@ -787,10 +777,10 @@ module ysyx_220053_axi_rw # (
         end
     end
     always @(posedge clock) begin
-        if(reset || ((rw_req_i == 1'b1) && (w_state_idle == 1'b1))) begin
+        if(reset || (rw_req_i && w_state_idle)) begin
             wcnt <= 0;
         end
-        else if((wcnt != axi_len) && (aw_fire || w_fire)) begin
+        else if((wcnt != axi_len) && w_fire) begin
             wcnt <= wcnt + 1;
         end
     end
@@ -806,25 +796,19 @@ module ysyx_220053_axi_rw # (
         endcase
     end
     wire [AXI_ID_WIDTH-1:0] axi_id              = {AXI_ID_WIDTH{1'b0}};
-    wire [AXI_USER_WIDTH-1:0] axi_user          = {AXI_USER_WIDTH{1'b0}};
-    wire [7:0] axi_len      = (rw_dev_i == 1'b0) ? 1 : 0;
+    assign axi_len      = (rw_dev_i == 1'b0) ? 1 : 0;
     wire [2:0] axi_size     = (rw_dev_i == 1'b0) ? AXI_SIZE[2:0] : dev_size;
 
     // 写地址通道  以下没有备注初始化信号的都可能是你需要产生和用到的
-    assign axi_aw_valid_o   = w_state_addr;//
+    assign axi_aw_valid_o   = aw_valid_r;//
     assign axi_aw_addr_o    = rw_addr_i[31:0];//
-    assign axi_aw_prot_o    = `ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS | `ysyx_220053_AXI_PROT_SECURE_ACCESS | `ysyx_220053_AXI_PROT_DATA_ACCESS;  //初始化信号即可
     assign axi_aw_id_o      = axi_id;                                                                           //初始化信号即可
-    assign axi_aw_user_o    = axi_user;                                                                         //初始化信号即可
     assign axi_aw_len_o     = axi_len;//
     assign axi_aw_size_o    = axi_size;//
-    assign axi_aw_burst_o   = `ysyx_220053_AXI_BURST_TYPE_INCR;//                                                             
-    assign axi_aw_lock_o    = 1'b0;                                                                             //初始化信号即可
-    assign axi_aw_cache_o   = `ysyx_220053_AXI_AWCACHE_WRITE_BACK_READ_AND_WRITE_ALLOCATE;                                  //初始化信号即可
-    assign axi_aw_qos_o     = 4'h0;                                                                             //初始化信号即可
-    assign axi_aw_region_o  = 4'h0;      
+    assign axi_aw_burst_o   = `ysyx_040053_AXI_BURST_TYPE_INCR;//                                                             
+
     // 写数据通道
-    
+/*    
     reg [AXI_DATA_WIDTH - 1: 0] rw_w_data_r;
     reg [AXI_DATA_WIDTH/8-1:0] rw_size_r;
     always @(posedge clock) begin
@@ -832,11 +816,12 @@ module ysyx_220053_axi_rw # (
             rw_w_data_r <= 0;
             rw_size_r <= 0;
         end
-        else if(aw_fire || w_fire) begin//写地址时就开始存待写的值，这样写数据时就赶上了
+        else if(w_state_idle && rw_valid_i && rw_req_i) begin//写地址时就开始存待写的值，这样写数据时就赶上了
             rw_w_data_r <= rw_w_data_i[wcnt*AXI_DATA_WIDTH +: AXI_DATA_WIDTH];
             rw_size_r <= rw_size_i;
         end
     end
+*/
 /*
 写地址：
 如果突发传2个8字节：
@@ -849,6 +834,7 @@ module ysyx_220053_axi_rw # (
 突发传1个8字节：
 握手时需要w_last是高的。
 */
+/*
     reg axi_w_last_r;
     always @(posedge clock) begin
         if(reset) begin
@@ -861,14 +847,13 @@ module ysyx_220053_axi_rw # (
             axi_w_last_r <= 0;
         end
     end
+*/
 
 
-
-    assign axi_w_valid_o    = w_state_write;//
-    assign axi_w_data_o     = rw_w_data_r;//
-    assign axi_w_strb_o     = rw_size_r;//
-    assign axi_w_last_o     = (axi_len == 0) ? (w_fire && (wcnt == axi_len)) : axi_w_last_r;//
-    assign axi_w_user_o     = axi_user;                                                                         //初始化信号即可
+    assign axi_w_valid_o    = w_valid_r;//
+    assign axi_w_data_o     = rw_w_data_i[wcnt*AXI_DATA_WIDTH +: AXI_DATA_WIDTH];//
+    assign axi_w_strb_o     = rw_size_i;//
+    assign axi_w_last_o     = (wcnt == axi_len);//
 
     // 写应答通道
     assign axi_b_ready_o    = w_state_resp;//
@@ -878,16 +863,10 @@ module ysyx_220053_axi_rw # (
     // Read address channel signals
     assign axi_ar_valid_o   = r_state_addr;//
     assign axi_ar_addr_o    = rw_addr_i[31:0];//
-    assign axi_ar_prot_o    = `ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS | `ysyx_220053_AXI_PROT_SECURE_ACCESS | `ysyx_220053_AXI_PROT_DATA_ACCESS;  //初始化信号即可
     assign axi_ar_id_o      = axi_id;                                                                           //初始化信号即可                        
-    assign axi_ar_user_o    = axi_user;                                                                         //初始化信号即可
     assign axi_ar_len_o     = axi_len;//                                                                          
     assign axi_ar_size_o    = axi_size;//
-    assign axi_ar_burst_o   = `ysyx_220053_AXI_BURST_TYPE_INCR;//
-    assign axi_ar_lock_o    = 1'b0;                                                                             //初始化信号即可
-    assign axi_ar_cache_o   = `ysyx_220053_AXI_ARCACHE_NORMAL_NON_CACHEABLE_NON_BUFFERABLE;                                 //初始化信号即可
-    assign axi_ar_qos_o     = 4'h0;                                                                             //初始化信号即可
-    assign axi_ar_region_o  = 4'h0;                                                                             //初始化信号即可
+    assign axi_ar_burst_o   = `ysyx_040053_AXI_BURST_TYPE_INCR;//
     // Read data channel signals
     //low 64
     always @(posedge clock) begin
@@ -916,7 +895,7 @@ endmodule
 
 
 
-module ysyx_220053_icache(
+module ysyx_040053_icache(
     input clk,
     input rst,
     //cpu<->cache
@@ -1021,28 +1000,28 @@ module ysyx_220053_icache(
 	assign io_sram0_wen = line_wen[0];
 	assign io_sram0_wdata = data_read_i;
 	assign line_o[0] = io_sram0_rdata;
-    //ysyx_220053_S011HD1P_X32Y2D128 ram0(.Q(line_o[0]),.CLK(clk),.CEN(1'b0),.WEN(line_wen[0]),.A(cpu_index[5:0]),.D(data_read_i));
+    //ysyx_040053_S011HD1P_X32Y2D128 ram0(.Q(line_o[0]),.CLK(clk),.CEN(1'b0),.WEN(line_wen[0]),.A(cpu_index[5:0]),.D(data_read_i));
 
 	assign io_sram1_addr = cpu_index[5:0];
 	assign io_sram1_cen = 1'b0;
 	assign io_sram1_wen = line_wen[1];
 	assign io_sram1_wdata = data_read_i;
 	assign line_o[1] = io_sram1_rdata;
-    //ysyx_220053_S011HD1P_X32Y2D128 ram1(.Q(line_o[1]),.CLK(clk),.CEN(1'b0),.WEN(line_wen[1]),.A(cpu_index[5:0]),.D(data_read_i));
+    //ysyx_040053_S011HD1P_X32Y2D128 ram1(.Q(line_o[1]),.CLK(clk),.CEN(1'b0),.WEN(line_wen[1]),.A(cpu_index[5:0]),.D(data_read_i));
 
 	assign io_sram2_addr = cpu_index[5:0];
 	assign io_sram2_cen = 1'b0;
 	assign io_sram2_wen = line_wen[2];
 	assign io_sram2_wdata = data_read_i;
 	assign line_o[2] = io_sram2_rdata;
-    //ysyx_220053_S011HD1P_X32Y2D128 ram2(.Q(line_o[2]),.CLK(clk),.CEN(1'b0),.WEN(line_wen[2]),.A(cpu_index[5:0]),.D(data_read_i));
+    //ysyx_040053_S011HD1P_X32Y2D128 ram2(.Q(line_o[2]),.CLK(clk),.CEN(1'b0),.WEN(line_wen[2]),.A(cpu_index[5:0]),.D(data_read_i));
 
 	assign io_sram3_addr = cpu_index[5:0];
 	assign io_sram3_cen = 1'b0;
 	assign io_sram3_wen = line_wen[3];
 	assign io_sram3_wdata = data_read_i;
 	assign line_o[3] = io_sram3_rdata;
-    //ysyx_220053_S011HD1P_X32Y2D128 ram3(.Q(line_o[3]),.CLK(clk),.CEN(1'b0),.WEN(line_wen[3]),.A(cpu_index[5:0]),.D(data_read_i));
+    //ysyx_040053_S011HD1P_X32Y2D128 ram3(.Q(line_o[3]),.CLK(clk),.CEN(1'b0),.WEN(line_wen[3]),.A(cpu_index[5:0]),.D(data_read_i));
     
     //CompareTag
     always @(*) begin
@@ -1129,7 +1108,7 @@ module ysyx_220053_icache(
     end
 endmodule
 
-module ysyx_220053_dcache (
+module ysyx_040053_dcache (
     input clk,
     input rst,
     //cpu<->cache
@@ -1271,25 +1250,25 @@ module ysyx_220053_dcache (
     assign io_sram4_wen = line_wen[0];
     assign io_sram4_wdata = data_in_ram;
     assign line_o[0] = io_sram4_rdata;
-    //ysyx_220053_S011HD1P_X32Y2D128 ram0(.Q(line_o[0]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [0]),.A(ram_addr),.D(data_in_ram));
+    //ysyx_040053_S011HD1P_X32Y2D128 ram0(.Q(line_o[0]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [0]),.A(ram_addr),.D(data_in_ram));
     assign io_sram5_addr = ram_addr;
     assign io_sram5_cen = 1'b0;
     assign io_sram5_wen = line_wen[1];
     assign io_sram5_wdata = data_in_ram;
     assign line_o[1] = io_sram5_rdata;
-    //ysyx_220053_S011HD1P_X32Y2D128 ram1(.Q(line_o[1]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [1]),.A(ram_addr),.D(data_in_ram));
+    //ysyx_040053_S011HD1P_X32Y2D128 ram1(.Q(line_o[1]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [1]),.A(ram_addr),.D(data_in_ram));
     assign io_sram6_addr = ram_addr;
     assign io_sram6_cen = 1'b0;
     assign io_sram6_wen = line_wen[2];
     assign io_sram6_wdata = data_in_ram;
     assign line_o[2] = io_sram6_rdata;
-    //ysyx_220053_S011HD1P_X32Y2D128 ram2(.Q(line_o[2]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [2]),.A(ram_addr),.D(data_in_ram));
+    //ysyx_040053_S011HD1P_X32Y2D128 ram2(.Q(line_o[2]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [2]),.A(ram_addr),.D(data_in_ram));
     assign io_sram7_addr = ram_addr;
     assign io_sram7_cen = 1'b0;
     assign io_sram7_wen = line_wen[3];
     assign io_sram7_wdata = data_in_ram;
     assign line_o[3] = io_sram7_rdata;
-    //ysyx_220053_S011HD1P_X32Y2D128 ram3(.Q(line_o[3]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [3]),.A(ram_addr),.D(data_in_ram));
+    //ysyx_040053_S011HD1P_X32Y2D128 ram3(.Q(line_o[3]),.CLK(clk),.CEN(1'b0),.WEN(line_wen [3]),.A(ram_addr),.D(data_in_ram));
     
     integer  i;
     //CompareTag
@@ -1455,7 +1434,7 @@ module ysyx_220053_dcache (
     end
 endmodule
 
-module ysyx_220053_S011HD1P_X32Y2D128(
+module ysyx_040053_S011HD1P_X32Y2D128(
     Q, CLK, CEN, WEN, A, D
 );
 parameter Bits = 128;
@@ -1478,7 +1457,7 @@ always @(posedge CLK) begin
 end
 
 endmodule
-module ysyx_220053_S011HD1P_X32Y2D128_BW(
+module ysyx_040053_S011HD1P_X32Y2D128_BW(
     Q, CLK, CEN, WEN, BWEN, A, D
 );
 parameter Bits = 128;
@@ -1509,7 +1488,7 @@ end
 endmodule
 
 
-module ysyx_220053_controler(
+module ysyx_040053_controler(
     input [31:0] instr_i,
     input [6:0] op,
     input [2:0] func3,
@@ -1529,48 +1508,48 @@ module ysyx_220053_controler(
     output reg Csri
 );
 
-parameter ysyx_220053_I = 0;
-parameter ysyx_220053_U = 1;
-parameter ysyx_220053_S = 2;
-parameter ysyx_220053_B = 3;
-parameter ysyx_220053_J = 4;
-parameter ysyx_220053_R = 5;
+parameter ysyx_040053_I = 0;
+parameter ysyx_040053_U = 1;
+parameter ysyx_040053_S = 2;
+parameter ysyx_040053_B = 3;
+parameter ysyx_040053_J = 4;
+parameter ysyx_040053_R = 5;
 
     always @(*) begin
         case(op)
             7'b0110111://lui
                 begin
                     Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
-                    MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b01111; ExtOp = ysyx_220053_U; wen = 1;
+                    MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b01111; ExtOp = ysyx_040053_U; wen = 1;
                 end
             7'b0010111://auipc
                 begin
                     Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
-                    MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 0; ALUSrcB = 1; ALUOp = 5'b00000; ExtOp = ysyx_220053_U; wen = 1;
+                    MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; ALUSrcA = 0; ALUSrcB = 1; ALUOp = 5'b00000; ExtOp = ysyx_040053_U; wen = 1;
                 end
             7'b1101111://jal
                 begin
                     Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
-                    MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 3'b001; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 5'b00000; ExtOp = ysyx_220053_J; wen = 1;
+                    MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 3'b001; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 5'b00000; ExtOp = ysyx_040053_J; wen = 1;
                 end
             7'b1100111://jalr
                 begin
                     Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
-                    MulOp = 0; MemWen = 0; MemOp = 0; MemOp = 0; MemToReg = 0; Branch = 3'b010; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 5'b00000; ExtOp = ysyx_220053_I; wen = 1;
+                    MulOp = 0; MemWen = 0; MemOp = 0; MemOp = 0; MemToReg = 0; Branch = 3'b010; ALUSrcA = 0; ALUSrcB = 2; ALUOp = 5'b00000; ExtOp = ysyx_040053_I; wen = 1;
                 end
             7'b0010011://addi
                 begin
                     Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
-                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00010; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00011; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b100: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00100; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b110: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00110; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b111: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00111; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00001; ExtOp = ysyx_220053_I; wen = 1; end
-                        default: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = (instr_i[30] == 1'b0) ? 5'b00101 : 5'b01101; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; ExtOp = ysyx_040053_I; wen = 1; end
+                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00010; ExtOp = ysyx_040053_I; wen = 1; end
+                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00011; ExtOp = ysyx_040053_I; wen = 1; end
+                        3'b100: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00100; ExtOp = ysyx_040053_I; wen = 1; end
+                        3'b110: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00110; ExtOp = ysyx_040053_I; wen = 1; end
+                        3'b111: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00111; ExtOp = ysyx_040053_I; wen = 1; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00001; ExtOp = ysyx_040053_I; wen = 1; end
+                        default: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = (instr_i[30] == 1'b0) ? 5'b00101 : 5'b01101; ExtOp = ysyx_040053_I; wen = 1; end
                     endcase
                 end
             7'b0110011://add MulOp = 0; 
@@ -1579,33 +1558,33 @@ parameter ysyx_220053_R = 5;
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     if(func7 == 7'b0000001) begin//mul div rem
                         case(func3)
-                            3'b000: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01001; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b001: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b11; ALUOp = 5'b01001; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b010: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b10; ALUOp = 5'b01001; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b011: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b01; ALUOp = 5'b01001; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b100: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01011; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b101: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01010; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b110: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01110; ExtOp = ysyx_220053_R; wen = 1; end
-                            default:begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01100; ExtOp = ysyx_220053_R; wen = 1; end
+                            3'b000: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01001; ExtOp = ysyx_040053_R; wen = 1; end
+                            3'b001: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b11; ALUOp = 5'b01001; ExtOp = ysyx_040053_R; wen = 1; end
+                            3'b010: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b10; ALUOp = 5'b01001; ExtOp = ysyx_040053_R; wen = 1; end
+                            3'b011: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b01; ALUOp = 5'b01001; ExtOp = ysyx_040053_R; wen = 1; end
+                            3'b100: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01011; ExtOp = ysyx_040053_R; wen = 1; end
+                            3'b101: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01010; ExtOp = ysyx_040053_R; wen = 1; end
+                            3'b110: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01110; ExtOp = ysyx_040053_R; wen = 1; end
+                            default:begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b01100; ExtOp = ysyx_040053_R; wen = 1; end
                         endcase//7'b0000001: begin  end
                     end
                     else begin
                         MulOp = 0; 
                         case(func3)
                             3'b000: begin//add sub
-                                    ALUSrcA = 1; ALUSrcB = 0; ExtOp = ysyx_220053_R; wen = 1; 
+                                    ALUSrcA = 1; ALUSrcB = 0; ExtOp = ysyx_040053_R; wen = 1; 
                                     case(func7) 
                                         7'b0100000: ALUOp = 5'b01000; 
                                         default: ALUOp = 5'b00000; 
                                     endcase 
                                 end
-                            3'b010: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b011: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00011; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b100: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00100; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b110: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00110; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b111: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00111; ExtOp = ysyx_220053_R; wen = 1; end
-                            3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00001; ExtOp = ysyx_220053_R; wen = 1; end
-                            default: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = (instr_i[30] == 1'b0) ? 5'b00101 : 5'b01101; ExtOp = ysyx_220053_R; wen = 1; end
+                            3'b010: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_040053_R; wen = 1; end
+                            3'b011: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00011; ExtOp = ysyx_040053_R; wen = 1; end
+                            3'b100: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00100; ExtOp = ysyx_040053_R; wen = 1; end
+                            3'b110: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00110; ExtOp = ysyx_040053_R; wen = 1; end
+                            3'b111: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00111; ExtOp = ysyx_040053_R; wen = 1; end
+                            3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00001; ExtOp = ysyx_040053_R; wen = 1; end
+                            default: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = (instr_i[30] == 1'b0) ? 5'b00101 : 5'b01101; ExtOp = ysyx_040053_R; wen = 1; end
                             //srl/sra
                         endcase
                     end
@@ -1636,14 +1615,14 @@ parameter ysyx_220053_R = 5;
                     Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MulOp = 0; MemWen = 0; MemOp = 0; MemToReg = 0;  //wen = 1;
                     case(func3)
-                        3'b000: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_220053_B; Branch = 3'b100; wen = 0; end
-                        3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_220053_B; Branch = 3'b101; wen = 0; end
-                        3'b100: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_220053_B; Branch = 3'b110; wen = 0; end
-                        3'b101: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_220053_B; Branch = 3'b111; wen = 0; end
-                        3'b110: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00011; ExtOp = ysyx_220053_B; Branch = 3'b110; wen = 0; end
-                        3'b111: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00011; ExtOp = ysyx_220053_B; Branch = 3'b111; wen = 0; end
+                        3'b000: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_040053_B; Branch = 3'b100; wen = 0; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_040053_B; Branch = 3'b101; wen = 0; end
+                        3'b100: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_040053_B; Branch = 3'b110; wen = 0; end
+                        3'b101: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00010; ExtOp = ysyx_040053_B; Branch = 3'b111; wen = 0; end
+                        3'b110: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00011; ExtOp = ysyx_040053_B; Branch = 3'b110; wen = 0; end
+                        3'b111: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00011; ExtOp = ysyx_040053_B; Branch = 3'b111; wen = 0; end
                         default: begin
-                            ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; ExtOp = ysyx_220053_B; Branch = 3'b000; wen = 0;
+                            ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; ExtOp = ysyx_040053_B; Branch = 3'b000; wen = 0;
                         end
                     endcase
                 end
@@ -1660,15 +1639,15 @@ parameter ysyx_220053_R = 5;
                     Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MulOp = 0; MemWen = 0; MemToReg = 1; Branch = 0; //wen = 1;
                     case(func3)
-                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b001; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b010; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b000; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b011; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b100: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b101; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b101: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b110; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b110: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b100; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b001; ExtOp = ysyx_040053_I; wen = 1; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b010; ExtOp = ysyx_040053_I; wen = 1; end
+                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b000; ExtOp = ysyx_040053_I; wen = 1; end
+                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b011; ExtOp = ysyx_040053_I; wen = 1; end
+                        3'b100: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b101; ExtOp = ysyx_040053_I; wen = 1; end
+                        3'b101: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b110; ExtOp = ysyx_040053_I; wen = 1; end
+                        3'b110: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b100; ExtOp = ysyx_040053_I; wen = 1; end
                         default: begin
-                            ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; MemOp = 0; ExtOp = ysyx_220053_I; wen = 0;
+                            ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; MemOp = 0; ExtOp = ysyx_040053_I; wen = 0;
                         end
                     endcase
                 end
@@ -1686,12 +1665,12 @@ parameter ysyx_220053_R = 5;
                     Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MulOp = 0; MemWen = 1; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
-                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b001; ExtOp = ysyx_220053_S; wen = 0; end
-                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b010; ExtOp = ysyx_220053_S; wen = 0; end
-                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b000; ExtOp = ysyx_220053_S; wen = 0; end
-                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b011; ExtOp = ysyx_220053_S; wen = 0; end
+                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b001; ExtOp = ysyx_040053_S; wen = 0; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b010; ExtOp = ysyx_040053_S; wen = 0; end
+                        3'b010: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b000; ExtOp = ysyx_040053_S; wen = 0; end
+                        3'b011: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b00000; MemOp = 3'b011; ExtOp = ysyx_040053_S; wen = 0; end
                         default: begin
-                            ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; MemOp = 0; ExtOp = ysyx_220053_S; wen = 0;
+                            ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; MemOp = 0; ExtOp = ysyx_040053_S; wen = 0;
                         end
                     endcase
                 end
@@ -1706,9 +1685,9 @@ parameter ysyx_220053_R = 5;
                     Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
-                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b10000; ExtOp = ysyx_220053_I; wen = 1; end
-                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b10001; ExtOp = ysyx_220053_I; wen = 1; end
-                        default: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = (instr_i[30] == 1'b0) ? 5'b10101 : 5'b11101; ExtOp = ysyx_220053_I; wen = 1; end
+                        3'b000: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b10000; ExtOp = ysyx_040053_I; wen = 1; end
+                        3'b001: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = 5'b10001; ExtOp = ysyx_040053_I; wen = 1; end
+                        default: begin ALUSrcA = 1; ALUSrcB = 1; ALUOp = (instr_i[30] == 1'b0) ? 5'b10101 : 5'b11101; ExtOp = ysyx_040053_I; wen = 1; end
                     endcase
                 end
 /*
@@ -1724,25 +1703,25 @@ parameter ysyx_220053_R = 5;
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     if(func7 == 7'b0000001) begin//mulw divw remw
                             case(func3)
-                                3'b100: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11011; ExtOp = ysyx_220053_R; wen = 1; end
-                                3'b101: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11010; ExtOp = ysyx_220053_R; wen = 1; end
-                                3'b110: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11110; ExtOp = ysyx_220053_R; wen = 1; end
-                                3'b111: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11100; ExtOp = ysyx_220053_R; wen = 1; end
-                                default:begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11001; ExtOp = ysyx_220053_R; wen = 1; end
+                                3'b100: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11011; ExtOp = ysyx_040053_R; wen = 1; end
+                                3'b101: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11010; ExtOp = ysyx_040053_R; wen = 1; end
+                                3'b110: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11110; ExtOp = ysyx_040053_R; wen = 1; end
+                                3'b111: begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11100; ExtOp = ysyx_040053_R; wen = 1; end
+                                default:begin ALUSrcA = 1; ALUSrcB = 0; MulOp = 2'b00; ALUOp = 5'b11001; ExtOp = ysyx_040053_R; wen = 1; end
                             endcase//7'b0000001: begin  end
                         end
                     else begin
                         MulOp = 0;
                         case(func3)
                             3'b000: begin//addw subw mulw divw  乘除法还没做
-                                    ALUSrcA = 1; ALUSrcB = 0; ExtOp = ysyx_220053_R; wen = 1; 
+                                    ALUSrcA = 1; ALUSrcB = 0; ExtOp = ysyx_040053_R; wen = 1; 
                                     case(func7) 
                                         7'b0100000: ALUOp = 5'b11000;
                                         default: ALUOp = 5'b10000;
                                     endcase 
                                 end
-                            3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b10001; ExtOp = ysyx_220053_R; wen = 1; end
-                            default: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = (instr_i[30] == 1'b0) ? 5'b10101 : 5'b11101; ExtOp = ysyx_220053_R; wen = 1; end
+                            3'b001: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b10001; ExtOp = ysyx_040053_R; wen = 1; end
+                            default: begin ALUSrcA = 1; ALUSrcB = 0; ALUOp = (instr_i[30] == 1'b0) ? 5'b10101 : 5'b11101; ExtOp = ysyx_040053_R; wen = 1; end
                             //srl/sra
                         endcase
                     end
@@ -1756,7 +1735,7 @@ parameter ysyx_220053_R = 5;
 */
             7'b1110011://ebreak, mret, ecall, csrrw, csrrc, csrrs
              	begin
-                    ExtOp = ysyx_220053_I; MulOp = 0;
+                    ExtOp = ysyx_040053_I; MulOp = 0;
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; Fence_i = 0;
                     case(func3)
                         3'b000: 
@@ -1812,14 +1791,14 @@ parameter ysyx_220053_R = 5;
              	end
             7'b0001111://fence.i
                 begin
-                    ExtOp = ysyx_220053_I; MulOp = 0; Fence_i = 1; Csri = 0;
+                    ExtOp = ysyx_040053_I; MulOp = 0; Fence_i = 1; Csri = 0;
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0;
                     Ebreak = 0; Csrwen = 0;  Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; wen = 0;
 
                 end
             default: begin
                 //$display("no, op=%x",op);
-                ExtOp = ysyx_220053_I; MulOp = 0; Fence_i = 0; Csri = 0;
+                ExtOp = ysyx_040053_I; MulOp = 0; Fence_i = 0; Csri = 0;
                 MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0;
                 Ebreak = 0; Csrwen = 0;  Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; ALUSrcA = 1; ALUSrcB = 0; ALUOp = 5'b00000; wen = 0;           
             end
@@ -1839,7 +1818,7 @@ endmodule
 
 
 
-module ysyx_220053_core(
+module ysyx_040053_core(
   input clk,
   input rst,
   output [31:0] instr,//debug instr fetched
@@ -2031,8 +2010,8 @@ module ysyx_220053_core(
       else load_use = 1'b0;
     end
     //wire hazard = id_ex_hazard | id_m_hazard | id_wb_hazard;
-    wire rs1_need = (id_ex_hazard && id_rs1 == ex_rd_i) || (id_m_hazard && id_rs1 == m_rd_i) || (id_wb_hazard && id_rs1 == wb_waddr_i);
-    wire rs2_need = (id_ex_hazard && id_rs2 == ex_rd_i) || (id_m_hazard && id_rs2 == m_rd_i) || (id_wb_hazard && id_rs2 == wb_waddr_i);
+    assign rs1_need = (id_ex_hazard && id_rs1 == ex_rd_i) || (id_m_hazard && id_rs1 == m_rd_i) || (id_wb_hazard && id_rs1 == wb_waddr_i);
+    assign rs2_need = (id_ex_hazard && id_rs2 == ex_rd_i) || (id_m_hazard && id_rs2 == m_rd_i) || (id_wb_hazard && id_rs2 == wb_waddr_i);
     reg [63:0] forward_data1, forward_data2;
     always@(*) begin
       if(id_ex_hazard && id_rs1 == ex_rd_i) forward_data1 = (ex_CsrToReg_i == 1'b0) ? ex_ALURes_o : ex_csrres_i;
@@ -2058,7 +2037,7 @@ module ysyx_220053_core(
     wire i_rw_dev_o;
     wire [7:0] i_rw_size_o;
     wire [3:0] i_rw_bytes_o;
-    ysyx_220053_IFU my_ifu(
+    ysyx_040053_IFU my_ifu(
       .clk(clk),
       .rst(rst),
       .Fence_i(has_fence_i),
@@ -2089,7 +2068,7 @@ module ysyx_220053_core(
     assign id_en = ~(id_block | ex_block | m_block | wb_block);
     assign id_valid_i = ~(rst | if_block | cpu_halt | has_fence_i);
     /////////////////////////////////
-    ysyx_220053_ID_Reg ID_Reg(
+    ysyx_040053_ID_Reg ID_Reg(
       .clk(clk),
       .flush(rst),
       .valid_i(id_valid_i),
@@ -2103,7 +2082,7 @@ module ysyx_220053_core(
     );
     ////////////ID///////////////////
     wire [63:0] ex_dnpc,m_dnpc,wb_dnpc;
-    ysyx_220053_IDU my_idu(
+    ysyx_040053_IDU my_idu(
       .instr_i(id_instr_o),
       .rd(id_rd_o),
       .imm(id_imm_o),
@@ -2142,7 +2121,7 @@ module ysyx_220053_core(
       assign ex_en = ~(ex_block | m_block | wb_block);//还未处理阻塞
       assign ex_valid_i = id_valid_o & (~id_block | (id_Fence_i_o & ~ex_Fence_i_i)) & ~Time_interrupt;//还未处理冒险
     /////////////////////////////
-    ysyx_220053_EX_Reg EX_Reg(
+    ysyx_040053_EX_Reg EX_Reg(
       //control
       .clk(clk),
       .flush(ex_flush),
@@ -2195,7 +2174,7 @@ module ysyx_220053_core(
     ///////////EX////////////////
     wire alu_busy;
 
-    ysyx_220053_EXU my_exu(
+    ysyx_040053_EXU my_exu(
       .clk(clk),
       .rst(rst),
       .busa(ex_busa_i),
@@ -2215,7 +2194,7 @@ module ysyx_220053_core(
     assign m_en = ~(m_block | wb_block);//还未处理阻塞
     assign m_valid_i = ex_valid_o & (~ex_block);//还未处理冒险
     /////////////////////////////
-    ysyx_220053_M_Reg M_Reg(
+    ysyx_040053_M_Reg M_Reg(
 //control
     .clk(clk),
     .flush(m_flush),
@@ -2256,12 +2235,17 @@ module ysyx_220053_core(
       ,.dnpc_i(ex_dnpc),
       .dnpc_o(m_dnpc)
   );
+  
     ///////////M/////////////////
     wire m_busy;
     wire [7:0] d_rw_size_o;
     wire d_rw_dev_o;
     wire [3:0] d_rw_bytes_o;
-    ysyx_220053_MU my_mu(
+    wire is_Fence_i = m_Fence_i_i & m_valid_o;
+    wire is_MemToReg = m_MemToReg_i & (~m_flush) & m_valid_o;
+    wire is_men = m_MemWen_i & (~m_flush) & m_valid_o;
+
+    ysyx_040053_MU my_mu(
       .clk(clk), 
       .rst(rst),
       .MemOp(m_MemOp_i),
@@ -2289,9 +2273,6 @@ module ysyx_220053_core(
         .io_sram6_addr(io_sram6_addr),.io_sram6_cen(io_sram6_cen),.io_sram6_wen(io_sram6_wen),.io_sram6_wdata(io_sram6_wdata),.io_sram6_rdata(io_sram6_rdata),
         .io_sram7_addr(io_sram7_addr),.io_sram7_cen(io_sram7_cen),.io_sram7_wen(io_sram7_wen),.io_sram7_wdata(io_sram7_wdata),.io_sram7_rdata(io_sram7_rdata)
     );
-    wire is_Fence_i = m_Fence_i_i & m_valid_o;
-    wire is_MemToReg = m_MemToReg_i & (~m_flush) & m_valid_o;
-    wire is_men = m_MemWen_i & (~m_flush) & m_valid_o;
     assign m_flush = rst | fence_i_commit;
     assign m_block = m_busy;
     assign wb_en = ~wb_block;//还未处理阻塞
@@ -2300,7 +2281,7 @@ module ysyx_220053_core(
     wire dev_i = m_valid_o && (m_raddr_i[31:28] == 4'ha) && (is_men == 1'b0);
     wire dev_o;
     /////////////////////////////
-    ysyx_220053_WB_Reg WB_Reg(
+    ysyx_040053_WB_Reg WB_Reg(
 //control
     .clk(clk),
     .flush(wb_flush),
@@ -2376,7 +2357,7 @@ module ysyx_220053_core(
     //  if(ebreak_commit) c_trap(1);
     //end
     ///////////Regfile///////////
-    ysyx_220053_RegisterFile regfile(.clk(clk),
+    ysyx_040053_RegisterFile regfile(.clk(clk),
                                               .rst(rst),
                                               .raaddr(id_rs1),
                                               .rbaddr(id_rs2),
@@ -2389,13 +2370,13 @@ module ysyx_220053_core(
     //////////Csr////////////////
     //Csrwen:阻塞时不能写,还没完成这里的逻辑，阻塞和冒险判断放在top里
     wire [63:0] Csr_datain = (id_Csri_o == 1'b1) ? {{59{1'b0}},id_rs1} : id_busa_o;
-    ysyx_220053_CSR csrfile( .clk(clk), .rst(rst), .Csrwen(is_Csrwen), .CsrOp(id_CsrOp), .CsrId(id_CsrId), .datain(Csr_datain),
+    ysyx_040053_CSR csrfile( .clk(clk), .rst(rst), .Csrwen(is_Csrwen), .CsrOp(id_CsrOp), .CsrId(id_CsrId), .datain(Csr_datain),
                              .mepc_o(id_mepc), .csrres(id_csrres_o), .mtvec_o(id_mtvec), .Ecall(id_Ecall & id_valid_o),
                              .epc_in(id_pc_o),.Mret(id_Mret & id_valid_o),
                              .mstatus_MIE(mstatus_MIE), .mie_MITE(mie_MITE), .Time_interrupt(Time_interrupt & id_valid_o));
     
     //////////Arbiter//////////////
-    ysyx_220053_arbiter arbiter(
+    ysyx_040053_arbiter arbiter(
     clk,rst,
   //icache <-> arbiter
     if_busy,i_rw_addr_o,i_rw_req_o,i_rw_valid_o,i_data_read_i,i_rw_ready_i,i_rw_size_o,i_rw_dev_o,i_rw_bytes_o,
@@ -2408,7 +2389,7 @@ endmodule
 
 
 
-module ysyx_220053_CSR(
+module ysyx_040053_CSR(
     input clk,rst,
     input Csrwen, Ecall, Mret,
     input [2:0] CsrOp,
@@ -2555,35 +2536,35 @@ endmodule
 
 
 
-`define ysyx_220053_XLEN 64
-`define ysyx_220053_XXLEN 128
+`define ysyx_040053_XLEN 64
+`define ysyx_040053_XXLEN 128
 
-module ysyx_220053_divu(
+module ysyx_040053_divu(
     input clk,
     input rst,
-    input [`ysyx_220053_XLEN - 1:0] dividend,
-    input [`ysyx_220053_XLEN - 1:0] divisor,
+    input [`ysyx_040053_XLEN - 1:0] dividend,
+    input [`ysyx_040053_XLEN - 1:0] divisor,
     input div_valid,
     input div_signed,
     input flush,
     output div_ready,
     output out_valid,
-    output [`ysyx_220053_XLEN - 1:0] quotient,
-    output [`ysyx_220053_XLEN - 1:0] remainder
+    output [`ysyx_040053_XLEN - 1:0] quotient,
+    output [`ysyx_040053_XLEN - 1:0] remainder
 );
     reg running_r;
     reg ready_r, valid_r;
     reg [6:0] cnt;
-    reg [`ysyx_220053_XXLEN - 1:0] udividend_r;
-    reg [`ysyx_220053_XLEN - 1:0] udivisor_r, quotient_r, remainder_r;
+    reg [`ysyx_040053_XXLEN - 1:0] udividend_r;
+    reg [`ysyx_040053_XLEN - 1:0] udivisor_r, quotient_r, remainder_r;
     reg dividend_s, divisor_s;
-    wire [`ysyx_220053_XLEN - 1:0] dividend_abs, divisor_abs;
-    wire [`ysyx_220053_XLEN - 1 : 0] sub;
+    wire [`ysyx_040053_XLEN - 1:0] dividend_abs, divisor_abs;
+    wire [`ysyx_040053_XLEN - 1 : 0] sub;
     wire sub_s;
 
 //abs
-    wire dividend_abs = ~dividend + `ysyx_220053_XLEN'b1;
-    wire divisor_abs  = ~divisor  + `ysyx_220053_XLEN'b1;
+    assign dividend_abs = ~dividend + `ysyx_040053_XLEN'b1;
+    assign divisor_abs  = ~divisor  + `ysyx_040053_XLEN'b1;
 
 //status
     wire ready_to_doing = ready_r && div_valid;//握手成功，准备开始doing
@@ -2623,8 +2604,8 @@ module ysyx_220053_divu(
             divisor_s  <= 1'b0;
         end
         else if(ready_to_doing) begin
-            dividend_s <= div_signed & dividend[`ysyx_220053_XLEN - 1];
-            divisor_s  <= div_signed & divisor[`ysyx_220053_XLEN - 1];
+            dividend_s <= div_signed & dividend[`ysyx_040053_XLEN - 1];
+            divisor_s  <= div_signed & divisor[`ysyx_040053_XLEN - 1];
         end
     end
 
@@ -2645,15 +2626,15 @@ module ysyx_220053_divu(
             udivisor_r <= 0;
         end
         else if(ready_to_doing) begin
-            udividend_r <= div_signed & dividend[`ysyx_220053_XLEN - 1] ? {`ysyx_220053_XLEN'b0, dividend_abs} : {`ysyx_220053_XLEN'b0, dividend};
-            udivisor_r  <= div_signed & divisor[`ysyx_220053_XLEN - 1]  ? divisor_abs : divisor;
+            udividend_r <= div_signed & dividend[`ysyx_040053_XLEN - 1] ? {`ysyx_040053_XLEN'b0, dividend_abs} : {`ysyx_040053_XLEN'b0, dividend};
+            udivisor_r  <= div_signed & divisor[`ysyx_040053_XLEN - 1]  ? divisor_abs : divisor;
         end
         else if(running_r) begin
-            udividend_r <= sub_s ? {udividend_r[`ysyx_220053_XXLEN - 2 : 0],1'b0} : {sub[`ysyx_220053_XLEN - 1:0], udividend_r[`ysyx_220053_XLEN - 2 : 0], 1'b0};
+            udividend_r <= sub_s ? {udividend_r[`ysyx_040053_XXLEN - 2 : 0],1'b0} : {sub[`ysyx_040053_XLEN - 1:0], udividend_r[`ysyx_040053_XLEN - 2 : 0], 1'b0};
         end
     end 
 
-    adder_XLEN1 suber(.src1(udividend_r[`ysyx_220053_XXLEN - 1: `ysyx_220053_XLEN - 1]),
+    adder_XLEN1 suber(.src1(udividend_r[`ysyx_040053_XXLEN - 1: `ysyx_040053_XLEN - 1]),
                       .src2({1'b1,~udivisor_r}),
                       .cin(1'b1),
                       .cout(sub_s),
@@ -2662,20 +2643,20 @@ module ysyx_220053_divu(
 
     always @(posedge clk) begin
         if(rst || flush || ready_to_doing) begin
-            remainder_r <= `ysyx_220053_XLEN'b0;
-            quotient_r  <= `ysyx_220053_XLEN'b0;
+            remainder_r <= `ysyx_040053_XLEN'b0;
+            quotient_r  <= `ysyx_040053_XLEN'b0;
         end
         else if(calculate_done) begin
-            remainder_r <= udividend_r[`ysyx_220053_XXLEN - 1: `ysyx_220053_XLEN]; 
+            remainder_r <= udividend_r[`ysyx_040053_XXLEN - 1: `ysyx_040053_XLEN]; 
             quotient_r  <= quotient_r;
         end
         else if(running_r) begin
-            quotient_r <= {quotient_r[`ysyx_220053_XLEN - 2 : 0], ~sub_s};
+            quotient_r <= {quotient_r[`ysyx_040053_XLEN - 2 : 0], ~sub_s};
         end 
     end
 //correct result
-    assign quotient = dividend_s ^ divisor_s ? ~quotient_r + `ysyx_220053_XLEN'b1 : quotient_r;
-    assign remainder = dividend_s ? ~remainder_r + `ysyx_220053_XLEN'b1 : remainder_r;
+    assign quotient = dividend_s ^ divisor_s ? ~quotient_r + `ysyx_040053_XLEN'b1 : quotient_r;
+    assign remainder = dividend_s ? ~remainder_r + `ysyx_040053_XLEN'b1 : remainder_r;
     
     assign div_ready = ready_r;
     assign out_valid = valid_r;
@@ -2683,18 +2664,18 @@ module ysyx_220053_divu(
 endmodule
 
 module adder_XLEN1(
-    input [`ysyx_220053_XLEN:0] src1,
-    input [`ysyx_220053_XLEN:0] src2,
+    input [`ysyx_040053_XLEN:0] src1,
+    input [`ysyx_040053_XLEN:0] src2,
     input cin,
     output cout,
-    output [`ysyx_220053_XLEN - 1:0] result
+    output [`ysyx_040053_XLEN - 1:0] result
 );
-assign {cout, result} = src1 + src2 + {`ysyx_220053_XLEN'b0,cin};
+assign {cout, result} = src1 + src2 + {`ysyx_040053_XLEN'b0,cin};
 endmodule
 
 
 
-module ysyx_220053_EXU(
+module ysyx_040053_EXU(
     input clk, rst,
     input [63:0] busa,
     input [63:0] busb,
@@ -2715,7 +2696,7 @@ module ysyx_220053_EXU(
     assign alu_inA = (ALUSrcA == 1'b1) ? busa : pc;
     assign alu_inB = (ALUSrcB == 2'b01) ? imm : ((ALUSrcB == 2'b00) ? busb : 4);
     
-    ysyx_220053_ALU alu64(
+    ysyx_040053_ALU alu64(
                             .clk(clk),
                             .rst(rst),
                             .mwb_block(mwb_block),
@@ -2727,7 +2708,7 @@ endmodule
 
 //import "DPI-C" function void c_trap(input bit done);
 
-module ysyx_220053_IDU(
+module ysyx_040053_IDU(
     input  [31:0] instr_i,
     input  [63:0] pc,
     input  [63:0] busa, busb,
@@ -2757,9 +2738,9 @@ module ysyx_220053_IDU(
     wire [6:0]  func7;
     wire [2:0] ExtOp;
     wire [2:0] Branch;
-    ysyx_220053_InstrToImm insttoimm(instr_i, ExtOp, imm);
+    ysyx_040053_InstrToImm insttoimm(instr_i, ExtOp, imm);
     //controler
-    ysyx_220053_controler control(.instr_i(instr_i), .op(op), .func3(func3), .func7(func7),
+    ysyx_040053_controler control(.instr_i(instr_i), .op(op), .func3(func3), .func7(func7),
                                  .ALUSrcA(ALUSrcA),.ALUSrcB(ALUSrcB), 
                                  .Branch(Branch), .MemOp(MemOp), .MemToReg(MemToReg),
                                  .ExtOp(ExtOp), .ALUOp(ALUOp), .wen(wen), .MemWen(MemWen),
@@ -2775,8 +2756,8 @@ module ysyx_220053_IDU(
     assign alu_inA = (ALUSrcA == 1'b1) ? busa : pc;
     assign alu_inB = (ALUSrcB == 2'b01) ? imm : ((ALUSrcB == 2'b00) ? busb : 4);
     wire Trap = Time_interrupt | Ecall;
-    ysyx_220053_ALU_lite na_alu(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .result(res), .zero(zero));
-    ysyx_220053_NexAddr nextaddr(.mtvec(mtvec), .Trap(Trap), .mepc(mepc), .Mret(Mret),
+    ysyx_040053_ALU_lite na_alu(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .result(res), .zero(zero));
+    ysyx_040053_NexAddr nextaddr(.mtvec(mtvec), .Trap(Trap), .mepc(mepc), .Mret(Mret),
                                  .Zero(zero), .res0(res[0]), .Branch(Branch), .pc(pc),
                                  .imm(imm), .busa(busa), .dnpc(addr_res));
     
@@ -2792,7 +2773,7 @@ module ysyx_220053_IDU(
 endmodule
 
 
-module ysyx_220053_IFU(
+module ysyx_040053_IFU(
     input clk,
     input rst,
     input Fence_i,
@@ -2839,6 +2820,8 @@ module ysyx_220053_IFU(
     wire cache_idle;
     reg old_instr, cache_doing;
     reg [31:0] instr_read_r;
+
+    wire [63:0] cpu_data_read;
     //wire [63:0] now_pc, rdata, snpc;
     //assign pc = (block == 1'b1 | dnpc_valid == 1'b0) ? now_pc : valid_dnpc;
     //assign snpc = now_pc + 4;
@@ -2859,12 +2842,11 @@ module ysyx_220053_IFU(
         end
     end
 
-    //ysyx_220053_Reg #(64, 64'h80000000) PC(.clk(clk), .rst(rst), valid_dnpc, pc, pcen);
+    //ysyx_040053_Reg #(64, 64'h80000000) PC(.clk(clk), .rst(rst), valid_dnpc, pc, pcen);
     //未取到：取指令
     //取到了：不取
     wire i_cpu_ready;
     wire cpu_req_valid;
-    wire [63:0] cpu_data_read;
     always @(posedge clk) begin
         if(rst || id_en_i) begin
             old_instr <= 1'b0;
@@ -2901,7 +2883,7 @@ module ysyx_220053_IFU(
     assign i_rw_dev_o = cpu_dev;
     wire flush = rst | Fence_i;
     
-    ysyx_220053_icache icache(
+    ysyx_040053_icache icache(
          clk,flush,
         //cpu<->cache
          cache_pc,cpu_req_valid,cpu_data_read,i_cpu_ready,cache_idle,
@@ -2917,7 +2899,7 @@ module ysyx_220053_IFU(
 endmodule
 
 
-module ysyx_220053_InstrToImm(
+module ysyx_040053_InstrToImm(
 	input [31:0] instr,
     input [2:0] ExtOp,
     output reg [63:0] imm
@@ -2948,7 +2930,7 @@ endmodule
 
 
 
-module ysyx_220053_Mem(
+module ysyx_040053_Mem(
     input clk,
     input rst,
     input [2:0] MemOp,
@@ -2966,7 +2948,7 @@ module ysyx_220053_Mem(
     output            d_rw_dev_o,
     input  [127:0]    d_data_read_i,
     input             d_rw_ready_i,
-    output [3:0]      d_rw_bytes_o,
+    output reg [3:0]  d_rw_bytes_o,
     input Fence_i,
     output is_cmp,
 
@@ -2994,10 +2976,11 @@ module ysyx_220053_Mem(
 	output[127:0] io_sram7_wdata,
 	input[127:0] io_sram7_rdata
 );
+//不支持不对齐访问
     wire [63:0] dataout;
     reg [7:0] wmask;
-    integer i,st = {{29{1'b0}},raddr[2:0]};
-    integer st_bit = {{26{1'b0}},raddr[2:0],{3{1'b0}}};
+    wire [2:0] offs = raddr[2:0];
+    //integer st_bit = {{26{1'b0}},raddr[2:0],{3{1'b0}}};
     wire [63:0] wdatad = wdata[63:0];
     wire [31:0] wdataw = wdata[31:0];
     wire [15:0] wdatah = wdata[15:0];
@@ -3019,12 +3002,12 @@ module ysyx_220053_Mem(
     wire vis_clint = (raddr[31:24] == 8'h2);
     wire clint_wen = MemWen & vis_clint;
     wire [63:0] clint_rdata;
-    ysyx_220053_CLint clint(
+    ysyx_040053_CLint clint(
         .clk(clk),.rst(rst),.clint_wen(clint_wen),.wdata(wdata),.rdata(clint_rdata),.is_cmp(is_cmp)
     );
 
-    assign d_rw_dev_o = (raddr[31:28] == 4'h1) || (raddr[31:28] == 4'h3) || (raddr[31:28] == 4'h4) ;
-    wire cpu_dev = (raddr[31:28] == 4'h1) || (raddr[31:28] == 4'h3) || (raddr[31:28] == 4'h4);
+    assign d_rw_dev_o = (raddr[31:28] == 4'h1) || (raddr[31:28] == 4'h3) || (raddr[31:28] == 4'h4) || (raddr[31:28] == 4'h5) || (raddr[31:28] == 4'h6) || (raddr[31:28] == 4'h7);
+    wire cpu_dev = d_rw_dev_o;//(raddr[31:28] == 4'h1) || (raddr[31:28] == 4'h3) || (raddr[31:28] == 4'h4);
     always @(posedge clk) begin
         if(rst) begin
             cache_doing <= 1'b0;
@@ -3039,7 +3022,7 @@ module ysyx_220053_Mem(
     assign cpu_req_valid = (!cache_doing && !d_cpu_ready && vis_mem && !vis_dev);
     assign m_busy = (!d_cpu_ready && vis_mem && !vis_dev);
 
-    ysyx_220053_dcache dcache(
+    ysyx_040053_dcache dcache(
       clk,rst,
     //cpu<->cache
       cpu_req_addr,cpu_req_rw,cpu_req_valid,cpu_data_write,cpu_wmask,cpu_data_read,d_cpu_ready,cache_idle,
@@ -3074,73 +3057,39 @@ module ysyx_220053_Mem(
     always@(*) begin
         case(MemOp[1:0])
             2'b00: begin //4byte
-                for (i = 0; i < st; i = i + 1) begin
-                    wmask[i] = 1'b0;
-                end
-                for (i = 0; i < 4; i = i + 1) begin
-                    wmask[st + i] = 1'b1;
-                end
-                for (i = st + 4; i < 8; i = i + 1) begin
-                    wmask[i] = 1'b0;
-                end
-
-                for (i = 0; i < st_bit; i = i + 1) begin
-                    datain[i] = 1'b0;
-                end
-                for (i = 0; i < 32; i = i + 1) begin
-                    datain[st_bit + i] = wdataw[i];
-                end
-                //datain[st + 31 : st] = wdataw;
-                for (i = st_bit + 32; i < 64; i = i + 1) begin
-                    datain[i] = 0;
-                end
+                case(offs)
+                    3'b000: wmask = 8'h0f;
+                    3'b100: wmask = 8'hf0;
+                    default: wmask = 8'h00;
+                endcase
+                datain = {wdataw, wdataw};
             end   
             2'b01: begin //1byte
-                for (i = 0; i < st_bit; i = i + 1) begin
-                    datain[i] = 0;
-                end
-                for (i = 0; i < 8; i = i + 1) begin
-                    datain[st_bit + i] = wdatab[i];
-                end
-                //datain[st + 7 : st] = wdatab;
-                for (i = st_bit + 8; i < 64; i = i + 1) begin
-                    datain[i] = 0;
-                end
-
-                for (i = 0; i < st; i = i + 1) begin
-                    wmask[i] = 1'b0;
-                end
-                wmask[st] = 1'b1; 
-                for (i = st + 1; i < 8; i = i + 1) begin
-                    wmask[i] = 1'b0;
-                end
+                case(offs)
+                    3'b000: wmask = 8'h01;
+                    3'b001: wmask = 8'h02;
+                    3'b010: wmask = 8'h04;
+                    3'b011: wmask = 8'h08;
+                    3'b100: wmask = 8'h10;
+                    3'b101: wmask = 8'h20;
+                    3'b110: wmask = 8'h40;                   
+                    default: wmask = 8'h80;
+                endcase
+                datain = {wdatab, wdatab, wdatab, wdatab, wdatab, wdatab, wdatab, wdatab};
             end
             2'b10: begin //2byte
-                for (i = 0; i < st_bit; i = i + 1) begin
-                    datain[i] = 0;
-                end
-                for (i = 0; i < 16; i = i + 1) begin
-                    datain[st_bit + i] = wdatah[i];
-                end
-                //datain[st + 15 : st] = wdatah;
-                for (i = st_bit + 16; i < 64; i = i + 1) begin
-                    datain[i] = 0;
-                end
-
-                for (i = 0; i < st; i = i + 1) begin
-                    wmask[i] = 1'b0;
-                end
-                wmask[st] = 1'b1;
-                wmask[st + 1] = 1'b1;
-                for (i = st + 2; i < 8; i = i + 1) begin
-                    wmask[i] = 1'b0;
-                end
-
-                //datain = {4{wdatah}};  
+                case(offs)
+                    3'b000: wmask = 8'h03;
+                    3'b010: wmask = 8'h0c;
+                    3'b100: wmask = 8'h30;
+                    3'b110: wmask = 8'hc0;                
+                    default: wmask = 8'h00;
+                endcase
+                datain = {wdatah, wdatah, wdatah, wdatah};
             end
-            default: begin
+            default: begin//8byte
                 datain = wdatad;
-                wmask = 8'b11111111;//8byte
+                wmask = 8'hff;
             end
         endcase
     end
@@ -3152,20 +3101,14 @@ module ysyx_220053_Mem(
     //read
     always @(*) begin
         case(MemOp[1:0])
-            2'b00: begin
-                for (i = 0; i < 32; i = i + 1) begin
-                    dataw[i] = dataout[st_bit + i];
-                end
+            2'b00: begin//32bit
+                dataw = dataout[offs*8+: 32];
             end
-            2'b01: begin
-                for (i = 0; i < 8; i = i + 1) begin
-                    datab[i] = dataout[st_bit + i];
-                end
+            2'b01: begin//8bit
+                datab = dataout[offs*8+: 8];
             end
-            2'b10: begin
-                for (i = 0; i < 16; i = i+1) begin
-                    datah[i] = dataout[st_bit + i];
-                end
+            2'b10: begin//16bit
+                datah = dataout[offs*8+: 16];
             end
             default: datad = dataout;
         endcase
@@ -3183,7 +3126,7 @@ module ysyx_220053_Mem(
         endcase
     end
 endmodule
-module ysyx_220053_CLint(
+module ysyx_040053_CLint(
     input clk,
     input rst,
     input clint_wen,
@@ -3225,32 +3168,32 @@ endmodule
 
 
 
-`define ysyx_220053_COMPUTER_WIDTH 64
+`define ysyx_040053_COMPUTER_WIDTH 64
 //32
-`define ysyx_220053_WIDTH 66
+`define ysyx_040053_WIDTH 66
 //34
-// `ysyx_220053_COMPUTER_WIDTH+2
+// `ysyx_040053_COMPUTER_WIDTH+2
 
-module ysyx_220053_mulu (
+module ysyx_040053_mulu (
   input  clk,
   input  rst,
-  input  [`ysyx_220053_COMPUTER_WIDTH:0] multiplicand,//33bits * 33bits
-  input  [`ysyx_220053_COMPUTER_WIDTH:0] multiplier,
+  input  [`ysyx_040053_COMPUTER_WIDTH:0] multiplicand,//33bits * 33bits
+  input  [`ysyx_040053_COMPUTER_WIDTH:0] multiplier,
   input         mul_valid,
   output reg    mul_ready,
   output reg    out_valid,
-  output [`ysyx_220053_COMPUTER_WIDTH*2-1:0] result
+  output [`ysyx_040053_COMPUTER_WIDTH*2-1:0] result
 );
-//`ysyx_220053_WIDTH = 34
+//`ysyx_040053_WIDTH = 34
 //68bits
 //32+1+1+1bits
-    reg [`ysyx_220053_WIDTH*2-1:0] tem_result, multiplicand_r;//68
-    reg [`ysyx_220053_WIDTH:0] multiplier_r;//34+1
+    reg [`ysyx_040053_WIDTH*2-1:0] tmp_result, multiplicand_r;//68
+    reg [`ysyx_040053_WIDTH:0] multiplier_r;//34+1
     reg running_r;
     wire ready_to_doing, calculate_done;
-    wire [`ysyx_220053_WIDTH*2-1:0] p_result;
+    wire [`ysyx_040053_WIDTH*2-1:0] p_result;
     reg [6:0] cnt;
-
+//cnt
     always @(posedge clk) begin
         if(rst || out_valid) begin
             cnt <= 7'b0;
@@ -3261,7 +3204,19 @@ module ysyx_220053_mulu (
     end
 
     assign ready_to_doing = mul_valid && mul_ready;
-    
+//whether running
+    always @(posedge clk) begin
+        if(rst) begin
+            running_r <= 1'b0;
+        end
+        else if(ready_to_doing) begin
+            running_r <= 1'b1;
+        end
+        else if(calculate_done) begin
+            running_r <= 1'b0;
+        end    
+    end
+//valid and ready
     always @(posedge clk) begin
         if(rst) begin
             mul_ready <= 1'b1;
@@ -3281,78 +3236,56 @@ module ysyx_220053_mulu (
         else if(out_valid)  begin
             out_valid <=1'b0;
         end
-        else if(calculate_done ) begin
+        else if(calculate_done) begin
             out_valid <= 1'b1;
         end
     end
 
+//calculate multiplicand_r and multiplier_r
     always @(posedge clk) begin
         if(rst) begin
-            running_r <= 1'b0;
+            multiplicand_r <= 0;
+            multiplier_r <= 0;
         end
         else if(ready_to_doing) begin
-            running_r <= 1'b1;
-        end
-        else if(calculate_done) begin
-            running_r <= 1'b0;
-        end    
-    end
-
-    //multiplicand_r
-    always @(posedge clk) begin
-        if(rst) multiplicand_r <= 0;
-        else if(ready_to_doing) begin
-            multiplicand_r <= {{`ysyx_220053_WIDTH{multiplicand[`ysyx_220053_COMPUTER_WIDTH]}},multiplicand[`ysyx_220053_COMPUTER_WIDTH],multiplicand};
+            multiplicand_r <= {{`ysyx_040053_WIDTH{multiplicand[`ysyx_040053_COMPUTER_WIDTH]}},multiplicand[`ysyx_040053_COMPUTER_WIDTH],multiplicand};
             //68  
+
+            multiplier_r <= {multiplier[`ysyx_040053_COMPUTER_WIDTH],multiplier,1'b0};// lowest bit is 0;
+            //34+1
         end
-        else if(running_r) begin //<< 2
-            multiplicand_r <= {multiplicand_r[`ysyx_220053_WIDTH*2-3:0],2'b0};//65:0->66
-        end
-    end
-    //multiplier_r
-    always @(posedge clk) begin
-        if(rst) multiplier_r <= 0;
-        else if(ready_to_doing) begin
-            // lowest bit is 0
-            multiplier_r <= {multiplier[`ysyx_220053_COMPUTER_WIDTH],multiplier,1'b0};//34+1
-        end
-        else if(running_r) begin //>> 2
-            multiplier_r <= {2'b0,multiplier_r[`ysyx_220053_WIDTH:2]};
+        else if(running_r) begin //multiplicand_r << 2,  multiplier_r >> 2
+            multiplicand_r <= {multiplicand_r[`ysyx_040053_WIDTH*2-3:0],2'b0};//65:0->66
+            multiplier_r <= {2'b0,multiplier_r[`ysyx_040053_WIDTH:2]};
         end
     end
 
-    assign calculate_done = running_r && (cnt == 7'h10 ||multiplier_r[`ysyx_220053_WIDTH:0] == {{`ysyx_220053_WIDTH{1'b0}},1'b0});//34 == 34
+    assign calculate_done = running_r && (cnt == 7'h10 ||multiplier_r[`ysyx_040053_WIDTH:0] == {{`ysyx_040053_WIDTH{1'b0}},1'b0});//34 == 34
    
     wire partial_cout;
-    ysyx_220053_partial partial(.x_src(multiplicand_r),.y_src(multiplier_r[2:0]),.p_result(p_result),.cout(partial_cout));
+    ysyx_040053_partial partial(.x_src(multiplicand_r),.y_src(multiplier_r[2:0]),.p_result(p_result),.cout(partial_cout));
 //33 32 31
 //7 6 5 4 3 2 1 0 -1
-    // `ysyx_220053_WIDTH*2-bit adder
-    wire [`ysyx_220053_WIDTH*2-1:0] adder_a;
-    wire [`ysyx_220053_WIDTH*2-1:0] adder_b;
-    wire               adder_cin;
-    wire [`ysyx_220053_WIDTH*2-1:0] adder_result;
-    wire        adder_cout;
+// `ysyx_040053_WIDTH*2-bit adder
+    wire [`ysyx_040053_WIDTH*2-1:0] adder_result;
+    wire adder_cout;
+    assign {adder_cout, adder_result} = p_result + tmp_result + {{`ysyx_040053_WIDTH*2-1{1'b0}},partial_cout};
 
-    assign adder_a   = p_result;
-    assign adder_b   = tem_result;
-    assign adder_cin = partial_cout;
-    assign {adder_cout, adder_result} = adder_a + adder_b + {{`ysyx_220053_WIDTH*2-1{1'b0}},adder_cin};
-
-    // Temporary Results or Final Results
+// Temporary Results or Final Results
     always @(posedge clk) begin
         if(ready_to_doing) begin
-            tem_result <= {`ysyx_220053_WIDTH*2{1'b0}};
+            tmp_result <= {`ysyx_040053_WIDTH*2{1'b0}};
         end
         else if(running_r) begin
-        tem_result <= adder_result;
+            tmp_result <= adder_result;
         end
     end
-    assign result = tem_result[127:0];
+
+    assign result = tmp_result[127:0];
 
 endmodule
 
-module ysyx_220053_sel_gen(
+module ysyx_040053_sel_gen(
   input [2:0] src,
   output [3:0] sel
 );
@@ -3370,7 +3303,7 @@ module ysyx_220053_sel_gen(
     assign sel = {sel_negative,sel_positive,sel_double_negative,sel_double_positive};
 endmodule
 
-module ysyx_220053_res_sel(
+module ysyx_040053_res_sel(
   input [3:0] sel,
   input [1:0] src,
   output p 
@@ -3384,10 +3317,10 @@ module ysyx_220053_res_sel(
             & ~(sel_positive & x ) & ~(sel_double_positive &  x_sub));
 endmodule
 
-module ysyx_220053_partial(
-  input [2*`ysyx_220053_WIDTH-1:0]  x_src,
+module ysyx_040053_partial(
+  input [2*`ysyx_040053_WIDTH-1:0]  x_src,
   input [2:0] y_src,
-  output [2*`ysyx_220053_WIDTH-1:0]   p_result,
+  output [2*`ysyx_040053_WIDTH-1:0]   p_result,
   output  cout
 );
 
@@ -3398,20 +3331,20 @@ module ysyx_220053_partial(
     wire sel_double_negative = sel[1];
 
     assign cout = sel_negative || sel_double_negative;
-    ysyx_220053_sel_gen sel_gen(.src(y_src),.sel(sel));
+    ysyx_040053_sel_gen sel_gen(.src(y_src),.sel(sel));
 
-    ysyx_220053_res_sel p_res0(.sel (sel), .src ({x_src[0],1'b0}), .p (p_result[0]));
+    ysyx_040053_res_sel p_res0(.sel (sel), .src ({x_src[0],1'b0}), .p (p_result[0]));
     genvar x;
     generate 
-        for ( x = 1; x < `ysyx_220053_WIDTH * 2; x = x + 1) begin
-            ysyx_220053_res_sel p_res(.sel (sel), .src (x_src[x:x-1]), .p (p_result[x]));
+        for ( x = 1; x < `ysyx_040053_WIDTH * 2; x = x + 1) begin
+            ysyx_040053_res_sel p_res(.sel (sel), .src (x_src[x:x-1]), .p (p_result[x]));
         end 
     endgenerate
 endmodule
 
 
 
-module ysyx_220053_MU(
+module ysyx_040053_MU(
     input clk, rst,
     input [2:0] MemOp,
     input MemToReg,//1->load, 0-> not load or not valid
@@ -3462,7 +3395,7 @@ module ysyx_220053_MU(
     wire vis_mem = MemToReg | MemWen | Fence_i;
     wire req_rw  = ~MemToReg;
     wire [63:0] mdata, regsin;
-    ysyx_220053_Mem mem(.clk(clk),.rst(rst), .MemOp(MemOp), .raddr(raddr), .MemWen(MemWen),.req_rw(req_rw), .wdata(wdata), .rdata(mdata), .vis_mem(vis_mem)
+    ysyx_040053_Mem mem(.clk(clk),.rst(rst), .MemOp(MemOp), .raddr(raddr), .MemWen(MemWen),.req_rw(req_rw), .wdata(wdata), .rdata(mdata), .vis_mem(vis_mem)
         ,.m_busy(m_busy), .d_rw_addr_o(d_rw_addr_o), .d_rw_req_o(d_rw_req_o), .d_rw_valid_o(d_rw_valid_o), .d_rw_w_data_o(d_rw_w_data_o),
         .d_data_read_i(d_data_read_i), .d_rw_ready_i(d_rw_ready_i),.Fence_i(Fence_i), .is_cmp(is_cmp),
         .d_rw_size_o(d_rw_size_o), .d_rw_dev_o(d_rw_dev_o),.d_rw_bytes_o(d_rw_bytes_o),
@@ -3478,7 +3411,7 @@ endmodule
 
 
 
-module ysyx_220053_NexAddr(
+module ysyx_040053_NexAddr(
     input Zero, res0,
     input [2:0] Branch,
     input [63:0] pc, imm, busa, mepc, mtvec,
@@ -3502,7 +3435,7 @@ module ysyx_220053_NexAddr(
     assign SrcB = (NexB == 1'b0) ? 4 : imm;
     wire [63:0] respc;
     wire pc_cout,of_miss,sf_miss,cf_miss,zf_miss;
-    ysyx_220053_Adder64 pcadder(.result(respc), .x(SrcA), .y(SrcB), .sub(1'b0), .cout(pc_cout), .OF(of_miss), .CF(cf_miss), .SF(sf_miss), .ZF(zf_miss));
+    ysyx_040053_Adder64 pcadder(.result(respc), .x(SrcA), .y(SrcB), .sub(1'b0), .cout(pc_cout), .OF(of_miss), .CF(cf_miss), .SF(sf_miss), .ZF(zf_miss));
     assign dnpc = (Trap == 1'b0) ? ((Mret == 1'b0) ? respc : mepc) : mtvec;
  //   always@(*) begin
   //      $display("pc = %x, dnpc=%x",pc,dnpc);
@@ -3511,7 +3444,7 @@ endmodule
 
 
 
-module ysyx_220053_ID_Reg(
+module ysyx_040053_ID_Reg(
 //control
     input clk,
     input flush,
@@ -3550,7 +3483,7 @@ module ysyx_220053_ID_Reg(
     assign valid_o = valid_r;
 endmodule
 
-module ysyx_220053_EX_Reg(
+module ysyx_040053_EX_Reg(
 //control
     input clk,
     input flush,
@@ -3685,7 +3618,7 @@ module ysyx_220053_EX_Reg(
     assign Fence_i_o = Fence_i_r;
 endmodule
 
-module ysyx_220053_M_Reg(
+module ysyx_040053_M_Reg(
 //control
     input clk,
     input flush,
@@ -3796,7 +3729,7 @@ module ysyx_220053_M_Reg(
     assign Fence_i_o = Fence_i_r;
 endmodule
 
-module ysyx_220053_WB_Reg(
+module ysyx_040053_WB_Reg(
 //control
     input clk,
     input flush,
@@ -3880,7 +3813,7 @@ endmodule
 
 
 
-module ysyx_220053_Shifter(
+module ysyx_040053_Shifter(
     input [63:0] din,
     input [5:0] shamt,
     input AL,
@@ -3903,7 +3836,7 @@ module ysyx_220053_Shifter(
     end
 endmodule
 
-module ysyx_220053_Reg #(WIDTH = 1, RESET_VAL = 0) (
+module ysyx_040053_Reg #(WIDTH = 1, RESET_VAL = 0) (
   input clk,
   input rst,
   input [WIDTH-1:0] din,
@@ -3916,7 +3849,7 @@ module ysyx_220053_Reg #(WIDTH = 1, RESET_VAL = 0) (
   end
 endmodule
 
-module ysyx_220053_MuxKeyInternal #(NR_KEY = 2, KEY_LEN = 1, DATA_LEN = 1, HAS_DEFAULT = 0) (
+module ysyx_040053_MuxKeyInternal #(NR_KEY = 2, KEY_LEN = 1, DATA_LEN = 1, HAS_DEFAULT = 0) (
   output reg [DATA_LEN-1:0] out,
   input [KEY_LEN-1:0] key,
   input [DATA_LEN-1:0] default_out,
@@ -3952,24 +3885,24 @@ module ysyx_220053_MuxKeyInternal #(NR_KEY = 2, KEY_LEN = 1, DATA_LEN = 1, HAS_D
 endmodule
 
 // 不带默认值的选择器模板
-module ysyx_220053_MuxKey #(NR_KEY = 2, KEY_LEN = 1, DATA_LEN = 1) (
+module ysyx_040053_MuxKey #(NR_KEY = 2, KEY_LEN = 1, DATA_LEN = 1) (
   output [DATA_LEN-1:0] out,
   input [KEY_LEN-1:0] key,
   input [NR_KEY*(KEY_LEN + DATA_LEN)-1:0] lut
 );
-  ysyx_220053_MuxKeyInternal #(NR_KEY, KEY_LEN, DATA_LEN, 0) i0 (out, key, {DATA_LEN{1'b0}}, lut);
+  ysyx_040053_MuxKeyInternal #(NR_KEY, KEY_LEN, DATA_LEN, 0) i0 (out, key, {DATA_LEN{1'b0}}, lut);
 endmodule
 
 // 带默认值的选择器模板
-module ysyx_220053_MuxKeyWithDefault #(NR_KEY = 2, KEY_LEN = 1, DATA_LEN = 1) (
+module ysyx_040053_MuxKeyWithDefault #(NR_KEY = 2, KEY_LEN = 1, DATA_LEN = 1) (
   output [DATA_LEN-1:0] out,
   input [KEY_LEN-1:0] key,
   input [DATA_LEN-1:0] default_out,
   input [NR_KEY*(KEY_LEN + DATA_LEN)-1:0] lut
 );
-  ysyx_220053_MuxKeyInternal #(NR_KEY, KEY_LEN, DATA_LEN, 1) i0 (out, key, default_out, lut);
+  ysyx_040053_MuxKeyInternal #(NR_KEY, KEY_LEN, DATA_LEN, 1) i0 (out, key, default_out, lut);
 endmodule
-module ysyx_220053_mux21(a,b,s,y);
+module ysyx_040053_mux21(a,b,s,y);
   input   a,b,s;
   output  y;
 
@@ -3980,13 +3913,13 @@ module ysyx_220053_mux21(a,b,s,y);
   //    1'b1: y = b;
   //  endcase
   // end
-  ysyx_220053_MuxKey #(2, 1, 1) i0 (y, s, {
+  ysyx_040053_MuxKey #(2, 1, 1) i0 (y, s, {
     1'b0, a,
     1'b1, b
   });
 endmodule
 
-module ysyx_220053_mux41(a,s,y);
+module ysyx_040053_mux41(a,s,y);
   input  [3:0] a;
   input  [1:0] s;
   output y;
@@ -4001,7 +3934,7 @@ module ysyx_220053_mux41(a,s,y);
   //    default: y = 1'b0;
   //  endcase
   // end
-  ysyx_220053_MuxKeyWithDefault #(4, 2, 1) i0 (y, s, 1'b0, {
+  ysyx_040053_MuxKeyWithDefault #(4, 2, 1) i0 (y, s, 1'b0, {
     2'b00, a[0],
     2'b01, a[1],
     2'b10, a[2],
@@ -4009,7 +3942,7 @@ module ysyx_220053_mux41(a,s,y);
   });
 endmodule
 
-module ysyx_220053_RegisterFile (
+module ysyx_040053_RegisterFile (
   input clk,
   input rst,
   input [5-1:0] raaddr,
@@ -4049,7 +3982,7 @@ endmodule
 
 
 
-module ysyx_220053(
+module ysyx_040053(
     input clock,
     input reset,
     input io_interrupt,
@@ -4158,7 +4091,15 @@ module ysyx_220053(
 	output io_sram7_wen, 
 	output [127:0] io_sram7_wmask, 
 	output [127:0] io_sram7_wdata,
-	input [127:0] io_sram7_rdata
+	input [127:0] io_sram7_rdata,
+    //debug
+    output [31:0] instr;
+    output [63:0] pc;
+    output wb_commit;
+    output [63:0] wb_pc;
+    output [31:0] wb_instr;
+    output [63:0] next_pc;
+    output wb_dev_o;
 );  
     assign io_sram0_wmask = 0; 
 	assign io_sram1_wmask = 0;
@@ -4186,7 +4127,7 @@ module ysyx_220053(
     wire [63:0] next_pc;
     wire wb_dev_o;
     wire [3:0] rw_bytes_o;
-    ysyx_220053_core core(
+    ysyx_040053_core core(
         .clk(clock),.rst(reset),
         .instr(instr),.pc(pc),.wb_commit(wb_commit),.wb_pc(wb_pc),.wb_instr(wb_instr),.next_pc(next_pc),.wb_dev_o(wb_dev_o),
         .rw_addr_o(rw_addr_o),.rw_req_o(rw_req_o),.rw_valid_o(rw_valid_o),.rw_w_data_o(rw_w_data_o),
@@ -4202,7 +4143,7 @@ module ysyx_220053(
         .io_sram7_addr(io_sram7_addr),.io_sram7_cen(io_sram7_cen),.io_sram7_wen(io_sram7_wen),.io_sram7_wdata(io_sram7_wdata),.io_sram7_rdata(io_sram7_rdata)
 
     );
-    ysyx_220053_axi_rw axi(
+    ysyx_040053_axi_rw axi(
         clock,
         reset,
 
@@ -4221,86 +4162,45 @@ module ysyx_220053(
         io_master_awready,
         io_master_awvalid,
         io_master_awaddr,
-        io_master_awprot,
         io_master_awid,
-        io_master_awuser,
         io_master_awlen,
         io_master_awsize,
         io_master_awburst,
-        io_master_awlock,
-        io_master_awcache,
-        io_master_awqos,
-        io_master_awregion,
 
         io_master_wready,
         io_master_wvalid,
         io_master_wdata,
         io_master_wstrb,
         io_master_wlast,
-        io_master_wuser,
 
         io_master_bready,
         io_master_bvalid,
         io_master_bresp,
         io_master_bid,
-       0,// io_master_buser,
 
         io_master_arready,
         io_master_arvalid,
         io_master_araddr,
-        io_master_arprot,
         io_master_arid,
-        io_master_aruser,
         io_master_arlen,
         io_master_arsize,
         io_master_arburst,
-        io_master_arlock,
-        io_master_arcache,
-        io_master_arqos,
-        io_master_arregion,
 
         io_master_rready,
         io_master_rvalid,
         io_master_rresp,
         io_master_rdata,
         io_master_rlast,
-        io_master_rid,
-        0//io_master_ruser
+        io_master_rid
     );
-        wire [2:0]                    io_master_awprot;
-
-    wire [1-1:0]                      io_master_awuser;
-
-    wire                              io_master_awlock;
-
-    wire [3:0]                        io_master_awcache;
-
-    wire [3:0]                        io_master_awqos;
-
-    wire [3:0]                        io_master_awregion;
-
-    wire [1-1:0]                      io_master_wuser;
-
-    wire [2:0]                        io_master_arprot;
-
-    wire [1-1:0]                      io_master_aruser;
-
-    wire                              io_master_arlock;
-
-    wire [3:0]                        io_master_arcache;
-
-    wire [3:0]                        io_master_arqos;
-
-    wire [3:0]                        io_master_arregion;
 
     assign io_slave_awready = 0;              
-    
+
     assign io_slave_wready = 0;                
             
     assign io_slave_bvalid = 0;
     assign io_slave_bresp = 0;                 
     assign io_slave_bid = 0;
-   // assign io_slave_buser = 0;
 
     assign io_slave_arready = 0;                
                      
@@ -4309,6 +4209,5 @@ module ysyx_220053(
     assign io_slave_rdata = 0;
     assign io_slave_rlast = 0;
     assign io_slave_rid = 0;
-   // assign io_slave_ruser = 0;
 
 endmodule
