@@ -4093,13 +4093,13 @@ module ysyx_040053(
 	output [127:0] io_sram7_wdata,
 	input [127:0] io_sram7_rdata,
     //debug
-    output [31:0] instr;
-    output [63:0] pc;
-    output wb_commit;
-    output [63:0] wb_pc;
-    output [31:0] wb_instr;
-    output [63:0] next_pc;
-    output wb_dev_o;
+    output [31:0] instr,
+    output [63:0] pc,
+    output wb_commit,
+    output [63:0] wb_pc,
+    output [31:0] wb_instr,
+    output [63:0] next_pc,
+    output wb_dev_o
 );  
     assign io_sram0_wmask = 0; 
 	assign io_sram1_wmask = 0;
@@ -4118,14 +4118,6 @@ module ysyx_040053(
     wire            rw_ready_i;//data_read_i in ram
     wire [7:0]     rw_size_o;
     wire           rw_dev_o;
-    
-    wire [31:0] instr;
-    wire [63:0] pc;
-    wire wb_commit;
-    wire [63:0] wb_pc;
-    wire [31:0] wb_instr;
-    wire [63:0] next_pc;
-    wire wb_dev_o;
     wire [3:0] rw_bytes_o;
     ysyx_040053_core core(
         .clk(clock),.rst(reset),
