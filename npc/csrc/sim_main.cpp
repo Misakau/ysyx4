@@ -369,13 +369,13 @@ int main(int argc, char**argv, char**env) {
     st_time = get_time();
     printf(ASNI_FG_BLUE "start time = %lld\n" ASNI_NONE,(long long)st_time);
     //reset the pc
-    contextp->timeInc(1); 
+    //contextp->timeInc(1); 
     top->clk = 0;
     top->rst = 1;
     top->eval();
     //printf("Now_pc = %016lx\n",top->pc);
     top->clk = 1;
-    contextp->timeInc(1); 
+    //contextp->timeInc(1); 
     top->eval();
    // printf("Now_pc = %016lx\n",top->pc);
     top->rst = 0;
@@ -429,7 +429,7 @@ static void npc_exec(uint64_t n){
  */
  uint64_t mem_ls = 0;//dmem_ls = 0, imem_ls = 0;
   for (uint64_t i = 1; i <= 2*n && !npc_done && !sdb_contextp->gotFinish(); i++) { 
-            sdb_contextp->timeInc(1); 
+            //sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
             //if(sdb_top->clk == 0)sdb_top->instr_i = pimem_read(sdb_top->pc);
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", sdb_top->clk, sdb_top->rst, sdb_top->pc, sdb_top->instr);
