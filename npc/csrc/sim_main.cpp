@@ -417,13 +417,6 @@ int main(int argc, char**argv, char**env) {
     }
     delete top;
     delete contextp;
-    if(NPC_EXIT == false){
-      if(cpu_gpr[10] == 0)
-        printf(ASNI_FG_GREEN "HIT GOOD TRAP!" ASNI_NONE);
-      else printf(ASNI_FG_RED "HIT BAD TRAP!" ASNI_NONE);
-      PASS = cpu_gpr[10];
-      printf(ASNI_FG_BLUE " at PC = %lx\n" ASNI_NONE,top->pc);
-    }
     printf("~~~Sim finished!~~~\n");
     uint64_t en_time = get_time();
     long long ms = (en_time - st_time)/1000;
