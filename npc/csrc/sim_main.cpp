@@ -309,7 +309,7 @@ int main(int argc, char**argv, char**env) {
     assert(difftest_init);
     
     VerilatedContext*contextp = new VerilatedContext;
-    contextp->traceEverOn(true);
+   // contextp->traceEverOn(true);
     contextp->commandArgs(argc, argv);
     Vtop*top = new Vtop{contextp};
     
