@@ -493,7 +493,7 @@ static void npc_exec(uint64_t n){
                   difftest_regcpy(&nemu, 0);
                 }
                 if(sdb_top->wb_pc != nemu_last_pc){
-                  printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu_last_pc, sdb_top->next_pc, sdb_top->wb_pc);
+                  printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu_last_pc, sdb_top->wb_pc);
                   dump_gpr();
                   NPC_EXIT = 1;break;
                 }
