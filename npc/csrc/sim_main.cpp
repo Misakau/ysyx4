@@ -183,6 +183,8 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   }
   else if(waddr >= VGACTL_ADDR && waddr < VGACTL_ADDR + 8*4){
     //assert(real_mask == 0xffffffffull);
+
+    printf("wmask = %x\n",(uint32_t)wmask);
     assert(vgactl_port_base);
     assert((waddr - VGACTL_ADDR)>>2 == 1);
     vgactl_port_base[(waddr - VGACTL_ADDR)>>2] = (uint64_t)wdata >> 32;
@@ -191,7 +193,6 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   }
   else if(waddr >= FB_ADDR && waddr < FB_ADDR + vmem_len){
     assert(vmem);
-    printf("wmask = %x\n",(uint32_t)wmask);
    // printf("real_mask = %lx\n",real_mask);
    // assert(real_mask == 0xffffffffull);
     uint32_t *ptr = (uint32_t *)vmem;
