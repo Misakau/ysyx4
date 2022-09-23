@@ -4466,19 +4466,6 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
                     & (((2U == (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status)) 
                         & (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__d_rw_ready_i)) 
                        | (6U == (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__my_mu__DOT__mem__DOT__dcache__DOT__cur_status))))));
-    vlSelf->top__DOT__mycpu__DOT__core__DOT__d_rw_dev_o 
-        = ((((((1U == (0xfU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                       >> 0x1cU)))) 
-               | (3U == (0xfU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                         >> 0x1cU))))) 
-              | (4U == (0xfU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                        >> 0x1cU))))) 
-             | (5U == (0xfU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                       >> 0x1cU))))) 
-            | (6U == (0xfU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                      >> 0x1cU))))) 
-           | (7U == (0xfU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                     >> 0x1cU)))));
     vlSelf->top__DOT__mycpu__DOT__core__DOT__my_mu__DOT__mem__DOT__dataout 
         = ((2U == (0xffU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
                                     >> 0x18U)))) ? vlSelf->top__DOT__mycpu__DOT__core__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtimecmp
@@ -5275,7 +5262,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
                       & (0x302U == (vlSelf->top__DOT__mycpu__DOT__core__DOT__ID_Reg__DOT__instr_r 
                                     >> 0x14U)))));
     if (vlSelf->rst) {
-        vlSelf->top__DOT__mycpu__DOT__core__DOT__if_pc_o = 0x30000000ULL;
+        vlSelf->top__DOT__mycpu__DOT__core__DOT__if_pc_o = 0x80000000ULL;
     } else if (((~ (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__cpu_halt)) 
                 & (((IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__ID_Reg__DOT__valid_r) 
                     & (~ (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__has_fence_i))) 
@@ -5745,7 +5732,12 @@ VL_INLINE_OPT void Vtop___024root___settle__TOP__8(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__mycpu__DOT__core__DOT__my_ifu__DOT__icache__DOT__next_status 
         = Vtop__ConstPool__TABLE_b6f66a3a_0[__Vtableidx1];
     vlSelf->top__DOT__mycpu__DOT__rw_dev_o = ((2U == (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__arbiter__DOT__cur_status))
-                                               ? (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__d_rw_dev_o)
+                                               ? (0xaU 
+                                                  == 
+                                                  (0xfU 
+                                                   & (IData)(
+                                                             (vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
+                                                              >> 0x1cU))))
                                                : ((1U 
                                                    == (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__arbiter__DOT__cur_status)) 
                                                   & (3U 
@@ -5945,7 +5937,12 @@ VL_INLINE_OPT void Vtop___024root___combo__TOP__9(Vtop___024root* vlSelf) {
                                                    ((IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__is_Fence_i)
                                                      ? 7U
                                                      : 
-                                                    ((IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__d_rw_dev_o)
+                                                    ((0xaU 
+                                                      == 
+                                                      (0xfU 
+                                                       & (IData)(
+                                                                 (vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
+                                                                  >> 0x1cU))))
                                                       ? 8U
                                                       : 1U))
                                                     : 0U)))));

@@ -1,7 +1,7 @@
 /* verilator lint_off UNUSED */
 /* verilator lint_off PINMISSING */
 /* verilator lint_off DECLFILENAME */
-
+import "DPI-C" function void c_trap(input bit done);
 module top(
     input clk,
     input rst,

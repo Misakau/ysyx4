@@ -81,10 +81,6 @@ extern "C" void set_gpr_ptr(const svOpenArrayHandle r) {
   cpu_gpr = (uint64_t *)(((VerilatedDpiOpenVar*)r)->datap());
 }
 
-uint64_t *cpu_csr = NULL;
-extern "C" void set_csr_ptr(const svOpenArrayHandle r) {
-  cpu_csr = (uint64_t *)(((VerilatedDpiOpenVar*)r)->datap());
-}
 
 const char *regs_name[] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
@@ -286,7 +282,7 @@ void set_batch_mode(){
 static uint64_t tot_instr = 0;
 static void sdb_mainloop();
 static bool is_diff = false;
-static char pathi[] = "/home/wang/ysyx-workbench/npc/test.bin";
+static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv64-npc.bin";
 //"/home/wang/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv64-npc.bin";
 //"/home/wang/ysyx-workbench/npc/test.bin";
 //"/home/wang/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv64-npc.bin";

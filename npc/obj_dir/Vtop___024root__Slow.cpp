@@ -307,13 +307,13 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
         = vlSelf->top__DOT__io_sram3_rdata[2U];
     vlSelf->top__DOT__mycpu__DOT__core__DOT__my_ifu__DOT__icache__DOT__line_o[3U][3U] 
         = vlSelf->top__DOT__io_sram3_rdata[3U];
+    vlSelf->top__DOT__mycpu__DOT__core__DOT__d_rw_ready_i 
+        = ((2U == (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__arbiter__DOT__cur_status)) 
+           & (IData)(vlSelf->top__DOT__mycpu__DOT__axi__DOT__rw_ready_r));
     vlSelf->top__DOT__mycpu__DOT__core__DOT__i_rw_ready_i 
         = ((2U != (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__arbiter__DOT__cur_status)) 
            & ((1U == (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__arbiter__DOT__cur_status)) 
               & (IData)(vlSelf->top__DOT__mycpu__DOT__axi__DOT__rw_ready_r)));
-    vlSelf->top__DOT__mycpu__DOT__core__DOT__d_rw_ready_i 
-        = ((2U == (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__arbiter__DOT__cur_status)) 
-           & (IData)(vlSelf->top__DOT__mycpu__DOT__axi__DOT__rw_ready_r));
     vlSelf->top__DOT__mycpu__DOT__core__DOT__my_mu__DOT__mem__DOT__datain 
         = ((0U == (3U & (IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__MemOp_r)))
             ? (((QData)((IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__wdata_r)) 
@@ -450,19 +450,6 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
               | (0U == ((vlSelf->top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[0U] 
                          | vlSelf->top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[1U]) 
                         | vlSelf->top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__mulu__DOT__multiplier_r[2U]))));
-    vlSelf->top__DOT__mycpu__DOT__core__DOT__d_rw_dev_o 
-        = ((((((1U == (0xfU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                       >> 0x1cU)))) 
-               | (3U == (0xfU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                         >> 0x1cU))))) 
-              | (4U == (0xfU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                        >> 0x1cU))))) 
-             | (5U == (0xfU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                       >> 0x1cU))))) 
-            | (6U == (0xfU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                      >> 0x1cU))))) 
-           | (7U == (0xfU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
-                                     >> 0x1cU)))));
     vlSelf->top__DOT__mycpu__DOT__core__DOT__my_mu__DOT__mem__DOT__dataout 
         = ((2U == (0xffU & (IData)((vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
                                     >> 0x18U)))) ? vlSelf->top__DOT__mycpu__DOT__core__DOT__my_mu__DOT__mem__DOT__clint__DOT__mtimecmp
@@ -3754,7 +3741,12 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
                                                    ((IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__is_Fence_i)
                                                      ? 7U
                                                      : 
-                                                    ((IData)(vlSelf->top__DOT__mycpu__DOT__core__DOT__d_rw_dev_o)
+                                                    ((0xaU 
+                                                      == 
+                                                      (0xfU 
+                                                       & (IData)(
+                                                                 (vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__raddr_r 
+                                                                  >> 0x1cU))))
                                                       ? 8U
                                                       : 1U))
                                                     : 0U)))));
@@ -4205,7 +4197,6 @@ void Vtop___024root___ctor_var_reset(Vtop___024root* vlSelf) {
     vlSelf->top__DOT__mycpu__DOT__core__DOT__alu_busy = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__mycpu__DOT__core__DOT__m_busy = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__mycpu__DOT__core__DOT__d_rw_size_o = VL_RAND_RESET_I(8);
-    vlSelf->top__DOT__mycpu__DOT__core__DOT__d_rw_dev_o = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__mycpu__DOT__core__DOT__d_rw_bytes_o = VL_RAND_RESET_I(4);
     vlSelf->top__DOT__mycpu__DOT__core__DOT__is_Fence_i = VL_RAND_RESET_I(1);
     vlSelf->top__DOT__mycpu__DOT__core__DOT__is_MemToReg = VL_RAND_RESET_I(1);

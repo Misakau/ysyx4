@@ -2357,9 +2357,9 @@ module ysyx_040053_core(
     assign wb_instr = wb_instr_r;
     assign ebreak_commit = wb_Ebreak_i;
     assign next_pc = next_pc_r;
-    //always@(*) begin
-    //  if(ebreak_commit) c_trap(1);
-    //end
+    always@(*) begin
+      if(ebreak_commit) c_trap(1);
+    end
     ///////////Regfile///////////
     ysyx_040053_RegisterFile regfile(.clk(clk),
                                               .rst(rst),
