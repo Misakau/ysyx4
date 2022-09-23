@@ -482,6 +482,8 @@ static void npc_exec(uint64_t n){
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(sdb_top->wb_dev_o == true){
+                  if(sdb_top->wb_pc >= 0x83000000)
+                    printf("nexpc_nemu: %lx, nexpc: %lx at pc = %lx\n", nemu.pc, sdb_top->next_pc, sdb_top->wb_pc);
                   //printf("a5 = %lx\n",cpu_gpr[15]);
                   for(int i = 1; i < 32; i++){
                     nemu.gpr[i] = cpu_gpr[i];
@@ -490,11 +492,13 @@ static void npc_exec(uint64_t n){
                 }
                 if(sdb_top->next_pc != nemu.pc){
                   printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, sdb_top->next_pc, sdb_top->wb_pc);
+                  dump_gpr();
                   NPC_EXIT = 1;break;
                 }
                 for(int i = 1; i < 32; i++){
                   if(cpu_gpr[i] != nemu.gpr[i]){
                     printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],sdb_top->wb_pc);
+                    dump_gpr();
                     NPC_EXIT = 1; break;
                   }
                 }
