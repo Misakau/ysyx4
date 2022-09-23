@@ -34,7 +34,6 @@ void __am_gpu_init() {
   outl(SYNC_ADDR, 1);
   */
 }
-
 void __am_gpu_config(AM_GPU_CONFIG_T *cfg) {
   uint32_t hw_data = inl(VGACTL_ADDR);
   *cfg = (AM_GPU_CONFIG_T) {
