@@ -484,14 +484,15 @@ static void npc_exec(uint64_t n){
                 nemu_last_pc = nemu.pc;
                 if(sdb_top->wb_pc == 0x00000000830188d8){
                   dump_gpr();
+                  for (i = 0; i < 32; i++) {
+                    printf("nemu_%s = 0x%lx\n", regs_name[i], nemu.gpr[i]);
+                  }
                   printf("nemu_last_pc = %lx\n",nemu_last_pc);
                   break;
                 }
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(sdb_top->wb_dev_o == true){
-                  if(sdb_top->wb_pc >= 0x0000000083000000)
-                    printf("nemu_last_pc = %lx\n",nemu_last_pc);
                   for(int i = 1; i < 32; i++){
                     nemu.gpr[i] = cpu_gpr[i];
                   }
