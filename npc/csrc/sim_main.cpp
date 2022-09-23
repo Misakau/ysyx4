@@ -184,7 +184,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   else if(waddr >= VGACTL_ADDR && waddr < VGACTL_ADDR + 8*4){
     //assert(real_mask == 0xffffffffull);
 
-    printf("waddr = %llx, wmask = %x\n",waddr, (uint32_t)wmask);
+    printf("waddr = %llx, wmask = %x, wdata = %llx\n",waddr, (uint32_t)wmask,wdata);
     assert(vgactl_port_base);
     assert((waddr - VGACTL_ADDR)>>2 == 1);
     vgactl_port_base[(waddr - VGACTL_ADDR)>>2] = (uint64_t)wdata >> 32;
