@@ -191,7 +191,7 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   }
   else if(waddr >= FB_ADDR && waddr < FB_ADDR + vmem_len){
     assert(vmem);
-   // printf("wmask = %x\n",(uint32_t)wmask);
+    printf("wmask = %x\n",(uint32_t)wmask);
    // printf("real_mask = %lx\n",real_mask);
    // assert(real_mask == 0xffffffffull);
     uint32_t *ptr = (uint32_t *)vmem;
@@ -477,73 +477,6 @@ static void npc_exec(uint64_t n){
                 if(log_ptr) fprintf(log_ptr, "wb_commit: pc = 0x%016lx, instr = %08x\n", sdb_top->wb_pc, sdb_top->wb_instr);
               } 
             #endif
-            //printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, i_rw_req_o = %x\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o, sdb_top->i_rw_req_o);
-            /*if(sdb_top->clk == 1 && sdb_top->i_rw_valid_o == 1){
-              long long midx = ((sdb_top->i_rw_addr_o - AD_BASE) >> 4) << 1;
-              //printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, midx = %lld\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o,midx);
-              sdb_top->i_data_read_i[0] = (uint32_t)MEM[midx];
-              sdb_top->i_data_read_i[1] = (uint32_t)(MEM[midx]>>32);
-              sdb_top->i_data_read_i[2] = (uint32_t)MEM[midx+1];
-              sdb_top->i_data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
-              sdb_top->i_rw_ready_i = 1;
-              imem_ls = i;
-            }
-            if(sdb_top->clk == 1 && sdb_top->d_rw_valid_o == 1){
-              long long midx = ((sdb_top->d_rw_addr_o - AD_BASE) >> 4) << 1;
-              //printf("d_rw_req = %d, d_rw_valid_o = %x, d_rw_addr_o = %lx, midx = %lld\n",sdb_top->d_rw_req_o, sdb_top->d_rw_valid_o,sdb_top->d_rw_addr_o,midx);
-              if(sdb_top->d_rw_req_o == 0){
-                sdb_top->d_data_read_i[0] = (uint32_t)MEM[midx];
-                sdb_top->d_data_read_i[1] = (uint32_t)(MEM[midx]>>32);
-                sdb_top->d_data_read_i[2] = (uint32_t)MEM[midx+1];
-                sdb_top->d_data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
-              }
-              else{
-                MEM[midx] = sdb_top->d_rw_w_data_o[0] | (uint64_t)sdb_top->d_rw_w_data_o[1] << 32;
-                MEM[midx + 1] = sdb_top->d_rw_w_data_o[2] | (uint64_t)sdb_top->d_rw_w_data_o[3] << 32;
-              }
-              sdb_top->d_rw_ready_i = 1;
-              dmem_ls = i;
-            }*/
-            //if(i == 530) printf("i == 530, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
-            /*
-            if(sdb_top->clk == 1 && sdb_top->rw_valid_o == 1){
-              if(sdb_top->rw_dev_o == 1){
-                //printf("[MMIO] rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
-                if(sdb_top->rw_req_o == 0){
-                  long long dataout = 0;
-                  pmem_read(sdb_top->rw_addr_o , &dataout, 8);
-                  sdb_top->data_read_i[0] = (uint32_t)dataout;
-                  sdb_top->data_read_i[1] = (uint32_t)(dataout>>32);
-                  sdb_top->data_read_i[2] = 0;
-                  sdb_top->data_read_i[3] = 0;
-                }
-                else{
-                  uint64_t wdata = sdb_top->rw_w_data_o[0] | (uint64_t)sdb_top->rw_w_data_o[1] << 32;;
-                  if (sdb_top->rw_ready_i == 0) pmem_write(sdb_top->rw_addr_o, wdata, sdb_top->rw_size_o);
-                }
-              }
-              else{
-                long long midx = ((sdb_top->rw_addr_o & 0xffffffffull) - AD_BASE) >> 3;
-                //printf("rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, midx = %lld\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o,midx);
-                if(sdb_top->rw_req_o == 0){
-                  sdb_top->data_read_i[0] = (uint32_t)MEM[midx];
-                  sdb_top->data_read_i[1] = (uint32_t)(MEM[midx]>>32);
-                  sdb_top->data_read_i[2] = (uint32_t)MEM[midx+1];
-                  sdb_top->data_read_i[3] = (uint32_t)(MEM[midx+1]>>32);
-                }
-                else{
-                  MEM[midx] = sdb_top->rw_w_data_o[0] | (uint64_t)sdb_top->rw_w_data_o[1] << 32;
-                  MEM[midx + 1] = sdb_top->rw_w_data_o[2] | (uint64_t)sdb_top->rw_w_data_o[3] << 32;
-                }
-              }
-              if (sdb_top->rw_ready_i == 0) mem_ls = i;
-              sdb_top->rw_ready_i = 1;
-              //printf("mem_ls = %ld\n",mem_ls);
-              //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
-            }
-            //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, d_rw_ready = %d, rw_ready_i = %d\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o, sdb_top->d_rw_ready,sdb_top->rw_ready_i);
-            */
-           //return;
             //printf("axi_ar_addr_o = %lx\n",sdb_top->axi_ar_addr_o);
             sdb_mem_sig.update_input(sdb_mem_ref);
             sdb_top->eval();
@@ -560,12 +493,6 @@ static void npc_exec(uint64_t n){
             }
             //printf("[after beat] arready_i = %d\n",mem_sig.arready);
             sdb_mem_sig.update_output(sdb_mem_ref);
-            //if(i == 528) printf("i == 528, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
-            //if(sdb_top->clk == 1 && i == imem_ls + 2) sdb_top->i_rw_ready_i = 0;
-            //if(sdb_top->clk == 1 && i == dmem_ls + 2) sdb_top->d_rw_ready_i = 0;
-            //if(sdb_top->clk == 1 && i == mem_ls + 2) sdb_top->rw_ready_i = 0;
-            //printf("i_rw_valid_o = %x, i_rw_addr_o = %lx, i_rw_req_o = %x\n",sdb_top->i_rw_valid_o,sdb_top->i_rw_addr_o, sdb_top->i_rw_req_o);
-            //NPC_EXIT = 1;break;
             if(sdb_top->clk == 0 && sdb_top->wb_commit == 1){
               tot_instr++;
               device_update();
@@ -595,12 +522,6 @@ static void npc_exec(uint64_t n){
               } 
               
             }
-            //if(sdb_top->wb_commit == 1){
-
-            //  if(sdb_top->wb_pc == 0x80000450){
-            //    break;
-            //  }
-           // }
             if(NPC_EXIT == 1) {sdb_top->eval();break;}
         }
   if(npc_done){
