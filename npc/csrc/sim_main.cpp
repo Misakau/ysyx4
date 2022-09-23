@@ -22,6 +22,8 @@
 
 axi4_mem <32,64,4> mem(4096l*1024*1024);
 axi4_ptr <32,64,4> mem_ptr;
+
+
 void connect_wire(Vtop *top, axi4_ptr <32,64,4> *ptr){
     ptr->awid = &(top->axi_aw_id_o);
     ptr->awaddr = &(top->axi_aw_addr_o);

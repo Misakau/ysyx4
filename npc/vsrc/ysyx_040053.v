@@ -2071,9 +2071,11 @@ module ysyx_040053_core(
     assign if_block = id_Ebreak_o | if_busy;
     assign id_en = ~(id_block | ex_block | m_block | wb_block);
     assign id_valid_i = ~(rst | if_block | cpu_halt | has_fence_i);
+
     always@(posedge clk) begin 
         if(id_valid_i) get_instr(if_instr_o);
     end
+    
     /////////////////////////////////
     ysyx_040053_ID_Reg ID_Reg(
       .clk(clk),
