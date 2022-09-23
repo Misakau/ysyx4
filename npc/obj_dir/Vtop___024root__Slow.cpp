@@ -27,6 +27,8 @@ void Vtop___024root::__Vconfigure(Vtop__Syms* _vlSymsp, bool first) {
 Vtop___024root::~Vtop___024root() {
 }
 
+void Vtop___024root____Vdpiimwrap_top__DOT__mycpu__DOT__core__DOT__regfile__DOT__set_gpr_ptr__Vdpioc2_TOP(const VlUnpacked<QData/*63:0*/, 32> &a);
+
 void Vtop___024root___initial__TOP__1(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
@@ -58,6 +60,7 @@ void Vtop___024root___initial__TOP__1(Vtop___024root* vlSelf) {
     vlSelf->axi_aw_burst_o = 1U;
     vlSelf->axi_ar_id_o = 0U;
     vlSelf->axi_ar_burst_o = 1U;
+    Vtop___024root____Vdpiimwrap_top__DOT__mycpu__DOT__core__DOT__regfile__DOT__set_gpr_ptr__Vdpioc2_TOP(vlSelf->top__DOT__mycpu__DOT__core__DOT__regfile__DOT__rf);
 }
 
 void Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(CData/*0:0*/ done);

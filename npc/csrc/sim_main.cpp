@@ -69,7 +69,6 @@ static Vtop* sdb_top = NULL;
 bool npc_done = false;
 static unsigned int instr_now = 0;
 extern "C" void c_trap(const svBit done){
-    printf("trap!\n");
     npc_done = done;
 }
 
@@ -145,27 +144,6 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
       long long maddr = (raddr + bytes - 1 - AD_BASE) >> 3;
       long long ret;
       ret = MEM[real_addr];
-      //printf("raddr = %llx, bytes = %d, Mem = %llx\n",raddr,bytes,ret);
-      /* for unaligned
-      if(maddr == real_addr) ret = MEM[real_addr];
-      else{
-          printf("unaligned!\n");
-          printf("raddr = %llx\n",raddr);
-          printf("bytes = %d\n",bytes);
-          printf("real addr = %llx\n",real_addr);
-          printf("maddr = %llx\n",maddr);
-          //assert(0);
-          assert(maddr == real_addr + 1);
-          long long del = (raddr - AD_BASE) - (real_addr << 3);
-          long long bytes1 = 8 - del;
-          long long bytes2 = bytes - bytes1;
-          assert(bytes2 < 8);
-          unsigned long long mask = (1ull << (bytes2*8)) - 1ull;
-          long long data1 = (unsigned long long)MEM[real_addr] >> (del*8);
-          long long data2 = MEM[maddr]& mask << (bytes1 * 8);
-          ret = data2 | data1;
-        
-      }*/
       *rdata = ret;
     } 
   }
@@ -700,19 +678,15 @@ static void npc_exec(uint64_t n){
             */
            //return;
             //printf("axi_ar_addr_o = %lx\n",sdb_top->axi_ar_addr_o);
-            printf("pc = %lx\n",sdb_top->pc);
             sdb_mem_sig.update_input(sdb_mem_ref);
             sdb_top->eval();
             //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, d_rw_ready = %d, rw_ready_i = %d\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o, sdb_top->d_rw_ready,sdb_top->rw_ready_i);
             //return;
             if(sdb_top->clk == 1){
-              printf("start to beat at awaddr = %lx, araddr = %lx\n",(unsigned long)(sdb_mem_sig_ref.awaddr),(unsigned long)(sdb_mem_sig_ref.araddr));
               mem.beat(sdb_mem_sig_ref);
-              printf("finish beat\n");
             }
             //printf("[after beat] arready_i = %d\n",mem_sig.arready);
             sdb_mem_sig.update_output(sdb_mem_ref);
-            printf("hh\n");
             //if(i == 528) printf("i == 528, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx\n",sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o);
             //if(sdb_top->clk == 1 && i == imem_ls + 2) sdb_top->i_rw_ready_i = 0;
             //if(sdb_top->clk == 1 && i == dmem_ls + 2) sdb_top->d_rw_ready_i = 0;
@@ -757,7 +731,6 @@ static void npc_exec(uint64_t n){
             if(NPC_EXIT == 1) {sdb_top->eval();break;}
         }
   if(npc_done){
-    printf("hh\n");
     if(cpu_gpr[10] == 0)
         printf(ASNI_FG_GREEN "HIT GOOD TRAP!" ASNI_NONE);
     else printf(ASNI_FG_RED "HIT BAD TRAP!" ASNI_NONE);
