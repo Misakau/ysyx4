@@ -191,7 +191,6 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   }
   else if(waddr >= FB_ADDR && waddr < FB_ADDR + vmem_len){
     assert(vmem);
-    printf("waddr = %llx, wmask = %x, wdata = %llx\n",waddr, (uint32_t)((uint8_t)wmask),wdata);
    // printf("real_mask = %lx\n",real_mask);
    // assert(real_mask == 0xffffffffull);
     uint32_t *ptr = (uint32_t *)vmem;
