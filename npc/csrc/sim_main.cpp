@@ -409,6 +409,7 @@ int main(int argc, char**argv, char**env) {
     int cnt = 0;
     int mem_ls = 0;//int imem_ls = 0,dmem_ls = 0;
     if(is_batch){
+      printf("batch!\n");
       #undef ITRACE
       int step = 0;
         NEMU_CPU nemu;
