@@ -487,6 +487,8 @@ static void npc_exec(uint64_t n){
                   for (i = 0; i < 32; i++) {
                     printf("nemu_%s = 0x%lx\n", regs_name[i], nemu.gpr[i]);
                   }
+                  difftest_exec(1);
+                  difftest_regcpy(&nemu, 1);
                   printf("nemu_last_pc = %lx\n",nemu_last_pc);
                   break;
                 }
