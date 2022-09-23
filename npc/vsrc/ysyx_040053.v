@@ -2071,6 +2071,9 @@ module ysyx_040053_core(
     assign if_block = id_Ebreak_o | if_busy;
     assign id_en = ~(id_block | ex_block | m_block | wb_block);
     assign id_valid_i = ~(rst | if_block | cpu_halt | has_fence_i);
+    always@(posedge clk) begin 
+        if(id_valid_i) get_instr(if_instr_o);
+    end
     /////////////////////////////////
     ysyx_040053_ID_Reg ID_Reg(
       .clk(clk),
@@ -2830,7 +2833,6 @@ module ysyx_040053_IFU(
     //assign pc = (block == 1'b1 | dnpc_valid == 1'b0) ? now_pc : valid_dnpc;
     //assign snpc = now_pc + 4;
     //always@(*) begin  pmem_read(pc, rdata, 4); end
-    //always@(*) begin get_instr(instr_o); end
     assign instr_o = (id_en_i && old_instr) ? instr_read_r : ((pc[2]) ? cpu_data_read[63:32] : cpu_data_read[31:0]);//(pc[2] == 0) ? rdata[31:0] : rdata[63:32];
     assign i_rw_size_o = (pc[2] == 1'b0) ? 8'h0f : 8'hf0; 
     assign i_rw_bytes_o = 4'h4;
