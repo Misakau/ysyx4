@@ -480,6 +480,10 @@ static void npc_exec(uint64_t n){
             if(is_diff){
               uint64_t nemu_last_pc = 0x80000000;
               if(sdb_top->clk == 0  && sdb_top->wb_commit == 1){
+                if(sdb_top->wb_pc == 0x00000000830188d8){
+                  dump_gpr();
+                  break;
+                }
                 difftest_regcpy(&nemu, 1);
                 nemu_last_pc = nemu.pc;
                 difftest_exec(1);
