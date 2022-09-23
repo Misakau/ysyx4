@@ -64,7 +64,6 @@ module top(
     input  [4-1:0]                      axi_r_id_i,
     input  [1-1:0]                      axi_r_user_i
 );
-    our s;
     wire  [63:0]   rw_addr_o;
     wire           rw_req_o;//
     wire           rw_valid_o;
