@@ -604,11 +604,11 @@ static void npc_exec(uint64_t n){
     return;
   }
   NEMU_CPU nemu;
- 
+ /*
   #ifndef ITRACE
     #define ITRACE
   #endif
- 
+ */
  uint64_t mem_ls = 0;//dmem_ls = 0, imem_ls = 0;
   for (uint64_t i = 1; i <= 2*n && !npc_done && !sdb_contextp->gotFinish(); i++) { 
             sdb_contextp->timeInc(1); 
