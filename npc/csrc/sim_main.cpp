@@ -317,7 +317,7 @@ int main(int argc, char**argv, char**env) {
     npc_parse_args(argc, argv);
     init_device();
     //vga_init
-    init_vga();
+    //init_vga();
 
     //sdb_init
     sdb_contextp = contextp;
