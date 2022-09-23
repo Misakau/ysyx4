@@ -309,7 +309,7 @@ int main(int argc, char**argv, char**env) {
     assert(difftest_init);
     
     VerilatedContext*contextp = new VerilatedContext;
-   // contextp->traceEverOn(true);
+    contextp->traceEverOn(true);
     contextp->commandArgs(argc, argv);
     Vtop*top = new Vtop{contextp};
     
@@ -369,13 +369,13 @@ int main(int argc, char**argv, char**env) {
     st_time = get_time();
     printf(ASNI_FG_BLUE "start time = %lld\n" ASNI_NONE,(long long)st_time);
     //reset the pc
-    //contextp->timeInc(1); 
+    contextp->timeInc(1); 
     top->clk = 0;
     top->rst = 1;
     top->eval();
     //printf("Now_pc = %016lx\n",top->pc);
     top->clk = 1;
-    //contextp->timeInc(1); 
+    contextp->timeInc(1); 
     top->eval();
    // printf("Now_pc = %016lx\n",top->pc);
     top->rst = 0;
@@ -429,7 +429,7 @@ static void npc_exec(uint64_t n){
  */
  uint64_t mem_ls = 0;//dmem_ls = 0, imem_ls = 0;
   for (uint64_t i = 1; i <= 2*n && !npc_done && !sdb_contextp->gotFinish(); i++) { 
-            //sdb_contextp->timeInc(1); 
+            sdb_contextp->timeInc(1); 
             sdb_top->clk = !sdb_top->clk;
             //if(sdb_top->clk == 0)sdb_top->instr_i = pimem_read(sdb_top->pc);
             //printf("Next status: clk = %d, rst = %d, pc = %016lx, instr = %08x\n", sdb_top->clk, sdb_top->rst, sdb_top->pc, sdb_top->instr);
@@ -478,20 +478,17 @@ static void npc_exec(uint64_t n){
             }
 
             if(is_diff){
-              //uint64_t nemu_last_pc = 0x80000000;
+              uint64_t nemu_last_pc = 0x80000000;
               if(sdb_top->clk == 0  && sdb_top->wb_commit == 1){
-                //difftest_regcpy(&nemu, 1);
-                //nemu_last_pc = nemu.pc;
-                /*if(sdb_top->wb_pc == 0x00000000830188d8){
-                  dump_gpr();
+                difftest_regcpy(&nemu, 1);
+                nemu_last_pc = nemu.pc;
+                if(sdb_top->wb_pc == 0x00000000830188d8){
                   for (i = 0; i < 32; i++) {
                     printf("nemu_%s = 0x%lx\n", regs_name[i], nemu.gpr[i]);
                   }
-                  difftest_exec(1);
-                  difftest_regcpy(&nemu, 1);
                   printf("nemu_last_pc = %lx\n",nemu_last_pc);
                   break;
-                }*/
+                }
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(sdb_top->wb_dev_o == true){
@@ -500,13 +497,11 @@ static void npc_exec(uint64_t n){
                   }
                   difftest_regcpy(&nemu, 0);
                 }
-                /*
                 if(sdb_top->wb_pc != nemu_last_pc){
                   printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu_last_pc, sdb_top->wb_pc);
                   dump_gpr();
                   NPC_EXIT = 1;break;
                 }
-                */
                 for(int i = 1; i < 32; i++){
                   if(cpu_gpr[i] != nemu.gpr[i]){
                     printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],sdb_top->wb_pc);

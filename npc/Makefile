@@ -10,7 +10,7 @@ VERILATOR_FLAGS += -cc --exe --build --top-module top
 # Warn abount lint issues; may not want this on less solid designs
 VERILATOR_FLAGS += -Wall
 # Make waveforms
-#VERILATOR_FLAGS += --trace
+VERILATOR_FLAGS += --trace
 # Check SystemVerilog assertions
 # VERILATOR_FLAGS += --assert
 # Generate coverage analysis
@@ -24,7 +24,7 @@ VERILATOR_FLAGS += -Wall
 VERILATOR_INPUT = $(VFILES) $(CFILES)
 LDFLAGS = -lreadline
 LDFLAGS += -ldl -lSDL2
-CFLAGS = -DITRACE
+#CFLAGS = -DITRACE
 #LDFLAGS += -L$(NEMU_HOME)/build -lriscv64-nemu-interpreter-so
 #FILEPATH ?= ./csrc/a.in
 #TEST_PATH ?= ../am-kernels/tests/cpu-tests/build/$(IMAGE).bin
@@ -41,7 +41,7 @@ all:
 	@mkdir -p logs
 	@cd logs && touch npc-logs.txt && cd ../
 sim:all
-	obj_dir/Vtop -l $(LOGS) #-i $(IMG)
+	obj_dir/Vtop +trace -l $(LOGS) #-i $(IMG)
 #npcrun:
 #	obj_dir/Vtop +trace $(TEST_PATH)$(IMAGE)
 clean:
