@@ -485,7 +485,7 @@ static void npc_exec(uint64_t n){
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(sdb_top->wb_dev_o == true){
-                  if(sdb_top->wb_pc >= 0x83000000)
+                  //if(sdb_top->wb_pc >= 0x83000000)
                   //printf("a5 = %lx\n",cpu_gpr[15]);
                   for(int i = 1; i < 32; i++){
                     nemu.gpr[i] = cpu_gpr[i];
