@@ -7,8 +7,8 @@
 void Vtop___024root__traceFullSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VlWide<4>/*127:0*/ __Vtemp159;
     VlWide<4>/*127:0*/ __Vtemp160;
-    VlWide<4>/*127:0*/ __Vtemp161;
     vluint32_t* const oldp = tracep->oldp(vlSymsp->__Vm_baseCode);
     if (false && oldp) {}  // Prevent unused
     // Body
@@ -1475,11 +1475,11 @@ void Vtop___024root__traceFullSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullCData(oldp+2939,(vlSelf->top__DOT__rw_size_o),8);
         tracep->fullBit(oldp+2940,(vlSelf->top__DOT__rw_dev_o));
         tracep->fullBit(oldp+2941,(0U));
-        __Vtemp160[0U] = 0U;
-        __Vtemp160[1U] = 0U;
-        __Vtemp160[2U] = 0U;
-        __Vtemp160[3U] = 0U;
-        tracep->fullWData(oldp+2942,(__Vtemp160),128);
+        __Vtemp159[0U] = 0U;
+        __Vtemp159[1U] = 0U;
+        __Vtemp159[2U] = 0U;
+        __Vtemp159[3U] = 0U;
+        tracep->fullWData(oldp+2942,(__Vtemp159),128);
         tracep->fullBit(oldp+2946,(vlSelf->top__DOT__mycpu__DOT__io_slave_awvalid));
         tracep->fullIData(oldp+2947,(vlSelf->top__DOT__mycpu__DOT__io_slave_awaddr),32);
         tracep->fullCData(oldp+2948,(vlSelf->top__DOT__mycpu__DOT__io_slave_awid),4);
@@ -1529,10 +1529,10 @@ void Vtop___024root__traceFullSub1(Vtop___024root* vlSelf, VerilatedVcd* tracep)
         tracep->fullIData(oldp+2994,(0x20U),32);
         tracep->fullIData(oldp+2995,(8U),32);
         tracep->fullIData(oldp+2996,(6U),32);
-        __Vtemp161[0U] = 0xffffffffU;
-        __Vtemp161[1U] = 0xffffffffU;
-        __Vtemp161[2U] = 0xffffffffU;
-        __Vtemp161[3U] = 0xffffffffU;
-        tracep->fullWData(oldp+2997,(__Vtemp161),128);
+        __Vtemp160[0U] = 0xffffffffU;
+        __Vtemp160[1U] = 0xffffffffU;
+        __Vtemp160[2U] = 0xffffffffU;
+        __Vtemp160[3U] = 0xffffffffU;
+        tracep->fullWData(oldp+2997,(__Vtemp160),128);
     }
 }

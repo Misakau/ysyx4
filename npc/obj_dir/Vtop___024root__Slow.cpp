@@ -4005,24 +4005,6 @@ void Vtop___024root___settle__TOP__6(Vtop___024root* vlSelf) {
                     : 0ULL)));
 }
 
-void Vtop___024root___initial__TOP__12(Vtop___024root* vlSelf) {
-    if (false && vlSelf) {}  // Prevent unused
-    Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop___024root___initial__TOP__12\n"); );
-    // Variables
-    VlWide<5>/*159:0*/ __Vtemp135;
-    // Body
-    __Vtemp135[0U] = 0x2e766364U;
-    __Vtemp135[1U] = 0x64756d70U;
-    __Vtemp135[2U] = 0x766c745fU;
-    __Vtemp135[3U] = 0x6f67732fU;
-    __Vtemp135[4U] = 0x6cU;
-    vlSymsp->_vm_contextp__->dumpfile(VL_CVT_PACK_STR_NW(5, __Vtemp135));
-    if ((0x83000000ULL <= vlSelf->pc)) {
-        vlSymsp->_traceDumpOpen();
-    }
-}
-
 void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
@@ -4030,7 +4012,6 @@ void Vtop___024root___eval_initial(Vtop___024root* vlSelf) {
     // Body
     Vtop___024root___initial__TOP__1(vlSelf);
     vlSelf->__Vclklast__TOP__clk = vlSelf->clk;
-    Vtop___024root___initial__TOP__12(vlSelf);
 }
 
 void Vtop_ysyx_040053_Adder32___sequent__TOP__top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low__1(Vtop_ysyx_040053_Adder32* vlSelf);

@@ -226,7 +226,7 @@ typedef struct {
 /*                        sdb                          */
 /////////////////////////////////////////////////////////
 static VerilatedContext* sdb_contextp = NULL;
-
+static VerilatedVcdC* sdb_tfp = NULL;
 static void npc_exec(uint64_t n);
 static bool is_batch = false;
 void set_batch_mode(){
@@ -326,7 +326,7 @@ int main(int argc, char**argv, char**env) {
     //sdb_init
     sdb_contextp = contextp;
     sdb_top = top;
-
+    sdb_tfp = tfp;
 
     //print_args(argc, argv);
     int fsize = 24;
