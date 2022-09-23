@@ -9,11 +9,13 @@
 #define VERILATED_VTOP_H_  // guard
 
 #include "verilated_heavy.h"
+#include "svdpi.h"
 
 class Vtop__Syms;
 class Vtop___024root;
 class VerilatedVcdC;
 class Vtop_VerilatedVcd;
+class Vtop___024unit;
 class Vtop_ysyx_040053_Adder32;
 
 
@@ -85,6 +87,7 @@ class Vtop VL_NOT_FINAL {
     // CELLS
     // Public to allow access to /* verilator public */ items.
     // Otherwise the application code can consider these internals.
+    Vtop___024unit* const __PVT____024unit;
     Vtop_ysyx_040053_Adder32* const __PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low;
     Vtop_ysyx_040053_Adder32* const __PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high;
     Vtop_ysyx_040053_Adder32* const __PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low;

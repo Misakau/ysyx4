@@ -5,6 +5,8 @@
 #include "Vtop___024root.h"
 #include "Vtop__Syms.h"
 
+#include "verilated_dpi.h"
+
 //==========
 
 
@@ -58,6 +60,7 @@ void Vtop___024root___initial__TOP__1(Vtop___024root* vlSelf) {
     vlSelf->axi_ar_burst_o = 1U;
 }
 
+void Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(CData/*0:0*/ done);
 extern const VlUnpacked<CData/*3:0*/, 8> Vtop__ConstPool__TABLE_42befd74_0;
 extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_8db4e481_0;
 extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_6ee9ed8c_0;
@@ -86,6 +89,9 @@ void Vtop___024root___settle__TOP__5(Vtop___024root* vlSelf) {
     VlWide<5>/*159:0*/ __Vtemp133;
     VlWide<5>/*159:0*/ __Vtemp134;
     // Body
+    if (vlSelf->top__DOT__mycpu__DOT__core__DOT__WB_Reg__DOT__Ebreak_r) {
+        Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
+    }
     vlSelf->wb_commit = vlSelf->top__DOT__mycpu__DOT__core__DOT__wb_commit_r;
     vlSelf->wb_pc = vlSelf->top__DOT__mycpu__DOT__core__DOT__wb_pc_r;
     vlSelf->wb_instr = vlSelf->top__DOT__mycpu__DOT__core__DOT__wb_instr_r;

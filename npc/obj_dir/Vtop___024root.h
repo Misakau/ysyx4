@@ -11,6 +11,7 @@
 
 class Vtop__Syms;
 class Vtop_VerilatedVcd;
+class Vtop___024unit;
 class Vtop_ysyx_040053_Adder32;
 
 
@@ -19,6 +20,7 @@ class Vtop_ysyx_040053_Adder32;
 VL_MODULE(Vtop___024root) {
   public:
     // CELLS
+    Vtop___024unit* __PVT____024unit;
     Vtop_ysyx_040053_Adder32* __PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low;
     Vtop_ysyx_040053_Adder32* __PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high;
     Vtop_ysyx_040053_Adder32* __PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low;

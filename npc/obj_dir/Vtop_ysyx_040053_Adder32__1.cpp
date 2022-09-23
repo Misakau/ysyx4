@@ -5,6 +5,8 @@
 #include "Vtop_ysyx_040053_Adder32.h"
 #include "Vtop__Syms.h"
 
+#include "verilated_dpi.h"
+
 VL_INLINE_OPT void Vtop_ysyx_040053_Adder32___sequent__TOP__top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high__2(Vtop_ysyx_040053_Adder32* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vtop__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;

@@ -5,6 +5,8 @@
 #include "Vtop_ysyx_040053_Adder32.h"
 #include "Vtop__Syms.h"
 
+#include "verilated_dpi.h"
+
 //==========
 
 

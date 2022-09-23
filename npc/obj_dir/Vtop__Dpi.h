@@ -13,10 +13,8 @@ extern "C" {
 
 
     // DPI IMPORTS
-    // DPI import at vsrc/IDU.v:5:30
+    // DPI import at vsrc/top.v:4:30
     extern void c_trap(svBit done);
-    // DPI import at vsrc/templete.v:126:32
-    extern void set_gpr_ptr(const svOpenArrayHandle a);
 
 #ifdef __cplusplus
 }

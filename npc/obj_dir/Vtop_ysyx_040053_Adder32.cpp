@@ -5,6 +5,8 @@
 #include "Vtop_ysyx_040053_Adder32.h"
 #include "Vtop__Syms.h"
 
+#include "verilated_dpi.h"
+
 //==========
 
 VL_INLINE_OPT void Vtop_ysyx_040053_Adder32___settle__TOP__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low__5(Vtop_ysyx_040053_Adder32* vlSelf) {

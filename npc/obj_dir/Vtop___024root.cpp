@@ -5,6 +5,8 @@
 #include "Vtop___024root.h"
 #include "Vtop__Syms.h"
 
+#include "verilated_dpi.h"
+
 //==========
 
 extern const VlUnpacked<CData/*0:0*/, 256> Vtop__ConstPool__TABLE_13cca9cb_0;
@@ -1640,6 +1642,7 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
     }
 }
 
+void Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(CData/*0:0*/ done);
 extern const VlUnpacked<CData/*3:0*/, 8> Vtop__ConstPool__TABLE_42befd74_0;
 extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_8db4e481_0;
 extern const VlUnpacked<CData/*0:0*/, 32> Vtop__ConstPool__TABLE_6ee9ed8c_0;
@@ -1802,6 +1805,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__3(Vtop___024root* vlSelf) {
     } else if (vlSelf->top__DOT__mycpu__DOT__core__DOT__ex_en) {
         vlSelf->top__DOT__mycpu__DOT__core__DOT__EX_Reg__DOT__Csrres_r 
             = vlSelf->top__DOT__mycpu__DOT__core__DOT__id_csrres_o;
+    }
+    if (vlSelf->top__DOT__mycpu__DOT__core__DOT__WB_Reg__DOT__Ebreak_r) {
+        Vtop___024unit____Vdpiimwrap_c_trap_TOP____024unit(1U);
     }
     if (vlSelf->top__DOT__mycpu__DOT__core__DOT__m_flush) {
         vlSelf->top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__Ebreak_r = 0U;
