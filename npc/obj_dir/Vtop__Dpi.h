@@ -17,7 +17,7 @@ extern "C" {
     extern void c_trap(svBit done);
     // DPI import at vsrc/top.v:6:30
     extern void get_instr(const svLogicVecVal* instr);
-    // DPI import at vsrc/ysyx_040053.v:3975:32
+    // DPI import at vsrc/ysyx_040053.v:3977:32
     extern void set_gpr_ptr(const svOpenArrayHandle a);
 
 #ifdef __cplusplus
