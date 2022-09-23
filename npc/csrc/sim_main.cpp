@@ -2,7 +2,7 @@
 #include "verilated.h"
 #include "svdpi.h"
 #include "verilated_dpi.h"
-
+#include "verilated_vcd_c.h"
 #include <cstdint>
 #include <cstdlib>
 #include <cstdio>
@@ -312,7 +312,12 @@ int main(int argc, char**argv, char**env) {
     contextp->traceEverOn(true);
     contextp->commandArgs(argc, argv);
     Vtop*top = new Vtop{contextp};
-    
+
+    VerilatedVcdC* tfp = new VerilatedVcdC;
+
+    top->trace(tfp, 99); // Trace 99 levels of hierarchy
+    tfp->open("logs/simx.vcd");
+
     npc_parse_args(argc, argv);
     init_device();
     //vga_init
@@ -389,6 +394,7 @@ int main(int argc, char**argv, char**env) {
         printf(ASNI_FG_RED "Not in batch mode!\n" ASNI_NONE);
         sdb_mainloop();
     }
+    tfp->close();
     delete top;
     delete contextp;
     printf("~~~Sim finished!~~~\n");
@@ -452,6 +458,9 @@ static void npc_exec(uint64_t n){
             //printf("axi_ar_addr_o = %lx\n",sdb_top->axi_ar_addr_o);
             sdb_mem_sig.update_input(sdb_mem_ref);
             sdb_top->eval();
+            if(sdb_top->pc >= 0x83000000){
+              tfp->dump(sdb_contextp->time());
+            }
             //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, d_rw_ready = %d, rw_ready_i = %d\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o, sdb_top->d_rw_ready,sdb_top->rw_ready_i);
             //return;
             if(sdb_top->clk == 1){

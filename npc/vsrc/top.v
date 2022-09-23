@@ -236,16 +236,12 @@ module top(
     assign axi_aw_cache_o = `ysyx_220053_AXI_AWCACHE_WRITE_BACK_READ_AND_WRITE_ALLOCATE;
     assign axi_aw_qos_o = 0;
     assign axi_aw_region_o = 0;
-    assign axi_aw_prot_o = `ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS | `ysyx_220053_AXI_PROT_SECURE_ACCESS | `ysyx_220053_AXI_PROT_DATA_ACCESS;;
+    assign axi_aw_prot_o = `ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS | `ysyx_220053_AXI_PROT_SECURE_ACCESS | `ysyx_220053_AXI_PROT_DATA_ACCESS;
     assign axi_w_user_o = 0;
     assign axi_ar_user_o = 0;
     assign axi_ar_lock_o = 0;
     assign axi_ar_cache_o = `ysyx_220053_AXI_AWCACHE_WRITE_BACK_READ_AND_WRITE_ALLOCATE;
     assign axi_ar_qos_o = 0;
     assign axi_ar_region_o = 0;
-    assign axi_ar_prot_o = `ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS | `ysyx_220053_AXI_PROT_SECURE_ACCESS | `ysyx_220053_AXI_PROT_DATA_ACCESS;;
-    initial begin
-        $dumpfile("logs/vlt_dump.vcd");
-        if(pc >= 64'h83000000) $dumpvars();
-    end
+    assign axi_ar_prot_o = `ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS | `ysyx_220053_AXI_PROT_SECURE_ACCESS | `ysyx_220053_AXI_PROT_DATA_ACCESS;
 endmodule
