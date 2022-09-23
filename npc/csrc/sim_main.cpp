@@ -69,6 +69,7 @@ static Vtop* sdb_top = NULL;
 bool npc_done = false;
 static unsigned int instr_now = 0;
 extern "C" void c_trap(const svBit done){
+    printf("trap!\n");
     npc_done = done;
 }
 
