@@ -4,7 +4,6 @@
 #include "Vtop.h"
 #include "Vtop__Syms.h"
 #include "verilated_vcd_c.h"
-#include "verilated_dpi.h"
 
 //============================================================
 // Constructors
@@ -66,13 +65,12 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     , axi_r_last_i{vlSymsp->TOP.axi_r_last_i}
     , axi_r_id_i{vlSymsp->TOP.axi_r_id_i}
     , axi_r_user_i{vlSymsp->TOP.axi_r_user_i}
-    , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
-    , __PVT__top__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low}
-    , __PVT__top__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high}
-    , __PVT__top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low}
-    , __PVT__top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_high}
-    , __PVT__top__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low}
-    , __PVT__top__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high}
+    , __PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low}
+    , __PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high}
+    , __PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low}
+    , __PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_high}
+    , __PVT__top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low{vlSymsp->TOP.__PVT__top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low}
+    , __PVT__top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high{vlSymsp->TOP.__PVT__top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high}
     , rootp{&(vlSymsp->TOP)}
 {
 }

@@ -16,10 +16,7 @@
 
 // INCLUDE MODULE CLASSES
 #include "Vtop___024root.h"
-#include "Vtop___024unit.h"
-#include "Vtop_ysyx_220053_Adder32.h"
-
-// DPI TYPES for DPI Export callbacks (Internal use)
+#include "Vtop_ysyx_040053_Adder32.h"
 
 // SYMS CLASS (contains all model state)
 class Vtop__Syms final : public VerilatedSyms {
@@ -35,13 +32,12 @@ class Vtop__Syms final : public VerilatedSyms {
 
     // MODULE INSTANCE STATE
     Vtop___024root                 TOP;
-    Vtop___024unit                 TOP____024unit;
-    Vtop_ysyx_220053_Adder32       TOP__top__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high;
-    Vtop_ysyx_220053_Adder32       TOP__top__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low;
-    Vtop_ysyx_220053_Adder32       TOP__top__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high;
-    Vtop_ysyx_220053_Adder32       TOP__top__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low;
-    Vtop_ysyx_220053_Adder32       TOP__top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_high;
-    Vtop_ysyx_220053_Adder32       TOP__top__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low;
+    Vtop_ysyx_040053_Adder32       TOP__top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_high;
+    Vtop_ysyx_040053_Adder32       TOP__top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__adder__DOT__adder_low;
+    Vtop_ysyx_040053_Adder32       TOP__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_high;
+    Vtop_ysyx_040053_Adder32       TOP__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__na_alu__DOT__adder__DOT__adder_low;
+    Vtop_ysyx_040053_Adder32       TOP__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_high;
+    Vtop_ysyx_040053_Adder32       TOP__top__DOT__mycpu__DOT__core__DOT__my_idu__DOT__nextaddr__DOT__pcadder__DOT__adder_low;
 
     // CONSTRUCTORS
     Vtop__Syms(VerilatedContext* contextp, const char* namep, Vtop* modelp);

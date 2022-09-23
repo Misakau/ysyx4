@@ -27,20 +27,17 @@ VM_TRACE_FST_WRITER_THREAD = 0
 VM_CLASSES_FAST += \
 	Vtop \
 	Vtop___024root \
-	Vtop___024root__1 \
-	Vtop___024unit \
-	Vtop_ysyx_220053_Adder32 \
+	Vtop_ysyx_040053_Adder32 \
+	Vtop_ysyx_040053_Adder32__1 \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
 	Vtop__ConstPool_0 \
 	Vtop___024root__Slow \
-	Vtop___024unit__Slow \
-	Vtop_ysyx_220053_Adder32__Slow \
+	Vtop_ysyx_040053_Adder32__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
-	Vtop__Dpi \
 	Vtop__Trace \
 	Vtop__Trace__1 \
 
@@ -53,7 +50,6 @@ VM_SUPPORT_SLOW += \
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \
 	verilated \
-	verilated_dpi \
 	verilated_vcd_c \
 
 # Global classes, need linked once per executable, non-fast-path, compile with low/medium optimization

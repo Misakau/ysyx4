@@ -1,3 +1,7 @@
+/* verilator lint_off UNUSED */
+/* verilator lint_off PINMISSING */
+/* verilator lint_off DECLFILENAME */
+
 module ysyx_040053_Adder64(//y turn into ~y outside when to sub
     output [63:0] result,
     output cout,OF,SF,ZF,CF,
