@@ -162,7 +162,7 @@ endmodule
 module ysyx_040053_ALU(
     input clk,
     input rst,
-    input src_valid,src_valid
+    input src_valid,
     input mwb_block,
     output alu_busy,
 
