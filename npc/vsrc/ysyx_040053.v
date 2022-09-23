@@ -3010,7 +3010,7 @@ module ysyx_040053_Mem(
         .clk(clk),.rst(rst),.clint_wen(clint_wen),.wdata(wdata),.rdata(clint_rdata),.is_cmp(is_cmp)
     );
 
-    assign d_rw_dev_o = (raddr[31:28] == 4'ha) 
+    assign d_rw_dev_o = (raddr[31:28] == 4'ha);
     wire cpu_dev = d_rw_dev_o;//(raddr[31:28] == 4'h1) || (raddr[31:28] == 4'h3) || (raddr[31:28] == 4'h4);
     always @(posedge clk) begin
         if(rst) begin
