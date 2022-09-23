@@ -478,20 +478,21 @@ static void npc_exec(uint64_t n){
             }
 
             if(is_diff){
+              int nemu_last_pc = 0x80000000;
               if(sdb_top->clk == 0  && sdb_top->wb_commit == 1){
+                nemu_last_pc = nemu.pc;
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(sdb_top->wb_dev_o == true){
                   if(sdb_top->wb_pc >= 0x83000000)
-                    printf("nexpc_nemu: %lx, nexpc: %lx at pc = %lx\n", nemu.pc, sdb_top->next_pc, sdb_top->wb_pc);
                   //printf("a5 = %lx\n",cpu_gpr[15]);
                   for(int i = 1; i < 32; i++){
                     nemu.gpr[i] = cpu_gpr[i];
                   }
                   difftest_regcpy(&nemu, 0);
                 }
-                if(sdb_top->next_pc != nemu.pc){
-                  printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu.pc, sdb_top->next_pc, sdb_top->wb_pc);
+                if(sdb_top->wb_pc != nemu_last_pc){
+                  printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE, nemu_last_pc, sdb_top->next_pc, sdb_top->wb_pc);
                   dump_gpr();
                   NPC_EXIT = 1;break;
                 }
