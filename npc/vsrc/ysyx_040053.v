@@ -162,6 +162,7 @@ endmodule
 module ysyx_040053_ALU(
     input clk,
     input rst,
+    input src_valid,src_valid
     input mwb_block,
     output alu_busy,
 
@@ -206,7 +207,7 @@ module ysyx_040053_ALU(
 
     
 //mul
-    wire op_mul = ~OPctr[3] & OPctr[2] & OPctr[1] & OPctr[0];//res7
+    wire op_mul = src_valid & ~OPctr[3] & OPctr[2] & OPctr[1] & OPctr[0];//res7 + valid
     wire [64:0] multiplicand, multiplier;
     wire [63:0] result_hi, result_lo;
     
@@ -288,7 +289,7 @@ module ysyx_040053_ALU(
     end
 */
 //div & rem
-    wire op_div = OPctr[3];
+    wire op_div = src_valid & OPctr[3];
     wire [63:0] dividend, divisor, quotient, remainder;
     
     assign dividend = (Wctr == 1'b0) ? inputa : {{32{SIGctr & inputa[31]}},inputa[31:0]};
@@ -2196,7 +2197,8 @@ module ysyx_040053_core(
       .imm(ex_imm_i),
       .ALURes(ex_ALURes_o),
       .mwb_block(m_block | wb_block),
-      .alu_busy(alu_busy)
+      .alu_busy(alu_busy),
+      .src_valid(ex_valid_o)
     );
     assign ex_flush = rst | fence_i_commit;
     assign ex_block = alu_busy;
@@ -2695,6 +2697,7 @@ module ysyx_040053_EXU(
     input [63:0] pc,
     input [63:0] imm,
     input mwb_block,
+    input src_valid,
     output [63:0] ALURes,
     output alu_busy
 );
@@ -2708,6 +2711,7 @@ module ysyx_040053_EXU(
     ysyx_040053_ALU alu64(
                             .clk(clk),
                             .rst(rst),
+                            .src_valid(src_valid),
                             .mwb_block(mwb_block),
                             .alu_busy(alu_busy),
                             .inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .MulOp(MulOp), .result(res), .zero(zero));
