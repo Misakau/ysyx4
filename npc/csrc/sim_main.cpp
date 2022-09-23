@@ -409,7 +409,6 @@ int main(int argc, char**argv, char**env) {
     int cnt = 0;
     int mem_ls = 0;//int imem_ls = 0,dmem_ls = 0;
     if(is_batch){
-      printf("hh");
     }
     else{
         printf(ASNI_FG_RED "Not in batch mode!\n" ASNI_NONE);
