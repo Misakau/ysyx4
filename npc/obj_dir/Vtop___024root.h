@@ -30,9 +30,7 @@ VL_MODULE(Vtop___024root) {
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
     VL_OUT8(wb_commit,0,0);
-    VL_OUT8(mem_valid,0,0);
     VL_OUT8(wb_dev_o,0,0);
-    VL_OUT8(d_rw_ready,0,0);
     VL_IN8(axi_aw_ready_i,0,0);
     VL_OUT8(axi_aw_valid_o,0,0);
     VL_OUT8(axi_aw_prot_o,2,0);
@@ -106,7 +104,6 @@ VL_MODULE(Vtop___024root) {
         CData/*2:0*/ top__DOT__mycpu__DOT__io_slave_arsize;
         CData/*1:0*/ top__DOT__mycpu__DOT__io_slave_arburst;
         CData/*0:0*/ top__DOT__mycpu__DOT__io_slave_rready;
-        CData/*0:0*/ top__DOT__mycpu__DOT__wb_dev_o;
         CData/*0:0*/ top__DOT__mycpu__DOT__rw_req_o;
         CData/*0:0*/ top__DOT__mycpu__DOT__rw_valid_o;
         CData/*0:0*/ top__DOT__mycpu__DOT__rw_dev_o;
@@ -150,9 +147,9 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__d_rw_dev_o;
         CData/*3:0*/ top__DOT__mycpu__DOT__core__DOT__d_rw_bytes_o;
         CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__is_Fence_i;
+        CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__is_MemToReg;
     };
     struct {
-        CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__is_MemToReg;
         CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__is_men;
         CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__dev_o;
         CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__wb_commit_r;
@@ -216,9 +213,9 @@ VL_MODULE(Vtop___024root) {
         CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__divu__DOT__dividend_s;
         CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__divu__DOT__divisor_s;
         CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__divu__DOT__sub_s;
+        CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__divu__DOT__ready_to_doing;
     };
     struct {
-        CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__divu__DOT__ready_to_doing;
         CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__divu__DOT__done_to_ready;
         CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__my_exu__DOT__alu64__DOT__divu__DOT__calculate_done;
         CData/*0:0*/ top__DOT__mycpu__DOT__core__DOT__M_Reg__DOT__valid_r;
@@ -277,6 +274,7 @@ VL_MODULE(Vtop___024root) {
         IData/*31:0*/ top__DOT__mycpu__DOT__io_slave_araddr;
         VlWide<4>/*127:0*/ top__DOT__mycpu__DOT__data_read_i;
         VlWide<4>/*127:0*/ top__DOT__mycpu__DOT__core__DOT__d_rw_w_data_o;
+        IData/*31:0*/ top__DOT__mycpu__DOT__core__DOT__if_instr_o;
         IData/*31:0*/ top__DOT__mycpu__DOT__core__DOT__wb_instr_r;
         IData/*31:0*/ top__DOT__mycpu__DOT__core__DOT__my_ifu__DOT__instr_read_r;
         IData/*31:0*/ top__DOT__mycpu__DOT__core__DOT__my_ifu__DOT__icache__DOT__i;

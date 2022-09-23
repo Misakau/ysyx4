@@ -36,9 +36,7 @@ class Vtop VL_NOT_FINAL {
     VL_OUT64(&wb_pc,63,0);
     VL_OUT(&wb_instr,31,0);
     VL_OUT64(&next_pc,63,0);
-    VL_OUT8(&mem_valid,0,0);
     VL_OUT8(&wb_dev_o,0,0);
-    VL_OUT8(&d_rw_ready,0,0);
     VL_IN8(&axi_aw_ready_i,0,0);
     VL_OUT8(&axi_aw_valid_o,0,0);
     VL_OUT(&axi_aw_addr_o,31,0);

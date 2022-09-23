@@ -18,9 +18,7 @@ Vtop::Vtop(VerilatedContext* _vcontextp__, const char* _vcname__)
     , wb_pc{vlSymsp->TOP.wb_pc}
     , wb_instr{vlSymsp->TOP.wb_instr}
     , next_pc{vlSymsp->TOP.next_pc}
-    , mem_valid{vlSymsp->TOP.mem_valid}
     , wb_dev_o{vlSymsp->TOP.wb_dev_o}
-    , d_rw_ready{vlSymsp->TOP.d_rw_ready}
     , axi_aw_ready_i{vlSymsp->TOP.axi_aw_ready_i}
     , axi_aw_valid_o{vlSymsp->TOP.axi_aw_valid_o}
     , axi_aw_addr_o{vlSymsp->TOP.axi_aw_addr_o}

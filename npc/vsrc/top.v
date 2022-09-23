@@ -225,13 +225,14 @@ module top(
     assign axi_aw_cache_o = 0;
     assign axi_aw_qos_o = 0;
     assign axi_aw_region_o = 0;
+    assign axi_aw_prot_o = 0;
     assign axi_w_user_o = 0;
     assign axi_ar_user_o = 0;
     assign axi_ar_lock_o = 0;
     assign axi_ar_cache_o = 0;
     assign axi_ar_qos_o = 0;
     assign axi_ar_region_o = 0;
-    
+    assign axi_ar_prot_o = 0;
     initial begin
         $dumpfile("logs/vlt_dump.vcd");
         $dumpvars();
