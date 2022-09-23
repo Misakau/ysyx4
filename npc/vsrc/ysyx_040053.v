@@ -2839,7 +2839,7 @@ module ysyx_040053_IFU(
 
     always @(posedge clk)begin
         if(rst) begin
-            pc <= 64'h30000000;
+            pc <= 64'h80000000;
         end
         else if(pcen) begin
             pc <= dnpc;
@@ -3010,7 +3010,7 @@ module ysyx_040053_Mem(
         .clk(clk),.rst(rst),.clint_wen(clint_wen),.wdata(wdata),.rdata(clint_rdata),.is_cmp(is_cmp)
     );
 
-    assign d_rw_dev_o = (raddr[31:28] == 4'h1) || (raddr[31:28] == 4'h3) || (raddr[31:28] == 4'h4) || (raddr[31:28] == 4'h5) || (raddr[31:28] == 4'h6) || (raddr[31:28] == 4'h7);
+    assign d_rw_dev_o = (raddr[31:28] == 4'ha) 
     wire cpu_dev = d_rw_dev_o;//(raddr[31:28] == 4'h1) || (raddr[31:28] == 4'h3) || (raddr[31:28] == 4'h4);
     always @(posedge clk) begin
         if(rst) begin
