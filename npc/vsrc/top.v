@@ -3,7 +3,7 @@
 /* verilator lint_off DECLFILENAME */
 
 import "DPI-C" function void c_trap(input bit done);
-import "DPI-C" function void get_instr(input logic [63:0] instr);
+import "DPI-C" function void get_instr(input logic [31:0] instr);
 
 `define ysyx_220053_AXI_AWCACHE_WRITE_BACK_READ_AND_WRITE_ALLOCATE      4'b1111
 `define ysyx_220053_AXI_PROT_UNPRIVILEGED_ACCESS                        3'b000
