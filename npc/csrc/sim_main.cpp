@@ -23,7 +23,7 @@
 axi4_mem <32,64,4> mem(4096l*1024*1024);
 axi4_ptr <32,64,4> mem_ptr;
 
-static void npc_exec(uint64_t n);
+void npc_exec(uint64_t n);
 void connect_wire(Vtop *top, axi4_ptr <32,64,4> *ptr){
     ptr->awid = &(top->axi_aw_id_o);
     ptr->awaddr = &(top->axi_aw_addr_o);
@@ -447,7 +447,7 @@ int main(int argc, char**argv, char**env) {
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-static void npc_exec(uint64_t n){
+void npc_exec(uint64_t n){
 
   axi4_ref <32,64,4> sdb_mem_ref(mem_ptr);
   axi4 <32,64,4> sdb_mem_sig;
