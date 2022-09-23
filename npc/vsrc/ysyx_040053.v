@@ -3970,8 +3970,8 @@ module ysyx_040053_RegisterFile (
     end
     else if(wen) rf[waddr] <= wdata;
   end
-  //import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
- // initial set_gpr_ptr(rf);  // rf为通用寄存器的二维数组变量
+  import "DPI-C" function void set_gpr_ptr(input logic [63:0] a []);
+  initial set_gpr_ptr(rf);  // rf为通用寄存器的二维数组变量
 /*  always @(*)begin
     $display("wen = %d,raaddr=%d, radata=%x, rbddr=%d, rbdata=%x, wdata= %x, waddr = %x", wen,raaddr, radata,rbaddr, rbdata, wdata, waddr);
     $display("0#: %x",rf[0]);
