@@ -480,13 +480,14 @@ static void npc_exec(uint64_t n){
             if(is_diff){
               uint64_t nemu_last_pc = 0x80000000;
               if(sdb_top->clk == 0  && sdb_top->wb_commit == 1){
+                if(sdb_top->wb_pc == 0x830188d0)
+                  dump_gpr();
+                  break;
                 difftest_regcpy(&nemu, 1);
                 nemu_last_pc = nemu.pc;
                 difftest_exec(1);
                 difftest_regcpy(&nemu, 1);
                 if(sdb_top->wb_dev_o == true){
-                  //if(sdb_top->wb_pc >= 0x83000000)
-                  //printf("a5 = %lx\n",cpu_gpr[15]);
                   for(int i = 1; i < 32; i++){
                     nemu.gpr[i] = cpu_gpr[i];
                   }
