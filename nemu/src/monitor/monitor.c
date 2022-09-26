@@ -86,7 +86,7 @@ static void load_elf() {
         Elf64_Sym symen;
         assert(fread(&symen, symtab.sh_entsize, 1, fp) == 1);
         printf("symen.st_info = %u\n",(uint32_t)symen.st_info);
-        if(symen.st_info == STT_FUNC){
+        if(ELF64_ST_TYPE(symen.st_info) == STT_FUNC){
           strcpy(funcs[tot_func].name,&(strtab_buf[symen.st_shndx]));
           funcs[tot_func].staddr = symen.st_value;
           funcs[tot_func].edaddr = symen.st_value + symen.st_size;
