@@ -74,7 +74,7 @@ static void load_elf() {
     if(now_shent.sh_type == SHT_SYMTAB){
       Elf64_Shdr symtab = now_shent;
       Elf64_Half nsym = symtab.sh_size / symtab.sh_entsize;
-      printf("nsym = %d\n",nsym);
+      
       Elf64_Shdr strtab;
       assert(fread(&strtab, shsz, 1, fp) == 1);
       fseek(fp, strtab.sh_offset, SEEK_SET);
@@ -85,6 +85,7 @@ static void load_elf() {
       for(Elf64_Half i = 0; i < nsym; i++){
         Elf64_Sym symen;
         assert(fread(&symen, symtab.sh_entsize, 1, fp) == 1);
+        printf("symen.st_info = %u\n",(uint32_t)symen.st_info);
         if(symen.st_info == STT_FUNC){
           strcpy(funcs[tot_func].name,&(strtab_buf[symen.st_shndx]));
           funcs[tot_func].staddr = symen.st_value;
