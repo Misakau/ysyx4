@@ -43,7 +43,7 @@ struct func_lut_t{
 int tot_func = 0;
 
 static void load_elf() {
-  if (img_file == NULL) {
+  if (elf_file == NULL) {
     Log("No elf is given.");
     return;
   }
