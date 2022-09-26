@@ -49,12 +49,12 @@ static void load_elf() {
   }
 
   FILE *fp = fopen(elf_file, "rb");
-  Assert(fp, "Can not open '%s'", img_file);
+  Assert(fp, "Can not open '%s'", elf_file);
 
   fseek(fp, 0, SEEK_END);
   long size = ftell(fp);
 
-  Log("The elf is %s, size = %ld", img_file, size);
+  Log("The elf is %s, size = %ld", elf_file, size);
 
   fseek(fp, 0, SEEK_SET);
   Elf64_Ehdr elf;
