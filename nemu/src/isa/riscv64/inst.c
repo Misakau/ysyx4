@@ -107,17 +107,17 @@ static int decode_exec(Decode *s) {
 
   INSTPAT("??????? ????? ????? 000 ????? 11001 11", jalr   , I, {s->dnpc = (src1 + src2)&0xfffffffffffffffe;
                                                                  R(dest) = s->snpc;
-                                                                 //#ifdef FTRACE
+                                                                 #ifdef CONFIG_FTRACE
                                                                  log_func(func_entry(s->dnpc),0);
                                                                  log_func(func_leave(s->dnpc, s->pc),1);
-                                                                 //#endif
+                                                                 #endif
                                                                 });
   INSTPAT("??????? ????? ????? ??? ????? 11011 11", jal    , J, {s->dnpc = src1 + s->pc;
                                                                  R(dest) = s->snpc;
-                                                                 //#ifdef FTRACE
+                                                                 #ifdef CONFIG_FTRACE
                                                                  log_func(func_entry(s->dnpc),0);
                                                                  log_func(func_leave(s->dnpc, s->pc),1);
-                                                                 //#endif
+                                                                 #endif
                                                                  });
 
   INSTPAT("??????? ????? ????? 000 ????? 00110 11", addiw  , I, R(dest) = SEXT((src1 + src2) & 0xffffffff, 32));
