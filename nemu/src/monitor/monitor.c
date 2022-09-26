@@ -87,7 +87,7 @@ void log_func(int func, bool flag){
     stn--;
     printf("stn = %d\n",stn);
     for(int i = 1; i <= stn; i++){
-      printf("  ");
+      printf(" ");
     }
     printf("ret [%s]\n",funcs[func].name);
   }
