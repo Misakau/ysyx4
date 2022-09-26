@@ -23,13 +23,83 @@ static void welcome() {
 
 #ifndef CONFIG_TARGET_AM
 #include <getopt.h>
+#include <elf.h>
 
 void sdb_set_batch_mode();
 
+static char *elf_file = NULL;
 static char *log_file = NULL;
 static char *diff_so_file = NULL;
 static char *img_file = NULL;
 static int difftest_port = 1234;
+
+static char strtab_buf[65536];
+
+struct func_lut_t{
+  char name[64];
+  uintptr_t staddr;
+  uintptr_t edaddr;
+}funcs[1024];
+int tot_func = 0;
+
+static void load_elf() {
+  if (img_file == NULL) {
+    Log("No elf is given.");
+    return;
+  }
+
+  FILE *fp = fopen(elf_file, "rb");
+  Assert(fp, "Can not open '%s'", img_file);
+
+  fseek(fp, 0, SEEK_END);
+  long size = ftell(fp);
+
+  Log("The elf is %s, size = %ld", img_file, size);
+
+  fseek(fp, 0, SEEK_SET);
+  Elf64_Ehdr elf;
+  int ret = fread(&elf, sizeof(Elf64_Ehdr), 1, fp);
+  assert(ret == 1);
+  
+  //printf("elf = %p\n",elf);
+  assert(*(uint32_t *)(&elf)->e_ident == 0x464c457f);
+  Elf64_Half shnum = elf.e_shnum;
+  Elf64_Off shoff = elf.e_shoff;
+  Elf64_Half shsz = elf.e_shentsize;
+
+  fseek(fp, shoff, SEEK_SET);
+  for(Elf64_Half ns = 0; ns < shnum; ns++){
+    Elf64_Shdr now_shent;
+    assert(fread(&now_shent, shsz, 1, fp)== 1);
+    if(now_shent.sh_type == SHT_SYMTAB){
+      Elf64_Shdr symtab = now_shent;
+      Elf64_Half nsym = symtab.sh_size / symtab.sh_entsize;
+      Elf64_Shdr strtab;
+      assert(fread(&strtab, shsz, 1, fp) == 1);
+      fseek(fp, strtab.sh_offset, SEEK_SET);
+      assert(fread(strtab_buf, strtab.sh_size, 1, fp) == 1);
+
+      Elf64_Off symtab_off = now_shent.sh_offset;
+      fseek(fp, symtab_off, SEEK_SET);
+      for(Elf64_Half i = 0; i < nsym; i++){
+        Elf64_Sym symen;
+        assert(fread(&symen, symtab.sh_entsize, 1, fp) == 1);
+        if(symen.st_info == STT_FUNC){
+          strcpy(funcs[tot_func].name,&(strtab_buf[symen.st_shndx]));
+          funcs[tot_func].staddr = symen.st_value;
+          funcs[tot_func].edaddr = symen.st_value + symen.st_size;
+          tot_func++;
+        }
+      }
+      break;
+    }
+  }
+  for(int i = 0; i < tot_func; i++){
+    printf("%s @%p: [%p,%p)\n",funcs[i].name,(char *)funcs[i].staddr,(char *)funcs[i].staddr,(char *)funcs[i].edaddr);
+  }
+  printf("total functions = %d\n",tot_func);
+  fclose(fp);
+}
 
 static long load_img() {
   if (img_file == NULL) {
@@ -60,15 +130,17 @@ static int parse_args(int argc, char *argv[]) {
     {"diff"     , required_argument, NULL, 'd'},
     {"port"     , required_argument, NULL, 'p'},
     {"help"     , no_argument      , NULL, 'h'},
+    {"elf"      , required_argument, NULL, 'e'},
     {0          , 0                , NULL,  0 },
   };
   int o;
-  while ( (o = getopt_long(argc, argv, "-bhl:d:p:", table, NULL)) != -1) {
+  while ( (o = getopt_long(argc, argv, "-bhl:d:p:e:", table, NULL)) != -1) {
     switch (o) {
       case 'b': sdb_set_batch_mode(); break;
       case 'p': sscanf(optarg, "%d", &difftest_port); break;
       case 'l': log_file = optarg; break;
       case 'd': diff_so_file = optarg; break;
+      case 'e': elf_file = optarg; break;
       case 1: img_file = optarg; return optind - 1;
       default:
         printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
@@ -76,6 +148,7 @@ static int parse_args(int argc, char *argv[]) {
         printf("\t-l,--log=FILE           output log to FILE\n");
         printf("\t-d,--diff=REF_SO        run DiffTest with reference REF_SO\n");
         printf("\t-p,--port=PORT          run DiffTest with port PORT\n");
+        printf("\t-e,--elf=FILE           load ELF file FILE\n");
         printf("\n");
         exit(0);
     }
@@ -109,6 +182,9 @@ void init_monitor(int argc, char *argv[]) {
 
   /* Initialize differential testing. */
   init_difftest(diff_so_file, img_size, difftest_port);
+
+  /* Load ELF*/
+  load_elf();
 
   /* Initialize the simple debugger. */
   init_sdb();
