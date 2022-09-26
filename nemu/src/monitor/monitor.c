@@ -37,11 +37,60 @@ static char strtab_buf[65536];
 
 struct func_lut_t{
   char name[64];
-  uintptr_t staddr;
-  uintptr_t edaddr;
+  uint64_t staddr;
+  uint64_t edaddr;
 }funcs[1024];
 int tot_func = 0;
 
+int func_entry(uint64_t addr){
+  for(int i = 0; i < tot_func; i++){
+    if(addr == funcs[i].staddr){
+      return i;
+    }
+  }
+  return -1;
+}
+
+int func_in(uint64_t addr){
+  int now_func = -1;
+  for(int i = 0; i < tot_func; i++){
+    if(addr >= funcs[i].staddr && addr < funcs[i].edaddr){
+      now_func = i;
+      break;
+    }
+  }
+  assert(now_func != -1);
+  return now_func;
+}
+
+int func_leave(uint64_t addr, uint64_t pc){
+  int now = func_in(pc);
+  if(addr >= funcs[now].staddr && addr < funcs[now].edaddr)
+    return -1;//not a call or ret
+  
+  int tar = func_entry(addr);
+  if(tar == -1) return tar;
+  else return -1;
+}
+
+static int stn = 0;
+void log_func(int func, bool flag){
+  if(func == -1) return;
+  if(flag == 0){//call
+    for(int i = 1; i <= stn; i++){
+      printf("  ");
+    }
+    printf("call [%s @%p]\n",funcs[func].name,(char *)funcs[func].staddr);
+    stn++;
+  }
+  else{
+    stn--;
+    for(int i = 1; i <= stn; i++){
+      printf("  ");
+    }
+    printf("ret [%s @%p]\n",funcs[func].name,(char *)funcs[func].staddr);
+  }
+}
 static void load_elf() {
   if (elf_file == NULL) {
     Log("No elf is given.");
@@ -96,10 +145,6 @@ static void load_elf() {
       break;
     }
   }
-  for(int i = 0; i < tot_func; i++){
-    printf("%s @%p: [%p,%p)\n",funcs[i].name,(char *)funcs[i].staddr,(char *)funcs[i].staddr,(char *)funcs[i].edaddr);
-  }
-  printf("total functions = %d\n",tot_func);
   fclose(fp);
 }
 

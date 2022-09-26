@@ -17,6 +17,10 @@ enum {
   TYPE_N, // none
 };
 
+int func_entry(uint64_t addr);
+int func_leave(uint64_t addr, uint64_t pc);
+void log_func(int func, bool flag);
+
 #define src1R(n) do { *src1 = R(n); } while (0)
 #define src2R(n) do { *src2 = R(n); } while (0)
 #define destR(n) do { *dest = n; } while (0)
@@ -101,8 +105,20 @@ static int decode_exec(Decode *s) {
   INSTPAT("0000000 ????? ????? 110 ????? 01100 11", or     , R, R(dest) = src1 | src2);
   INSTPAT("0000000 ????? ????? 111 ????? 01100 11", and    , R, R(dest) = src1 & src2);
 
-  INSTPAT("??????? ????? ????? 000 ????? 11001 11", jalr   , I, s->dnpc = (src1 + src2)&0xfffffffffffffffe, R(dest) = s->snpc);
-  INSTPAT("??????? ????? ????? ??? ????? 11011 11", jal    , J, s->dnpc = src1 + s->pc, R(dest) = s->snpc);
+  INSTPAT("??????? ????? ????? 000 ????? 11001 11", jalr   , I, {s->dnpc = (src1 + src2)&0xfffffffffffffffe;
+                                                                 R(dest) = s->snpc;
+                                                                 //#ifdef FTRACE
+                                                                 log_func(func_entry(s->dnpc),0);
+                                                                 log_func(func_leave(s->dnpc, s->pc),1);
+                                                                 //#endif
+                                                                });
+  INSTPAT("??????? ????? ????? ??? ????? 11011 11", jal    , J, {s->dnpc = src1 + s->pc;
+                                                                 R(dest) = s->snpc;
+                                                                 //#ifdef FTRACE
+                                                                 log_func(func_entry(s->dnpc),0);
+                                                                 log_func(func_leave(s->dnpc, s->pc),1);
+                                                                 //#endif
+                                                                 });
 
   INSTPAT("??????? ????? ????? 000 ????? 00110 11", addiw  , I, R(dest) = SEXT((src1 + src2) & 0xffffffff, 32));
   INSTPAT("0000000 ????? ????? 001 ????? 00110 11", slliw  , I, R(dest) = SEXT((src1 << (src2 & 0x1f)) & 0xffffffff, 32));
