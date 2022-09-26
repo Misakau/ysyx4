@@ -72,6 +72,7 @@ static void load_elf() {
     Elf64_Shdr now_shent;
     assert(fread(&now_shent, shsz, 1, fp)== 1);
     if(now_shent.sh_type == SHT_SYMTAB){
+      printf("hh\n");
       Elf64_Shdr symtab = now_shent;
       Elf64_Half nsym = symtab.sh_size / symtab.sh_entsize;
       Elf64_Shdr strtab;
