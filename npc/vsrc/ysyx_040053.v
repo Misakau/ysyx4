@@ -8,11 +8,7 @@ module ysyx_040053_Adder64(//y turn into ~y outside when to sub
     input [63:0] x,y,
     input sub
 );
-    wire [31:0] res_l, res_h;
-    wire c_l;
-    ysyx_040053_Adder32 adder_low(res_l, c_l, x[31:0], y[31:0], sub);
-    ysyx_040053_Adder32 adder_high(res_h, cout, x[63:32], y[63:32], c_l);
-    assign result = {res_h, res_l};
+    assign {cout, result} = {1'b0,x} + {1'b0,y} + {64'b0,sub};
     assign OF = (!x[63] & !y[63] & result[63]) | (x[63] & y[63] & !result[63]);
     assign SF = result[63];
     assign ZF = (result == 64'h0000000000000000 ? 1 : 0);
@@ -953,7 +949,7 @@ module ysyx_040053_icache(
     assign cpu_index = cpu_req_addr[11:4];
     assign cpu_tag = cpu_req_addr[63:12];
 
-    reg hit;
+    wire hit;
 
     //status transform
 
@@ -1029,11 +1025,7 @@ module ysyx_040053_icache(
     //ysyx_040053_S011HD1P_X32Y2D128 ram3(.Q(line_o[3]),.CLK(clk),.CEN(1'b0),.WEN(line_wen[3]),.A(cpu_index[5:0]),.D(data_read_i));
     
     //CompareTag
-    always @(*) begin
-        if(cur_status == CompareTag && V[cpu_index] && tag[cpu_index] == cpu_tag)
-            hit=1'b1;
-        else hit=1'b0;
-    end
+    assign hit = (cur_status == CompareTag && V[cpu_index] && tag[cpu_index] == cpu_tag);
 
     always @(posedge clk) begin
         if(rst) begin
@@ -1687,6 +1679,7 @@ parameter ysyx_040053_R = 5;
 */
             7'b0011011://addiw
                 begin
+                    MulOp = 0;
                     Ebreak = 0; Ecall = 0; Mret = 0; CsrOp = 0; CsrToReg = 0; Csrwen = 0; Fence_i = 0; Csri = 0;
                     MemWen = 0; MemOp = 0; MemToReg = 0; Branch = 0; //wen = 1;
                     case(func3)
@@ -3106,25 +3099,16 @@ module ysyx_040053_Mem(
         endcase
     end
 
-    reg [63:0] datad;
-    reg [31:0] dataw;
-    reg [15:0] datah;
-    reg [7:0]  datab;
+    wire [63:0] datad;
+    wire [31:0] dataw;
+    wire [15:0] datah;
+    wire [7:0]  datab;
     //read
-    always @(*) begin
-        case(MemOp[1:0])
-            2'b00: begin//32bit
-                dataw = dataout[offs*8+: 32];
-            end
-            2'b01: begin//8bit
-                datab = dataout[offs*8+: 8];
-            end
-            2'b10: begin//16bit
-                datah = dataout[offs*8+: 16];
-            end
-            default: datad = dataout;
-        endcase
-    end
+    assign dataw = dataout[offs*8+: 32];
+    assign datab = dataout[offs*8+: 8];
+    assign datah = dataout[offs*8+: 16];
+    assign datad = dataout;
+
     always@(*) begin
         case(MemOp)
             3'b000: rdata = {{32{dataw[31]}},dataw};
