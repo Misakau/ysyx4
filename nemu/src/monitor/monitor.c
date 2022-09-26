@@ -64,7 +64,7 @@ int func_in(uint64_t addr){
 
 int func_leave(uint64_t addr, uint64_t pc){
   int now = func_in(pc);
-  printf("now\n");
+  printf("now = %d\n",now);
   if(addr >= funcs[now].staddr && addr < funcs[now].edaddr)
     return -1;//not a call or ret
   
