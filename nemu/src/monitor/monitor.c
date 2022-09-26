@@ -76,18 +76,12 @@ static int stn = 0;
 void log_func(int func, bool flag){
   if(func == -1) return;
   if(flag == 0){//call
-    for(int i = 1; i <= stn; i++){
-      printf(" ");
-    }
-    printf("call [%s @%p]\n",funcs[func].name,(char *)funcs[func].staddr);
+    printf("<%d> call [%s @%p]\n",stn,funcs[func].name,(char *)funcs[func].staddr);
     stn++;
   }
   else{
     stn--;
-    for(int i = 1; i <= stn; i++){
-      printf(" ");
-    }
-    printf("ret [%s]\n",funcs[func].name);
+    printf("<%d> ret [%s]\n",stn,funcs[func].name);
   }
 }
 static void load_elf() {
