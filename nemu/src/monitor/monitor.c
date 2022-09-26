@@ -41,7 +41,7 @@ struct func_lut_t{
   uint64_t edaddr;
 }funcs[1024];
 int tot_func = 0;
-
+int func_start = 0;
 int func_entry(uint64_t addr){
   for(int i = 0; i < tot_func; i++){
     if(addr == funcs[i].staddr){
@@ -52,7 +52,7 @@ int func_entry(uint64_t addr){
 }
 
 int func_in(uint64_t addr){
-  int now_func = 0;
+  int now_func = func_start;
   for(int i = 0; i < tot_func; i++){
     if(addr >= funcs[i].staddr && addr < funcs[i].edaddr){
       now_func = i;
@@ -139,6 +139,7 @@ static void load_elf() {
           strcpy(funcs[tot_func].name,&(strtab_buf[symen.st_name]));
           funcs[tot_func].staddr = symen.st_value;
           funcs[tot_func].edaddr = symen.st_value + symen.st_size;
+          if(symen.st_size == 0) func_start = tot_func;
           tot_func++;
         }
       }
