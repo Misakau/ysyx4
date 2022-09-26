@@ -52,14 +52,13 @@ int func_entry(uint64_t addr){
 }
 
 int func_in(uint64_t addr){
-  int now_func = -1;
+  int now_func = 0;
   for(int i = 0; i < tot_func; i++){
     if(addr >= funcs[i].staddr && addr < funcs[i].edaddr){
       now_func = i;
       break;
     }
   }
-  assert(now_func != -1);
   return now_func;
 }
 
