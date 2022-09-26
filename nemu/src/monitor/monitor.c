@@ -68,9 +68,7 @@ int func_leave(uint64_t addr, uint64_t pc){
     return -1;//not a call or ret
   
   int tar = func_entry(addr);
-  printf("pc = %p\n",(char *)pc);
-  printf("target = %d",tar);
-  if(tar == -1) return tar;
+  if(tar == -1) return func_in(addr);
   else return -1;
 }
 
