@@ -76,12 +76,12 @@ static int stn = 0;
 void log_func(int func, bool flag){
   if(func == -1) return;
   if(flag == 0){//call
-    printf("<%d> call [%s @%p]\n",stn,funcs[func].name,(char *)funcs[func].staddr);
+    log_write("<%d> call [%s @%p]\n",stn,funcs[func].name,(char *)funcs[func].staddr);
     stn++;
   }
   else{
     stn--;
-    printf("<%d> ret [%s]\n",stn,funcs[func].name);
+    log_write("<%d> ret [%s]\n",stn,funcs[func].name);
   }
 }
 static void load_elf() {
