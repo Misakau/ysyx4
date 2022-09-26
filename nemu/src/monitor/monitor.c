@@ -77,7 +77,7 @@ void log_func(int func, bool flag){
   if(func == -1) return;
   if(flag == 0){//call
     for(int i = 1; i <= stn; i++){
-      printf("  ");
+      printf(" ");
     }
     printf("call [%s @%p]\n",funcs[func].name,(char *)funcs[func].staddr);
     stn++;
