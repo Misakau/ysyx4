@@ -68,7 +68,7 @@ int func_leave(uint64_t addr, uint64_t pc){
     return -1;//not a call or ret
   
   int tar = func_entry(addr);
-  if(tar == -1) return func_in(addr);
+  if(tar == -1) return now;
   else return -1;
 }
 
@@ -87,7 +87,7 @@ void log_func(int func, bool flag){
     for(int i = 1; i <= stn; i++){
       printf("  ");
     }
-    printf("ret [%s @%p]\n",funcs[func].name,(char *)funcs[func].staddr);
+    printf("ret [%s]\n",funcs[func].name);
   }
 }
 static void load_elf() {
