@@ -76,6 +76,7 @@ static int stn = 0;
 void log_func(int func, bool flag){
   if(func == -1) return;
   if(flag == 0){//call
+    printf("stn = %d\n",stn);
     for(int i = 1; i <= stn; i++){
       printf(" ");
     }
@@ -84,6 +85,7 @@ void log_func(int func, bool flag){
   }
   else{
     stn--;
+    printf("stn = %d\n",stn);
     for(int i = 1; i <= stn; i++){
       printf("  ");
     }
