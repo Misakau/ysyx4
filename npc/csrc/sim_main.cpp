@@ -275,6 +275,7 @@ void (*difftest_exec)(uint64_t);
 void (*difftest_init)();
 static void *handle = NULL;
 static void load_diff(){
+  printf("%s\n",diff_file);
   handle = dlopen(diff_file, RTLD_LAZY);
     if(!handle){
       fprintf(stderr, "%s\n", dlerror());
@@ -421,7 +422,7 @@ int main(int argc, char**argv, char**env) {
         exit(1);
       }
     }
-    
+
     if(log_ptr) fclose(log_ptr);
     return PASS;
 }
