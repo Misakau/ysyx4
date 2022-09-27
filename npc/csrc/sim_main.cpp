@@ -278,7 +278,8 @@ int main(int argc, char**argv, char**env) {
     
     //MEM = (long long *)malloc(MEMSIZE);
     assert(MEM);
-    void *handle = dlopen(diff_file,RTLD_LAZY);
+    printf("%s\n",diff_file);
+    void *handle = dlopen(diff_file, RTLD_LAZY);
     if(!handle){
       fprintf(stderr, "%s\n", dlerror());
       exit(1);
