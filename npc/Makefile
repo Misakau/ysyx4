@@ -30,10 +30,12 @@ CFLAGS += -I/usr/lib/llvm-11/include -std=c++14   -fno-exceptions -D_GNU_SOURCE 
 LDFLAGS += $(shell llvm-config-11 --libs)
 IMG ?= $(NPC_HOME)/div-riscv64-npc.bin
 LOGS ?= $(NPC_HOME)/logs/npc-logs.txt
+REF_SO ?= $(NPC_HOME)/riscv64-nemu-interpreter-so
+
 NPC_FLARGS ?= -l $(LOGS)
 
 # open difftest
-#NPC_FLARGS += -d
+NPC_FLARGS += -d $(REF_SO)
 
 # load image
 NPC_FLARGS += -i $(IMG)

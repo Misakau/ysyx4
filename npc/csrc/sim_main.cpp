@@ -247,10 +247,10 @@ static int npc_parse_args(int argc, char *argv[]) {
     {0          , 0                , NULL,  0 },
   };
   int o;
-  while ( (o = getopt_long(argc, argv, "-bhi:l:d", table, NULL)) != -1) {
+  while ( (o = getopt_long(argc, argv, "-bhi:l:d:", table, NULL)) != -1) {
     switch (o) {
       case 'b': set_batch_mode(); break;
-      case 'd': is_diff = true;break;
+      case 'd': diff_file = optarg; is_diff = true;break;
       case 'i': image_file = optarg; break;
       case 'l': log_file = optarg; break;
       default:
@@ -278,7 +278,7 @@ int main(int argc, char**argv, char**env) {
     
     //MEM = (long long *)malloc(MEMSIZE);
     assert(MEM);
-    void *handle = dlopen("./riscv64-nemu-interpreter-so",RTLD_LAZY);
+    void *handle = dlopen(diff_file,RTLD_LAZY);
     if(!handle){
       fprintf(stderr, "%s\n", dlerror());
       exit(1);
