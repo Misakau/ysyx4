@@ -37,10 +37,13 @@ LDFLAGS += $(shell llvm-config-11 --libs)
 IMG ?= #/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/bit-riscv64-npc.bin
 LOGS ?= $(NPC_HOME)/logs/npc-logs.txt
 NPC_FLARGS ?= -l $(LOGS)
-#open difftest
-NPC_FLARGS += -d
-#load image
+
+# open difftest
+#NPC_FLARGS += -d
+
+# load image
 #NPC_FLARGS += -i $(IMG)
+
 all:
 	@echo "Write this Makefile by your self."
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
