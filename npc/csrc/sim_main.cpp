@@ -268,6 +268,26 @@ static void print_args(int argc, char**argv){
     for(int i = 0; i < argc; i++)
         printf("%s\n",argv[i]);
 }
+
+static void load_diff(){
+  void *handle = dlopen(diff_file, RTLD_LAZY);
+    if(!handle){
+      fprintf(stderr, "%s\n", dlerror());
+      exit(1);
+    }
+  difftest_memcpy = (void(*)(uint64_t, void *, size_t, bool))dlsym(handle, "difftest_memcpy");
+  assert(difftest_memcpy);
+    
+  difftest_regcpy = (void(*)(void *, bool))dlsym(handle, "difftest_regcpy");
+  assert(difftest_regcpy);
+    
+  difftest_exec = (void(*)(uint64_t))dlsym(handle, "difftest_exec");
+  assert(difftest_exec);
+
+  difftest_init = (void(*)())dlsym(handle, "difftest_init");
+  assert(difftest_init);
+}
+
 bool PASS = 0;
 static bool commit_dev = false;
 void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
@@ -278,27 +298,12 @@ int main(int argc, char**argv, char**env) {
     
     //MEM = (long long *)malloc(MEMSIZE);
     assert(MEM);
-    printf("%s\n",diff_file);
-    void *handle = dlopen(diff_file, RTLD_LAZY);
-    if(!handle){
-      fprintf(stderr, "%s\n", dlerror());
-      exit(1);
-    }
+
     #ifdef ITRACE
       init_disasm("riscv64-pc-linux-gnu");
     #endif
     
-    difftest_memcpy = (void(*)(uint64_t, void *, size_t, bool))dlsym(handle, "difftest_memcpy");
-    assert(difftest_memcpy);
-    
-    difftest_regcpy = (void(*)(void *, bool))dlsym(handle, "difftest_regcpy");
-    assert(difftest_regcpy);
-    
-    difftest_exec = (void(*)(uint64_t))dlsym(handle, "difftest_exec");
-    assert(difftest_exec);
-
-    difftest_init = (void(*)())dlsym(handle, "difftest_init");
-    assert(difftest_init);
+    if(is_diff) load_diff();
     
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
