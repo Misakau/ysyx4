@@ -15,145 +15,6 @@ module ysyx_040053_Adder64(//y turn into ~y outside when to sub
     assign CF = cout ^ sub;
 endmodule
 
-module ysyx_040053_FA(
-    output f,cout,
-    input x,y,cin
-);
-    assign f= x ^ y ^ cin;
-    assign cout= (x & y) | (x & cin) | (y & cin);
-endmodule
-
-module ysyx_040053_CLU4(
-    input [3:0] p,g,
-    input c0,
-    output [3:0] c
-);
-    wire c1,c2,c3,c4;
-    assign c1=g[0] | (p[0] & c0);
-    assign c2=g[1] | (p[1] & c1);
-    assign c3=g[2] | (p[2] & c2);
-    assign c4=g[3] | (p[3] & c3);
-    assign c = {c4,c3,c2,c1};
-endmodule
-
-module ysyx_040053_CLA4(
-    output [3:0] f,
-    output cout,
-    input [3:0] x,y,
-    input cin
-);
-    wire [4:1] p,g;
-    wire [4:1] c;
-    assign p=x|y;
-    assign g=x&y;
-    ysyx_040053_CLU4 gen(
-        .c0(cin),
-        .p(p),
-        .g(g),
-        .c(c)
-    );
-    genvar i;
-    wire cout_miss_fa;
-    ysyx_040053_FA adder(
-        .x(x[0]),
-        .y(y[0]),
-        .cin(cin),
-        .f(f[0]),
-        .cout(cout_miss_fa)
-    );
-    wire [3:1] cout_miss;
-    generate
-        for (i=1;i<=3;i=i+1) begin
-            ysyx_040053_FA adder(
-                .cout(cout_miss[i]),
-                .x(x[i]),
-                .y(y[i]),
-                .cin(c[i]),
-                .f(f[i])
-            );
-        end
-    endgenerate
-    assign cout = c[4];
-endmodule
-
-module ysyx_040053_CLA8(
-    output [7:0] f,
-    output cout,
-    input [7:0] x,y,
-    input cin
-);
-    wire cin2;
-    wire [3:0] p,g;
-    assign p=x[3:0] | y[3:0];
-    assign g=x[3:0] & y[3:0];
-    assign cin2=g[3] | (p[3]&g[2]) | (p[3]&p[2]&g[1]) | (p[3]&p[2]&p[1]&g[0]) | (p[3]&p[2]&p[1]&p[0]&cin);
-    wire cout_miss_l;
-    ysyx_040053_CLA4 adder_low(
-        .x(x[3:0]),
-        .y(y[3:0]),
-        .cin(cin),
-        .f(f[3:0]),
-        .cout(cout_miss_l)
-    );
-    ysyx_040053_CLA4 adder_high(
-        .x(x[7:4]),
-        .y(y[7:4]),
-        .cin(cin2),
-        .f(f[7:4]),
-        .cout(cout)
-    );
-endmodule
-
-
-module ysyx_040053_Adder32(
-    output [31:0] result,
-    output cout,
-    input [31:0] x,
-    input [31:0] y,
-    input sub
-);
-
-    //parameter t=32;
-    wire [3:0] Gg,Pg;
-    wire [7:0] p[3:0],g[3:0];
-    wire [4:0] c;
-    wire [3:0] cout_temp;
-    genvar i;
-    generate
-        for (i=0;i<=3;i=i+1) begin
-            assign p[i]=x[i*8+7:i*8] | y[i*8+7:i*8];
-            assign g[i]=x[i*8+7:i*8] & y[i*8+7:i*8];
-            assign Pg[i] = (p[i]==8'hff ? 1 : 0);
-            assign Gg[i] = g[i][7] | (p[i][7] & g[i][6]) | (p[i][7] & p[i][6] & g[i][5]) | (p[i][7] & p[i][6] & p[i][5] & g[i][4]) 
-            | (p[i][7] & p[i][6] & p[i][5] & p[i][4] & g[i][3]) | (p[i][7] & p[i][6] & p[i][5] & p[i][4] & p[i][3] & g[i][2]) | 
-            (p[i][7] & p[i][6] & p[i][5] & p[i][4] & p[i][3] & p[i][2] & g[i][1]) | (p[i][7] & p[i][6] & p[i][5] & p[i][4] & p[i][3] & p[i][2] & p[i][1] & p[i][0] & g[i][0]);
-        end
-    endgenerate
-    ysyx_040053_CLU4 gen(
-        .p(Pg),
-        .g(Gg),
-        .c0(sub),
-        .c(c[4:1])
-    );
-    assign c[0]=sub;
-    wire [7:0] ff[3:0];
-    generate
-        for (i=0;i<=3;i=i+1) begin
-            ysyx_040053_CLA8 adder8(
-                .x(x[i*8+7:i*8]),
-                .y(y[i*8+7:i*8]),
-                .cin(c[i]),
-                .cout(cout_temp[i]),
-                .f(ff[i])
-            );
-        end
-    endgenerate
-
-    assign result = {ff[3], ff[2], ff[1], ff[0]};
-    assign cout = cout_temp[3];
-endmodule
-
-
 
 module ysyx_040053_ALU(
     input clk,
@@ -2571,32 +2432,31 @@ module ysyx_040053_divu(
     assign divisor_abs  = ~divisor  + `ysyx_040053_XLEN'b1;
 
 //status
-    wire ready_to_doing = ready_r && div_valid;//握手成功，准备开始doing
-    wire done_to_ready  = valid_r;//算完结果，准备拉高ready
-    wire calculate_done = running_r && cnt == 7'h40;
+    wire div_fire = ready_r && div_valid;//握手成功，准备开始
+    wire done = running_r && cnt == 7'h40;
     always @(posedge clk) begin
-        if(rst || flush  || done_to_ready) begin
+        if(rst || flush  || valid_r) begin
             ready_r <= 1'b1;
         end
-        else if(ready_to_doing) begin
+        else if(div_fire) begin
             ready_r <= 1'b0;
         end 
     end
 
     always @(posedge clk) begin
-        if(rst || flush || calculate_done ) begin
+        if(rst || flush || done ) begin
             running_r <= 1'b0;
         end
-        else if(ready_to_doing) begin
+        else if(div_fire) begin
             running_r <= 1'b1;
         end 
     end
 
     always @(posedge clk) begin
-        if(rst || flush || done_to_ready ) begin
+        if(rst || flush || valid_r) begin
             valid_r <= 1'b0;
         end
-        else if(calculate_done) begin
+        else if(done) begin
             valid_r <= 1'b1;
         end 
     end
@@ -2607,7 +2467,7 @@ module ysyx_040053_divu(
             dividend_s <= 1'b0;
             divisor_s  <= 1'b0;
         end
-        else if(ready_to_doing) begin
+        else if(div_fire) begin
             dividend_s <= div_signed & dividend[`ysyx_040053_XLEN - 1];
             divisor_s  <= div_signed & divisor[`ysyx_040053_XLEN - 1];
         end
@@ -2615,7 +2475,7 @@ module ysyx_040053_divu(
 
 //cnt
     always @(posedge clk) begin
-        if(rst || flush || done_to_ready) begin
+        if(rst || flush || valid_r) begin
             cnt <= 7'b0;
         end
         else if(running_r) begin
@@ -2629,7 +2489,7 @@ module ysyx_040053_divu(
             udividend_r <= 0;
             udivisor_r <= 0;
         end
-        else if(ready_to_doing) begin
+        else if(div_fire) begin
             udividend_r <= div_signed & dividend[`ysyx_040053_XLEN - 1] ? {`ysyx_040053_XLEN'b0, dividend_abs} : {`ysyx_040053_XLEN'b0, dividend};
             udivisor_r  <= div_signed & divisor[`ysyx_040053_XLEN - 1]  ? divisor_abs : divisor;
         end
@@ -2646,11 +2506,11 @@ module ysyx_040053_divu(
                       );
 
     always @(posedge clk) begin
-        if(rst || flush || ready_to_doing) begin
+        if(rst || flush || div_fire) begin
             remainder_r <= `ysyx_040053_XLEN'b0;
             quotient_r  <= `ysyx_040053_XLEN'b0;
         end
-        else if(calculate_done) begin
+        else if(done) begin
             remainder_r <= udividend_r[`ysyx_040053_XXLEN - 1: `ysyx_040053_XLEN]; 
             quotient_r  <= quotient_r;
         end
@@ -3186,7 +3046,7 @@ module ysyx_040053_mulu (
     reg [`ysyx_040053_WIDTH*2-1:0] tmp_result, multiplicand_r;//68
     reg [`ysyx_040053_WIDTH:0] multiplier_r;//34+1
     reg running_r;
-    wire ready_to_doing, calculate_done;
+    wire mul_fire, done;
     wire [`ysyx_040053_WIDTH*2-1:0] p_result;
     reg [6:0] cnt;
 //cnt
@@ -3199,16 +3059,16 @@ module ysyx_040053_mulu (
         end
     end
 
-    assign ready_to_doing = mul_valid && mul_ready;
+    assign mul_fire = mul_valid && mul_ready;
 //whether running
     always @(posedge clk) begin
         if(rst) begin
             running_r <= 1'b0;
         end
-        else if(ready_to_doing) begin
+        else if(mul_fire) begin
             running_r <= 1'b1;
         end
-        else if(calculate_done) begin
+        else if(done) begin
             running_r <= 1'b0;
         end    
     end
@@ -3217,7 +3077,7 @@ module ysyx_040053_mulu (
         if(rst) begin
             mul_ready <= 1'b1;
         end
-        else if(ready_to_doing) begin
+        else if(mul_fire) begin
             mul_ready <= 1'b0;
         end
         else if(out_valid) begin
@@ -3232,7 +3092,7 @@ module ysyx_040053_mulu (
         else if(out_valid)  begin
             out_valid <=1'b0;
         end
-        else if(calculate_done) begin
+        else if(done) begin
             out_valid <= 1'b1;
         end
     end
@@ -3243,7 +3103,7 @@ module ysyx_040053_mulu (
             multiplicand_r <= 0;
             multiplier_r <= 0;
         end
-        else if(ready_to_doing) begin
+        else if(mul_fire) begin
             multiplicand_r <= {{`ysyx_040053_WIDTH{multiplicand[`ysyx_040053_COMPUTER_WIDTH]}},multiplicand[`ysyx_040053_COMPUTER_WIDTH],multiplicand};
             //68  
 
@@ -3256,7 +3116,7 @@ module ysyx_040053_mulu (
         end
     end
 
-    assign calculate_done = running_r && (cnt == 7'h10 ||multiplier_r[`ysyx_040053_WIDTH:0] == {{`ysyx_040053_WIDTH{1'b0}},1'b0});//34 == 34
+    assign done = running_r && (cnt == 7'h10 ||multiplier_r[`ysyx_040053_WIDTH:0] == {{`ysyx_040053_WIDTH{1'b0}},1'b0});//34 == 34
    
     wire partial_cout;
     ysyx_040053_partial partial(.x_src(multiplicand_r),.y_src(multiplier_r[2:0]),.p_result(p_result),.cout(partial_cout));
@@ -3269,7 +3129,7 @@ module ysyx_040053_mulu (
 
 // Temporary Results or Final Results
     always @(posedge clk) begin
-        if(ready_to_doing) begin
+        if(mul_fire) begin
             tmp_result <= {`ysyx_040053_WIDTH*2{1'b0}};
         end
         else if(running_r) begin
@@ -3281,7 +3141,7 @@ module ysyx_040053_mulu (
 
 endmodule
 
-module ysyx_040053_sel_gen(
+module ysyx_040053_sel_gen(//选择信号生成模块
   input [2:0] src,
   output [3:0] sel
 );
@@ -3296,10 +3156,10 @@ module ysyx_040053_sel_gen(
     assign sel_double_negative =  y_add & ~y & ~y_sub;
     assign sel_double_positive = ~y_add &  y &  y_sub;
 
-    assign sel = {sel_negative,sel_positive,sel_double_negative,sel_double_positive};
+    assign sel = {sel_negative,sel_positive,sel_double_negative,sel_double_positive};//means {-x,+x,-2x,+2x}
 endmodule
 
-module ysyx_040053_res_sel(
+module ysyx_040053_res_sel(//结果选择模块
   input [3:0] sel,
   input [1:0] src,
   output p 
@@ -3313,7 +3173,7 @@ module ysyx_040053_res_sel(
             & ~(sel_positive & x ) & ~(sel_double_positive &  x_sub));
 endmodule
 
-module ysyx_040053_partial(
+module ysyx_040053_partial(//部分积生成模块
   input [2*`ysyx_040053_WIDTH-1:0]  x_src,
   input [2:0] y_src,
   output [2*`ysyx_040053_WIDTH-1:0]   p_result,

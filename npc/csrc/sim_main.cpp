@@ -154,8 +154,6 @@ extern "C" void pmem_read(long long raddr, long long *rdata, char bytes) {
 }
 extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
   //printf("ENTRY W\n");
-  // maybe need some change
-  // 没有严格8字节对齐
   //assert(raddr & 0x7 == 0);
   long long real_addr = (waddr - AD_BASE) >> 3;
   //uint64_t real_mask = -1;
@@ -168,14 +166,6 @@ extern "C" void pmem_write(long long waddr, long long wdata, char wmask) {
     wm >>= 1;
     bytes += is_wr[i];
   }
-  
-  /*
-  if(wmask == 0x1) real_mask = 0xffull;
-  else if(wmask == 0x3) real_mask = 0xffffull;
-  else if(wmask == 0xf) real_mask = 0xffffffffull;
-  else real_mask = -1;
-  */
-  //assert(real_addr < MEMSIZE);
   if(waddr == SERIAL_PORT){
     //assert(real_mask == 0xff);
     printf("%c",(char)(wdata & 0xff));
@@ -245,13 +235,14 @@ static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/buil
 //";pathi;//
 static char* image_file = pathi;
 static char* log_file = NULL;
+static char* diff_file = NULL;
 //static FILE* log_ptr = NULL;
 static int npc_parse_args(int argc, char *argv[]) {
   const struct option table[] = {
     {"batch"    , no_argument      , NULL, 'b'},
     {"image"    , required_argument, NULL, 'i'},
     {"log"      , required_argument, NULL, 'l'},
-//    {"diff"     , no_argument, NULL, 'd'},
+    {"diff"     , no_argument      , NULL, 'd'},
     {"help"     , no_argument      , NULL, 'h'},
     {0          , 0                , NULL,  0 },
   };
@@ -287,7 +278,7 @@ int main(int argc, char**argv, char**env) {
     
     //MEM = (long long *)malloc(MEMSIZE);
     assert(MEM);
-    void *handle = dlopen("/home/wang/ysyx-workbench/nemu/build/riscv64-nemu-interpreter-so",RTLD_LAZY);
+    void *handle = dlopen("./csrc/riscv64-nemu-interpreter-so",RTLD_LAZY);
     if(!handle){
       fprintf(stderr, "%s\n", dlerror());
       exit(1);
@@ -319,9 +310,8 @@ int main(int argc, char**argv, char**env) {
     tfp->open("logs/simx.vcd");
 
     npc_parse_args(argc, argv);
+    
     init_device();
-    //vga_init
-    //init_vga();
 
     //sdb_init
     sdb_contextp = contextp;
@@ -458,9 +448,12 @@ static void npc_exec(uint64_t n){
             //printf("axi_ar_addr_o = %lx\n",sdb_top->axi_ar_addr_o);
             sdb_mem_sig.update_input(sdb_mem_ref);
             sdb_top->eval();
-            if(sdb_top->pc >= 0x83000000){
-              sdb_tfp->dump(sdb_contextp->time());
-            }
+            
+            ///////wave///////////
+            //if(sdb_top->pc >= 0x83000000){
+            //  sdb_tfp->dump(sdb_contextp->time());
+            //}
+
             //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, d_rw_ready = %d, rw_ready_i = %d\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o, sdb_top->d_rw_ready,sdb_top->rw_ready_i);
             //return;
             if(sdb_top->clk == 1){
@@ -571,25 +564,7 @@ int cmd_info(char* args){
   if(is_r == 0) dump_gpr();
   return 0;
 }
-/*
-static int cmd_x(char *args){
-  char* com1 = strtok(args," ");
-  char* com2 = strtok(NULL," ");
-  if(com1 == NULL || com2 == NULL) Assert(0,"TOO FEW COMMANDS!");
-  int num1 = npc_s_to_i(com1, 10);
-  if(strlen(com2) <= 2 || com2[0] != '0' || com2[1] != 'x' ) Assert(0,"INVALID COMMANDS!");
-  word_t num2 = npc_s_to_u(com2+2, 16);
-  int offs = 0;
-  for(int i = 1; i <= num1; i++){
-    word_t dat = vaddr_read(num2+offs, 4);
-    if(i == 1) printf("[0x%016lx]: \t\t", num2);
-    else  printf("[0x%016lx+%d]: \t", num2, offs);
-    printf("%02lx %02lx %02lx %02lx\n", dat & 0xff, (dat & 0xff00)>>8, (dat & 0xff0000)>>16, (dat & 0xff000000)>>24);
-    offs+=4;
-  }
-  return 0;
-}
-*/
+
 static int cmd_help(char *args);
 
 static struct {
