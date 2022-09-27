@@ -35,7 +35,7 @@ REF_SO ?= $(NPC_HOME)/riscv64-nemu-interpreter-so
 NPC_FLARGS ?= -l $(LOGS)
 
 # open difftest
-NPC_FLARGS += -d $(REF_SO)
+#NPC_FLARGS += -d $(REF_SO)
 
 # load image
 NPC_FLARGS += -i $(IMG)
