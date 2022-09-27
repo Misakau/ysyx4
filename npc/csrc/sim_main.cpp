@@ -225,7 +225,7 @@ void set_batch_mode(){
 static uint64_t tot_instr = 0;
 static void sdb_mainloop();
 static bool is_diff = false;
-static char pathi[] = "./div-riscv64-npc.bin";//"/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
+//static char pathi[] = "./div-riscv64-npc.bin";//"/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
 //"/home/wang/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv64-npc.bin";
 //"/home/wang/ysyx-workbench/npc/test.bin";
 //"/home/wang/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv64-npc.bin";
@@ -233,7 +233,7 @@ static char pathi[] = "./div-riscv64-npc.bin";//"/home/wang/ysyx-workbench/nanos
 //"/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/dummy-riscv64-npc.bin"
 //static char lgp[] = "/home/wang/log1.txt";
 //";pathi;//
-static char* image_file = pathi;
+static char* image_file = NULL;
 static char* log_file = NULL;
 static char* diff_file = NULL;
 //static FILE* log_ptr = NULL;

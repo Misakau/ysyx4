@@ -28,7 +28,7 @@ LDFLAGS += -ldl -lSDL2
 CXXSRC = csrc/disasm.cc
 CFLAGS += -I/usr/lib/llvm-11/include -std=c++14   -fno-exceptions -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_LIMIT_MACROS -fPIE
 LDFLAGS += $(shell llvm-config-11 --libs)
-IMG ?= #/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/bit-riscv64-npc.bin
+IMG ?= $(NPC_HOME)/div-riscv64-npc.bin
 LOGS ?= $(NPC_HOME)/logs/npc-logs.txt
 NPC_FLARGS ?= -l $(LOGS)
 
@@ -36,7 +36,7 @@ NPC_FLARGS ?= -l $(LOGS)
 #NPC_FLARGS += -d
 
 # load image
-#NPC_FLARGS += -i $(IMG)
+NPC_FLARGS += -i $(IMG)
 
 # open ITRACE
 #CFLAGS = -DITRACE
