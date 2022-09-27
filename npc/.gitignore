@@ -9,3 +9,5 @@
 !*.cpp
 !.gitignore
 !README.md
+!.csrc/riscv64-nemu-interpreter-so
+!.csrc/div-riscv64-npc.bin
