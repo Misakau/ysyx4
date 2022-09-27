@@ -273,9 +273,9 @@ void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
 void (*difftest_regcpy)(void *, bool);
 void (*difftest_exec)(uint64_t);
 void (*difftest_init)();
-
+static void *handle = NULL;
 static void load_diff(){
-  void *handle = dlopen(diff_file, RTLD_LAZY);
+  handle = dlopen(diff_file, RTLD_LAZY);
     if(!handle){
       fprintf(stderr, "%s\n", dlerror());
       exit(1);
@@ -415,10 +415,13 @@ int main(int argc, char**argv, char**env) {
 
     printf(ASNI_FG_BLUE "Total time = %lld ms\n" ASNI_NONE,(long long)ms);
     
-    if(dlclose(handle) < 0){
-      fprintf(stderr, "%s\n", dlerror());
-      exit(1);
+    if(is_diff) {
+        if(dlclose(handle) < 0){
+        fprintf(stderr, "%s\n", dlerror());
+        exit(1);
+      }
     }
+    
     if(log_ptr) fclose(log_ptr);
     return PASS;
 }
