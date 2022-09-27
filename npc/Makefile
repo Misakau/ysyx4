@@ -24,7 +24,10 @@ VERILATOR_FLAGS += --trace
 VERILATOR_INPUT = $(VFILES) $(CFILES)
 LDFLAGS = -lreadline
 LDFLAGS += -ldl -lSDL2
+# open ITRACE
 #CFLAGS = -DITRACE
+
+
 #LDFLAGS += -L$(NEMU_HOME)/build -lriscv64-nemu-interpreter-so
 #FILEPATH ?= ./csrc/a.in
 #TEST_PATH ?= ../am-kernels/tests/cpu-tests/build/$(IMAGE).bin
@@ -33,6 +36,11 @@ CFLAGS += -I/usr/lib/llvm-11/include -std=c++14   -fno-exceptions -D_GNU_SOURCE 
 LDFLAGS += $(shell llvm-config-11 --libs)
 IMG ?= #/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/bit-riscv64-npc.bin
 LOGS ?= $(NPC_HOME)/logs/npc-logs.txt
+NPC_FLARGS ?= -l $(LOGS)
+#open difftest
+NPC_FLARGS += -d
+#load image
+NPC_FLARGS += -i $(IMG)
 all:
 	@echo "Write this Makefile by your self."
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
@@ -41,7 +49,7 @@ all:
 	@mkdir -p logs
 	@cd logs && touch npc-logs.txt && cd ../
 sim:all
-	obj_dir/Vtop +trace -l $(LOGS) #-i $(IMG)
+	obj_dir/Vtop +trace $(NPC_FLARGS)
 #npcrun:
 #	obj_dir/Vtop +trace $(TEST_PATH)$(IMAGE)
 clean:
