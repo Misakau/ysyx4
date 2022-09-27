@@ -269,6 +269,11 @@ static void print_args(int argc, char**argv){
         printf("%s\n",argv[i]);
 }
 
+void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
+void (*difftest_regcpy)(void *, bool);
+void (*difftest_exec)(uint64_t);
+void (*difftest_init)();
+
 static void load_diff(){
   void *handle = dlopen(diff_file, RTLD_LAZY);
     if(!handle){
@@ -290,10 +295,7 @@ static void load_diff(){
 
 bool PASS = 0;
 static bool commit_dev = false;
-void (*difftest_memcpy)(uint64_t, void *, size_t, bool);
-void (*difftest_regcpy)(void *, bool);
-void (*difftest_exec)(uint64_t);
-void (*difftest_init)();
+
 int main(int argc, char**argv, char**env) {
     
     //MEM = (long long *)malloc(MEMSIZE);
@@ -302,7 +304,7 @@ int main(int argc, char**argv, char**env) {
     #ifdef ITRACE
       init_disasm("riscv64-pc-linux-gnu");
     #endif
-    
+
     if(is_diff) load_diff();
     
     VerilatedContext*contextp = new VerilatedContext;
