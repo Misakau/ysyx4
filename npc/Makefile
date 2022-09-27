@@ -39,7 +39,7 @@ NPC_FLARGS ?= -l $(LOGS)
 #NPC_FLARGS += -i $(IMG)
 
 # open ITRACE
-CFLAGS = -DITRACE
+#CFLAGS = -DITRACE
 
 all:
 	@echo "Write this Makefile by your self."

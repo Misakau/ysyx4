@@ -225,7 +225,7 @@ void set_batch_mode(){
 static uint64_t tot_instr = 0;
 static void sdb_mainloop();
 static bool is_diff = false;
-static char pathi[] = "/home/wang/ysyx-workbench/am-kernels/tests/cpu-tests/build/div-riscv64-npc.bin";//"/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
+static char pathi[] = "./csrc/div-riscv64-npc.bin";//"/home/wang/ysyx-workbench/nanos-lite/build/nanos-lite-riscv64-npc.bin";
 //"/home/wang/ysyx-workbench/am-kernels/tests/am-tests/build/amtest-riscv64-npc.bin";
 //"/home/wang/ysyx-workbench/npc/test.bin";
 //"/home/wang/ysyx-workbench/am-kernels/benchmarks/microbench/build/microbench-riscv64-npc.bin";
@@ -361,6 +361,8 @@ int main(int argc, char**argv, char**env) {
     #else
     printf(ASNI_FG_RED "OFF\n" ASNI_NONE); 
     #endif
+
+    ////////////////////AXI////////////////////////
     connect_wire(top, &mem_ptr);
     assert(mem_ptr.check());
     axi4_ref <32,64,4> mem_ref(mem_ptr);
