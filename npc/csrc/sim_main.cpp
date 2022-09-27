@@ -250,7 +250,7 @@ static int npc_parse_args(int argc, char *argv[]) {
   while ( (o = getopt_long(argc, argv, "-bhi:l:d", table, NULL)) != -1) {
     switch (o) {
       case 'b': set_batch_mode(); break;
-      case 'd': is_diff = true; printf(ASNI_FG_BLUE "DIFFTEST" ASNI_NONE);printf(ASNI_FG_GREEN "ON\n" ASNI_NONE); break;
+      case 'd': is_diff = true;break;
       case 'i': image_file = optarg; break;
       case 'l': log_file = optarg; break;
       default:
@@ -347,12 +347,20 @@ int main(int argc, char**argv, char**env) {
       assert(log_ptr);
     }
     printf(ASNI_FG_BLUE "Log is written to %s\n" ASNI_NONE ,(log_file) ? log_file : "stdout");
-    
+    printf(ASNI_FG_BLUE "DIFFTEST: " ASNI_NONE);
     if(is_diff){
       difftest_init();
       difftest_memcpy(AD_BASE, MEM, fsize, 1);
+      printf(ASNI_FG_GREEN "ON\n" ASNI_NONE); 
     }
+    else printf(ASNI_FG_RED "OFF\n" ASNI_NONE); 
 
+    printf(ASNI_FG_BLUE "ITRACE: " ASNI_NONE);
+    #ifdef ITRACE
+    printf(ASNI_FG_GREEN "ON\n" ASNI_NONE); 
+    #else
+    printf(ASNI_FG_RED "OFF\n" ASNI_NONE); 
+    #endif
     connect_wire(top, &mem_ptr);
     assert(mem_ptr.check());
     axi4_ref <32,64,4> mem_ref(mem_ptr);
