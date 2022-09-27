@@ -274,7 +274,7 @@ void (*difftest_regcpy)(void *, bool);
 void (*difftest_exec)(uint64_t);
 void (*difftest_init)();
 static void *handle = NULL;
-static void load_diff(){
+void load_diff(){
   printf("%s\n",diff_file);
   handle = dlopen(diff_file, RTLD_LAZY);
     if(!handle){
@@ -305,8 +305,6 @@ int main(int argc, char**argv, char**env) {
     #ifdef ITRACE
       init_disasm("riscv64-pc-linux-gnu");
     #endif
-
-    if(is_diff) load_diff();
     
     VerilatedContext*contextp = new VerilatedContext;
     contextp->traceEverOn(true);
@@ -319,7 +317,9 @@ int main(int argc, char**argv, char**env) {
     tfp->open("logs/simx.vcd");
 
     npc_parse_args(argc, argv);
-    
+    //difftest
+    if(is_diff) load_diff();
+
     init_device();
 
     //sdb_init
@@ -358,8 +358,6 @@ int main(int argc, char**argv, char**env) {
     printf(ASNI_FG_BLUE "Log is written to %s\n" ASNI_NONE ,(log_file) ? log_file : "stdout");
     printf(ASNI_FG_BLUE "DIFFTEST: " ASNI_NONE);
     if(is_diff){
-
-  printf("%s\n",diff_file);
       difftest_init();
       difftest_memcpy(AD_BASE, MEM, fsize, 1);
       printf(ASNI_FG_GREEN "ON\n" ASNI_NONE); 
