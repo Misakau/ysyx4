@@ -32,6 +32,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
     Elf_Phdr *now_ph = (Elf_Phdr *)(phoff + (uintptr_t)elf);
     //printf("ptype = %d\n",now_ph->p_type);
     if(now_ph->p_type == PT_LOAD){
+      assert(now_ph->p_type == PT_LOAD);
       //printf("find seg to load\n");
       Elf64_Off offset = now_ph->p_offset;
     //  printf("offset = %d\n",offset);
@@ -40,6 +41,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
       //Elf64_Xword memsz = now_ph->p_memsz;
       Elf64_Xword filesz = now_ph->p_filesz;//not aligned
       Elf64_Xword memsz = now_ph->p_memsz;
+      assert(filesz <= memsz);
     //  printf("&now_ph->p_filesz = %p\n", phoff + (uintptr_t)elf);
     //  printf("filesz = %p\n", filesz);
       memcpy((void *)vaddr, filebuf + offset, filesz);
