@@ -3169,8 +3169,8 @@ module ysyx_040053_res_sel(//结果选择模块
     wire sel_negative, sel_double_negative, sel_positive, sel_double_positive;
     assign {sel_negative,sel_positive,sel_double_negative,sel_double_positive} = sel;
     assign {x,x_sub} =src;
-    assign p = ~(~(sel_negative & ~x) & ~(sel_double_negative & ~x_sub) 
-            & ~(sel_positive & x ) & ~(sel_double_positive &  x_sub));
+    assign p = ((sel_negative & ~x) | (sel_double_negative & ~x_sub) 
+                | (sel_positive & x) | (sel_double_positive & x_sub));
 endmodule
 
 module ysyx_040053_partial(//部分积生成模块
@@ -3192,7 +3192,7 @@ module ysyx_040053_partial(//部分积生成模块
     ysyx_040053_res_sel p_res0(.sel (sel), .src ({x_src[0],1'b0}), .p (p_result[0]));
     genvar x;
     generate 
-        for ( x = 1; x < `ysyx_040053_WIDTH * 2; x = x + 1) begin
+        for (x = 1; x < `ysyx_040053_WIDTH * 2; x = x + 1) begin
             ysyx_040053_res_sel p_res(.sel (sel), .src (x_src[x:x-1]), .p (p_result[x]));
         end 
     endgenerate
