@@ -40,7 +40,7 @@ NPC_FLARGS ?= -l $(LOGS)
 #open difftest
 NPC_FLARGS += -d
 #load image
-NPC_FLARGS += -i $(IMG)
+#NPC_FLARGS += -i $(IMG)
 all:
 	@echo "Write this Makefile by your self."
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
