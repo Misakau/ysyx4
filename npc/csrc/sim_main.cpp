@@ -358,6 +358,8 @@ int main(int argc, char**argv, char**env) {
     printf(ASNI_FG_BLUE "Log is written to %s\n" ASNI_NONE ,(log_file) ? log_file : "stdout");
     printf(ASNI_FG_BLUE "DIFFTEST: " ASNI_NONE);
     if(is_diff){
+
+  printf("%s\n",diff_file);
       difftest_init();
       difftest_memcpy(AD_BASE, MEM, fsize, 1);
       printf(ASNI_FG_GREEN "ON\n" ASNI_NONE); 
