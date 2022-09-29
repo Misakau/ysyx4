@@ -308,7 +308,7 @@ void iring_add(char *str){
 void dump_iring(){
   for(int i = 0; i < MAX_IRING; i++){
     if(i == iring_tmp) printf("---> ");
-    printf("%s",iring_buf[i]);
+    printf("%s\n",iring_buf[i]);
   }
 }
 #endif
