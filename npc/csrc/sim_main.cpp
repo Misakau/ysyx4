@@ -569,7 +569,6 @@ static void npc_exec(uint64_t n){
     else printf(ASNI_FG_RED "HIT BAD TRAP!" ASNI_NONE);
     PASS = cpu_gpr[10];
     printf(ASNI_FG_BLUE " at PC = %lx\n" ASNI_NONE,sdb_top->pc);
-    dump_iring();
   }
 }
 
