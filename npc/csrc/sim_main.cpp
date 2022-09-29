@@ -489,7 +489,7 @@ static void npc_exec(uint64_t n){
             sdb_mem_sig.update_input(sdb_mem_ref);
             sdb_top->eval();
 
-            ///////wave///////////
+            ///////wave_dump///////////
             //if(sdb_top->pc >= 0x83000000){
             //  sdb_tfp->dump(sdb_contextp->time());
             //}
