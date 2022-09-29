@@ -158,6 +158,7 @@ static int decode_exec(Decode *s) {
                                                                   //CSR(0x300) |= MPIE;
                                                                   //CSR(0x300) |= (CSR(0x300) & MPIE) >> 4;
                                                                 }); //MEPC
+  INSTPAT("0000000 00000 00000 001 00000 00001 11", fencei , I, );                                                          
   INSTPAT("??????? ????? ????? ??? ????? ????? ??", inv    , N, INV(s->pc));
   INSTPAT_END();
 //0011000 00010 00000 000 00000 1110011
