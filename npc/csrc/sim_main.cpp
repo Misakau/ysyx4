@@ -477,11 +477,12 @@ static void npc_exec(uint64_t n){
                 //if(log_ptr){fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);}
                 //if(log_ptr) fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
               }
-              iring_add(str);
-              if(sdb_top->clk == 0 && sdb_top->wb_commit == 1 && sdb_top->wb_pc >= 0x83000000){
+              if(sdb_top->clk == 0 && sdb_top->wb_commit == 1){
+                iring_add(str);
                 if(n != -1) printf("wb_commit: pc = 0x%016lx, instr = %08x\n", sdb_top->wb_pc, sdb_top->wb_instr);
                 //if(log_ptr){fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);}
-                if(log_ptr) fprintf(log_ptr, "wb_commit: pc = 0x%016lx, instr = %08x %s\n", sdb_top->wb_pc, sdb_top->wb_instr, str);
+                if(sdb_top->wb_pc >= 0x83000000)
+                  if(log_ptr) fprintf(log_ptr, "wb_commit: pc = 0x%016lx, instr = %08x %s\n", sdb_top->wb_pc, sdb_top->wb_instr, str);
               } 
             #endif
             //printf("axi_ar_addr_o = %lx\n",sdb_top->axi_ar_addr_o);
