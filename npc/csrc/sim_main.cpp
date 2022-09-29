@@ -296,6 +296,23 @@ void load_diff(){
 bool PASS = 0;
 static bool commit_dev = false;
 
+#ifdef ITRACE
+#define MAX_IRING 16
+static char iring_buf[MAX_IRING][256];
+static int iring_tmp = 0;
+void iring_add(char *str){
+  strcpy(iring_buf[iring_tmp],str);
+  iring_tmp ++;
+  if(iring_tmp == MAX_IRING) iring_tmp = 0;
+}
+void dump_iring(){
+  for(int i = 0; i < MAX_IRING; i++){
+    if(i == iring_tmp) printf("---> ");
+    printf("%s",iring_buf[i]);
+  }
+}
+#endif
+
 int main(int argc, char**argv, char**env) {
     
     //MEM = (long long *)malloc(MEMSIZE);
@@ -461,6 +478,7 @@ static void npc_exec(uint64_t n){
                 //if(log_ptr) fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);
               }
               if(sdb_top->clk == 0 && sdb_top->wb_commit == 1 && sdb_top->wb_pc >= 0x83000000){
+                iring_add(str);
                 if(n != -1) printf("wb_commit: pc = 0x%016lx, instr = %08x\n", sdb_top->wb_pc, sdb_top->wb_instr);
                 //if(log_ptr){fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);}
                 if(log_ptr) fprintf(log_ptr, "wb_commit: pc = 0x%016lx, instr = %08x %s\n", sdb_top->wb_pc, sdb_top->wb_instr, str);
@@ -524,12 +542,18 @@ static void npc_exec(uint64_t n){
                 if(sdb_top->wb_pc != nemu_last_pc){
                   printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu_last_pc, sdb_top->wb_pc);
                   dump_gpr();
+                  #ifdef ITRACE
+                  dump_iring();
+                  #endif
                   NPC_EXIT = 1;break;
                 }
                 for(int i = 1; i < 32; i++){
                   if(cpu_gpr[i] != nemu.gpr[i]){
                     printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],sdb_top->wb_pc);
                     dump_gpr();
+                    #ifdef ITRACE
+                    dump_iring();
+                    #endif
                     NPC_EXIT = 1; break;
                   }
                 }
