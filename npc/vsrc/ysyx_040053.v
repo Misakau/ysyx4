@@ -2617,14 +2617,16 @@ module ysyx_040053_IDU(
     assign CsrId = (ecall == 0) ? imm[11:0] : 12'h342;//ecall mcause
     wire [63:0] addr_res;
     wire [63:0] alu_inA, alu_inB;
-    wire [63:0] res;
-    wire zero;
+    
     assign alu_inA = (ALUSrcA == 1'b1) ? busa : pc;
     assign alu_inB = (ALUSrcB == 2'b01) ? imm : ((ALUSrcB == 2'b00) ? busb : 4);
     wire Trap = Time_interrupt | Ecall;
-    ysyx_040053_ALU_lite na_alu(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .result(res), .zero(zero));
+    wire zero = (alu_inA == alu_inB);
+    wire res0 = ALUOp[0] ? (alu_inA < alu_inB) : ($signed(alu_inA) < $signed(alu_inB));
+
+    //ysyx_040053_ALU_lite na_alu(.inputa(alu_inA), .inputb(alu_inB), .ALUOp(ALUOp), .result(res), .zero(zero));
     ysyx_040053_NexAddr nextaddr(.mtvec(mtvec), .Trap(Trap), .mepc(mepc), .Mret(Mret),
-                                 .Zero(zero), .res0(res[0]), .Branch(Branch), .pc(pc),
+                                 .Zero(zero), .res0(res0), .Branch(Branch), .pc(pc),
                                  .imm(imm), .busa(busa), .dnpc(addr_res));
     
     assign dnpc = {addr_res[63:1], 1'b0};

@@ -306,8 +306,9 @@ void iring_add(char *str){
   if(iring_tmp == MAX_IRING) iring_tmp = 0;
 }
 void dump_iring(){
+  int now_tmp = (iring_tmp + MAX_IRING - 1)%MAX_IRING;
   for(int i = 0; i < MAX_IRING; i++){
-    if(i == iring_tmp) printf("---> ");
+    if(i == now_tmp) printf("---> ");
     printf("%s\n",iring_buf[i]);
   }
 }
@@ -481,8 +482,8 @@ static void npc_exec(uint64_t n){
                 iring_add(str);
                 if(n != -1) printf("wb_commit: pc = 0x%016lx, instr = %08x\n", sdb_top->wb_pc, sdb_top->wb_instr);
                 //if(log_ptr){fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);}
-                if(sdb_top->wb_pc >= 0x83000000)
-                  if(log_ptr) fprintf(log_ptr, "wb_commit: pc = 0x%016lx, instr = %08x %s\n", sdb_top->wb_pc, sdb_top->wb_instr, str);
+                //if(sdb_top->wb_pc >= 0x83000000)
+                //  if(log_ptr) fprintf(log_ptr, "wb_commit: pc = 0x%016lx, instr = %08x %s\n", sdb_top->wb_pc, sdb_top->wb_instr, str);
               } 
             #endif
             //printf("axi_ar_addr_o = %lx\n",sdb_top->axi_ar_addr_o);
