@@ -8,5 +8,6 @@
 !.gitignore
 !README.md
 !Kconfig
+!tools/spike-diff/*
 include/config
 include/generated
