@@ -1922,8 +1922,8 @@ module ysyx_040053_core(
     );
     assign pc = if_pc_o;
     assign instr = if_instr_o;
-    assign cpu_halt = id_Ebreak_o | rst;
-    assign if_block = id_Ebreak_o | if_busy;
+    assign cpu_halt = id_Ebreak_o & id_valid_o | rst;
+    assign if_block = id_Ebreak_o & id_valid_o | if_busy;
     assign id_en = ~(id_block | ex_block | m_block | wb_block);
     assign id_valid_i = ~(rst | if_block | cpu_halt | has_fence_i);
 
@@ -2185,6 +2185,7 @@ module ysyx_040053_core(
     reg [63:0] wb_pc_r;
     reg [31:0] wb_instr_r;
     reg [63:0] next_pc_r;
+    reg ebreak_commit_r;
     always@(posedge clk) begin
         if(wb_flush)begin 
             wb_commit_r <= 1'b0;
@@ -2193,6 +2194,7 @@ module ysyx_040053_core(
             next_pc_r <= 64'b0;
             wb_dev_o <= 0;
             fence_i_commit <= 0;
+            ebreak_commit_r <= 0;
         end
         else begin
           if(wb_valid_o)begin
@@ -2202,6 +2204,7 @@ module ysyx_040053_core(
             next_pc_r <= wb_dnpc;
             wb_dev_o <= dev_o;
             fence_i_commit <= wb_Fence_i_i;
+            ebreak_commit_r <= wb_Ebreak_i;
           end
           else begin
             wb_commit_r <= 1'b0;
@@ -2210,13 +2213,14 @@ module ysyx_040053_core(
             next_pc_r <= 64'b0;
             wb_dev_o <= 0;
             fence_i_commit <= 0;
+            ebreak_commit_r <= 0;
           end
         end
     end
     assign wb_commit = wb_commit_r;
     assign wb_pc = wb_pc_r;
     assign wb_instr = wb_instr_r;
-    assign ebreak_commit = wb_Ebreak_i;
+    assign ebreak_commit = ebreak_commit_r;
     assign next_pc = next_pc_r;
     always@(*) begin
       if(ebreak_commit) c_trap(1);

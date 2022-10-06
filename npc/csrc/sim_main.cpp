@@ -483,7 +483,7 @@ static void npc_exec(uint64_t n){
                 if(n != -1) printf("wb_commit: pc = 0x%016lx, instr = %08x\n", sdb_top->wb_pc, sdb_top->wb_instr);
                 //if(log_ptr){fprintf(log_ptr, "pc = 0x%016lx, instr = %08x %s\n", sdb_top->pc, instr_now, str);}
                 //if(sdb_top->wb_pc >= 0x83000000)
-                //  if(log_ptr) fprintf(log_ptr, "wb_commit: pc = 0x%016lx, instr = %08x %s\n", sdb_top->wb_pc, sdb_top->wb_instr, str);
+                  if(log_ptr) fprintf(log_ptr, "wb_commit: pc = 0x%016lx, instr = %08x %s\n", sdb_top->wb_pc, sdb_top->wb_instr, str);
               } 
             #endif
             //printf("axi_ar_addr_o = %lx\n",sdb_top->axi_ar_addr_o);
@@ -492,7 +492,7 @@ static void npc_exec(uint64_t n){
 
             ///////wave_dump///////////
             //if(sdb_top->pc >= 0x83000000){
-            //  sdb_tfp->dump(sdb_contextp->time());
+              sdb_tfp->dump(sdb_contextp->time());
             //}
 
             //printf("i = %ld, rw_req = %d, rw_valid_o = %x, rw_addr_o = %lx, d_rw_ready = %d, rw_ready_i = %d\n",i, sdb_top->rw_req_o, sdb_top->rw_valid_o,sdb_top->rw_addr_o, sdb_top->d_rw_ready,sdb_top->rw_ready_i);
@@ -542,13 +542,23 @@ static void npc_exec(uint64_t n){
                   difftest_regcpy(&nemu, 0);
                 }
                 if(sdb_top->wb_pc != nemu_last_pc){
-                  printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu_last_pc, sdb_top->wb_pc);
+                  printf(ASNI_FG_RED "commit_PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu_last_pc, sdb_top->wb_pc);
                   dump_gpr();
                   #ifdef ITRACE
                   dump_iring();
                   #endif
                   NPC_EXIT = 1;break;
                 }
+
+                if(sdb_top->next_pc != nemu.pc){
+                  printf(ASNI_FG_RED "next_PC is wrong! right: %lx, wrong: %lx\n" ASNI_NONE, nemu.pc, sdb_top->next_pc);
+                  dump_gpr();
+                  #ifdef ITRACE
+                  dump_iring();
+                  #endif
+                  NPC_EXIT = 1;break;
+                }
+
                 for(int i = 1; i < 32; i++){
                   if(cpu_gpr[i] != nemu.gpr[i]){
                     printf(ASNI_FG_RED "gpr[%d] is wrong! right: %lx, wrong: %lx at pc = %lx\n" ASNI_NONE,i,nemu.gpr[i],cpu_gpr[i],sdb_top->wb_pc);
