@@ -3122,7 +3122,7 @@ module ysyx_040053_mulu (
         end
     end
 
-    assign done = running_r && (cnt == 7'h10 ||multiplier_r[`ysyx_040053_WIDTH:0] == {{`ysyx_040053_WIDTH{1'b0}},1'b0});//34 == 34
+	assign done = running_r && (cnt == 7'h20 ||multiplier_r[`ysyx_040053_WIDTH:0] == {{`ysyx_040053_WIDTH{1'b0}},1'b0});//34 == 34
    
     wire partial_cout;
     ysyx_040053_partial partial(.x_src(multiplicand_r),.y_src(multiplier_r[2:0]),.p_result(p_result),.cout(partial_cout));
